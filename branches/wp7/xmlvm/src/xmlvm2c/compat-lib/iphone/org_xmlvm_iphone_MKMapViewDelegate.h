@@ -1,0 +1,86 @@
+#ifndef __ORG_XMLVM_IPHONE_MKMAPVIEWDELEGATE__
+#define __ORG_XMLVM_IPHONE_MKMAPVIEWDELEGATE__
+
+#include "xmlvm.h"
+#include "org_xmlvm_iphone_NSObject.h"
+
+// Circular references:
+#ifndef XMLVM_FORWARD_DECL_org_xmlvm_iphone_NSObject
+#define XMLVM_FORWARD_DECL_org_xmlvm_iphone_NSObject
+XMLVM_FORWARD_DECL(org_xmlvm_iphone_NSObject)
+#endif
+#ifndef XMLVM_FORWARD_DECL_org_xmlvm_iphone_MKMapView
+#define XMLVM_FORWARD_DECL_org_xmlvm_iphone_MKMapView
+XMLVM_FORWARD_DECL(org_xmlvm_iphone_MKMapView)
+#endif
+#ifndef XMLVM_FORWARD_DECL_org_xmlvm_iphone_NSError
+#define XMLVM_FORWARD_DECL_org_xmlvm_iphone_NSError
+XMLVM_FORWARD_DECL(org_xmlvm_iphone_NSError)
+#endif
+#ifndef XMLVM_FORWARD_DECL_org_xmlvm_iphone_MKUserLocation
+#define XMLVM_FORWARD_DECL_org_xmlvm_iphone_MKUserLocation
+XMLVM_FORWARD_DECL(org_xmlvm_iphone_MKUserLocation)
+#endif
+// Class declarations for org.xmlvm.iphone.MKMapViewDelegate
+XMLVM_DEFINE_CLASS(org_xmlvm_iphone_MKMapViewDelegate, 23)
+
+extern JAVA_OBJECT __CLASS_org_xmlvm_iphone_MKMapViewDelegate;
+extern JAVA_OBJECT __CLASS_org_xmlvm_iphone_MKMapViewDelegate_ARRAYTYPE;
+
+//XMLVM_BEGIN_DECLARATIONS
+#define __ADDITIONAL_INSTANCE_FIELDS_org_xmlvm_iphone_MKMapViewDelegate
+//XMLVM_END_DECLARATIONS
+
+#define __INSTANCE_FIELDS_org_xmlvm_iphone_MKMapViewDelegate \
+    __INSTANCE_FIELDS_org_xmlvm_iphone_NSObject; \
+    struct { \
+        __ADDITIONAL_INSTANCE_FIELDS_org_xmlvm_iphone_MKMapViewDelegate \
+    } org_xmlvm_iphone_MKMapViewDelegate
+
+struct org_xmlvm_iphone_MKMapViewDelegate {
+    __TIB_DEFINITION_org_xmlvm_iphone_MKMapViewDelegate* tib;
+    struct {
+        __INSTANCE_FIELDS_org_xmlvm_iphone_MKMapViewDelegate;
+    } fields;
+};
+#ifndef XMLVM_FORWARD_DECL_org_xmlvm_iphone_MKMapViewDelegate
+#define XMLVM_FORWARD_DECL_org_xmlvm_iphone_MKMapViewDelegate
+typedef struct org_xmlvm_iphone_MKMapViewDelegate org_xmlvm_iphone_MKMapViewDelegate;
+#endif
+
+#define XMLVM_VTABLE_SIZE_org_xmlvm_iphone_MKMapViewDelegate 23
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_MKMapViewDelegate_regionWillChangeAnimated___org_xmlvm_iphone_MKMapView_boolean 14
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_MKMapViewDelegate_regionDidChangeAnimated___org_xmlvm_iphone_MKMapView_boolean 15
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_MKMapViewDelegate_willStartLoadingMap___org_xmlvm_iphone_MKMapView 16
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_MKMapViewDelegate_didFinishLoadingMap___org_xmlvm_iphone_MKMapView 17
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_MKMapViewDelegate_didFailLoadingMap___org_xmlvm_iphone_MKMapView_org_xmlvm_iphone_NSError 18
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_MKMapViewDelegate_willStartLocatingUser___org_xmlvm_iphone_MKMapView 19
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_MKMapViewDelegate_didStopLocatingUser___org_xmlvm_iphone_MKMapView 20
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_MKMapViewDelegate_didUpdateUserLocation___org_xmlvm_iphone_MKMapView_org_xmlvm_iphone_MKUserLocation 21
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_MKMapViewDelegate_didFailToLocateUserWithError___org_xmlvm_iphone_MKMapView_org_xmlvm_iphone_NSError 22
+
+void __INIT_org_xmlvm_iphone_MKMapViewDelegate();
+void __DELETE_org_xmlvm_iphone_MKMapViewDelegate(void* me, void* client_data);
+JAVA_OBJECT __NEW_org_xmlvm_iphone_MKMapViewDelegate();
+JAVA_OBJECT __NEW_INSTANCE_org_xmlvm_iphone_MKMapViewDelegate();
+void org_xmlvm_iphone_MKMapViewDelegate___INIT___(JAVA_OBJECT me);
+// Vtable index: 14
+void org_xmlvm_iphone_MKMapViewDelegate_regionWillChangeAnimated___org_xmlvm_iphone_MKMapView_boolean(JAVA_OBJECT me, JAVA_OBJECT n1, JAVA_BOOLEAN n2);
+// Vtable index: 15
+void org_xmlvm_iphone_MKMapViewDelegate_regionDidChangeAnimated___org_xmlvm_iphone_MKMapView_boolean(JAVA_OBJECT me, JAVA_OBJECT n1, JAVA_BOOLEAN n2);
+// Vtable index: 16
+void org_xmlvm_iphone_MKMapViewDelegate_willStartLoadingMap___org_xmlvm_iphone_MKMapView(JAVA_OBJECT me, JAVA_OBJECT n1);
+// Vtable index: 17
+void org_xmlvm_iphone_MKMapViewDelegate_didFinishLoadingMap___org_xmlvm_iphone_MKMapView(JAVA_OBJECT me, JAVA_OBJECT n1);
+// Vtable index: 18
+void org_xmlvm_iphone_MKMapViewDelegate_didFailLoadingMap___org_xmlvm_iphone_MKMapView_org_xmlvm_iphone_NSError(JAVA_OBJECT me, JAVA_OBJECT n1, JAVA_OBJECT n2);
+// Vtable index: 19
+void org_xmlvm_iphone_MKMapViewDelegate_willStartLocatingUser___org_xmlvm_iphone_MKMapView(JAVA_OBJECT me, JAVA_OBJECT n1);
+// Vtable index: 20
+void org_xmlvm_iphone_MKMapViewDelegate_didStopLocatingUser___org_xmlvm_iphone_MKMapView(JAVA_OBJECT me, JAVA_OBJECT n1);
+// Vtable index: 21
+void org_xmlvm_iphone_MKMapViewDelegate_didUpdateUserLocation___org_xmlvm_iphone_MKMapView_org_xmlvm_iphone_MKUserLocation(JAVA_OBJECT me, JAVA_OBJECT n1, JAVA_OBJECT n2);
+// Vtable index: 22
+void org_xmlvm_iphone_MKMapViewDelegate_didFailToLocateUserWithError___org_xmlvm_iphone_MKMapView_org_xmlvm_iphone_NSError(JAVA_OBJECT me, JAVA_OBJECT n1, JAVA_OBJECT n2);
+
+#endif

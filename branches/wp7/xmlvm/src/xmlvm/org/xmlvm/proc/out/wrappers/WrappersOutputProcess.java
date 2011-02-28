@@ -1,24 +1,24 @@
-/* Copyright (c) 2002-2011 by XMLVM.org
- *
- * Project Info:  http://www.xmlvm.org
- *
- * This program is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * This library is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
- * License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301,
- * USA.
+/* Copyright (c) 2002-2011 by XMLVM.org                                         
+ *                                                                              
+ * Project Info:  http://www.xmlvm.org                                          
+ *                                                                              
+ * This program is free software; you can redistribute it and/or modify it      
+ * under the terms of the GNU Lesser General Public License as published by     
+ * the Free Software Foundation; either version 2.1 of the License, or          
+ * (at your option) any later version.                                          
+ *                                                                              
+ * This library is distributed in the hope that it will be useful, but          
+ * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY   
+ * or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public       
+ * License for more details.                                                    
+ *                                                                              
+ * You should have received a copy of the GNU Lesser General Public             
+ * License along with this library; if not, write to the Free Software          
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301,   
+ * USA.                                                                         
  */
 
-package org.xmlvm.proc.out;
+package org.xmlvm.proc.out.wrappers;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -33,9 +33,12 @@ import java.util.Map;
 
 import org.xmlvm.Log;
 import org.xmlvm.main.Arguments;
+import org.xmlvm.proc.XmlvmProcess;
 import org.xmlvm.proc.XmlvmProcessImpl;
+import org.xmlvm.proc.XmlvmResourceProvider;
 import org.xmlvm.util.universalfile.UniversalFile;
 import org.xmlvm.util.universalfile.UniversalFileCreator;
+import org.xmlvm.proc.out.*;
 
 /**
  * This process takes {@link COutputProcess}es which contain newly generated
@@ -48,9 +51,9 @@ import org.xmlvm.util.universalfile.UniversalFileCreator;
  * contain manually written code in between them. This code is extracted and put
  * into the newly generated wrappers - at the correct position.
  */
-public class GenCWrappersOutputProcess extends XmlvmProcessImpl<COutputProcess> {
-
-    private static final String           TAG           = GenCWrappersOutputProcess.class
+public class WrappersOutputProcess<T extends XmlvmProcessImpl<?>> extends XmlvmProcessImpl<T> {
+    
+    private static final String           TAG           = WrappersOutputProcess.class
                                                                 .getSimpleName();
     private static final String           BEGIN_MARKER  = "//XMLVM_BEGIN";
     private static final String           END_MARKER    = "//XMLVM_END";
@@ -59,10 +62,8 @@ public class GenCWrappersOutputProcess extends XmlvmProcessImpl<COutputProcess> 
     private final static SimpleDateFormat dateFormatter = new SimpleDateFormat(
                                                                 "yyyy-MM-dd-hh.mm.ss");
 
-
-    public GenCWrappersOutputProcess(Arguments arguments) {
+    public WrappersOutputProcess(Arguments arguments) {
         super(arguments);
-        addSupportedInput(COutputProcess.class);
     }
 
     @Override
@@ -73,9 +74,9 @@ public class GenCWrappersOutputProcess extends XmlvmProcessImpl<COutputProcess> 
     @Override
     public boolean process() {
         List<OutputFile> outputFiles = new ArrayList<OutputFile>();
-        List<COutputProcess> preprocesses = preprocess();
+        List<T> preprocesses = preprocess();
 
-        for (COutputProcess process : preprocesses) {
+        for (T process : preprocesses) {
             outputFiles.addAll(process.getOutputFiles());
         }
 
@@ -138,15 +139,15 @@ public class GenCWrappersOutputProcess extends XmlvmProcessImpl<COutputProcess> 
      * @return The section contents keyed by filename and section name.
      */
     private Map<String, Map<String, String>> extractAllSections(UniversalFile destination) {
-        Map<String, Map<String, String>> output = new HashMap<String, Map<String, String>>();
+        Map<String, Map<String, String>> result = new HashMap<String, Map<String, String>>();
         UniversalFile[] existingFiles = destination.listFilesRecursively();
         String basePath = destination.getAbsolutePath();
 
         for (UniversalFile existingFile : existingFiles) {
             String key = existingFile.getRelativePath(basePath);
-            output.put(key, extractSections(existingFile));
+            result.put(key, extractSections(existingFile));
         }
-        return output;
+        return result;
     }
 
     /**
@@ -178,7 +179,7 @@ public class GenCWrappersOutputProcess extends XmlvmProcessImpl<COutputProcess> 
                         Log.error(TAG, "Found end marker without matching starting marker: " + line);
                         continue;
                     }
-                    sections.put(currentKey, section.toString());
+		    sections.put(currentKey, section.toString());
                     section = null;
                 }
 

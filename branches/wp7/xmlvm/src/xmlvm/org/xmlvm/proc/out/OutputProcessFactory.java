@@ -26,6 +26,8 @@ import org.xmlvm.main.Targets;
 import org.xmlvm.proc.XmlvmProcess;
 import org.xmlvm.proc.out.templates.AndroidTemplateOutputProcess;
 import org.xmlvm.proc.out.templates.IPhoneTemplateOutputProcess;
+import org.xmlvm.proc.out.wrappers.GenCSharpWrappersOutputProcess;
+import org.xmlvm.proc.out.wrappers.GenCWrappersOutputProcess;
 
 /**
  * Creates OutputProcess based on the given targets.
@@ -100,6 +102,10 @@ public class OutputProcessFactory {
             return new DEXmlvmOutputProcess(arguments);
         case VTABLE:
             return new VtableOutputProcess(arguments);
+	case CSHARP:
+	    return new CSharpOutputProcess(arguments);
+        case GENCSHARPWRAPPERS:
+            return new GenCSharpWrappersOutputProcess(arguments);
         }
         Log.error("Could not create target process for target '" + target + "'.");
         return null;

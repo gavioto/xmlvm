@@ -338,6 +338,14 @@ public class XmlvmResource {
             methodElement.setAttribute("vtableIndex", "" + idx);
         }
 
+        /**
+         * Set an override xml attribute for this method 
+	 * (mostly for csharp code generation)
+         */
+        public void setOverride() {
+            methodElement.setAttribute("isOverride", "true");
+        }
+
     }
 
 

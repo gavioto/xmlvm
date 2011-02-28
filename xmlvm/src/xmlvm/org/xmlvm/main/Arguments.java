@@ -96,7 +96,8 @@ public class Arguments {
     private static final String[] shortUsage                       = {
             "Usage: ",
             "xmlvm [--in=<path> [--out=<dir>]]",
-            "      [--target=[xmlvm|dexmlvm|jvm|clr|dfa|class|exe|dex|js|java|c|python|objc|iphone|qooxdoo|vtable|webos]]",
+            "      [--target=[xmlvm|dexmlvm|jvm|clr|dfa|class|exe|dex|js|java|c|gen-c-wrappers|python",
+	    "                 |objc|iphone|qooxdoo|vtable|webos|csharp|gen-csharp-wrappers]]",
             "      [--skeleton=<type>]", "      [--lib=<name>", "      [--app-name=<app-name>]",
             "      [--resource=<path>]", "      [--qx-main=<main-class> [--qx-debug]]",
             "      [--debug=[none|error|warning|all]]", "      [--version] [--help]" };
@@ -120,13 +121,18 @@ public class Arguments {
             "    js               JavaScript",
             "    java             Java source code",
             "    c                C source code",
-            "    gen-c-wrappers   Generates C wrappers while preserving hand-written code from overridden files in the 'out' directory.",
+            "    gen-c-wrappers   Generates C wrappers while preserving hand-written code from ",
+	    "                     overridden files in the 'out' directory.",
             "    python           Python",
             "    objc             Objective C source code",
             "    iphone           iPhone Objective-C",
             "    qooxdoo          JavaScript Qooxdoo web application",
             "    vtable           Vtable calculation (pre-step for e.g. C generation)",
             "    webos            WebOS JavaScript Project",
+	    "    csharp           C Sharp source code",
+	    "    gen-csharp-wrappers",
+	    "                     Generates C sharp wrappers while preserving hand-written ",
+	    "                     code from overridden files in the 'out' directory.",
             "",
             "--gen-native-skeletons Generates skeletons for Java native methods in the target",
             "                   language (currently only available for --target=c",
@@ -317,8 +323,9 @@ public class Arguments {
         if (option_skeleton != null && option_target != Targets.NONE) {
             parseError("Only one argument of '--target' or '--skeleton' is allowed");
         }
-        if (option_gen_wrapper && option_target != Targets.C) {
-            parseError("--gen-wrapper only available for --target=c");
+        if (option_gen_wrapper && option_target != Targets.C 
+	                       && option_target != Targets.CSHARP) {
+            parseError("--gen-wrapper only available for --target=c or --target=csharp");
         }
         if (option_gen_native_skeletons
                 && (option_target != Targets.C && option_target != Targets.GENCWRAPPERS)) {
@@ -373,7 +380,7 @@ public class Arguments {
         if (option_target == Targets.OBJC || option_target == Targets.IPHONE
                 || option_target == Targets.IPHONEANDROID) {
             option_enable_ref_counting = true;
-            Log.debug("Forcing --enable_ref_counting for target " + option_target);
+            Log.debug("Forcing " + ARG_ENABLE_REF_COUNTING + " for target " + option_target);
         }
 
         if (option_target == Targets.IPHONE || option_target == Targets.IPHONEC
@@ -382,7 +389,8 @@ public class Arguments {
             option_c_source_extension = "m";
         }
 
-        if (option_target == Targets.GENCWRAPPERS) {
+        if (option_target == Targets.GENCWRAPPERS
+	    || option_target == Targets.GENCSHARPWRAPPERS) {
             option_gen_wrapper = true;
             Log.debug("Forcing --gen_wrapper for target " + option_target);
         }

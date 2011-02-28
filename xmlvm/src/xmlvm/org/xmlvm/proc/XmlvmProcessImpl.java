@@ -37,9 +37,9 @@ import org.xmlvm.proc.out.XmlvmToXmlvmProcess;
  * A collection of possible process IDs.
  */
 enum XmlvmProcessId {
-    XMLVM_JVM("xmlvmjvm"), XMLVM_CLR("xmlvmclr"), XMLVM_CLR_DFA("xmlvmclrdfa"), CLASS("class"), EXE(
-            "exe"), JS("js"), JAVA("java"), OBJC("objc"), CPP("cpp"), PYTHON("python"), IPHONE(
-            "iphone"), QOOXDOO("qooxdoo");
+    XMLVM_JVM("xmlvmjvm"), XMLVM_CLR("xmlvmclr"), XMLVM_CLR_DFA("xmlvmclrdfa"), CLASS("class"), 
+    EXE("exe"), JS("js"), JAVA("java"), OBJC("objc"), CPP("cpp"), PYTHON("python"), 
+	IPHONE("iphone"), QOOXDOO("qooxdoo"), CSHARP("csharp");
     String name;
 
 
@@ -236,7 +236,7 @@ public abstract class XmlvmProcessImpl<T> implements XmlvmProcess<T> {
 
     @Override
     public boolean isActive() {
-        // A process is active only when at least one of his preprocesses is
+        // A process is active only when at least one of its preprocesses is
         // active.
         for (XmlvmProcess<?> preprocess : preprocesses) {
             if (preprocess.isActive()) {

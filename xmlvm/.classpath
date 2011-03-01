@@ -17,6 +17,7 @@
 	<classpathentry kind="src" path="src/xmlvm2c/lib/native"/>
 	<classpathentry kind="src" path="src/xmlvm2c/compat-lib/iphone"/>
 	<classpathentry kind="src" path="src/xmlvm2c/compat-lib/java"/>
+	<classpathentry kind="src" path="src/xmlvm2csharp/compat-lib/java"/>
 	<classpathentry kind="src" output="bin-android2iphone" path="src/android2iphone"/>
 	<classpathentry kind="src" path="demo/java-desktop"/>
 	<classpathentry kind="src" path="demo/iphone/iremote/src/java"/>
@@ -37,6 +38,10 @@
 	<classpathentry kind="src" path="demo/android/xokoban/gen"/>
 	<classpathentry kind="src" path="demo/android/helloworld/src"/>
 	<classpathentry kind="src" path="demo/android/helloworld/gen"/>
+	<classpathentry kind="src" path="demo/wp7/fireworks/src"/>
+	<classpathentry kind="src" path="demo/wp7/sayhello/src"/>
+	<classpathentry kind="src" path="demo/wp7/helloworld/src"/>
+	<classpathentry kind="src" path="demo/wp7/applauncher/src"/>
 	<classpathentry kind="src" path="src/test/java"/>
 	<classpathentry kind="src" path="src/test/iphone"/>
 	<classpathentry kind="src" path="src/test/cs"/>

@@ -18,6 +18,7 @@
 	<classpathentry kind="src" path="src/xmlvm2c/compat-lib/iphone"/>
 	<classpathentry kind="src" path="src/xmlvm2c/compat-lib/java"/>
 	<classpathentry kind="src" path="src/xmlvm2csharp/compat-lib/java"/>
+	<classpathentry kind="src" path="src/xmlvm2csharp/xsl"/>
 	<classpathentry kind="src" output="bin-android2iphone" path="src/android2iphone"/>
 	<classpathentry kind="src" path="demo/java-desktop"/>
 	<classpathentry kind="src" path="demo/iphone/iremote/src/java"/>

@@ -20,7 +20,9 @@
 
 package android.internal;
 
+import android.view.View;
 import Compatlib.System.Windows.UIElement;
+import Compatlib.System.Windows.Controls.Panel;
 
 /**
  *
@@ -58,6 +60,14 @@ public class ViewHandler {
      */
     public void setFrame(int left, int top, int width, int height) {
         // TODO fireworks
+    }
+
+    /**
+     * @param child
+     */
+    public void addSubview(View child) {
+        // TODO fireworks
+        ((Panel)element).getChildren().Add(child.xmlvmGetViewHandler().getElement());
     }
 
 }

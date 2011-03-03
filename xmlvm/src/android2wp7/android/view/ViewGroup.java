@@ -24,6 +24,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import Compatlib.System.Windows.UIElement;
+import Compatlib.System.Windows.Controls.Panel;
 import android.app.Activity;
 import android.content.Context;
 import android.internal.Assert;
@@ -175,11 +177,19 @@ public class ViewGroup extends View implements ViewParent {
             parseViewGroupAttributes(attrs);
         }
     }
+    
+    /* (non-Javadoc)
+     * @see android.view.View#xmlvmNewUIElement()
+     */
+    @Override
+    protected UIElement xmlvmNewUIElement() {
+        return new Panel();
+    }
 
     public void addView(View child) {
         subViews.add(child);
         child.xmlvmSetParent(this);
-        //xmlvmGetViewHandler().addSubview(child);
+        xmlvmGetViewHandler().addSubview(child);
     }
 
     public void addView(View child, LayoutParams p) {

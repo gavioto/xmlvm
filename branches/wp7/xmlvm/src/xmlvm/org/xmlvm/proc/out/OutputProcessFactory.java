@@ -102,10 +102,12 @@ public class OutputProcessFactory {
             return new DEXmlvmOutputProcess(arguments);
         case VTABLE:
             return new VtableOutputProcess(arguments);
-	case CSHARP:
-	    return new CSharpOutputProcess(arguments);
+        case CSHARP:
+            return new CSharpOutputProcess(arguments);
         case GENCSHARPWRAPPERS:
             return new GenCSharpWrappersOutputProcess(arguments);
+        case WP7ANDROID:
+            return new Android2WP7OutputProcess(arguments);
         }
         Log.error("Could not create target process for target '" + target + "'.");
         return null;

@@ -58,5 +58,8 @@ public class Application extends DispatcherObject {
 		simulator.setRootRenderer(rootVisual.xmlvmGetRenderer());
 		simulator.repaint();
 	}
-	
+
+	public void test() {
+	    
+	}
 }

@@ -29,6 +29,14 @@ import Compatlib.System.EventArgs;
  */
 public class AccelerometerReadingEventArgs extends EventArgs {
 
+    /**
+     * @return
+     */
+    public double getZ() {
+        // TODO Auto-generated method stub
+        return 0;
+    }
+    
 	/**
 	 * @return
 	 */

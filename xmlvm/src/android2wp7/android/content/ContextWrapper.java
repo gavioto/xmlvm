@@ -20,14 +20,9 @@
 
 package android.content;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-
 import android.content.res.Resources;
-import android.internal.AndroidManifest;
-import android.internal.Assert;
+import android.internal2.AndroidManifest;
+import android.internal2.Assert;
 
 public class ContextWrapper extends Context {
 
@@ -67,21 +62,21 @@ public class ContextWrapper extends Context {
         return null;
     }
 
-    @Override
-    public FileInputStream openFileInput(String name) throws FileNotFoundException {
-        return new FileInputStream(name);
-    }
+//    @Override
+//    public FileInputStream openFileInput(String name) throws FileNotFoundException {
+//        return new FileInputStream(name);
+//    }
+//
+//    @Override
+//    public FileOutputStream openFileOutput(String name, int mode) throws FileNotFoundException {
+//        // TODO what to do with mode?
+//        return new FileOutputStream(name);
+//    }
 
-    @Override
-    public FileOutputStream openFileOutput(String name, int mode) throws FileNotFoundException {
-        // TODO what to do with mode?
-        return new FileOutputStream(name);
-    }
-
-    @Override
-    public boolean deleteFile(String name) {
-        return new File(name).delete();
-    }
+//    @Override
+//    public boolean deleteFile(String name) {
+//        return new File(name).delete();
+//    }
 
     /*public Looper getMainLooper() {
         Assert.NOT_IMPLEMENTED();
@@ -93,7 +88,7 @@ public class ContextWrapper extends Context {
         return null;
     }*/
 
-    public File getFileStreamPath(String name) {
-        return new File(name);
-    }
+//    public File getFileStreamPath(String name) {
+//        return new File(name);
+//    }
 }

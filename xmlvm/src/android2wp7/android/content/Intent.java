@@ -20,9 +20,7 @@
 
 package android.content;
 
-import java.io.Serializable;
-
-import android.internal.Assert;
+import android.internal2.Assert;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -155,8 +153,8 @@ public class Intent {
         return false;
     }
 
-    public Intent putExtra(String name, Serializable value) {
-        Assert.NOT_IMPLEMENTED();
-        return null;
-    }
+//    public Intent putExtra(String name, Serializable value) {
+//        Assert.NOT_IMPLEMENTED();
+//        return null;
+//    }
 }

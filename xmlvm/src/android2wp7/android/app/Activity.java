@@ -20,13 +20,9 @@
 
 package android.app;
 
-import java.awt.Dialog;
-import java.awt.event.KeyEvent;
-import java.lang.ref.WeakReference;
-
 import android.content.ComponentName;
 import android.content.Intent;
-import android.internal.Assert;
+import android.internal2.Assert;
 import android.os.Bundle;
 import android.view.ContextThemeWrapper;
 import android.view.Menu;
@@ -58,7 +54,7 @@ public class Activity extends ContextThemeWrapper {
     private static final int        STATE_DESTROYED     = 4;
 
     private int                     state               = STATE_UNINITIALIZED;
-    private WeakReference<Activity> parent;
+    private Activity parent;
     private Activity                child;
     private Intent                  intent;
     private ComponentName           componentName;
@@ -72,12 +68,12 @@ public class Activity extends ContextThemeWrapper {
 
 
     public void xmlvmSetParent(Activity parent) {
-        this.parent = new WeakReference<Activity>(parent);
+        this.parent = parent;
         parent.child = this;
     }
 
     public final Activity getParent() {
-        return this.parent == null ? null : this.parent.get();
+        return this.parent;
     }
 
     public void xmlvmSetRequestCode(int requestCode) {
@@ -299,7 +295,7 @@ public class Activity extends ContextThemeWrapper {
     public void onContentChanged() {
     }
 
-    public void showDialog(int id) {
+    /*public void showDialog(int id) {
         Dialog dialog = onCreateDialog(id);
         if (dialog != null)
             dialog.show();
@@ -307,7 +303,7 @@ public class Activity extends ContextThemeWrapper {
 
     protected Dialog onCreateDialog(int id) {
         return null;
-    }
+    }*/
 
     /**
      * Can be overridden by subclasses that want to create a menu.
@@ -323,10 +319,10 @@ public class Activity extends ContextThemeWrapper {
         return true;
     }
 
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
+    /*public boolean onKeyDown(int keyCode, KeyEvent event) {
         // TODO Auto-generated method stub
         return false;
-    }
+    }*/
 
     public final void setResult(int resultCode) {
         setResult(resultCode, null);

@@ -20,12 +20,11 @@
 
 package android.graphics.drawable;
 
-import java.io.InputStream;
 import java.util.Arrays;
 
 import android.graphics.Canvas;
 import android.graphics.Rect;
-import android.internal.Assert;
+import android.internal2.Assert;
 import android.util.StateSet;
 
 public abstract class Drawable {
@@ -153,10 +152,10 @@ public abstract class Drawable {
 
     public abstract void draw(Canvas canvas);
 
-    public static Drawable createFromStream(InputStream is, String srcName) {
-        Assert.NOT_IMPLEMENTED();
-        return null;
-    }
+//    public static Drawable createFromStream(InputStream is, String srcName) {
+//        Assert.NOT_IMPLEMENTED();
+//        return null;
+//    }
 
     public void setFilterBitmap(boolean filter) {
         Assert.NOT_IMPLEMENTED();

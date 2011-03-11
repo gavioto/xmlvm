@@ -20,20 +20,14 @@
 
 package android.content;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-
 import org.xmlvm.demo.afireworks.AndroidFireworks;
 
-import sun.awt.im.InputMethodManager;
 import Compatlib.System.Windows.Application;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.hardware.SensorManager;
-import android.internal.AndroidManifest;
-import android.internal.Assert;
+import android.internal2.AndroidManifest;
+import android.internal2.Assert;
 import android.view.WindowManager;
 
 /**
@@ -122,7 +116,7 @@ public abstract class Context extends Application {
     //private static PowerManager       powerManager            = null;
     //private static AudioManager       audioManager            = null;
     private static WindowManager      windowManager           = null;
-    private static InputMethodManager inputMethodManager      = null;
+    //private static InputMethodManager inputMethodManager      = null;
     //private static IPhoneManager      iphoneManager           = null;
     //private static LocationManager    locationManager         = null;
 
@@ -192,12 +186,12 @@ public abstract class Context extends Application {
 
     public abstract String getPackageName();
 
-    public abstract FileInputStream openFileInput(String name) throws FileNotFoundException;
+    //public abstract FileInputStream openFileInput(String name) throws FileNotFoundException;
 
-    public abstract FileOutputStream openFileOutput(String name, int mode)
-            throws FileNotFoundException;
+    //public abstract FileOutputStream openFileOutput(String name, int mode)
+    //        throws FileNotFoundException;
 
-    public abstract boolean deleteFile(String name);
+    //public abstract boolean deleteFile(String name);
 
     public String getString(int resId) {
         Assert.NOT_IMPLEMENTED();
@@ -208,7 +202,7 @@ public abstract class Context extends Application {
         Assert.NOT_IMPLEMENTED();
     }*/
 
-    public abstract File getFileStreamPath(String name);
+    //public abstract File getFileStreamPath(String name);
 
     /*public ContentResolver getContentResolver() {
         Assert.NOT_IMPLEMENTED();

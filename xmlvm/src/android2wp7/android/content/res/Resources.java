@@ -20,8 +20,6 @@
 
 package android.content.res;
 
-import java.lang.ref.WeakReference;
-import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,10 +30,9 @@ import Compatlib.System.Windows.Media.Imaging.BitmapImage;
 import android.content.Context;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.internal.AndroidManifest;
-import android.internal.Assert;
+import android.internal2.AndroidManifest;
+import android.internal2.Assert;
 import android.util.DisplayMetrics;
-import android.util.Log;
 
 public class Resources {
 
@@ -87,11 +84,11 @@ public class Resources {
     /** A map holding all resources which can be read from the values folders. */
     private static Map<Integer, Object> resourceMap              = null;
 
-    private WeakReference<Context>      context;
+    private Context      context;
 
 
     public Resources(Context context) {
-        this.context = new WeakReference<Context>(context);
+        this.context = context;
         init();
     };
 
@@ -258,7 +255,7 @@ public class Resources {
     }
 
     private void initResources(String resourceClass) {
-        try {
+        /*try {
             String activityPackageName = AndroidManifest.getPackageName();
             String rClassName = activityPackageName + ".R$" + resourceClass;
             Class<?> rClazz = Class.forName(rClassName);
@@ -272,7 +269,7 @@ public class Resources {
         } catch (Throwable t) {
             Log.i("Resources", "Unable to resolve resources for "
                     + AndroidManifest.getPackageName() + ": " + resourceClass);
-        }
+        }*/
     }
 
     private void init() {
@@ -409,7 +406,7 @@ public class Resources {
     }*/
 
     private Context getContext() {
-        return context == null ? null : context.get();
+        return context;
     }
 
     /*public float getDimension(int id) {

@@ -20,7 +20,7 @@
 
 package android.net;
 
-import android.internal.Assert;
+import android.internal2.Assert;
 
 public class Uri {
 

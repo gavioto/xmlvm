@@ -20,7 +20,7 @@
 
 package android.view;
 
-import android.internal.Assert;
+import android.internal2.Assert;
 
 public class MenuItem {
   private String title = "";

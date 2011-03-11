@@ -20,8 +20,6 @@
 
 package android.os;
 
-import org.xmlvm.wp7.Const;
-
 import Compatlib.System.Action;
 import Compatlib.System.Threading.Thread;
 import Compatlib.System.Windows.Deployment;

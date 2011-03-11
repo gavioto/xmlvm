@@ -20,7 +20,7 @@
 
 package android.view;
 
-import android.internal.Assert;
+import android.internal2.Assert;
 
 // TODO This should actually be an interface!
 public class Menu {

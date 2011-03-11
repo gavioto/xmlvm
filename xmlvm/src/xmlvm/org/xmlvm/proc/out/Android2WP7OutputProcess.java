@@ -20,21 +20,24 @@
 
 package org.xmlvm.proc.out;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.xmlvm.Log;
 import org.xmlvm.main.Arguments;
 import org.xmlvm.proc.XmlvmProcessImpl;
-import org.xmlvm.proc.XmlvmProcessor;
+import org.xmlvm.proc.in.InputProcess.ClassInputProcess;
+import org.xmlvm.proc.in.file.ClassFile;
+import org.xmlvm.util.universalfile.FileSuffixFilter;
+import org.xmlvm.util.universalfile.UniversalFile;
+import org.xmlvm.util.universalfile.UniversalFileCreator;
 
 /**
  * Takes an {@link IPhoneOutputProcess} as the input and augments it with
  * compatibility classes necessary if the original application was written for
  * the Android API.
  */
-public class Android2WP7OutputProcess extends XmlvmProcessImpl<IPhoneOutputProcess> {
+public class Android2WP7OutputProcess extends XmlvmProcessImpl<WP7OutputProcess> {
     public static final String WP7_SRC_ANDROID_LIB        = "/lib/android";
     private List<OutputFile>    result                        = new ArrayList<OutputFile>();
 
@@ -53,22 +56,12 @@ public class Android2WP7OutputProcess extends XmlvmProcessImpl<IPhoneOutputProce
     @Override
     public boolean process() {
         Log.debug("Processing Android2WP7OutputProcess");
-        List<IPhoneOutputProcess> preprocesses = preprocess();
-        for (IPhoneOutputProcess preprocess : preprocesses) {
+        
+        List<WP7OutputProcess> preprocesses = preprocess();
+        for (WP7OutputProcess preprocess : preprocesses) {
             for (OutputFile in : preprocess.getOutputFiles()) {
                 result.add(in);
             }
-        }
-
-        Arguments args = new Arguments(new String[] {
-                "--in=" + (new File("bin-android2wp7")).getAbsolutePath(),
-                "--out=" + arguments.option_out() + WP7_SRC_ANDROID_LIB, "--target=csharp" });
-        XmlvmProcessor subProcessor = new XmlvmProcessor(args);
-        if (subProcessor.process()) {
-            result.addAll(subProcessor.getTargetProcess().getOutputFiles());
-        } else {
-            Log.error("Sub-Process for processing android wp7 compat lib has failed.");
-            return false;
         }
 
         //TODO if necessary change VisualStudio project configuration created

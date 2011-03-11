@@ -22,7 +22,7 @@ package android.app;
 import Compatlib.System.Windows.UIElement;
 import android.content.ContextWrapper;
 import android.content.Intent;
-import android.internal.TopActivity;
+import android.internal2.TopActivity;
 
 public class Application extends ContextWrapper {
 

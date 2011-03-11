@@ -22,7 +22,7 @@ package android.os;
 
 import java.util.HashMap;
 
-import android.internal.Assert;
+import android.internal2.Assert;
 
 public class Bundle {
 

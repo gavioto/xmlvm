@@ -21,7 +21,7 @@
 package android.util;
 
 import Compatlib.System.Diagnostics.Debug;
-import android.internal.Assert;
+import android.internal2.Assert;
 
 public class Log {
 

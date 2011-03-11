@@ -20,15 +20,12 @@
 
 package android.view;
 
-import java.awt.Canvas;
-import java.lang.ref.WeakReference;
-
 import Compatlib.System.Windows.UIElement;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
-import android.internal.Assert;
-import android.internal.ViewHandler;
+import android.internal2.Assert;
+import android.internal2.ViewHandler;
 import android.os.Handler;
 import android.util.AttributeSet;
 
@@ -64,9 +61,9 @@ public class View {
     protected int                     paddingRight;
     protected int                     paddingTop;
     protected int                     paddingBottom;
-    private WeakReference<Context>    c;
+    private Context    c;
     private ViewHandler               viewHandler;
-    private WeakReference<ViewParent> parent;
+    private ViewParent parent;
     private OnTouchListener           listener;
     private int                       id;
     private int                       measuredWidth;
@@ -259,7 +256,7 @@ public class View {
 
     public View(Context c, AttributeSet attrs, int defStyle) {
         flags |= FORCE_LAYOUT;
-        this.c = new WeakReference<Context>(c);
+        this.c = c;
         mResources = c != null ? c.getResources() : null;
         viewHandler = new ViewHandler(xmlvmNewUIElement());
         /*viewHandler = new ViewHandler(xmlvmNewUIView(attrs));
@@ -293,7 +290,7 @@ public class View {
     }
 
     public final Context getContext() {
-        return c == null ? null : c.get();
+        return c;
     }
 
     /*public void bringToFront() {
@@ -304,7 +301,7 @@ public class View {
     }*/
 
     public ViewParent getParent() {
-        return parent == null ? null : parent.get();
+        return parent;
     }
 
     /*public IBinder getWindowToken() {
@@ -348,7 +345,7 @@ public class View {
     }
 
     public void xmlvmSetParent(ViewParent parent) {
-        this.parent = new WeakReference<ViewParent>(parent);
+        this.parent = parent;
     }
 
     public void xmlvmSetMeasureSpec(int widthMeasureSpec, int heightMeasureSpec) {
@@ -596,23 +593,23 @@ public class View {
         return -1;
     }
 
-    public void draw(Canvas canvas) {
+    /*public void draw(Canvas canvas) {
         // NOTE: I don't know if the following statement is correct any more:
         //
         // TODO Implement proper background drawing
         // Currently draw() gets called AFTER the UI widget has drawn itself so
         // this results in overwriting the aldready drawn UI widget.
-        /*if (backgroundDrawable != null) {
+        if (backgroundDrawable != null) {
             backgroundDrawable.setBounds(0, 0, width, height);
             backgroundDrawable.draw(canvas);
-        }*/
+        }
         onDraw(canvas);
     }
 
     protected void onDraw(Canvas canvas) {
     }
 
-    /*public void setPressed(boolean pressed) {
+    public void setPressed(boolean pressed) {
         int[] state = pressed ? PRESSED_STATE_SET : EMPTY_STATE_SET;
         xmlvmSetDrawableState(state);
     }*/

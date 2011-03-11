@@ -28,8 +28,8 @@ import Compatlib.System.Windows.UIElement;
 import Compatlib.System.Windows.Controls.Panel;
 import android.app.Activity;
 import android.content.Context;
-import android.internal.Assert;
-import android.internal.Dimension;
+import android.internal2.Assert;
+import android.internal2.Dimension;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 

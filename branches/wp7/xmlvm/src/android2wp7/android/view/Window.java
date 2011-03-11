@@ -21,7 +21,7 @@
 package android.view;
 
 import android.app.Activity;
-import android.internal.Assert;
+import android.internal2.Assert;
 
 /**
  * iPhone Implementation of Android's Window class.

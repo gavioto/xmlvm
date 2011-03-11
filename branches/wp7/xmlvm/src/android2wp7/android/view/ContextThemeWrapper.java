@@ -21,7 +21,7 @@
 package android.view;
 
 import android.content.ContextWrapper;
-import android.internal.Assert;
+import android.internal2.Assert;
 
 public class ContextThemeWrapper extends ContextWrapper {
 

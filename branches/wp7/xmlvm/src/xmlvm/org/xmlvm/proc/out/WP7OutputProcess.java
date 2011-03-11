@@ -20,6 +20,7 @@
 
 package org.xmlvm.proc.out;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,7 +35,7 @@ public class WP7OutputProcess extends XmlvmProcessImpl<CSharpOutputProcess> {
     private static final UniversalFile WP7_COMPAT_LIB = UniversalFileCreator
                                                               .createDirectory("src/xmlvm2csharp/compat-lib/csharp");
     public static final String         WP7_SRC        = "/src";
-    public static final String         WP7_SRC_COMPAT_LIB        = "/lib/compat";
+    public static final String         WP7_SRC_COMPAT_LIB        = "/lib";
     public static final String         WP7_RESOURCES  = "/res";
     private List<OutputFile>           result         = new ArrayList<OutputFile>();
 
@@ -52,24 +53,38 @@ public class WP7OutputProcess extends XmlvmProcessImpl<CSharpOutputProcess> {
 
     @Override
     public boolean process() {
-        List<CSharpOutputProcess> preprocesses = preprocess();
-
         Log.debug("Processing WP7OutputProcess");
+//        if(arguments.option_target().equals(Targets.WP7ANDROID)) {
+//            UniversalFile library = UniversalFileCreator.createDirectory("bin-android2wp7");
+//            for(UniversalFile file : library.listFilesRecursively(new FileSuffixFilter(".class"))) {
+//                ClassInputProcess inputProcess = new ClassInputProcess(arguments, new ClassFile(file));
+//                
+//                DEXmlvmOutputProcess outputProcess = new DEXmlvmOutputProcess(arguments, false,
+//                        false);
+//                outputProcess.addPreprocess(inputProcess);
+//                
+//                CSharpOutputProcess csharpProcess = new CSharpOutputProcess(arguments);
+//                csharpProcess.addPreprocess(outputProcess);
+//                
+//                this.addPreprocess(csharpProcess);
+//            }
+//        }
+        List<CSharpOutputProcess> preprocesses = preprocess();
 
         // Add all the files from the preprocesses to our result list.
         for (CSharpOutputProcess preprocess : preprocesses) {
             for (OutputFile in : preprocess.getOutputFiles()) {
                 OutputFile out = new OutputFile(in.getData());
                 out.setFileName(in.getFileName());
-                out.setLocation(in.getLocation() + WP7_SRC);
+                out.setLocation(out.getLocation() + File.separator + WP7_SRC);
                 result.add(out);
             }
         }
         
         OutputFile wp7CompatLib = new OutputFile(WP7_COMPAT_LIB);
-        wp7CompatLib.setLocation(arguments.option_out() + WP7_SRC_COMPAT_LIB);
+        wp7CompatLib.setLocation(arguments.option_out() + File.separator + WP7_SRC_COMPAT_LIB);
         result.add(wp7CompatLib);
-
+        
         //TODO create a correctly configured VisualStudio project here
         
         return true;

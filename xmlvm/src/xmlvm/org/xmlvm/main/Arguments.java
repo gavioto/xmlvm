@@ -44,6 +44,7 @@ public class Arguments {
     public static final String    ARG_TARGET                       = "--target=";
     public static final String    ARG_RESOURCE                     = "--resource=";
     public static final String    ARG_LIB                          = "--lib=";
+    public static final String    ARG_LINK                         = "--link=";
     public static final String    ARG_APP_NAME                     = "--app-name=";
     public static final String    ARG_QX_MAIN                      = "--qx-main=";
     public static final String    ARG_QX_DEBUG                     = "--qx-debug";
@@ -79,6 +80,7 @@ public class Arguments {
     private boolean               option_gen_native_skeletons      = false;
     private Set<String>           option_resource                  = new HashSet<String>();
     private Set<String>           option_lib                       = new HashSet<String>();
+    private Set<String>           option_link                      = new HashSet<String>();
     private String                option_app_name                  = null;
     private String                option_qx_main                   = null;
     private boolean               option_qx_debug                  = false;
@@ -255,6 +257,9 @@ public class Arguments {
                             + ". Consider using --skeleton argument.");
             } else if (arg.startsWith(ARG_RESOURCE)) {
                 parseListArgument(arg.substring(ARG_RESOURCE.length()), option_resource,
+                        File.pathSeparator);
+            } else if (arg.startsWith(ARG_LINK)) {
+                parseListArgument(arg.substring(ARG_LINK.length()), option_link,
                         File.pathSeparator);
             } else if (arg.equals(ARG_GEN_WRAPPER)) {
                 option_gen_wrapper = true;
@@ -449,6 +454,10 @@ public class Arguments {
 
     public Set<String> option_resource() {
         return option_resource;
+    }
+
+    public Set<String> option_link() {
+        return option_link;
     }
 
     public Targets option_target() {

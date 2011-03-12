@@ -126,7 +126,7 @@ public class XmlvmProcessor {
      * 
      * @return Whether the processing was successful.
      */
-    public boolean process() {
+    public boolean preprocess() {
         if (pool.isEmpty()) {
             Log.error(TAG, "No inputs to process.");
             return false;
@@ -134,6 +134,13 @@ public class XmlvmProcessor {
 
         if (!buildProcessingPipeline()) {
             Log.error("There are still " + pool.size() + " processes left.");
+            return false;
+        }
+        return true;
+    }
+
+    public boolean process() {
+        if (!preprocess()) {
             return false;
         }
         if (!targetProcess.process()) {

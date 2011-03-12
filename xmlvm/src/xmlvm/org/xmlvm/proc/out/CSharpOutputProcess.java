@@ -22,20 +22,25 @@ package org.xmlvm.proc.out;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.Collection;
+import java.util.HashSet;
 
 import org.jdom.Document;
+import org.xmlvm.Log;
 import org.xmlvm.main.Arguments;
+import org.xmlvm.proc.XmlvmProcess;
 import org.xmlvm.proc.XmlvmProcessImpl;
+import org.xmlvm.proc.XmlvmProcessor;
 import org.xmlvm.proc.XmlvmResource;
-import org.xmlvm.proc.XmlvmResource.XmlvmMethod;
 import org.xmlvm.proc.XmlvmResourceProvider;
 import org.xmlvm.proc.XsltRunner;
 import org.xmlvm.proc.lib.LibraryLoader;
+import org.xmlvm.proc.XmlvmResource.XmlvmMethod;
+import org.xmlvm.proc.out.wrappers.GenCSharpWrappersOutputProcess;
 import org.xmlvm.util.universalfile.UniversalFile;
 import org.xmlvm.util.universalfile.UniversalFileCreator;
 
@@ -50,6 +55,7 @@ public class CSharpOutputProcess extends XmlvmProcessImpl<XmlvmResourceProvider>
     public CSharpOutputProcess(Arguments arguments) {
         super(arguments);
         addAllXmlvmEmittingProcessesAsInput();
+	//addSupportedInput(RecursiveResourceLoadingProcess.class);
     }
 
     @Override
@@ -59,6 +65,34 @@ public class CSharpOutputProcess extends XmlvmProcessImpl<XmlvmResourceProvider>
 
     @Override
     public boolean process() {
+        // step 0: get linked resources pool
+        HashMap<String, XmlvmResource> linkLoader = new HashMap<String, XmlvmResource>();
+        if (arguments.option_link().size()>0) {
+            ArrayList<String> linkArgs = new ArrayList<String>();
+            // linkArgs.add("--target=csharp");
+            for (String path : arguments.option_link()) {
+                linkArgs.add("--in=" + path);
+            }
+            for (String path : linkArgs) {
+                System.out.println("BLAH2: " + path);
+            }
+            XmlvmProcessor linkProcessor = new XmlvmProcessor(new Arguments(linkArgs.toArray(new String[0])));
+            linkProcessor.setTargetProcess(new CSharpOutputProcess(new Arguments(linkArgs.toArray(new String[0]))));
+            if (!linkProcessor.preprocess()) {
+                // throw something?
+                Log.debug("CSharpOutputProcess", "error building pipeline for linked resrouces");
+            }
+            CSharpOutputProcess linkCSharpProcess = (CSharpOutputProcess) linkProcessor.getTargetProcess();
+            Collection<XmlvmResourceProvider> linkProviders = new HashSet<XmlvmResourceProvider>();
+            linkProviders.addAll(linkCSharpProcess.preprocess());
+            System.out.println("BLAH3: " + linkProviders.size());
+            for (XmlvmResourceProvider linkProvider : linkProviders) {
+                for (XmlvmResource linkResource : linkProvider.getXmlvmResources()) {
+                    linkLoader.put(linkResource.getFullName(), linkResource);
+                }
+            }
+        }
+        LibraryLoader libLoader = (new LibraryLoader(new Arguments(new String[]{"--in=foo/"})));
 	// step 1: process and collect all preprocesses
         List<XmlvmResourceProvider> preprocesses = preprocess();
 	// step 2: collect all xmlvm resources from the preprocesses.
@@ -73,7 +107,6 @@ public class CSharpOutputProcess extends XmlvmProcessImpl<XmlvmResourceProvider>
 	HashMap<String, ResourceRecord> resourceRecords 
 	    = new HashMap<String, ResourceRecord>();
 	
-        // computeMethodTree();
         // step 3a: populate methodUniverse with resources we need to process
 	//    (not yet with their methods, only resources)
 	for (XmlvmResource xmlvmResource : resourcesToProcess) {
@@ -85,7 +118,7 @@ public class CSharpOutputProcess extends XmlvmProcessImpl<XmlvmResourceProvider>
 	    if (xmlvmResource==null) continue;
 	    // lookup overriden methods, annotate them and run xslt:
 	    if (!resourceRecords.get(xmlvmResource.getFullName()).isLoaded()) 
-		this.processResource(xmlvmResource, resourceRecords);
+		this.processResource(xmlvmResource, resourceRecords, libLoader, linkLoader);
 	    // generate csharp along the way
 	    OutputFile csFile = this.genCSharp(xmlvmResource);
 	    UniversalFile dir = UniversalFileCreator.createFile(new File(arguments.option_out()));
@@ -152,7 +185,8 @@ public class CSharpOutputProcess extends XmlvmProcessImpl<XmlvmResourceProvider>
 	}
     }
 
-    public void processResource(XmlvmResource resource, HashMap<String,ResourceRecord> resourceRecords) {
+    public void processResource(XmlvmResource resource, HashMap<String,ResourceRecord> resourceRecords,
+                                LibraryLoader libLoader, HashMap<String, XmlvmResource> linkLoader) {
 	
 	String myName = resource.getFullName();
 	ResourceRecord myRecord = resourceRecords.get(myName);
@@ -191,13 +225,19 @@ public class CSharpOutputProcess extends XmlvmProcessImpl<XmlvmResourceProvider>
 	    ResourceRecord parentRecord = resourceRecords.get(parentName);
 	    if (parentRecord==null) {
 		// need to load parent from jdk library
-		XmlvmResource parentResource = (new LibraryLoader(new Arguments(new String[] {"--in=foo"}))).load(parentName);
+		XmlvmResource parentResource = libLoader.load(parentName);
+		if (parentResource == null) {
+		    // parentResource was not found in the libraries.
+		    //   we'll look it up in the "--lib" path
+                    parentResource = linkLoader.get(parentName);
+		}
 		resourceRecords.put(parentName, new ResourceRecord(parentResource));
-		this.processResource(parentResource, resourceRecords);
+		
+		this.processResource(parentResource, resourceRecords, libLoader, linkLoader);
 		parentRecord = resourceRecords.get(parentName);
 	    } else if (!parentRecord.isLoaded()) {
 		// parent has not been processed yet
-		this.processResource(parentRecord.getResource(), resourceRecords);
+		this.processResource(parentRecord.getResource(), resourceRecords, libLoader, linkLoader);
 	    }
 	    // else, parent is loaded 
 	

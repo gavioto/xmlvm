@@ -103,7 +103,7 @@ public class OutputProcessFactory {
         case VTABLE:
             return new VtableOutputProcess(arguments);
         case CSHARP:
-            return new CSharpOutputProcess(arguments);
+            return new GenCSharpWrappersOutputProcess(arguments);
         case GENCSHARPWRAPPERS:
             return new GenCSharpWrappersOutputProcess(arguments);
         case WP7ANDROID:

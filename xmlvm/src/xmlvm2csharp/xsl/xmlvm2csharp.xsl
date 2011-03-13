@@ -179,105 +179,103 @@
   
     <!-- step 3: emit variable definition for all fields (both static and non-static) -->
     <xsl:for-each select="vm:field">
-    	<xsl:if test="not($genWrapper='true' and @isPrivate='true')">
-    		<xsl:value-of select="fn:string-join(vm:getModifiers(.),' ')" />
-      		<xsl:text> </xsl:text>    		    
-      		<xsl:value-of select="vm:getType(@type)" />
-      		<xsl:text> </xsl:text>
- 	  	<xsl:value-of select="vm:getMemberNodeName(.)"/>
-      		<xsl:if test="@value">
-        		<xsl:text> = </xsl:text>
-        		<!-- TODO String values need to be surrounded by quotes and escaped properly.-->
-				<xsl:choose>
-					<xsl:when test="@type = 'java.lang.String'">
-						<xsl:text>new </xsl:text>
-						<xsl:value-of select="vm:getType('java.lang.String')"/>
-						<xsl:text>("</xsl:text>
-						<xsl:value-of select="@value"/>
-						<xsl:text>")</xsl:text>
-					</xsl:when>
-					<xsl:otherwise>
-						<xsl:value-of select="@value"/>	
-					</xsl:otherwise>
-				</xsl:choose>
-      		</xsl:if>
-    		<xsl:text>;&nl;&nl;</xsl:text>
-    	</xsl:if>
+      <xsl:if test="not($genWrapper='true' and @isPrivate='true')">
+    	<xsl:value-of select="fn:string-join(vm:getModifiers(.),' ')" />
+      	<xsl:text> </xsl:text>    		    
+      	<xsl:value-of select="vm:getType(@type)" />
+      	<xsl:text> </xsl:text>
+ 	<xsl:value-of select="vm:getMemberNodeName(.)"/>
+      	<xsl:if test="@value">
+          <xsl:text> = </xsl:text>
+	  <xsl:choose>
+	    <xsl:when test="@type = 'java.lang.String'">
+	      <xsl:text>new </xsl:text>
+	      <xsl:value-of select="vm:getType('java.lang.String')"/>
+	      <xsl:text>(</xsl:text>
+	      <xsl:value-of select="vm:escapeString(@value)"/>
+	      <xsl:text>)</xsl:text>
+	    </xsl:when>
+	    <xsl:otherwise>
+	      <xsl:value-of select="@value"/>
+	      <xsl:choose>
+		<xsl:when test="@type='float'">
+		  <xsl:text>f</xsl:text>
+		</xsl:when>
+		<xsl:when test="@type='double'">
+		  <xsl:text>d</xsl:text>
+		</xsl:when>
+		<xsl:when test="@type='long'">
+		  <xsl:text>l</xsl:text>
+		</xsl:when>
+	      </xsl:choose>
+	    </xsl:otherwise>
+	  </xsl:choose>
+      	</xsl:if>
+    	<xsl:text>;&nl;&nl;</xsl:text>
+      </xsl:if>
     </xsl:for-each>
-
+    
     <!-- step 4: emit methods -->
-	<xsl:for-each select="vm:method">
-		<xsl:if test="not(vm:isDuplicateMethod(.)) 
-				and not($genWrapper='true' and @isPrivate='true')">
-      		<xsl:value-of select="fn:string-join(vm:getModifiers(.),' ')"/>
-      		<xsl:text> </xsl:text>
-      		<xsl:if test="not(@isStatic and @isStatic='true') 
-      				and not(@isPrivate and @isPrivate='true') 
-      				and not(@isFinal and @isFinal='true')
-				and not(@name='&lt;init&gt;')">
-		    <xsl:choose>
-		        <xsl:when test="@isOverride and @isOverride='true'">
-			    <xsl:text>override </xsl:text>
-			</xsl:when>
-			<xsl:otherwise>
-			  <xsl:if test="not(../@isInterface='true' or @isAbstract='true')">
-			    <xsl:text>virtual </xsl:text>
-			  </xsl:if>
-			</xsl:otherwise>
-		    </xsl:choose>
-				
-      		</xsl:if>
-		<xsl:if test="@isOverride='true' 
-      			      and not(@isPrivate and @isPrivate='true') 
-			      and ((@isStatic and @isStatic='true') 
-			           or (@isFinal and @isFinal='true') 
-			           or (@name='&lt;init&gt;'))">
-		  <xsl:text>new </xsl:text>
-		</xsl:if>
-<!-- 
-      		<xsl:choose>
-      			<xsl:when test="not(@isStatic and @isStatic='true') 
-      							and not(@isPrivate and @isPrivate='true')">
-					<xsl:text>override </xsl:text>
-      			</xsl:when>
-      			<xsl:otherwise>
-      				<xsl:text>new </xsl:text> 
-      			</xsl:otherwise>
-      		</xsl:choose>
--->      		
-        	<xsl:value-of select="vm:getMethodSignature(.)"/>
-	        <xsl:choose>
-    	      	        <xsl:when test="../.[@isInterface = 'true'] or @isAbstract = 'true'">
-        	  		<xsl:text>;&nl;&nl;</xsl:text>
-          		</xsl:when>
-			<xsl:otherwise>
-			        <xsl:text>{&nl;</xsl:text>
-				<xsl:choose>
-				    <xsl:when test="$genWrapper='false'">
-				            <xsl:call-template name="initArguments" />
-					    <xsl:apply-templates/>
-				    </xsl:when>
-				    <xsl:otherwise>
-							<xsl:call-template name="emitWrapperComments">
-								<xsl:with-param name="member" select="vm:getMethodSignature(., false())"/>
-								<xsl:with-param name="package" select="../@package"/>
-								<xsl:with-param name="class" select="../@name"/>
-							</xsl:call-template>
-						</xsl:otherwise>
-					</xsl:choose>
-					<xsl:text>}&nl;&nl;</xsl:text>
-         	 	</xsl:otherwise>
-        	</xsl:choose>
-		</xsl:if>
+    <xsl:for-each select="vm:method">
+      <xsl:if test="not(vm:isDuplicateMethod(.)) 
+		    and not($genWrapper='true' and @isPrivate='true')">
+      	<xsl:value-of select="fn:string-join(vm:getModifiers(.),' ')"/>
+      	<xsl:text> </xsl:text>
+      	<xsl:if test="not(@isStatic and @isStatic='true') 
+      		      and not(@isPrivate and @isPrivate='true') 
+      		      and not(@isFinal and @isFinal='true')
+		      and not(@name='&lt;init&gt;')">
+	  <xsl:choose>
+	    <xsl:when test="@isOverride and @isOverride='true'">
+	      <xsl:text>override </xsl:text>
+	    </xsl:when>
+	    <xsl:otherwise>
+	      <xsl:if test="not(../@isInterface='true' or @isAbstract='true')">
+		<xsl:text>virtual </xsl:text>
+	      </xsl:if>
+	    </xsl:otherwise>
+	  </xsl:choose>
+      	</xsl:if>
+	<xsl:if test="@isOverride='true' 
+      		      and not(@isPrivate and @isPrivate='true') 
+		      and ((@isStatic and @isStatic='true') 
+		      or (@isFinal and @isFinal='true') 
+		      or (@name='&lt;init&gt;'))">
+	  <xsl:text>new </xsl:text>
+	</xsl:if>
+        <xsl:value-of select="vm:getMethodSignature(.)"/>
+	<xsl:choose>
+    	  <xsl:when test="../.[@isInterface = 'true'] or @isAbstract = 'true'">
+            <xsl:text>;&nl;&nl;</xsl:text>
+          </xsl:when>
+	  <xsl:otherwise>
+	    <xsl:text>{&nl;</xsl:text>
+	    <xsl:choose>
+	      <xsl:when test="$genWrapper='true' or @isNative='true'">
+		<xsl:call-template name="emitWrapperComments">
+		  <xsl:with-param name="member" select="vm:getMethodSignature(., false())"/>
+		  <xsl:with-param name="package" select="../@package"/>
+		  <xsl:with-param name="class" select="../@name"/>
+		</xsl:call-template>
+	      </xsl:when>
+	      <xsl:otherwise>
+		<xsl:call-template name="initArguments" />
+		<xsl:apply-templates/>
+	      </xsl:otherwise>
+	    </xsl:choose>
+	    <xsl:text>}&nl;&nl;</xsl:text>
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:if>
     </xsl:for-each>
     
     <!-- step 5: end of class implementation -->
     <xsl:if test="$genWrapper='true'">
-	    <xsl:call-template name="emitWrapperComments">
-    		<xsl:with-param name="member" select="''"/>
-    		<xsl:with-param name="package" select="@package"/>
-    		<xsl:with-param name="class" select="@name"/>    		    		
-    	</xsl:call-template>
+      <xsl:call-template name="emitWrapperComments">
+    	<xsl:with-param name="member" select="''"/>
+    	<xsl:with-param name="package" select="@package"/>
+    	<xsl:with-param name="class" select="@name"/>    		    		
+      </xsl:call-template>
     </xsl:if>
     <xsl:text>&nl;} // end of class: </xsl:text>
     <xsl:value-of select="$className"/>
@@ -941,6 +939,7 @@
  </xsl:if>
 </xsl:template>
 
+<!--
 <xsl:template match="vm:define-register">
   <xsl:choose>
  	<xsl:when test = "@vartype = 'register'">
@@ -952,7 +951,6 @@
  	<xsl:when test = "@vartype = 'temp'">
  	  <xsl:text>    </xsl:text>
 	  <xsl:call-template name="emitRegisterDecl">
-	  	<!-- we want "_rtmp" -->
   		<xsl:with-param name="num" select="'tmp'"/>
 	  </xsl:call-template>
  	</xsl:when>
@@ -961,6 +959,7 @@
  	</xsl:when>
   </xsl:choose>
 </xsl:template>
+-->
 
 <xsl:template match="dex:var">
   <!-- Do nothing -->
@@ -972,146 +971,106 @@
 
 
 <xsl:template match="dex:invoke-static|dex:invoke-static-range">
-	<xsl:text>    </xsl:text>
-	<xsl:if test="dex:parameters/dex:return/@type != 'void'">
-    	<xsl:choose>
-      		<xsl:when test="dex:move-result">
-      			<xsl:call-template name="emitRegisterName">
-      				<xsl:with-param name="num" select="dex:move-result/@vx" />
-      				<xsl:with-param name="type" select="dex:parameters/dex:return/@type"/>
-      			</xsl:call-template>
-        		<xsl:text> = </xsl:text>
-			</xsl:when>
-      		<xsl:otherwise>
-        		<xsl:if test="vm:isObjectRef(dex:parameters/dex:return/@type)">
-        			<xsl:call-template name="emitRegisterName" >
-        				<xsl:with-param name="num" select="'tmp'"/>
-        				<xsl:with-param name="type" select="'obj'"/>
-        			</xsl:call-template>
-            		<xsl:text> = </xsl:text>
-        		</xsl:if>
-      		</xsl:otherwise>
-    	</xsl:choose>
-	</xsl:if>
-	<xsl:value-of select="vm:getType(@class-type)"/>
-	<xsl:text>.</xsl:text>
-	<xsl:value-of select="vm:getPublicMemberName(@method)"/>
-	<xsl:text>(</xsl:text>
-	<xsl:for-each select="dex:parameters/dex:parameter">
-		<xsl:text>(</xsl:text>
-		<xsl:value-of select="vm:getType(@type)"/>
-		<xsl:text>) </xsl:text>
-    	<xsl:call-template name="emitRegisterName">
-    		<xsl:with-param name="num" select="@register"/>
-    		<xsl:with-param name="type" select="@type"/>
-    	</xsl:call-template>
-    	<xsl:if test="not(position()=last())">
-    		<xsl:text>, </xsl:text>    
-		</xsl:if>
-	</xsl:for-each>
-	<xsl:text>);&nl;</xsl:text>
+  <xsl:text>    </xsl:text>
+  <xsl:if test="(dex:parameters/dex:return/@type != 'void') and dex:move-result">
+    <xsl:call-template name="emitRegisterName">
+      <xsl:with-param name="num" select="dex:move-result/@vx" />
+      <xsl:with-param name="type" select="dex:parameters/dex:return/@type"/>
+    </xsl:call-template>
+    <xsl:text> = </xsl:text>
+  </xsl:if>
+  <xsl:value-of select="vm:getType(@class-type)"/>
+  <xsl:text>.</xsl:text>
+  <xsl:value-of select="vm:getPublicMemberName(@method)"/>
+  <xsl:text>(</xsl:text>
+  <xsl:for-each select="dex:parameters/dex:parameter">
+    <xsl:text>(</xsl:text>
+    <xsl:value-of select="vm:getType(@type)"/>
+    <xsl:text>) </xsl:text>
+    <xsl:call-template name="emitRegisterName">
+      <xsl:with-param name="num" select="@register"/>
+      <xsl:with-param name="type" select="@type"/>
+    </xsl:call-template>
+    <xsl:if test="not(position()=last())">
+      <xsl:text>, </xsl:text>    
+    </xsl:if>
+  </xsl:for-each>
+  <xsl:text>);&nl;</xsl:text>
 </xsl:template>
 
 
 <xsl:template match="dex:invoke-direct|dex:invoke-direct-range
-						|dex:invoke-virtual|dex:invoke-virtual-range
-						|dex:invoke-interface|dex:invoke-interface-range">
-	<xsl:text>    </xsl:text>
-	<xsl:if test="dex:parameters/dex:return/@type != 'void'">
-		<xsl:choose>
-			<xsl:when test="dex:move-result">
-      			<xsl:call-template name="emitRegisterName">
-      				<xsl:with-param name="num" select="dex:move-result/@vx"/>
-      				<xsl:with-param name="type" select="dex:parameters/dex:return/@type"/>
-      			</xsl:call-template>
-        		<xsl:text> = </xsl:text>
-      		</xsl:when>
-      		<xsl:otherwise>
-        		<xsl:if test="vm:isObjectRef(dex:parameters/dex:return/@type)">
-        			<xsl:call-template name="emitRegisterName">
-        				<xsl:with-param name="num" select="'tmp'"/>
-        				<xsl:with-param name="type" select="'obj'"/>
-        			</xsl:call-template>
-          			<xsl:text> = </xsl:text>
-        		</xsl:if>
-      		</xsl:otherwise>
-    	</xsl:choose>
-  	</xsl:if>
-  	<xsl:text>((</xsl:text>
-  
-	<xsl:variable name="baseClass">
-    	<xsl:value-of select="ancestor::dex:class/@extends"/>
-  	</xsl:variable>
-	<xsl:choose>
-		<xsl:when test="name() = 'dex:invoke-virtual' 
-						or compare(@class-type,$baseClass) != 0">
-			<xsl:value-of select="vm:getType(@class-type)"/>
-   			<xsl:text>) </xsl:text>
-  			<xsl:call-template name="emitRegisterName">
-	  			<xsl:with-param name="num" select="@register"/>
-  				<xsl:with-param name="type" select="'obj'"/>
-  			</xsl:call-template>
-  			<xsl:text>)</xsl:text>
-  		</xsl:when>
-	    <xsl:otherwise>
-			<xsl:text>super))</xsl:text>
-    	</xsl:otherwise>
-  	</xsl:choose>
- 
-	<xsl:text>.</xsl:text>
-	<xsl:value-of select="vm:getPublicMemberName(@method)"/>
-
-	<xsl:text>(</xsl:text>
-	<xsl:for-each select="dex:parameters/dex:parameter">
-		<xsl:text>(</xsl:text>
-		<xsl:value-of select="vm:getType(@type)"/>
-		<xsl:text>) </xsl:text>
-    	<xsl:call-template name="emitRegisterName">
+		     |dex:invoke-virtual|dex:invoke-virtual-range
+		     |dex:invoke-interface|dex:invoke-interface-range">
+  <xsl:text>    </xsl:text>
+  <xsl:if test="(dex:parameters/dex:return/@type != 'void') and dex:move-result">
+    <xsl:call-template name="emitRegisterName">
+      <xsl:with-param name="num" select="dex:move-result/@vx"/>
+      <xsl:with-param name="type" select="dex:parameters/dex:return/@type"/>
+    </xsl:call-template>
+    <xsl:text> = </xsl:text>
+  </xsl:if>
+  <xsl:text>((</xsl:text>
+  <xsl:variable name="baseClass">
+    <xsl:value-of select="ancestor::dex:class/@extends"/>
+  </xsl:variable>
+  <xsl:choose>
+    <xsl:when test="name() = 'dex:invoke-virtual' 
+		    or compare(@class-type,$baseClass) != 0">
+      <xsl:value-of select="vm:getType(@class-type)"/>
+      <xsl:text>) </xsl:text>
+      <xsl:call-template name="emitRegisterName">
+	<xsl:with-param name="num" select="@register"/>
+  	<xsl:with-param name="type" select="'obj'"/>
+      </xsl:call-template>
+      <xsl:text>)</xsl:text>
+    </xsl:when>
+    <xsl:otherwise>
+      <xsl:text>super))</xsl:text>
+    </xsl:otherwise>
+  </xsl:choose>
+  <xsl:text>.</xsl:text>
+  <xsl:value-of select="vm:getPublicMemberName(@method)"/>
+  <xsl:text>(</xsl:text>
+  <xsl:for-each select="dex:parameters/dex:parameter">
+    <xsl:text>(</xsl:text>
+    <xsl:value-of select="vm:getType(@type)"/>
+    <xsl:text>) </xsl:text>
+    <xsl:call-template name="emitRegisterName">
     		<xsl:with-param name="num" select="@register"/>
     		<xsl:with-param name="type" select="@type"/>
-    	</xsl:call-template>
-    	<xsl:if test="not(position()=last())">
-    		<xsl:text>, </xsl:text>    
-		</xsl:if>
-	</xsl:for-each>
-	<xsl:text>);&nl;</xsl:text>
+    </xsl:call-template>
+    <xsl:if test="not(position()=last())">
+      <xsl:text>, </xsl:text>    
+    </xsl:if>
+  </xsl:for-each>
+  <xsl:text>);&nl;</xsl:text>
 </xsl:template>
 
 
 <xsl:template match="dex:invoke-super|dex:invoke-super-range">
   <xsl:text>    </xsl:text>
-  <xsl:if test="dex:parameters/dex:return/@type != 'void'">
-    <xsl:choose>
-      <xsl:when test="dex:move-result">
-	    <xsl:call-template name="emitRegisterName">
-    		<xsl:with-param name="num" select="dex:move-result/@vx"/>
-    		<xsl:with-param name="type" select="dex:parameters/dex:return/@type"/>
-    	</xsl:call-template>
-        <xsl:text> = </xsl:text>
-      </xsl:when>
-      <xsl:otherwise>
-        <xsl:if test="vm:isObjectRef(dex:parameters/dex:return/@type)">
- 	      	<xsl:call-template name="emitRegisterName">
-        		<xsl:with-param name="num" select="'tmp'"/>
-        		<xsl:with-param name="type" select="'obj'"/>
-        	</xsl:call-template>
-        </xsl:if>
-      </xsl:otherwise>
-    </xsl:choose>
+  <xsl:if test="(dex:parameters/dex:return/@type != 'void') and dex:move-result">
+    <xsl:call-template name="emitRegisterName">
+      <xsl:with-param name="num" select="dex:move-result/@vx"/>
+      <xsl:with-param name="type" select="dex:parameters/dex:return/@type"/>
+    </xsl:call-template>
+    <xsl:text> = </xsl:text>
   </xsl:if>
-  <!-- TODO what to do with @register? -->
-  <xsl:text>.super.</xsl:text>
-
+  <xsl:text>base</xsl:text>
+  <xsl:text>.</xsl:text>
   <xsl:value-of select="vm:getPublicMemberName(@method)"/>
-  <xsl:call-template name="appendDexSignature"/>
   <xsl:text>(</xsl:text>
   <xsl:for-each select="dex:parameters/dex:parameter">
+    <xsl:text>(</xsl:text>
+    <xsl:value-of select="vm:getType(@type)"/>
+    <xsl:text>) </xsl:text>
     <xsl:call-template name="emitRegisterName">
-    	<xsl:with-param name="num" select="@register"/>
-    	<xsl:with-param name="type" select="@type"/>
+      <xsl:with-param name="num" select="@register"/>
+      <xsl:with-param name="type" select="@type"/>
     </xsl:call-template>
     <xsl:if test="not(position()=last())">
-    	<xsl:text>, </xsl:text>
+      <xsl:text>, </xsl:text>    
     </xsl:if>
   </xsl:for-each>
   <xsl:text>);&nl;</xsl:text>
@@ -1934,7 +1893,7 @@
 	<xsl:text>;&nl;</xsl:text>
 </xsl:template>
 
-
+<!--
 <xsl:template match="vm:tmp-equals-r">
 	<xsl:text>    </xsl:text>
 	<xsl:call-template name="emitRegisterName">
@@ -1948,7 +1907,7 @@
 	</xsl:call-template>
 	<xsl:text>;&nl;</xsl:text>
 </xsl:template>
-  
+-->
 
 <xsl:template match="vm:comment">
 	<xsl:text>    //INFO: </xsl:text>
@@ -2050,6 +2009,41 @@
 	<xs:text>;&nl;</xs:text>
 </xsl:template>
 
+<!-- following helper function is inspired by xmlvm2c.xsl -->
+<xsl:function name="vm:escapeString">
+  <xsl:param  name="string"/>
+  <!-- Escape all \\ \t(011) \n(012) \r(015) \f(014) \b(010) \" -->
+  <!-- Single quotes don't need to be escaped. -->
+  <!-- 
+       notes to self:
+       step1: we double all the backslashes
+       step2: we replace \010 with b
+       situation 1: java str: "\\"
+                    xmlvm str: "\"
+                    after step1: "\\"
+                    after step2: "\\" (no change)
+       situation 2: java str: "\b"
+                    xmlvm str: "\010"
+                    after step1: "\\010"
+                    after step2: "\b"
+       ambiguous situation: java str: "\\012", "\n"
+                            xmlvm str: "\012" = "\012"
+                            cannot resolve...
+       note 1: we cannot double the backslashes as second step
+               (otherwise may get "\010" to "\b" to "\\b"...)
+       note 2: we have to deal with "\134" after we deal with "\"
+               and with "\\042" after we deal with "&quot"
+               (otherwise may get "\\042" to "\\&quot" to "\\\\&quot"...)
+       TODO: unicode chars
+  -->
+  <xsl:text>"</xsl:text>                                                
+  <xsl:value-of select="replace(replace(replace(replace(replace(replace(replace(
+			replace(replace($string,'\\','\\\\'),'\\134','\\'),
+                        '\\011','t'),'\\012','n'),'\\015','r'),'\\014','f'),'\\010','b'),
+                        '&quot;','\\&quot;'),'\\042','&quot;')"/>                               
+  <xsl:text>"</xsl:text>
+</xsl:function>
+
 
 <xsl:template match="dex:const-string">
 	<xsl:text>    </xsl:text>
@@ -2059,26 +2053,32 @@
 	</xsl:call-template> 
 	<xsl:text> = new </xsl:text>
 	<xsl:value-of select="vm:getType('java.lang.String')"/>
-	<xsl:text>("</xsl:text> <!-- " -->
+	<xsl:text>(</xsl:text>
+	<xsl:value-of select="vm:escapeString(@value)"/>
+	<xsl:text>);&nl;</xsl:text>
+<!--	<xsl:text>("</xsl:text>  -->
   <!-- Escape all \\ \t(011) \n(012) \r(015) \f(014) \b(010) \" -->
   <!-- Single quotes don't need to be escaped. -->
   <!-- PROBLEM! Because backslashes aren't already escaped in @value, there
        is no way to differ both Java Strings of "\\011" and "\t". So they'll
        both be translated to "\t". That is also true for the other escaped characters.-->
-	<xsl:value-of select="replace(replace(replace(replace(replace(replace(replace(@value,'\\','\\\\'),
+<!--	<xsl:value-of select="replace(replace(replace(replace(replace(replace(replace(@value,'\\','\\\\'),
   	                       '\\\\011','\\t'),'\\\\012','\\n'),'\\\\015','\\r'),'\\\\014','\\f'),'\\\\010','\\b'),
   	                       '&quot;','\\&quot;')"/>
-  <xs:text>");&nl;</xs:text> <!-- " -->
+  <xs:text>");&nl;</xs:text>  -->
+
 </xsl:template>
 
 
 <xsl:template match="dex:const-class"> 
-  <xsl:text>    _r</xsl:text>
-  <xsl:value-of select="@vx"/>
-  <xsl:text>.o = [</xsl:text>
-  <xsl:value-of select="vm:fixname(@value)"/>
-  <xs:text> getClass__];
-</xs:text>
+  <xsl:text>    </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vx"/>
+    <xsl:with-param name="type" select="'obj'"/>
+  </xsl:call-template>
+  <xsl:text> = </xsl:text>
+  <xsl:value-of select="vm:getType(@value)"/>
+  <xs:text>.getClass();&nl;</xs:text>
 </xsl:template>
 
 
@@ -2323,50 +2323,70 @@
 
 
 <xsl:template match="dex:add-int-lit8|dex:add-int-lit16">
-  <xsl:text>    _r</xsl:text>
-  <xsl:value-of select="@vx"/>
-  <xsl:text>.i = _r</xsl:text>
-  <xsl:value-of select="@vy"/>
-  <xsl:text>.i + </xsl:text>
+  <xsl:text>    </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vx"/>
+    <xsl:with-param name="type" select="'int'"/>
+  </xsl:call-template>
+  <xsl:text> = </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vy"/>
+    <xsl:with-param name="type" select="'int'"/>
+  </xsl:call-template>
+  <xsl:text> + </xsl:text>
   <xsl:value-of select="@value"/>
-  <xsl:text>;
-</xsl:text>
+  <xsl:text>;&nl;</xsl:text>
 </xsl:template>
 
 
 <xsl:template match="dex:mul-int-lit8|dex:mul-int-lit16">
-  <xsl:text>    _r</xsl:text>
-  <xsl:value-of select="@vx"/>
-  <xsl:text>.i = _r</xsl:text>
-  <xsl:value-of select="@vy"/>
-  <xsl:text>.i * </xsl:text>
+  <xsl:text>    </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vx"/>
+    <xsl:with-param name="type" select="'int'"/>
+  </xsl:call-template>
+  <xsl:text> = </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vy"/>
+    <xsl:with-param name="type" select="'int'"/>
+  </xsl:call-template>
+  <xsl:text> * </xsl:text>
   <xsl:value-of select="@value"/>
-  <xsl:text>;
-</xsl:text>
+  <xsl:text>;&nl;</xsl:text>
 </xsl:template>
 
 
 <xsl:template match="dex:div-int-lit8|dex:div-int-lit16">
-  <xsl:text>    _r</xsl:text>
-  <xsl:value-of select="@vx"/>
-  <xsl:text>.i = _r</xsl:text>
-  <xsl:value-of select="@vy"/>
-  <xsl:text>.i / </xsl:text>
+  <xsl:text>    </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vx"/>
+    <xsl:with-param name="type" select="'int'"/>
+  </xsl:call-template>
+  <xsl:text> = </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vy"/>
+    <xsl:with-param name="type" select="'int'"/>
+  </xsl:call-template>
+  <xsl:text> / </xsl:text>
   <xsl:value-of select="@value"/>
-  <xsl:text>;
-</xsl:text>
+  <xsl:text>;&nl;</xsl:text>
 </xsl:template>
 
 
 <xsl:template match="dex:rem-int-lit8|dex:rem-int-lit16">
-  <xsl:text>    _r</xsl:text>
-  <xsl:value-of select="@vx"/>
-  <xsl:text>.i = _r</xsl:text>
-  <xsl:value-of select="@vy"/>
-  <xsl:text>.i % </xsl:text>
+  <xsl:text>    </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vx"/>
+    <xsl:with-param name="type" select="'int'"/>
+  </xsl:call-template>
+  <xsl:text> = </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vy"/>
+    <xsl:with-param name="type" select="'int'"/>
+  </xsl:call-template>
+  <xsl:text> % </xsl:text>
   <xsl:value-of select="@value"/>
-  <xsl:text>;
-</xsl:text>
+  <xsl:text>;&nl;</xsl:text>
 </xsl:template>
 
 
@@ -2863,31 +2883,30 @@
 
 
 <xsl:template match="dex:instance-of">
+  <!-- 
+     @value = actual type
+     @vy-type = apparent type
+     @vy = object reference
+     @vx = result (boolean)
+  -->
   <xsl:text>    </xsl:text>
   <xsl:call-template name="emitRegisterName">
     <xsl:with-param name="num" select="@vx"/>
     <xsl:with-param name="type" select="'int'"/>
   </xsl:call-template>
-  <xsl:text> = (</xsl:text>
+  <xsl:text> = ((</xsl:text>
   <xsl:call-template name="emitRegisterName">
     <xsl:with-param name="num" select="@vy"/>
-    <xsl:with-param name="type" select="'obj'"/>
+    <xsl:with-param name="type" select="@vy-type"/>
   </xsl:call-template>
-  <xsl:text> != JAVA_NULL &amp;&amp;&nl;        ([</xsl:text>
+  <xsl:text> != null) &amp;&amp; (</xsl:text>
   <xsl:call-template name="emitRegisterName">
     <xsl:with-param name="num" select="@vy"/>
-    <xsl:with-param name="type" select="'obj'"/>
+    <xsl:with-param name="type" select="@vy-type"/>
   </xsl:call-template>
-  <xsl:text> isKindOfClass: objc_getClass("</xsl:text><!-- " -->
-  <xsl:value-of select="vm:fixname(@value)"/>
-  <xsl:text>")] ||&nl;         [</xsl:text><!-- " -->
-  <xsl:call-template name="emitRegisterName">
-    <xsl:with-param name="num" select="@vy"/>
-    <xsl:with-param name="type" select="'obj'"/>
-  </xsl:call-template>
-  <xsl:text> conformsToProtocol: objc_getProtocol("</xsl:text>
-  <xsl:value-of select="vm:fixname(@value)"/>
-  <xsl:text>")])) ? 1 : 0;&nl;</xsl:text>
+  <xsl:text> is </xsl:text>
+  <xsl:value-of select="vm:getType(@value)"/>
+  <xsl:text>)) ? 1 : 0;&nl;</xsl:text>
 </xsl:template>
 
 

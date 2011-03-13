@@ -73,9 +73,6 @@ public class CSharpOutputProcess extends XmlvmProcessImpl<XmlvmResourceProvider>
             for (String path : arguments.option_link()) {
                 linkArgs.add("--in=" + path);
             }
-            for (String path : linkArgs) {
-                System.out.println("BLAH2: " + path);
-            }
             XmlvmProcessor linkProcessor = new XmlvmProcessor(new Arguments(linkArgs.toArray(new String[0])));
             linkProcessor.setTargetProcess(new CSharpOutputProcess(new Arguments(linkArgs.toArray(new String[0]))));
             if (!linkProcessor.preprocess()) {
@@ -85,7 +82,6 @@ public class CSharpOutputProcess extends XmlvmProcessImpl<XmlvmResourceProvider>
             CSharpOutputProcess linkCSharpProcess = (CSharpOutputProcess) linkProcessor.getTargetProcess();
             Collection<XmlvmResourceProvider> linkProviders = new HashSet<XmlvmResourceProvider>();
             linkProviders.addAll(linkCSharpProcess.preprocess());
-            System.out.println("BLAH3: " + linkProviders.size());
             for (XmlvmResourceProvider linkProvider : linkProviders) {
                 for (XmlvmResource linkResource : linkProvider.getXmlvmResources()) {
                     linkLoader.put(linkResource.getFullName(), linkResource);

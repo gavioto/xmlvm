@@ -1,5 +1,11 @@
 package org.xmlvm.test.poly;
 
+/*
+ * tests overriding of parent methods by two kids.
+ *   this basically tests that the parent climbing algorithm
+ *   in to detect method overriding, does not leave side effects
+ *   for the second child.
+ */
 public class Poly8 {
     public static void main(String[] args) {
 	Poly8ChildA ca = new Poly8ChildA();

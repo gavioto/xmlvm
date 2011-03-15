@@ -23,7 +23,7 @@ package org.xmlvm.proc.out.wrappers;
 import org.xmlvm.main.Arguments;
 import org.xmlvm.proc.out.COutputProcess;
 
-public class GenCWrappersOutputProcess extends WrappersOutputProcess<COutputProcess> {
+public class GenCWrappersOutputProcess extends GenWrappersOutputProcess<COutputProcess> {
     public GenCWrappersOutputProcess(Arguments arguments) {
 	super(arguments);
 	addSupportedInput(COutputProcess.class);

@@ -18,10 +18,15 @@
  * USA.
  */
 
-public class LoopTest {
+package org.xmlvm.test;
+
+/*
+ * tests _rtmp (because result of call to sb.append(...) is never stored)
+ */
+public class InstanceTest2 {
     public static void main(String[] args) {
-	for (int i=0; i<10; i++) {
-	    System.out.println("loop test");
-	}
+	StringBuilder sb = new StringBuilder("string1");
+	sb.append("string2");
+	System.out.println(sb.toString());
     }
 }

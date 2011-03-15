@@ -23,6 +23,12 @@ return n1>n2 ? n2 : n1;
 }
 
 //XMLVM_BEGIN_WRAPPER[org.xmlvm.java.lang.Math]
+private static global::System.Random gen = new global::System.Random((int)global::System.DateTime.Now.Ticks);
+
+public static double random()
+{
+    return gen.NextDouble();
+}
 //XMLVM_END_WRAPPER[org.xmlvm.java.lang.Math]
 
 } // end of class: Math

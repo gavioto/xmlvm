@@ -23,11 +23,6 @@ public virtual Compatlib.System.Collections.Generics.IEnumerator GetEnumerator()
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.Controls.PresentationFrameworkCollection: Compatlib.System.Collections.Generics.IEnumerator GetEnumerator()]
 }
 
-public static java.util.List access_20(Compatlib.System.Windows.Controls.PresentationFrameworkCollection n1){
-//XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.Controls.PresentationFrameworkCollection: java.util.List access$0(Compatlib.System.Windows.Controls.PresentationFrameworkCollection)]
-//XMLVM_END_WRAPPER[Compatlib.System.Windows.Controls.PresentationFrameworkCollection: java.util.List access$0(Compatlib.System.Windows.Controls.PresentationFrameworkCollection)]
-}
-
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.Controls.PresentationFrameworkCollection]
 private global::System.Collections.Generic.List<java.lang.Object> elements;
 

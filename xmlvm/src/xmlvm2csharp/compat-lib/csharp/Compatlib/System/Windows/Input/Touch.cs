@@ -31,7 +31,7 @@ static void FrameReportedHandler(object sender, global::System.Windows.Input.Tou
 {
     Compatlib.System.Windows.Input.TouchFrameEventArgs newArgs = new Compatlib.System.Windows.Input.TouchFrameEventArgs();
     newArgs.args = args;
-    FrameReported.__fire(null, newArgs);
+    FrameReported._1_1fire(null, newArgs);
 }
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.Input.Touch]
 

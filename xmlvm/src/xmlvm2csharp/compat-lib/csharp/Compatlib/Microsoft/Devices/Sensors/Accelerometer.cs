@@ -29,7 +29,7 @@ public void ReadingChangedHandler(object sender, global::Microsoft.Devices.Senso
 {
     Compatlib.Microsoft.Devices.Sensors.AccelerometerReadingEventArgs newArgs = new Compatlib.Microsoft.Devices.Sensors.AccelerometerReadingEventArgs();
     newArgs.args = args;
-    this.ReadingChanged.__fire(this, newArgs);
+    this.ReadingChanged._1_1fire(this, newArgs);
 }
 //XMLVM_END_WRAPPER[Compatlib.Microsoft.Devices.Sensors.Accelerometer]
 

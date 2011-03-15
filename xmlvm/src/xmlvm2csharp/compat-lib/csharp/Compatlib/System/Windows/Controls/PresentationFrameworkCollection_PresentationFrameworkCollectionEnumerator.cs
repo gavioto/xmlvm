@@ -9,17 +9,14 @@ public Compatlib.System.Windows.Controls.PresentationFrameworkCollection this_20
 
 public virtual java.lang.Object getCurrent(){
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.Controls.PresentationFrameworkCollection$PresentationFrameworkCollectionEnumerator: java.lang.Object getCurrent()]
+return null;
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.Controls.PresentationFrameworkCollection$PresentationFrameworkCollectionEnumerator: java.lang.Object getCurrent()]
 }
 
 public virtual int MoveNext(){
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.Controls.PresentationFrameworkCollection$PresentationFrameworkCollectionEnumerator: boolean MoveNext()]
+return 0;
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.Controls.PresentationFrameworkCollection$PresentationFrameworkCollectionEnumerator: boolean MoveNext()]
-}
-
-public void @this(Compatlib.System.Windows.Controls.PresentationFrameworkCollection n1, Compatlib.System.Windows.Controls.PresentationFrameworkCollection_2PresentationFrameworkCollectionEnumerator n2){
-//XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.Controls.PresentationFrameworkCollection$PresentationFrameworkCollectionEnumerator: void <init>(Compatlib.System.Windows.Controls.PresentationFrameworkCollection, Compatlib.System.Windows.Controls.PresentationFrameworkCollection$PresentationFrameworkCollectionEnumerator)]
-//XMLVM_END_WRAPPER[Compatlib.System.Windows.Controls.PresentationFrameworkCollection$PresentationFrameworkCollectionEnumerator: void <init>(Compatlib.System.Windows.Controls.PresentationFrameworkCollection, Compatlib.System.Windows.Controls.PresentationFrameworkCollection$PresentationFrameworkCollectionEnumerator)]
 }
 
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.Controls.PresentationFrameworkCollection$PresentationFrameworkCollectionEnumerator]

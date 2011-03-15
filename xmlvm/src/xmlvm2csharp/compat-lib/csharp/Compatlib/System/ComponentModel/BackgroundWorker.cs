@@ -29,7 +29,7 @@ public void DoWorkHandler(object sender, global::System.ComponentModel.DoWorkEve
 {
     Compatlib.System.ComponentModel.DoWorkEventArgs newArgs = new Compatlib.System.ComponentModel.DoWorkEventArgs();
     newArgs.args = args;
-    this.DoWork.__fire(this, newArgs);
+    this.DoWork._1_1fire(this, newArgs);
 }
 //XMLVM_END_WRAPPER[Compatlib.System.ComponentModel.BackgroundWorker]
 

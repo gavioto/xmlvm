@@ -20,6 +20,10 @@
 
 package org.xmlvm.test.poly;
 
+/*
+ * taken from src/test/java/org/xmlvm/test/, but removed interface fields 
+ *   in the meantime, and Class API calls
+ */
 public class PolymorphismTest {
 
     static void Log(String msg) {

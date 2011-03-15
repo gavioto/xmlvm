@@ -51,9 +51,9 @@ import org.xmlvm.proc.out.*;
  * contain manually written code in between them. This code is extracted and put
  * into the newly generated wrappers - at the correct position.
  */
-public class WrappersOutputProcess<T extends XmlvmProcessImpl<?>> extends XmlvmProcessImpl<T> {
+public class GenWrappersOutputProcess<T extends XmlvmProcessImpl<?>> extends XmlvmProcessImpl<T> {
     
-    private static final String           TAG           = WrappersOutputProcess.class
+    private static final String           TAG           = GenWrappersOutputProcess.class
                                                                 .getSimpleName();
     private static final String           BEGIN_MARKER  = "//XMLVM_BEGIN";
     private static final String           END_MARKER    = "//XMLVM_END";
@@ -62,7 +62,7 @@ public class WrappersOutputProcess<T extends XmlvmProcessImpl<?>> extends XmlvmP
     private final static SimpleDateFormat dateFormatter = new SimpleDateFormat(
                                                                 "yyyy-MM-dd-hh.mm.ss");
 
-    public WrappersOutputProcess(Arguments arguments) {
+    public GenWrappersOutputProcess(Arguments arguments) {
         super(arguments);
     }
 

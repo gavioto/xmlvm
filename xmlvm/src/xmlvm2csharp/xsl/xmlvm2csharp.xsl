@@ -199,13 +199,13 @@
 	      <xsl:value-of select="@value"/>
 	      <xsl:choose>
 		<xsl:when test="@type='float'">
-		  <xsl:text>f</xsl:text>
+		  <xsl:text>F</xsl:text>
 		</xsl:when>
 		<xsl:when test="@type='double'">
-		  <xsl:text>d</xsl:text>
+		  <xsl:text>D</xsl:text>
 		</xsl:when>
 		<xsl:when test="@type='long'">
-		  <xsl:text>l</xsl:text>
+		  <xsl:text>L</xsl:text>
 		</xsl:when>
 	      </xsl:choose>
 	    </xsl:otherwise>
@@ -1535,265 +1535,345 @@
 </xsl:template>
 
   
+<xsl:template match="dex:and-int-lit8|dex:and-int-lit16">
+  <xsl:text>    </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vx"/>
+    <xsl:with-param name="type" select="'int'"/>
+  </xsl:call-template> 
+  <xsl:text> = </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vy"/>
+    <xsl:with-param name="type" select="'int'"/>
+  </xsl:call-template> 
+  <xsl:text> &amp; </xsl:text>
+  <xsl:value-of select="@value"/>	
+  <xsl:text>;&nl;</xsl:text>
+</xsl:template>
+
+
 <xsl:template match="dex:and-int|dex:and-int-2addr">
-	<xsl:text>    </xsl:text>
-	<xsl:call-template name="emitRegisterName">
-		<xsl:with-param name="num" select="@vx"/>
-		<xsl:with-param name="type" select="'int'"/>
-	</xsl:call-template> 
-	<xsl:text> = </xsl:text>
-	<xsl:call-template name="emitRegisterName">
-		<xsl:with-param name="num" select="@vy"/>
-		<xsl:with-param name="type" select="'int'"/>
-	</xsl:call-template> 
-	<xsl:text> &amp; </xsl:text>
-	<xsl:call-template name="emitRegisterName">
-		<xsl:with-param name="num" select="@vz"/>
-		<xsl:with-param name="type" select="'int'"/>
-	</xsl:call-template> 
-	<xsl:text>;&nl;</xsl:text>
+  <xsl:text>    </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vx"/>
+    <xsl:with-param name="type" select="'int'"/>
+  </xsl:call-template> 
+  <xsl:text> = </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vy"/>
+    <xsl:with-param name="type" select="'int'"/>
+  </xsl:call-template> 
+  <xsl:text> &amp; </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vz"/>
+    <xsl:with-param name="type" select="'int'"/>
+  </xsl:call-template> 
+  <xsl:text>;&nl;</xsl:text>
 </xsl:template>
 
 
 <xsl:template match="dex:and-long|dex:and-long-2addr">
-	<xsl:text>    </xsl:text>
-	<xsl:call-template name="emitRegisterName">
-		<xsl:with-param name="num" select="@vx"/>
-		<xsl:with-param name="type" select="'long'"/>
-	</xsl:call-template> 
-	<xsl:text> = </xsl:text>
-	<xsl:call-template name="emitRegisterName">
-		<xsl:with-param name="num" select="@vy"/>
-		<xsl:with-param name="type" select="'long'"/>
-	</xsl:call-template> 
-	<xsl:text> &amp; </xsl:text>
-	<xsl:call-template name="emitRegisterName">
-		<xsl:with-param name="num" select="@vz"/>
-		<xsl:with-param name="type" select="'long'"/>
-	</xsl:call-template> 
-	<xsl:text>;&nl;</xsl:text>
+  <xsl:text>    </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vx"/>
+    <xsl:with-param name="type" select="'long'"/>
+  </xsl:call-template> 
+  <xsl:text> = </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vy"/>
+    <xsl:with-param name="type" select="'long'"/>
+  </xsl:call-template> 
+  <xsl:text> &amp; </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vz"/>
+    <xsl:with-param name="type" select="'long'"/>
+  </xsl:call-template> 
+  <xsl:text>;&nl;</xsl:text>
+</xsl:template>
+
+
+<xsl:template match="dex:shl-int-lit8">
+  <xsl:text>    </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vx"/>
+    <xsl:with-param name="type" select="'int'"/>
+  </xsl:call-template> 
+  <xsl:text> = </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vy"/>
+    <xsl:with-param name="type" select="'int'"/>
+  </xsl:call-template> 
+  <xsl:text> &lt;&lt; (0x1f &amp; </xsl:text>
+  <xsl:value-of select="@value"/>	
+  <xsl:text>);&nl;</xsl:text>
 </xsl:template>
 
 
 <xsl:template match="dex:shl-int|dex:shl-int-2addr">
-	<xsl:text>    </xsl:text>
-	<xsl:call-template name="emitRegisterName">
-		<xsl:with-param name="num" select="@vx"/>
-		<xsl:with-param name="type" select="'int'"/>
-	</xsl:call-template> 
-	<xsl:text> = </xsl:text>
-	<xsl:call-template name="emitRegisterName">
-		<xsl:with-param name="num" select="@vy"/>
-		<xsl:with-param name="type" select="'int'"/>
-	</xsl:call-template> 
-	<xsl:text> &lt;&lt; </xsl:text>
-	<xsl:call-template name="emitRegisterName">
-		<xsl:with-param name="num" select="@vz"/>
-		<xsl:with-param name="type" select="'int'"/>
-	</xsl:call-template> 
-	<xsl:text>;&nl;</xsl:text>
+  <xsl:text>    </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vx"/>
+    <xsl:with-param name="type" select="'int'"/>
+  </xsl:call-template> 
+  <xsl:text> = </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vy"/>
+    <xsl:with-param name="type" select="'int'"/>
+  </xsl:call-template> 
+  <xsl:text> &lt;&lt; (0x1f &amp; </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vz"/>
+    <xsl:with-param name="type" select="'int'"/>
+  </xsl:call-template> 
+  <xsl:text>);&nl;</xsl:text>
 </xsl:template>
 
 
 <xsl:template match="dex:shl-long|dex:shl-long-2addr">
-	<xsl:text>    </xsl:text>
-	<xsl:call-template name="emitRegisterName">
-		<xsl:with-param name="num" select="@vx"/>
-		<xsl:with-param name="type" select="'long'"/>
-	</xsl:call-template> 
-	<xsl:text> = </xsl:text>
-	<xsl:call-template name="emitRegisterName">
-		<xsl:with-param name="num" select="@vy"/>
-		<xsl:with-param name="type" select="'long'"/>
-	</xsl:call-template> 
-	<xsl:text> &lt;&lt; (0x3f &amp; </xsl:text>
-	<xsl:call-template name="emitRegisterName">
-		<xsl:with-param name="num" select="@vz"/>
-		<xsl:with-param name="type" select="'long'"/>
-	</xsl:call-template> 
-	<xsl:text>);&nl;</xsl:text>
+  <xsl:text>    </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vx"/>
+    <xsl:with-param name="type" select="'long'"/>
+  </xsl:call-template> 
+  <xsl:text> = </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vy"/>
+    <xsl:with-param name="type" select="'long'"/>
+  </xsl:call-template> 
+  <xsl:text> &lt;&lt; (0x3f &amp; </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vz"/>
+    <xsl:with-param name="type" select="'long'"/>
+  </xsl:call-template> 
+  <xsl:text>);&nl;</xsl:text>
 </xsl:template>
 
 
-<xsl:template match="dex:and-int-lit8|dex:and-int-lit16">
-	<xsl:text>    </xsl:text>
-	<xsl:call-template name="emitRegisterName">
-		<xsl:with-param name="num" select="@vx"/>
-		<xsl:with-param name="type" select="'int'"/>
-	</xsl:call-template> 
-	<xsl:text> = </xsl:text>
-	<xsl:call-template name="emitRegisterName">
-		<xsl:with-param name="num" select="@vy"/>
-		<xsl:with-param name="type" select="'int'"/>
-	</xsl:call-template> 
-	<xsl:text> &amp; </xsl:text>
-	<xsl:value-of select="@value"/>	
-	<xsl:text>;&nl;</xsl:text>
+<xsl:template match="dex:shr-int-lit8">
+  <xsl:text>    </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vx"/>
+    <xsl:with-param name="type" select="'int'"/>
+  </xsl:call-template> 
+  <xsl:text> = </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vy"/>
+    <xsl:with-param name="type" select="'int'"/>
+  </xsl:call-template> 
+  <xsl:text> &gt;&gt; (0x1f &amp; </xsl:text>
+  <xsl:value-of select="@value"/>	
+  <xsl:text>);&nl;</xsl:text>
 </xsl:template>
 
 
-<xsl:template match="dex:shl-int-lit8|dex:shl-int-lit16">
-	<xsl:text>    </xsl:text>
-	<xsl:call-template name="emitRegisterName">
-		<xsl:with-param name="num" select="@vx"/>
-		<xsl:with-param name="type" select="'int'"/>
-	</xsl:call-template> 
-	<xsl:text> = </xsl:text>
-	<xsl:call-template name="emitRegisterName">
-		<xsl:with-param name="num" select="@vy"/>
-		<xsl:with-param name="type" select="'int'"/>
-	</xsl:call-template> 
-	<xsl:text> &lt;&lt; </xsl:text>
-	<xsl:value-of select="@value"/>	
-	<xsl:text>;&nl;</xsl:text>
+<xsl:template match="dex:shr-int|dex:shr-int-2addr">
+  <xsl:text>    </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vx"/>
+    <xsl:with-param name="type" select="'int'"/>
+  </xsl:call-template> 
+  <xsl:text> = </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vy"/>
+    <xsl:with-param name="type" select="'int'"/>
+  </xsl:call-template> 
+  <xsl:text> &gt;&gt; (0x1f &amp; </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vz"/>
+    <xsl:with-param name="type" select="'int'"/>
+  </xsl:call-template> 
+  <xsl:text>);&nl;</xsl:text>
 </xsl:template>
 
 
-<xsl:template match="dex:shr-int-lit8|dex:shr-int-lit16">
-	<xsl:text>    </xsl:text>
-	<xsl:call-template name="emitRegisterName">
-		<xsl:with-param name="num" select="@vx"/>
-		<xsl:with-param name="type" select="'int'"/>
-	</xsl:call-template> 
-	<xsl:text> = </xsl:text>
-	<xsl:call-template name="emitRegisterName">
-		<xsl:with-param name="num" select="@vy"/>
-		<xsl:with-param name="type" select="'int'"/>
-	</xsl:call-template> 
-	<xsl:text> &gt;&gt; </xsl:text>
-	<xsl:value-of select="@value"/>	
-	<xsl:text>;&nl;</xsl:text>
+<xsl:template match="dex:shr-long|dex:shr-long-2addr">
+  <xsl:text>    </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vx"/>
+    <xsl:with-param name="type" select="'long'"/>
+  </xsl:call-template> 
+  <xsl:text> = </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vy"/>
+    <xsl:with-param name="type" select="'long'"/>
+  </xsl:call-template>
+  <xsl:text> &gt;&gt; (0x3f &amp; </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vz"/>
+    <xsl:with-param name="type" select="'long'"/>
+  </xsl:call-template> 
+  <xsl:text>);&nl;</xsl:text>
 </xsl:template>
 
 
-<xsl:template match="dex:ushr-int-lit8|dex:ushr-int-lit16">
-	<xsl:text>    </xsl:text>
-	<xsl:call-template name="emitRegisterName">
-		<xsl:with-param name="num" select="@vx"/>
-		<xsl:with-param name="type" select="'int'"/>
-	</xsl:call-template> 
-	<xsl:text> = </xsl:text>
-	<xsl:call-template name="emitRegisterName">
-		<xsl:with-param name="num" select="@vy"/>
-		<xsl:with-param name="type" select="'int'"/>
-	</xsl:call-template> 
-	<xsl:text> &gt;&gt; (0x1f &amp; </xsl:text>
-	<xsl:value-of select="@value"/>	
-	<xsl:text>);&nl;</xsl:text>
+<xsl:template match="dex:ushr-int-lit8">
+  <xsl:text>    </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vx"/>
+    <xsl:with-param name="type" select="'int'"/>
+  </xsl:call-template> 
+  <xsl:text> = ((uint) </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vy"/>
+    <xsl:with-param name="type" select="'int'"/>
+  </xsl:call-template> 
+  <xsl:text>) &gt;&gt; (0x1f &amp; ((uint) </xsl:text>
+  <xsl:value-of select="@value"/>	
+  <xsl:text>));&nl;</xsl:text>
+</xsl:template>
+
+
+<xsl:template match="dex:ushr-int|dex:ushr-int-2addr">
+  <xsl:text>    </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vx"/>
+    <xsl:with-param name="type" select="'int'"/>
+  </xsl:call-template> 
+  <xsl:text> = ((uint) </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vy"/>
+    <xsl:with-param name="type" select="'int'"/>
+  </xsl:call-template> 
+  <xsl:text>) &gt;&gt; (0x1f &amp; ((uint) </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vz"/>
+    <xsl:with-param name="type" select="'int'"/>
+  </xsl:call-template> 
+  <xsl:text>));&nl;</xsl:text>
 </xsl:template>
 
 
 <xsl:template match="dex:ushr-long|dex:ushr-long-2addr">
-	<xsl:text>    </xsl:text>
-	<xsl:call-template name="emitRegisterName">
-		<xsl:with-param name="num" select="@vx"/>
-		<xsl:with-param name="type" select="'long'"/>
-	</xsl:call-template> 
-	<xsl:text> = ((unsigned long) </xsl:text>
-	<xsl:call-template name="emitRegisterName">
-		<xsl:with-param name="num" select="@vy"/>
-		<xsl:with-param name="type" select="'long'"/>
-	</xsl:call-template> 
-	<xsl:text>) &gt;&gt; (0x3f &amp; ((unsigned long) </xsl:text>
-	<xsl:call-template name="emitRegisterName">
-		<xsl:with-param name="num" select="@vz"/>
-		<xsl:with-param name="type" select="'long'"/>
-	</xsl:call-template> 
-	<xsl:text>));&nl;</xsl:text>
+  <xsl:text>    </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vx"/>
+    <xsl:with-param name="type" select="'long'"/>
+  </xsl:call-template> 
+  <xsl:text> = ((ulong) </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vy"/>
+    <xsl:with-param name="type" select="'long'"/>
+  </xsl:call-template> 
+  <xsl:text>) &gt;&gt; (0x3f &amp; ((ulong) </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vz"/>
+    <xsl:with-param name="type" select="'long'"/>
+  </xsl:call-template> 
+  <xsl:text>));&nl;</xsl:text>
 </xsl:template>
 
 
 <xsl:template match="dex:or-int-lit8|dex:or-int-lit16">
-	<xsl:text>    </xsl:text>
-	<xsl:call-template name="emitRegisterName">
-		<xsl:with-param name="num" select="@vx"/>
-		<xsl:with-param name="type" select="'int'"/>
-	</xsl:call-template> 
-	<xsl:text> = </xsl:text>
-	<xsl:call-template name="emitRegisterName">
-		<xsl:with-param name="num" select="@vy"/>
-		<xsl:with-param name="type" select="'int'"/>
-	</xsl:call-template> 
-	<xsl:text> | </xsl:text>
-	<xsl:value-of select="@value"/>	
-	<xsl:text>;&nl;</xsl:text>
-</xsl:template>
-
-
-<xsl:template match="dex:xor-int-lit8|dex:xor-int-lit16">
-	<xsl:text>    </xsl:text>
-	<xsl:call-template name="emitRegisterName">
-		<xsl:with-param name="num" select="@vx"/>
-		<xsl:with-param name="type" select="'int'"/>
-	</xsl:call-template> 
-	<xsl:text> = </xsl:text>
-	<xsl:call-template name="emitRegisterName">
-		<xsl:with-param name="num" select="@vy"/>
-		<xsl:with-param name="type" select="'int'"/>
-	</xsl:call-template> 
-	<xsl:text> ^ </xsl:text>
-	<xsl:value-of select="@value"/>
-	<xsl:text>;&nl;</xsl:text>
-</xsl:template>
-
-
-<xsl:template match="dex:xor-int|dex:xor-int-2addr">
-	<xsl:text>    </xsl:text>
-	<xsl:call-template name="emitRegisterName">
-		<xsl:with-param name="num" select="@vx"/>
-		<xsl:with-param name="type" select="'int'"/>
-	</xsl:call-template> 
-	<xsl:text> = </xsl:text>
-	<xsl:call-template name="emitRegisterName">
-		<xsl:with-param name="num" select="@vy"/>
-		<xsl:with-param name="type" select="'int'"/>
-	</xsl:call-template> 
-	<xsl:text> ^ </xsl:text>
-	<xsl:call-template name="emitRegisterName">
-		<xsl:with-param name="num" select="@vz"/>
-		<xsl:with-param name="type" select="'int'"/>
-	</xsl:call-template> 
-	<xsl:text>;&nl;</xsl:text>
+  <xsl:text>    </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vx"/>
+    <xsl:with-param name="type" select="'int'"/>
+  </xsl:call-template> 
+  <xsl:text> = </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vy"/>
+    <xsl:with-param name="type" select="'int'"/>
+  </xsl:call-template> 
+  <xsl:text> | </xsl:text>
+  <xsl:value-of select="@value"/>	
+  <xsl:text>;&nl;</xsl:text>
 </xsl:template>
 
   
 <xsl:template match="dex:or-int|dex:or-int-2addr">
-	<xsl:text>    </xsl:text>
-	<xsl:call-template name="emitRegisterName">
-		<xsl:with-param name="num" select="@vx"/>
-		<xsl:with-param name="type" select="'int'"/>
-	</xsl:call-template> 
-	<xsl:text> = </xsl:text>
-	<xsl:call-template name="emitRegisterName">
-		<xsl:with-param name="num" select="@vy"/>
-		<xsl:with-param name="type" select="'int'"/>
-	</xsl:call-template> 
-	<xsl:text> | </xsl:text>
-	<xsl:call-template name="emitRegisterName">
-		<xsl:with-param name="num" select="@vz"/>
-		<xsl:with-param name="type" select="'int'"/>
-	</xsl:call-template> 
-	<xsl:text>;&nl;</xsl:text>
+  <xsl:text>    </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vx"/>
+    <xsl:with-param name="type" select="'int'"/>
+  </xsl:call-template> 
+  <xsl:text> = </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vy"/>
+    <xsl:with-param name="type" select="'int'"/>
+  </xsl:call-template> 
+  <xsl:text> | </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vz"/>
+    <xsl:with-param name="type" select="'int'"/>
+  </xsl:call-template> 
+  <xsl:text>;&nl;</xsl:text>
 </xsl:template>
 
   
 <xsl:template match="dex:or-long|dex:or-long-2addr">
-	<xsl:text>    </xsl:text>
-	<xsl:call-template name="emitRegisterName">
-		<xsl:with-param name="num" select="@vx"/>
-		<xsl:with-param name="type" select="'long'"/>
-	</xsl:call-template> 
-	<xsl:text> = </xsl:text>
-	<xsl:call-template name="emitRegisterName">
-		<xsl:with-param name="num" select="@vy"/>
-		<xsl:with-param name="type" select="'long'"/>
-	</xsl:call-template> 
-	<xsl:text> | </xsl:text>
-	<xsl:call-template name="emitRegisterName">
-		<xsl:with-param name="num" select="@vz"/>
-		<xsl:with-param name="type" select="'long'"/>
-	</xsl:call-template> 
-	<xsl:text>;&nl;</xsl:text>
+  <xsl:text>    </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vx"/>
+    <xsl:with-param name="type" select="'long'"/>
+  </xsl:call-template> 
+  <xsl:text> = </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vy"/>
+    <xsl:with-param name="type" select="'long'"/>
+  </xsl:call-template> 
+  <xsl:text> | </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vz"/>
+    <xsl:with-param name="type" select="'long'"/>
+  </xsl:call-template> 
+  <xsl:text>;&nl;</xsl:text>
+</xsl:template>
+
+
+<xsl:template match="dex:xor-int-lit8|dex:xor-int-lit16">
+  <xsl:text>    </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vx"/>
+    <xsl:with-param name="type" select="'int'"/>
+  </xsl:call-template> 
+  <xsl:text> = </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vy"/>
+    <xsl:with-param name="type" select="'int'"/>
+  </xsl:call-template> 
+  <xsl:text> ^ </xsl:text>
+  <xsl:value-of select="@value"/>
+  <xsl:text>;&nl;</xsl:text>
+</xsl:template>
+
+
+<xsl:template match="dex:xor-int|dex:xor-int-2addr">
+  <xsl:text>    </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vx"/>
+    <xsl:with-param name="type" select="'int'"/>
+  </xsl:call-template> 
+  <xsl:text> = </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vy"/>
+    <xsl:with-param name="type" select="'int'"/>
+  </xsl:call-template> 
+  <xsl:text> ^ </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vz"/>
+    <xsl:with-param name="type" select="'int'"/>
+  </xsl:call-template> 
+  <xsl:text>;&nl;</xsl:text>
+</xsl:template>
+
+
+<xsl:template match="dex:xor-long|dex:xor-long-2addr">
+  <xsl:text>    </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vx"/>
+    <xsl:with-param name="type" select="'long'"/>
+  </xsl:call-template> 
+  <xsl:text> = </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vy"/>
+    <xsl:with-param name="type" select="'long'"/>
+  </xsl:call-template> 
+  <xsl:text> ^ </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vz"/>
+    <xsl:with-param name="type" select="'long'"/>
+  </xsl:call-template> 
+  <xsl:text>;&nl;</xsl:text>
 </xsl:template>
 
   
@@ -1831,7 +1911,8 @@
 </xsl:template>
 
 
-<xsl:template match="dex:iget|dex:iget-wide|dex:iget-boolean|dex:iget-byte">
+<xsl:template match="dex:iget|dex:iget-wide|dex:iget-boolean
+		     |dex:iget-byte|dex:iget-char|dex:iget-short">
 	<xsl:text>    </xsl:text>
 	<xsl:call-template name="emitRegisterName">
 		<xsl:with-param name="num" select="@vx"/>
@@ -1873,7 +1954,8 @@
 </xsl:template>
 
 
-<xsl:template match="dex:iput|dex:iput-wide|dex:iput-boolean|dex:iput-byte">
+<xsl:template match="dex:iput|dex:iput-wide|dex:iput-boolean
+		     |dex:iput-byte|dex:iput-char|dex:iput-short">
 	<xsl:text>    ((</xsl:text>
 	<xsl:value-of select="vm:getType(@class-type)" />
 	<xsl:text>) </xsl:text>
@@ -1893,36 +1975,6 @@
 	<xsl:text>;&nl;</xsl:text>
 </xsl:template>
 
-<!--
-<xsl:template match="vm:tmp-equals-r">
-	<xsl:text>    </xsl:text>
-	<xsl:call-template name="emitRegisterName">
-		<xsl:with-param name="num" select="'tmp'"/>
-  		<xsl:with-param name="type" select="'obj'"/>  	
-	</xsl:call-template>
-	<xsl:text> = </xsl:text>
-	<xsl:call-template name="emitRegisterName">
-		<xsl:with-param name="num" select="@reg"/>
-  		<xsl:with-param name="type" select="'obj'"/>  	
-	</xsl:call-template>
-	<xsl:text>;&nl;</xsl:text>
-</xsl:template>
--->
-
-<xsl:template match="vm:comment">
-	<xsl:text>    //INFO: </xsl:text>
-	<xsl:value-of select="@text" />
-	<xsl:text>&nl;  </xsl:text>
-</xsl:template>
-
-<xsl:template match="vm:reg-release">
-</xsl:template>
-
-<xsl:template match="vm:reg-retain">
-</xsl:template>
-  
-<xsl:template match="vm:i-release">
-</xsl:template>
 
 <xsl:template match="dex:iput-object">
 	<xsl:text>    ((</xsl:text>
@@ -1944,7 +1996,8 @@
 	<xsl:text>;&nl;</xsl:text>
 </xsl:template>
 
-<xsl:template match="dex:sget|dex:sget-wide|dex:sget-boolean|dex:sget-object">
+<xsl:template match="dex:sget|dex:sget-wide|dex:sget-boolean|dex:sget-byte
+		     |dex:sget-char|dex:sget-short|dex:sget-object">
 	<xsl:text>    </xsl:text>
 	<xsl:call-template name="emitRegisterName">
 		<xsl:with-param name="num" select="@vx"/>
@@ -1957,10 +2010,8 @@
 	<xsl:text>;&nl;</xsl:text>
 </xsl:template>
 
-<xsl:template match="vm:s-release">
-</xsl:template>
-
-<xsl:template match="dex:sput|dex:sput-wide|dex:sput-boolean|dex:sput-object">
+<xsl:template match="dex:sput|dex:sput-wide|dex:sput-boolean|dex:sget-byte
+		     |dex:sput-char|dex:sput-short|dex:sput-object">
 	<xsl:text>    </xsl:text>
 	<xsl:value-of select="vm:getType(@class-type)" />
 	<xsl:text>.</xsl:text>
@@ -1997,13 +2048,13 @@
 	<xsl:value-of select="@value"/>
 	<xsl:choose>
 	  <xsl:when test="@type='float'">
-	    <xsl:text>f</xsl:text>
+	    <xsl:text>F</xsl:text>
 	  </xsl:when>
 	  <xsl:when test="@type='double'">
-	    <xsl:text>d</xsl:text>
+	    <xsl:text>D</xsl:text>
 	  </xsl:when>
 	  <xsl:when test="@type='long'">
-	    <xsl:text>l</xsl:text>
+	    <xsl:text>L</xsl:text>
 	  </xsl:when>
 	</xsl:choose>
 	<xs:text>;&nl;</xs:text>
@@ -2082,133 +2133,235 @@
 </xsl:template>
 
 
-<xsl:template match="dex:float-to-int">
-  <xsl:text>    _r</xsl:text>
-  <xsl:value-of select="@vx"/>
-  <xsl:text>.i = (int) _r</xsl:text>
-  <xsl:value-of select="@vy"/>
-  <xsl:text>.f;
-</xsl:text>
-</xsl:template>
-
-
-<xsl:template match="dex:float-to-double">
-  <xsl:text>    _r</xsl:text>
-  <xsl:value-of select="@vx"/>
-  <xsl:text>.d = (double) _r</xsl:text>
-  <xsl:value-of select="@vy"/>
-  <xsl:text>.f;
-</xsl:text>
-</xsl:template>
 
 
 <xsl:template match="dex:int-to-byte">
-  <xsl:text>    _r</xsl:text>
+  <xsl:text>    </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vx"/>
+    <xsl:with-param name="type" select="'int'"/>
+  </xsl:call-template>
   <xsl:value-of select="@vx"/>
-  <xsl:text>.i = (_r</xsl:text>
-  <xsl:value-of select="@vy"/>
-  <xsl:text>.i &lt;&lt; 24) &gt;&gt; 24;
-</xsl:text>
-</xsl:template>
-
-
-<xsl:template match="dex:int-to-short">
-  <xsl:text>    _r</xsl:text>
-  <xsl:value-of select="@vx"/>
-  <xsl:text>.i = (_r</xsl:text>
-  <xsl:value-of select="@vy"/>
-  <xsl:text>.i &lt;&lt; 16) &gt;&gt; 16;
-</xsl:text>
-</xsl:template>
-
-
-<xsl:template match="dex:int-to-float">
-  <xsl:text>    _r</xsl:text>
-  <xsl:value-of select="@vx"/>
-  <xsl:text>.f = (float) _r</xsl:text>
-  <xsl:value-of select="@vy"/>
-  <xsl:text>.i;
-</xsl:text>
-</xsl:template>
-
-
-<xsl:template match="dex:int-to-long">
-  <xsl:text>    _r</xsl:text>
-  <xsl:value-of select="@vx"/>
-  <xsl:text>.l = (long) _r</xsl:text>
-  <xsl:value-of select="@vy"/>
-  <xsl:text>.i;
-</xsl:text>
-</xsl:template>
-
-
-<xsl:template match="dex:int-to-double">
-  <xsl:text>    _r</xsl:text>
-  <xsl:value-of select="@vx"/>
-  <xsl:text>.d = (double) _r</xsl:text>
-  <xsl:value-of select="@vy"/>
-  <xsl:text>.i;
-</xsl:text>
+  <xsl:text> = (</xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vy"/>
+    <xsl:with-param name="type" select="'int'"/>
+  </xsl:call-template>
+  <xsl:text> &lt;&lt; 24) &gt;&gt; 24;&nl;</xsl:text>
 </xsl:template>
 
 
 <xsl:template match="dex:int-to-char">
-  <xsl:text>    _r</xsl:text>
+  <xsl:text>    </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vx"/>
+    <xsl:with-param name="type" select="'int'"/>
+  </xsl:call-template>
   <xsl:value-of select="@vx"/>
-  <xsl:text>.i = _r</xsl:text>
-  <xsl:value-of select="@vy"/>
-  <xsl:text>.i &amp; 0xffff;
-</xsl:text>
+  <xsl:text> = </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vy"/>
+    <xsl:with-param name="type" select="'int'"/>
+  </xsl:call-template>
+  <xsl:text> &amp; 0xffff;&nl;</xsl:text>
+</xsl:template>
+
+
+<xsl:template match="dex:int-to-short">
+  <xsl:text>    </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vx"/>
+    <xsl:with-param name="type" select="'int'"/>
+  </xsl:call-template>
+  <xsl:value-of select="@vx"/>
+  <xsl:text> = (</xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vy"/>
+    <xsl:with-param name="type" select="'int'"/>
+  </xsl:call-template>
+  <xsl:text> &lt;&lt; 16) &gt;&gt; 16;&nl;</xsl:text>
+</xsl:template>
+
+
+<xsl:template match="dex:int-to-long">
+  <xsl:text>    </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vx"/>
+    <xsl:with-param name="type" select="'long'"/>
+  </xsl:call-template>
+  <xsl:text> = (long) </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vy"/>
+    <xsl:with-param name="type" select="'int'"/>
+  </xsl:call-template>
+  <xsl:text>;&nl;</xsl:text>
+</xsl:template>
+
+
+<xsl:template match="dex:int-to-float">
+  <xsl:text>    </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vx"/>
+    <xsl:with-param name="type" select="'float'"/>
+  </xsl:call-template>
+  <xsl:text> = (float) </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vy"/>
+    <xsl:with-param name="type" select="'int'"/>
+  </xsl:call-template>
+  <xsl:text>;&nl;</xsl:text>
+</xsl:template>
+
+
+<xsl:template match="dex:int-to-double">
+  <xsl:text>    </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vx"/>
+    <xsl:with-param name="type" select="'double'"/>
+  </xsl:call-template>
+  <xsl:text> = (double) </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vy"/>
+    <xsl:with-param name="type" select="'int'"/>
+  </xsl:call-template>
+  <xsl:text>;&nl;</xsl:text>
 </xsl:template>
 
 
 <xsl:template match="dex:long-to-int">
-  <xsl:text>    _r</xsl:text>
+  <xsl:text>    </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vx"/>
+    <xsl:with-param name="type" select="'int'"/>
+  </xsl:call-template>
   <xsl:value-of select="@vx"/>
-  <xsl:text>.i = (int) _r</xsl:text>
-  <xsl:value-of select="@vy"/>
-  <xsl:text>.l;
-</xsl:text>
+  <xsl:text> = (int) </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vy"/>
+    <xsl:with-param name="type" select="'long'"/>
+  </xsl:call-template>
+  <xsl:text>;&nl;</xsl:text>
 </xsl:template>
 
 
 <xsl:template match="dex:long-to-float">
-  <xsl:text>    _r</xsl:text>
+  <xsl:text>    </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vx"/>
+    <xsl:with-param name="type" select="'float'"/>
+  </xsl:call-template>
   <xsl:value-of select="@vx"/>
-  <xsl:text>.f = (float) _r</xsl:text>
-  <xsl:value-of select="@vy"/>
-  <xsl:text>.l;
-</xsl:text>
+  <xsl:text> = (float) </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vy"/>
+    <xsl:with-param name="type" select="'long'"/>
+  </xsl:call-template>
+  <xsl:text>;&nl;</xsl:text>
 </xsl:template>
 
 
-<xsl:template match="dex:double-to-float">
-  <xsl:text>    _r</xsl:text>
-  <xsl:value-of select="@vx"/>
-  <xsl:text>.f = (float) _r</xsl:text>
-  <xsl:value-of select="@vy"/>
-  <xsl:text>.d;
-</xsl:text>
+<xsl:template match="dex:long-to-double">
+  <xsl:text>    </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vx"/>
+    <xsl:with-param name="type" select="'double'"/>
+  </xsl:call-template>
+  <xsl:text> = (double) </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vy"/>
+    <xsl:with-param name="type" select="'long'"/>
+  </xsl:call-template>
+  <xsl:text>;&nl;</xsl:text>
 </xsl:template>
 
 
-<xsl:template match="dex:double-to-long">
-  <xsl:text>    _r</xsl:text>
-  <xsl:value-of select="@vx"/>
-  <xsl:text>.l = (long) _r</xsl:text>
-  <xsl:value-of select="@vy"/>
-  <xsl:text>.d;
-</xsl:text>
+<xsl:template match="dex:float-to-int">
+  <xsl:text>    </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vx"/>
+    <xsl:with-param name="type" select="'int'"/>
+  </xsl:call-template>
+  <xsl:text> = (int) </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vy"/>
+    <xsl:with-param name="type" select="'float'"/>
+  </xsl:call-template>
+  <xsl:text>;&nl;</xsl:text>
+</xsl:template>
+
+
+<xsl:template match="dex:float-to-long">
+  <xsl:text>    </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vx"/>
+    <xsl:with-param name="type" select="'long'"/>
+  </xsl:call-template>
+  <xsl:text> = (long) </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vy"/>
+    <xsl:with-param name="type" select="'float'"/>
+  </xsl:call-template>
+  <xsl:text>;&nl;</xsl:text>
+</xsl:template>
+
+
+<xsl:template match="dex:float-to-double">
+  <xsl:text>    </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vx"/>
+    <xsl:with-param name="type" select="'double'"/>
+  </xsl:call-template>
+  <xsl:text> = (double) </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vy"/>
+    <xsl:with-param name="type" select="'float'"/>
+  </xsl:call-template>
+  <xsl:text>;&nl;</xsl:text>
 </xsl:template>
 
 
 <xsl:template match="dex:double-to-int">
-  <xsl:text>    _r</xsl:text>
-  <xsl:value-of select="@vx"/>
-  <xsl:text>.i = (int) _r</xsl:text>
-  <xsl:value-of select="@vy"/>
-  <xsl:text>.d;
-</xsl:text>
+  <xsl:text>    </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vx"/>
+    <xsl:with-param name="type" select="'int'"/>
+  </xsl:call-template>
+  <xsl:text> = (int) </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vy"/>
+    <xsl:with-param name="type" select="'double'"/>
+  </xsl:call-template>
+  <xsl:text>;&nl;</xsl:text>
+</xsl:template>
+
+
+<xsl:template match="dex:double-to-float">
+  <xsl:text>    </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vx"/>
+    <xsl:with-param name="type" select="'float'"/>
+  </xsl:call-template>
+  <xsl:text> = (float) </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vy"/>
+    <xsl:with-param name="type" select="'double'"/>
+  </xsl:call-template>
+  <xsl:text>;&nl;</xsl:text>
+</xsl:template>
+
+
+<xsl:template match="dex:double-to-long">
+  <xsl:text>    </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vx"/>
+    <xsl:with-param name="type" select="'long'"/>
+  </xsl:call-template>
+  <xsl:text> = (long) </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vy"/>
+    <xsl:with-param name="type" select="'double'"/>
+  </xsl:call-template>
+  <xsl:text>;&nl;</xsl:text>
 </xsl:template>
 
 
@@ -2293,32 +2446,92 @@
 
 
 <xsl:template match="dex:neg-int">
-  <xsl:text>    _r</xsl:text>
-  <xsl:value-of select="@vx"/>
-  <xsl:text>.i = -_r</xsl:text>
-  <xsl:value-of select="@vy"/>
-  <xsl:text>.i;
-</xsl:text>
+  <xsl:text>    </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vx"/>
+    <xsl:with-param name="type" select="'int'"/>
+  </xsl:call-template>
+  <xsl:text> = -</xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vy"/>
+    <xsl:with-param name="type" select="'int'"/>
+  </xsl:call-template>
+  <xsl:text>;&nl;</xsl:text>
+</xsl:template>
+
+
+<xsl:template match="dex:neg-long">
+  <xsl:text>    </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vx"/>
+    <xsl:with-param name="type" select="'long'"/>
+  </xsl:call-template>
+  <xsl:text> = -</xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vy"/>
+    <xsl:with-param name="type" select="'long'"/>
+  </xsl:call-template>
+  <xsl:text>;&nl;</xsl:text>
 </xsl:template>
 
 
 <xsl:template match="dex:neg-float">
-  <xsl:text>    _r</xsl:text>
-  <xsl:value-of select="@vx"/>
-  <xsl:text>.f = -_r</xsl:text>
-  <xsl:value-of select="@vy"/>
-  <xsl:text>.f;
-</xsl:text>
+  <xsl:text>    </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vx"/>
+    <xsl:with-param name="type" select="'float'"/>
+  </xsl:call-template>
+  <xsl:text> = -</xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vy"/>
+    <xsl:with-param name="type" select="'float'"/>
+  </xsl:call-template>
+  <xsl:text>;&nl;</xsl:text>
 </xsl:template>
 
 
 <xsl:template match="dex:neg-double">
-  <xsl:text>    _r</xsl:text>
-  <xsl:value-of select="@vx"/>
-  <xsl:text>.d = -_r</xsl:text>
-  <xsl:value-of select="@vy"/>
-  <xsl:text>.d;
-</xsl:text>
+  <xsl:text>    </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vx"/>
+    <xsl:with-param name="type" select="'double'"/>
+  </xsl:call-template>
+  <xsl:text> = -</xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vy"/>
+    <xsl:with-param name="type" select="'double'"/>
+  </xsl:call-template>
+  <xsl:text>;&nl;</xsl:text>
+</xsl:template>
+
+
+<xsl:template match="dex:not-int">
+  <xsl:text>    </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vx"/>
+    <xsl:with-param name="type" select="'int'"/>
+  </xsl:call-template>
+  <xsl:text> = ~</xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vy"/>
+    <xsl:with-param name="type" select="'int'"/>
+  </xsl:call-template>
+  <xsl:text>;&nl;</xsl:text>
+</xsl:template>
+
+
+<xsl:template match="dex:not-long">
+  <xsl:text>    </xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vx"/>
+    <xsl:with-param name="type" select="'long'"/>
+  </xsl:call-template>
+  <xsl:text> = ~</xsl:text>
+  <xsl:call-template name="emitRegisterName">
+    <xsl:with-param name="num" select="@vy"/>
+    <xsl:with-param name="type" select="'long'"/>
+  </xsl:call-template>
+  <xsl:text>;&nl;</xsl:text>
 </xsl:template>
 
 
@@ -2667,8 +2880,10 @@
 </xsl:template>
 
 
-<xsl:template match="dex:aget|dex:aget-wide|dex:aget-boolean|dex:aget-byte|dex:aget-char|dex:aget-short">
+<xsl:template match="dex:aget|dex:aget-wide|dex:aget-boolean
+		     |dex:aget-byte|dex:aget-char|dex:aget-short">
   <xsl:text>    </xsl:text>
+  <!-- destination -->
   <xsl:call-template name="emitRegisterName">
     <xsl:with-param name="num" select="@vx"/>
     <xsl:with-param name="type" select="@vx-type"/>
@@ -2676,6 +2891,7 @@
   <xsl:text> = ((</xsl:text>
   <xsl:value-of select="vm:getXmlvmArray(vm:getArrayBaseType(@vy-type))"/>
   <xsl:text>) </xsl:text>
+  <!-- array reference -->
   <xsl:call-template name="emitRegisterName">
     <xsl:with-param name="num" select="@vy"/>
     <xsl:with-param name="type" select="'obj'"/>
@@ -2683,6 +2899,7 @@
   <xsl:text>).</xsl:text>
   <xsl:text>get</xsl:text>
   <xsl:text>(</xsl:text>
+  <!-- index -->
   <xsl:call-template name="emitRegisterName">
     <xsl:with-param name="num" select="@vz"/>
     <xsl:with-param name="type" select="'int'"/>
@@ -2715,10 +2932,12 @@
 </xsl:template>
 
 
-<xsl:template match="dex:aput|dex:aput-wide|dex:aput-boolean|dex:aput-char|dex:aput-byte|dex:aput-short">
+<xsl:template match="dex:aput|dex:aput-wide|dex:aput-boolean
+		     |dex:aput-char|dex:aput-byte|dex:aput-short">
   <xsl:text>    ((</xsl:text>
   <xsl:value-of select="vm:getXmlvmArray(vm:getArrayBaseType(@vy-type))"/>
   <xsl:text>) </xsl:text>
+  <!-- array reference -->
   <xsl:call-template name="emitRegisterName">
     <xsl:with-param name="num" select="@vy"/>
     <xsl:with-param name="type" select="'obj'"/>
@@ -2726,7 +2945,7 @@
   <xsl:text>).</xsl:text>
   <xsl:text>set</xsl:text>
   <xsl:text>(</xsl:text>
-  <!-- new value -->
+  <!-- source (new value) -->
   <xsl:call-template name="emitRegisterName">
     <xsl:with-param name="num" select="@vx"/>
     <xsl:with-param name="type" select="@vx-type"/>
@@ -2790,13 +3009,13 @@
   <xsl:variable name="valSuffix">
     <xsl:choose>
       <xsl:when test="$baseType='float'">
-	<xsl:text>f</xsl:text>
+	<xsl:text>F</xsl:text>
       </xsl:when>
       <xsl:when test="$baseType='double'">
-	<xsl:text>d</xsl:text>
+	<xsl:text>D</xsl:text>
       </xsl:when>
       <xsl:when test="$baseType='long'">
-	<xsl:text>l</xsl:text>
+	<xsl:text>L</xsl:text>
       </xsl:when>
     </xsl:choose>
   </xsl:variable>
@@ -2910,7 +3129,6 @@
 </xsl:template>
 
 
-
 <xsl:template match="dex:move|dex:move-from16|dex:move-wide|dex:move-wide-from16">
   <xsl:text>    </xsl:text>
   <xsl:call-template name="emitRegisterName">
@@ -2924,6 +3142,7 @@
   </xsl:call-template>
   <xsl:text>;&nl;</xsl:text>
 </xsl:template>
+
 
 <xsl:template match="dex:move-object|dex:move-object-from16">
   <xsl:text>    </xsl:text>
@@ -2940,9 +3159,6 @@
 </xsl:template>
 
 
-
-
-
 <xsl:template name="appendDexSignature">
   <xsl:text>__</xsl:text>
   <xsl:choose>
@@ -2956,6 +3172,59 @@
 </xsl:template>
 
 
+<!--
+<xsl:template match="vm:tmp-equals-r">
+	<xsl:text>    </xsl:text>
+	<xsl:call-template name="emitRegisterName">
+		<xsl:with-param name="num" select="'tmp'"/>
+  		<xsl:with-param name="type" select="'obj'"/>  	
+	</xsl:call-template>
+	<xsl:text> = </xsl:text>
+	<xsl:call-template name="emitRegisterName">
+		<xsl:with-param name="num" select="@reg"/>
+  		<xsl:with-param name="type" select="'obj'"/>  	
+	</xsl:call-template>
+	<xsl:text>;&nl;</xsl:text>
+</xsl:template>
+-->
+
+<!--
+<xsl:template match="vm:comment">
+	<xsl:text>    //INFO: </xsl:text>
+	<xsl:value-of select="@text" />
+	<xsl:text>&nl;  </xsl:text>
+</xsl:template>
+
+<xsl:template match="vm:reg-release">
+</xsl:template>
+
+<xsl:template match="vm:reg-retain">
+</xsl:template>
+
+<xsl:template match="vm:i-release">
+</xsl:template>
+
+<xsl:template match="vm:s-release">
+</xsl:template>
+-->
+
+
+<xsl:template match="vm:assert-red-class">
+  <xsl:text>// Red class access removed: </xsl:text>
+  <xsl:value-of select="@type"/>
+  <xsl:text> </xsl:text>
+  <xsl:value-of select="@member"/>
+  <xsl:text>&nl;</xsl:text>
+  <xsl:text>throw new </xsl:text>
+  <xsl:value-of select="vm:getType('org.xmlvm.NotYetImplementedException')"/>
+  <xsl:text>(&quot;</xsl:text>
+  <xsl:text>Red class access removed: </xsl:text>
+  <xsl:value-of select="@type"/>
+  <xsl:text> </xsl:text>
+  <xsl:value-of select="@member"/>
+  <xsl:text>&quot;);&nl;</xsl:text>
+</xsl:template>
+
 
 <!--
    Default template. If the XMLVM file should contain an instruction
@@ -2964,10 +3233,11 @@
    to the output stream.
 -->
 <xsl:template match="*">
-  <xsl:text>      ERROR("</xsl:text>
+  <xsl:text>      throw new </xsl:text>
+  <xsl:value-of select="vm:getType('org.xmlvm.NotYetImplementedException')"/>
+  <xsl:text>(&quot;</xsl:text>
   <xsl:value-of select="name()"/>
-    <xsl:text>");
-</xsl:text>
+  <xsl:text>&quot;);&nl;</xsl:text>
   <xsl:message select="."/>
 </xsl:template>
 

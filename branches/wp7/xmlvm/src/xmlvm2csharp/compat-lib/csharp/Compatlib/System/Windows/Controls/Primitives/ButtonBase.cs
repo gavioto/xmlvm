@@ -21,7 +21,7 @@ public void ClickHandler(object sender, global::System.Windows.RoutedEventArgs a
 {
     Compatlib.System.Windows.RoutedEventArgs newArgs = new Compatlib.System.Windows.RoutedEventArgs();
     newArgs.args = args;
-    this.Click.__fire(this, newArgs);
+    this.Click._1_1fire(this, newArgs);
 }
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.Controls.Primitives.ButtonBase]
 

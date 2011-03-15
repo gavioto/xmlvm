@@ -37,7 +37,7 @@ public void StartUpHandler(object sender, global::System.Windows.StartupEventArg
 {
     Compatlib.System.Windows.StartupEventArgs newArgs = new Compatlib.System.Windows.StartupEventArgs();
     newArgs.args = args;
-    this.Startup.__fire(this, newArgs);
+    this.Startup._1_1fire(this, newArgs);
 }
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.Application]
 

@@ -24,6 +24,8 @@ package Compatlib.System.Windows.Controls;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.xmlvm.XMLVMIgnore;
+
 import Compatlib.System.Collections.Generics.IEnumerator;
 import Compatlib.System.Windows.DependencyObject;
 
@@ -42,22 +44,31 @@ public class PresentationFrameworkCollection<T> extends DependencyObject {
 	}
 	
 	public IEnumerator<T> GetEnumerator() {
-		return new PresentationFrameworkCollectionEnumerator(); 
+		return new PresentationFrameworkCollectionEnumerator(elements); 
 	}
 	
 	private class PresentationFrameworkCollectionEnumerator implements IEnumerator<T> {
 
 		private int index;
+		private List<T> elements;
+		
+		/**
+         * 
+         */
+		@XMLVMIgnore
+        public PresentationFrameworkCollectionEnumerator(List<T> elements) {
+            this.elements = elements;
+        }
 		
 		@Override
 		public T getCurrent() {
-			return elements.get(index);
+			return this.elements.get(index);
 		}
 
 		@Override
 		public boolean MoveNext() {
 			index++;
-			return index < elements.size();
+			return index < this.elements.size();
 		}
 	};
 	

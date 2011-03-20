@@ -21,16 +21,15 @@
 package org.xmlvm.proc.out;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.xmlvm.Log;
 import org.xmlvm.main.Arguments;
+import org.xmlvm.proc.ResourcesPhase1;
+import org.xmlvm.proc.ResourcesPhase2;
 import org.xmlvm.proc.XmlvmProcessImpl;
 import org.xmlvm.proc.XmlvmProcessor;
 import org.xmlvm.proc.out.build.MakeFile;
 import org.xmlvm.proc.out.build.XCodeFile;
-import org.xmlvm.util.FileUtil;
 import org.xmlvm.util.JarUtil;
 import org.xmlvm.util.universalfile.UniversalFile;
 import org.xmlvm.util.universalfile.UniversalFileCreator;
@@ -40,13 +39,12 @@ import org.xmlvm.util.universalfile.UniversalFileCreator;
  * compatibility classes necessary if the original application was written for
  * the Android API.
  */
-public class Android2IPhoneOutputProcess extends XmlvmProcessImpl<IPhoneOutputProcess> {
+public class Android2IPhoneOutputProcess extends XmlvmProcessImpl {
     private static final String PLATFORM                      = "iphone";
     public static final String  ANDROID_SRC_LIB               = IPhoneOutputProcess.IPHONE_SRC
                                                                       + "/lib/android";
 
     private static final String ANDROID_IPHONE_COMPAT_LIB_JAR = "/iphone/android-compat-lib.jar";
-    private List<OutputFile>    result                        = new ArrayList<OutputFile>();
 
 
     public Android2IPhoneOutputProcess(Arguments arguments) {
@@ -56,19 +54,16 @@ public class Android2IPhoneOutputProcess extends XmlvmProcessImpl<IPhoneOutputPr
     }
 
     @Override
-    public List<OutputFile> getOutputFiles() {
-        return result;
+    public boolean processPhase1(ResourcesPhase1 resources) {
+        return true;
     }
 
     @Override
-    public boolean process() {
-        Log.debug("Processing Android2IPhoneOutputProcess");
-        List<IPhoneOutputProcess> preprocesses = preprocess();
-        for (IPhoneOutputProcess preprocess : preprocesses) {
-            for (OutputFile in : preprocess.getOutputFiles()) {
-                if (!(in.getFileName().equals("Makefile") || in.getFileName().equals(
-                        "project.pbxproj")))
-                    result.add(in);
+    public boolean processPhase2(ResourcesPhase2 resources) {
+        for (OutputFile file : resources.getOutputFiles()) {
+            if (file.getFileName().equals("Makefile")
+                    || file.getFileName().equals("project.pbxproj")) {
+                resources.removeOutputFile(file);
             }
         }
 
@@ -82,7 +77,7 @@ public class Android2IPhoneOutputProcess extends XmlvmProcessImpl<IPhoneOutputPr
                     ANDROID_IPHONE_COMPAT_LIB_JAR, null);
             OutputFile compatLib = new OutputFile(compatLibJar);
             compatLib.setLocation(arguments.option_out() + ANDROID_SRC_LIB);
-            result.add(compatLib);
+            resources.addOutputFile(compatLib);
         } else {
             // If the jar is not present (typical non-xmlvm.jar scenario) then
             // we need to cross-compile the android compatibility library first,
@@ -95,7 +90,7 @@ public class Android2IPhoneOutputProcess extends XmlvmProcessImpl<IPhoneOutputPr
                     "--out=" + arguments.option_out() + ANDROID_SRC_LIB, "--target=objc" });
             XmlvmProcessor subProcessor = new XmlvmProcessor(args);
             if (subProcessor.process()) {
-                result.addAll(subProcessor.getTargetProcess().getOutputFiles());
+                resources.addOutputFiles(subProcessor.getCompilationResources().getOutputFiles());
             } else {
                 Log.error("Sub-Process for processing android iphone compat lib has failed.");
                 return false;
@@ -104,11 +99,10 @@ public class Android2IPhoneOutputProcess extends XmlvmProcessImpl<IPhoneOutputPr
 
         // Create various buildfiles
         MakeFile makefile = new MakeFile(PLATFORM);
-        Log.error(makefile.composeBuildFiles(result, arguments));
-        XCodeFile xcode = new XCodeFile();
-        Log.error(xcode.composeBuildFiles(result, arguments));
+        resources.addOutputFile(makefile.composeBuildFiles(arguments));
+        XCodeFile xcode = new XCodeFile(resources.getOutputFiles());
+        resources.addOutputFile(xcode.composeBuildFiles(arguments));
 
         return true;
     }
-
 }

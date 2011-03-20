@@ -20,22 +20,19 @@
 
 package org.xmlvm.proc.out;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.xmlvm.Log;
 import org.xmlvm.main.Arguments;
+import org.xmlvm.proc.ResourcesPhase1;
+import org.xmlvm.proc.ResourcesPhase2;
 import org.xmlvm.proc.XmlvmProcessImpl;
 import org.xmlvm.proc.XmlvmResource;
-import org.xmlvm.proc.XmlvmResourceProvider;
 import org.xmlvm.proc.XsltRunner;
 
 /**
  * This process takes XMLVM and turns it into Python code.
  */
-public class PythonOutputProcess extends XmlvmProcessImpl<XmlvmResourceProvider> {
+public class PythonOutputProcess extends XmlvmProcessImpl {
     private static final String PY_EXTENSION = ".py";
-    private List<OutputFile>    result       = new ArrayList<OutputFile>();
 
 
     public PythonOutputProcess(Arguments arguments) {
@@ -44,22 +41,18 @@ public class PythonOutputProcess extends XmlvmProcessImpl<XmlvmResourceProvider>
     }
 
     @Override
-    public List<OutputFile> getOutputFiles() {
-        return result;
+    public boolean processPhase1(ResourcesPhase1 resources) {
+        return true;
     }
 
     @Override
-    public boolean process() {
-        List<XmlvmResourceProvider> preprocesses = preprocess();
-        for (XmlvmResourceProvider process : preprocesses) {
-            List<XmlvmResource> xmlvmResources = process.getXmlvmResources();
-            for (XmlvmResource xmlvm : xmlvmResources) {
-                Log.debug("PythonOutputProcess: Processing " + xmlvm.getName());
-                OutputFile file = generatePython(xmlvm);
-                file.setLocation(arguments.option_out());
-                file.setFileName(xmlvm.getName() + PY_EXTENSION);
-                result.add(file);
-            }
+    public boolean processPhase2(ResourcesPhase2 resources) {
+        for (XmlvmResource xmlvm : resources.getResources()) {
+            Log.debug("PythonOutputProcess: Processing " + xmlvm.getName());
+            OutputFile file = generatePython(xmlvm);
+            file.setLocation(arguments.option_out());
+            file.setFileName(xmlvm.getName() + PY_EXTENSION);
+            resources.addOutputFile(file);
         }
         return true;
     }

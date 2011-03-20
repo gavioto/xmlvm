@@ -21,15 +21,15 @@
 package org.xmlvm.proc.out;
 
 import java.io.FileInputStream;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.jdom.Document;
 import org.jdom.input.SAXBuilder;
+import org.xmlvm.Log;
 import org.xmlvm.main.Arguments;
+import org.xmlvm.proc.ResourcesPhase1;
+import org.xmlvm.proc.ResourcesPhase2;
 import org.xmlvm.proc.XmlvmProcessImpl;
 import org.xmlvm.proc.XmlvmResource;
-import org.xmlvm.proc.XmlvmResourceProvider;
 import org.xmlvm.proc.in.InputProcess;
 import org.xmlvm.proc.in.InputProcess.XmlvmInputProcess;
 
@@ -39,11 +39,7 @@ import org.xmlvm.proc.in.InputProcess.XmlvmInputProcess;
  * TODO(Sascha): This produces {@link XmlvmResource}s with wrong name, type and
  * super type name.
  */
-public class XmlvmToXmlvmProcess extends XmlvmProcessImpl<XmlvmInputProcess> implements
-        XmlvmResourceProvider {
-
-    private List<XmlvmResource> xmlvmResources = new ArrayList<XmlvmResource>();
-
+public class XmlvmToXmlvmProcess extends XmlvmProcessImpl {
 
     public XmlvmToXmlvmProcess(Arguments arguments) {
         super(arguments);
@@ -51,36 +47,27 @@ public class XmlvmToXmlvmProcess extends XmlvmProcessImpl<XmlvmInputProcess> imp
     }
 
     @Override
-    public boolean process() {
-        List<XmlvmInputProcess> preProcesses = preprocess();
-
-        for (XmlvmInputProcess preProcess : preProcesses) {
+    public boolean processPhase1(ResourcesPhase1 resources) {
+        for (OutputFile file : resources.getOutputFiles()) {
             Document doc = null;
             SAXBuilder builder = new SAXBuilder();
             FileInputStream in;
             try {
-                in = new FileInputStream(preProcess.getInputFile().getPath());
+                in = new FileInputStream(file.getFullPath());
                 doc = builder.build(in);
             } catch (Exception e) {
                 e.printStackTrace();
             }
 
             XmlvmResource resource = new XmlvmResource(org.xmlvm.proc.XmlvmResource.Type.DEX, doc);
-            xmlvmResources.add(resource);
+            resources.addResource(resource);
         }
-
-        return true;
+        return false;
     }
 
     @Override
-    public List<XmlvmResource> getXmlvmResources() {
-        return xmlvmResources;
+    public boolean processPhase2(ResourcesPhase2 resources) {
+        Log.error("Unimplemented: processPhase2 in " + this.getClass().getSimpleName());
+        return false;
     }
-
-    @Override
-    public List<OutputFile> getOutputFiles() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
 }

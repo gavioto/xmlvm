@@ -21,6 +21,7 @@
 package org.xmlvm.proc.out;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -29,10 +30,7 @@ import java.util.Set;
 
 import org.xmlvm.Log;
 import org.xmlvm.main.Arguments;
-import org.xmlvm.main.Targets;
 import org.xmlvm.proc.DelayedXmlvmSerializationProvider;
-import org.xmlvm.proc.ResourcesPhase1;
-import org.xmlvm.proc.ResourcesPhase2;
 import org.xmlvm.proc.XmlvmProcessImpl;
 import org.xmlvm.proc.XmlvmResource;
 import org.xmlvm.proc.XmlvmResource.XmlvmField;
@@ -41,6 +39,7 @@ import org.xmlvm.proc.XmlvmResource.XmlvmMemberReadWrite;
 import org.xmlvm.proc.XmlvmResource.XmlvmMethod;
 import org.xmlvm.proc.XmlvmResource.XmlvmVtable;
 import org.xmlvm.proc.lib.LibraryLoader;
+import org.xmlvm.proc.XmlvmResourceProvider;
 
 /**
  * This process takes XMLVM resources and modifies them by adding table
@@ -48,13 +47,13 @@ import org.xmlvm.proc.lib.LibraryLoader;
  * emits C and can be useful for any target language that doesn't support
  * classes or similar OOP concepts.
  */
-public class VtableOutputProcess extends XmlvmProcessImpl {
+public class VtableOutputProcess extends XmlvmProcessImpl<XmlvmResourceProvider> {
     private final static String        TAG                    = VtableOutputProcess.class
                                                                       .getSimpleName();
+    private final static boolean       DETAILED_LOGGING       = false;
     private final static String        VTABLE_ENDING          = ".vtable.xmlvm";
     private Map<String, XmlvmResource> resourcePool           = new HashMap<String, XmlvmResource>();
     private Map<String, Vtable>        vtables                = new HashMap<String, Vtable>();
-    private final Arguments            arguments;
 
     /**
      * This variable caches already loaded resources. I would have expected the
@@ -177,18 +176,39 @@ public class VtableOutputProcess extends XmlvmProcessImpl {
      */
     public VtableOutputProcess(Arguments arguments) {
         super(arguments);
-        this.arguments = arguments;
         addSupportedInput(RecursiveResourceLoadingProcess.class);
 
         // Add empty class name that acts as a base class for java.lang.Object
         vtables.put("", new Vtable());
     }
 
+    public Collection<XmlvmResource> getXmlvmResources() {
+        return resourcePool.values();
+    }
+
     @Override
-    public boolean processPhase1(ResourcesPhase1 resources) {
-        for (XmlvmResource xmlvm : resources.getResources()) {
-            if (xmlvm != null) {
-                resourcePool.put(xmlvm.getFullName(), xmlvm);
+    public List<OutputFile> getOutputFiles() {
+        List<OutputFile> result = new ArrayList<OutputFile>();
+        for (XmlvmResource resource : getXmlvmResources()) {
+            OutputFile file = new OutputFile(new DelayedXmlvmSerializationProvider(
+                    resource.getXmlvmDocument()));
+            file.setLocation(arguments.option_out());
+            file.setFileName(resource.getFullName() + VTABLE_ENDING);
+            result.add(file);
+        }
+        return result;
+    }
+
+    @Override
+    public boolean process() {
+        List<XmlvmResourceProvider> preprocesses = preprocess();
+        // Collect all XmlvmResource instances.
+        for (XmlvmResourceProvider process : preprocesses) {
+            List<XmlvmResource> xmlvmResources = process.getXmlvmResources();
+            for (XmlvmResource xmlvm : xmlvmResources) {
+                if (xmlvm != null) {
+                    resourcePool.put(xmlvm.getFullName(), xmlvm);
+                }
             }
         }
 
@@ -199,21 +219,6 @@ public class VtableOutputProcess extends XmlvmProcessImpl {
             adjustTypes();
         }
 
-        return true;
-    }
-
-    @Override
-    public boolean processPhase2(ResourcesPhase2 resources) {
-        // Only generate these files, if vtable is the target process.
-        if (arguments.option_target().equals(Targets.VTABLE)) {
-            for (XmlvmResource resource : resources.getResources()) {
-                OutputFile file = new OutputFile(new DelayedXmlvmSerializationProvider(
-                        resource.getXmlvmDocument()));
-                file.setLocation(arguments.option_out());
-                file.setFileName(resource.getFullName() + VTABLE_ENDING);
-                resources.addOutputFile(file);
-            }
-        }
         return true;
     }
 
@@ -269,8 +274,8 @@ public class VtableOutputProcess extends XmlvmProcessImpl {
             addAllBaseInterfaceVtables(thisClassVtable, resource);
         }
 
-        Log.debug("Size of vtable for class " + resource.getFullName() + ": "
-                + thisClassVtable.virtualMethods.size());
+        // Log.debug("Size of vtable for class " + resource.getFullName() + ": "
+        // + thisClassVtable.virtualMethods.size());
 
         resource.setVtableSize(thisClassVtable.getVtableSize());
         vtables.put(resource.getFullName(), thisClassVtable);
@@ -279,16 +284,17 @@ public class VtableOutputProcess extends XmlvmProcessImpl {
         // implements
         if (!resource.isInterface()) {
             Set<XmlvmResource> interfaces = getAllImplementedInterfaces(resource);
-            Log.debug("Implemented interfaces: ");
+            // Log.debug("Implemented interfaces: ");
             for (XmlvmResource iface : interfaces) {
-                Log.debug("    " + iface.getFullName());
+                // Log.debug("    " + iface.getFullName());
                 Vtable ifaceVtable = vtables.get(iface.getFullName());
                 XmlvmVtable vt = resource.createVtable("interface-vtable", iface.getFullName(),
                         ifaceVtable.getVtableSize());
                 for (XmlvmMethod m : iface.getMethods()) {
                     vt.addMapping(ifaceVtable.getVtableIndex(m), thisClassVtable.getVtableIndex(m));
-                    Log.debug("        " + m.getName() + ": " + ifaceVtable.getVtableIndex(m)
-                            + " = " + thisClassVtable.getVtableIndex(m));
+                    // Log.debug("        " + m.getName() + ": " +
+                    // ifaceVtable.getVtableIndex(m)
+                    // + " = " + thisClassVtable.getVtableIndex(m));
                 }
             }
         }
@@ -538,7 +544,8 @@ public class VtableOutputProcess extends XmlvmProcessImpl {
             return resource;
         }
 
-        LibraryLoader loader = new LibraryLoader(arguments);
+        LibraryLoader loader = new LibraryLoader(new Arguments(new String[] { "--in=foo",
+                "--out=bar" }));
         resource = loader.load(className);
         alreadyLoadedResources.put(className, resource);
         return resource;

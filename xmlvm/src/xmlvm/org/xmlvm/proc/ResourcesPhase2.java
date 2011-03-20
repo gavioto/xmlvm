@@ -20,15 +20,27 @@
 
 package org.xmlvm.proc;
 
-import java.util.List;
+import java.util.Collection;
+
+import org.xmlvm.proc.out.OutputFile;
 
 /**
- * Defines classes from which a list of {@link XmlvmResource}s can be obtained.
+ * The interface of {@link CompilationResources} that is used during the first
+ * phase.
  */
-public interface XmlvmResourceProvider {
+public interface ResourcesPhase2 {
 
-    /**
-     * Returns a list of {@link XmlvmResource}s.
-     */
-    public List<XmlvmResource> getXmlvmResources();
+    public Collection<XmlvmResource> getResources();
+
+    public boolean containsResource(String resourceName);
+
+    public void addOutputFile(OutputFile file);
+
+    public void addOutputFiles(Collection<OutputFile> files);
+    
+    public Collection<OutputFile> getOutputFiles();
+    
+    public void removeOutputFile(OutputFile file);
+    
+    public void removeAllOutputFiles();
 }

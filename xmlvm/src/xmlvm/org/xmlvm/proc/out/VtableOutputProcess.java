@@ -205,7 +205,7 @@ public class VtableOutputProcess extends XmlvmProcessImpl {
     @Override
     public boolean processPhase2(ResourcesPhase2 resources) {
         // Only generate these files, if vtable is the target process.
-        if (arguments.option_target().equals(Targets.VTABLE)) {
+        if (isTargetProcess) {
             for (XmlvmResource resource : resources.getResources()) {
                 OutputFile file = new OutputFile(new DelayedXmlvmSerializationProvider(
                         resource.getXmlvmDocument()));

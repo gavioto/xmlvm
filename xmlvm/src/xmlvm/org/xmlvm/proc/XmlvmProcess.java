@@ -127,4 +127,9 @@ public interface XmlvmProcess {
      * Runs {@link #postProcess()} on all preprocesses that have been processed.
      */
     public boolean postProcessPreProcesses();
+
+    /**
+     * Sets whether this process is the target process.
+     */
+    public void setIsTargetProcess(boolean isTargetProcess);
 }

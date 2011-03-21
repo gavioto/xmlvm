@@ -294,7 +294,7 @@ public class DEXmlvmOutputProcess extends XmlvmProcessImpl {
                     cache.put(resourceName, lastModified, outputFile.getDataAsBytes());
                 }
             }
-            if (outputFile != null) {
+            if (isTargetProcess && outputFile != null) {
                 outputFile.setOrigin(preOutputFile.getOrigin());
                 resources.addOutputFile(outputFile);
             }

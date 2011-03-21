@@ -118,6 +118,7 @@ public class XmlvmProcessor {
      */
     public void setTargetProcess(XmlvmProcess process) {
         targetProcess = process;
+        targetProcess.setIsTargetProcess(true);
     }
 
     /**

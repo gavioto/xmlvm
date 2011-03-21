@@ -74,6 +74,9 @@ public abstract class XmlvmProcessImpl implements XmlvmProcess {
     protected Arguments                 arguments;
 
     protected boolean                   isProcessed     = false;
+    
+    /** Whether this process is the target process. */
+    protected boolean                   isTargetProcess = false;
 
 
     public XmlvmProcessImpl(Arguments arguments) {
@@ -271,6 +274,11 @@ public abstract class XmlvmProcessImpl implements XmlvmProcess {
         // post-processes and all post-processes have it cached, then we don't
         // have to process the resource.
         return false;
+    }
+
+    @Override
+    public void setIsTargetProcess(boolean isTargetProcess) {
+        this.isTargetProcess = isTargetProcess;
     }
 
     private boolean isProcessPreOfCorrectType(XmlvmProcess process) {

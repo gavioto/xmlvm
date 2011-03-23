@@ -1,0 +1,42 @@
+#ifndef __ORG_XMLVM_IPHONE_CAACTION__
+#define __ORG_XMLVM_IPHONE_CAACTION__
+
+#include "xmlvm.h"
+#include "java_lang_Object.h"
+
+// Circular references:
+#ifndef XMLVM_FORWARD_DECL_java_lang_Object
+#define XMLVM_FORWARD_DECL_java_lang_Object
+XMLVM_FORWARD_DECL(java_lang_Object)
+#endif
+#ifndef XMLVM_FORWARD_DECL_org_xmlvm_iphone_NSObject
+#define XMLVM_FORWARD_DECL_org_xmlvm_iphone_NSObject
+XMLVM_FORWARD_DECL(org_xmlvm_iphone_NSObject)
+#endif
+#ifndef XMLVM_FORWARD_DECL_java_util_Map
+#define XMLVM_FORWARD_DECL_java_util_Map
+XMLVM_FORWARD_DECL(java_util_Map)
+#endif
+#ifndef XMLVM_FORWARD_DECL_java_lang_String
+#define XMLVM_FORWARD_DECL_java_lang_String
+XMLVM_FORWARD_DECL(java_lang_String)
+#endif
+
+XMLVM_DEFINE_CLASS(org_xmlvm_iphone_CAAction, 12)
+
+extern JAVA_OBJECT __CLASS_org_xmlvm_iphone_CAAction;
+extern JAVA_OBJECT __CLASS_org_xmlvm_iphone_CAAction_ARRAYTYPE;
+
+#ifndef XMLVM_FORWARD_DECL_org_xmlvm_iphone_CAAction
+#define XMLVM_FORWARD_DECL_org_xmlvm_iphone_CAAction
+typedef struct org_xmlvm_iphone_CAAction org_xmlvm_iphone_CAAction;
+#endif
+
+#define XMLVM_VTABLE_SIZE_org_xmlvm_iphone_CAAction 12
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_CAAction_runAction___java_lang_String_org_xmlvm_iphone_NSObject_java_util_Map 11
+
+void __INIT_FOR_CLASS_org_xmlvm_iphone_CAAction(__TIB_DEFINITION_TEMPLATE** interface);
+void __INIT_IMPL_FOR_CLASS_org_xmlvm_iphone_CAAction(__TIB_DEFINITION_TEMPLATE** interface);
+void __INIT_org_xmlvm_iphone_CAAction();
+
+#endif

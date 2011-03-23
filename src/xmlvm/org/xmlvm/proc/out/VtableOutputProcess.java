@@ -29,7 +29,6 @@ import java.util.Set;
 
 import org.xmlvm.Log;
 import org.xmlvm.main.Arguments;
-import org.xmlvm.main.Targets;
 import org.xmlvm.proc.DelayedXmlvmSerializationProvider;
 import org.xmlvm.proc.ResourcesPhase1;
 import org.xmlvm.proc.ResourcesPhase2;
@@ -178,7 +177,7 @@ public class VtableOutputProcess extends XmlvmProcessImpl {
     public VtableOutputProcess(Arguments arguments) {
         super(arguments);
         this.arguments = arguments;
-        addSupportedInput(RecursiveResourceLoadingProcess.class);
+        addSupportedInput(RemoveDuplicateMethodsOutputProcess.class);
 
         // Add empty class name that acts as a base class for java.lang.Object
         vtables.put("", new Vtable());

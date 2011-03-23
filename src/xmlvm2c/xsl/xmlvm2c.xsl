@@ -36,6 +36,7 @@
 <xsl:param name="pass">emitHeader</xsl:param>
 <xsl:param name="header">xmlvm.h</xsl:param>
 <xsl:param name="genWrapper">false</xsl:param>
+<xsl:param name="maxArrayDimension">3</xsl:param>
 
 <xsl:output method="text" indent="no"/>
 
@@ -74,7 +75,7 @@ int main(int argc, char* argv[])
     <xsl:value-of select="vm:fixname($cl/@package)"/>
     <xsl:text>_</xsl:text>
     <xsl:value-of select="$cl/@name"/>
-    <xsl:text>_main___java_lang_String_ARRAYTYPE(JAVA_NULL);
+    <xsl:text>_main___java_lang_String_1ARRAY(JAVA_NULL);
     // Call pthread_exit(0) so that the main thread does not terminate until
     // the other threads have finished
     pthread_exit(0);
@@ -177,9 +178,12 @@ int main(int argc, char* argv[])
     <xsl:text>extern JAVA_OBJECT __CLASS_</xsl:text>
     <xsl:value-of select="$clname"/>
     <xsl:text>;&nl;</xsl:text>
-    <xsl:text>extern JAVA_OBJECT __CLASS_</xsl:text>
-    <xsl:value-of select="$clname"/>
-    <xsl:text>_ARRAYTYPE;&nl;&nl;</xsl:text>
+    <xsl:call-template name="emitArrayTypeCode">
+      <xsl:with-param name="pass" select="'declaration'"/>
+      <xsl:with-param name="indent" select="''"/>
+      <xsl:with-param name="type" select="$clname"/>
+      <xsl:with-param name="dimension" select="$maxArrayDimension"/>
+    </xsl:call-template>
     
     <xsl:if test="$genWrapper = 'true'">
       <xsl:text>//XMLVM_BEGIN_DECLARATIONS&nl;</xsl:text>
@@ -353,9 +357,12 @@ int main(int argc, char* argv[])
     <xsl:text>extern JAVA_OBJECT __CLASS_</xsl:text>
     <xsl:value-of select="$clname"/>
     <xsl:text>;&nl;</xsl:text>
-    <xsl:text>extern JAVA_OBJECT __CLASS_</xsl:text>
-    <xsl:value-of select="$clname"/>
-    <xsl:text>_ARRAYTYPE;&nl;&nl;</xsl:text>
+    <xsl:call-template name="emitArrayTypeCode">
+      <xsl:with-param name="pass" select="'declaration'"/>
+      <xsl:with-param name="indent" select="''"/>
+      <xsl:with-param name="type" select="$clname"/>
+      <xsl:with-param name="dimension" select="$maxArrayDimension"/>
+    </xsl:call-template>
     
     <xsl:text>#ifndef XMLVM_FORWARD_DECL_</xsl:text>
     <xsl:value-of select="$clname"/>
@@ -496,9 +503,12 @@ int main(int argc, char* argv[])
     <xsl:text>JAVA_OBJECT __CLASS_</xsl:text>
     <xsl:value-of select="$clname"/>
     <xsl:text>;&nl;</xsl:text>
-    <xsl:text>JAVA_OBJECT __CLASS_</xsl:text>
-    <xsl:value-of select="$clname"/>
-    <xsl:text>_ARRAYTYPE;&nl;&nl;</xsl:text>
+    <xsl:call-template name="emitArrayTypeCode">
+      <xsl:with-param name="pass" select="'definition'"/>
+      <xsl:with-param name="indent" select="''"/>
+      <xsl:with-param name="type" select="$clname"/>
+      <xsl:with-param name="dimension" select="$maxArrayDimension"/>
+    </xsl:call-template>
 
     <xsl:if test="$genWrapper = 'true'">
       <xsl:text>//XMLVM_BEGIN_IMPLEMENTATION&nl;</xsl:text>
@@ -663,10 +673,16 @@ int main(int argc, char* argv[])
             <xsl:text>) </xsl:text>
             <xsl:choose>
               <xsl:when test="@value">
-                <!-- TODO We assume that @value is always a string -->
-                <xsl:text>xmlvm_create_java_string(</xsl:text>
-                <xsl:value-of select="vm:escapeString(@value)"/>
-                <xsl:text>)</xsl:text>
+                <xsl:choose>
+                  <xsl:when test="@type = 'java.lang.String'">
+                    <xsl:text>xmlvm_create_java_string(</xsl:text>
+                    <xsl:value-of select="vm:escapeString(@value)"/>
+                    <xsl:text>)</xsl:text>
+                  </xsl:when>
+                  <xsl:otherwise>
+                    <xsl:value-of select="@value"/>
+                  </xsl:otherwise>
+                </xsl:choose>
               </xsl:when>
               <xsl:otherwise>
                 <xsl:text>JAVA_NULL</xsl:text>
@@ -724,11 +740,12 @@ int main(int argc, char* argv[])
     <xsl:value-of select="$clname"/>
     <xsl:text>;&nl;</xsl:text>
 
-    <xsl:text>        __CLASS_</xsl:text>
-    <xsl:value-of select="$clname"/>
-    <xsl:text>_ARRAYTYPE = XMLVM_CREATE_ARRAY_CLASS_OBJECT(__CLASS_</xsl:text>
-    <xsl:value-of select="$clname"/>
-    <xsl:text>, 1);&nl;</xsl:text>
+    <xsl:call-template name="emitArrayTypeCode">
+      <xsl:with-param name="pass" select="'initialization'"/>
+      <xsl:with-param name="indent" select="'        '"/>
+      <xsl:with-param name="type" select="$clname"/>
+      <xsl:with-param name="dimension" select="$maxArrayDimension"/>
+    </xsl:call-template>
     
     <!-- If there is a Java class initializer, call it. -->
     <xsl:if test="vm:method[@name = '&lt;clinit&gt;']">
@@ -792,7 +809,7 @@ int main(int argc, char* argv[])
       <xsl:if test="not($genWrapper = 'true' and @isPrivate = 'true')">
         <xsl:text>    ((</xsl:text>
         <xsl:value-of select="$clname"/>
-        <xsl:text>*)me)->fields.</xsl:text>
+        <xsl:text>*) me)->fields.</xsl:text>
         <xsl:value-of select="$clname"/>
         <xsl:text>.</xsl:text>
         <xsl:value-of select="vm:fixname(@name)"/>
@@ -1002,9 +1019,12 @@ int main(int argc, char* argv[])
     <xsl:text>JAVA_OBJECT __CLASS_</xsl:text>
     <xsl:value-of select="$clname"/>
     <xsl:text>;&nl;</xsl:text>
-    <xsl:text>JAVA_OBJECT __CLASS_</xsl:text>
-    <xsl:value-of select="$clname"/>
-    <xsl:text>_ARRAYTYPE;&nl;&nl;</xsl:text>
+    <xsl:call-template name="emitArrayTypeCode">
+      <xsl:with-param name="pass" select="'definition'"/>
+      <xsl:with-param name="indent" select="''"/>
+      <xsl:with-param name="type" select="$clname"/>
+      <xsl:with-param name="dimension" select="$maxArrayDimension"/>
+    </xsl:call-template>
     
     <!-- Emit global variable definition for all fields (which must be final and static for interfaces) -->
     <xsl:for-each select="vm:field">
@@ -1125,13 +1145,15 @@ int main(int argc, char* argv[])
     <xsl:value-of select="$clname"/>
     <xsl:text>;</xsl:text>
     
-    <xsl:text>&nl;        __CLASS_</xsl:text>
-    <xsl:value-of select="$clname"/>
-    <xsl:text>_ARRAYTYPE = XMLVM_CREATE_ARRAY_CLASS_OBJECT(__CLASS_</xsl:text>
-    <xsl:value-of select="$clname"/>
-    <xsl:text>, 1);</xsl:text>
+    <xsl:text>&nl;</xsl:text>
+    <xsl:call-template name="emitArrayTypeCode">
+      <xsl:with-param name="pass" select="'initialization'"/>
+      <xsl:with-param name="indent" select="'        '"/>
+      <xsl:with-param name="type" select="$clname"/>
+      <xsl:with-param name="dimension" select="$maxArrayDimension"/>
+    </xsl:call-template>
     
-    <xsl:text>&nl;        __TIB_</xsl:text>
+    <xsl:text>        __TIB_</xsl:text>
     <xsl:value-of select="$clname"/>
     <xsl:text>.classInitialized = 1;
     }
@@ -1713,6 +1735,57 @@ int main(int argc, char* argv[])
 </xsl:template>
 
 
+<xsl:template name="emitArrayTypeCode">
+  <xsl:param name="pass"/>
+  <xsl:param name="indent"/>
+  <xsl:param name="type"/>
+  <xsl:param name="dimension" as="xs:integer"/>
+  
+  <xsl:if test="$dimension &gt; 0">
+    <xsl:value-of select="$indent"/>
+    <xsl:choose>
+      <xsl:when test="$pass = 'declaration'">
+        <xsl:text>extern JAVA_OBJECT __CLASS_</xsl:text>
+        <xsl:value-of select="$type"/>
+        <xsl:text>_</xsl:text>
+        <xsl:value-of select="$dimension"/>
+        <xsl:text>ARRAY;&nl;</xsl:text>
+      </xsl:when>
+      <xsl:when test="$pass = 'definition'">
+        <xsl:text>JAVA_OBJECT __CLASS_</xsl:text>
+        <xsl:value-of select="$type"/>
+        <xsl:text>_</xsl:text>
+        <xsl:value-of select="$dimension"/>
+        <xsl:text>ARRAY;&nl;</xsl:text>
+      </xsl:when>
+      <xsl:when test="$pass = 'initialization'">
+        <xsl:text>__CLASS_</xsl:text>
+        <xsl:value-of select="$type"/>
+        <xsl:text>_</xsl:text>
+        <xsl:value-of select="$dimension"/>
+        <xsl:text>ARRAY = XMLVM_CREATE_ARRAY_CLASS_OBJECT(__CLASS_</xsl:text>
+        <xsl:value-of select="$type"/>
+        <xsl:text>, </xsl:text>
+        <xsl:value-of select="$dimension"/>
+        <xsl:text>);&nl;</xsl:text>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:message select="'Bad pass for emitArrayType'"/>
+      </xsl:otherwise>
+    </xsl:choose>
+    <xsl:call-template name="emitArrayTypeCode">
+      <xsl:with-param name="pass" select="$pass"/>
+      <xsl:with-param name="indent" select="$indent"/>
+      <xsl:with-param name="type" select="$type"/>
+      <xsl:with-param name="dimension" select="$dimension - 1" />     
+    </xsl:call-template>
+  </xsl:if>
+  <xsl:if test="$dimension = 0">
+    <xsl:text>&nl;</xsl:text>
+  </xsl:if>
+</xsl:template>
+
+
 <xsl:template name="emitMethodSignature">
   <xsl:param name="forDeclaration"/>
   
@@ -1824,43 +1897,7 @@ int main(int argc, char* argv[])
 <xsl:function name="vm:shouldGenerateCodeForMethod" as="xs:boolean">
   <xsl:param name="method" as="node()"/>
   
-  <xsl:choose>
-    <xsl:when test="vm:isDuplicateMethod($method)">
-      <xsl:value-of select="false()"/>
-    </xsl:when>
-    <xsl:otherwise>
-      <xsl:value-of select="not($genWrapper = 'true' and $method/@isPrivate = 'true')"/>
-    </xsl:otherwise>
-  </xsl:choose>
-</xsl:function>
-
-
-<!--  javac will sometimes generate two methods that only differ in their return type.
-      This can happen e.g. with type erasures. Function vm:isDuplicateMethod will determine
-      if the given method is a duplicate that is not needed when generating Objective-C (in fact,
-      Objective-C does not permit two methods that only differ in their return type).
-      A method is a duplicate if it is (1) synthetic, (2) a method with the same name exists
-      in the class, and (3) signatures only differ in their return types.  -->
-<xsl:function name="vm:isDuplicateMethod" as="xs:boolean">
-  <xsl:param name="method" as="node()"/>
-
-  <xsl:choose>
-    <xsl:when test="not($method/@isSynthetic = 'true')">
-      <xsl:value-of select="false()"/>
-    </xsl:when>
-    <xsl:otherwise>
-      <xsl:variable name="name" select="$method/@name"/>
-      <xsl:variable name="methodsWithSameName" select="$method/../vm:method[@name = $name]"/>
-      <xsl:variable name="duplicateMethods">
-        <xsl:for-each select="$methodsWithSameName">
-          <xsl:if test="deep-equal($method/vm:signature/vm:parameter, ./vm:signature/vm:parameter)">
-            <xsl:copy-of select="."/>
-          </xsl:if>
-        </xsl:for-each>
-      </xsl:variable>
-      <xsl:value-of select="count($duplicateMethods/vm:method) gt 1"/>
-    </xsl:otherwise>
-  </xsl:choose>
+  <xsl:value-of select="not($genWrapper = 'true' and $method/@isPrivate = 'true')"/>
 </xsl:function>
 
 
@@ -1908,8 +1945,14 @@ int main(int argc, char* argv[])
 
 
 <xsl:function name="vm:fixname">
-  <xsl:param  name="a"/>
-  <xsl:value-of  select="replace(replace(replace($a,'\$', '_'),'\.','_'), '\[\]', '_ARRAYTYPE')"/>
+  <xsl:param  name="a" as="xs:string"/>
+  <xsl:value-of  select="replace(replace(replace($a,'\$', '_'),'\.','_'), '\[\]', '')"/>
+  <xsl:if test="contains($a, '[]')">
+    <xsl:text>_</xsl:text>
+    <!-- The following expression counts the number of '[]' -->
+    <xsl:value-of select="string-length(substring-after($a, '[]')) div 2 + 1"/>
+    <xsl:text>ARRAY</xsl:text>
+  </xsl:if>
 </xsl:function>
   
 
@@ -1918,9 +1961,9 @@ int main(int argc, char* argv[])
   <!-- Escape all \\ \t(011) \n(012) \r(015) \f(014) \b(010) \" -->
   <!-- Single quotes don't need to be escaped. -->
   <xsl:text>"</xsl:text>
-  <xsl:value-of select="replace(replace(replace(replace(replace(replace(replace($string,'\\134','\\\\'),
-                           '\\011','\\t'),'\\012','\\n'),'\\015','\\r'),'\\014','\\f'),'\\010','\\b'),
-                           '\\042','\\&quot;')"/>
+  <xsl:value-of select="replace(replace(replace(replace(replace(replace(replace($string,'\\011','\\t'),
+                           '\\012','\\n'),'\\015','\\r'),'\\014','\\f'),'\\010','\\b'),
+                           '\\042','\\&quot;'),'\\134','\\\\')"/>
   <xsl:text>"</xsl:text>
 </xsl:function>
 
@@ -1977,6 +2020,7 @@ int main(int argc, char* argv[])
 
 <xsl:template name="initArguments">
   <xsl:variable name="numRegs" select="dex:code/@register-size" as="xs:integer"/>
+  <xsl:text>    java_lang_Thread* curThread;&nl;</xsl:text>
   <xsl:for-each select="1 to $numRegs">
     <xsl:text>    XMLVMElem _r</xsl:text>
     <xsl:value-of select="position() - 1"/>
@@ -2250,11 +2294,12 @@ int main(int argc, char* argv[])
   <xsl:text>    XMLVM_JMP_BUF local_env_</xsl:text>
   <xsl:value-of select="$id"/>
   <xsl:text>;&nl;</xsl:text>
+  <xsl:text>    curThread = (java_lang_Thread*)java_lang_Thread_currentThread__();&nl;</xsl:text>
   <xsl:text>    XMLVM_MEMCPY(local_env_</xsl:text>
   <xsl:value-of select="$id"/>
-  <xsl:text>, xmlvm_exception_env, sizeof(XMLVM_JMP_BUF));&nl;</xsl:text>
-  <xsl:text>    if (XMLVM_SETJMP(xmlvm_exception_env)) {&nl;</xsl:text>
-  <xsl:text>        XMLVM_MEMCPY(xmlvm_exception_env, local_env_</xsl:text>
+  <xsl:text>, curThread->fields.java_lang_Thread.xmlvmExceptionEnv_, sizeof(XMLVM_JMP_BUF));&nl;</xsl:text>
+  <xsl:text>    if (XMLVM_SETJMP(curThread->fields.java_lang_Thread.xmlvmExceptionEnv_)) {&nl;</xsl:text>
+  <xsl:text>        XMLVM_MEMCPY(curThread->fields.java_lang_Thread.xmlvmExceptionEnv_, local_env_</xsl:text>
   <xsl:value-of select="$id"/>
   <xsl:text>, sizeof(XMLVM_JMP_BUF));&nl;</xsl:text>
   <xsl:for-each select="dex:catch">
@@ -2264,18 +2309,18 @@ int main(int argc, char* argv[])
     <xsl:text>.classInitialized) __INIT_</xsl:text>
     <xsl:value-of select="$type"/>
     <xsl:text>();&nl;</xsl:text>
-    <xsl:text>        if (XMLVM_ISA(xmlvm_exception, __CLASS_</xsl:text>
+    <xsl:text>        if (XMLVM_ISA(curThread->fields.java_lang_Thread.xmlvmException_, __CLASS_</xsl:text>
     <xsl:value-of select="$type"/>
     <xsl:text>)) goto label</xsl:text>
     <xsl:value-of select="@target"/>
     <xsl:text>;&nl;</xsl:text>
   </xsl:for-each>
-  <xsl:text>        XMLVM_LONGJMP(xmlvm_exception_env);&nl;</xsl:text>
+  <xsl:text>        XMLVM_LONGJMP(curThread->fields.java_lang_Thread.xmlvmExceptionEnv_);&nl;</xsl:text>
   <xsl:text>    }&nl;</xsl:text>
   <xsl:text>    else {&nl;</xsl:text>
   <xsl:apply-templates/>
   <xsl:text>    }&nl;</xsl:text>
-  <xsl:text>    XMLVM_MEMCPY(xmlvm_exception_env, local_env_</xsl:text>
+  <xsl:text>    XMLVM_MEMCPY(curThread->fields.java_lang_Thread.xmlvmExceptionEnv_, local_env_</xsl:text>
   <xsl:value-of select="$id"/>
   <xsl:text>, sizeof(XMLVM_JMP_BUF));&nl;</xsl:text>
 </xsl:template>
@@ -2299,15 +2344,17 @@ int main(int argc, char* argv[])
 
 
 <xsl:template match="dex:throw">
-  <xsl:text>    xmlvm_exception = _r</xsl:text> <xsl:value-of select="@vx"/>.o<xsl:text>;&nl;</xsl:text>
-  <xsl:text>    XMLVM_LONGJMP(xmlvm_exception_env);&nl;</xsl:text>
+  <xsl:text>    curThread = (java_lang_Thread*)java_lang_Thread_currentThread__();&nl;</xsl:text>
+  <xsl:text>    curThread->fields.java_lang_Thread.xmlvmException_ = _r</xsl:text> <xsl:value-of select="@vx"/>.o<xsl:text>;&nl;</xsl:text>
+  <xsl:text>    XMLVM_LONGJMP(curThread->fields.java_lang_Thread.xmlvmExceptionEnv_);&nl;</xsl:text>
 </xsl:template>
 
 
 <xsl:template match="dex:move-exception">
+  <xsl:text>    curThread = (java_lang_Thread*)java_lang_Thread_currentThread__();&nl;</xsl:text>
   <xsl:text>    _r</xsl:text>
   <xsl:value-of select="@vx"/>
-  <xsl:text>.o = xmlvm_exception;
+  <xsl:text>.o = curThread->fields.java_lang_Thread.xmlvmException_;
 </xsl:text>
 </xsl:template>
 
@@ -3661,7 +3708,7 @@ int main(int argc, char* argv[])
     <xsl:when test="count(dex:parameters/dex:parameter) != 0">
       <xsl:for-each select="dex:parameters/dex:parameter">
         <xsl:text>_</xsl:text>
-        <xsl:value-of select="replace(vm:fixname(@type), '\[\]', '_ARRAYTYPE')"/>
+        <xsl:value-of select="vm:fixname(@type)"/>
       </xsl:for-each>
     </xsl:when>
   </xsl:choose>

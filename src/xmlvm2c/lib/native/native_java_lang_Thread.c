@@ -6,12 +6,34 @@
 //XMLVM_BEGIN_NATIVE_IMPLEMENTATION
 #include <pthread.h>
 
+XMLVM_JMP_BUF* initExceptionHandler(java_lang_Thread* me)
+{
+    XMLVM_JMP_BUF* jbptr = XMLVM_MALLOC(sizeof(XMLVM_JMP_BUF));
+    if (XMLVM_SETJMP(*jbptr)) {
+        XMLVM_ERROR("Unhandled exception thrown", __FILE__, __FUNCTION__, __LINE__);
+    }
+    me->fields.java_lang_Thread.xmlvmExceptionEnv_ = *jbptr;
+
+    return jbptr;
+}
+
 void threadRunner(JAVA_OBJECT me)
 {
+    XMLVM_JMP_BUF* jbptr = initExceptionHandler((java_lang_Thread*)me);
+
     JAVA_LONG nativeThreadId = (JAVA_LONG)pthread_self();
     java_lang_Thread_run0___long(me, nativeThreadId);
+
+    XMLVM_FREE(jbptr);
 }
 //XMLVM_END_NATIVE_IMPLEMENTATION
+
+void java_lang_Thread_initMainThread__(JAVA_OBJECT me)
+{
+    //XMLVM_BEGIN_NATIVE[java_lang_Thread_initMainThread__]
+    ((java_lang_Thread*)me)->fields.java_lang_Thread.xmlvmExceptionEnv_ = xmlvm_exception_env_main_thread;
+    //XMLVM_END_NATIVE
+}
 
 JAVA_INT java_lang_Thread_activeCount__()
 {
@@ -56,9 +78,9 @@ void java_lang_Thread_dumpStack__()
     //XMLVM_END_NATIVE
 }
 
-JAVA_INT java_lang_Thread_enumerate___java_lang_Thread_ARRAYTYPE(JAVA_OBJECT n1)
+JAVA_INT java_lang_Thread_enumerate___java_lang_Thread_1ARRAY(JAVA_OBJECT n1)
 {
-    //XMLVM_BEGIN_NATIVE[java_lang_Thread_enumerate___java_lang_Thread_ARRAYTYPE]
+    //XMLVM_BEGIN_NATIVE[java_lang_Thread_enumerate___java_lang_Thread_1ARRAY]
     XMLVM_UNIMPLEMENTED_NATIVE_METHOD();
     //XMLVM_END_NATIVE
 }

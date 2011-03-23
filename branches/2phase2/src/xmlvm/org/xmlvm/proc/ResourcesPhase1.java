@@ -20,18 +20,28 @@
 
 package org.xmlvm.proc;
 
+import java.util.Collection;
+
+import org.xmlvm.proc.out.OutputFile;
+
 /**
- * Classes implementing this interface can be informed can a process finished
- * processing.
+ * The interface of {@link CompilationResources} that is used during the first
+ * phase.
  */
-public interface ProcessFinishedHandler {
-    /**
-     * Called when a process has finished.
-     * 
-     * @param process
-     *            The process that finished.
-     * @param successful
-     *            Whether the process ended successful.
-     */
-    public void processFinished(XmlvmProcess process, boolean successful);
+public interface ResourcesPhase1 {
+    public void addResource(XmlvmResource resource);
+
+    public void addResources(Collection<XmlvmResource> resources);
+
+    public Collection<XmlvmResource> getResources();
+
+    public boolean containsResource(String resourceName);
+
+    public void addOutputFile(OutputFile file);
+    
+    public void addOutputFiles(Collection<OutputFile> files);
+
+    public Collection<OutputFile> getOutputFiles();
+
+    public void removeOutputFile(OutputFile file);
 }

@@ -16,7 +16,9 @@ __TIB_DEFINITION_org_xmlvm_iphone_NSURLRequest __TIB_org_xmlvm_iphone_NSURLReque
     XMLVM_TYPE_CLASS};
 
 JAVA_OBJECT __CLASS_org_xmlvm_iphone_NSURLRequest;
-JAVA_OBJECT __CLASS_org_xmlvm_iphone_NSURLRequest_ARRAYTYPE;
+JAVA_OBJECT __CLASS_org_xmlvm_iphone_NSURLRequest_3ARRAY;
+JAVA_OBJECT __CLASS_org_xmlvm_iphone_NSURLRequest_2ARRAY;
+JAVA_OBJECT __CLASS_org_xmlvm_iphone_NSURLRequest_1ARRAY;
 
 //XMLVM_BEGIN_IMPLEMENTATION
 //XMLVM_END_IMPLEMENTATION
@@ -128,7 +130,10 @@ void __INIT_IMPL_org_xmlvm_iphone_NSURLRequest()
         __TIB_org_xmlvm_iphone_NSURLRequest.numDeclaredMethods = sizeof(__method_reflection_data) / sizeof(XMLVM_METHOD_REFLECTION_DATA);
         __CLASS_org_xmlvm_iphone_NSURLRequest = XMLVM_CREATE_CLASS_OBJECT(&__TIB_org_xmlvm_iphone_NSURLRequest);
         __TIB_org_xmlvm_iphone_NSURLRequest.clazz = __CLASS_org_xmlvm_iphone_NSURLRequest;
-        __CLASS_org_xmlvm_iphone_NSURLRequest_ARRAYTYPE = XMLVM_CREATE_ARRAY_CLASS_OBJECT(__CLASS_org_xmlvm_iphone_NSURLRequest, 1);
+        __CLASS_org_xmlvm_iphone_NSURLRequest_3ARRAY = XMLVM_CREATE_ARRAY_CLASS_OBJECT(__CLASS_org_xmlvm_iphone_NSURLRequest, 3);
+        __CLASS_org_xmlvm_iphone_NSURLRequest_2ARRAY = XMLVM_CREATE_ARRAY_CLASS_OBJECT(__CLASS_org_xmlvm_iphone_NSURLRequest, 2);
+        __CLASS_org_xmlvm_iphone_NSURLRequest_1ARRAY = XMLVM_CREATE_ARRAY_CLASS_OBJECT(__CLASS_org_xmlvm_iphone_NSURLRequest, 1);
+
         //XMLVM_BEGIN_WRAPPER[__INIT_org_xmlvm_iphone_NSURLRequest]
         //XMLVM_END_WRAPPER
 
@@ -139,6 +144,7 @@ void __INIT_IMPL_org_xmlvm_iphone_NSURLRequest()
 void __DELETE_org_xmlvm_iphone_NSURLRequest(void* me, void* client_data)
 {
     //XMLVM_BEGIN_WRAPPER[__DELETE_org_xmlvm_iphone_NSURLRequest]
+   __DELETE_org_xmlvm_iphone_NSObject(me, client_data);
     //XMLVM_END_WRAPPER
 }
 
@@ -154,6 +160,16 @@ JAVA_OBJECT __NEW_org_xmlvm_iphone_NSURLRequest()
     me->tib = &__TIB_org_xmlvm_iphone_NSURLRequest;
     __INIT_INSTANCE_MEMBERS_org_xmlvm_iphone_NSURLRequest(me);
     //XMLVM_BEGIN_WRAPPER[__NEW_org_xmlvm_iphone_NSURLRequest]
+	/*********************************************************************************************
+	 * README: Ordinarily the garbage collector will just silently release the memory of
+	 * garbage collected objects. If some cleanup needs to be done before this happens, we
+	 * need to register a so-called finalizer for this object with the garbage collector.
+	 * Since the finalization mechanism is relatively expensive, we only do it for those
+	 * objects for which this is necessary. The finalizer to be invoked should always be
+	 * the respective __DELETE_* function.
+	 */
+	// Tell the GC to finalize us
+    XMLVM_FINALIZE(me, __DELETE_org_xmlvm_iphone_NSURLRequest);
     //XMLVM_END_WRAPPER
     return me;
 }
@@ -168,7 +184,10 @@ JAVA_OBJECT org_xmlvm_iphone_NSURLRequest_requestWithURL___org_xmlvm_iphone_NSUR
 {
     if (!__TIB_org_xmlvm_iphone_NSURLRequest.classInitialized) __INIT_org_xmlvm_iphone_NSURLRequest();
     //XMLVM_BEGIN_WRAPPER[org_xmlvm_iphone_NSURLRequest_requestWithURL___org_xmlvm_iphone_NSURL]
-    XMLVM_NOT_IMPLEMENTED();
+    XMLVM_VAR_IOS(NSURL, url, n1);
+    JAVA_OBJECT urlRequest = __NEW_org_xmlvm_iphone_NSURLRequest();
+    org_xmlvm_iphone_NSObject_INTERNAL_CONSTRUCTOR(urlRequest, [NSURLRequest requestWithURL:url]);
+    return urlRequest;
     //XMLVM_END_WRAPPER
 }
 

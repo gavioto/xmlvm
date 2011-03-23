@@ -245,24 +245,32 @@ extern JAVA_OBJECT __CLASS_long;
 extern JAVA_OBJECT __CLASS_float;
 extern JAVA_OBJECT __CLASS_double;
 
-extern JAVA_OBJECT __CLASS_boolean_ARRAYTYPE;
-extern JAVA_OBJECT __CLASS_byte_ARRAYTYPE;
-extern JAVA_OBJECT __CLASS_char_ARRAYTYPE;
-extern JAVA_OBJECT __CLASS_short_ARRAYTYPE;
-extern JAVA_OBJECT __CLASS_int_ARRAYTYPE;
-extern JAVA_OBJECT __CLASS_long_ARRAYTYPE;
-extern JAVA_OBJECT __CLASS_float_ARRAYTYPE;
-extern JAVA_OBJECT __CLASS_double_ARRAYTYPE;
+extern JAVA_OBJECT __CLASS_boolean_1ARRAY;
+extern JAVA_OBJECT __CLASS_byte_1ARRAY;
+extern JAVA_OBJECT __CLASS_char_1ARRAY;
+extern JAVA_OBJECT __CLASS_short_1ARRAY;
+extern JAVA_OBJECT __CLASS_int_1ARRAY;
+extern JAVA_OBJECT __CLASS_long_1ARRAY;
+extern JAVA_OBJECT __CLASS_float_1ARRAY;
+extern JAVA_OBJECT __CLASS_double_1ARRAY;
 
-extern JAVA_OBJECT __CLASS_boolean_ARRAYTYPE_ARRAYTYPE;
-extern JAVA_OBJECT __CLASS_byte_ARRAYTYPE_ARRAYTYPE;
-extern JAVA_OBJECT __CLASS_char_ARRAYTYPE_ARRAYTYPE;
-extern JAVA_OBJECT __CLASS_short_ARRAYTYPE_ARRAYTYPE;
-extern JAVA_OBJECT __CLASS_int_ARRAYTYPE_ARRAYTYPE;
-extern JAVA_OBJECT __CLASS_long_ARRAYTYPE_ARRAYTYPE;
-extern JAVA_OBJECT __CLASS_float_ARRAYTYPE_ARRAYTYPE;
-extern JAVA_OBJECT __CLASS_double_ARRAYTYPE_ARRAYTYPE;
-extern JAVA_OBJECT __CLASS_java_lang_Object_ARRAYTYPE_ARRAYTYPE;
+extern JAVA_OBJECT __CLASS_boolean_2ARRAY;
+extern JAVA_OBJECT __CLASS_byte_2ARRAY;
+extern JAVA_OBJECT __CLASS_char_2ARRAY;
+extern JAVA_OBJECT __CLASS_short_2ARRAY;
+extern JAVA_OBJECT __CLASS_int_2ARRAY;
+extern JAVA_OBJECT __CLASS_long_2ARRAY;
+extern JAVA_OBJECT __CLASS_float_2ARRAY;
+extern JAVA_OBJECT __CLASS_double_2ARRAY;
+
+extern JAVA_OBJECT __CLASS_boolean_3ARRAY;
+extern JAVA_OBJECT __CLASS_byte_3ARRAY;
+extern JAVA_OBJECT __CLASS_char_3ARRAY;
+extern JAVA_OBJECT __CLASS_short_3ARRAY;
+extern JAVA_OBJECT __CLASS_int_3ARRAY;
+extern JAVA_OBJECT __CLASS_long_3ARRAY;
+extern JAVA_OBJECT __CLASS_float_3ARRAY;
+extern JAVA_OBJECT __CLASS_double_3ARRAY;
 
 JAVA_OBJECT XMLVM_CREATE_CLASS_OBJECT(void* tib);
 JAVA_OBJECT XMLVM_CREATE_ARRAY_CLASS_OBJECT(JAVA_OBJECT baseType, int dimensions);
@@ -307,20 +315,16 @@ XMLVM_DEFINE_CLASS(float_ARRAYTYPE, XMLVM_SIZE_OF_OBJECT_VTABLE)
 XMLVM_DEFINE_CLASS(double_ARRAYTYPE, XMLVM_SIZE_OF_OBJECT_VTABLE)
 
 #include "org_xmlvm_runtime_XMLVMArray.h"
-
+#include "java_lang_Thread.h"
 
 #define XMLVM_JMP_BUF jmp_buf
 #define XMLVM_SETJMP(env) setjmp(env)
 #define XMLVM_LONGJMP(env) longjmp(env, 0)
 
-// TODO this won't work with multi-threading. Each thread needs its own xmlvm_exception_env
-extern XMLVM_JMP_BUF xmlvm_exception_env;
-// According to the documentation, the use of setjmp() is limited. In particular
-// one should not use the return value of setjmp() in a context other than an if- or
-// switch-statement. Because of this, we need to store the thrown exception in a global
-// variable.
-// TODO not thread safe!
-extern JAVA_OBJECT xmlvm_exception;
+// This exception value is only used for the main thread.
+// Since a call to Thread.currentThread() contains try-catch blocks, this must
+// be defined before the "main" java.lang.Thread is defined.
+extern XMLVM_JMP_BUF xmlvm_exception_env_main_thread;
 
 #define XMLVM_NOT_IMPLEMENTED() XMLVM_ERROR("Not implemented", __FILE__, __FUNCTION__, __LINE__)
 #define XMLVM_UNIMPLEMENTED_NATIVE_METHOD() XMLVM_ERROR("Unimplemented native method", __FILE__, __FUNCTION__, __LINE__)

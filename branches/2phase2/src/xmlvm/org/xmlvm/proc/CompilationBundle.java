@@ -31,7 +31,7 @@ import org.xmlvm.proc.out.OutputFile;
  * An instance of this class holds all resources that are produced during a
  * compilation process.
  */
-public class CompilationResources implements ResourcesPhase1, ResourcesPhase2 {
+public class CompilationBundle implements BundlePhase1, BundlePhase2 {
     private List<OutputFile>    outputFiles    = new ArrayList<OutputFile>();
     private List<XmlvmResource> xmlvmResources = new ArrayList<XmlvmResource>();
 

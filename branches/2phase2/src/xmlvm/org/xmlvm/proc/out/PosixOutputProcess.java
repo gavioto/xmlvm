@@ -26,8 +26,8 @@ import java.util.List;
 
 import org.xmlvm.Log;
 import org.xmlvm.main.Arguments;
-import org.xmlvm.proc.ResourcesPhase1;
-import org.xmlvm.proc.ResourcesPhase2;
+import org.xmlvm.proc.BundlePhase1;
+import org.xmlvm.proc.BundlePhase2;
 import org.xmlvm.proc.XmlvmProcessImpl;
 import org.xmlvm.proc.out.build.MakeFile;
 
@@ -51,18 +51,18 @@ public class PosixOutputProcess extends XmlvmProcessImpl {
     }
 
     @Override
-    public boolean processPhase1(ResourcesPhase1 resources) {
+    public boolean processPhase1(BundlePhase1 bundle) {
         return true;
     }
 
     @Override
-    public boolean processPhase2(ResourcesPhase2 resources) {
-        for (OutputFile file : resources.getOutputFiles()) {
+    public boolean processPhase2(BundlePhase2 bundle) {
+        for (OutputFile file : bundle.getOutputFiles()) {
             file.setLocation(arguments.option_out() + SRCFILE_LOCATION);
         }
 
         MakeFile makefile = new MakeFile(PLATFORM);
-        resources.addOutputFile(makefile.composeBuildFiles(arguments));
+        bundle.addOutputFile(makefile.composeBuildFiles(arguments));
         return true;
     }
 }

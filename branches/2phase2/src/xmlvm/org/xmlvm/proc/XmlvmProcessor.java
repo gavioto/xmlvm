@@ -50,10 +50,10 @@ public class XmlvmProcessor {
     private List<Class<? extends XmlvmProcess>> processTypesInPipeline = new ArrayList<Class<? extends XmlvmProcess>>();
 
     /**
-     * The compilation resources that are passed through the processes, who add
+     * The compilation bundle that is passed through the processes, who add
      * there data to it.
      */
-    private CompilationResources                compilationResources   = new CompilationResources();
+    private CompilationBundle                   compilationResources   = new CompilationBundle();
 
 
     public XmlvmProcessor(Arguments arguments) {
@@ -193,7 +193,7 @@ public class XmlvmProcessor {
      * {@link #process()} has been finished successfully, then these resources
      * contain all artifacts produced during the compilation process.
      */
-    public CompilationResources getCompilationResources() {
+    public CompilationBundle getCompilationResources() {
         return compilationResources;
     }
 

@@ -29,8 +29,8 @@ import org.jdom.Attribute;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.xmlvm.main.Arguments;
-import org.xmlvm.proc.ResourcesPhase1;
-import org.xmlvm.proc.ResourcesPhase2;
+import org.xmlvm.proc.BundlePhase1;
+import org.xmlvm.proc.BundlePhase2;
 import org.xmlvm.proc.XmlvmProcessImpl;
 import org.xmlvm.proc.XmlvmResource;
 import org.xmlvm.proc.XsltRunner;
@@ -46,17 +46,17 @@ public class ObjectiveCOutputProcess extends XmlvmProcessImpl {
     }
 
     @Override
-    public boolean processPhase1(ResourcesPhase1 resources) {
+    public boolean processPhase1(BundlePhase1 bundle) {
         return true;
     }
 
     @Override
-    public boolean processPhase2(ResourcesPhase2 resources) {
-        for (XmlvmResource xmlvm : resources.getResources()) {
+    public boolean processPhase2(BundlePhase2 bundle) {
+        for (XmlvmResource xmlvm : bundle.getResources()) {
             OutputFile[] files = genObjC(xmlvm);
             for (OutputFile file : files) {
                 file.setLocation(arguments.option_out());
-                resources.addOutputFile(file);
+                bundle.addOutputFile(file);
             }
         }
         return true;

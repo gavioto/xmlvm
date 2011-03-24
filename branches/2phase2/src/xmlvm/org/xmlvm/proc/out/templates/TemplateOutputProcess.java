@@ -26,8 +26,8 @@ import java.util.Random;
 
 import org.xmlvm.Log;
 import org.xmlvm.main.Arguments;
-import org.xmlvm.proc.ResourcesPhase1;
-import org.xmlvm.proc.ResourcesPhase2;
+import org.xmlvm.proc.BundlePhase1;
+import org.xmlvm.proc.BundlePhase2;
 import org.xmlvm.proc.XmlvmProcessImpl;
 import org.xmlvm.proc.in.InputProcess.EmptyInputProcess;
 import org.xmlvm.proc.out.OutputFile;
@@ -57,12 +57,12 @@ public abstract class TemplateOutputProcess extends XmlvmProcessImpl {
     }
 
     @Override
-    public boolean processPhase1(ResourcesPhase1 resources) {
+    public boolean processPhase1(BundlePhase1 resources) {
         return true;
     }
 
     @Override
-    public boolean processPhase2(ResourcesPhase2 resources) {
+    public boolean processPhase2(BundlePhase2 resources) {
         String projname = arguments.option_app_name();
         String outpath = arguments.option_out() + "/";
         safe_name = getSafeName(projname);
@@ -83,7 +83,7 @@ public abstract class TemplateOutputProcess extends XmlvmProcessImpl {
     }
 
     private boolean addFile(String source, String dest, String path, String projname,
-            TemplateFile.Mode mode, ResourcesPhase2 resources) {
+            TemplateFile.Mode mode, BundlePhase2 resources) {
 
         if (mode == TemplateFile.Mode.IGNORE) {
             return true;

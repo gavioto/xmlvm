@@ -44,8 +44,8 @@ import org.xmlvm.main.Arguments;
 import org.xmlvm.main.Targets;
 import org.xmlvm.proc.DelayedXmlvmSerializationProvider;
 import org.xmlvm.proc.ResourceCache;
-import org.xmlvm.proc.ResourcesPhase1;
-import org.xmlvm.proc.ResourcesPhase2;
+import org.xmlvm.proc.BundlePhase1;
+import org.xmlvm.proc.BundlePhase2;
 import org.xmlvm.proc.XmlvmProcessImpl;
 import org.xmlvm.proc.XmlvmResource;
 import org.xmlvm.proc.XmlvmResource.Type;
@@ -274,8 +274,8 @@ public class DEXmlvmOutputProcess extends XmlvmProcessImpl {
     }
 
     @Override
-    public boolean processPhase1(ResourcesPhase1 resources) {
-        for (OutputFile preOutputFile : resources.getOutputFiles()) {
+    public boolean processPhase1(BundlePhase1 bundle) {
+        for (OutputFile preOutputFile : bundle.getOutputFiles()) {
             String resourceName = preOutputFile.getOrigin();
             long lastModified = preOutputFile.getLastModified();
 
@@ -289,39 +289,39 @@ public class DEXmlvmOutputProcess extends XmlvmProcessImpl {
                 outputFile.setFileName(preOutputFile.getFileName());
                 filesFromCache.add(outputFile);
             } else {
-                outputFile = generateDEXmlvmFile(preOutputFile, resources);
+                outputFile = generateDEXmlvmFile(preOutputFile, bundle);
                 if (outputFile != null && !arguments.option_no_cache()) {
                     cache.put(resourceName, lastModified, outputFile.getDataAsBytes());
                 }
             }
             if (isTargetProcess && outputFile != null) {
                 outputFile.setOrigin(preOutputFile.getOrigin());
-                resources.addOutputFile(outputFile);
+                bundle.addOutputFile(outputFile);
             }
-            resources.removeOutputFile(preOutputFile);
+            bundle.removeOutputFile(preOutputFile);
         }
-        addResourcesFromCachedFiles(resources);
+        addResourcesFromCachedFiles(bundle);
         return true;
     }
 
     @Override
-    public boolean processPhase2(ResourcesPhase2 resources) {
+    public boolean processPhase2(BundlePhase2 bundle) {
         return true;
     }
 
-    private void addResourcesFromCachedFiles(ResourcesPhase1 resources) {
+    private void addResourcesFromCachedFiles(BundlePhase1 resources) {
         for (OutputFile cachedFile : filesFromCache) {
             resources.addResource(XmlvmResource.fromFile(cachedFile));
         }
     }
 
-    private OutputFile generateDEXmlvmFile(final OutputFile classFile, ResourcesPhase1 resources) {
+    private OutputFile generateDEXmlvmFile(final OutputFile classFile, BundlePhase1 resources) {
         return generateDEXmlvmFile(classFile, false, resources);
     }
 
     @SuppressWarnings("unchecked")
     private OutputFile generateDEXmlvmFile(final OutputFile classFile, boolean proxy,
-            ResourcesPhase1 resources) {
+            BundlePhase1 resources) {
         Log.debug(TAG, "DExing:" + classFile.getFileName());
 
         DirectClassFile directClassFile = new DirectClassFile(classFile.getDataAsBytes(),

@@ -22,8 +22,8 @@ package org.xmlvm.proc.out;
 
 import org.xmlvm.Log;
 import org.xmlvm.main.Arguments;
-import org.xmlvm.proc.ResourcesPhase1;
-import org.xmlvm.proc.ResourcesPhase2;
+import org.xmlvm.proc.BundlePhase1;
+import org.xmlvm.proc.BundlePhase2;
 import org.xmlvm.proc.XmlvmProcessImpl;
 import org.xmlvm.proc.XmlvmResource;
 import org.xmlvm.proc.XsltRunner;
@@ -41,18 +41,18 @@ public class PythonOutputProcess extends XmlvmProcessImpl {
     }
 
     @Override
-    public boolean processPhase1(ResourcesPhase1 resources) {
+    public boolean processPhase1(BundlePhase1 bundle) {
         return true;
     }
 
     @Override
-    public boolean processPhase2(ResourcesPhase2 resources) {
-        for (XmlvmResource xmlvm : resources.getResources()) {
+    public boolean processPhase2(BundlePhase2 bundle) {
+        for (XmlvmResource xmlvm : bundle.getResources()) {
             Log.debug("PythonOutputProcess: Processing " + xmlvm.getName());
             OutputFile file = generatePython(xmlvm);
             file.setLocation(arguments.option_out());
             file.setFileName(xmlvm.getName() + PY_EXTENSION);
-            resources.addOutputFile(file);
+            bundle.addOutputFile(file);
         }
         return true;
     }

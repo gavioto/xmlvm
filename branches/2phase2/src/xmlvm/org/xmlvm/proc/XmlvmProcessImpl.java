@@ -193,7 +193,7 @@ public abstract class XmlvmProcessImpl implements XmlvmProcess {
     }
 
     @Override
-    public boolean forwardOrProcessPhase1(ResourcesPhase1 resources) {
+    public boolean forwardOrProcessPhase1(BundlePhase1 resources) {
         for (XmlvmProcess process : preprocesses) {
             if (!isProcessPreOfCorrectType(process)) {
                 return false;
@@ -207,7 +207,7 @@ public abstract class XmlvmProcessImpl implements XmlvmProcess {
     }
 
     @Override
-    public boolean forwardOrProcessPhase2(ResourcesPhase2 resources) {
+    public boolean forwardOrProcessPhase2(BundlePhase2 resources) {
         for (XmlvmProcess process : preprocesses) {
             if (!isProcessPreOfCorrectType(process)) {
                 return false;

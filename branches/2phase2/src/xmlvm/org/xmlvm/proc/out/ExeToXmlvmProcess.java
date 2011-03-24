@@ -32,8 +32,8 @@ import org.jdom.Element;
 import org.jdom.Namespace;
 import org.xmlvm.Log;
 import org.xmlvm.main.Arguments;
-import org.xmlvm.proc.ResourcesPhase1;
-import org.xmlvm.proc.ResourcesPhase2;
+import org.xmlvm.proc.BundlePhase1;
+import org.xmlvm.proc.BundlePhase2;
 import org.xmlvm.proc.XmlvmProcessImpl;
 import org.xmlvm.proc.XmlvmResource;
 import org.xmlvm.proc.XmlvmResource.Type;
@@ -126,19 +126,19 @@ public class ExeToXmlvmProcess extends XmlvmProcessImpl {
     }
 
     @Override
-    public boolean processPhase1(ResourcesPhase1 resources) {
-        for (OutputFile file : resources.getOutputFiles()) {
+    public boolean processPhase1(BundlePhase1 bundle) {
+        for (OutputFile file : bundle.getOutputFiles()) {
             XmlvmResource resource = (new ExeToXmlvmTask(file.getData())).parse();
             if (resource == null) {
                 return false;
             }
-            resources.addResource(resource);
+            bundle.addResource(resource);
         }
         return true;
     }
 
     @Override
-    public boolean processPhase2(ResourcesPhase2 resources) {
+    public boolean processPhase2(BundlePhase2 bundle) {
         return true;
     }
 

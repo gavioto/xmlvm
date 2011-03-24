@@ -30,7 +30,7 @@ import java.util.Set;
 
 import org.xmlvm.Log;
 import org.xmlvm.main.Arguments;
-import org.xmlvm.proc.CompilationResources;
+import org.xmlvm.proc.CompilationBundle;
 import org.xmlvm.proc.XmlvmResource;
 import org.xmlvm.proc.in.InputProcess.ClassInputProcess;
 import org.xmlvm.proc.in.file.ClassFile;
@@ -159,14 +159,14 @@ public class LibraryLoader {
         DEXmlvmOutputProcess outputProcess = new DEXmlvmOutputProcess(arguments, enableRedList,
                 false);
         outputProcess.addPreprocess(inputProcess);
-        CompilationResources resources = new CompilationResources();
-        inputProcess.processPhase1(resources);
-        outputProcess.processPhase1(resources);
+        CompilationBundle bundle = new CompilationBundle();
+        inputProcess.processPhase1(bundle);
+        outputProcess.processPhase1(bundle);
 
-        if (resources.getResources().size() != 1) {
+        if (bundle.getResources().size() != 1) {
             return null;
         }
-        XmlvmResource resource = resources.getResources().iterator().next();
+        XmlvmResource resource = bundle.getResources().iterator().next();
         cache.put(file.getAbsolutePath(), resource);
         return resource;
     }

@@ -28,8 +28,8 @@ import java.io.InputStreamReader;
 
 import org.xmlvm.Log;
 import org.xmlvm.main.Arguments;
-import org.xmlvm.proc.ResourcesPhase1;
-import org.xmlvm.proc.ResourcesPhase2;
+import org.xmlvm.proc.BundlePhase1;
+import org.xmlvm.proc.BundlePhase2;
 import org.xmlvm.proc.XmlvmProcessImpl;
 import org.xmlvm.util.FileUtil;
 import org.xmlvm.util.InputReaderThread;
@@ -101,12 +101,12 @@ public class QooxdooOutputProcess extends XmlvmProcessImpl {
     }
 
     @Override
-    public boolean processPhase1(ResourcesPhase1 resources) {
+    public boolean processPhase1(BundlePhase1 bundle) {
         return true;
     }
 
     @Override
-    public boolean processPhase2(ResourcesPhase2 resources) {
+    public boolean processPhase2(BundlePhase2 bundle) {
         tempDestination = makeAbsoluteCanonicalPath(arguments.option_out()) + File.separator
                 + TEMP_CACHE_SUBDIR;
         mainMethod = arguments.option_qx_main();
@@ -132,7 +132,7 @@ public class QooxdooOutputProcess extends XmlvmProcessImpl {
 
         // Change the path of the JavaScript files so they are copied into the
         // Qooxdoo project.
-        for (OutputFile outputFile : resources.getOutputFiles()) {
+        for (OutputFile outputFile : bundle.getOutputFiles()) {
             outputFile.setLocation(tempQxSourcePath);
         }
         return true;

@@ -33,8 +33,8 @@ import java.util.Map;
 
 import org.xmlvm.Log;
 import org.xmlvm.main.Arguments;
-import org.xmlvm.proc.ResourcesPhase1;
-import org.xmlvm.proc.ResourcesPhase2;
+import org.xmlvm.proc.BundlePhase1;
+import org.xmlvm.proc.BundlePhase2;
 import org.xmlvm.proc.XmlvmProcessImpl;
 import org.xmlvm.util.universalfile.UniversalFile;
 import org.xmlvm.util.universalfile.UniversalFileCreator;
@@ -67,22 +67,22 @@ public class GenCWrappersOutputProcess extends XmlvmProcessImpl {
     }
 
     @Override
-    public boolean processPhase1(ResourcesPhase1 resources) {
+    public boolean processPhase1(BundlePhase1 bundle) {
         return true;
     }
 
     @Override
-    public boolean processPhase2(ResourcesPhase2 resources) {
+    public boolean processPhase2(BundlePhase2 bundle) {
         List<OutputFile> outputFiles = new ArrayList<OutputFile>();
-        outputFiles.addAll(resources.getOutputFiles());
-        resources.removeAllOutputFiles();
+        outputFiles.addAll(bundle.getOutputFiles());
+        bundle.removeAllOutputFiles();
 
         File destination = new File(arguments.option_out());
 
         // If the destination doesn't exist or has no content, we simply copy
         // the generated wrappers over.
         if (!destination.exists() || (destination.isDirectory() && destination.list().length == 0)) {
-            resources.addOutputFiles(outputFiles);
+            bundle.addOutputFiles(outputFiles);
             return true;
         }
 
@@ -103,7 +103,7 @@ public class GenCWrappersOutputProcess extends XmlvmProcessImpl {
 
         // We patch the existing content into the newly generated wrappers.
         injectAllSections(existingSections, outputFiles, destination.getAbsolutePath());
-        resources.addOutputFiles(outputFiles);
+        bundle.addOutputFiles(outputFiles);
         return true;
     }
 

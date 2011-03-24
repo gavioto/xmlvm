@@ -34,7 +34,7 @@ public interface XmlvmProcess {
      * 
      * @return Whether the processing was successful.
      */
-    public boolean processPhase1(ResourcesPhase1 resources);
+    public boolean processPhase1(BundlePhase1 resources);
 
     /**
      * This is phase two of a two-staged process. In this phase, processes are
@@ -43,7 +43,7 @@ public interface XmlvmProcess {
      * 
      * @return Whether the processing was successful.
      */
-    public boolean processPhase2(ResourcesPhase2 resources);
+    public boolean processPhase2(BundlePhase2 resources);
 
     /**
      * Processors can override it to do post-processing.
@@ -119,9 +119,9 @@ public interface XmlvmProcess {
      */
     public boolean isProcessingRequired(String inputResourceName, long lastModified);
 
-    public boolean forwardOrProcessPhase1(ResourcesPhase1 resources);
+    public boolean forwardOrProcessPhase1(BundlePhase1 resources);
 
-    public boolean forwardOrProcessPhase2(ResourcesPhase2 resources);
+    public boolean forwardOrProcessPhase2(BundlePhase2 resources);
 
     /**
      * Runs {@link #postProcess()} on all preprocesses that have been processed.

@@ -25,8 +25,8 @@ import java.util.List;
 
 import org.xmlvm.Log;
 import org.xmlvm.main.Arguments;
-import org.xmlvm.proc.ResourcesPhase1;
-import org.xmlvm.proc.ResourcesPhase2;
+import org.xmlvm.proc.BundlePhase1;
+import org.xmlvm.proc.BundlePhase2;
 import org.xmlvm.proc.XmlvmProcessImpl;
 import org.xmlvm.proc.XmlvmResource;
 import org.xmlvm.proc.XmlvmResource.XmlvmMethod;
@@ -71,14 +71,14 @@ public class RemoveDuplicateMethodsOutputProcess extends XmlvmProcessImpl {
     }
 
     @Override
-    public boolean processPhase1(ResourcesPhase1 resources) {
-        stripDuplicateMethods(resources.getResources());
+    public boolean processPhase1(BundlePhase1 bundle) {
+        stripDuplicateMethods(bundle.getResources());
         return true;
     }
 
     @Override
-    public boolean processPhase2(ResourcesPhase2 resources) {
-        stripDuplicateMethods(resources.getResources());
+    public boolean processPhase2(BundlePhase2 bundle) {
+        stripDuplicateMethods(bundle.getResources());
         return true;
     }
 

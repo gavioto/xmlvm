@@ -24,8 +24,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.xmlvm.main.Arguments;
-import org.xmlvm.proc.ResourcesPhase1;
-import org.xmlvm.proc.ResourcesPhase2;
+import org.xmlvm.proc.BundlePhase1;
+import org.xmlvm.proc.BundlePhase2;
 import org.xmlvm.proc.XmlvmProcessImpl;
 import org.xmlvm.proc.XmlvmResource;
 import org.xmlvm.proc.lib.LibraryLoader;
@@ -42,10 +42,10 @@ public class RecursiveResourceLoadingProcess extends XmlvmProcessImpl {
     }
 
     @Override
-    public boolean processPhase1(ResourcesPhase1 resources) {
+    public boolean processPhase1(BundlePhase1 bundle) {
         // We create a map that maps type name to the resource.
         Map<String, XmlvmResource> xmlvmResources = new HashMap<String, XmlvmResource>();
-        for (XmlvmResource resource : resources.getResources()) {
+        for (XmlvmResource resource : bundle.getResources()) {
             xmlvmResources.put(resource.getFullName(), resource);
         }
         if (arguments.option_load_dependencies() && !arguments.option_disable_load_dependencies()) {
@@ -60,12 +60,12 @@ public class RecursiveResourceLoadingProcess extends XmlvmProcessImpl {
             // Make sure we have all types that are referenced loaded.
             libraryLoader.loadAllReferencedTypes(xmlvmResources);
         }
-        resources.addResources(xmlvmResources.values());
+        bundle.addResources(xmlvmResources.values());
         return true;
     }
 
     @Override
-    public boolean processPhase2(ResourcesPhase2 resources) {
+    public boolean processPhase2(BundlePhase2 bundle) {
         return true;
     }
 

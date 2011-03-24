@@ -22,8 +22,8 @@ package org.xmlvm.proc.in;
 
 import org.xmlvm.Log;
 import org.xmlvm.main.Arguments;
-import org.xmlvm.proc.ResourcesPhase1;
-import org.xmlvm.proc.ResourcesPhase2;
+import org.xmlvm.proc.BundlePhase1;
+import org.xmlvm.proc.BundlePhase2;
 import org.xmlvm.proc.XmlvmProcessImpl;
 import org.xmlvm.proc.in.file.ClassFile;
 import org.xmlvm.proc.in.file.ExeFile;
@@ -109,7 +109,7 @@ public abstract class InputProcess<T extends XFile> extends XmlvmProcessImpl {
      * resources.
      */
     @Override
-    public boolean processPhase1(ResourcesPhase1 resources) {
+    public boolean processPhase1(BundlePhase1 bundle) {
         if (!input.getFile().exists() || !input.getFile().isFile()) {
             Log.warn("InputProcess.getOutputFiles(): Input File does not exist or is not a file.");
             return false;
@@ -123,7 +123,7 @@ public abstract class InputProcess<T extends XFile> extends XmlvmProcessImpl {
         outputFile.setOrigin(input.getFile().getAbsolutePath());
         outputFile.setLocation(arguments.option_out());
         outputFile.setFileName(input.getFile().getName());
-        resources.addOutputFile(outputFile);
+        bundle.addOutputFile(outputFile);
         return true;
     }
 
@@ -131,7 +131,7 @@ public abstract class InputProcess<T extends XFile> extends XmlvmProcessImpl {
      * InputProcesses don't do anything in the second phase.
      */
     @Override
-    public boolean processPhase2(ResourcesPhase2 resources) {
+    public boolean processPhase2(BundlePhase2 bundle) {
         return true;
     }
 }

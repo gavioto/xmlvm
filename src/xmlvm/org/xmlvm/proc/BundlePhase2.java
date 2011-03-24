@@ -25,22 +25,46 @@ import java.util.Collection;
 import org.xmlvm.proc.out.OutputFile;
 
 /**
- * The interface of {@link CompilationResources} that is used during the first
+ * The interface of {@link CompilationBundle} that is used during the second
  * phase.
  */
-public interface ResourcesPhase2 {
+public interface BundlePhase2 {
 
+    /**
+     * Returns all {@link XmlvmResource}s that have been added to the bundle so
+     * far.
+     */
     public Collection<XmlvmResource> getResources();
 
+    /**
+     * Returns whether the {@link XmlvmResource} with the given name is in this
+     * bundle.
+     */
     public boolean containsResource(String resourceName);
 
+    /**
+     * Adds a new {@link OutputFile} to this bundle.
+     */
     public void addOutputFile(OutputFile file);
 
+    /**
+     * Adds a bunch of {@link OutputFile}s to this bundle.
+     */
     public void addOutputFiles(Collection<OutputFile> files);
-    
+
+    /**
+     * Returns all {@link OutputFile}s that have been added to the bundle so
+     * far.
+     */
     public Collection<OutputFile> getOutputFiles();
-    
+
+    /**
+     * Removes the given {@link OutputFile} from this bundle.
+     */
     public void removeOutputFile(OutputFile file);
-    
+
+    /**
+     * Removes all {@link OutputFile}s from this bundle.
+     */
     public void removeAllOutputFiles();
 }

@@ -24,8 +24,8 @@ import java.io.IOException;
 
 import org.xmlvm.Log;
 import org.xmlvm.main.Arguments;
-import org.xmlvm.proc.ResourcesPhase1;
-import org.xmlvm.proc.ResourcesPhase2;
+import org.xmlvm.proc.BundlePhase1;
+import org.xmlvm.proc.BundlePhase2;
 import org.xmlvm.proc.XmlvmProcessImpl;
 import org.xmlvm.proc.in.InputProcess.ClassInputProcess;
 import org.xmlvm.proc.in.file.ClassFile;
@@ -50,19 +50,19 @@ public class DexOutputProcess extends XmlvmProcessImpl {
     }
 
     @Override
-    public boolean processPhase1(ResourcesPhase1 resources) {
+    public boolean processPhase1(BundlePhase1 bundle) {
         return true;
     }
 
     @Override
-    public boolean processPhase2(ResourcesPhase2 resources) {
-        for (OutputFile preOutputFile : resources.getOutputFiles()) {
+    public boolean processPhase2(BundlePhase2 bundle) {
+        for (OutputFile preOutputFile : bundle.getOutputFiles()) {
             OutputFile outputFile = generateDexFile(preOutputFile);
             if (outputFile == null) {
                 return false;
             }
-            resources.removeOutputFile(preOutputFile);
-            resources.addOutputFile(outputFile);
+            bundle.removeOutputFile(preOutputFile);
+            bundle.addOutputFile(outputFile);
         }
         return true;
     }

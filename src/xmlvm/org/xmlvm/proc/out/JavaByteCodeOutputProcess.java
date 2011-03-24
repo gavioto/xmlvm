@@ -103,8 +103,8 @@ import org.jdom.Namespace;
 import org.xmlvm.IllegalXMLVMException;
 import org.xmlvm.Log;
 import org.xmlvm.main.Arguments;
-import org.xmlvm.proc.ResourcesPhase1;
-import org.xmlvm.proc.ResourcesPhase2;
+import org.xmlvm.proc.BundlePhase1;
+import org.xmlvm.proc.BundlePhase2;
 import org.xmlvm.proc.XmlvmProcessImpl;
 import org.xmlvm.proc.XmlvmResource;
 import org.xmlvm.proc.in.file.ClassFile;
@@ -198,15 +198,15 @@ public class JavaByteCodeOutputProcess extends XmlvmProcessImpl {
     }
 
     @Override
-    public boolean processPhase1(ResourcesPhase1 resources) {
+    public boolean processPhase1(BundlePhase1 bundle) {
         return true;
     }
 
     @Override
-    public boolean processPhase2(ResourcesPhase2 resources) {
-        for (XmlvmResource xmlvmResource : resources.getResources()) {
+    public boolean processPhase2(BundlePhase2 bundle) {
+        for (XmlvmResource xmlvmResource : bundle.getResources()) {
             try {
-                resources.addOutputFiles(createBytecode(xmlvmResource.getXmlvmDocument(),
+                bundle.addOutputFiles(createBytecode(xmlvmResource.getXmlvmDocument(),
                         arguments.option_out()));
             } catch (IOException ex) {
                 ex.printStackTrace();

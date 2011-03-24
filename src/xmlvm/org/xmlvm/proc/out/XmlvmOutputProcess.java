@@ -30,8 +30,8 @@ import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
 import org.xmlvm.Log;
 import org.xmlvm.main.Arguments;
-import org.xmlvm.proc.ResourcesPhase1;
-import org.xmlvm.proc.ResourcesPhase2;
+import org.xmlvm.proc.BundlePhase1;
+import org.xmlvm.proc.BundlePhase2;
 import org.xmlvm.proc.XmlvmProcessImpl;
 import org.xmlvm.proc.XmlvmResource;
 import org.xmlvm.proc.in.file.XmlvmFile;
@@ -49,19 +49,18 @@ public class XmlvmOutputProcess extends XmlvmProcessImpl {
     }
 
     @Override
-    public boolean processPhase1(ResourcesPhase1 resources) {
+    public boolean processPhase1(BundlePhase1 bundle) {
         return true;
     }
 
     @Override
-    public boolean processPhase2(ResourcesPhase2 resources) {
-        for (XmlvmResource resource : resources.getResources()) {
+    public boolean processPhase2(BundlePhase2 bundle) {
+        for (XmlvmResource resource : bundle.getResources()) {
             if (resource != null) {
                 outputFiles.add(createOutputFromDocument(resource));
             }
         }
-        Log.error("Unimplemented: processPhase2 in " + this.getClass().getSimpleName());
-        return false;
+        return true;
     }
 
     /**

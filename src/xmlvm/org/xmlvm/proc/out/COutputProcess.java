@@ -34,8 +34,8 @@ import org.jdom.Element;
 import org.xmlvm.Log;
 import org.xmlvm.main.Arguments;
 import org.xmlvm.proc.NativeResourceLoader;
-import org.xmlvm.proc.ResourcesPhase1;
-import org.xmlvm.proc.ResourcesPhase2;
+import org.xmlvm.proc.BundlePhase1;
+import org.xmlvm.proc.BundlePhase2;
 import org.xmlvm.proc.XmlvmProcessImpl;
 import org.xmlvm.proc.XmlvmResource;
 import org.xmlvm.proc.XsltRunner;
@@ -70,23 +70,23 @@ public class COutputProcess extends XmlvmProcessImpl {
     }
 
     @Override
-    public boolean processPhase1(ResourcesPhase1 resources) {
+    public boolean processPhase1(BundlePhase1 bundle) {
         return true;
     }
 
     @Override
-    public boolean processPhase2(ResourcesPhase2 resources) {
-        for (XmlvmResource xmlvm : resources.getResources()) {
+    public boolean processPhase2(BundlePhase2 bundle) {
+        for (XmlvmResource xmlvm : bundle.getResources()) {
             if (xmlvm != null) {
                 resourcePool.put(xmlvm.getFullName(), xmlvm);
             }
         }
 
         List<OutputFile> xmlvmFiles = new ArrayList<OutputFile>();
-        for (OutputFile outputFile : resources.getOutputFiles()) {
+        for (OutputFile outputFile : bundle.getOutputFiles()) {
             // Pass-through all non-xmlvm files.
             if (outputFile.getFileName().endsWith(".xmlvm")) {
-                resources.removeOutputFile(outputFile);
+                bundle.removeOutputFile(outputFile);
                 xmlvmFiles.add(outputFile);
             }
         }
@@ -96,7 +96,7 @@ public class COutputProcess extends XmlvmProcessImpl {
                 OutputFile file = genNativeSkeletons(xmlvm);
                 if (file != null) {
                     file.setLocation(arguments.option_out());
-                    resources.addOutputFile(file);
+                    bundle.addOutputFile(file);
                 }
             }
             return true;
@@ -107,13 +107,13 @@ public class COutputProcess extends XmlvmProcessImpl {
             OutputFile[] files = genC(xmlvm);
             for (OutputFile file : files) {
                 file.setLocation(arguments.option_out());
-                resources.addOutputFile(file);
+                bundle.addOutputFile(file);
             }
         }
 
         // Makes sure that for each type we create, the native parts, if
         // present, are added to the list of outputFiles.
-        resources.addOutputFiles(loadNativeResources(resources.getOutputFiles()));
+        bundle.addOutputFiles(loadNativeResources(bundle.getOutputFiles()));
         return true;
     }
 
@@ -122,7 +122,7 @@ public class COutputProcess extends XmlvmProcessImpl {
      */
     private Collection<OutputFile> loadNativeResources(Collection<OutputFile> outputFiles) {
         Log.debug(TAG, "Loading native resources");
-        
+
         List<OutputFile> result = new ArrayList<OutputFile>();
         Set<String> types = new HashSet<String>();
         for (OutputFile outputFile : outputFiles) {

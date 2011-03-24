@@ -35,8 +35,8 @@ import org.jdom.Namespace;
 import org.xmlvm.IllegalXMLVMException;
 import org.xmlvm.Log;
 import org.xmlvm.main.Arguments;
-import org.xmlvm.proc.ResourcesPhase1;
-import org.xmlvm.proc.ResourcesPhase2;
+import org.xmlvm.proc.BundlePhase1;
+import org.xmlvm.proc.BundlePhase2;
 import org.xmlvm.proc.XmlvmProcessImpl;
 import org.xmlvm.proc.XmlvmResource;
 import org.xmlvm.proc.in.file.ExeFile;
@@ -172,12 +172,12 @@ public class CILByteCodeOutputProcess extends XmlvmProcessImpl {
     }
 
     @Override
-    public boolean processPhase1(ResourcesPhase1 resources) {
+    public boolean processPhase1(BundlePhase1 bundle) {
         return true;
     }
 
     @Override
-    public boolean processPhase2(ResourcesPhase2 resources) {
+    public boolean processPhase2(BundlePhase2 bundle) {
         String appName = arguments.option_app_name();
         if (appName == null || appName.trim().isEmpty()) {
             Log.error("app_name must be set for CILByteCodeOutput.");
@@ -185,11 +185,11 @@ public class CILByteCodeOutputProcess extends XmlvmProcessImpl {
         }
 
         List<Document> documents = new ArrayList<Document>();
-        for (XmlvmResource xmlvmResource : resources.getResources()) {
+        for (XmlvmResource xmlvmResource : bundle.getResources()) {
             documents.add(xmlvmResource.getXmlvmDocument());
         }
         try {
-            resources.addOutputFile(createAssembly(documents, appName));
+            bundle.addOutputFile(createAssembly(documents, appName));
         } catch (IllegalXMLVMException e) {
             e.printStackTrace();
             Log.error("Couldn't create CIL assembly.");

@@ -30,8 +30,8 @@ import java.util.Set;
 import org.xmlvm.Log;
 import org.xmlvm.main.Arguments;
 import org.xmlvm.proc.DelayedXmlvmSerializationProvider;
-import org.xmlvm.proc.ResourcesPhase1;
-import org.xmlvm.proc.ResourcesPhase2;
+import org.xmlvm.proc.BundlePhase1;
+import org.xmlvm.proc.BundlePhase2;
 import org.xmlvm.proc.XmlvmProcessImpl;
 import org.xmlvm.proc.XmlvmResource;
 import org.xmlvm.proc.XmlvmResource.XmlvmField;
@@ -184,8 +184,8 @@ public class VtableOutputProcess extends XmlvmProcessImpl {
     }
 
     @Override
-    public boolean processPhase1(ResourcesPhase1 resources) {
-        for (XmlvmResource xmlvm : resources.getResources()) {
+    public boolean processPhase1(BundlePhase1 bundle) {
+        for (XmlvmResource xmlvm : bundle.getResources()) {
             if (xmlvm != null) {
                 resourcePool.put(xmlvm.getFullName(), xmlvm);
             }
@@ -197,20 +197,19 @@ public class VtableOutputProcess extends XmlvmProcessImpl {
             annotateVtableInvokes();
             adjustTypes();
         }
-
         return true;
     }
 
     @Override
-    public boolean processPhase2(ResourcesPhase2 resources) {
+    public boolean processPhase2(BundlePhase2 bundle) {
         // Only generate these files, if vtable is the target process.
         if (isTargetProcess) {
-            for (XmlvmResource resource : resources.getResources()) {
+            for (XmlvmResource resource : bundle.getResources()) {
                 OutputFile file = new OutputFile(new DelayedXmlvmSerializationProvider(
                         resource.getXmlvmDocument()));
                 file.setLocation(arguments.option_out());
                 file.setFileName(resource.getFullName() + VTABLE_ENDING);
-                resources.addOutputFile(file);
+                bundle.addOutputFile(file);
             }
         }
         return true;

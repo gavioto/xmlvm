@@ -26,8 +26,8 @@ import java.io.StringReader;
 
 import org.xmlvm.Log;
 import org.xmlvm.main.Arguments;
-import org.xmlvm.proc.ResourcesPhase1;
-import org.xmlvm.proc.ResourcesPhase2;
+import org.xmlvm.proc.BundlePhase1;
+import org.xmlvm.proc.BundlePhase2;
 import org.xmlvm.proc.XmlvmProcessImpl;
 import org.xmlvm.proc.out.build.MakeFile;
 import org.xmlvm.proc.out.build.ResourceManager;
@@ -55,24 +55,24 @@ public class IPhoneOutputProcess extends XmlvmProcessImpl {
     }
 
     @Override
-    public boolean processPhase1(ResourcesPhase1 resources) {
+    public boolean processPhase1(BundlePhase1 bundle) {
         return true;
     }
 
     @Override
-    public boolean processPhase2(ResourcesPhase2 resources) {
+    public boolean processPhase2(BundlePhase2 bundle) {
         Log.debug("Processing IPhoneOutputProcess");
 
-        for (OutputFile in : resources.getOutputFiles()) {
+        for (OutputFile in : bundle.getOutputFiles()) {
             OutputFile out = new OutputFile(in.getData());
             out.setFileName(in.getFileName());
             out.setLocation(in.getLocation() + IPHONE_SRC_APP);
-            resources.removeOutputFile(in);
-            resources.addOutputFile(out);
+            bundle.removeOutputFile(in);
+            bundle.addOutputFile(out);
         }
         OutputFile iPhoneCompatLib = new OutputFile(IPHONE_COMPAT_LIB);
         iPhoneCompatLib.setLocation(arguments.option_out() + IPHONE_SRC_LIB);
-        resources.addOutputFile(iPhoneCompatLib);
+        bundle.addOutputFile(iPhoneCompatLib);
 
         try {
             // Create Info.plist
@@ -110,20 +110,20 @@ public class IPhoneOutputProcess extends XmlvmProcessImpl {
             OutputFile infoPlistFile = new OutputFile(infoOut.toString());
             infoPlistFile.setLocation(arguments.option_out() + IPHONE_RESOURCES_SYS);
             infoPlistFile.setFileName(arguments.option_app_name() + "-Info.plist");
-            resources.addOutputFile(infoPlistFile);
+            bundle.addOutputFile(infoPlistFile);
         } catch (IOException ex) {
             ex.printStackTrace();
             return false;
         }
 
         /* Add extra source files, as resource files, if found */
-        resources.addOutputFiles(ResourceManager.getSourceResources(arguments));
+        bundle.addOutputFiles(ResourceManager.getSourceResources(arguments));
 
         /* Create various buildfiles */
         MakeFile makefile = new MakeFile(PLATFORM);
-        resources.addOutputFile(makefile.composeBuildFiles(arguments));
-        XCodeFile xcode = new XCodeFile(resources.getOutputFiles());
-        resources.addOutputFile(xcode.composeBuildFiles(arguments));
+        bundle.addOutputFile(makefile.composeBuildFiles(arguments));
+        XCodeFile xcode = new XCodeFile(bundle.getOutputFiles());
+        bundle.addOutputFile(xcode.composeBuildFiles(arguments));
 
         return true;
     }

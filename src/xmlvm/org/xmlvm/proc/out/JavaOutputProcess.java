@@ -25,8 +25,8 @@ import java.util.Map;
 
 import org.xmlvm.Log;
 import org.xmlvm.main.Arguments;
-import org.xmlvm.proc.ResourcesPhase1;
-import org.xmlvm.proc.ResourcesPhase2;
+import org.xmlvm.proc.BundlePhase1;
+import org.xmlvm.proc.BundlePhase2;
 import org.xmlvm.proc.XmlvmProcessImpl;
 import org.xmlvm.proc.XmlvmResource;
 import org.xmlvm.proc.XsltRunner;
@@ -40,11 +40,11 @@ public class JavaOutputProcess extends XmlvmProcessImpl {
         private final XmlvmResource[] allResources;
         private final int             start;
         private final int             end;
-        private final ResourcesPhase2 resources;
+        private final BundlePhase2 resources;
 
 
         public JavaTranslationThread(XmlvmResource[] allResources, int start, int end,
-                ResourcesPhase2 resources) {
+                BundlePhase2 resources) {
             this.allResources = allResources;
             this.start = start;
             this.end = end;
@@ -85,14 +85,14 @@ public class JavaOutputProcess extends XmlvmProcessImpl {
     }
 
     @Override
-    public boolean processPhase1(ResourcesPhase1 resources) {
+    public boolean processPhase1(BundlePhase1 bundle) {
         return true;
     }
 
     @Override
-    public boolean processPhase2(ResourcesPhase2 resources) {
+    public boolean processPhase2(BundlePhase2 bundle) {
         Map<String, XmlvmResource> mappedResources = new HashMap<String, XmlvmResource>();
-        for (XmlvmResource resource : resources.getResources()) {
+        for (XmlvmResource resource : bundle.getResources()) {
             if (resource != null) {
                 mappedResources.put(resource.getFullName(), resource);
             }
@@ -110,7 +110,7 @@ public class JavaOutputProcess extends XmlvmProcessImpl {
         for (int i = 0; i < threadCount; ++i) {
             int start = i * itemsPerThread;
             int end = Math.min(start + itemsPerThread - 1, allResources.length - 1);
-            threads[i] = new JavaTranslationThread(allResources, start, end, resources);
+            threads[i] = new JavaTranslationThread(allResources, start, end, bundle);
             threads[i].start();
         }
 

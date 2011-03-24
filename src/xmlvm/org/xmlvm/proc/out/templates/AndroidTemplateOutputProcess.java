@@ -31,7 +31,7 @@ import java.io.File;
 import java.util.ArrayList;
 import org.xmlvm.Log;
 import org.xmlvm.main.Arguments;
-import org.xmlvm.proc.ResourcesPhase2;
+import org.xmlvm.proc.BundlePhase2;
 import org.xmlvm.proc.out.EmptyDirectory;
 
 /**
@@ -48,7 +48,7 @@ public class AndroidTemplateOutputProcess extends TemplateOutputProcess {
     }
 
     @Override
-    public boolean processPhase2(ResourcesPhase2 resources) {
+    public boolean processPhase2(BundlePhase2 resources) {
         if (super.processPhase2(resources)) {
             resources.addOutputFile(new EmptyDirectory(gen));
             Log.warn("Currently the Android plugin for Netbeans does not support local.properties "

@@ -613,7 +613,7 @@ int main(int argc, char* argv[])
     <xsl:value-of select="$numImplementedInterfaces"/>
     <xsl:text>);&nl;</xsl:text>
     
-    <xsl:text>&nl;        //Initialize interfaces if necessary and assign tib to implementedInterfaces</xsl:text>
+    <xsl:text>&nl;        // Initialize interfaces if necessary and assign tib to implementedInterfaces&nl;</xsl:text>
 	<xsl:for-each select="vm:implementsInterface">
 	  <xsl:variable name="idx" select="position() - 1"/>
 	  <xsl:text>&nl;        if (!__TIB_</xsl:text>

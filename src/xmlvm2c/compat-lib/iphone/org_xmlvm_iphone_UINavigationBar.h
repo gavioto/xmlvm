@@ -34,7 +34,7 @@ XMLVM_FORWARD_DECL(org_xmlvm_iphone_UIColor)
 XMLVM_FORWARD_DECL(org_xmlvm_iphone_UIView)
 #endif
 // Class declarations for org.xmlvm.iphone.UINavigationBar
-XMLVM_DEFINE_CLASS(org_xmlvm_iphone_UINavigationBar, 86)
+XMLVM_DEFINE_CLASS(org_xmlvm_iphone_UINavigationBar, 78, XMLVM_ITABLE_SIZE_org_xmlvm_iphone_UINavigationBar)
 
 extern JAVA_OBJECT __CLASS_org_xmlvm_iphone_UINavigationBar;
 extern JAVA_OBJECT __CLASS_org_xmlvm_iphone_UINavigationBar_3ARRAY;
@@ -63,23 +63,23 @@ struct org_xmlvm_iphone_UINavigationBar {
 typedef struct org_xmlvm_iphone_UINavigationBar org_xmlvm_iphone_UINavigationBar;
 #endif
 
-#define XMLVM_VTABLE_SIZE_org_xmlvm_iphone_UINavigationBar 86
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationBar_pushNavigationItem___org_xmlvm_iphone_UINavigationItem_boolean 70
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationBar_popNavigationItemAnimated___boolean 71
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationBar_setItems___java_util_ArrayList 72
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationBar_setItems___java_util_ArrayList_boolean 73
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationBar_getDelegate__ 74
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationBar_setDelegate___org_xmlvm_iphone_UINavigationBarDelegate 75
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationBar_getTopItem__ 76
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationBar_getBackitem__ 77
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationBar_getItems__ 78
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationBar_getBarStyle__ 79
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationBar_setBarStyle___int 80
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationBar_getTintColor__ 81
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationBar_setTintColor___org_xmlvm_iphone_UIColor 82
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationBar_isTranslucent__ 83
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationBar_setTranslucent___boolean 84
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationBar_updateViews__ 85
+#define XMLVM_VTABLE_SIZE_org_xmlvm_iphone_UINavigationBar 78
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationBar_pushNavigationItem___org_xmlvm_iphone_UINavigationItem_boolean 62
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationBar_popNavigationItemAnimated___boolean 63
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationBar_setItems___java_util_ArrayList 64
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationBar_setItems___java_util_ArrayList_boolean 65
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationBar_getDelegate__ 66
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationBar_setDelegate___org_xmlvm_iphone_UINavigationBarDelegate 67
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationBar_getTopItem__ 68
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationBar_getBackitem__ 69
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationBar_getItems__ 70
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationBar_getBarStyle__ 71
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationBar_setBarStyle___int 72
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationBar_getTintColor__ 73
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationBar_setTintColor___org_xmlvm_iphone_UIColor 74
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationBar_isTranslucent__ 75
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationBar_setTranslucent___boolean 76
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationBar_updateViews__ 77
 
 void __INIT_org_xmlvm_iphone_UINavigationBar();
 void __INIT_IMPL_org_xmlvm_iphone_UINavigationBar();
@@ -89,37 +89,37 @@ JAVA_OBJECT __NEW_org_xmlvm_iphone_UINavigationBar();
 JAVA_OBJECT __NEW_INSTANCE_org_xmlvm_iphone_UINavigationBar();
 void org_xmlvm_iphone_UINavigationBar___INIT___(JAVA_OBJECT me);
 void org_xmlvm_iphone_UINavigationBar___INIT____org_xmlvm_iphone_CGRect(JAVA_OBJECT me, JAVA_OBJECT n1);
-// Vtable index: 70
+// Vtable index: 62
 void org_xmlvm_iphone_UINavigationBar_pushNavigationItem___org_xmlvm_iphone_UINavigationItem_boolean(JAVA_OBJECT me, JAVA_OBJECT n1, JAVA_BOOLEAN n2);
-// Vtable index: 71
+// Vtable index: 63
 JAVA_OBJECT org_xmlvm_iphone_UINavigationBar_popNavigationItemAnimated___boolean(JAVA_OBJECT me, JAVA_BOOLEAN n1);
-// Vtable index: 72
+// Vtable index: 64
 void org_xmlvm_iphone_UINavigationBar_setItems___java_util_ArrayList(JAVA_OBJECT me, JAVA_OBJECT n1);
-// Vtable index: 73
+// Vtable index: 65
 void org_xmlvm_iphone_UINavigationBar_setItems___java_util_ArrayList_boolean(JAVA_OBJECT me, JAVA_OBJECT n1, JAVA_BOOLEAN n2);
-// Vtable index: 74
+// Vtable index: 66
 JAVA_OBJECT org_xmlvm_iphone_UINavigationBar_getDelegate__(JAVA_OBJECT me);
-// Vtable index: 75
+// Vtable index: 67
 void org_xmlvm_iphone_UINavigationBar_setDelegate___org_xmlvm_iphone_UINavigationBarDelegate(JAVA_OBJECT me, JAVA_OBJECT n1);
-// Vtable index: 76
+// Vtable index: 68
 JAVA_OBJECT org_xmlvm_iphone_UINavigationBar_getTopItem__(JAVA_OBJECT me);
-// Vtable index: 77
+// Vtable index: 69
 JAVA_OBJECT org_xmlvm_iphone_UINavigationBar_getBackitem__(JAVA_OBJECT me);
-// Vtable index: 78
+// Vtable index: 70
 JAVA_OBJECT org_xmlvm_iphone_UINavigationBar_getItems__(JAVA_OBJECT me);
-// Vtable index: 79
+// Vtable index: 71
 JAVA_INT org_xmlvm_iphone_UINavigationBar_getBarStyle__(JAVA_OBJECT me);
-// Vtable index: 80
+// Vtable index: 72
 void org_xmlvm_iphone_UINavigationBar_setBarStyle___int(JAVA_OBJECT me, JAVA_INT n1);
-// Vtable index: 81
+// Vtable index: 73
 JAVA_OBJECT org_xmlvm_iphone_UINavigationBar_getTintColor__(JAVA_OBJECT me);
-// Vtable index: 82
+// Vtable index: 74
 void org_xmlvm_iphone_UINavigationBar_setTintColor___org_xmlvm_iphone_UIColor(JAVA_OBJECT me, JAVA_OBJECT n1);
-// Vtable index: 83
+// Vtable index: 75
 JAVA_BOOLEAN org_xmlvm_iphone_UINavigationBar_isTranslucent__(JAVA_OBJECT me);
-// Vtable index: 84
+// Vtable index: 76
 void org_xmlvm_iphone_UINavigationBar_setTranslucent___boolean(JAVA_OBJECT me, JAVA_BOOLEAN n1);
-// Vtable index: 85
+// Vtable index: 77
 void org_xmlvm_iphone_UINavigationBar_updateViews__(JAVA_OBJECT me);
 
 #endif

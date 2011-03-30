@@ -23,7 +23,7 @@ XMLVM_FORWARD_DECL(org_xmlvm_iphone_UIViewController)
 XMLVM_FORWARD_DECL(org_xmlvm_iphone_UIViewController)
 #endif
 // Class declarations for org.xmlvm.iphone.UITabBarController
-XMLVM_DEFINE_CLASS(org_xmlvm_iphone_UITabBarController, 79)
+XMLVM_DEFINE_CLASS(org_xmlvm_iphone_UITabBarController, 71, XMLVM_ITABLE_SIZE_org_xmlvm_iphone_UITabBarController)
 
 extern JAVA_OBJECT __CLASS_org_xmlvm_iphone_UITabBarController;
 extern JAVA_OBJECT __CLASS_org_xmlvm_iphone_UITabBarController_3ARRAY;
@@ -51,22 +51,22 @@ struct org_xmlvm_iphone_UITabBarController {
 typedef struct org_xmlvm_iphone_UITabBarController org_xmlvm_iphone_UITabBarController;
 #endif
 
-#define XMLVM_VTABLE_SIZE_org_xmlvm_iphone_UITabBarController 79
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UITabBarController_requestInternalFrame__ 26
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UITabBarController_getCustomizableViewControllers__ 66
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UITabBarController_setCustomizableViewControllers___java_util_ArrayList 67
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UITabBarController_getDelegate__ 68
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UITabBarController_setDelegate___org_xmlvm_iphone_UITabBarControllerDelegate 69
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UITabBarController_getMoreNavigationController__ 70
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UITabBarController_getSelectedViewController__ 71
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UITabBarController_setSelectedViewController___org_xmlvm_iphone_UIViewController 72
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UITabBarController_getSelectedIndex__ 73
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UITabBarController_setSelectedIndex___int 74
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UITabBarController_getTabBar__ 75
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UITabBarController_getViewControllers__ 76
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UITabBarController_setViewControllers___java_util_ArrayList 77
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UITabBarController_setViewControllers___java_util_ArrayList_boolean 78
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UITabBarController_updateViews__ 27
+#define XMLVM_VTABLE_SIZE_org_xmlvm_iphone_UITabBarController 71
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UITabBarController_requestInternalFrame__ 18
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UITabBarController_getCustomizableViewControllers__ 58
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UITabBarController_setCustomizableViewControllers___java_util_ArrayList 59
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UITabBarController_getDelegate__ 60
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UITabBarController_setDelegate___org_xmlvm_iphone_UITabBarControllerDelegate 61
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UITabBarController_getMoreNavigationController__ 62
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UITabBarController_getSelectedViewController__ 63
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UITabBarController_setSelectedViewController___org_xmlvm_iphone_UIViewController 64
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UITabBarController_getSelectedIndex__ 65
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UITabBarController_setSelectedIndex___int 66
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UITabBarController_getTabBar__ 67
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UITabBarController_getViewControllers__ 68
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UITabBarController_setViewControllers___java_util_ArrayList 69
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UITabBarController_setViewControllers___java_util_ArrayList_boolean 70
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UITabBarController_updateViews__ 19
 
 void __INIT_org_xmlvm_iphone_UITabBarController();
 void __INIT_IMPL_org_xmlvm_iphone_UITabBarController();
@@ -75,35 +75,35 @@ void __INIT_INSTANCE_MEMBERS_org_xmlvm_iphone_UITabBarController(JAVA_OBJECT me)
 JAVA_OBJECT __NEW_org_xmlvm_iphone_UITabBarController();
 JAVA_OBJECT __NEW_INSTANCE_org_xmlvm_iphone_UITabBarController();
 void org_xmlvm_iphone_UITabBarController___INIT___(JAVA_OBJECT me);
-// Vtable index: 26
+// Vtable index: 18
 JAVA_OBJECT org_xmlvm_iphone_UITabBarController_requestInternalFrame__(JAVA_OBJECT me);
-// Vtable index: 66
+// Vtable index: 58
 JAVA_OBJECT org_xmlvm_iphone_UITabBarController_getCustomizableViewControllers__(JAVA_OBJECT me);
-// Vtable index: 67
+// Vtable index: 59
 void org_xmlvm_iphone_UITabBarController_setCustomizableViewControllers___java_util_ArrayList(JAVA_OBJECT me, JAVA_OBJECT n1);
-// Vtable index: 68
+// Vtable index: 60
 JAVA_OBJECT org_xmlvm_iphone_UITabBarController_getDelegate__(JAVA_OBJECT me);
-// Vtable index: 69
+// Vtable index: 61
 void org_xmlvm_iphone_UITabBarController_setDelegate___org_xmlvm_iphone_UITabBarControllerDelegate(JAVA_OBJECT me, JAVA_OBJECT n1);
-// Vtable index: 70
+// Vtable index: 62
 JAVA_OBJECT org_xmlvm_iphone_UITabBarController_getMoreNavigationController__(JAVA_OBJECT me);
-// Vtable index: 71
+// Vtable index: 63
 JAVA_OBJECT org_xmlvm_iphone_UITabBarController_getSelectedViewController__(JAVA_OBJECT me);
-// Vtable index: 72
+// Vtable index: 64
 void org_xmlvm_iphone_UITabBarController_setSelectedViewController___org_xmlvm_iphone_UIViewController(JAVA_OBJECT me, JAVA_OBJECT n1);
-// Vtable index: 73
+// Vtable index: 65
 JAVA_INT org_xmlvm_iphone_UITabBarController_getSelectedIndex__(JAVA_OBJECT me);
-// Vtable index: 74
+// Vtable index: 66
 void org_xmlvm_iphone_UITabBarController_setSelectedIndex___int(JAVA_OBJECT me, JAVA_INT n1);
-// Vtable index: 75
+// Vtable index: 67
 JAVA_OBJECT org_xmlvm_iphone_UITabBarController_getTabBar__(JAVA_OBJECT me);
-// Vtable index: 76
+// Vtable index: 68
 JAVA_OBJECT org_xmlvm_iphone_UITabBarController_getViewControllers__(JAVA_OBJECT me);
-// Vtable index: 77
+// Vtable index: 69
 void org_xmlvm_iphone_UITabBarController_setViewControllers___java_util_ArrayList(JAVA_OBJECT me, JAVA_OBJECT n1);
-// Vtable index: 78
+// Vtable index: 70
 void org_xmlvm_iphone_UITabBarController_setViewControllers___java_util_ArrayList_boolean(JAVA_OBJECT me, JAVA_OBJECT n1, JAVA_BOOLEAN n2);
-// Vtable index: 27
+// Vtable index: 19
 void org_xmlvm_iphone_UITabBarController_updateViews__(JAVA_OBJECT me);
 
 #endif

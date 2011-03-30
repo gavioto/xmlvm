@@ -31,6 +31,7 @@
 #include <pthread.h>
 
 #include "interfaces.h"
+#include "placeholder_interfaces.h"
 
 #ifdef XMLVM_NO_GC
 
@@ -226,7 +227,6 @@ extern __TIB_DEFINITION_##name __TIB_##name;
 XMLVM_DEFINE_CLASS(TEMPLATE, 0, 0)
 
 int XMLVM_ISA(JAVA_OBJECT obj, JAVA_OBJECT clazz);
-VTABLE_PTR XMLVM_LOOKUP_INTERFACE_METHOD(JAVA_OBJECT me, const char* ifaceName, int vtableIndex);
 int xmlvm_java_string_cmp(JAVA_OBJECT s1, const char* s2);
 const char* xmlvm_java_string_to_const_char(JAVA_OBJECT s);
 JAVA_OBJECT xmlvm_create_java_string(const char* s);

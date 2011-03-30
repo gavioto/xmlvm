@@ -23,7 +23,7 @@ XMLVM_FORWARD_DECL(org_xmlvm_iphone_UIViewController)
 XMLVM_FORWARD_DECL(org_xmlvm_iphone_UIViewController)
 #endif
 // Class declarations for org.xmlvm.iphone.UINavigationController
-XMLVM_DEFINE_CLASS(org_xmlvm_iphone_UINavigationController, 85)
+XMLVM_DEFINE_CLASS(org_xmlvm_iphone_UINavigationController, 77, XMLVM_ITABLE_SIZE_org_xmlvm_iphone_UINavigationController)
 
 extern JAVA_OBJECT __CLASS_org_xmlvm_iphone_UINavigationController;
 extern JAVA_OBJECT __CLASS_org_xmlvm_iphone_UINavigationController_3ARRAY;
@@ -51,29 +51,29 @@ struct org_xmlvm_iphone_UINavigationController {
 typedef struct org_xmlvm_iphone_UINavigationController org_xmlvm_iphone_UINavigationController;
 #endif
 
-#define XMLVM_VTABLE_SIZE_org_xmlvm_iphone_UINavigationController 85
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationController_requestInternalFrame__ 26
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationController_getTopViewController__ 66
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationController_getVisibleViewController__ 67
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationController_getViewControllers__ 68
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationController_setViewControllers___java_util_ArrayList 69
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationController_setViewControllers___java_util_ArrayList_boolean 70
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationController_pushViewController___org_xmlvm_iphone_UIViewController_boolean 71
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationController_popViewControllerAnimated___boolean 72
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationController_popToRootViewControllerAnimated___boolean 73
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationController_popToViewController___org_xmlvm_iphone_UIViewController_boolean 74
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationController_isNavigationBarHidden__ 75
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationController_setNavigationBarHidden___boolean 76
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationController_setNavigationBarHidden___boolean_boolean 77
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationController_getNavigationBar__ 78
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationController_isToolbarHidden__ 79
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationController_setToolbarHidden___boolean 80
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationController_setToolbarHidden___boolean_boolean 81
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationController_getToolbar__ 82
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationController_setDelegate___org_xmlvm_iphone_UINavigationControllerDelegate 83
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationController_getDelegate__ 84
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationController_loadView__ 21
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationController_updateViews__ 27
+#define XMLVM_VTABLE_SIZE_org_xmlvm_iphone_UINavigationController 77
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationController_requestInternalFrame__ 18
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationController_getTopViewController__ 58
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationController_getVisibleViewController__ 59
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationController_getViewControllers__ 60
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationController_setViewControllers___java_util_ArrayList 61
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationController_setViewControllers___java_util_ArrayList_boolean 62
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationController_pushViewController___org_xmlvm_iphone_UIViewController_boolean 63
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationController_popViewControllerAnimated___boolean 64
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationController_popToRootViewControllerAnimated___boolean 65
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationController_popToViewController___org_xmlvm_iphone_UIViewController_boolean 66
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationController_isNavigationBarHidden__ 67
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationController_setNavigationBarHidden___boolean 68
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationController_setNavigationBarHidden___boolean_boolean 69
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationController_getNavigationBar__ 70
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationController_isToolbarHidden__ 71
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationController_setToolbarHidden___boolean 72
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationController_setToolbarHidden___boolean_boolean 73
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationController_getToolbar__ 74
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationController_setDelegate___org_xmlvm_iphone_UINavigationControllerDelegate 75
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationController_getDelegate__ 76
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationController_loadView__ 13
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UINavigationController_updateViews__ 19
 
 void __INIT_org_xmlvm_iphone_UINavigationController();
 void __INIT_IMPL_org_xmlvm_iphone_UINavigationController();
@@ -83,49 +83,49 @@ JAVA_OBJECT __NEW_org_xmlvm_iphone_UINavigationController();
 JAVA_OBJECT __NEW_INSTANCE_org_xmlvm_iphone_UINavigationController();
 void org_xmlvm_iphone_UINavigationController___INIT___(JAVA_OBJECT me);
 void org_xmlvm_iphone_UINavigationController___INIT____org_xmlvm_iphone_UIViewController(JAVA_OBJECT me, JAVA_OBJECT n1);
-// Vtable index: 26
+// Vtable index: 18
 JAVA_OBJECT org_xmlvm_iphone_UINavigationController_requestInternalFrame__(JAVA_OBJECT me);
-// Vtable index: 66
+// Vtable index: 58
 JAVA_OBJECT org_xmlvm_iphone_UINavigationController_getTopViewController__(JAVA_OBJECT me);
-// Vtable index: 67
+// Vtable index: 59
 JAVA_OBJECT org_xmlvm_iphone_UINavigationController_getVisibleViewController__(JAVA_OBJECT me);
-// Vtable index: 68
+// Vtable index: 60
 JAVA_OBJECT org_xmlvm_iphone_UINavigationController_getViewControllers__(JAVA_OBJECT me);
-// Vtable index: 69
+// Vtable index: 61
 void org_xmlvm_iphone_UINavigationController_setViewControllers___java_util_ArrayList(JAVA_OBJECT me, JAVA_OBJECT n1);
-// Vtable index: 70
+// Vtable index: 62
 void org_xmlvm_iphone_UINavigationController_setViewControllers___java_util_ArrayList_boolean(JAVA_OBJECT me, JAVA_OBJECT n1, JAVA_BOOLEAN n2);
-// Vtable index: 71
+// Vtable index: 63
 void org_xmlvm_iphone_UINavigationController_pushViewController___org_xmlvm_iphone_UIViewController_boolean(JAVA_OBJECT me, JAVA_OBJECT n1, JAVA_BOOLEAN n2);
-// Vtable index: 72
+// Vtable index: 64
 JAVA_OBJECT org_xmlvm_iphone_UINavigationController_popViewControllerAnimated___boolean(JAVA_OBJECT me, JAVA_BOOLEAN n1);
-// Vtable index: 73
+// Vtable index: 65
 JAVA_OBJECT org_xmlvm_iphone_UINavigationController_popToRootViewControllerAnimated___boolean(JAVA_OBJECT me, JAVA_BOOLEAN n1);
-// Vtable index: 74
+// Vtable index: 66
 JAVA_OBJECT org_xmlvm_iphone_UINavigationController_popToViewController___org_xmlvm_iphone_UIViewController_boolean(JAVA_OBJECT me, JAVA_OBJECT n1, JAVA_BOOLEAN n2);
-// Vtable index: 75
+// Vtable index: 67
 JAVA_BOOLEAN org_xmlvm_iphone_UINavigationController_isNavigationBarHidden__(JAVA_OBJECT me);
-// Vtable index: 76
+// Vtable index: 68
 void org_xmlvm_iphone_UINavigationController_setNavigationBarHidden___boolean(JAVA_OBJECT me, JAVA_BOOLEAN n1);
-// Vtable index: 77
+// Vtable index: 69
 void org_xmlvm_iphone_UINavigationController_setNavigationBarHidden___boolean_boolean(JAVA_OBJECT me, JAVA_BOOLEAN n1, JAVA_BOOLEAN n2);
-// Vtable index: 78
+// Vtable index: 70
 JAVA_OBJECT org_xmlvm_iphone_UINavigationController_getNavigationBar__(JAVA_OBJECT me);
-// Vtable index: 79
+// Vtable index: 71
 JAVA_BOOLEAN org_xmlvm_iphone_UINavigationController_isToolbarHidden__(JAVA_OBJECT me);
-// Vtable index: 80
+// Vtable index: 72
 void org_xmlvm_iphone_UINavigationController_setToolbarHidden___boolean(JAVA_OBJECT me, JAVA_BOOLEAN n1);
-// Vtable index: 81
+// Vtable index: 73
 void org_xmlvm_iphone_UINavigationController_setToolbarHidden___boolean_boolean(JAVA_OBJECT me, JAVA_BOOLEAN n1, JAVA_BOOLEAN n2);
-// Vtable index: 82
+// Vtable index: 74
 JAVA_OBJECT org_xmlvm_iphone_UINavigationController_getToolbar__(JAVA_OBJECT me);
-// Vtable index: 83
+// Vtable index: 75
 void org_xmlvm_iphone_UINavigationController_setDelegate___org_xmlvm_iphone_UINavigationControllerDelegate(JAVA_OBJECT me, JAVA_OBJECT n1);
-// Vtable index: 84
+// Vtable index: 76
 JAVA_OBJECT org_xmlvm_iphone_UINavigationController_getDelegate__(JAVA_OBJECT me);
-// Vtable index: 21
+// Vtable index: 13
 void org_xmlvm_iphone_UINavigationController_loadView__(JAVA_OBJECT me);
-// Vtable index: 27
+// Vtable index: 19
 void org_xmlvm_iphone_UINavigationController_updateViews__(JAVA_OBJECT me);
 
 #endif

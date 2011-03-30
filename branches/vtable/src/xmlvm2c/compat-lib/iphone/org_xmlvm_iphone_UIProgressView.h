@@ -10,7 +10,7 @@
 XMLVM_FORWARD_DECL(org_xmlvm_iphone_UIControl)
 #endif
 // Class declarations for org.xmlvm.iphone.UIProgressView
-XMLVM_DEFINE_CLASS(org_xmlvm_iphone_UIProgressView, 82)
+XMLVM_DEFINE_CLASS(org_xmlvm_iphone_UIProgressView, 74, XMLVM_ITABLE_SIZE_org_xmlvm_iphone_UIProgressView)
 
 extern JAVA_OBJECT __CLASS_org_xmlvm_iphone_UIProgressView;
 extern JAVA_OBJECT __CLASS_org_xmlvm_iphone_UIProgressView_3ARRAY;
@@ -38,11 +38,11 @@ struct org_xmlvm_iphone_UIProgressView {
 typedef struct org_xmlvm_iphone_UIProgressView org_xmlvm_iphone_UIProgressView;
 #endif
 
-#define XMLVM_VTABLE_SIZE_org_xmlvm_iphone_UIProgressView 82
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIProgressView_setProgress___float 78
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIProgressView_getProgress__ 79
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIProgressView_getProgressViewStyle__ 80
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIProgressView_setProgressViewStyle___int 81
+#define XMLVM_VTABLE_SIZE_org_xmlvm_iphone_UIProgressView 74
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIProgressView_setProgress___float 70
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIProgressView_getProgress__ 71
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIProgressView_getProgressViewStyle__ 72
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIProgressView_setProgressViewStyle___int 73
 
 void __INIT_org_xmlvm_iphone_UIProgressView();
 void __INIT_IMPL_org_xmlvm_iphone_UIProgressView();
@@ -51,13 +51,13 @@ void __INIT_INSTANCE_MEMBERS_org_xmlvm_iphone_UIProgressView(JAVA_OBJECT me);
 JAVA_OBJECT __NEW_org_xmlvm_iphone_UIProgressView();
 JAVA_OBJECT __NEW_INSTANCE_org_xmlvm_iphone_UIProgressView();
 void org_xmlvm_iphone_UIProgressView___INIT____int(JAVA_OBJECT me, JAVA_INT n1);
-// Vtable index: 78
+// Vtable index: 70
 void org_xmlvm_iphone_UIProgressView_setProgress___float(JAVA_OBJECT me, JAVA_FLOAT n1);
-// Vtable index: 79
+// Vtable index: 71
 JAVA_FLOAT org_xmlvm_iphone_UIProgressView_getProgress__(JAVA_OBJECT me);
-// Vtable index: 80
+// Vtable index: 72
 JAVA_INT org_xmlvm_iphone_UIProgressView_getProgressViewStyle__(JAVA_OBJECT me);
-// Vtable index: 81
+// Vtable index: 73
 void org_xmlvm_iphone_UIProgressView_setProgressViewStyle___int(JAVA_OBJECT me, JAVA_INT n1);
 
 #endif

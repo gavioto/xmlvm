@@ -26,7 +26,7 @@ XMLVM_FORWARD_DECL(org_xmlvm_iphone_CGSize)
 XMLVM_FORWARD_DECL(org_xmlvm_iphone_CGRect)
 #endif
 // Class declarations for org.xmlvm.iphone.CGRect
-XMLVM_DEFINE_CLASS(org_xmlvm_iphone_CGRect, 17)
+XMLVM_DEFINE_CLASS(org_xmlvm_iphone_CGRect, 9, XMLVM_ITABLE_SIZE_org_xmlvm_iphone_CGRect)
 
 extern JAVA_OBJECT __CLASS_org_xmlvm_iphone_CGRect;
 extern JAVA_OBJECT __CLASS_org_xmlvm_iphone_CGRect_3ARRAY;
@@ -62,12 +62,12 @@ struct org_xmlvm_iphone_CGRect {
 typedef struct org_xmlvm_iphone_CGRect org_xmlvm_iphone_CGRect;
 #endif
 
-#define XMLVM_VTABLE_SIZE_org_xmlvm_iphone_CGRect 17
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_CGRect_isNull__ 14
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_CGRect_isEmpty__ 15
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_CGRect_isInfinite__ 16
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_CGRect_toString__ 7
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_CGRect_equals___java_lang_Object 1
+#define XMLVM_VTABLE_SIZE_org_xmlvm_iphone_CGRect 9
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_CGRect_isNull__ 6
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_CGRect_isEmpty__ 7
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_CGRect_isInfinite__ 8
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_CGRect_toString__ 2
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_CGRect_equals___java_lang_Object 0
 
 void __INIT_org_xmlvm_iphone_CGRect();
 void __INIT_IMPL_org_xmlvm_iphone_CGRect();
@@ -81,15 +81,15 @@ JAVA_OBJECT org_xmlvm_iphone_CGRect_Null__();
 JAVA_OBJECT org_xmlvm_iphone_CGRect_Zero__();
 JAVA_OBJECT org_xmlvm_iphone_CGRect_Infinite__();
 JAVA_OBJECT org_xmlvm_iphone_CGRect_Intersection___org_xmlvm_iphone_CGRect_org_xmlvm_iphone_CGRect(JAVA_OBJECT n1, JAVA_OBJECT n2);
-// Vtable index: 14
+// Vtable index: 6
 JAVA_BOOLEAN org_xmlvm_iphone_CGRect_isNull__(JAVA_OBJECT me);
-// Vtable index: 15
-JAVA_BOOLEAN org_xmlvm_iphone_CGRect_isEmpty__(JAVA_OBJECT me);
-// Vtable index: 16
-JAVA_BOOLEAN org_xmlvm_iphone_CGRect_isInfinite__(JAVA_OBJECT me);
 // Vtable index: 7
+JAVA_BOOLEAN org_xmlvm_iphone_CGRect_isEmpty__(JAVA_OBJECT me);
+// Vtable index: 8
+JAVA_BOOLEAN org_xmlvm_iphone_CGRect_isInfinite__(JAVA_OBJECT me);
+// Vtable index: 2
 JAVA_OBJECT org_xmlvm_iphone_CGRect_toString__(JAVA_OBJECT me);
-// Vtable index: 1
+// Vtable index: 0
 JAVA_BOOLEAN org_xmlvm_iphone_CGRect_equals___java_lang_Object(JAVA_OBJECT me, JAVA_OBJECT n1);
 void org_xmlvm_iphone_CGRect___CLINIT_();
 

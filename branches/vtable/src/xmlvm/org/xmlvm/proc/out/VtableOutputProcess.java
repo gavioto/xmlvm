@@ -98,7 +98,7 @@ public class VtableOutputProcess extends XmlvmProcessImpl {
             Log.debug(TAG, "Done adjusting types");
         }
         
-        if (!arguments.option_gen_wrapper() && !isTargetProcess) {
+        if (/*!arguments.option_gen_wrapper() &&*/ !isTargetProcess) {
             OutputFile indexFile = hierarchyHelper.getInterfaceIndexFile();
             indexFile.setLocation(arguments.option_out());
             indexFile.setFileName("interfaces.h");
@@ -278,6 +278,12 @@ public class VtableOutputProcess extends XmlvmProcessImpl {
             return true;
         } else if (resource.getFullName().equals("java.lang.Object")
                 && method.getName().equals("getClass")) {
+            return true;
+        } else if (resource.getFullName().equals("java.lang.Class")
+                && method.getName().equals("getMethod")) {
+            return true;
+        } else if (resource.getFullName().equals("java.lang.reflect.Method")
+                && method.getName().equals("invoke")) {
             return true;
         }
         return false;

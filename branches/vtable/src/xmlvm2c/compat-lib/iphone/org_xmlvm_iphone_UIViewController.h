@@ -30,7 +30,7 @@ XMLVM_FORWARD_DECL(java_lang_String)
 XMLVM_FORWARD_DECL(org_xmlvm_iphone_UIViewController)
 #endif
 // Class declarations for org.xmlvm.iphone.UIViewController
-XMLVM_DEFINE_CLASS(org_xmlvm_iphone_UIViewController, 66)
+XMLVM_DEFINE_CLASS(org_xmlvm_iphone_UIViewController, 58, XMLVM_ITABLE_SIZE_org_xmlvm_iphone_UIViewController)
 
 extern JAVA_OBJECT __CLASS_org_xmlvm_iphone_UIViewController;
 extern JAVA_OBJECT __CLASS_org_xmlvm_iphone_UIViewController_3ARRAY;
@@ -59,52 +59,52 @@ struct org_xmlvm_iphone_UIViewController {
 typedef struct org_xmlvm_iphone_UIViewController org_xmlvm_iphone_UIViewController;
 #endif
 
-#define XMLVM_VTABLE_SIZE_org_xmlvm_iphone_UIViewController 66
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_loadView__ 21
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_isViewLoaded__ 22
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_viewDidLoad__ 23
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_viewDidUnload__ 24
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_viewWillAppearInternal___boolean 25
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_requestInternalFrame__ 26
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_updateViews__ 27
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_viewWillAppear___boolean 28
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_viewDidAppear___boolean 29
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_viewWillDisappear___boolean 30
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_viewDidDisappear___boolean 31
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_shouldAutorotateToInterfaceOrientation___int 32
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_rotatingHeaderView__ 33
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_rotatingFooterView__ 34
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_willRotateToInterfaceOrientation___int_double 35
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_willAnimateRotationToInterfaceOrientation___int_double 36
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_didRotateFromInterfaceOrientation___int 37
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_willAnimateFirstHalfOfRotationToInterfaceOrientation___int_double 38
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_didAnimateFirstHalfOfRotationToInterfaceOrientation___int 39
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_willAnimateSecondHalfOfRotationFromInterfaceOrientation___int_double 40
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_didReceiveMemoryWarning__ 41
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_getView__ 42
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_setView___org_xmlvm_iphone_UIView 43
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_getTitle__ 44
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_setTitle___java_lang_String 45
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_wantsFullScreenLayout__ 46
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_setWantsFullScreenLayout___boolean 47
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_getInterfaceOrientation__ 48
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_getNavigationController__ 49
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_getNavigationItem__ 50
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_editButtonItem__ 51
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_isEditing__ 52
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_setEditing___boolean 53
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_setEditing___boolean_boolean 54
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_hidesBottomBarWhenPushed__ 55
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_setHidesBottomBarWhenPushed___boolean 56
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_getTabBarController__ 57
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_setParentController___org_xmlvm_iphone_UIViewController 58
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_getTabBarItem__ 59
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_setTabBarItem___org_xmlvm_iphone_UITabBarItem 60
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_getToolbarItems__ 61
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_setToolbarItems___java_util_ArrayList 62
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_setToolbarItems___java_util_ArrayList_boolean 63
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_presentModalViewController___org_xmlvm_iphone_UIViewController_boolean 64
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_dismissModalViewControllerAnimated___boolean 65
+#define XMLVM_VTABLE_SIZE_org_xmlvm_iphone_UIViewController 58
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_loadView__ 13
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_isViewLoaded__ 14
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_viewDidLoad__ 15
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_viewDidUnload__ 16
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_viewWillAppearInternal___boolean 17
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_requestInternalFrame__ 18
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_updateViews__ 19
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_viewWillAppear___boolean 20
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_viewDidAppear___boolean 21
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_viewWillDisappear___boolean 22
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_viewDidDisappear___boolean 23
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_shouldAutorotateToInterfaceOrientation___int 24
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_rotatingHeaderView__ 25
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_rotatingFooterView__ 26
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_willRotateToInterfaceOrientation___int_double 27
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_willAnimateRotationToInterfaceOrientation___int_double 28
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_didRotateFromInterfaceOrientation___int 29
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_willAnimateFirstHalfOfRotationToInterfaceOrientation___int_double 30
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_didAnimateFirstHalfOfRotationToInterfaceOrientation___int 31
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_willAnimateSecondHalfOfRotationFromInterfaceOrientation___int_double 32
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_didReceiveMemoryWarning__ 33
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_getView__ 34
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_setView___org_xmlvm_iphone_UIView 35
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_getTitle__ 36
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_setTitle___java_lang_String 37
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_wantsFullScreenLayout__ 38
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_setWantsFullScreenLayout___boolean 39
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_getInterfaceOrientation__ 40
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_getNavigationController__ 41
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_getNavigationItem__ 42
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_editButtonItem__ 43
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_isEditing__ 44
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_setEditing___boolean 45
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_setEditing___boolean_boolean 46
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_hidesBottomBarWhenPushed__ 47
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_setHidesBottomBarWhenPushed___boolean 48
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_getTabBarController__ 49
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_setParentController___org_xmlvm_iphone_UIViewController 50
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_getTabBarItem__ 51
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_setTabBarItem___org_xmlvm_iphone_UITabBarItem 52
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_getToolbarItems__ 53
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_setToolbarItems___java_util_ArrayList 54
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_setToolbarItems___java_util_ArrayList_boolean 55
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_presentModalViewController___org_xmlvm_iphone_UIViewController_boolean 56
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIViewController_dismissModalViewControllerAnimated___boolean 57
 
 void __INIT_org_xmlvm_iphone_UIViewController();
 void __INIT_IMPL_org_xmlvm_iphone_UIViewController();
@@ -113,95 +113,95 @@ void __INIT_INSTANCE_MEMBERS_org_xmlvm_iphone_UIViewController(JAVA_OBJECT me);
 JAVA_OBJECT __NEW_org_xmlvm_iphone_UIViewController();
 JAVA_OBJECT __NEW_INSTANCE_org_xmlvm_iphone_UIViewController();
 void org_xmlvm_iphone_UIViewController___INIT___(JAVA_OBJECT me);
-// Vtable index: 21
+// Vtable index: 13
 void org_xmlvm_iphone_UIViewController_loadView__(JAVA_OBJECT me);
-// Vtable index: 22
+// Vtable index: 14
 JAVA_BOOLEAN org_xmlvm_iphone_UIViewController_isViewLoaded__(JAVA_OBJECT me);
-// Vtable index: 23
+// Vtable index: 15
 void org_xmlvm_iphone_UIViewController_viewDidLoad__(JAVA_OBJECT me);
-// Vtable index: 24
+// Vtable index: 16
 void org_xmlvm_iphone_UIViewController_viewDidUnload__(JAVA_OBJECT me);
-// Vtable index: 25
+// Vtable index: 17
 void org_xmlvm_iphone_UIViewController_viewWillAppearInternal___boolean(JAVA_OBJECT me, JAVA_BOOLEAN n1);
-// Vtable index: 26
+// Vtable index: 18
 JAVA_OBJECT org_xmlvm_iphone_UIViewController_requestInternalFrame__(JAVA_OBJECT me);
-// Vtable index: 27
+// Vtable index: 19
 void org_xmlvm_iphone_UIViewController_updateViews__(JAVA_OBJECT me);
-// Vtable index: 28
+// Vtable index: 20
 void org_xmlvm_iphone_UIViewController_viewWillAppear___boolean(JAVA_OBJECT me, JAVA_BOOLEAN n1);
-// Vtable index: 29
+// Vtable index: 21
 void org_xmlvm_iphone_UIViewController_viewDidAppear___boolean(JAVA_OBJECT me, JAVA_BOOLEAN n1);
-// Vtable index: 30
+// Vtable index: 22
 void org_xmlvm_iphone_UIViewController_viewWillDisappear___boolean(JAVA_OBJECT me, JAVA_BOOLEAN n1);
-// Vtable index: 31
+// Vtable index: 23
 void org_xmlvm_iphone_UIViewController_viewDidDisappear___boolean(JAVA_OBJECT me, JAVA_BOOLEAN n1);
-// Vtable index: 32
+// Vtable index: 24
 JAVA_BOOLEAN org_xmlvm_iphone_UIViewController_shouldAutorotateToInterfaceOrientation___int(JAVA_OBJECT me, JAVA_INT n1);
-// Vtable index: 33
+// Vtable index: 25
 JAVA_OBJECT org_xmlvm_iphone_UIViewController_rotatingHeaderView__(JAVA_OBJECT me);
-// Vtable index: 34
+// Vtable index: 26
 JAVA_OBJECT org_xmlvm_iphone_UIViewController_rotatingFooterView__(JAVA_OBJECT me);
-// Vtable index: 35
+// Vtable index: 27
 void org_xmlvm_iphone_UIViewController_willRotateToInterfaceOrientation___int_double(JAVA_OBJECT me, JAVA_INT n1, JAVA_DOUBLE n2);
-// Vtable index: 36
+// Vtable index: 28
 void org_xmlvm_iphone_UIViewController_willAnimateRotationToInterfaceOrientation___int_double(JAVA_OBJECT me, JAVA_INT n1, JAVA_DOUBLE n2);
-// Vtable index: 37
+// Vtable index: 29
 void org_xmlvm_iphone_UIViewController_didRotateFromInterfaceOrientation___int(JAVA_OBJECT me, JAVA_INT n1);
-// Vtable index: 38
+// Vtable index: 30
 void org_xmlvm_iphone_UIViewController_willAnimateFirstHalfOfRotationToInterfaceOrientation___int_double(JAVA_OBJECT me, JAVA_INT n1, JAVA_DOUBLE n2);
-// Vtable index: 39
+// Vtable index: 31
 void org_xmlvm_iphone_UIViewController_didAnimateFirstHalfOfRotationToInterfaceOrientation___int(JAVA_OBJECT me, JAVA_INT n1);
-// Vtable index: 40
+// Vtable index: 32
 void org_xmlvm_iphone_UIViewController_willAnimateSecondHalfOfRotationFromInterfaceOrientation___int_double(JAVA_OBJECT me, JAVA_INT n1, JAVA_DOUBLE n2);
-// Vtable index: 41
+// Vtable index: 33
 void org_xmlvm_iphone_UIViewController_didReceiveMemoryWarning__(JAVA_OBJECT me);
-// Vtable index: 42
+// Vtable index: 34
 JAVA_OBJECT org_xmlvm_iphone_UIViewController_getView__(JAVA_OBJECT me);
-// Vtable index: 43
+// Vtable index: 35
 void org_xmlvm_iphone_UIViewController_setView___org_xmlvm_iphone_UIView(JAVA_OBJECT me, JAVA_OBJECT n1);
-// Vtable index: 44
+// Vtable index: 36
 JAVA_OBJECT org_xmlvm_iphone_UIViewController_getTitle__(JAVA_OBJECT me);
-// Vtable index: 45
+// Vtable index: 37
 void org_xmlvm_iphone_UIViewController_setTitle___java_lang_String(JAVA_OBJECT me, JAVA_OBJECT n1);
-// Vtable index: 46
+// Vtable index: 38
 JAVA_BOOLEAN org_xmlvm_iphone_UIViewController_wantsFullScreenLayout__(JAVA_OBJECT me);
-// Vtable index: 47
+// Vtable index: 39
 void org_xmlvm_iphone_UIViewController_setWantsFullScreenLayout___boolean(JAVA_OBJECT me, JAVA_BOOLEAN n1);
-// Vtable index: 48
+// Vtable index: 40
 JAVA_INT org_xmlvm_iphone_UIViewController_getInterfaceOrientation__(JAVA_OBJECT me);
-// Vtable index: 49
+// Vtable index: 41
 JAVA_OBJECT org_xmlvm_iphone_UIViewController_getNavigationController__(JAVA_OBJECT me);
-// Vtable index: 50
+// Vtable index: 42
 JAVA_OBJECT org_xmlvm_iphone_UIViewController_getNavigationItem__(JAVA_OBJECT me);
-// Vtable index: 51
+// Vtable index: 43
 JAVA_OBJECT org_xmlvm_iphone_UIViewController_editButtonItem__(JAVA_OBJECT me);
-// Vtable index: 52
+// Vtable index: 44
 JAVA_BOOLEAN org_xmlvm_iphone_UIViewController_isEditing__(JAVA_OBJECT me);
-// Vtable index: 53
+// Vtable index: 45
 void org_xmlvm_iphone_UIViewController_setEditing___boolean(JAVA_OBJECT me, JAVA_BOOLEAN n1);
-// Vtable index: 54
+// Vtable index: 46
 void org_xmlvm_iphone_UIViewController_setEditing___boolean_boolean(JAVA_OBJECT me, JAVA_BOOLEAN n1, JAVA_BOOLEAN n2);
-// Vtable index: 55
+// Vtable index: 47
 JAVA_BOOLEAN org_xmlvm_iphone_UIViewController_hidesBottomBarWhenPushed__(JAVA_OBJECT me);
-// Vtable index: 56
+// Vtable index: 48
 void org_xmlvm_iphone_UIViewController_setHidesBottomBarWhenPushed___boolean(JAVA_OBJECT me, JAVA_BOOLEAN n1);
-// Vtable index: 57
+// Vtable index: 49
 JAVA_OBJECT org_xmlvm_iphone_UIViewController_getTabBarController__(JAVA_OBJECT me);
-// Vtable index: 58
+// Vtable index: 50
 void org_xmlvm_iphone_UIViewController_setParentController___org_xmlvm_iphone_UIViewController(JAVA_OBJECT me, JAVA_OBJECT n1);
-// Vtable index: 59
+// Vtable index: 51
 JAVA_OBJECT org_xmlvm_iphone_UIViewController_getTabBarItem__(JAVA_OBJECT me);
-// Vtable index: 60
+// Vtable index: 52
 void org_xmlvm_iphone_UIViewController_setTabBarItem___org_xmlvm_iphone_UITabBarItem(JAVA_OBJECT me, JAVA_OBJECT n1);
-// Vtable index: 61
+// Vtable index: 53
 JAVA_OBJECT org_xmlvm_iphone_UIViewController_getToolbarItems__(JAVA_OBJECT me);
-// Vtable index: 62
+// Vtable index: 54
 void org_xmlvm_iphone_UIViewController_setToolbarItems___java_util_ArrayList(JAVA_OBJECT me, JAVA_OBJECT n1);
-// Vtable index: 63
+// Vtable index: 55
 void org_xmlvm_iphone_UIViewController_setToolbarItems___java_util_ArrayList_boolean(JAVA_OBJECT me, JAVA_OBJECT n1, JAVA_BOOLEAN n2);
-// Vtable index: 64
+// Vtable index: 56
 void org_xmlvm_iphone_UIViewController_presentModalViewController___org_xmlvm_iphone_UIViewController_boolean(JAVA_OBJECT me, JAVA_OBJECT n1, JAVA_BOOLEAN n2);
-// Vtable index: 65
+// Vtable index: 57
 void org_xmlvm_iphone_UIViewController_dismissModalViewControllerAnimated___boolean(JAVA_OBJECT me, JAVA_BOOLEAN n1);
 
 #endif

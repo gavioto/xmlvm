@@ -180,15 +180,8 @@ int main(int argc, char* argv[])
     <xsl:value-of select="$clname"/>
     <xsl:text>, </xsl:text>
     <xsl:value-of select="@vtableSize"/>
-    <xsl:choose>
-	  <xsl:when test="starts-with(@package, 'org.xmlvm.iphone')">
-	    <xsl:text>, 0</xsl:text>
-	  </xsl:when>
-	  <xsl:otherwise>
-	    <xsl:text>, XMLVM_ITABLE_SIZE_</xsl:text>
-	    <xsl:value-of select="$clname"/>
-	  </xsl:otherwise>
-    </xsl:choose>
+    <xsl:text>, XMLVM_ITABLE_SIZE_</xsl:text>
+    <xsl:value-of select="$clname"/>
 	<xsl:text>)&nl;&nl;</xsl:text>
     
     <xsl:text>extern JAVA_OBJECT __CLASS_</xsl:text>

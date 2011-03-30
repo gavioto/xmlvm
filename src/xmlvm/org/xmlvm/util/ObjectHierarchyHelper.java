@@ -418,13 +418,14 @@ public class ObjectHierarchyHelper {
                     }
                 }
 
-                outer: for (XmlvmMethod ifaceMethod : interfaceMethods) {
+                outer: 
+                for (XmlvmMethod ifaceMethod : interfaceMethods) {
                     for (XmlvmMethod classMethod : classMethods) {
                         if (ifaceMethod.doesOverrideMethod(classMethod)) {
                             continue outer;
                         }
                     }
-
+                    classMethods.add(ifaceMethod);
                     node.getResource().addMethod(ifaceMethod);
                 }
 

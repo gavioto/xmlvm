@@ -23,6 +23,7 @@ package org.xmlvm.proc.out;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -62,7 +63,12 @@ public class VtableOutputProcess extends XmlvmProcessImpl {
 
     private ObjectHierarchyHelper hierarchyHelper;
 
-
+    /**
+     * Contains Strings of the form package.Class.methodName for methods
+     * where a vtable entry should always be generated
+     */
+    private Set<String> forcedVtable = new HashSet<String>();
+    
     /**
      * Instantiates a new {@link VtableOutputProcess}.
      */
@@ -73,6 +79,16 @@ public class VtableOutputProcess extends XmlvmProcessImpl {
 
         // Add empty class name that acts as a base class for java.lang.Object
         vtables.put("", new Vtable());
+        
+        forcedVtable.add("java.lang.Class.newInstance");
+        forcedVtable.add("java.lang.Object.getClass");
+        forcedVtable.add("java.lang.Class.getMethod");
+        forcedVtable.add("java.lang.reflect.Method.invoke");
+        forcedVtable.add("java.lang.Object.hashCode");
+        forcedVtable.add("java.lang.Object.equals");
+        forcedVtable.add("java.lang.Object.finalize");
+        forcedVtable.add("java.lang.Object.clone");
+        forcedVtable.add("java.lang.Object.toString");
     }
 
     @Override
@@ -273,20 +289,7 @@ public class VtableOutputProcess extends XmlvmProcessImpl {
      * @return True if there should be a vtable entry forced otherwise false
      */
     private boolean isForcedVtable(XmlvmResource resource, XmlvmMethod method) {
-        if (resource.getFullName().equals("java.lang.Class")
-                && method.getName().equals("newInstance")) {
-            return true;
-        } else if (resource.getFullName().equals("java.lang.Object")
-                && method.getName().equals("getClass")) {
-            return true;
-        } else if (resource.getFullName().equals("java.lang.Class")
-                && method.getName().equals("getMethod")) {
-            return true;
-        } else if (resource.getFullName().equals("java.lang.reflect.Method")
-                && method.getName().equals("invoke")) {
-            return true;
-        }
-        return false;
+        return forcedVtable.contains(resource.getFullName() + "." + method.getName());
     }
 
     /**

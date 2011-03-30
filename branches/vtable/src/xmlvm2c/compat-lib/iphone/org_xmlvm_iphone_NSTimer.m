@@ -170,7 +170,7 @@ void __INIT_IMPL_org_xmlvm_iphone_NSTimer()
         // Copy vtable from base class
         XMLVM_MEMCPY(__TIB_org_xmlvm_iphone_NSTimer.vtable, __TIB_org_xmlvm_iphone_NSObject.vtable, sizeof(__TIB_org_xmlvm_iphone_NSObject.vtable));
         // Initialize vtable for this class
-        __TIB_org_xmlvm_iphone_NSTimer.vtable[6] = (VTABLE_PTR) &org_xmlvm_iphone_NSTimer_invalidate__;
+        __TIB_org_xmlvm_iphone_NSTimer.vtable[9] = (VTABLE_PTR) &org_xmlvm_iphone_NSTimer_invalidate__;
         // Initialize interface information
         __TIB_org_xmlvm_iphone_NSTimer.numImplementedInterfaces = 0;
         __TIB_org_xmlvm_iphone_NSTimer.implementedInterfaces = (__TIB_DEFINITION_TEMPLATE* (*)[1]) XMLVM_MALLOC(sizeof(__TIB_DEFINITION_TEMPLATE*) * 0);

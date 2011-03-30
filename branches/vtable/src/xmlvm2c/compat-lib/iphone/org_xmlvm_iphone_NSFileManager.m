@@ -161,9 +161,9 @@ void __INIT_IMPL_org_xmlvm_iphone_NSFileManager()
         // Copy vtable from base class
         XMLVM_MEMCPY(__TIB_org_xmlvm_iphone_NSFileManager.vtable, __TIB_org_xmlvm_iphone_NSObject.vtable, sizeof(__TIB_org_xmlvm_iphone_NSObject.vtable));
         // Initialize vtable for this class
-        __TIB_org_xmlvm_iphone_NSFileManager.vtable[6] = (VTABLE_PTR) &org_xmlvm_iphone_NSFileManager_fileExistsAtPath___java_lang_String;
-        __TIB_org_xmlvm_iphone_NSFileManager.vtable[7] = (VTABLE_PTR) &org_xmlvm_iphone_NSFileManager_createDirectoryAtPath___java_lang_String_boolean_java_util_Map;
-        __TIB_org_xmlvm_iphone_NSFileManager.vtable[8] = (VTABLE_PTR) &org_xmlvm_iphone_NSFileManager_contentsOfDirectoryAtPath___java_lang_String_org_xmlvm_iphone_NSErrorHolder;
+        __TIB_org_xmlvm_iphone_NSFileManager.vtable[9] = (VTABLE_PTR) &org_xmlvm_iphone_NSFileManager_fileExistsAtPath___java_lang_String;
+        __TIB_org_xmlvm_iphone_NSFileManager.vtable[10] = (VTABLE_PTR) &org_xmlvm_iphone_NSFileManager_createDirectoryAtPath___java_lang_String_boolean_java_util_Map;
+        __TIB_org_xmlvm_iphone_NSFileManager.vtable[11] = (VTABLE_PTR) &org_xmlvm_iphone_NSFileManager_contentsOfDirectoryAtPath___java_lang_String_org_xmlvm_iphone_NSErrorHolder;
         // Initialize interface information
         __TIB_org_xmlvm_iphone_NSFileManager.numImplementedInterfaces = 0;
         __TIB_org_xmlvm_iphone_NSFileManager.implementedInterfaces = (__TIB_DEFINITION_TEMPLATE* (*)[1]) XMLVM_MALLOC(sizeof(__TIB_DEFINITION_TEMPLATE*) * 0);

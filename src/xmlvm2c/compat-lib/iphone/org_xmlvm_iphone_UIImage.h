@@ -26,7 +26,7 @@ XMLVM_FORWARD_DECL(org_xmlvm_iphone_CGRect)
 XMLVM_FORWARD_DECL(java_lang_String)
 #endif
 // Class declarations for org.xmlvm.iphone.UIImage
-XMLVM_DEFINE_CLASS(org_xmlvm_iphone_UIImage, 14, XMLVM_ITABLE_SIZE_org_xmlvm_iphone_UIImage)
+XMLVM_DEFINE_CLASS(org_xmlvm_iphone_UIImage, 17, XMLVM_ITABLE_SIZE_org_xmlvm_iphone_UIImage)
 
 extern JAVA_OBJECT __CLASS_org_xmlvm_iphone_UIImage;
 extern JAVA_OBJECT __CLASS_org_xmlvm_iphone_UIImage_3ARRAY;
@@ -54,15 +54,15 @@ struct org_xmlvm_iphone_UIImage {
 typedef struct org_xmlvm_iphone_UIImage org_xmlvm_iphone_UIImage;
 #endif
 
-#define XMLVM_VTABLE_SIZE_org_xmlvm_iphone_UIImage 14
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIImage_stretchableImage___int_int 6
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIImage_getCGImage__ 7
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIImage_drawInRect___org_xmlvm_iphone_CGRect 8
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIImage_drawAtPoint___org_xmlvm_iphone_CGPoint 9
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIImage_getSize__ 10
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIImage_cropImage___int_int_int_int 11
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIImage_PNGRepresentation__ 12
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIImage_JPEGRepresentation___float 13
+#define XMLVM_VTABLE_SIZE_org_xmlvm_iphone_UIImage 17
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIImage_stretchableImage___int_int 9
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIImage_getCGImage__ 10
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIImage_drawInRect___org_xmlvm_iphone_CGRect 11
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIImage_drawAtPoint___org_xmlvm_iphone_CGPoint 12
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIImage_getSize__ 13
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIImage_cropImage___int_int_int_int 14
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIImage_PNGRepresentation__ 15
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UIImage_JPEGRepresentation___float 16
 
 void __INIT_org_xmlvm_iphone_UIImage();
 void __INIT_IMPL_org_xmlvm_iphone_UIImage();
@@ -73,21 +73,21 @@ JAVA_OBJECT __NEW_INSTANCE_org_xmlvm_iphone_UIImage();
 JAVA_OBJECT org_xmlvm_iphone_UIImage_imageNamed___java_lang_String(JAVA_OBJECT n1);
 JAVA_OBJECT org_xmlvm_iphone_UIImage_imageWithContentsOfFile___java_lang_String(JAVA_OBJECT n1);
 JAVA_OBJECT org_xmlvm_iphone_UIImage_imageWithData___org_xmlvm_iphone_NSData(JAVA_OBJECT n1);
-// Vtable index: 6
-JAVA_OBJECT org_xmlvm_iphone_UIImage_stretchableImage___int_int(JAVA_OBJECT me, JAVA_INT n1, JAVA_INT n2);
-// Vtable index: 7
-JAVA_OBJECT org_xmlvm_iphone_UIImage_getCGImage__(JAVA_OBJECT me);
-// Vtable index: 8
-void org_xmlvm_iphone_UIImage_drawInRect___org_xmlvm_iphone_CGRect(JAVA_OBJECT me, JAVA_OBJECT n1);
 // Vtable index: 9
-void org_xmlvm_iphone_UIImage_drawAtPoint___org_xmlvm_iphone_CGPoint(JAVA_OBJECT me, JAVA_OBJECT n1);
+JAVA_OBJECT org_xmlvm_iphone_UIImage_stretchableImage___int_int(JAVA_OBJECT me, JAVA_INT n1, JAVA_INT n2);
 // Vtable index: 10
-JAVA_OBJECT org_xmlvm_iphone_UIImage_getSize__(JAVA_OBJECT me);
+JAVA_OBJECT org_xmlvm_iphone_UIImage_getCGImage__(JAVA_OBJECT me);
 // Vtable index: 11
-JAVA_OBJECT org_xmlvm_iphone_UIImage_cropImage___int_int_int_int(JAVA_OBJECT me, JAVA_INT n1, JAVA_INT n2, JAVA_INT n3, JAVA_INT n4);
+void org_xmlvm_iphone_UIImage_drawInRect___org_xmlvm_iphone_CGRect(JAVA_OBJECT me, JAVA_OBJECT n1);
 // Vtable index: 12
-JAVA_OBJECT org_xmlvm_iphone_UIImage_PNGRepresentation__(JAVA_OBJECT me);
+void org_xmlvm_iphone_UIImage_drawAtPoint___org_xmlvm_iphone_CGPoint(JAVA_OBJECT me, JAVA_OBJECT n1);
 // Vtable index: 13
+JAVA_OBJECT org_xmlvm_iphone_UIImage_getSize__(JAVA_OBJECT me);
+// Vtable index: 14
+JAVA_OBJECT org_xmlvm_iphone_UIImage_cropImage___int_int_int_int(JAVA_OBJECT me, JAVA_INT n1, JAVA_INT n2, JAVA_INT n3, JAVA_INT n4);
+// Vtable index: 15
+JAVA_OBJECT org_xmlvm_iphone_UIImage_PNGRepresentation__(JAVA_OBJECT me);
+// Vtable index: 16
 JAVA_OBJECT org_xmlvm_iphone_UIImage_JPEGRepresentation___float(JAVA_OBJECT me, JAVA_FLOAT n1);
 
 #endif

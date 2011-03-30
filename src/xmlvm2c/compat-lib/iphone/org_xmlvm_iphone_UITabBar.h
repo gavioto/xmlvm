@@ -34,7 +34,7 @@ XMLVM_FORWARD_DECL(org_xmlvm_iphone_UITabBarItem)
 XMLVM_FORWARD_DECL(org_xmlvm_iphone_UIView)
 #endif
 // Class declarations for org.xmlvm.iphone.UITabBar
-XMLVM_DEFINE_CLASS(org_xmlvm_iphone_UITabBar, 80, XMLVM_ITABLE_SIZE_org_xmlvm_iphone_UITabBar)
+XMLVM_DEFINE_CLASS(org_xmlvm_iphone_UITabBar, 83, XMLVM_ITABLE_SIZE_org_xmlvm_iphone_UITabBar)
 
 extern JAVA_OBJECT __CLASS_org_xmlvm_iphone_UITabBar;
 extern JAVA_OBJECT __CLASS_org_xmlvm_iphone_UITabBar_3ARRAY;
@@ -63,25 +63,25 @@ struct org_xmlvm_iphone_UITabBar {
 typedef struct org_xmlvm_iphone_UITabBar org_xmlvm_iphone_UITabBar;
 #endif
 
-#define XMLVM_VTABLE_SIZE_org_xmlvm_iphone_UITabBar 80
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UITabBar_getDelegate__ 62
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UITabBar_setDelegate___org_xmlvm_iphone_UITabBarDelegate 63
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UITabBar_getItems__ 64
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UITabBar_setItems___java_util_ArrayList 65
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UITabBar_setItems___java_util_ArrayList_boolean 66
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UITabBar_getSelectedItem__ 67
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UITabBar_setSelectedItem___org_xmlvm_iphone_UITabBarItem 68
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UITabBar_setSelectedIndex___int 69
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UITabBar_beginCustomizingItems___java_util_ArrayList 70
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UITabBar_endCustomizingAnimated___boolean 71
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UITabBar_isCustomizing__ 72
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UITabBar_getBarStyle__ 73
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UITabBar_setBarStyle___int 74
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UITabBar_getTintColor__ 75
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UITabBar_setTintColor___org_xmlvm_iphone_UIColor 76
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UITabBar_isTranslucent__ 77
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UITabBar_setTranslucent___boolean 78
-#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UITabBar_updateViews__ 79
+#define XMLVM_VTABLE_SIZE_org_xmlvm_iphone_UITabBar 83
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UITabBar_getDelegate__ 65
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UITabBar_setDelegate___org_xmlvm_iphone_UITabBarDelegate 66
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UITabBar_getItems__ 67
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UITabBar_setItems___java_util_ArrayList 68
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UITabBar_setItems___java_util_ArrayList_boolean 69
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UITabBar_getSelectedItem__ 70
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UITabBar_setSelectedItem___org_xmlvm_iphone_UITabBarItem 71
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UITabBar_setSelectedIndex___int 72
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UITabBar_beginCustomizingItems___java_util_ArrayList 73
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UITabBar_endCustomizingAnimated___boolean 74
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UITabBar_isCustomizing__ 75
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UITabBar_getBarStyle__ 76
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UITabBar_setBarStyle___int 77
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UITabBar_getTintColor__ 78
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UITabBar_setTintColor___org_xmlvm_iphone_UIColor 79
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UITabBar_isTranslucent__ 80
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UITabBar_setTranslucent___boolean 81
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_UITabBar_updateViews__ 82
 
 void __INIT_org_xmlvm_iphone_UITabBar();
 void __INIT_IMPL_org_xmlvm_iphone_UITabBar();
@@ -91,41 +91,41 @@ JAVA_OBJECT __NEW_org_xmlvm_iphone_UITabBar();
 JAVA_OBJECT __NEW_INSTANCE_org_xmlvm_iphone_UITabBar();
 void org_xmlvm_iphone_UITabBar___INIT___(JAVA_OBJECT me);
 void org_xmlvm_iphone_UITabBar___INIT____org_xmlvm_iphone_CGRect(JAVA_OBJECT me, JAVA_OBJECT n1);
-// Vtable index: 62
-JAVA_OBJECT org_xmlvm_iphone_UITabBar_getDelegate__(JAVA_OBJECT me);
-// Vtable index: 63
-void org_xmlvm_iphone_UITabBar_setDelegate___org_xmlvm_iphone_UITabBarDelegate(JAVA_OBJECT me, JAVA_OBJECT n1);
-// Vtable index: 64
-JAVA_OBJECT org_xmlvm_iphone_UITabBar_getItems__(JAVA_OBJECT me);
 // Vtable index: 65
-void org_xmlvm_iphone_UITabBar_setItems___java_util_ArrayList(JAVA_OBJECT me, JAVA_OBJECT n1);
+JAVA_OBJECT org_xmlvm_iphone_UITabBar_getDelegate__(JAVA_OBJECT me);
 // Vtable index: 66
-void org_xmlvm_iphone_UITabBar_setItems___java_util_ArrayList_boolean(JAVA_OBJECT me, JAVA_OBJECT n1, JAVA_BOOLEAN n2);
+void org_xmlvm_iphone_UITabBar_setDelegate___org_xmlvm_iphone_UITabBarDelegate(JAVA_OBJECT me, JAVA_OBJECT n1);
 // Vtable index: 67
-JAVA_OBJECT org_xmlvm_iphone_UITabBar_getSelectedItem__(JAVA_OBJECT me);
+JAVA_OBJECT org_xmlvm_iphone_UITabBar_getItems__(JAVA_OBJECT me);
 // Vtable index: 68
-void org_xmlvm_iphone_UITabBar_setSelectedItem___org_xmlvm_iphone_UITabBarItem(JAVA_OBJECT me, JAVA_OBJECT n1);
+void org_xmlvm_iphone_UITabBar_setItems___java_util_ArrayList(JAVA_OBJECT me, JAVA_OBJECT n1);
 // Vtable index: 69
-void org_xmlvm_iphone_UITabBar_setSelectedIndex___int(JAVA_OBJECT me, JAVA_INT n1);
+void org_xmlvm_iphone_UITabBar_setItems___java_util_ArrayList_boolean(JAVA_OBJECT me, JAVA_OBJECT n1, JAVA_BOOLEAN n2);
 // Vtable index: 70
-void org_xmlvm_iphone_UITabBar_beginCustomizingItems___java_util_ArrayList(JAVA_OBJECT me, JAVA_OBJECT n1);
+JAVA_OBJECT org_xmlvm_iphone_UITabBar_getSelectedItem__(JAVA_OBJECT me);
 // Vtable index: 71
-JAVA_BOOLEAN org_xmlvm_iphone_UITabBar_endCustomizingAnimated___boolean(JAVA_OBJECT me, JAVA_BOOLEAN n1);
+void org_xmlvm_iphone_UITabBar_setSelectedItem___org_xmlvm_iphone_UITabBarItem(JAVA_OBJECT me, JAVA_OBJECT n1);
 // Vtable index: 72
-JAVA_BOOLEAN org_xmlvm_iphone_UITabBar_isCustomizing__(JAVA_OBJECT me);
+void org_xmlvm_iphone_UITabBar_setSelectedIndex___int(JAVA_OBJECT me, JAVA_INT n1);
 // Vtable index: 73
-JAVA_INT org_xmlvm_iphone_UITabBar_getBarStyle__(JAVA_OBJECT me);
+void org_xmlvm_iphone_UITabBar_beginCustomizingItems___java_util_ArrayList(JAVA_OBJECT me, JAVA_OBJECT n1);
 // Vtable index: 74
-void org_xmlvm_iphone_UITabBar_setBarStyle___int(JAVA_OBJECT me, JAVA_INT n1);
+JAVA_BOOLEAN org_xmlvm_iphone_UITabBar_endCustomizingAnimated___boolean(JAVA_OBJECT me, JAVA_BOOLEAN n1);
 // Vtable index: 75
-JAVA_OBJECT org_xmlvm_iphone_UITabBar_getTintColor__(JAVA_OBJECT me);
+JAVA_BOOLEAN org_xmlvm_iphone_UITabBar_isCustomizing__(JAVA_OBJECT me);
 // Vtable index: 76
-void org_xmlvm_iphone_UITabBar_setTintColor___org_xmlvm_iphone_UIColor(JAVA_OBJECT me, JAVA_OBJECT n1);
+JAVA_INT org_xmlvm_iphone_UITabBar_getBarStyle__(JAVA_OBJECT me);
 // Vtable index: 77
-JAVA_BOOLEAN org_xmlvm_iphone_UITabBar_isTranslucent__(JAVA_OBJECT me);
+void org_xmlvm_iphone_UITabBar_setBarStyle___int(JAVA_OBJECT me, JAVA_INT n1);
 // Vtable index: 78
-void org_xmlvm_iphone_UITabBar_setTranslucent___boolean(JAVA_OBJECT me, JAVA_BOOLEAN n1);
+JAVA_OBJECT org_xmlvm_iphone_UITabBar_getTintColor__(JAVA_OBJECT me);
 // Vtable index: 79
+void org_xmlvm_iphone_UITabBar_setTintColor___org_xmlvm_iphone_UIColor(JAVA_OBJECT me, JAVA_OBJECT n1);
+// Vtable index: 80
+JAVA_BOOLEAN org_xmlvm_iphone_UITabBar_isTranslucent__(JAVA_OBJECT me);
+// Vtable index: 81
+void org_xmlvm_iphone_UITabBar_setTranslucent___boolean(JAVA_OBJECT me, JAVA_BOOLEAN n1);
+// Vtable index: 82
 void org_xmlvm_iphone_UITabBar_updateViews__(JAVA_OBJECT me);
 
 #endif

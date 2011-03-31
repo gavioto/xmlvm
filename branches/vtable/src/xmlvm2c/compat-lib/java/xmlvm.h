@@ -31,7 +31,6 @@
 #include <pthread.h>
 
 #include "interfaces.h"
-#include "placeholder_interfaces.h"
 
 #ifdef XMLVM_NO_GC
 

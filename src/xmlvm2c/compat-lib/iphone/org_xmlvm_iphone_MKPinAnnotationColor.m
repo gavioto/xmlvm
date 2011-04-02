@@ -111,7 +111,8 @@ void __INIT_IMPL_org_xmlvm_iphone_MKPinAnnotationColor()
         __TIB_org_xmlvm_iphone_MKPinAnnotationColor.numImplementedInterfaces = 0;
         __TIB_org_xmlvm_iphone_MKPinAnnotationColor.implementedInterfaces = (__TIB_DEFINITION_TEMPLATE* (*)[1]) XMLVM_MALLOC(sizeof(__TIB_DEFINITION_TEMPLATE*) * 0);
 
-        //Initialize interfaces if necessary and assign tib to implementedInterfaces        _STATIC_org_xmlvm_iphone_MKPinAnnotationColor_Red = 0;
+        // Initialize interfaces if necessary and assign tib to implementedInterfaces
+        _STATIC_org_xmlvm_iphone_MKPinAnnotationColor_Red = 0;
         _STATIC_org_xmlvm_iphone_MKPinAnnotationColor_Green = 0;
         _STATIC_org_xmlvm_iphone_MKPinAnnotationColor_Purple = 0;
 

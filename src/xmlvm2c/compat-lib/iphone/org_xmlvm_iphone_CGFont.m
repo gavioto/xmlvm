@@ -152,7 +152,8 @@ void __INIT_IMPL_org_xmlvm_iphone_CGFont()
         __TIB_org_xmlvm_iphone_CGFont.numImplementedInterfaces = 0;
         __TIB_org_xmlvm_iphone_CGFont.implementedInterfaces = (__TIB_DEFINITION_TEMPLATE* (*)[1]) XMLVM_MALLOC(sizeof(__TIB_DEFINITION_TEMPLATE*) * 0);
 
-        //Initialize interfaces if necessary and assign tib to implementedInterfaces
+        // Initialize interfaces if necessary and assign tib to implementedInterfaces
+
         __TIB_org_xmlvm_iphone_CGFont.declaredFields = &__field_reflection_data[0];
         __TIB_org_xmlvm_iphone_CGFont.numDeclaredFields = sizeof(__field_reflection_data) / sizeof(XMLVM_FIELD_REFLECTION_DATA);
         __TIB_org_xmlvm_iphone_CGFont.constructorDispatcherFunc = constructor_dispatcher;

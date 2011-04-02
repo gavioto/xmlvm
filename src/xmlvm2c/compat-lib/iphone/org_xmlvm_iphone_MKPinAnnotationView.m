@@ -171,7 +171,8 @@ void __INIT_IMPL_org_xmlvm_iphone_MKPinAnnotationView()
         __TIB_org_xmlvm_iphone_MKPinAnnotationView.numImplementedInterfaces = 0;
         __TIB_org_xmlvm_iphone_MKPinAnnotationView.implementedInterfaces = (__TIB_DEFINITION_TEMPLATE* (*)[1]) XMLVM_MALLOC(sizeof(__TIB_DEFINITION_TEMPLATE*) * 0);
 
-        //Initialize interfaces if necessary and assign tib to implementedInterfaces
+        // Initialize interfaces if necessary and assign tib to implementedInterfaces
+
         __TIB_org_xmlvm_iphone_MKPinAnnotationView.declaredFields = &__field_reflection_data[0];
         __TIB_org_xmlvm_iphone_MKPinAnnotationView.numDeclaredFields = sizeof(__field_reflection_data) / sizeof(XMLVM_FIELD_REFLECTION_DATA);
         __TIB_org_xmlvm_iphone_MKPinAnnotationView.constructorDispatcherFunc = constructor_dispatcher;

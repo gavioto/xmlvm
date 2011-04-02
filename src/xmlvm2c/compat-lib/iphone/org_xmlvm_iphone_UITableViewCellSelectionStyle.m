@@ -111,7 +111,8 @@ void __INIT_IMPL_org_xmlvm_iphone_UITableViewCellSelectionStyle()
         __TIB_org_xmlvm_iphone_UITableViewCellSelectionStyle.numImplementedInterfaces = 0;
         __TIB_org_xmlvm_iphone_UITableViewCellSelectionStyle.implementedInterfaces = (__TIB_DEFINITION_TEMPLATE* (*)[1]) XMLVM_MALLOC(sizeof(__TIB_DEFINITION_TEMPLATE*) * 0);
 
-        //Initialize interfaces if necessary and assign tib to implementedInterfaces        _STATIC_org_xmlvm_iphone_UITableViewCellSelectionStyle_None = 0;
+        // Initialize interfaces if necessary and assign tib to implementedInterfaces
+        _STATIC_org_xmlvm_iphone_UITableViewCellSelectionStyle_None = 0;
         _STATIC_org_xmlvm_iphone_UITableViewCellSelectionStyle_Blue = 0;
         _STATIC_org_xmlvm_iphone_UITableViewCellSelectionStyle_Gray = 0;
 

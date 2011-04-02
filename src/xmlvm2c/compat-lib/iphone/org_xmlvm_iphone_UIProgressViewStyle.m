@@ -103,7 +103,8 @@ void __INIT_IMPL_org_xmlvm_iphone_UIProgressViewStyle()
         __TIB_org_xmlvm_iphone_UIProgressViewStyle.numImplementedInterfaces = 0;
         __TIB_org_xmlvm_iphone_UIProgressViewStyle.implementedInterfaces = (__TIB_DEFINITION_TEMPLATE* (*)[1]) XMLVM_MALLOC(sizeof(__TIB_DEFINITION_TEMPLATE*) * 0);
 
-        //Initialize interfaces if necessary and assign tib to implementedInterfaces        _STATIC_org_xmlvm_iphone_UIProgressViewStyle_Default = 0;
+        // Initialize interfaces if necessary and assign tib to implementedInterfaces
+        _STATIC_org_xmlvm_iphone_UIProgressViewStyle_Default = 0;
         _STATIC_org_xmlvm_iphone_UIProgressViewStyle_Bar = 1;
 
         __TIB_org_xmlvm_iphone_UIProgressViewStyle.declaredFields = &__field_reflection_data[0];

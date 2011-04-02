@@ -119,7 +119,8 @@ void __INIT_IMPL_org_xmlvm_iphone_UITextAutocapitalizationType()
         __TIB_org_xmlvm_iphone_UITextAutocapitalizationType.numImplementedInterfaces = 0;
         __TIB_org_xmlvm_iphone_UITextAutocapitalizationType.implementedInterfaces = (__TIB_DEFINITION_TEMPLATE* (*)[1]) XMLVM_MALLOC(sizeof(__TIB_DEFINITION_TEMPLATE*) * 0);
 
-        //Initialize interfaces if necessary and assign tib to implementedInterfaces        _STATIC_org_xmlvm_iphone_UITextAutocapitalizationType_None = 0;
+        // Initialize interfaces if necessary and assign tib to implementedInterfaces
+        _STATIC_org_xmlvm_iphone_UITextAutocapitalizationType_None = 0;
         _STATIC_org_xmlvm_iphone_UITextAutocapitalizationType_Words = 1;
         _STATIC_org_xmlvm_iphone_UITextAutocapitalizationType_Sentences = 2;
         _STATIC_org_xmlvm_iphone_UITextAutocapitalizationType_AllCharacters = 3;

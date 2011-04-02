@@ -588,7 +588,8 @@ void __INIT_IMPL_org_xmlvm_iphone_CGContext()
         __TIB_org_xmlvm_iphone_CGContext.numImplementedInterfaces = 0;
         __TIB_org_xmlvm_iphone_CGContext.implementedInterfaces = (__TIB_DEFINITION_TEMPLATE* (*)[1]) XMLVM_MALLOC(sizeof(__TIB_DEFINITION_TEMPLATE*) * 0);
 
-        //Initialize interfaces if necessary and assign tib to implementedInterfaces        _STATIC_org_xmlvm_iphone_CGContext_kCGTextInvisible = 1;
+        // Initialize interfaces if necessary and assign tib to implementedInterfaces
+        _STATIC_org_xmlvm_iphone_CGContext_kCGTextInvisible = 1;
         _STATIC_org_xmlvm_iphone_CGContext_kCGTextFill = 2;
 
         __TIB_org_xmlvm_iphone_CGContext.declaredFields = &__field_reflection_data[0];

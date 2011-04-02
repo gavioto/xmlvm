@@ -191,7 +191,8 @@ void __INIT_IMPL_org_xmlvm_iphone_UIViewContentMode()
         __TIB_org_xmlvm_iphone_UIViewContentMode.numImplementedInterfaces = 0;
         __TIB_org_xmlvm_iphone_UIViewContentMode.implementedInterfaces = (__TIB_DEFINITION_TEMPLATE* (*)[1]) XMLVM_MALLOC(sizeof(__TIB_DEFINITION_TEMPLATE*) * 0);
 
-        //Initialize interfaces if necessary and assign tib to implementedInterfaces        _STATIC_org_xmlvm_iphone_UIViewContentMode_ScaleToFill = 0;
+        // Initialize interfaces if necessary and assign tib to implementedInterfaces
+        _STATIC_org_xmlvm_iphone_UIViewContentMode_ScaleToFill = 0;
         _STATIC_org_xmlvm_iphone_UIViewContentMode_ScaleAspectFit = 1;
         _STATIC_org_xmlvm_iphone_UIViewContentMode_ScaleAspectFill = 2;
         _STATIC_org_xmlvm_iphone_UIViewContentMode_Redraw = 3;

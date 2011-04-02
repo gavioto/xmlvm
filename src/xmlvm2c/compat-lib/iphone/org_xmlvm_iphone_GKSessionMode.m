@@ -111,7 +111,8 @@ void __INIT_IMPL_org_xmlvm_iphone_GKSessionMode()
         __TIB_org_xmlvm_iphone_GKSessionMode.numImplementedInterfaces = 0;
         __TIB_org_xmlvm_iphone_GKSessionMode.implementedInterfaces = (__TIB_DEFINITION_TEMPLATE* (*)[1]) XMLVM_MALLOC(sizeof(__TIB_DEFINITION_TEMPLATE*) * 0);
 
-        //Initialize interfaces if necessary and assign tib to implementedInterfaces        _STATIC_org_xmlvm_iphone_GKSessionMode_Server = 0;
+        // Initialize interfaces if necessary and assign tib to implementedInterfaces
+        _STATIC_org_xmlvm_iphone_GKSessionMode_Server = 0;
         _STATIC_org_xmlvm_iphone_GKSessionMode_Client = 1;
         _STATIC_org_xmlvm_iphone_GKSessionMode_Peer = 2;
 

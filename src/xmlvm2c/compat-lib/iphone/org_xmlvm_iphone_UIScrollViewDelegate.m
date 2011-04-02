@@ -276,7 +276,8 @@ void __INIT_IMPL_org_xmlvm_iphone_UIScrollViewDelegate()
         __TIB_org_xmlvm_iphone_UIScrollViewDelegate.numImplementedInterfaces = 0;
         __TIB_org_xmlvm_iphone_UIScrollViewDelegate.implementedInterfaces = (__TIB_DEFINITION_TEMPLATE* (*)[1]) XMLVM_MALLOC(sizeof(__TIB_DEFINITION_TEMPLATE*) * 0);
 
-        //Initialize interfaces if necessary and assign tib to implementedInterfaces
+        // Initialize interfaces if necessary and assign tib to implementedInterfaces
+
         __TIB_org_xmlvm_iphone_UIScrollViewDelegate.declaredFields = &__field_reflection_data[0];
         __TIB_org_xmlvm_iphone_UIScrollViewDelegate.numDeclaredFields = sizeof(__field_reflection_data) / sizeof(XMLVM_FIELD_REFLECTION_DATA);
         __TIB_org_xmlvm_iphone_UIScrollViewDelegate.constructorDispatcherFunc = constructor_dispatcher;

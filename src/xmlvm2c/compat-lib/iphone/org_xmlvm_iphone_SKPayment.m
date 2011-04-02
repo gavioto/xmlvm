@@ -169,7 +169,8 @@ void __INIT_IMPL_org_xmlvm_iphone_SKPayment()
         __TIB_org_xmlvm_iphone_SKPayment.numImplementedInterfaces = 0;
         __TIB_org_xmlvm_iphone_SKPayment.implementedInterfaces = (__TIB_DEFINITION_TEMPLATE* (*)[1]) XMLVM_MALLOC(sizeof(__TIB_DEFINITION_TEMPLATE*) * 0);
 
-        //Initialize interfaces if necessary and assign tib to implementedInterfaces
+        // Initialize interfaces if necessary and assign tib to implementedInterfaces
+
         __TIB_org_xmlvm_iphone_SKPayment.declaredFields = &__field_reflection_data[0];
         __TIB_org_xmlvm_iphone_SKPayment.numDeclaredFields = sizeof(__field_reflection_data) / sizeof(XMLVM_FIELD_REFLECTION_DATA);
         __TIB_org_xmlvm_iphone_SKPayment.constructorDispatcherFunc = constructor_dispatcher;

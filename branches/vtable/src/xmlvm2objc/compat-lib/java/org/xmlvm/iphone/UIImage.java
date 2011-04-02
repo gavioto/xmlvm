@@ -37,7 +37,7 @@ public class UIImage extends NSObject {
      *  Added for including manual dependencies introduced in the wrapper code.
      *  <b>DO NOT USE</b> 
      */
-    public UIImage(NSString manual1) {
+    protected void dummyMethod(NSString manual1) {
     }
 
     @XMLVMIgnore

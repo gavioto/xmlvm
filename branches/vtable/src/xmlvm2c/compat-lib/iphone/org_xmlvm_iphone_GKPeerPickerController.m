@@ -216,7 +216,8 @@ void __INIT_IMPL_org_xmlvm_iphone_GKPeerPickerController()
         __TIB_org_xmlvm_iphone_GKPeerPickerController.numImplementedInterfaces = 0;
         __TIB_org_xmlvm_iphone_GKPeerPickerController.implementedInterfaces = (__TIB_DEFINITION_TEMPLATE* (*)[1]) XMLVM_MALLOC(sizeof(__TIB_DEFINITION_TEMPLATE*) * 0);
 
-        //Initialize interfaces if necessary and assign tib to implementedInterfaces
+        // Initialize interfaces if necessary and assign tib to implementedInterfaces
+
         __TIB_org_xmlvm_iphone_GKPeerPickerController.declaredFields = &__field_reflection_data[0];
         __TIB_org_xmlvm_iphone_GKPeerPickerController.numDeclaredFields = sizeof(__field_reflection_data) / sizeof(XMLVM_FIELD_REFLECTION_DATA);
         __TIB_org_xmlvm_iphone_GKPeerPickerController.constructorDispatcherFunc = constructor_dispatcher;

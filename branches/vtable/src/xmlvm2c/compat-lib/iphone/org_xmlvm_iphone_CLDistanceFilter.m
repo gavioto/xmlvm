@@ -95,7 +95,8 @@ void __INIT_IMPL_org_xmlvm_iphone_CLDistanceFilter()
         __TIB_org_xmlvm_iphone_CLDistanceFilter.numImplementedInterfaces = 0;
         __TIB_org_xmlvm_iphone_CLDistanceFilter.implementedInterfaces = (__TIB_DEFINITION_TEMPLATE* (*)[1]) XMLVM_MALLOC(sizeof(__TIB_DEFINITION_TEMPLATE*) * 0);
 
-        //Initialize interfaces if necessary and assign tib to implementedInterfaces        _STATIC_org_xmlvm_iphone_CLDistanceFilter_None = -1.0;
+        // Initialize interfaces if necessary and assign tib to implementedInterfaces
+        _STATIC_org_xmlvm_iphone_CLDistanceFilter_None = -1.0;
 
         __TIB_org_xmlvm_iphone_CLDistanceFilter.declaredFields = &__field_reflection_data[0];
         __TIB_org_xmlvm_iphone_CLDistanceFilter.numDeclaredFields = sizeof(__field_reflection_data) / sizeof(XMLVM_FIELD_REFLECTION_DATA);

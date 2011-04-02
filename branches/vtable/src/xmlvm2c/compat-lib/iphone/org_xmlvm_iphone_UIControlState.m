@@ -135,7 +135,8 @@ void __INIT_IMPL_org_xmlvm_iphone_UIControlState()
         __TIB_org_xmlvm_iphone_UIControlState.numImplementedInterfaces = 0;
         __TIB_org_xmlvm_iphone_UIControlState.implementedInterfaces = (__TIB_DEFINITION_TEMPLATE* (*)[1]) XMLVM_MALLOC(sizeof(__TIB_DEFINITION_TEMPLATE*) * 0);
 
-        //Initialize interfaces if necessary and assign tib to implementedInterfaces        _STATIC_org_xmlvm_iphone_UIControlState_Normal = 0;
+        // Initialize interfaces if necessary and assign tib to implementedInterfaces
+        _STATIC_org_xmlvm_iphone_UIControlState_Normal = 0;
         _STATIC_org_xmlvm_iphone_UIControlState_Highlighted = 1;
         _STATIC_org_xmlvm_iphone_UIControlState_Disabled = 2;
         _STATIC_org_xmlvm_iphone_UIControlState_Selected = 4;

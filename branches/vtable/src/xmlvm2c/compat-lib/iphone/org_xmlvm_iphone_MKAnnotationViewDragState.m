@@ -127,7 +127,8 @@ void __INIT_IMPL_org_xmlvm_iphone_MKAnnotationViewDragState()
         __TIB_org_xmlvm_iphone_MKAnnotationViewDragState.numImplementedInterfaces = 0;
         __TIB_org_xmlvm_iphone_MKAnnotationViewDragState.implementedInterfaces = (__TIB_DEFINITION_TEMPLATE* (*)[1]) XMLVM_MALLOC(sizeof(__TIB_DEFINITION_TEMPLATE*) * 0);
 
-        //Initialize interfaces if necessary and assign tib to implementedInterfaces        _STATIC_org_xmlvm_iphone_MKAnnotationViewDragState_None = 0;
+        // Initialize interfaces if necessary and assign tib to implementedInterfaces
+        _STATIC_org_xmlvm_iphone_MKAnnotationViewDragState_None = 0;
         _STATIC_org_xmlvm_iphone_MKAnnotationViewDragState_Starting = 1;
         _STATIC_org_xmlvm_iphone_MKAnnotationViewDragState_Dragging = 2;
         _STATIC_org_xmlvm_iphone_MKAnnotationViewDragState_Canceling = 3;

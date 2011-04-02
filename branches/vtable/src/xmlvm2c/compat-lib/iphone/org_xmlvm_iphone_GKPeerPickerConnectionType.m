@@ -103,7 +103,8 @@ void __INIT_IMPL_org_xmlvm_iphone_GKPeerPickerConnectionType()
         __TIB_org_xmlvm_iphone_GKPeerPickerConnectionType.numImplementedInterfaces = 0;
         __TIB_org_xmlvm_iphone_GKPeerPickerConnectionType.implementedInterfaces = (__TIB_DEFINITION_TEMPLATE* (*)[1]) XMLVM_MALLOC(sizeof(__TIB_DEFINITION_TEMPLATE*) * 0);
 
-        //Initialize interfaces if necessary and assign tib to implementedInterfaces        _STATIC_org_xmlvm_iphone_GKPeerPickerConnectionType_Online = 1;
+        // Initialize interfaces if necessary and assign tib to implementedInterfaces
+        _STATIC_org_xmlvm_iphone_GKPeerPickerConnectionType_Online = 1;
         _STATIC_org_xmlvm_iphone_GKPeerPickerConnectionType_Nearby = 2;
 
         __TIB_org_xmlvm_iphone_GKPeerPickerConnectionType.declaredFields = &__field_reflection_data[0];

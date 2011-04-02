@@ -135,7 +135,8 @@ void __INIT_IMPL_org_xmlvm_iphone_UIDataDetectorType()
         __TIB_org_xmlvm_iphone_UIDataDetectorType.numImplementedInterfaces = 0;
         __TIB_org_xmlvm_iphone_UIDataDetectorType.implementedInterfaces = (__TIB_DEFINITION_TEMPLATE* (*)[1]) XMLVM_MALLOC(sizeof(__TIB_DEFINITION_TEMPLATE*) * 0);
 
-        //Initialize interfaces if necessary and assign tib to implementedInterfaces        _STATIC_org_xmlvm_iphone_UIDataDetectorType_PhoneNumber = 1;
+        // Initialize interfaces if necessary and assign tib to implementedInterfaces
+        _STATIC_org_xmlvm_iphone_UIDataDetectorType_PhoneNumber = 1;
         _STATIC_org_xmlvm_iphone_UIDataDetectorType_Link = 2;
         _STATIC_org_xmlvm_iphone_UIDataDetectorType_Address = 4;
         _STATIC_org_xmlvm_iphone_UIDataDetectorType_CalendarEvent = 8;

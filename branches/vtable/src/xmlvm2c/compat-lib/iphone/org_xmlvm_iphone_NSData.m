@@ -196,7 +196,8 @@ void __INIT_IMPL_org_xmlvm_iphone_NSData()
         __TIB_org_xmlvm_iphone_NSData.numImplementedInterfaces = 0;
         __TIB_org_xmlvm_iphone_NSData.implementedInterfaces = (__TIB_DEFINITION_TEMPLATE* (*)[1]) XMLVM_MALLOC(sizeof(__TIB_DEFINITION_TEMPLATE*) * 0);
 
-        //Initialize interfaces if necessary and assign tib to implementedInterfaces
+        // Initialize interfaces if necessary and assign tib to implementedInterfaces
+
         __TIB_org_xmlvm_iphone_NSData.declaredFields = &__field_reflection_data[0];
         __TIB_org_xmlvm_iphone_NSData.numDeclaredFields = sizeof(__field_reflection_data) / sizeof(XMLVM_FIELD_REFLECTION_DATA);
         __TIB_org_xmlvm_iphone_NSData.constructorDispatcherFunc = constructor_dispatcher;

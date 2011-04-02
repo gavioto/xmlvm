@@ -319,7 +319,8 @@ void __INIT_IMPL_org_xmlvm_iphone_UIColor()
         __TIB_org_xmlvm_iphone_UIColor.numImplementedInterfaces = 0;
         __TIB_org_xmlvm_iphone_UIColor.implementedInterfaces = (__TIB_DEFINITION_TEMPLATE* (*)[1]) XMLVM_MALLOC(sizeof(__TIB_DEFINITION_TEMPLATE*) * 0);
 
-        //Initialize interfaces if necessary and assign tib to implementedInterfaces        _STATIC_org_xmlvm_iphone_UIColor_blackColor = (org_xmlvm_iphone_UIColor*) JAVA_NULL;
+        // Initialize interfaces if necessary and assign tib to implementedInterfaces
+        _STATIC_org_xmlvm_iphone_UIColor_blackColor = (org_xmlvm_iphone_UIColor*) JAVA_NULL;
         _STATIC_org_xmlvm_iphone_UIColor_darkGrayColor = (org_xmlvm_iphone_UIColor*) JAVA_NULL;
         _STATIC_org_xmlvm_iphone_UIColor_lightGrayColor = (org_xmlvm_iphone_UIColor*) JAVA_NULL;
         _STATIC_org_xmlvm_iphone_UIColor_whiteColor = (org_xmlvm_iphone_UIColor*) JAVA_NULL;

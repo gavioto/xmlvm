@@ -287,7 +287,8 @@ void __INIT_IMPL_org_xmlvm_iphone_NSStringEncoding()
         __TIB_org_xmlvm_iphone_NSStringEncoding.numImplementedInterfaces = 0;
         __TIB_org_xmlvm_iphone_NSStringEncoding.implementedInterfaces = (__TIB_DEFINITION_TEMPLATE* (*)[1]) XMLVM_MALLOC(sizeof(__TIB_DEFINITION_TEMPLATE*) * 0);
 
-        //Initialize interfaces if necessary and assign tib to implementedInterfaces        _STATIC_org_xmlvm_iphone_NSStringEncoding_ASCII = 1;
+        // Initialize interfaces if necessary and assign tib to implementedInterfaces
+        _STATIC_org_xmlvm_iphone_NSStringEncoding_ASCII = 1;
         _STATIC_org_xmlvm_iphone_NSStringEncoding_NEXTSTEP = 2;
         _STATIC_org_xmlvm_iphone_NSStringEncoding_JapaneseEUC = 3;
         _STATIC_org_xmlvm_iphone_NSStringEncoding_UTF8 = 4;

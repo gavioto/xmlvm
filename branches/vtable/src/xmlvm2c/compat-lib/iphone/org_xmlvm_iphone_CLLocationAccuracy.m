@@ -135,7 +135,8 @@ void __INIT_IMPL_org_xmlvm_iphone_CLLocationAccuracy()
         __TIB_org_xmlvm_iphone_CLLocationAccuracy.numImplementedInterfaces = 0;
         __TIB_org_xmlvm_iphone_CLLocationAccuracy.implementedInterfaces = (__TIB_DEFINITION_TEMPLATE* (*)[1]) XMLVM_MALLOC(sizeof(__TIB_DEFINITION_TEMPLATE*) * 0);
 
-        //Initialize interfaces if necessary and assign tib to implementedInterfaces        _STATIC_org_xmlvm_iphone_CLLocationAccuracy_BestForNavigation = -2.0;
+        // Initialize interfaces if necessary and assign tib to implementedInterfaces
+        _STATIC_org_xmlvm_iphone_CLLocationAccuracy_BestForNavigation = -2.0;
         _STATIC_org_xmlvm_iphone_CLLocationAccuracy_Best = -1.0;
         _STATIC_org_xmlvm_iphone_CLLocationAccuracy_NearestTenMeters = 10.0;
         _STATIC_org_xmlvm_iphone_CLLocationAccuracy_HundredMeters = 100.0;

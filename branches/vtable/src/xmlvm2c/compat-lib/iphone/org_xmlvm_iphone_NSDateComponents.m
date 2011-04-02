@@ -425,7 +425,8 @@ void __INIT_IMPL_org_xmlvm_iphone_NSDateComponents()
         __TIB_org_xmlvm_iphone_NSDateComponents.numImplementedInterfaces = 0;
         __TIB_org_xmlvm_iphone_NSDateComponents.implementedInterfaces = (__TIB_DEFINITION_TEMPLATE* (*)[1]) XMLVM_MALLOC(sizeof(__TIB_DEFINITION_TEMPLATE*) * 0);
 
-        //Initialize interfaces if necessary and assign tib to implementedInterfaces        _STATIC_org_xmlvm_iphone_NSDateComponents_Wrap = 1;
+        // Initialize interfaces if necessary and assign tib to implementedInterfaces
+        _STATIC_org_xmlvm_iphone_NSDateComponents_Wrap = 1;
 
         __TIB_org_xmlvm_iphone_NSDateComponents.declaredFields = &__field_reflection_data[0];
         __TIB_org_xmlvm_iphone_NSDateComponents.numDeclaredFields = sizeof(__field_reflection_data) / sizeof(XMLVM_FIELD_REFLECTION_DATA);

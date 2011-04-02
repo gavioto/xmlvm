@@ -159,7 +159,8 @@ void __INIT_IMPL_org_xmlvm_iphone_UIKeyboardType()
         __TIB_org_xmlvm_iphone_UIKeyboardType.numImplementedInterfaces = 0;
         __TIB_org_xmlvm_iphone_UIKeyboardType.implementedInterfaces = (__TIB_DEFINITION_TEMPLATE* (*)[1]) XMLVM_MALLOC(sizeof(__TIB_DEFINITION_TEMPLATE*) * 0);
 
-        //Initialize interfaces if necessary and assign tib to implementedInterfaces        _STATIC_org_xmlvm_iphone_UIKeyboardType_Default = 0;
+        // Initialize interfaces if necessary and assign tib to implementedInterfaces
+        _STATIC_org_xmlvm_iphone_UIKeyboardType_Default = 0;
         _STATIC_org_xmlvm_iphone_UIKeyboardType_ASCIICapable = 1;
         _STATIC_org_xmlvm_iphone_UIKeyboardType_NumbersAndPunctuation = 2;
         _STATIC_org_xmlvm_iphone_UIKeyboardType_URL = 3;

@@ -119,7 +119,8 @@ void __INIT_IMPL_org_xmlvm_iphone_UITableViewScrollPosition()
         __TIB_org_xmlvm_iphone_UITableViewScrollPosition.numImplementedInterfaces = 0;
         __TIB_org_xmlvm_iphone_UITableViewScrollPosition.implementedInterfaces = (__TIB_DEFINITION_TEMPLATE* (*)[1]) XMLVM_MALLOC(sizeof(__TIB_DEFINITION_TEMPLATE*) * 0);
 
-        //Initialize interfaces if necessary and assign tib to implementedInterfaces        _STATIC_org_xmlvm_iphone_UITableViewScrollPosition_None = 0;
+        // Initialize interfaces if necessary and assign tib to implementedInterfaces
+        _STATIC_org_xmlvm_iphone_UITableViewScrollPosition_None = 0;
         _STATIC_org_xmlvm_iphone_UITableViewScrollPosition_Top = 0;
         _STATIC_org_xmlvm_iphone_UITableViewScrollPosition_Middle = 0;
         _STATIC_org_xmlvm_iphone_UITableViewScrollPosition_Bottom = 0;

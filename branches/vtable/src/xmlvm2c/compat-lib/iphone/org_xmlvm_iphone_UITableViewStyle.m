@@ -103,7 +103,8 @@ void __INIT_IMPL_org_xmlvm_iphone_UITableViewStyle()
         __TIB_org_xmlvm_iphone_UITableViewStyle.numImplementedInterfaces = 0;
         __TIB_org_xmlvm_iphone_UITableViewStyle.implementedInterfaces = (__TIB_DEFINITION_TEMPLATE* (*)[1]) XMLVM_MALLOC(sizeof(__TIB_DEFINITION_TEMPLATE*) * 0);
 
-        //Initialize interfaces if necessary and assign tib to implementedInterfaces        _STATIC_org_xmlvm_iphone_UITableViewStyle_Plain = 0;
+        // Initialize interfaces if necessary and assign tib to implementedInterfaces
+        _STATIC_org_xmlvm_iphone_UITableViewStyle_Plain = 0;
         _STATIC_org_xmlvm_iphone_UITableViewStyle_Grouped = 1;
 
         __TIB_org_xmlvm_iphone_UITableViewStyle.declaredFields = &__field_reflection_data[0];

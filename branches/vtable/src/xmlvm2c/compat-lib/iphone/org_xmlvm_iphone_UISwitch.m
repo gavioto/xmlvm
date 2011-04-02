@@ -205,7 +205,8 @@ void __INIT_IMPL_org_xmlvm_iphone_UISwitch()
         __TIB_org_xmlvm_iphone_UISwitch.numImplementedInterfaces = 0;
         __TIB_org_xmlvm_iphone_UISwitch.implementedInterfaces = (__TIB_DEFINITION_TEMPLATE* (*)[1]) XMLVM_MALLOC(sizeof(__TIB_DEFINITION_TEMPLATE*) * 0);
 
-        //Initialize interfaces if necessary and assign tib to implementedInterfaces        _STATIC_org_xmlvm_iphone_UISwitch_kSwitchButtonWidth = 94.0;
+        // Initialize interfaces if necessary and assign tib to implementedInterfaces
+        _STATIC_org_xmlvm_iphone_UISwitch_kSwitchButtonWidth = 94.0;
         _STATIC_org_xmlvm_iphone_UISwitch_kSwitchButtonHeight = 27.0;
 
         __TIB_org_xmlvm_iphone_UISwitch.declaredFields = &__field_reflection_data[0];

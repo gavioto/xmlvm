@@ -143,7 +143,8 @@ void __INIT_IMPL_org_xmlvm_iphone_UIViewAutoresizing()
         __TIB_org_xmlvm_iphone_UIViewAutoresizing.numImplementedInterfaces = 0;
         __TIB_org_xmlvm_iphone_UIViewAutoresizing.implementedInterfaces = (__TIB_DEFINITION_TEMPLATE* (*)[1]) XMLVM_MALLOC(sizeof(__TIB_DEFINITION_TEMPLATE*) * 0);
 
-        //Initialize interfaces if necessary and assign tib to implementedInterfaces        _STATIC_org_xmlvm_iphone_UIViewAutoresizing_None = 0;
+        // Initialize interfaces if necessary and assign tib to implementedInterfaces
+        _STATIC_org_xmlvm_iphone_UIViewAutoresizing_None = 0;
         _STATIC_org_xmlvm_iphone_UIViewAutoresizing_FlexibleLeftMargin = 1;
         _STATIC_org_xmlvm_iphone_UIViewAutoresizing_FlexibleWidth = 2;
         _STATIC_org_xmlvm_iphone_UIViewAutoresizing_FlexibleRightMargin = 4;

@@ -253,7 +253,8 @@ void __INIT_IMPL_org_xmlvm_iphone_NSStringInputStream()
         __TIB_org_xmlvm_iphone_NSStringInputStream.numImplementedInterfaces = 1;
         __TIB_org_xmlvm_iphone_NSStringInputStream.implementedInterfaces = (__TIB_DEFINITION_TEMPLATE* (*)[1]) XMLVM_MALLOC(sizeof(__TIB_DEFINITION_TEMPLATE*) * 1);
 
-        //Initialize interfaces if necessary and assign tib to implementedInterfaces
+        // Initialize interfaces if necessary and assign tib to implementedInterfaces
+
         if (!__TIB_java_io_Closeable.classInitialized) __INIT_java_io_Closeable();
         __TIB_org_xmlvm_iphone_NSStringInputStream.implementedInterfaces[0][0] = &__TIB_java_io_Closeable;
         // Initialize itable for this class

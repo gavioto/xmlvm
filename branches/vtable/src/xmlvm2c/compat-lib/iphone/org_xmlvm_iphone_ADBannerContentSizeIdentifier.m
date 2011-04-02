@@ -104,7 +104,8 @@ void __INIT_IMPL_org_xmlvm_iphone_ADBannerContentSizeIdentifier()
         __TIB_org_xmlvm_iphone_ADBannerContentSizeIdentifier.numImplementedInterfaces = 0;
         __TIB_org_xmlvm_iphone_ADBannerContentSizeIdentifier.implementedInterfaces = (__TIB_DEFINITION_TEMPLATE* (*)[1]) XMLVM_MALLOC(sizeof(__TIB_DEFINITION_TEMPLATE*) * 0);
 
-        //Initialize interfaces if necessary and assign tib to implementedInterfaces        _STATIC_org_xmlvm_iphone_ADBannerContentSizeIdentifier_Portrait = (java_lang_String*) xmlvm_create_java_string("ADBannerContentSizePortrait");
+        // Initialize interfaces if necessary and assign tib to implementedInterfaces
+        _STATIC_org_xmlvm_iphone_ADBannerContentSizeIdentifier_Portrait = (java_lang_String*) xmlvm_create_java_string("ADBannerContentSizePortrait");
         _STATIC_org_xmlvm_iphone_ADBannerContentSizeIdentifier_Landscape = (java_lang_String*) xmlvm_create_java_string("ADBannerContentSizeLandscape");
 
         __TIB_org_xmlvm_iphone_ADBannerContentSizeIdentifier.declaredFields = &__field_reflection_data[0];

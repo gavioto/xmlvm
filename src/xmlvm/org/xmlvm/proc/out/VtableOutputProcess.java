@@ -114,7 +114,7 @@ public class VtableOutputProcess extends XmlvmProcessImpl {
             Log.debug(TAG, "Done adjusting types");
         }
         
-        if (/*!arguments.option_gen_wrapper() &&*/ !isTargetProcess) {
+        if (!arguments.option_gen_wrapper() && !isTargetProcess) {
             OutputFile indexFile = hierarchyHelper.getInterfaceIndexFile();
             indexFile.setLocation(arguments.option_out());
             indexFile.setFileName("interfaces.h");

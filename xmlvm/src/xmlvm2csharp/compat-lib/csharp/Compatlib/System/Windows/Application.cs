@@ -25,19 +25,42 @@ public virtual Compatlib.System.Windows.UIElement getRootVisual(){
 public virtual void setRootVisual(Compatlib.System.Windows.UIElement n1){
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.Application: void setRootVisual(Compatlib.System.Windows.UIElement)]
     this.rootVisual = n1;
-    app.RootVisual = n1.element;
+    this.rootVisualChanged = true;
+    this.changeRootVisual();
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.Application: void setRootVisual(Compatlib.System.Windows.UIElement)]
 }
 
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.Application]
 private Compatlib.System.Windows.UIElement rootVisual;
 private global::System.Windows.Application app = Compatlib.System.Windows.ApplicationDelegate.Current;
+private global::Microsoft.Phone.Controls.PhoneApplicationFrame frame = new global::Microsoft.Phone.Controls.PhoneApplicationFrame();
+private bool rootVisualChanged = false;
+private bool pageInitialized = false;
 
 public void StartUpHandler(object sender, global::System.Windows.StartupEventArgs args)
 {
+    frame.Navigated += new global::System.Windows.Navigation.NavigatedEventHandler(Navigated);
+    app.RootVisual = frame;
+
     Compatlib.System.Windows.StartupEventArgs newArgs = new Compatlib.System.Windows.StartupEventArgs();
     newArgs.args = args;
     this.Startup._1_1fire(this, newArgs);
+}
+
+public void Navigated(object sender, global::System.Windows.Navigation.NavigationEventArgs args)
+{
+    this.pageInitialized = true;
+    if(rootVisualChanged) {
+        this.changeRootVisual();
+    }
+}
+
+public void changeRootVisual() 
+{
+    if(this.pageInitialized) {
+        ((global::Internal.Redirect)frame.Content).setContent(this.rootVisual.element);
+    }
+    
 }
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.Application]
 

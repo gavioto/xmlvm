@@ -15,8 +15,8 @@ namespace Compatlib.System.Windows
     {
         public ApplicationDelegate()
         {
-            org.xmlvm.wp7.WP7Fireworks fireworks = new org.xmlvm.wp7.WP7Fireworks();
-            fireworks.@this();
+            __APP_CLASS__ appClass = new __APP_CLASS__();
+            appClass.@this();
         }
     }
 }

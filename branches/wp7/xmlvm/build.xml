@@ -84,8 +84,24 @@
 			<fileset dir="${xmlvm.objc-compat-lib}" />
 		</jar>
 	</target>
+		
+	<target name="build-csharp-compat-lib" depends="build-xmlvm">
+		<echo message="Generating csharp-compat.jar" />
+		<mkdir dir="${xmlvm.csharp-compat-lib}" />
+		<javac srcdir="src/xmlvm2csharp/compat-lib/java" destdir="${xmlvm.csharp-compat-lib}" debug="${debug}">
+			<classpath refid="classpath.compile" />
+			<classpath>
+				<pathelement location="${xmlvm.bin}" />
+				<pathelement location="lib/EventBinaries.jar"/>
+			</classpath>
+			<include name="**/*.java" />
+		</javac>
+		<jar destfile="${xmlvm.libjars}/csharp-compat.jar">
+			<fileset dir="${xmlvm.csharp-compat-lib}" />
+		</jar>
+	</target>
 
-	<target name="build-android-compat-lib" depends="build-objc-compat-lib">
+	<target name="build-android-compat-lib" depends="build-objc-compat-lib, build-csharp-compat-lib">
 		<mkdir dir="${xmlvm.android-compat-lib.java}" />
 		<javac srcdir="./src/android2iphone" destdir="${xmlvm.android-compat-lib.java}" debug="${debug}">
 			<classpath>
@@ -95,6 +111,17 @@
 		</javac>
 		<jar destfile="${xmlvm.libjars}/android-compat.jar">
 			<fileset dir="${xmlvm.android-compat-lib.java}" />
+		</jar>
+		
+		<mkdir dir="${xmlvm.wp7-android-compat-lib.java}" />
+		<javac srcdir="./src/androidfireworks" destdir="${xmlvm.wp7-android-compat-lib.java}" debug="${debug}">
+			<classpath>
+				<pathelement location="${xmlvm.libjars}/csharp-compat.jar" />
+			</classpath>
+			<include name="**/*.java" />
+		</javac>
+		<jar destfile="${xmlvm.libjars}/wp7-android-compat.jar">
+			<fileset dir="${xmlvm.wp7-android-compat-lib.java}" />
 		</jar>
 	</target>
 	
@@ -160,8 +187,20 @@
 				<include name="**/*.class" />
 			</patternset>
 		</unjar>
+		
+		<unjar src="dist/lib/csharp-compat.jar" dest="${xmlvm.build}">
+			<patternset>
+				<include name="**/*.class" />
+			</patternset>
+		</unjar>
 
 		<unjar src="dist/lib/android-compat.jar" dest="${xmlvm.build}">
+			<patternset>
+				<include name="**/*.class" />
+			</patternset>
+		</unjar>
+		
+		<unjar src="dist/lib/wp7-android-compat.jar" dest="${xmlvm.build}">
 			<patternset>
 				<include name="**/*.class" />
 			</patternset>
@@ -191,6 +230,10 @@
 		<jar destfile="${xmlvm.bin}/iphone/compat-lib.jar">
 			<fileset dir="src/xmlvm2objc/compat-lib/objc/" />
 		</jar>
+		
+		<jar destfile="${xmlvm.bin}/wp7/compat-lib.jar">
+			<fileset dir="src/xmlvm2csharp/compat-lib/csharp/" />
+		</jar>
 
 		<jar destfile="${xmlvm.bin}/iphone/android-compat-lib.jar">
 			<fileset dir="${xmlvm.android-compat-lib.objc}" />
@@ -206,6 +249,18 @@
 		</javac>
 		<jar destfile="${xmlvm.bin}/lib/cocoa-java.jar">
 			<fileset dir="${xmlvm.cocoa-java}" />
+		</jar>
+		
+		<mkdir dir="${xmlvm.csharp-compat-lib}" />
+		<javac srcdir="./src/xmlvm2csharp/compat-lib/java" destdir="${xmlvm.csharp-compat-lib}" debug="${debug}">
+			<classpath>
+				<pathelement location="${xmlvm.bin}" />
+			</classpath>
+			<classpath refid="classpath.compile" />
+			<include name="**/*.java" />
+		</javac>
+		<jar destfile="${xmlvm.bin}/lib/csharp-compat.jar">
+			<fileset dir="${xmlvm.csharp-compat-lib}" />
 		</jar>
 
 		<mkdir dir="${xmlvm.xmlvm-util-java}" />
@@ -241,6 +296,18 @@
 		</javac>
 		<jar destfile="${xmlvm.bin}/lib/iphone-android-java.jar">
 			<fileset dir="${xmlvm.iphone-android-java}" />
+		</jar>
+		
+		<mkdir dir="${xmlvm.wp7-android-java}" />
+		<javac srcdir="./src/androidfireworks" destdir="${xmlvm.wp7-android-java}" debug="${debug}">
+			<classpath>
+				<pathelement location="${xmlvm.libjars}/csharp-compat.jar" />
+				<pathelement location="${xmlvm.bin}"/>
+			</classpath>
+			<include name="**/*.java" />
+		</javac>
+		<jar destfile="${xmlvm.bin}/lib/wp7-android-java.jar">
+			<fileset dir="${xmlvm.wp7-android-java}" />
 		</jar>
 		
 		<jar destfile="${xmlvm.bin}/lib/native-c-lib.jar">

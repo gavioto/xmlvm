@@ -8,7 +8,11 @@ public class EventHandler: Compatlib.System.MulticastDelegate {
 public void @this(Compatlib.System.Object n1, Compatlib.System.String n2){
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.EventHandler: void <init>(Compatlib.System.Object, Compatlib.System.String)]
             this.owner = n1;
-            this.method = n2;
+	        string newName = n2.toString().ToString().Replace("_", "_1");
+	        java.lang.String newJavaName = new java.lang.String(newName);    
+	        Compatlib.System.String newCompatName = new Compatlib.System.String();
+	        newCompatName.value = newJavaName;
+	        this.method = newCompatName;
 //XMLVM_END_WRAPPER[Compatlib.System.EventHandler: void <init>(Compatlib.System.Object, Compatlib.System.String)]
 }
 

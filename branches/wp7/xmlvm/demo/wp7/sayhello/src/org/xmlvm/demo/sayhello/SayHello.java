@@ -19,7 +19,7 @@
  */
 
 
-package org.xmlvm.wp7;
+package org.xmlvm.demo.sayhello;
 
 import Compatlib.System.Object;
 import Compatlib.System.String;

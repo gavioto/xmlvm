@@ -106,6 +106,8 @@ public class OutputProcessFactory {
             return new GenCSharpWrappersOutputProcess(arguments);
         case GENCSHARPWRAPPERS:
             return new GenCSharpWrappersOutputProcess(arguments);
+        case WP7:
+            return new WP7OutputProcess(arguments);
         case WP7ANDROID:
             return new Android2WP7OutputProcess(arguments);
         }

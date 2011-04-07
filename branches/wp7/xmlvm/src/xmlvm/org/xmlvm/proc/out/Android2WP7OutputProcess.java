@@ -20,15 +20,16 @@
 
 package org.xmlvm.proc.out;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.xmlvm.Log;
 import org.xmlvm.main.Arguments;
 import org.xmlvm.proc.XmlvmProcessImpl;
-import org.xmlvm.proc.in.InputProcess.ClassInputProcess;
-import org.xmlvm.proc.in.file.ClassFile;
-import org.xmlvm.util.universalfile.FileSuffixFilter;
+import org.xmlvm.proc.XmlvmProcessor;
+import org.xmlvm.proc.out.build.VisualStudioFile;
+import org.xmlvm.util.JarUtil;
 import org.xmlvm.util.universalfile.UniversalFile;
 import org.xmlvm.util.universalfile.UniversalFileCreator;
 
@@ -38,13 +39,14 @@ import org.xmlvm.util.universalfile.UniversalFileCreator;
  * the Android API.
  */
 public class Android2WP7OutputProcess extends XmlvmProcessImpl<WP7OutputProcess> {
-    public static final String WP7_SRC_ANDROID_LIB        = "/lib/android";
+    public static final String  ANDROID_SRC_LIB               = "lib";
+
+    private static final String ANDROID_WP7_COMPAT_LIB_JAR = "/wp7/wp7-android-compat.jar";
     private List<OutputFile>    result                        = new ArrayList<OutputFile>();
 
 
     public Android2WP7OutputProcess(Arguments arguments) {
         super(arguments);
-        // Only IPhoneOutputProcesses are supported as inputs.
         addSupportedInput(WP7OutputProcess.class);
     }
 
@@ -57,16 +59,60 @@ public class Android2WP7OutputProcess extends XmlvmProcessImpl<WP7OutputProcess>
     public boolean process() {
         Log.debug("Processing Android2WP7OutputProcess");
         
+        OutputFile applicationDelegate = null;
+        
+        
         List<WP7OutputProcess> preprocesses = preprocess();
         for (WP7OutputProcess preprocess : preprocesses) {
             for (OutputFile in : preprocess.getOutputFiles()) {
+                if(in.getFileName().equals(WP7OutputProcess.APPLICATION_DELEGATE)) {
+                    applicationDelegate = in;
+                }
                 result.add(in);
             }
         }
 
-        //TODO if necessary change VisualStudio project configuration created
-        //from the WP7OutputProcess here
+        String path = arguments.option_out() + File.separator + arguments.option_app_name() + File.separator + ANDROID_SRC_LIB;
+        if (JarUtil.resourceExists(ANDROID_WP7_COMPAT_LIB_JAR)) {
+            // If the jar exists, we create a new OutputFile instance that will
+            // lead in the contents of this file being copied to the
+            // destination.
+            // This is the typical scenario for when XMLVM is called from within
+            // xmlvm.jar.
+            UniversalFile compatLibJar = UniversalFileCreator.createDirectory(
+                    ANDROID_WP7_COMPAT_LIB_JAR, null);
+            OutputFile compatLib = new OutputFile(compatLibJar);
+            compatLib.setLocation(path);
+            result.add(compatLib);
+        } else {
+            // If the jar is not present (typical non-xmlvm.jar scenario) then
+            // we need to cross-compile the android compatibility library first,
+            // and then add the generated files to the result.
+
+            // The arguments that are used to create a new XmlvmProcess which
+            // will process the compatibility library.
+            File dir = new File(path);
+            dir.mkdirs();
+            Arguments args = new Arguments(new String[] {
+                    "--in=" + (new File("bin-androidsimple")).getAbsolutePath(),
+                    "--out=" + path, "--target=csharp" });
+            XmlvmProcessor subProcessor = new XmlvmProcessor(args);
+            if (subProcessor.process()) {
+                result.addAll(subProcessor.getTargetProcess().getOutputFiles());
+            } else {
+                Log.error("Sub-Process for processing android iphone compat lib has failed.");
+                return false;
+            }
+        }
         
+        String dataAsString = applicationDelegate.getDataAsString();
+        //TODO replace with a generic android app launcher class
+        dataAsString = dataAsString.replaceAll(WP7OutputProcess.TEMPL_APP_CLASS, "org.xmlvm.demo.afireworks.AndroidFireworks");
+        applicationDelegate.setData(dataAsString.getBytes(), applicationDelegate.getLastModified());
+        
+        VisualStudioFile vs = new VisualStudioFile();
+        Log.error(vs.composeBuildFiles(result, arguments));
+
         return true;
     }
 

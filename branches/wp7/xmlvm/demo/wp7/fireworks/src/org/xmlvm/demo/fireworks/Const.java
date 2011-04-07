@@ -18,35 +18,21 @@
  * For more information, visit the XMLVM Home Page at http://www.xmlvm.org
  */
 
-
-package org.xmlvm.wp7;
+package org.xmlvm.demo.fireworks;
 
 import Compatlib.System.Object;
-import Compatlib.System.String;
-import Compatlib.System.Windows.Application;
-import Compatlib.System.Windows.StartupEventArgs;
-import Compatlib.System.Windows.StartupEventHandler;
-import Compatlib.System.Windows.Controls.TextBlock;
-import Compatlib.System.Windows.Media.Colors;
-import Compatlib.System.Windows.Media.SolidColorBrush;
 
+public class Const extends Object {
+	public static int BOMB_COUNT = 6;
+	public static int SPARKS_PER_BOMB = 12;
 
+	/** The delay in milliseconds in between frames. */
+	public static int UPDATE_DELAY = 30;
 
-/**
- * @author Markus
- *
- */
-public class HelloWorld extends Application {
+	public static int IMAGE_SIZE = 15;
 
-	public HelloWorld() {
-		this.Startup.__add(new StartupEventHandler(this, new String("StartUpTest")));
-	}
-	
-	public void StartUpTest(Object sender, StartupEventArgs args) {
-		TextBlock block = new TextBlock();
-		block.setForeground(new SolidColorBrush(Colors.White));
-		block.setText(new String("Hello World"));
-		this.setRootVisual(block);
-	}
-	
+	public static float MAX2V = 70.0f;
+	public static float T = 0.3f;
+	public static float G = 9.81f;
+	public static float DV = T * G;
 }

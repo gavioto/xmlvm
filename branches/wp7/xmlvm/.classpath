@@ -16,14 +16,13 @@
 	<classpathentry kind="src" path="src/xmlvm2c/lib/native"/>
 	<classpathentry kind="src" path="src/xmlvm2c/compat-lib/iphone"/>
 	<classpathentry kind="src" path="src/xmlvm2c/compat-lib/java"/>
-	<classpathentry kind="src" path="src/xmlvm2csharp/compat-lib/java"/>
+	<classpathentry kind="src" output="bin-csharp" path="src/xmlvm2csharp/compat-lib/java"/>
 	<classpathentry kind="src" path="src/xmlvm2csharp/xsl"/>
-	<classpathentry kind="src" output="bin-demo" path="demo/android/afireworks/src"/>
-	<classpathentry kind="src" output="bin-demo" path="demo/android/afireworks/gen"/>
+	<classpathentry kind="src" path="demo/android/afireworks/src"/>
+	<classpathentry kind="src" path="demo/android/afireworks/gen"/>
 	<classpathentry kind="src" path="demo/wp7/fireworks/src"/>
 	<classpathentry kind="src" path="demo/wp7/sayhello/src"/>
 	<classpathentry kind="src" path="demo/wp7/helloworld/src"/>
-	<classpathentry kind="src" path="demo/wp7/applauncher/src"/>
 	<classpathentry kind="src" path="src/test/java"/>
 	<classpathentry kind="src" path="src/test/cs"/>
 	<classpathentry kind="src" path="src/xmlvm2csharp/compat-lib/dummy"/>

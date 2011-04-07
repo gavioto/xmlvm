@@ -26,6 +26,7 @@ import java.util.Set;
 import org.xmlvm.main.Arguments;
 import org.xmlvm.proc.out.IPhoneOutputProcess;
 import org.xmlvm.proc.out.VerbatimOutputFile;
+import org.xmlvm.proc.out.WP7OutputProcess;
 
 public class ResourceManager {
 

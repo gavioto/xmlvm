@@ -20,8 +20,6 @@
 
 package android.widget;
 
-import org.xmlvm.demo.afireworks.R;
-
 import Compatlib.System.Uri;
 import Compatlib.System.UriKind;
 import Compatlib.System.Windows.UIElement;
@@ -36,6 +34,11 @@ public class ImageView extends View {
 
     Image image;
     
+    public static final int star1=0x7f020001;
+    public static final int star2=0x7f020002;
+    public static final int star3=0x7f020003;
+    public static final int star4=0x7f020004;
+    
     /**
      * @param context
      */
@@ -49,10 +52,10 @@ public class ImageView extends View {
     public void setImageResource(int star) {
         String uri = null;
         switch(star) {
-        case R.drawable.star1: uri = "res/drawable/star1.png"; break;
-        case R.drawable.star2: uri = "res/drawable/star2.png"; break;
-        case R.drawable.star3: uri = "res/drawable/star3.png"; break;
-        case R.drawable.star4: uri = "res/drawable/star4.png"; break;
+        case star1: uri = "res/drawable/star1.png"; break;
+        case star2: uri = "res/drawable/star2.png"; break;
+        case star3: uri = "res/drawable/star3.png"; break;
+        case star4: uri = "res/drawable/star4.png"; break;
         }
         
         image.setSource(new BitmapImage(new Uri(new Compatlib.System.String(uri), UriKind.RelativeOrAbsolute)));

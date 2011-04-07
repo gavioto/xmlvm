@@ -339,6 +339,7 @@ public class Arguments {
 
         if ((option_target == Targets.POSIX || option_target == Targets.IPHONE
                 || option_target == Targets.IPHONEC || option_target == Targets.IPHONEANDROID
+                || option_target == Targets.WP7ANDROID || option_target == Targets.WP7
                 || option_target == Targets.WEBOS || option_skeleton != null)
                 && option_app_name == null) {
             option_app_name = guessAppName();

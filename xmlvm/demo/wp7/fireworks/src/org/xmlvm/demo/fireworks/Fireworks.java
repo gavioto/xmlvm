@@ -18,7 +18,7 @@
  * For more information, visit the XMLVM Home Page at http://www.xmlvm.org
  */
 
-package org.xmlvm.wp7;
+package org.xmlvm.demo.fireworks;
 
 import Compatlib.System.Object;
 

@@ -45,6 +45,9 @@ import org.xmlvm.util.universalfile.UniversalFile;
 import org.xmlvm.util.universalfile.UniversalFileCreator;
 
 public class CSharpOutputProcess extends XmlvmProcessImpl<XmlvmResourceProvider> {
+    public static final String APPLICATION_CLASS = "Compatlib.System.Windows.Application";
+    public static final String APPLICATION_TAG = "APPLICATION";
+    
     private static final String CS_EXTENSION = ".cs";
     private List<OutputFile>    result      = new ArrayList<OutputFile>();
     private Map<String, XmlvmResource> resourcePool    = new HashMap<String, XmlvmResource>();
@@ -88,7 +91,7 @@ public class CSharpOutputProcess extends XmlvmProcessImpl<XmlvmResourceProvider>
                 }
             }
         }
-        LibraryLoader libLoader = (new LibraryLoader(new Arguments(new String[]{"--in=foo/"})));
+        LibraryLoader libLoader = (new LibraryLoader(arguments));
 	// step 1: process and collect all preprocesses
         List<XmlvmResourceProvider> preprocesses = preprocess();
 	// step 2: collect all xmlvm resources from the preprocesses.
@@ -139,6 +142,12 @@ public class CSharpOutputProcess extends XmlvmProcessImpl<XmlvmResourceProvider>
         OutputFile csFile = XsltRunner.runXSLT("xmlvm2csharp.xsl", doc,
                 new String[][] {{"genWrapper", ""+arguments.option_gen_wrapper()}});
         csFile.setFileName(csFileName);
+        
+        //Tag file extending Compatlib.System.Windows.Application so we can identify
+        //it in the WP7 processes
+        if(xmlvm.getSuperTypeName().equals(APPLICATION_CLASS)) {
+            csFile.setTag(APPLICATION_TAG, xmlvm.getFullName());
+        }
 
         return csFile;
     }

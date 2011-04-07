@@ -19,7 +19,7 @@
  */
 
 
-package org.xmlvm.wp7;
+package org.xmlvm.demo.fireworks;
 
 import Compatlib.System.Collections.Generics.List;
 import Compatlib.System.Windows.Rect;

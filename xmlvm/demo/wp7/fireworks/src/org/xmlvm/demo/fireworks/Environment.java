@@ -18,20 +18,13 @@
  * For more information, visit the XMLVM Home Page at http://www.xmlvm.org
  */
 
+package org.xmlvm.demo.fireworks;
 
-package org.xmlvm.wp7;
-
-import Compatlib.System.DateTime;
 import Compatlib.System.Object;
-import Compatlib.System.Random;
 
-public class Math extends Object
-{
-    private static Random gen = new Random((int)DateTime.getNow().getTicks());
-
-    public static double random()
-    {
-        return gen.NextDouble();
-    }
-
+public class Environment extends Object {
+	public static float rotX = 0;
+	public static float rotY = 0;
+	public static int windowHeight = 0;
+	public static int windowWidth = 0;
 }

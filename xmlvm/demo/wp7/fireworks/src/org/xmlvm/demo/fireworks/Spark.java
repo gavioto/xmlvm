@@ -19,7 +19,7 @@
  */
 
 
-package org.xmlvm.wp7;
+package org.xmlvm.demo.fireworks;
 
 import Compatlib.System.Object;
 import Compatlib.System.String;
@@ -44,19 +44,19 @@ public class Spark extends Object
         double rand = (Math.random() * 4);
         if (rand < 1)
         {
-            image.setSource(new BitmapImage(new Uri(new String("images/star1.png"), UriKind.RelativeOrAbsolute)));
+            image.setSource(new BitmapImage(new Uri(new String("res/star1.png"), UriKind.RelativeOrAbsolute)));
         }
         else if (rand < 2)
         {
-        	image.setSource(new BitmapImage(new Uri(new String("images/star2.png"), UriKind.RelativeOrAbsolute)));
+        	image.setSource(new BitmapImage(new Uri(new String("res/star2.png"), UriKind.RelativeOrAbsolute)));
         }
         else if (rand < 3)
         {
-        	image.setSource(new BitmapImage(new Uri(new String("images/star3.png"), UriKind.RelativeOrAbsolute)));
+        	image.setSource(new BitmapImage(new Uri(new String("res/star3.png"), UriKind.RelativeOrAbsolute)));
         }
         else
         {
-        	image.setSource(new BitmapImage(new Uri(new String("images/star4.png"), UriKind.RelativeOrAbsolute)));
+        	image.setSource(new BitmapImage(new Uri(new String("res/star4.png"), UriKind.RelativeOrAbsolute)));
         }
 
         viewGroup.getChildren().Add(this.image);

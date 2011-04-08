@@ -1,0 +1,256 @@
+#ifndef __ORG_XMLVM_IPHONE_MKMAPVIEW__
+#define __ORG_XMLVM_IPHONE_MKMAPVIEW__
+
+#include "xmlvm.h"
+#include "org_xmlvm_iphone_UIView.h"
+#include "org_xmlvm_iphone_UIView.h"
+
+// Circular references:
+#ifndef XMLVM_FORWARD_DECL_org_xmlvm_iphone_CGPoint
+#define XMLVM_FORWARD_DECL_org_xmlvm_iphone_CGPoint
+XMLVM_FORWARD_DECL(org_xmlvm_iphone_CGPoint)
+#endif
+#ifndef XMLVM_FORWARD_DECL_org_xmlvm_iphone_CGRect
+#define XMLVM_FORWARD_DECL_org_xmlvm_iphone_CGRect
+XMLVM_FORWARD_DECL(org_xmlvm_iphone_CGRect)
+#endif
+#ifndef XMLVM_FORWARD_DECL_org_xmlvm_iphone_UIView
+#define XMLVM_FORWARD_DECL_org_xmlvm_iphone_UIView
+XMLVM_FORWARD_DECL(org_xmlvm_iphone_UIView)
+#endif
+#ifndef XMLVM_FORWARD_DECL_org_xmlvm_iphone_CLLocationCoordinate2D
+#define XMLVM_FORWARD_DECL_org_xmlvm_iphone_CLLocationCoordinate2D
+XMLVM_FORWARD_DECL(org_xmlvm_iphone_CLLocationCoordinate2D)
+#endif
+#ifndef XMLVM_FORWARD_DECL_org_xmlvm_iphone_UIView
+#define XMLVM_FORWARD_DECL_org_xmlvm_iphone_UIView
+XMLVM_FORWARD_DECL(org_xmlvm_iphone_UIView)
+#endif
+#ifndef XMLVM_FORWARD_DECL_org_xmlvm_iphone_MKCoordinateRegion
+#define XMLVM_FORWARD_DECL_org_xmlvm_iphone_MKCoordinateRegion
+XMLVM_FORWARD_DECL(org_xmlvm_iphone_MKCoordinateRegion)
+#endif
+#ifndef XMLVM_FORWARD_DECL_org_xmlvm_iphone_MKMapViewDelegate
+#define XMLVM_FORWARD_DECL_org_xmlvm_iphone_MKMapViewDelegate
+XMLVM_FORWARD_DECL(org_xmlvm_iphone_MKMapViewDelegate)
+#endif
+#ifndef XMLVM_FORWARD_DECL_org_xmlvm_iphone_UIEdgeInsets
+#define XMLVM_FORWARD_DECL_org_xmlvm_iphone_UIEdgeInsets
+XMLVM_FORWARD_DECL(org_xmlvm_iphone_UIEdgeInsets)
+#endif
+#ifndef XMLVM_FORWARD_DECL_org_xmlvm_iphone_MKMapRect
+#define XMLVM_FORWARD_DECL_org_xmlvm_iphone_MKMapRect
+XMLVM_FORWARD_DECL(org_xmlvm_iphone_MKMapRect)
+#endif
+#ifndef XMLVM_FORWARD_DECL_java_util_ArrayList
+#define XMLVM_FORWARD_DECL_java_util_ArrayList
+XMLVM_FORWARD_DECL(java_util_ArrayList)
+#endif
+#ifndef XMLVM_FORWARD_DECL_org_xmlvm_iphone_MKAnnotation
+#define XMLVM_FORWARD_DECL_org_xmlvm_iphone_MKAnnotation
+XMLVM_FORWARD_DECL(org_xmlvm_iphone_MKAnnotation)
+#endif
+#ifndef XMLVM_FORWARD_DECL_org_xmlvm_iphone_MKOverlay
+#define XMLVM_FORWARD_DECL_org_xmlvm_iphone_MKOverlay
+XMLVM_FORWARD_DECL(org_xmlvm_iphone_MKOverlay)
+#endif
+#ifndef XMLVM_FORWARD_DECL_java_lang_String
+#define XMLVM_FORWARD_DECL_java_lang_String
+XMLVM_FORWARD_DECL(java_lang_String)
+#endif
+// Class declarations for org.xmlvm.iphone.MKMapView
+XMLVM_DEFINE_CLASS(org_xmlvm_iphone_MKMapView, 117, XMLVM_ITABLE_SIZE_org_xmlvm_iphone_MKMapView)
+
+extern JAVA_OBJECT __CLASS_org_xmlvm_iphone_MKMapView;
+extern JAVA_OBJECT __CLASS_org_xmlvm_iphone_MKMapView_1ARRAY;
+extern JAVA_OBJECT __CLASS_org_xmlvm_iphone_MKMapView_2ARRAY;
+extern JAVA_OBJECT __CLASS_org_xmlvm_iphone_MKMapView_3ARRAY;
+//XMLVM_BEGIN_DECLARATIONS
+#define __ADDITIONAL_INSTANCE_FIELDS_org_xmlvm_iphone_MKMapView
+//XMLVM_END_DECLARATIONS
+
+#define __INSTANCE_FIELDS_org_xmlvm_iphone_MKMapView \
+    __INSTANCE_FIELDS_org_xmlvm_iphone_UIView; \
+    struct { \
+        __ADDITIONAL_INSTANCE_FIELDS_org_xmlvm_iphone_MKMapView \
+    } org_xmlvm_iphone_MKMapView
+
+struct org_xmlvm_iphone_MKMapView {
+    __TIB_DEFINITION_org_xmlvm_iphone_MKMapView* tib;
+    struct {
+        __INSTANCE_FIELDS_org_xmlvm_iphone_MKMapView;
+    } fields;
+};
+#ifndef XMLVM_FORWARD_DECL_org_xmlvm_iphone_MKMapView
+#define XMLVM_FORWARD_DECL_org_xmlvm_iphone_MKMapView
+typedef struct org_xmlvm_iphone_MKMapView org_xmlvm_iphone_MKMapView;
+#endif
+
+#define XMLVM_VTABLE_SIZE_org_xmlvm_iphone_MKMapView 117
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_MKMapView_getMapType__ 65
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_MKMapView_setMapType___int 66
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_MKMapView_isScrollEnabled__ 67
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_MKMapView_setScrollEnabled___boolean 68
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_MKMapView_isZoomEnabled__ 69
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_MKMapView_setZoomEnabled___boolean 70
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_MKMapView_getDelegate__ 71
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_MKMapView_setDelegate___org_xmlvm_iphone_MKMapViewDelegate 72
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_MKMapView_getRegion__ 73
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_MKMapView_setRegion___org_xmlvm_iphone_MKCoordinateRegion 74
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_MKMapView_setRegion___org_xmlvm_iphone_MKCoordinateRegion_boolean 75
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_MKMapView_getCenterCoordinate__ 76
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_MKMapView_setCenterCoordinate___org_xmlvm_iphone_CLLocationCoordinate2D 77
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_MKMapView_setCenterCoordinate___org_xmlvm_iphone_CLLocationCoordinate2D_boolean 78
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_MKMapView_getVisibleMapRect__ 79
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_MKMapView_setVisibleMapRect___org_xmlvm_iphone_MKMapRect 80
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_MKMapView_setVisibleMapRect___org_xmlvm_iphone_MKMapRect_boolean 81
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_MKMapView_setVisibleMapRect___org_xmlvm_iphone_MKMapRect_org_xmlvm_iphone_UIEdgeInsets_boolean 82
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_MKMapView_isShowsUserLocation__ 83
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_MKMapView_setShowsUserLocation___boolean 84
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_MKMapView_getUserLocation__ 85
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_MKMapView_isUserLocationVisible__ 86
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_MKMapView_convertCoordinateToPointToView___org_xmlvm_iphone_CLLocationCoordinate2D_org_xmlvm_iphone_UIView 87
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_MKMapView_convertPointToCoordinateFromView___org_xmlvm_iphone_CGPoint_org_xmlvm_iphone_UIView 88
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_MKMapView_convertRegionToRectToView___org_xmlvm_iphone_MKCoordinateRegion_org_xmlvm_iphone_UIView 89
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_MKMapView_convertRectToRegionFromView___org_xmlvm_iphone_CGRect_org_xmlvm_iphone_UIView 90
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_MKMapView_regionThatFits___org_xmlvm_iphone_MKCoordinateRegion 91
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_MKMapView_mapRectThatFits___org_xmlvm_iphone_MKMapRect 92
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_MKMapView_mapRectThatFits___org_xmlvm_iphone_MKMapRect_org_xmlvm_iphone_UIEdgeInsets 93
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_MKMapView_getAnnotations__ 94
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_MKMapView_addAnnotation___org_xmlvm_iphone_MKAnnotation 95
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_MKMapView_addAnnotations___java_util_ArrayList 96
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_MKMapView_removeAnnotation___org_xmlvm_iphone_MKAnnotation 97
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_MKMapView_removeAnnotations___java_util_ArrayList 98
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_MKMapView_viewForAnnotation___org_xmlvm_iphone_MKAnnotation 99
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_MKMapView_annotationsInMapRect___org_xmlvm_iphone_MKMapRect 100
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_MKMapView_getAnnotationVisibleRect__ 101
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_MKMapView_dequeueReusableAnnotationViewWithIdentifier___java_lang_String 102
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_MKMapView_getSelectedAnnotations__ 103
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_MKMapView_setSelectedAnnotations___java_util_ArrayList 104
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_MKMapView_selectAnnotation___org_xmlvm_iphone_MKAnnotation_boolean 105
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_MKMapView_deselectAnnotation___org_xmlvm_iphone_MKAnnotation_boolean 106
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_MKMapView_getOverlays__ 107
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_MKMapView_addOverlay___org_xmlvm_iphone_MKOverlay 108
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_MKMapView_addOverlays___java_util_ArrayList 109
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_MKMapView_removeOverlay___org_xmlvm_iphone_MKOverlay 110
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_MKMapView_removeOverlays___java_util_ArrayList 111
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_MKMapView_insertOverlay___org_xmlvm_iphone_MKOverlay_int 112
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_MKMapView_exchangeOverlay___int_int 113
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_MKMapView_insertOverlayAboveOverlay___org_xmlvm_iphone_MKOverlay_org_xmlvm_iphone_MKOverlay 114
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_MKMapView_insertOverlayBelowOverlay___org_xmlvm_iphone_MKOverlay_org_xmlvm_iphone_MKOverlay 115
+#define XMLVM_VTABLE_IDX_org_xmlvm_iphone_MKMapView_viewForOverlay___org_xmlvm_iphone_MKOverlay 116
+
+void __INIT_org_xmlvm_iphone_MKMapView();
+void __INIT_IMPL_org_xmlvm_iphone_MKMapView();
+void __DELETE_org_xmlvm_iphone_MKMapView(void* me, void* client_data);
+void __INIT_INSTANCE_MEMBERS_org_xmlvm_iphone_MKMapView(JAVA_OBJECT me);
+JAVA_OBJECT __NEW_org_xmlvm_iphone_MKMapView();
+JAVA_OBJECT __NEW_INSTANCE_org_xmlvm_iphone_MKMapView();
+void org_xmlvm_iphone_MKMapView___INIT___(JAVA_OBJECT me);
+void org_xmlvm_iphone_MKMapView___INIT____org_xmlvm_iphone_CGRect(JAVA_OBJECT me, JAVA_OBJECT n1);
+// Vtable index: 65
+JAVA_INT org_xmlvm_iphone_MKMapView_getMapType__(JAVA_OBJECT me);
+// Vtable index: 66
+void org_xmlvm_iphone_MKMapView_setMapType___int(JAVA_OBJECT me, JAVA_INT n1);
+// Vtable index: 67
+JAVA_BOOLEAN org_xmlvm_iphone_MKMapView_isScrollEnabled__(JAVA_OBJECT me);
+// Vtable index: 68
+void org_xmlvm_iphone_MKMapView_setScrollEnabled___boolean(JAVA_OBJECT me, JAVA_BOOLEAN n1);
+// Vtable index: 69
+JAVA_BOOLEAN org_xmlvm_iphone_MKMapView_isZoomEnabled__(JAVA_OBJECT me);
+// Vtable index: 70
+void org_xmlvm_iphone_MKMapView_setZoomEnabled___boolean(JAVA_OBJECT me, JAVA_BOOLEAN n1);
+// Vtable index: 71
+JAVA_OBJECT org_xmlvm_iphone_MKMapView_getDelegate__(JAVA_OBJECT me);
+// Vtable index: 72
+void org_xmlvm_iphone_MKMapView_setDelegate___org_xmlvm_iphone_MKMapViewDelegate(JAVA_OBJECT me, JAVA_OBJECT n1);
+// Vtable index: 73
+JAVA_OBJECT org_xmlvm_iphone_MKMapView_getRegion__(JAVA_OBJECT me);
+// Vtable index: 74
+void org_xmlvm_iphone_MKMapView_setRegion___org_xmlvm_iphone_MKCoordinateRegion(JAVA_OBJECT me, JAVA_OBJECT n1);
+// Vtable index: 75
+void org_xmlvm_iphone_MKMapView_setRegion___org_xmlvm_iphone_MKCoordinateRegion_boolean(JAVA_OBJECT me, JAVA_OBJECT n1, JAVA_BOOLEAN n2);
+// Vtable index: 76
+JAVA_OBJECT org_xmlvm_iphone_MKMapView_getCenterCoordinate__(JAVA_OBJECT me);
+// Vtable index: 77
+void org_xmlvm_iphone_MKMapView_setCenterCoordinate___org_xmlvm_iphone_CLLocationCoordinate2D(JAVA_OBJECT me, JAVA_OBJECT n1);
+// Vtable index: 78
+void org_xmlvm_iphone_MKMapView_setCenterCoordinate___org_xmlvm_iphone_CLLocationCoordinate2D_boolean(JAVA_OBJECT me, JAVA_OBJECT n1, JAVA_BOOLEAN n2);
+// Vtable index: 79
+JAVA_OBJECT org_xmlvm_iphone_MKMapView_getVisibleMapRect__(JAVA_OBJECT me);
+// Vtable index: 80
+void org_xmlvm_iphone_MKMapView_setVisibleMapRect___org_xmlvm_iphone_MKMapRect(JAVA_OBJECT me, JAVA_OBJECT n1);
+// Vtable index: 81
+void org_xmlvm_iphone_MKMapView_setVisibleMapRect___org_xmlvm_iphone_MKMapRect_boolean(JAVA_OBJECT me, JAVA_OBJECT n1, JAVA_BOOLEAN n2);
+// Vtable index: 82
+void org_xmlvm_iphone_MKMapView_setVisibleMapRect___org_xmlvm_iphone_MKMapRect_org_xmlvm_iphone_UIEdgeInsets_boolean(JAVA_OBJECT me, JAVA_OBJECT n1, JAVA_OBJECT n2, JAVA_BOOLEAN n3);
+// Vtable index: 83
+JAVA_BOOLEAN org_xmlvm_iphone_MKMapView_isShowsUserLocation__(JAVA_OBJECT me);
+// Vtable index: 84
+void org_xmlvm_iphone_MKMapView_setShowsUserLocation___boolean(JAVA_OBJECT me, JAVA_BOOLEAN n1);
+// Vtable index: 85
+JAVA_OBJECT org_xmlvm_iphone_MKMapView_getUserLocation__(JAVA_OBJECT me);
+// Vtable index: 86
+JAVA_BOOLEAN org_xmlvm_iphone_MKMapView_isUserLocationVisible__(JAVA_OBJECT me);
+// Vtable index: 87
+JAVA_OBJECT org_xmlvm_iphone_MKMapView_convertCoordinateToPointToView___org_xmlvm_iphone_CLLocationCoordinate2D_org_xmlvm_iphone_UIView(JAVA_OBJECT me, JAVA_OBJECT n1, JAVA_OBJECT n2);
+// Vtable index: 88
+JAVA_OBJECT org_xmlvm_iphone_MKMapView_convertPointToCoordinateFromView___org_xmlvm_iphone_CGPoint_org_xmlvm_iphone_UIView(JAVA_OBJECT me, JAVA_OBJECT n1, JAVA_OBJECT n2);
+// Vtable index: 89
+JAVA_OBJECT org_xmlvm_iphone_MKMapView_convertRegionToRectToView___org_xmlvm_iphone_MKCoordinateRegion_org_xmlvm_iphone_UIView(JAVA_OBJECT me, JAVA_OBJECT n1, JAVA_OBJECT n2);
+// Vtable index: 90
+JAVA_OBJECT org_xmlvm_iphone_MKMapView_convertRectToRegionFromView___org_xmlvm_iphone_CGRect_org_xmlvm_iphone_UIView(JAVA_OBJECT me, JAVA_OBJECT n1, JAVA_OBJECT n2);
+// Vtable index: 91
+JAVA_OBJECT org_xmlvm_iphone_MKMapView_regionThatFits___org_xmlvm_iphone_MKCoordinateRegion(JAVA_OBJECT me, JAVA_OBJECT n1);
+// Vtable index: 92
+JAVA_OBJECT org_xmlvm_iphone_MKMapView_mapRectThatFits___org_xmlvm_iphone_MKMapRect(JAVA_OBJECT me, JAVA_OBJECT n1);
+// Vtable index: 93
+JAVA_OBJECT org_xmlvm_iphone_MKMapView_mapRectThatFits___org_xmlvm_iphone_MKMapRect_org_xmlvm_iphone_UIEdgeInsets(JAVA_OBJECT me, JAVA_OBJECT n1, JAVA_OBJECT n2);
+// Vtable index: 94
+JAVA_OBJECT org_xmlvm_iphone_MKMapView_getAnnotations__(JAVA_OBJECT me);
+// Vtable index: 95
+void org_xmlvm_iphone_MKMapView_addAnnotation___org_xmlvm_iphone_MKAnnotation(JAVA_OBJECT me, JAVA_OBJECT n1);
+// Vtable index: 96
+void org_xmlvm_iphone_MKMapView_addAnnotations___java_util_ArrayList(JAVA_OBJECT me, JAVA_OBJECT n1);
+// Vtable index: 97
+void org_xmlvm_iphone_MKMapView_removeAnnotation___org_xmlvm_iphone_MKAnnotation(JAVA_OBJECT me, JAVA_OBJECT n1);
+// Vtable index: 98
+void org_xmlvm_iphone_MKMapView_removeAnnotations___java_util_ArrayList(JAVA_OBJECT me, JAVA_OBJECT n1);
+// Vtable index: 99
+JAVA_OBJECT org_xmlvm_iphone_MKMapView_viewForAnnotation___org_xmlvm_iphone_MKAnnotation(JAVA_OBJECT me, JAVA_OBJECT n1);
+// Vtable index: 100
+JAVA_OBJECT org_xmlvm_iphone_MKMapView_annotationsInMapRect___org_xmlvm_iphone_MKMapRect(JAVA_OBJECT me, JAVA_OBJECT n1);
+// Vtable index: 101
+JAVA_OBJECT org_xmlvm_iphone_MKMapView_getAnnotationVisibleRect__(JAVA_OBJECT me);
+// Vtable index: 102
+JAVA_OBJECT org_xmlvm_iphone_MKMapView_dequeueReusableAnnotationViewWithIdentifier___java_lang_String(JAVA_OBJECT me, JAVA_OBJECT n1);
+// Vtable index: 103
+JAVA_OBJECT org_xmlvm_iphone_MKMapView_getSelectedAnnotations__(JAVA_OBJECT me);
+// Vtable index: 104
+void org_xmlvm_iphone_MKMapView_setSelectedAnnotations___java_util_ArrayList(JAVA_OBJECT me, JAVA_OBJECT n1);
+// Vtable index: 105
+void org_xmlvm_iphone_MKMapView_selectAnnotation___org_xmlvm_iphone_MKAnnotation_boolean(JAVA_OBJECT me, JAVA_OBJECT n1, JAVA_BOOLEAN n2);
+// Vtable index: 106
+void org_xmlvm_iphone_MKMapView_deselectAnnotation___org_xmlvm_iphone_MKAnnotation_boolean(JAVA_OBJECT me, JAVA_OBJECT n1, JAVA_BOOLEAN n2);
+// Vtable index: 107
+JAVA_OBJECT org_xmlvm_iphone_MKMapView_getOverlays__(JAVA_OBJECT me);
+// Vtable index: 108
+void org_xmlvm_iphone_MKMapView_addOverlay___org_xmlvm_iphone_MKOverlay(JAVA_OBJECT me, JAVA_OBJECT n1);
+// Vtable index: 109
+void org_xmlvm_iphone_MKMapView_addOverlays___java_util_ArrayList(JAVA_OBJECT me, JAVA_OBJECT n1);
+// Vtable index: 110
+void org_xmlvm_iphone_MKMapView_removeOverlay___org_xmlvm_iphone_MKOverlay(JAVA_OBJECT me, JAVA_OBJECT n1);
+// Vtable index: 111
+void org_xmlvm_iphone_MKMapView_removeOverlays___java_util_ArrayList(JAVA_OBJECT me, JAVA_OBJECT n1);
+// Vtable index: 112
+void org_xmlvm_iphone_MKMapView_insertOverlay___org_xmlvm_iphone_MKOverlay_int(JAVA_OBJECT me, JAVA_OBJECT n1, JAVA_INT n2);
+// Vtable index: 113
+void org_xmlvm_iphone_MKMapView_exchangeOverlay___int_int(JAVA_OBJECT me, JAVA_INT n1, JAVA_INT n2);
+// Vtable index: 114
+void org_xmlvm_iphone_MKMapView_insertOverlayAboveOverlay___org_xmlvm_iphone_MKOverlay_org_xmlvm_iphone_MKOverlay(JAVA_OBJECT me, JAVA_OBJECT n1, JAVA_OBJECT n2);
+// Vtable index: 115
+void org_xmlvm_iphone_MKMapView_insertOverlayBelowOverlay___org_xmlvm_iphone_MKOverlay_org_xmlvm_iphone_MKOverlay(JAVA_OBJECT me, JAVA_OBJECT n1, JAVA_OBJECT n2);
+// Vtable index: 116
+JAVA_OBJECT org_xmlvm_iphone_MKMapView_viewForOverlay___org_xmlvm_iphone_MKOverlay(JAVA_OBJECT me, JAVA_OBJECT n1);
+
+#endif

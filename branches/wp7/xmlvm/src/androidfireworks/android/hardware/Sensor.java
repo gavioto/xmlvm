@@ -51,8 +51,8 @@ public class Sensor extends Object {
     public void accelerometerReadingChanged(Object sender, AccelerometerReadingEventArgs args)
     {
         SensorEvent event = new SensorEvent();
-        event.values[0] = (float) (args.getX() * 9.81);
-        event.values[1] = (float) (args.getY() * 9.81);
+        event.values[0] = (float) - (args.getX() * 9.81);
+        event.values[1] = (float) - (args.getY() * 9.81);
         for(int i=0; i<listener.getCount(); i++) {
             SensorEventListener each = listener.__access(i);
             each.onSensorChanged(event);

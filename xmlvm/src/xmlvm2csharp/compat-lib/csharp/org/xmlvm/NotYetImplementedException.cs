@@ -3,7 +3,11 @@ namespace org.xmlvm {
         : global::System.NotSupportedException {
 
 	public NotYetImplementedException() 
-	    : base("Not Yet Implemented") {
+	    : base("XMLVM: Not Yet Implemented") {
+	}
+
+	public NotYetImplementedException(global::System.String message) 
+	    : base("XMLVM: Not Yet Implemented: "+message) {
 	}
 
     }

@@ -17,38 +17,47 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301,
  * USA.
  */
-
-package org.xmlvm.test;
+package org.xmlvm.test.poly;
 
 /*
- * testing escaping of special characters in strings
+ * tests simple inheritence and hiding of fields from two interfaces
  */
-public class StringTest2 {
-    public static final String str0 = "escape string test:";
-
+public class PolyD {
     public static void main(String[] args) {
-	System.out.println(str0);
-	String str1 = "str1:\ttab";
-	System.out.println(str1);
-	str1 = "str1:\nnew line";
-	System.out.println(str1);
-	str1 = "str2:\"double quote";
-	System.out.println(str1);
-	str1 = "str3:\'single quote";
-	System.out.println(str1);
-	str1 = "str4:\rcarriege return";
-	System.out.println(str1);
-	str1 = "str5:\fform feed";
-	System.out.println(str1);
-	str1 = "str6:\bbackspace";
-	System.out.println(str1);
-	str1 = "str7:\\backslash";
-	System.out.println(str1);
-	str1 = "str8:\u039Auppercase omega";
-	System.out.println(str1);
-	System.out.println("tricky test: (should be: backslash+012)");
-	str1 = "str9:\\012no new line";
-	System.out.println(str1);
-	
+        PolyDInterface1 a = new PolyDChild();
+        PolyDInterface2 b = new PolyDChild();
+        PolyDChild c = new PolyDChild();
+        System.out.println(a.x);
+        System.out.println(b.x);
+        System.out.println(c.x);
+        System.out.println(c.y);
+        System.out.println(a.getX());
+        System.out.println(b.getX());
+        System.out.println(c.getX());
+    }
+
+}
+
+interface PolyDInterface1 {
+    public int x = 3;
+    public int y = 7;
+    public int getX();
+}
+
+interface PolyDInterface2 {
+    public int x = 5;
+    public int getX();
+}
+
+class PolyDChild implements PolyDInterface2,PolyDInterface1{
+    public int x;
+
+    public PolyDChild() {
+        this.x = 4;
+    }
+
+    public int getX() {
+        return this.x;
     }
 }
+

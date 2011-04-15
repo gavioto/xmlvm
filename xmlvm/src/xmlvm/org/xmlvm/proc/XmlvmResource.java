@@ -275,6 +275,30 @@ public class XmlvmResource {
             return true;
         }
 
+        public boolean doesContravariantOverrideMethod(String methodName,
+                List<Element> parameters, Element returnElement) {
+            if (!doesOverrideMethod(methodName, parameters)) {
+                return false;
+            }
+            Element mySignature = methodElement.getChild("signature", nsXMLVM);
+            Element myReturnElement = mySignature.getChild("return", nsXMLVM);
+            String myReturnType = myReturnElement.getAttributeValue("type");
+            String otherReturnType = returnElement.getAttributeValue("type");
+            if (!myReturnType.equals(otherReturnType)) {
+                return false;
+            }
+            return true;
+        }
+
+        @SuppressWarnings("unchecked")
+        public boolean doesContravariantOverrideMethod(XmlvmMethod method) {
+            Element signature = method.methodElement.getChild("signature", nsXMLVM);
+            return doesContravariantOverrideMethod(method.getName(),
+                    signature.getChildren("parameter", nsXMLVM),
+                    signature.getChild("return", nsXMLVM));
+        }
+
+
         /**
          * Returns true if this method is static.
          */

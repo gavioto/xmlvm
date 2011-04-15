@@ -24,15 +24,12 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 import java.util.Collection;
 import java.util.HashSet;
 
 import org.jdom.Document;
 import org.xmlvm.Log;
 import org.xmlvm.main.Arguments;
-import org.xmlvm.proc.XmlvmProcess;
 import org.xmlvm.proc.XmlvmProcessImpl;
 import org.xmlvm.proc.XmlvmProcessor;
 import org.xmlvm.proc.XmlvmResource;
@@ -40,20 +37,15 @@ import org.xmlvm.proc.XmlvmResourceProvider;
 import org.xmlvm.proc.XsltRunner;
 import org.xmlvm.proc.lib.LibraryLoader;
 import org.xmlvm.proc.XmlvmResource.XmlvmMethod;
-import org.xmlvm.proc.out.wrappers.GenCSharpWrappersOutputProcess;
 import org.xmlvm.util.universalfile.UniversalFile;
 import org.xmlvm.util.universalfile.UniversalFileCreator;
 
 public class CSharpOutputProcess extends XmlvmProcessImpl<XmlvmResourceProvider> {
     public static final String APPLICATION_CLASS = "Compatlib.System.Windows.Application";
     public static final String APPLICATION_TAG = "APPLICATION";
-    
+    private static final String TAG = CSharpOutputProcess.class.getSimpleName();
     private static final String CS_EXTENSION = ".cs";
     private List<OutputFile>    result      = new ArrayList<OutputFile>();
-    private Map<String, XmlvmResource> resourcePool    = new HashMap<String, XmlvmResource>();
-    // className---> (methodName--->listOfMethodsWithThisName)
-    private Map<String, Map<String,List<XmlvmMethod>>> methodTree    = new HashMap<String, Map<String,List<XmlvmMethod>>>();
-
     
     public CSharpOutputProcess(Arguments arguments) {
         super(arguments);
@@ -77,10 +69,10 @@ public class CSharpOutputProcess extends XmlvmProcessImpl<XmlvmResourceProvider>
                 linkArgs.add("--in=" + path);
             }
             XmlvmProcessor linkProcessor = new XmlvmProcessor(new Arguments(linkArgs.toArray(new String[0])));
-            linkProcessor.setTargetProcess(new CSharpOutputProcess(new Arguments(linkArgs.toArray(new String[0]))));
+            linkProcessor.setTargetProcess(new RecursiveResourceLoadingProcess(new Arguments(linkArgs.toArray(new String[0]))));
             if (!linkProcessor.preprocess()) {
                 // throw something?
-                Log.debug("CSharpOutputProcess", "error building pipeline for linked resrouces");
+                Log.debug(TAG, "error building pipeline for linked resrouces");
             }
             CSharpOutputProcess linkCSharpProcess = (CSharpOutputProcess) linkProcessor.getTargetProcess();
             Collection<XmlvmResourceProvider> linkProviders = new HashSet<XmlvmResourceProvider>();
@@ -91,7 +83,7 @@ public class CSharpOutputProcess extends XmlvmProcessImpl<XmlvmResourceProvider>
                 }
             }
         }
-        LibraryLoader libLoader = (new LibraryLoader(arguments));
+        LibraryLoader libLoader = new LibraryLoader(arguments);
 	// step 1: process and collect all preprocesses
         List<XmlvmResourceProvider> preprocesses = preprocess();
 	// step 2: collect all xmlvm resources from the preprocesses.
@@ -140,9 +132,11 @@ public class CSharpOutputProcess extends XmlvmProcessImpl<XmlvmResourceProvider>
         String csFileName = fileNameStem + CS_EXTENSION;
 
         OutputFile csFile = XsltRunner.runXSLT("xmlvm2csharp.xsl", doc,
-                new String[][] {{"genWrapper", ""+arguments.option_gen_wrapper()}});
+					       new String[][] {{"gen-wrapper", ""+arguments.option_gen_wrapper()},
+							       {"gen-skeleton", ""+arguments.option_gen_native_skeletons()},
+							       {"no-using", ""+arguments.option_no_using()}});
         csFile.setFileName(csFileName);
-        
+
         //Tag file extending Compatlib.System.Windows.Application so we can identify
         //it in the WP7 processes
         if(xmlvm.getSuperTypeName().equals(APPLICATION_CLASS)) {
@@ -258,7 +252,7 @@ public class CSharpOutputProcess extends XmlvmProcessImpl<XmlvmResourceProvider>
 		    availableMethods.put(myMethod.getName(), newList);
 		} else {
 		    for (XmlvmMethod parentMethod : overloadedMethods) {
-			if (parentMethod.doesOverrideMethod(myMethod)) {
+			if (parentMethod.doesContravariantOverrideMethod(myMethod) ) {
 			    myMethod.setOverride();
 			    continue myMethodLoop;
 			}

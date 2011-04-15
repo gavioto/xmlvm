@@ -32,3 +32,15 @@ public class PolyA {
 	System.out.println(c.getStr1());
     }
 }
+
+class PolyAParent {
+    public String getStr1() {
+	return "parent instance method";
+    }
+}
+
+class PolyAChild extends PolyAParent {
+    public String getStr1() {
+	return "child instance method: calling " + super.getStr1();
+    }
+}

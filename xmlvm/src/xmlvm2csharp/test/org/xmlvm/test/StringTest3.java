@@ -17,11 +17,24 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301,
  * USA.
  */
+package org.xmlvm.test;
 
-package org.xmlvm.test.poly;
-
-public class PolyAChild extends PolyAParent {
-    public String getStr1() {
-	return "child instance method: calling " + super.getStr1();
+/*
+ * tests some unicode strings
+ */
+public class StringTest3 {
+    public static void main(String[] args) {
+        String str;
+        str="tensor product: \u2297";
+        System.out.println(str);
+        str="gimel: \u05D2";
+        System.out.println(str);
+        str="cirlic capital zhe: \u0416";
+        System.out.println(str);
+        str="han: \u4e2D";
+        System.out.println(str);
+        str="gothic faihu: \uD800\uDF46";
+        System.out.println(str);
+        //System.out.println("char at 14: "+new Integer(str.charAt(14)));
     }
 }

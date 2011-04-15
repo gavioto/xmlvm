@@ -22,7 +22,7 @@ package org.xmlvm.test.poly;
 
 /*
  * taken from src/test/java/org/xmlvm/test/, but removed interface fields 
- *   in the meantime, and Class API calls
+ *   in the meantime, and Class API calls, added constructor tracking
  */
 public class PolymorphismTest {
 
@@ -39,6 +39,7 @@ public class PolymorphismTest {
 
     public PolymorphismTest() {
         //Log(this.getClass().getName());
+        Log("PolymorphismTest's constructor");
         publicMember = 1;
         privateMember = 2;
     }
@@ -70,6 +71,7 @@ public class PolymorphismTest {
         private int privateMember;
 
         public Derived() {
+            Log("Derived's constructor");
             publicMember = 3;
             privateMember = 4;
         }
@@ -101,7 +103,7 @@ public class PolymorphismTest {
     
     interface Iface {
         public void ifaceMethod();
-        // final public static int ifaceInt = 42;
+        final public static int ifaceInt = 42;
     }
 
     static class DerivedIface extends PolymorphismTest implements Iface {
@@ -157,8 +159,8 @@ public class PolymorphismTest {
         }
         Log("===============");
         DerivedIface c = new DerivedIface();
-        //Log(Iface.ifaceInt);
-        //Log(c.ifaceInt);
+        Log(Iface.ifaceInt);
+        Log(c.ifaceInt);
         c.print();
         c.ifaceMethod();
         Log(c.publicMember);

@@ -17,38 +17,31 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301,
  * USA.
  */
-
 package org.xmlvm.test;
 
 /*
- * testing escaping of special characters in strings
+ * simple method overloading test for clash of methods with
+ * char, boolean, and int parameters, in case the cross compilation
+ * maps them all to int type
  */
-public class StringTest2 {
-    public static final String str0 = "escape string test:";
+public class ValueTypeTest2 {
+    public String getStr(int i) {
+        return "getStr(int) was called";
+    }
+
+    public String getStr(char ch) {
+        return "getStr(char) was called";
+    }
+
+    public String getStr(boolean bool) {
+        return "getStr(boolean) was called";
+    }
 
     public static void main(String[] args) {
-	System.out.println(str0);
-	String str1 = "str1:\ttab";
-	System.out.println(str1);
-	str1 = "str1:\nnew line";
-	System.out.println(str1);
-	str1 = "str2:\"double quote";
-	System.out.println(str1);
-	str1 = "str3:\'single quote";
-	System.out.println(str1);
-	str1 = "str4:\rcarriege return";
-	System.out.println(str1);
-	str1 = "str5:\fform feed";
-	System.out.println(str1);
-	str1 = "str6:\bbackspace";
-	System.out.println(str1);
-	str1 = "str7:\\backslash";
-	System.out.println(str1);
-	str1 = "str8:\u039Auppercase omega";
-	System.out.println(str1);
-	System.out.println("tricky test: (should be: backslash+012)");
-	str1 = "str9:\\012no new line";
-	System.out.println(str1);
-	
+        ValueTypeTest2 a = new ValueTypeTest2();
+        System.out.println(a.getStr(2));
+        System.out.println(a.getStr('a'));
+        System.out.println(a.getStr(true));
     }
+
 }

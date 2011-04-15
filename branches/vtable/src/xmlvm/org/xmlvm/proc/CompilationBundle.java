@@ -41,12 +41,18 @@ public class CompilationBundle implements BundlePhase1, BundlePhase2 {
     @Override
     public synchronized void addResources(Collection<XmlvmResource> resources) {
         for (XmlvmResource resource : resources) {
+            if (resource == null) {
+                continue;
+            }
             xmlvmResources.put(resource.getFullName(), resource);
         }
     }
 
     @Override
     public synchronized void addResource(XmlvmResource resource) {
+        if (resource == null) {
+            return;
+        }
         xmlvmResources.put(resource.getFullName(), resource);
     }
 

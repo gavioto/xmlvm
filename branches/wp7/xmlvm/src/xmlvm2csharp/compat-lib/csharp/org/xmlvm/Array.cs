@@ -11,6 +11,10 @@ namespace org.xmlvm {
 	    this._myArray = myArray;
 	}
 
+	public T[] getCSharpArray() {
+	    return this._myArray;
+	}
+	
 	public T get(int index) {
 	    return this._myArray[index];
 	}	

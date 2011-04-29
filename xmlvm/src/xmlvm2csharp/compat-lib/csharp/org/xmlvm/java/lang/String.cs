@@ -6,13 +6,26 @@ namespace org.xmlvm.java.lang {
 public class String: org.xmlvm.java.lang.Object {
 public new void @this(){
 //XMLVM_BEGIN_WRAPPER[org.xmlvm.java.lang.String: void <init>()]
+      throw new org.xmlvm.NotYetImplementedException("native/wrapper method not yet implemented");
 //XMLVM_END_WRAPPER[org.xmlvm.java.lang.String: void <init>()]
+}
+
+public void @this(org.xmlvm.Array<char> n1){
+//XMLVM_BEGIN_WRAPPER[org.xmlvm.java.lang.String: void <init>(char[])]
+    this.str = new global::System.String(n1.getCSharpArray());
+//XMLVM_END_WRAPPER[org.xmlvm.java.lang.String: void <init>(char[])]
 }
 
 public override java.lang.String toString(){
 //XMLVM_BEGIN_WRAPPER[org.xmlvm.java.lang.String: java.lang.String toString()]
 	return this;
 //XMLVM_END_WRAPPER[org.xmlvm.java.lang.String: java.lang.String toString()]
+}
+
+public virtual org.xmlvm.Array<char> toCharArray(){
+//XMLVM_BEGIN_WRAPPER[org.xmlvm.java.lang.String: char[] toCharArray()]
+    return new org.xmlvm.Array<char>(this.str.ToCharArray());    
+//XMLVM_END_WRAPPER[org.xmlvm.java.lang.String: char[] toCharArray()]
 }
 
 public override bool equals(java.lang.Object n1){
@@ -38,38 +51,51 @@ if (this.str.Equals(_other.str)) {
 
 public static java.lang.String valueOf(int n1){
 //XMLVM_BEGIN_WRAPPER[org.xmlvm.java.lang.String: java.lang.String valueOf(int)]
-return new java.lang.String(global::System.Convert.ToString(n1));
+java.lang.String _tmpStr = new java.lang.String();
+_tmpStr.@this(new org.xmlvm.Array<char>(global::System.Convert.ToString(n1).ToCharArray()));
+return _tmpStr;
 //XMLVM_END_WRAPPER[org.xmlvm.java.lang.String: java.lang.String valueOf(int)]
 }
 
 public static java.lang.String valueOf(float n1){
 //XMLVM_BEGIN_WRAPPER[org.xmlvm.java.lang.String: java.lang.String valueOf(float)]
-return new java.lang.String(global::System.Convert.ToString(n1));
+java.lang.String _tmpStr = new java.lang.String();
+_tmpStr.@this(new org.xmlvm.Array<char>(global::System.Convert.ToString(n1).ToCharArray()));
+return _tmpStr;
 //XMLVM_END_WRAPPER[org.xmlvm.java.lang.String: java.lang.String valueOf(float)]
 }
 
 public static java.lang.String valueOf(long n1){
 //XMLVM_BEGIN_WRAPPER[org.xmlvm.java.lang.String: java.lang.String valueOf(long)]
-return new java.lang.String(global::System.Convert.ToString(n1));
+java.lang.String _tmpStr = new java.lang.String();
+_tmpStr.@this(new org.xmlvm.Array<char>(global::System.Convert.ToString(n1).ToCharArray()));
+return _tmpStr;
 //XMLVM_END_WRAPPER[org.xmlvm.java.lang.String: java.lang.String valueOf(long)]
 }
 
 public static java.lang.String valueOf(double n1){
 //XMLVM_BEGIN_WRAPPER[org.xmlvm.java.lang.String: java.lang.String valueOf(double)]
-return new java.lang.String(global::System.Convert.ToString(n1));
+java.lang.String _tmpStr = new java.lang.String();
+_tmpStr.@this(new org.xmlvm.Array<char>(global::System.Convert.ToString(n1).ToCharArray()));
+return _tmpStr;
 //XMLVM_END_WRAPPER[org.xmlvm.java.lang.String: java.lang.String valueOf(double)]
 }
 
 //XMLVM_BEGIN_WRAPPER[org.xmlvm.java.lang.String]
 	private global::System.String str;
 	
+	public String() {
+	    this.str = "";
+	}
+/*
 	public String(global::System.String str) {
 		this.str = str;
 	}
-	
+
 	public override global::System.String ToString() {
 		return this.str;
 	}
+*/
 //XMLVM_END_WRAPPER[org.xmlvm.java.lang.String]
 
 } // end of class: String

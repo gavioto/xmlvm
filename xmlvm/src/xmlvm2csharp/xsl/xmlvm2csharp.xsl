@@ -98,7 +98,10 @@
   <xsl:text>    if (args != null) {&nl;</xsl:text>
   <xsl:text>        jargs = new java.lang.String[args.Length];&nl;</xsl:text>
   <xsl:text>        for (int i=0; i&lt;args.Length; i++) {&nl;</xsl:text>
-  <xsl:text>            jargs[i] = new java.lang.String(args[i]);&nl;</xsl:text>
+  <xsl:text>            jargs[i] = new java.lang.String();&nl;</xsl:text>
+  <xsl:text>            jargs[i].</xsl:text>
+  <xsl:value-of select="fn:concat($init,'(new ',vm:get-xmlvm-array('char'))"/>
+  <xsl:text>(args[i].ToCharArray()));&nl;</xsl:text>
   <xsl:text>        }&nl;</xsl:text>
   <xsl:text>    }&nl;</xsl:text>
   <xsl:text>    </xsl:text>
@@ -112,12 +115,57 @@
 </xsl:template>
 
 <xsl:template name="emit-static-constructor">
-  <xsl:param name="name" />
+  <xsl:param name="name" as="xs:string"/>
+  <xsl:param name="strings" as="node()*"/>
+  <xsl:param name="has-clinit" as="xs:boolean"/>
   <xsl:text>&nl;static </xsl:text>
   <xsl:value-of select="$name"/>
-  <xsl:text>() {&nl;    </xsl:text>
-  <xsl:value-of select="$clinit" />
-  <xsl:text>();&nl;}&nl;&nl;</xsl:text>
+  <xsl:text>() {&nl;</xsl:text>
+  <xsl:for-each select="$strings">
+    <xsl:text>    </xsl:text>
+    <xsl:value-of select="vm:get-member-name(@name,true())"/>
+    <xsl:text> = </xsl:text>
+    <xsl:text>new </xsl:text>
+    <xsl:value-of select="vm:get-type('java.lang.String')"/>
+    <xsl:text>();&nl;</xsl:text>
+    <xsl:text>    </xsl:text>    		    
+    <xsl:value-of select="vm:get-member-name(./@name,true())"/>
+    <xsl:text>.</xsl:text>
+    <xsl:value-of select="fn:concat($init,'(new ',vm:get-xmlvm-array('char'))"/>
+    <xsl:text>(</xsl:text>
+    <xsl:value-of select="vm:escape-string(./@value)"/>
+    <xsl:text>.ToCharArray()));&nl;</xsl:text>
+  </xsl:for-each>
+  <xsl:if test="$has-clinit">
+    <xsl:text>    </xsl:text>
+    <xsl:value-of select="$clinit" />
+    <xsl:text>();&nl;</xsl:text>
+  </xsl:if>
+  <xsl:text>}&nl;&nl;</xsl:text>
+</xsl:template>
+
+<xsl:template name="emit-instance-constructor">
+  <xsl:param name="name" as="xs:string"/>
+  <xsl:param name="strings" as="node()*"/>
+  <xsl:text>&nl;public </xsl:text>
+  <xsl:value-of select="$name"/> 
+  <xsl:text>() {&nl;</xsl:text>
+  <xsl:for-each select="$strings">
+    <xsl:text>    </xsl:text>
+    <xsl:value-of select="vm:get-member-name(@name,true())"/>
+    <xsl:text> = </xsl:text>
+    <xsl:text>new </xsl:text>
+    <xsl:value-of select="vm:get-type('java.lang.String')"/>
+    <xsl:text>();&nl;</xsl:text>
+    <xsl:text>    </xsl:text>    		    
+    <xsl:value-of select="vm:get-member-name(./@name,true())"/>
+    <xsl:text>.</xsl:text>
+    <xsl:value-of select="fn:concat($init,'(new ',vm:get-xmlvm-array('char'))" /> 
+    <xsl:text>(</xsl:text>
+    <xsl:value-of select="vm:escape-string(./@value)"/>
+    <xsl:text>.ToCharArray()));&nl;</xsl:text>
+  </xsl:for-each>
+  <xsl:text>}&nl;&nl;</xsl:text>
 </xsl:template>
 
 
@@ -149,6 +197,7 @@
     </xsl:otherwise>
   </xsl:choose>
 </xsl:template>
+
 
 <xsl:template name="emit-class">
   <xsl:param name="namespace" as="xs:string" select="''"/>
@@ -204,9 +253,25 @@
      step 2b: emit a csharp static constructor if needed 
      (e.g. java code contained static initialization block 
   -->
-  <xsl:if test="vm:method/@name = '&lt;clinit&gt;'">
+  <xsl:variable name="has-clinit" as="xs:boolean" select="vm:method/@name = '&lt;clinit&gt;'"/>
+  <xsl:variable name="static-strings" as="node()*" 
+		select="vm:field[@type='java.lang.String' and @isStatic='true' and @value]"/>
+  <xsl:if test="$has-clinit or $static-strings">
     <xsl:call-template name="emit-static-constructor">
       <xsl:with-param name="name" select="$class-name"/>
+      <xsl:with-param name="strings" select="$static-strings"/>
+      <xsl:with-param name="has-clinit" select="$has-clinit"/>
+    </xsl:call-template>
+  </xsl:if>
+  <!--
+     step 2c: emit an instance constructor to initialize strings, if needed
+  -->
+  <xsl:variable name="instance-strings" as="node()*" 
+		select="vm:field[@type='java.lang.String' and not(@isStatic='true') and @value]"/>
+  <xsl:if test="$instance-strings">
+    <xsl:call-template name="emit-instance-constructor">
+      <xsl:with-param name="name" select="$class-name"/>
+      <xsl:with-param name="strings" select="$instance-strings"/>
     </xsl:call-template>
   </xsl:if>
   <!-- step 3: emit variable definition for all fields (both static and non-static) -->
@@ -256,9 +321,15 @@
      step 1b: emit a csharp static constructor if needed 
      (e.g. java code contained static initialization block 
   -->
-  <xsl:if test="vm:method/@name = '&lt;clinit&gt;'">
+  <xsl:variable name="has-clinit" as="xs:boolean"
+		select="vm:method/@name = '&lt;clinit&gt;'"/>
+  <xsl:variable name="static-strings" as="node()*"
+		select="vm:field[@type='java.lang.String' and @isStatic='true' and @value]"/>
+  <xsl:if test="$has-clinit or $static-strings">
     <xsl:call-template name="emit-static-constructor">
       <xsl:with-param name="name" select="$interface-satellite-name"/>
+      <xsl:with-param name="strings" select="$static-strings"/>
+      <xsl:with-param name="has-clinit" select="$has-clinit"/>
     </xsl:call-template>
   </xsl:if>
   <!-- step 1c: emit <clinit> method if it exists-->
@@ -306,19 +377,16 @@
     <xsl:text> </xsl:text>
     <xsl:value-of select="vm:get-member-name(@name,true())"/>
     <xsl:if test="@value">
-      <xsl:text> = </xsl:text>
       <xsl:choose>
 	<xsl:when test="vm:is-object-ref(@type) and not(@type = 'java.lang.String')">
+	  <xsl:text> = </xsl:text>
 	  <xsl:text>null</xsl:text>
 	</xsl:when>
 	<xsl:when test="@type = 'java.lang.String'">
-	  <xsl:text>new </xsl:text>
-	  <xsl:value-of select="vm:get-type('java.lang.String')"/>
-	  <xsl:text>(</xsl:text>
-	  <xsl:value-of select="vm:escape-string(@value)"/>
-	  <xsl:text>)</xsl:text>
+	  <!-- do nothing! value will be assigned in static or instance constructor -->
 	</xsl:when>
 	<xsl:otherwise>
+	  <xsl:text> = </xsl:text>
 	  <xsl:if test="@type='float'">
 	    <xsl:text>(float)</xsl:text>
 	  </xsl:if>
@@ -763,8 +831,10 @@
   		<xsl:with-param name="num" select="position()-1"/>
   	</xsl:call-template>
   </xsl:for-each>
+  <xsl:apply-templates select="dex:var"/>
+<!--
   <xsl:if test="not(@isStatic = 'true')">
-    <!-- Initialize 'this' parameter -->
+    Initialize 'this' parameter 
     <xsl:text>    </xsl:text>
     <xsl:call-template name="emit-register-name">
     	<xsl:with-param name="num" select="$numRegs - ($numArgs + 1)"/>
@@ -776,7 +846,7 @@
     <xsl:text>    </xsl:text>
     <xsl:call-template name="emit-register-name">
     	<xsl:with-param name="num" select="$numRegs - ($numArgs - position()) - 1"/>
-	<!-- no need to consider @isRedType, since in any case '_o' will be emitted -->
+	no need to consider @isRedType, since in any case '_o' will be emitted 
     	<xsl:with-param name="type" select="@type"/>
     </xsl:call-template>
     <xsl:text> = </xsl:text>
@@ -793,6 +863,7 @@
     </xsl:choose>
     <xsl:text>;&nl;</xsl:text>
   </xsl:for-each>
+-->
   <xsl:text>    </xsl:text>
   <xsl:value-of select="$xmlvm-exception-type"/>
   <xsl:text> _ex = null;&nl;</xsl:text>
@@ -847,7 +918,25 @@
 </xsl:template>
 
 <xsl:template match="dex:var">
-  <!-- Do nothing -->
+  <xsl:text>    </xsl:text>
+  <xsl:call-template name="emit-register-name">
+    <xsl:with-param name="num" select="@register"/>
+    <xsl:with-param name="type" select="@type"/>
+  </xsl:call-template>
+  <xsl:text> = </xsl:text>
+  <xsl:choose>
+    <xsl:when test="@name='this'">
+      <xsl:text>this</xsl:text>
+    </xsl:when>
+    <xsl:otherwise>
+      <xsl:text>n</xsl:text>
+      <xsl:value-of select="@param-index + 1"/>
+      <xsl:if test="@type='boolean'">
+	<xsl:text> ? 1 : 0</xsl:text>
+      </xsl:if>
+    </xsl:otherwise>
+  </xsl:choose>
+  <xsl:text>;&nl;</xsl:text>
 </xsl:template>
 
 <xsl:template match="vm:source-position">
@@ -993,7 +1082,7 @@
        generate multiple monitor-exit for one monitor-enter in order
        to handle exceptions. Also, wait() and wait(long) need to be
        able to release the Object's monitor (the synchronized lock)-->
-	<xsl:text>    Monitor.Enter(</xsl:text>
+	<xsl:text>    global::System.Threading.Monitor.Enter(</xsl:text>
 	<xsl:call-template name="emit-register-name">
 		<xsl:with-param name="num" select="@vx"/>
     	<xsl:with-param name="type" select="'obj'"/>
@@ -1007,7 +1096,7 @@
        generate multiple monitor-exit for one monitor-enter in order
        to handle exceptions. Also, wait() and wait(long) need to be
        able to release the Object's monitor (the synchronized lock)-->
-	<xsl:text>    Monitor.Exit(</xsl:text>
+	<xsl:text>    global::System.Threading.Monitor.Exit(</xsl:text>
 	<xsl:call-template name="emit-register-name">
 		<xsl:with-param name="num" select="@vx"/>
     	<xsl:with-param name="type" select="'obj'"/>
@@ -1559,20 +1648,31 @@
 
 
 <xsl:template match="dex:shl-long|dex:shl-long-2addr">
+  <xsl:if test="not(@vx-type='long' 
+		    and @vy-type='long' and @vz-type='int')">
+    <!-- safety check -->
+    <xsl:message>
+      <xsl:text>unexpected types for dex:shl-long:&nl;</xsl:text>
+      <xsl:value-of select="."/>
+    </xsl:message>
+  </xsl:if>
   <xsl:text>    </xsl:text>
   <xsl:call-template name="emit-register-name">
     <xsl:with-param name="num" select="@vx"/>
-    <xsl:with-param name="type" select="'long'"/>
+    <xsl:with-param name="type" select="@vx-type"/>
   </xsl:call-template> 
   <xsl:text> = </xsl:text>
   <xsl:call-template name="emit-register-name">
     <xsl:with-param name="num" select="@vy"/>
-    <xsl:with-param name="type" select="'long'"/>
+    <xsl:with-param name="type" select="@vy-type"/>
   </xsl:call-template> 
   <xsl:text> &lt;&lt; (0x3f &amp; </xsl:text>
+  <xsl:if test="not(@vz-type='int')">
+    <xsl:text>(int) </xsl:text>
+  </xsl:if>
   <xsl:call-template name="emit-register-name">
     <xsl:with-param name="num" select="@vz"/>
-    <xsl:with-param name="type" select="'long'"/>
+    <xsl:with-param name="type" select="@vz-type"/>
   </xsl:call-template> 
   <xsl:text>);&nl;</xsl:text>
 </xsl:template>
@@ -1616,77 +1716,121 @@
 
 
 <xsl:template match="dex:shr-long|dex:shr-long-2addr">
+  <xsl:if test="not(@vx-type='long' 
+		    and @vy-type='long' and @vz-type='int')">
+    <!-- safety check -->
+    <xsl:message>
+      <xsl:text>unexpected types for dex:shr-long:&nl;</xsl:text>
+      <xsl:value-of select="."/>
+    </xsl:message>
+  </xsl:if>
   <xsl:text>    </xsl:text>
   <xsl:call-template name="emit-register-name">
     <xsl:with-param name="num" select="@vx"/>
-    <xsl:with-param name="type" select="'long'"/>
+    <xsl:with-param name="type" select="@vx-type"/>
   </xsl:call-template> 
   <xsl:text> = </xsl:text>
   <xsl:call-template name="emit-register-name">
     <xsl:with-param name="num" select="@vy"/>
-    <xsl:with-param name="type" select="'long'"/>
+    <xsl:with-param name="type" select="@vy-type"/>
   </xsl:call-template>
   <xsl:text> &gt;&gt; (0x3f &amp; </xsl:text>
+  <xsl:if test="not(@vz-type='int')">
+    <xsl:text>(int) </xsl:text>
+  </xsl:if>
   <xsl:call-template name="emit-register-name">
     <xsl:with-param name="num" select="@vz"/>
-    <xsl:with-param name="type" select="'long'"/>
+    <xsl:with-param name="type" select="@vz-type"/>
   </xsl:call-template> 
   <xsl:text>);&nl;</xsl:text>
 </xsl:template>
 
 
 <xsl:template match="dex:ushr-int-lit8">
+  <xsl:if test="not(@vx-type='int' 
+		    and @vy-type='int' and @vz-type='int')">
+    <!-- safety check -->
+    <xsl:message>
+      <xsl:text>unexpected types for dex:ushr-int:&nl;</xsl:text>
+      <xsl:value-of select="."/>
+    </xsl:message>
+  </xsl:if>
   <xsl:text>    </xsl:text>
   <xsl:call-template name="emit-register-name">
     <xsl:with-param name="num" select="@vx"/>
-    <xsl:with-param name="type" select="'int'"/>
+    <xsl:with-param name="type" select="@vx-type"/>
   </xsl:call-template> 
-  <xsl:text> = ((uint) </xsl:text>
+  <xsl:text> = (int) ((uint) </xsl:text>
   <xsl:call-template name="emit-register-name">
     <xsl:with-param name="num" select="@vy"/>
-    <xsl:with-param name="type" select="'int'"/>
+    <xsl:with-param name="type" select="@vx-type"/>
   </xsl:call-template> 
-  <xsl:text>) &gt;&gt; (0x1f &amp; ((uint) </xsl:text>
+  <xsl:text>) &gt;&gt; (0x1f &amp; (</xsl:text>
+  <xsl:if test="not(@vz-type='int')">
+    <xsl:text>(int) </xsl:text>
+  </xsl:if>
   <xsl:value-of select="@value"/>	
   <xsl:text>));&nl;</xsl:text>
 </xsl:template>
 
 
 <xsl:template match="dex:ushr-int|dex:ushr-int-2addr">
+  <xsl:if test="not(@vx-type='int' 
+		and @vy-type='int' and @vz-type='int')">
+    <!-- safety check -->
+    <xsl:message>
+      <xsl:text>unexpected types for dex:ushr-int:&nl;</xsl:text>
+      <xsl:value-of select="."/>
+    </xsl:message>
+  </xsl:if>
   <xsl:text>    </xsl:text>
   <xsl:call-template name="emit-register-name">
     <xsl:with-param name="num" select="@vx"/>
-    <xsl:with-param name="type" select="'int'"/>
-  </xsl:call-template> 
-  <xsl:text> = ((uint) </xsl:text>
+    <xsl:with-param name="type" select="@vx-type"/>
+  </xsl:call-template>
+  <xsl:text> = (int) ((uint) </xsl:text>
   <xsl:call-template name="emit-register-name">
     <xsl:with-param name="num" select="@vy"/>
-    <xsl:with-param name="type" select="'int'"/>
+    <xsl:with-param name="type" select="@vy-type"/>
   </xsl:call-template> 
-  <xsl:text>) &gt;&gt; (0x1f &amp; ((uint) </xsl:text>
+  <xsl:text>) &gt;&gt; (0x1f &amp; (</xsl:text>
+  <xsl:if test="not(@vz-type='int')">
+    <xsl:text>(int) </xsl:text>
+  </xsl:if>
   <xsl:call-template name="emit-register-name">
     <xsl:with-param name="num" select="@vz"/>
-    <xsl:with-param name="type" select="'int'"/>
+    <xsl:with-param name="type" select="@vz-type"/>
   </xsl:call-template> 
   <xsl:text>));&nl;</xsl:text>
 </xsl:template>
 
 
 <xsl:template match="dex:ushr-long|dex:ushr-long-2addr">
+  <xsl:if test="not(@vx-type='long' 
+		    and @vy-type='long' and @vz-type='int')">
+    <!-- safety check -->
+    <xsl:message>
+      <xsl:text>unexpected types for dex:ushr-long:&nl;</xsl:text>
+      <xsl:value-of select="."/>
+    </xsl:message>
+  </xsl:if>
   <xsl:text>    </xsl:text>
   <xsl:call-template name="emit-register-name">
     <xsl:with-param name="num" select="@vx"/>
-    <xsl:with-param name="type" select="'long'"/>
+    <xsl:with-param name="type" select="@vx-type"/>
   </xsl:call-template> 
-  <xsl:text> = ((ulong) </xsl:text>
+  <xsl:text> = (long) ((ulong) </xsl:text>
   <xsl:call-template name="emit-register-name">
     <xsl:with-param name="num" select="@vy"/>
-    <xsl:with-param name="type" select="'long'"/>
+    <xsl:with-param name="type" select="@vy-type"/>
   </xsl:call-template> 
-  <xsl:text>) &gt;&gt; (0x3f &amp; ((ulong) </xsl:text>
+  <xsl:text>) &gt;&gt; (0x3f &amp; (</xsl:text>
+  <xsl:if test="not(@vz-type='int')">
+    <xsl:text>(int) </xsl:text>
+  </xsl:if>
   <xsl:call-template name="emit-register-name">
     <xsl:with-param name="num" select="@vz"/>
-    <xsl:with-param name="type" select="'long'"/>
+    <xsl:with-param name="type" select="@vz-type"/>
   </xsl:call-template> 
   <xsl:text>));&nl;</xsl:text>
 </xsl:template>
@@ -1818,7 +1962,8 @@
 	</xsl:if>
 	<xsl:variable name="return-type" select="ancestor::vm:method/vm:signature/vm:return/@type" />
 	<xsl:text>    return </xsl:text>
-	<xsl:if test="$return-type='short' or $return-type='char' or vm:is-object-ref($return-type)">
+	<xsl:if test="$return-type='byte' or $return-type='short' 
+		      or $return-type='char' or vm:is-object-ref($return-type)">
 	  <xsl:text>(</xsl:text>
 	  <xsl:value-of select="vm:get-type($return-type)"/>
 	  <xsl:text>) </xsl:text>
@@ -1847,118 +1992,114 @@
 
 
 <xsl:template match="dex:iget|dex:iget-wide|dex:iget-boolean
-		     |dex:iget-byte|dex:iget-char|dex:iget-short">
-	<xsl:text>    </xsl:text>
-	<xsl:call-template name="emit-register-name">
-		<xsl:with-param name="num" select="@vx"/>
-  		<xsl:with-param name="type" select="@member-type"/>  	
-	</xsl:call-template>
-	<xsl:text> = (</xsl:text>
-	<xsl:value-of select="vm:get-type(@member-type)" />	
-	<xsl:text>) ((</xsl:text>
-	<xsl:value-of select="vm:get-type(@class-type)" />
-	<xsl:text>) </xsl:text>
-	<xsl:call-template name="emit-register-name">
-		<xsl:with-param name="num" select="@vy"/>
-  		<xsl:with-param name="type" select="'obj'"/>  	
-	</xsl:call-template>
-    <xsl:text>).</xsl:text>
-	<xsl:value-of select="vm:get-member-name(@member-name,true())"/>
-	<xsl:text>;&nl;</xsl:text>
-</xsl:template>
-
-
-<xsl:template match="dex:iget-object">
-	<xsl:text>    </xsl:text>
-	<xsl:call-template name="emit-register-name">
-		<xsl:with-param name="num" select="@vx"/>
-  		<xsl:with-param name="type" select="@member-type"/>  	
-	</xsl:call-template>
-	<xsl:text> = (</xsl:text>
-	<xsl:value-of select="vm:get-type(@member-type)" />	
-	<xsl:text>) ((</xsl:text>
-	<xsl:value-of select="vm:get-type(@class-type)" />
-	<xsl:text>) </xsl:text>
-	<xsl:call-template name="emit-register-name">
-		<xsl:with-param name="num" select="@vy"/>
-  		<xsl:with-param name="type" select="'obj'"/>  	
-	</xsl:call-template>
-    <xsl:text>).</xsl:text>
-	<xsl:value-of select="vm:get-member-name(@member-name,true())"/>
-	<xsl:text>;&nl;</xsl:text>
+		     |dex:iget-byte|dex:iget-char
+		     |dex:iget-short|dex:iget-object">
+  <xsl:text>    </xsl:text>
+  <xsl:call-template name="emit-register-name">
+    <xsl:with-param name="num" select="@vx"/>
+    <xsl:with-param name="type" select="@member-type"/>  	
+  </xsl:call-template>
+  <xsl:text> = </xsl:text>
+  <!-- 
+     no need to cast. 
+     if it is object reference, the target register is System.Object.
+     if it is sbyte, short or char, the target register is int
+     only if it is boolean, we convert to int later
+    -->
+  <!--
+     <xsl:text>(</xsl:text>
+     <xsl:value-of select="vm:get-type(@member-type)" />	
+     <xsl:text>) </xsl:text>
+     -->
+  <xsl:text>((</xsl:text>
+  <xsl:value-of select="vm:get-type(@class-type)" />
+  <xsl:text>) </xsl:text>
+  <xsl:call-template name="emit-register-name">
+    <xsl:with-param name="num" select="@vy"/>
+    <xsl:with-param name="type" select="'obj'"/>  	
+  </xsl:call-template>
+  <xsl:text>).</xsl:text>
+  <xsl:value-of select="vm:get-member-name(@member-name,true())"/>
+  <xsl:if test="@member-type='boolean'">
+    <xsl:text> ? 1 : 0</xsl:text>
+  </xsl:if>
+  <xsl:text>;&nl;</xsl:text>
 </xsl:template>
 
 
 <xsl:template match="dex:iput|dex:iput-wide|dex:iput-boolean
-		     |dex:iput-byte|dex:iput-char|dex:iput-short">
-	<xsl:text>    ((</xsl:text>
-	<xsl:value-of select="vm:get-type(@class-type)" />
-	<xsl:text>) </xsl:text>
-	<xsl:call-template name="emit-register-name">
-		<xsl:with-param name="num" select="@vy"/>
-  		<xsl:with-param name="type" select="'obj'"/>  	
-	</xsl:call-template>
-	<xsl:text>).</xsl:text>
-	<xsl:value-of select="vm:get-member-name(@member-name,true())"/>
-	<xsl:text> = (</xsl:text>
-	<xsl:value-of select="vm:get-type(@member-type)" />	
-	<xsl:text>) </xsl:text>	
-	<xsl:call-template name="emit-register-name">
-		<xsl:with-param name="num" select="@vx"/>
-  		<xsl:with-param name="type" select="@member-type"/>  	
-	</xsl:call-template>
-	<xsl:text>;&nl;</xsl:text>
+		     |dex:iput-byte|dex:iput-char
+		     |dex:iput-short|dex:iput-object">
+  <xsl:text>    ((</xsl:text>
+  <xsl:value-of select="vm:get-type(@class-type)" />
+  <xsl:text>) </xsl:text>
+  <xsl:call-template name="emit-register-name">
+    <xsl:with-param name="num" select="@vy"/>
+    <xsl:with-param name="type" select="'obj'"/>  	
+  </xsl:call-template>
+  <xsl:text>).</xsl:text>
+  <xsl:value-of select="vm:get-member-name(@member-name,true())"/>
+  <xsl:text> = </xsl:text>
+  <xsl:choose>
+    <xsl:when test="vm:is-object-ref(@member-type) or @member-type='byte' 
+		    or @member-type='short' or @member-type='char'">
+      <xsl:text>(</xsl:text>
+      <xsl:value-of select="vm:get-type(@member-type)" />	
+      <xsl:text>) </xsl:text>
+    </xsl:when>
+    <xsl:when test="@member-type='boolean'">
+      <xsl:text>0!=</xsl:text>
+    </xsl:when>
+  </xsl:choose>
+  <xsl:call-template name="emit-register-name">
+    <xsl:with-param name="num" select="@vx"/>
+    <xsl:with-param name="type" select="@member-type"/>  	
+  </xsl:call-template>
+  <xsl:text>;&nl;</xsl:text>
 </xsl:template>
 
-
-<xsl:template match="dex:iput-object">
-	<xsl:text>    ((</xsl:text>
-	<xsl:value-of select="vm:get-type(@class-type)" />
-	<xsl:text>) </xsl:text>
-	<xsl:call-template name="emit-register-name">
-		<xsl:with-param name="num" select="@vy"/>
-  		<xsl:with-param name="type" select="'obj'"/>  	
-	</xsl:call-template>
-	<xsl:text>).</xsl:text>
-	<xsl:value-of select="vm:get-member-name(@member-name,true())"/>
-	<xsl:text> = (</xsl:text>
-	<xsl:value-of select="vm:get-type(@member-type)" />	
-	<xsl:text>)	</xsl:text>
-	<xsl:call-template name="emit-register-name">
-		<xsl:with-param name="num" select="@vx"/>
-  		<xsl:with-param name="type" select="@member-type"/>  	
-	</xsl:call-template>
-	<xsl:text>;&nl;</xsl:text>
-</xsl:template>
 
 <xsl:template match="dex:sget|dex:sget-wide|dex:sget-boolean|dex:sget-byte
 		     |dex:sget-char|dex:sget-short|dex:sget-object">
-	<xsl:text>    </xsl:text>
-	<xsl:call-template name="emit-register-name">
-		<xsl:with-param name="num" select="@vx"/>
-		<xsl:with-param name="type" select="@member-type"/>
-	</xsl:call-template> 
-	<xsl:text> = </xsl:text>
-	<xsl:value-of select="vm:get-type(@class-type)" />
-	<xsl:text>.</xsl:text>
-	<xsl:value-of select="vm:get-member-name(@member-name,true())"/>
-	<xsl:text>;&nl;</xsl:text>
+  <xsl:text>    </xsl:text>
+  <xsl:call-template name="emit-register-name">
+    <xsl:with-param name="num" select="@vx"/>
+    <xsl:with-param name="type" select="@member-type"/>
+  </xsl:call-template> 
+  <xsl:text> = </xsl:text>
+  <!-- no need to cast! -->
+  <xsl:value-of select="vm:get-type(@class-type)" />
+  <xsl:text>.</xsl:text>
+  <xsl:value-of select="vm:get-member-name(@member-name,true())"/>
+  <xsl:if test="@member-type='boolean'">
+    <xsl:text> ? 1 : 0</xsl:text>
+  </xsl:if>
+  <xsl:text>;&nl;</xsl:text>
 </xsl:template>
 
 <xsl:template match="dex:sput|dex:sput-wide|dex:sput-boolean|dex:sput-byte
 		     |dex:sput-char|dex:sput-short|dex:sput-object">
-	<xsl:text>    </xsl:text>
-	<xsl:value-of select="vm:get-type(@class-type)" />
-	<xsl:text>.</xsl:text>
-	<xsl:value-of select="vm:get-member-name(@member-name,true())"/>
-	<xsl:text> = (</xsl:text>
-	<xsl:value-of select="vm:get-type(@member-type)" />	
-	<xsl:text>) </xsl:text>
-	<xsl:call-template name="emit-register-name">
-		<xsl:with-param name="num" select="@vx"/>
-		<xsl:with-param name="type" select="@member-type"/>
-	</xsl:call-template> 
-	<xsl:text>;&nl;</xsl:text>
+  <xsl:text>    </xsl:text>
+  <xsl:value-of select="vm:get-type(@class-type)" />
+  <xsl:text>.</xsl:text>
+  <xsl:value-of select="vm:get-member-name(@member-name,true())"/>
+  <xsl:text> = </xsl:text>
+  <xsl:choose>
+    <xsl:when test="vm:is-object-ref(@member-type) or @member-type='byte' 
+		    or @member-type='short' or @member-type='char'">
+      <xsl:text>(</xsl:text>
+      <xsl:value-of select="vm:get-type(@member-type)" />	
+      <xsl:text>) </xsl:text>
+    </xsl:when>
+    <xsl:when test="@member-type='boolean'">
+      <xsl:text>0!=</xsl:text>
+    </xsl:when>
+  </xsl:choose>
+  <xsl:call-template name="emit-register-name">
+    <xsl:with-param name="num" select="@vx"/>
+    <xsl:with-param name="type" select="@member-type"/>
+  </xsl:call-template>
+  <xsl:text>;&nl;</xsl:text>
 </xsl:template>
 
 
@@ -1983,17 +2124,39 @@
 	<xsl:if test="@type='float'">
 	  <xsl:value-of select="'(float)'"/>
 	</xsl:if>
-	<xsl:value-of select="@value"/>
 	<xsl:choose>
-	  <xsl:when test="@type='float'">
-	    <xsl:text>D</xsl:text>
+	  <xsl:when test="@value='Infinity' and @type='float'">
+	    <xsl:text>global::System.Single.PositiveInfinity</xsl:text>
 	  </xsl:when>
-	  <xsl:when test="@type='double'">
-	    <xsl:text>D</xsl:text>
+	  <xsl:when test="@value='Infinity' and @type='double'">
+	    <xsl:text>global::System.Double.PositiveInfinity</xsl:text>
 	  </xsl:when>
-	  <xsl:when test="@type='long'">
-	    <xsl:text>L</xsl:text>
+	  <xsl:when test="@value='-Infinity' and @type='float'">
+	    <xsl:text>global::System.Single.NegativeInfinity</xsl:text>
 	  </xsl:when>
+	  <xsl:when test="@value='-Infinity' and @type='double'">
+	    <xsl:text>global::System.Double.NegativeInfinity</xsl:text>
+	  </xsl:when>
+	  <xsl:when test="@value='NaN' and @type='float'">
+	    <xsl:text>global::System.Single.NaN</xsl:text>
+	  </xsl:when>
+	  <xsl:when test="@value='NaN' and @type='double'">
+	    <xsl:text>global::System.Double.NaN</xsl:text>
+	  </xsl:when>
+	  <xsl:otherwise>
+	    <xsl:value-of select="@value"/>
+	    <xsl:choose>
+	      <xsl:when test="@type='float'">
+		<xsl:text>D</xsl:text>
+	      </xsl:when>
+	      <xsl:when test="@type='double'">
+		<xsl:text>D</xsl:text>
+	      </xsl:when>
+	      <xsl:when test="@type='long'">
+		<xsl:text>L</xsl:text>
+	      </xsl:when>
+	    </xsl:choose>
+	  </xsl:otherwise>
 	</xsl:choose>
 	<xs:text>;&nl;</xs:text>
 </xsl:template>
@@ -2065,7 +2228,7 @@
 
 <!-- following helper function is inspired by xmlvm2c.xsl -->
 <xsl:function name="vm:escape-string">
-  <xsl:param  name="string"/>
+  <xsl:param  name="string"/> 
   <!-- Escape all \\ \t(011) \n(012) \r(015) \f(014) \b(010) \" -->
   <!-- Single quotes don't need to be escaped. -->
   <xsl:text>"</xsl:text>
@@ -2102,20 +2265,19 @@
 	</xsl:call-template> 
 	<xsl:text> = new </xsl:text>
 	<xsl:value-of select="vm:get-type('java.lang.String')"/>
+	<xsl:text>();&nl;</xsl:text>
+	<xsl:text>    ((</xsl:text>
+	<xsl:value-of select="vm:get-type('java.lang.String')"/>
+	<xsl:text>)</xsl:text> <!-- " -->
+	<xsl:call-template name="emit-register-name"> 
+		<xsl:with-param name="num" select="@vx"/> 
+		<xsl:with-param name="type" select="'obj'"/>
+	</xsl:call-template> 
+	<xsl:text>).</xsl:text>
+	<xsl:value-of select="fn:concat($init,'(new ',vm:get-xmlvm-array('char'))"/>
 	<xsl:text>(</xsl:text>
 	<xsl:value-of select="vm:escape-string(@value)"/>
-	<xsl:text>);&nl;</xsl:text>
-<!--	<xsl:text>("</xsl:text>  -->
-  <!-- Escape all \\ \t(011) \n(012) \r(015) \f(014) \b(010) \" -->
-  <!-- Single quotes don't need to be escaped. -->
-  <!-- PROBLEM! Because backslashes aren't already escaped in @value, there
-       is no way to differ both Java Strings of "\\011" and "\t". So they'll
-       both be translated to "\t". That is also true for the other escaped characters.-->
-<!--	<xsl:value-of select="replace(replace(replace(replace(replace(replace(replace(@value,'\\','\\\\'),
-  	                       '\\\\011','\\t'),'\\\\012','\\n'),'\\\\015','\\r'),'\\\\014','\\f'),'\\\\010','\\b'),
-  	                       '&quot;','\\&quot;')"/>
-  <xs:text>");&nl;</xs:text>  -->
-
+	<xsl:text>.ToCharArray()));&nl;</xsl:text>
 </xsl:template>
 
 
@@ -2125,9 +2287,9 @@
     <xsl:with-param name="num" select="@vx"/>
     <xsl:with-param name="type" select="'obj'"/>
   </xsl:call-template>
-  <xsl:text> = </xsl:text>
+  <xsl:text> = typeof(</xsl:text>
   <xsl:value-of select="vm:get-type(@value)"/>
-  <xs:text>.getClass();&nl;</xs:text>
+  <xs:text>);&nl;</xs:text>
 </xsl:template>
 
 
@@ -2139,7 +2301,6 @@
     <xsl:with-param name="num" select="@vx"/>
     <xsl:with-param name="type" select="'int'"/>
   </xsl:call-template>
-  <xsl:value-of select="@vx"/>
   <xsl:text> = (</xsl:text>
   <xsl:call-template name="emit-register-name">
     <xsl:with-param name="num" select="@vy"/>
@@ -2155,7 +2316,6 @@
     <xsl:with-param name="num" select="@vx"/>
     <xsl:with-param name="type" select="'int'"/>
   </xsl:call-template>
-  <xsl:value-of select="@vx"/>
   <xsl:text> = </xsl:text>
   <xsl:call-template name="emit-register-name">
     <xsl:with-param name="num" select="@vy"/>
@@ -2171,7 +2331,6 @@
     <xsl:with-param name="num" select="@vx"/>
     <xsl:with-param name="type" select="'int'"/>
   </xsl:call-template>
-  <xsl:value-of select="@vx"/>
   <xsl:text> = (</xsl:text>
   <xsl:call-template name="emit-register-name">
     <xsl:with-param name="num" select="@vy"/>
@@ -2232,7 +2391,6 @@
     <xsl:with-param name="num" select="@vx"/>
     <xsl:with-param name="type" select="'int'"/>
   </xsl:call-template>
-  <xsl:value-of select="@vx"/>
   <xsl:text> = (int) </xsl:text>
   <xsl:call-template name="emit-register-name">
     <xsl:with-param name="num" select="@vy"/>
@@ -2248,7 +2406,6 @@
     <xsl:with-param name="num" select="@vx"/>
     <xsl:with-param name="type" select="'float'"/>
   </xsl:call-template>
-  <xsl:value-of select="@vx"/>
   <xsl:text> = (float) </xsl:text>
   <xsl:call-template name="emit-register-name">
     <xsl:with-param name="num" select="@vy"/>
@@ -2856,7 +3013,7 @@
   <xsl:value-of select="fn:concat('new ', 
 			          if (vm:is-object-ref($base-type))
 				    then $obj-regtype
-				    else $base-type,
+				    else vm:get-type($base-type),
 				  $arrayInitializer)"/>
   <xsl:text>);&nl;</xsl:text>
 </xsl:template>
@@ -2880,14 +3037,17 @@
 
 <xsl:template match="dex:aget|dex:aget-wide|dex:aget-boolean
 		     |dex:aget-byte|dex:aget-char|dex:aget-short">
+  <xsl:variable name="base-type" as="xs:string"
+		select="vm:get-array-base-type(@vy-type)"/>
   <xsl:text>    </xsl:text>
   <!-- destination -->
   <xsl:call-template name="emit-register-name">
     <xsl:with-param name="num" select="@vx"/>
     <xsl:with-param name="type" select="@vx-type"/>
   </xsl:call-template>
-  <xsl:text> = ((</xsl:text>
-  <xsl:value-of select="vm:get-xmlvm-array(vm:get-array-base-type(@vy-type))"/>
+  <xsl:text> = </xsl:text>
+  <xsl:text>((</xsl:text>
+  <xsl:value-of select="vm:get-xmlvm-array($base-type)"/>
   <xsl:text>) </xsl:text>
   <!-- array reference -->
   <xsl:call-template name="emit-register-name">
@@ -2902,7 +3062,11 @@
     <xsl:with-param name="num" select="@vz"/>
     <xsl:with-param name="type" select="'int'"/>
   </xsl:call-template>
-  <xsl:text>);&nl;</xsl:text>
+  <xsl:text>)</xsl:text>
+  <xsl:if test="$base-type='boolean'">
+    <xsl:text> ? 1 : 0</xsl:text>
+  </xsl:if>
+  <xsl:text>;&nl;</xsl:text>
 </xsl:template>
 
 
@@ -2932,8 +3096,10 @@
 
 <xsl:template match="dex:aput|dex:aput-wide|dex:aput-boolean
 		     |dex:aput-char|dex:aput-byte|dex:aput-short">
+  <xsl:variable name="base-type" as="xs:string"
+		select="vm:get-array-base-type(@vy-type)" />
   <xsl:text>    ((</xsl:text>
-  <xsl:value-of select="vm:get-xmlvm-array(vm:get-array-base-type(@vy-type))"/>
+  <xsl:value-of select="vm:get-xmlvm-array($base-type)"/>
   <xsl:text>) </xsl:text>
   <!-- array reference -->
   <xsl:call-template name="emit-register-name">
@@ -2944,6 +3110,17 @@
   <xsl:text>set</xsl:text>
   <xsl:text>(</xsl:text>
   <!-- source (new value) -->
+  <xsl:choose> 
+    <!-- casting if needed-->
+    <xsl:when test="$base-type='byte' or $base-type='short' or $base-type='char'">
+      <xsl:text>(</xsl:text>
+      <xsl:value-of select="vm:get-type($base-type)"/>
+      <xsl:text>)</xsl:text>
+    </xsl:when>
+    <xsl:when test="$base-type='boolean'">
+      <xsl:text>0!=</xsl:text>
+    </xsl:when>
+  </xsl:choose>
   <xsl:call-template name="emit-register-name">
     <xsl:with-param name="num" select="@vx"/>
     <xsl:with-param name="type" select="@vx-type"/>

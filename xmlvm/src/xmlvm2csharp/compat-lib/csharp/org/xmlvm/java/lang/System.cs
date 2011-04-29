@@ -32,7 +32,7 @@ public static new void @static(){
 //XMLVM_BEGIN_WRAPPER[org.xmlvm.java.lang.System]
 	private class SystemPrintStream : java.io.PrintStream{
 		public override void println(java.lang.String str) {
-			global::System.Console.WriteLine(str.ToString());
+			global::System.Console.WriteLine(str.toCharArray().getCSharpArray());
 		}
 	}
 

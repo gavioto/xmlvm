@@ -18,17 +18,18 @@
  * For more information, visit the XMLVM Home Page at http://www.xmlvm.org
  */
 
-
 package Compatlib.System.Windows.Input;
 
 import Compatlib.System.Object;
 
 /**
  * @author Markus
- *
+ * 
  */
 public class TouchAction extends Object {
 
-	public final static TouchAction Down = new TouchAction();
-	
+    public final static TouchAction Down = new TouchAction();
+    public final static TouchAction Up   = new TouchAction();
+    public final static TouchAction Move = new TouchAction();
+
 }

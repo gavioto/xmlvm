@@ -18,18 +18,18 @@
  * For more information, visit the XMLVM Home Page at http://www.xmlvm.org
  */
 
-
 package Compatlib.System.Collections.Generics;
 
 import Compatlib.System.IDisposable;
 
 /**
  * @author Markus
- *
+ * 
  */
 public interface IEnumerator<T> extends IDisposable {
 
-	public T getCurrent();
-	public boolean MoveNext();
-	
+    public T getCurrent();
+
+    public boolean MoveNext();
+
 }

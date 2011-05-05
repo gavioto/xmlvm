@@ -18,15 +18,14 @@
  * For more information, visit the XMLVM Home Page at http://www.xmlvm.org
  */
 
-
 package Compatlib.System;
 
 /**
  * @author Markus
- *
+ * 
  */
 public abstract class Action extends Object {
 
-	public abstract void invoke();
-	
+    public abstract void invoke();
+
 }

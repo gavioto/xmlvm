@@ -27,16 +27,15 @@ import java.util.List;
 import org.xmlvm.XMLVMIgnore;
 import org.xmlvm.wp7.DelegateManager;
 
-
-
 public class MulticastDelegate extends Delegate {
 
-	@XMLVMIgnore
+    @XMLVMIgnore
     public Object           _targetObj;
-	@XMLVMIgnore
+    @XMLVMIgnore
     List<java.lang.Integer> targets = new ArrayList<java.lang.Integer>();
 
-	public MulticastDelegate() {
+
+    public MulticastDelegate() {
         this(null, -1);
     }
 
@@ -46,7 +45,7 @@ public class MulticastDelegate extends Delegate {
         MulticastDelegate mcast = (MulticastDelegate) d;
 
         for (int i : mcast.targets) {
-            Integer iBox = i;
+            java.lang.Integer iBox = i;
             if (!targets.remove(iBox)) {
                 throw new Exception("Not found" + iBox);
             }
@@ -83,7 +82,7 @@ public class MulticastDelegate extends Delegate {
      */
     @SuppressWarnings("rawtypes")
     @XMLVMIgnore
-	protected void helpInvoke(java.lang.Object[] params) throws Exception {
+    protected void helpInvoke(java.lang.Object[] params) throws Exception {
         for (int _signatureIndex : targets) {
             // A signature string could look like the following:
             // "void;System.Object;System.EventArgs"

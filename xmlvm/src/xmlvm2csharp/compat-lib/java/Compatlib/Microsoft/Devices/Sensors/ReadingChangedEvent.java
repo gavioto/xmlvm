@@ -18,7 +18,6 @@
  * For more information, visit the XMLVM Home Page at http://www.xmlvm.org
  */
 
-
 package Compatlib.Microsoft.Devices.Sensors;
 
 import java.util.ArrayList;
@@ -29,23 +28,30 @@ import Compatlib.System.Object;
 
 /**
  * @author Markus
- *
+ * 
  */
 public class ReadingChangedEvent extends Event {
-	
-	private final List<ReadingChangedEventHandler> eventHandler = new ArrayList<ReadingChangedEventHandler>();
-	
-	public ReadingChangedEvent() {
-	}
-	
-	public void __add(ReadingChangedEventHandler handler) {
-		eventHandler.add(handler);
-	}
-	
-	public void __fire(Object sender, AccelerometerReadingEventArgs args) {
-		for(ReadingChangedEventHandler each : eventHandler) {
-			each.Invoke(sender, args);
-		}
-	}
+
+    private final List<ReadingChangedEventHandler> eventHandler = new ArrayList<ReadingChangedEventHandler>();
+
+
+    public ReadingChangedEvent() {
+    }
+
+    public void __add(ReadingChangedEventHandler handler) {
+        eventHandler.add(handler);
+    }
+
+    public void __fire(Object sender, AccelerometerReadingEventArgs args) {
+        for (ReadingChangedEventHandler each : eventHandler) {
+            each.Invoke(sender, args);
+        }
+    }
+
+    /**
+     * @param readingChangedEventHandler
+     */
+    public void __remove(ReadingChangedEventHandler readingChangedEventHandler) {
+    }
 
 }

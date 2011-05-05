@@ -4,11 +4,6 @@ using org.xmlvm;
 using java = org.xmlvm.java;
 namespace org.xmlvm.java.lang {
 public class Object {
-
-static Object() {
-    @static();
-}
-
 public void @this(){
 //XMLVM_BEGIN_WRAPPER[org.xmlvm.java.lang.Object: void <init>()]
 //XMLVM_END_WRAPPER[org.xmlvm.java.lang.Object: void <init>()]
@@ -34,11 +29,6 @@ public virtual int hashCode(){
 //XMLVM_BEGIN_WRAPPER[org.xmlvm.java.lang.Object: int hashCode()]
 throw new NotYetImplementedException();
 //XMLVM_END_WRAPPER[org.xmlvm.java.lang.Object: int hashCode()]
-}
-
-public static void @static(){
-//XMLVM_BEGIN_WRAPPER[org.xmlvm.java.lang.Object: void <clinit>()]
-//XMLVM_END_WRAPPER[org.xmlvm.java.lang.Object: void <clinit>()]
 }
 
 //XMLVM_BEGIN_WRAPPER[org.xmlvm.java.lang.Object]

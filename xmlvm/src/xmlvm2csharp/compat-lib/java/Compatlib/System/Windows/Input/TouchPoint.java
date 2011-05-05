@@ -18,7 +18,6 @@
  * For more information, visit the XMLVM Home Page at http://www.xmlvm.org
  */
 
-
 package Compatlib.System.Windows.Input;
 
 import Compatlib.System.Windows.DependencyObject;
@@ -26,24 +25,24 @@ import Compatlib.System.Windows.Point;
 
 /**
  * @author Markus
- *
+ * 
  */
 public class TouchPoint extends DependencyObject {
 
-	/**
-	 * @return
-	 */
-	public Point getPosition() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    /**
+     * @return
+     */
+    public Point getPosition() {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	/**
-	 * @return
-	 */
-	public TouchAction getAction() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    /**
+     * @return
+     */
+    public TouchAction getAction() {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
 }

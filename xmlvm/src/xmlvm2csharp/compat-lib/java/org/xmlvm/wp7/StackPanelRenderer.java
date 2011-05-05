@@ -18,7 +18,6 @@
  * For more information, visit the XMLVM Home Page at http://www.xmlvm.org
  */
 
-
 package org.xmlvm.wp7;
 
 import java.awt.Color;
@@ -32,59 +31,62 @@ import javax.swing.JPanel;
 
 import Compatlib.System.Windows.Controls.StackPanel;
 
-
-
 /**
  * @author Markus
- *
+ * 
  */
 public class StackPanelRenderer extends JPanel {
-	
-	private StackPanel stackPanel;
-	
-	private int gridy=0;
 
-	/**
-	 * @param stackPanel
-	 */
-	public StackPanelRenderer(StackPanel stackPanel) {
-		this.stackPanel = stackPanel;
-		this.setBackground(Color.BLACK);
-		GridBagLayout layout = new GridBagLayout();
-		this.setLayout(layout);
-	}	
-	
-	/* (non-Javadoc)
-	 * @see javax.swing.JComponent#getPreferredSize()
-	 */
-	@Override
-	public Dimension getPreferredSize() {
-		Dimension preferredSize = super.getPreferredSize();
-		//TODO Fix dimension hack
-		return new Dimension(super.getParent().getWidth()-10, preferredSize.height+30);
-	}
-	
-	/* (non-Javadoc)
-	 * @see java.awt.Container#add(java.awt.Component)
-	 */
-	@Override
-	public Component add(Component comp) {
-		GridBagConstraints constraints = new GridBagConstraints();
-		constraints.gridx = 0;
-		constraints.gridy = gridy++;
-		constraints.weightx = GridBagConstraints.BOTH;
-		constraints.weighty = GridBagConstraints.BOTH;
-		constraints.fill = GridBagConstraints.HORIZONTAL;
-		constraints.ipady = 10;
-		constraints.ipadx = 10;
-		super.add(comp, constraints);
-		return comp;
-	}
-	
-	@Override
-	public void paint(Graphics arg0) {
-		this.doLayout();
-		super.paint(arg0);
-	}
+    private StackPanel stackPanel;
+
+    private int        gridy = 0;
+
+
+    /**
+     * @param stackPanel
+     */
+    public StackPanelRenderer(StackPanel stackPanel) {
+        this.stackPanel = stackPanel;
+        this.setBackground(Color.BLACK);
+        GridBagLayout layout = new GridBagLayout();
+        this.setLayout(layout);
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see javax.swing.JComponent#getPreferredSize()
+     */
+    @Override
+    public Dimension getPreferredSize() {
+        Dimension preferredSize = super.getPreferredSize();
+        // TODO Fix dimension hack
+        return new Dimension(super.getParent().getWidth() - 10, preferredSize.height + 30);
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see java.awt.Container#add(java.awt.Component)
+     */
+    @Override
+    public Component add(Component comp) {
+        GridBagConstraints constraints = new GridBagConstraints();
+        constraints.gridx = 0;
+        constraints.gridy = gridy++;
+        constraints.weightx = GridBagConstraints.BOTH;
+        constraints.weighty = GridBagConstraints.BOTH;
+        constraints.fill = GridBagConstraints.HORIZONTAL;
+        constraints.ipady = 10;
+        constraints.ipadx = 10;
+        super.add(comp, constraints);
+        return comp;
+    }
+
+    @Override
+    public void paint(Graphics arg0) {
+        this.doLayout();
+        super.paint(arg0);
+    }
 
 }

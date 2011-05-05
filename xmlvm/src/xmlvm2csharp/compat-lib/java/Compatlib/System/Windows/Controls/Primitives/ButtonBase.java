@@ -18,17 +18,16 @@
  * For more information, visit the XMLVM Home Page at http://www.xmlvm.org
  */
 
-
 package Compatlib.System.Windows.Controls.Primitives;
 
 import Compatlib.System.Windows.Controls.ContentControl;
 
 /**
  * @author Markus
- *
+ * 
  */
 public class ButtonBase extends ContentControl {
 
-	public final ClickEvent Click = new ClickEvent();
-	
+    public final ClickEvent Click = new ClickEvent();
+
 }

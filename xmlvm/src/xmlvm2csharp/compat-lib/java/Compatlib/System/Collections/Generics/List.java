@@ -18,33 +18,32 @@
  * For more information, visit the XMLVM Home Page at http://www.xmlvm.org
  */
 
-
 package Compatlib.System.Collections.Generics;
 
 import Compatlib.System.Object;
 
 /**
  * @author Markus
- *
+ * 
  */
 public class List<T> extends Object implements IList<T>, ICollection<T>, IEnumerable<T> {
 
-	public T __access(int i) {
-		return null;
-	}
+    public T __access(int i) {
+        return null;
+    }
 
-	/**
-	 * @return
-	 */
-	public int getCount() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+    /**
+     * @return
+     */
+    public int getCount() {
+        // TODO Auto-generated method stub
+        return 0;
+    }
 
-	/**
-	 * @param spark
-	 */
-	public void Add(T t) {
-	}
+    /**
+     * @param spark
+     */
+    public void Add(T t) {
+    }
 
 }

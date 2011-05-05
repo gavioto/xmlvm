@@ -18,7 +18,6 @@
  * For more information, visit the XMLVM Home Page at http://www.xmlvm.org
  */
 
-
 package Compatlib.System.Windows.Threading;
 
 import Compatlib.System.Action;
@@ -26,16 +25,16 @@ import Compatlib.System.Object;
 
 /**
  * @author Markus
- *
+ * 
  */
 public class Dispatcher extends Object {
 
-	/**
-	 * @param action
-	 */
-	public void BeginInvoke(Action action) {
-		// TODO Auto-generated method stub
-		
-	}
+    /**
+     * @param action
+     */
+    public void BeginInvoke(Action action) {
+        // TODO Auto-generated method stub
+
+    }
 
 }

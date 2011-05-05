@@ -18,19 +18,16 @@
  * For more information, visit the XMLVM Home Page at http://www.xmlvm.org
  */
 
-
 package Compatlib.System.Windows.Input;
 
 import Compatlib.System.Object;
 
 /**
  * @author Markus
- *
+ * 
  */
 public class Touch extends Object {
 
-	public static final FrameReportedEvent FrameReported = new FrameReportedEvent();
+    public static final FrameReportedEvent FrameReported = new FrameReportedEvent();
 
-	
-	
 }

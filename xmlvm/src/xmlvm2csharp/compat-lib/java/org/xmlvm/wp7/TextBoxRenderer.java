@@ -18,7 +18,6 @@
  * For more information, visit the XMLVM Home Page at http://www.xmlvm.org
  */
 
-
 package org.xmlvm.wp7;
 
 import java.awt.Color;
@@ -33,49 +32,49 @@ import org.xmlvm.wp7.internal.SimpleSimulator;
 import Compatlib.System.String;
 import Compatlib.System.Windows.Controls.TextBox;
 
-
-
 /**
  * @author Markus
- *
+ * 
  */
 public class TextBoxRenderer extends JTextField {
 
-	private final Color BACKGROUND = new Color(190, 190, 190);
-	
-	private TextBox textBox;
-	
+    private final Color BACKGROUND = new Color(190, 190, 190);
 
-	/**
-	 * @param textBox
-	 */
-	public TextBoxRenderer(final TextBox textBox) {
-		this.textBox = textBox;
-		this.setBorder(null);
-		this.setBackground(BACKGROUND);
-		this.setFont(SimpleSimulator.UI_FONT);
-		this.addFocusListener(new FocusListener() {
-			
-			@Override
-			public void focusLost(FocusEvent e) {
-				textBox.setText(new String(((TextBoxRenderer)e.getSource()).getText()));
-				setBackground(BACKGROUND);
-			}
-			
-			@Override
-			public void focusGained(FocusEvent e) {
-				setBackground(Color.WHITE);
-			}
-		});
-		this.setBorder(new ComponentBorder(Color.BLACK, 0));
-	}
-	
-	/* (non-Javadoc)
-	 * @see javax.swing.JComponent#paint(java.awt.Graphics)
-	 */
-	@Override
-	public void paint(Graphics g) {
-		super.paint(g);
-	}
+    private TextBox     textBox;
+
+
+    /**
+     * @param textBox
+     */
+    public TextBoxRenderer(final TextBox textBox) {
+        this.textBox = textBox;
+        this.setBorder(null);
+        this.setBackground(BACKGROUND);
+        this.setFont(SimpleSimulator.UI_FONT);
+        this.addFocusListener(new FocusListener() {
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                textBox.setText(new String(((TextBoxRenderer) e.getSource()).getText()));
+                setBackground(BACKGROUND);
+            }
+
+            @Override
+            public void focusGained(FocusEvent e) {
+                setBackground(Color.WHITE);
+            }
+        });
+        this.setBorder(new ComponentBorder(Color.BLACK, 0));
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see javax.swing.JComponent#paint(java.awt.Graphics)
+     */
+    @Override
+    public void paint(Graphics g) {
+        super.paint(g);
+    }
 
 }

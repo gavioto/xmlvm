@@ -18,31 +18,46 @@
  * For more information, visit the XMLVM Home Page at http://www.xmlvm.org
  */
 
-
 package Compatlib.System.Windows;
 
 import Compatlib.System.Windows.Media.Visual;
 
 /**
  * @author Markus
- *
+ * 
  */
 public class UIElement extends Visual {
 
-	/**
-	 * @param rect
-	 */
-	public void Arrange(Rect rect) {
-		// TODO Auto-generated method stub
-		
-	}
+    /**
+     * @param rect
+     */
+    public void Arrange(Rect rect) {
+        // TODO Auto-generated method stub
 
-	/**
+    }
+
+    /**
 	 * 
 	 */
-	public void InvalidateArrange() {
-		// TODO Auto-generated method stub
-		
-	}
-	
+    public void InvalidateArrange() {
+        // TODO Auto-generated method stub
+
+    }
+
+    /**
+     * @param size
+     */
+    public void Measure(Size size) {
+        // TODO Auto-generated method stub
+
+    }
+
+    /**
+     * @return
+     */
+    public Size getDesiredSize() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
 }

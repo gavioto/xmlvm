@@ -18,7 +18,6 @@
  * For more information, visit the XMLVM Home Page at http://www.xmlvm.org
  */
 
-
 package Compatlib.System.Windows.Media;
 
 import Compatlib.System.Object;
@@ -26,24 +25,26 @@ import Compatlib.System.String;
 
 /**
  * @author Markus
- *
+ * 
  */
 public class FontFamily extends Object {
 
-	private String source = new String("Segoe UI");
+    private String source = new String("Segoe UI");
 
-	/**
-	 * @return the source
-	 */
-	public String getSource() {
-		return source;
-	}
 
-	/**
-	 * @param source the source to set
-	 */
-	public void setSource(String source) {
-		this.source = source;
-	}
-	
+    /**
+     * @return the source
+     */
+    public String getSource() {
+        return source;
+    }
+
+    /**
+     * @param source
+     *            the source to set
+     */
+    public void setSource(String source) {
+        this.source = source;
+    }
+
 }

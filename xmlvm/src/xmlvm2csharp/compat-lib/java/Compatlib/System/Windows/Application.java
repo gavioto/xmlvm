@@ -20,7 +20,6 @@
 
 package Compatlib.System.Windows;
 
-
 import org.xmlvm.wp7.internal.SimpleSimulator;
 
 import Compatlib.System.Windows.Threading.DispatcherObject;
@@ -31,35 +30,37 @@ import Compatlib.System.Windows.Threading.DispatcherObject;
  */
 public class Application extends DispatcherObject {
 
-	private SimpleSimulator simulator;
-	
-	// Properties
-	private UIElement RootVisual;
+    private SimpleSimulator   simulator;
 
-	// Events
-	public final StartUpEvent Startup = new StartUpEvent();
+    // Properties
+    private UIElement         RootVisual;
 
-	public Application() {
-		simulator = new SimpleSimulator(this); 
-	}
+    // Events
+    public final StartUpEvent Startup = new StartUpEvent();
 
-	/**
-	 * @return the rootVisual
-	 */
-	public UIElement getRootVisual() {
-		return RootVisual;
-	}
 
-	/**
-	 * @param rootVisual the rootVisual to set
-	 */
-	public void setRootVisual(UIElement rootVisual) {
-		RootVisual = rootVisual;
-		simulator.setRootRenderer(rootVisual.xmlvmGetRenderer());
-		simulator.repaint();
-	}
+    public Application() {
+        simulator = new SimpleSimulator(this);
+    }
 
-	public void test() {
-	    
-	}
+    /**
+     * @return the rootVisual
+     */
+    public UIElement getRootVisual() {
+        return RootVisual;
+    }
+
+    /**
+     * @param rootVisual
+     *            the rootVisual to set
+     */
+    public void setRootVisual(UIElement rootVisual) {
+        RootVisual = rootVisual;
+        simulator.setRootRenderer(rootVisual.xmlvmGetRenderer());
+        simulator.repaint();
+    }
+
+    public void test() {
+
+    }
 }

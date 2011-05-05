@@ -18,7 +18,6 @@
  * For more information, visit the XMLVM Home Page at http://www.xmlvm.org
  */
 
-
 package Compatlib.System.Windows.Controls;
 
 import org.xmlvm.wp7.TextBlockRenderer;
@@ -28,80 +27,83 @@ import Compatlib.System.Windows.FrameworkElement;
 import Compatlib.System.Windows.Media.Brush;
 import Compatlib.System.Windows.Media.FontFamily;
 
-
-
 /**
  * @author Markus
- *
+ * 
  */
 public class TextBlock extends FrameworkElement {
 
-	private Brush Foreground;
-	private String Text = new String("");
-	private FontFamily FontFamily = new FontFamily();
-	private double FontSize = 11d;
+    private Brush      Foreground;
+    private String     Text       = new String("");
+    private FontFamily FontFamily = new FontFamily();
+    private double     FontSize   = 11d;
 
-	/**
-	 * @return the foreground
-	 */
-	public Brush getForeground() {
-		return Foreground;
-	}
 
-	/**
-	 * @param foreground the foreground to set
-	 */
-	public void setForeground(Brush foreground) {
-		Foreground = foreground;
-	}
+    /**
+     * @return the foreground
+     */
+    public Brush getForeground() {
+        return Foreground;
+    }
 
-	/**
-	 * @return the text
-	 */
-	public String getText() {
-		return Text;
-	}
+    /**
+     * @param foreground
+     *            the foreground to set
+     */
+    public void setForeground(Brush foreground) {
+        Foreground = foreground;
+    }
 
-	/**
-	 * @param text the text to set
-	 */
-	public void setText(String text) {
-		Text = text;
-		xmlvmGetRenderer().repaint();
-	}
+    /**
+     * @return the text
+     */
+    public String getText() {
+        return Text;
+    }
 
-	/**
-	 * @return the fontFamily
-	 */
-	public FontFamily getFontFamily() {
-		return FontFamily;
-	}
+    /**
+     * @param text
+     *            the text to set
+     */
+    public void setText(String text) {
+        Text = text;
+        xmlvmGetRenderer().repaint();
+    }
 
-	/**
-	 * @param fontFamily the fontFamily to set
-	 */
-	public void setFontFamily(FontFamily fontFamily) {
-		FontFamily = fontFamily;
-		xmlvmGetRenderer().repaint();
-	}
+    /**
+     * @return the fontFamily
+     */
+    public FontFamily getFontFamily() {
+        return FontFamily;
+    }
 
-	/**
-	 * @return the fontSize
-	 */
-	public double getFontSize() {
-		return FontSize;
-	}
+    /**
+     * @param fontFamily
+     *            the fontFamily to set
+     */
+    public void setFontFamily(FontFamily fontFamily) {
+        FontFamily = fontFamily;
+        xmlvmGetRenderer().repaint();
+    }
 
-	/**
-	 * @param fontSize the fontSize to set
-	 */
-	public void setFontSize(double fontSize) {
-		FontSize = fontSize;
-		xmlvmGetRenderer().repaint();
-	}
+    /**
+     * @return the fontSize
+     */
+    public double getFontSize() {
+        return FontSize;
+    }
 
-	public TextBlock() {
-		xmlvmSetRenderer(new TextBlockRenderer(this));
-	}
+    /**
+     * @param fontSize
+     *            the fontSize to set
+     */
+    public void setFontSize(double fontSize) {
+        FontSize = fontSize;
+        xmlvmGetRenderer().repaint();
+    }
+
+    public TextBlock() {
+        xmlvmSetRenderer(new TextBlockRenderer(this));
+    }
 
 }

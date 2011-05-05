@@ -18,14 +18,13 @@
  * For more information, visit the XMLVM Home Page at http://www.xmlvm.org
  */
 
-
 package Compatlib.Microsoft.Devices.Sensors;
 
 import Compatlib.System.EventArgs;
 
 /**
  * @author Markus
- *
+ * 
  */
 public class AccelerometerReadingEventArgs extends EventArgs {
 
@@ -36,21 +35,21 @@ public class AccelerometerReadingEventArgs extends EventArgs {
         // TODO Auto-generated method stub
         return 0;
     }
-    
-	/**
-	 * @return
-	 */
-	public double getY() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
-	/**
-	 * @return
-	 */
-	public double getX() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+    /**
+     * @return
+     */
+    public double getY() {
+        // TODO Auto-generated method stub
+        return 0;
+    }
+
+    /**
+     * @return
+     */
+    public double getX() {
+        // TODO Auto-generated method stub
+        return 0;
+    }
 
 }

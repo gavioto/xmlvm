@@ -18,36 +18,27 @@
  * For more information, visit the XMLVM Home Page at http://www.xmlvm.org
  */
 
-
 package Compatlib.System;
 
 import org.xmlvm.XMLVMIgnore;
-import Compatlib.System.String;
 
+public class EventHandler extends MulticastDelegate {
 
-public class EventHandler extends MulticastDelegate
-{
+    @XMLVMIgnore
+    public EventHandler(Object arg0, int arg1) {
+        super(arg0, arg1);
+    }
 
- @XMLVMIgnore
- public EventHandler(Object arg0, int arg1)
- {
-     super(arg0, arg1);
- }
- 
- public EventHandler(Object arg0, String arg1)
- {
-     super();
- }
+    public EventHandler(Object arg0, String arg1) {
+        super();
+    }
 
- public void Invoke(Object arg0, EventArgs arg1)
- {
-     Object aobj[] = {
-         arg0, arg1
-     };
-     try {
-    	 helpInvoke(aobj);
-     } catch(Exception e) {
-    	 e.printStackTrace();
-     }
- }
+    public void Invoke(Object arg0, EventArgs arg1) {
+        Object aobj[] = { arg0, arg1 };
+        try {
+            helpInvoke(aobj);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

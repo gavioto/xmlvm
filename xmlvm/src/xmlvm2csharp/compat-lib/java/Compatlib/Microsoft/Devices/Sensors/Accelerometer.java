@@ -18,7 +18,6 @@
  * For more information, visit the XMLVM Home Page at http://www.xmlvm.org
  */
 
-
 package Compatlib.Microsoft.Devices.Sensors;
 
 import Compatlib.System.IDisposable;
@@ -26,13 +25,22 @@ import Compatlib.System.Object;
 
 /**
  * @author Markus
- *
+ * 
  */
 public class Accelerometer extends Object implements IDisposable {
-	
-	public final ReadingChangedEvent ReadingChanged = new ReadingChangedEvent();
 
-	public void Start() {
-	}
+    public final ReadingChangedEvent ReadingChanged = new ReadingChangedEvent();
+
+
+    public void Start() {
+    }
+
+    /**
+     * 
+     */
+    public void Stop() {
+        // TODO Auto-generated method stub
+
+    }
 
 }

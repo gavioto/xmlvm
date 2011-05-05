@@ -20,11 +20,9 @@
 
 package Compatlib.System;
 
-import Compatlib.System.String;
-
 public class Uri extends Object {
 
-	public Uri(String string, UriKind relativeorabsolute) {
-	}
+    public Uri(String string, UriKind relativeorabsolute) {
+    }
 
 }

@@ -18,7 +18,6 @@
  * For more information, visit the XMLVM Home Page at http://www.xmlvm.org
  */
 
-
 package org.xmlvm.wp7;
 
 import java.awt.Color;
@@ -41,77 +40,79 @@ import Compatlib.System.String;
 import Compatlib.System.Windows.RoutedEventArgs;
 import Compatlib.System.Windows.Controls.Button;
 
-
 /**
  * @author Markus
- *
+ * 
  */
 public class ButtonRenderer extends JButton {
 
-	private Button button;
-	private boolean clicked;
-	
-	public ButtonRenderer(final Button button) {
-		this.button = button;
-		this.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				button.Click.__fire(button, new RoutedEventArgs());
-			}
-		});
-		this.setForeground(Color.WHITE);
-		this.setBackground(Color.BLACK);
-		Border border = new ComponentBorder(Color.WHITE, 3);
-		this.setBorder(border);
-		this.setFont(SimpleSimulator.UI_FONT);
-		this.setFocusPainted(false);
-		this.addMouseListener(new MouseAdapter() {
-			
-			@Override
-			public void mousePressed(MouseEvent mouseevent) {
-				super.mousePressed(mouseevent);
-				clicked = true;
-			}
-			
-			@Override
-			public void mouseReleased(MouseEvent mouseevent) {
-				super.mouseReleased(mouseevent);
-				clicked = false;
-			}
-			
-		});
-		this.setUI(new MetalButtonUI() {
-			
-			@Override
-			protected Color getSelectColor() {
-				return Color.WHITE;
-			}
-			
-			@Override
-			protected void paintText(Graphics g, JComponent jcomponent,
-					Rectangle rectangle, java.lang.String s) {
-				Color beforeColor = jcomponent.getForeground();
-				if(clicked) {
-					jcomponent.setForeground(Color.BLACK);
-				}
-				super.paintText(g, jcomponent, rectangle, s);
-				jcomponent.setForeground(beforeColor);
-			}
-			
-		});
-	}
-	
-	/* (non-Javadoc)
-	 * @see javax.swing.JComponent#paint(java.awt.Graphics)
-	 */
-	@Override
-	public void paint(Graphics g) {
-		Object content = button.getContent();
-		if(content instanceof String) {
-			this.setText(((String) content).value); 
-		}
-		super.paint(g);
-	}
-	
+    private Button  button;
+    private boolean clicked;
+
+
+    public ButtonRenderer(final Button button) {
+        this.button = button;
+        this.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                button.Click.__fire(button, new RoutedEventArgs());
+            }
+        });
+        this.setForeground(Color.WHITE);
+        this.setBackground(Color.BLACK);
+        Border border = new ComponentBorder(Color.WHITE, 3);
+        this.setBorder(border);
+        this.setFont(SimpleSimulator.UI_FONT);
+        this.setFocusPainted(false);
+        this.addMouseListener(new MouseAdapter() {
+
+            @Override
+            public void mousePressed(MouseEvent mouseevent) {
+                super.mousePressed(mouseevent);
+                clicked = true;
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent mouseevent) {
+                super.mouseReleased(mouseevent);
+                clicked = false;
+            }
+
+        });
+        this.setUI(new MetalButtonUI() {
+
+            @Override
+            protected Color getSelectColor() {
+                return Color.WHITE;
+            }
+
+            @Override
+            protected void paintText(Graphics g, JComponent jcomponent, Rectangle rectangle,
+                    java.lang.String s) {
+                Color beforeColor = jcomponent.getForeground();
+                if (clicked) {
+                    jcomponent.setForeground(Color.BLACK);
+                }
+                super.paintText(g, jcomponent, rectangle, s);
+                jcomponent.setForeground(beforeColor);
+            }
+
+        });
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see javax.swing.JComponent#paint(java.awt.Graphics)
+     */
+    @Override
+    public void paint(Graphics g) {
+        Object content = button.getContent();
+        if (content instanceof String) {
+            this.setText(((String) content).value);
+        }
+        super.paint(g);
+    }
+
 }

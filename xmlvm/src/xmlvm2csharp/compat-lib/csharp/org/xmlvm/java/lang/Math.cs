@@ -11,14 +11,32 @@ public new void @this(){
 
 public static int max(int n1, int n2){
 //XMLVM_BEGIN_WRAPPER[org.xmlvm.java.lang.Math: int max(int, int)]
-return n1>n2 ? n1 : n2;
+    return global::System.Math.Max(n1, n2);
 //XMLVM_END_WRAPPER[org.xmlvm.java.lang.Math: int max(int, int)]
 }
 
 public static int min(int n1, int n2){
 //XMLVM_BEGIN_WRAPPER[org.xmlvm.java.lang.Math: int min(int, int)]
-return n1>n2 ? n2 : n1;
+    return global::System.Math.Min(n1, n2);
 //XMLVM_END_WRAPPER[org.xmlvm.java.lang.Math: int min(int, int)]
+}
+
+public static float abs(float n1){
+//XMLVM_BEGIN_WRAPPER[org.xmlvm.java.lang.Math: float abs(float)]
+    return global::System.Math.Abs(n1);
+//XMLVM_END_WRAPPER[org.xmlvm.java.lang.Math: float abs(float)]
+}
+
+public static int abs(int n1){
+//XMLVM_BEGIN_WRAPPER[org.xmlvm.java.lang.Math: int abs(int)]
+    return global::System.Math.Abs(n1);
+//XMLVM_END_WRAPPER[org.xmlvm.java.lang.Math: int abs(int)]
+}
+
+public static float max(float n1, float n2){
+//XMLVM_BEGIN_WRAPPER[org.xmlvm.java.lang.Math: float max(float, float)]
+    return global::System.Math.Max(n1, n2);
+//XMLVM_END_WRAPPER[org.xmlvm.java.lang.Math: float max(float, float)]
 }
 
 //XMLVM_BEGIN_WRAPPER[org.xmlvm.java.lang.Math]

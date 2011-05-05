@@ -25,24 +25,24 @@ import Compatlib.System.Windows.StartupEventArgs;
 
 /**
  * @author Markus
- *
+ * 
  */
 public class WP7AppLauncher {
 
-	public static void main(String[] args) {
-		try {
-			Application app = (Application) Class.forName(args[0]).newInstance();
-			app.Startup.__fire(app, new StartupEventArgs());
-		} catch (InstantiationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-	}
+    public static void main(String[] args) {
+        try {
+            Application app = (Application) Class.forName(args[0]).newInstance();
+            app.Startup.__fire(app, new StartupEventArgs());
+        } catch (InstantiationException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+    }
 }

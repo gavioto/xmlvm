@@ -18,19 +18,18 @@
  * For more information, visit the XMLVM Home Page at http://www.xmlvm.org
  */
 
-
 package Compatlib.System.Diagnostics;
 
 import Compatlib.System.Object;
 
 /**
  * @author Markus
- *
+ * 
  */
 public class Debug extends Object {
 
-	public static void WriteLine(Object o) {
-		System.out.println(o);
-	}
-	
+    public static void WriteLine(Object o) {
+        System.out.println(o);
+    }
+
 }

@@ -18,10 +18,9 @@
  * For more information, visit the XMLVM Home Page at http://www.xmlvm.org
  */
 
-
 package Compatlib.System;
 
 public class UriKind {
 
-	public final static UriKind RelativeOrAbsolute = new UriKind();
+    public final static UriKind RelativeOrAbsolute = new UriKind();
 }

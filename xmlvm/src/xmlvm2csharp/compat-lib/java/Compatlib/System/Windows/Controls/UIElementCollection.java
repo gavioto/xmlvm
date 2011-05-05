@@ -18,7 +18,6 @@
  * For more information, visit the XMLVM Home Page at http://www.xmlvm.org
  */
 
-
 package Compatlib.System.Windows.Controls;
 
 import org.xmlvm.XMLVMIgnore;
@@ -26,35 +25,61 @@ import org.xmlvm.XMLVMIgnore;
 import Compatlib.System.Windows.UIElement;
 import Compatlib.System.Windows.Media.Visual;
 
-
 /**
  * @author Markus
- *
+ * 
  */
 public class UIElementCollection extends PresentationFrameworkCollection<UIElement> {
 
-	
-	private Visual vis;
+    private Visual vis;
 
-	/**
-	 * @param vis
-	 */
-	public UIElementCollection() {
-		super();
-	}
-	
-	/* (non-Javadoc)
-	 * @see System.Windows.Controls.PresentationFrameworkCollection#Add(java.lang.Object)
-	 */
-	@Override
-	public void Add(UIElement t) {
-		super.Add(t);
-		this.vis.xmlvmGetRenderer().add(t.xmlvmGetRenderer());
-	}
-	
-	@XMLVMIgnore
-	public void setVis(Visual vis) {
-		this.vis = vis;
-	}
-	
+
+    /**
+     * @param vis
+     */
+    public UIElementCollection() {
+        super();
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * System.Windows.Controls.PresentationFrameworkCollection#Add(java.lang
+     * .Object)
+     */
+    @Override
+    public void Add(UIElement t) {
+        super.Add(t);
+        this.vis.xmlvmGetRenderer().add(t.xmlvmGetRenderer());
+    }
+
+    @XMLVMIgnore
+    public void setVis(Visual vis) {
+        this.vis = vis;
+    }
+
+    public void Clear() {
+
+    }
+
+    public void Insert(int index, UIElement t) {
+
+    }
+
+    /**
+     * @return
+     */
+    public int getCount() {
+        // TODO Auto-generated method stub
+        return 0;
+    }
+
+    public UIElement __access(int i) {
+        return null;
+    }
+
+    public void Remove(UIElement t) {
+    }
+
 }

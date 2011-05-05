@@ -18,7 +18,6 @@
  * For more information, visit the XMLVM Home Page at http://www.xmlvm.org
  */
 
-
 package Compatlib.System.Windows;
 
 import java.util.ArrayList;
@@ -29,22 +28,23 @@ import Compatlib.System.Object;
 
 /**
  * @author Markus
- *
+ * 
  */
 public class StartUpEvent extends Event {
 
-	private final List<StartupEventHandler> eventHandler = new ArrayList<StartupEventHandler>();
-	
-	public StartUpEvent() {
-	}
-	
-	public void __add(StartupEventHandler handler) {
-		eventHandler.add(handler);
-	}
-	
-	public void __fire(Object sender, StartupEventArgs args) {
-		for(StartupEventHandler each : eventHandler) {
-			each.Invoke(sender, args);
-		}
-	}
+    private final List<StartupEventHandler> eventHandler = new ArrayList<StartupEventHandler>();
+
+
+    public StartUpEvent() {
+    }
+
+    public void __add(StartupEventHandler handler) {
+        eventHandler.add(handler);
+    }
+
+    public void __fire(Object sender, StartupEventArgs args) {
+        for (StartupEventHandler each : eventHandler) {
+            each.Invoke(sender, args);
+        }
+    }
 }

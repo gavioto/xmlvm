@@ -18,18 +18,17 @@
  * For more information, visit the XMLVM Home Page at http://www.xmlvm.org
  */
 
-
 package Compatlib.System.Windows.Media.Imaging;
 
 import Compatlib.System.Uri;
 
 /**
  * @author Markus
- *
+ * 
  */
 public class BitmapImage extends BitmapSource {
 
-	public BitmapImage(Uri uri) {
-	}
+    public BitmapImage(Uri uri) {
+    }
 
 }

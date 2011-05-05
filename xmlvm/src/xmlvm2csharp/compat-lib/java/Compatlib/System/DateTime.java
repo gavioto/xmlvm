@@ -18,21 +18,21 @@
  * For more information, visit the XMLVM Home Page at http://www.xmlvm.org
  */
 
-
 package Compatlib.System;
 
 /**
  * @author Markus
- *
+ * 
  */
-public class DateTime extends Object implements IComparable<DateTime>, IConvertible, IFormattable, IEquatable<DateTime> {
+public class DateTime extends Object implements IComparable<DateTime>, IConvertible, IFormattable,
+        IEquatable<DateTime> {
 
-	public static DateTime getNow() {
-		return null;
-	}
-	
-	public long getTicks() {
-		return 0;
-	}
-	
+    public static DateTime getNow() {
+        return null;
+    }
+
+    public long getTicks() {
+        return 0;
+    }
+
 }

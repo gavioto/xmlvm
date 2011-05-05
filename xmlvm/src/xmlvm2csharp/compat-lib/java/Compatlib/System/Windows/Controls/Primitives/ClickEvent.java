@@ -18,7 +18,6 @@
  * For more information, visit the XMLVM Home Page at http://www.xmlvm.org
  */
 
-
 package Compatlib.System.Windows.Controls.Primitives;
 
 import java.util.ArrayList;
@@ -31,23 +30,24 @@ import Compatlib.System.Windows.RoutedEventHandler;
 
 /**
  * @author Markus
- *
+ * 
  */
 public class ClickEvent extends Event {
 
-	private final List<RoutedEventHandler> eventHandler = new ArrayList<RoutedEventHandler>();
-	
-	public ClickEvent() {
-	}
-	
-	public void __add(RoutedEventHandler handler) {
-		eventHandler.add(handler);
-	}
-	
-	public void __fire(Object sender, RoutedEventArgs args) {
-		for(RoutedEventHandler each : eventHandler) {
-			each.Invoke(sender, args);
-		}
-	}
+    private final List<RoutedEventHandler> eventHandler = new ArrayList<RoutedEventHandler>();
+
+
+    public ClickEvent() {
+    }
+
+    public void __add(RoutedEventHandler handler) {
+        eventHandler.add(handler);
+    }
+
+    public void __fire(Object sender, RoutedEventArgs args) {
+        for (RoutedEventHandler each : eventHandler) {
+            each.Invoke(sender, args);
+        }
+    }
 
 }

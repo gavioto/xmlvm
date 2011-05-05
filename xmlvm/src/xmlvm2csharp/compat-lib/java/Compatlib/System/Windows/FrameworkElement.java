@@ -18,31 +18,83 @@
  * For more information, visit the XMLVM Home Page at http://www.xmlvm.org
  */
 
-
 package Compatlib.System.Windows;
 
 /**
  * @author Markus
- *
+ * 
  */
 public class FrameworkElement extends UIElement {
 
-	/**
-	 * @param finalSize
-	 * @return
-	 */
-	protected Size ArrangeOverride(Size finalSize) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    /**
+     * @param finalSize
+     * @return
+     */
+    protected Size ArrangeOverride(Size finalSize) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	/**
-	 * @param availableSize
-	 * @return
-	 */
-	protected Size MeasureOverride(Size availableSize) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    /**
+     * @param availableSize
+     * @return
+     */
+    protected Size MeasureOverride(Size availableSize) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    /**
+     * @param displayWidth
+     */
+    public void setWidth(double width) {
+        // TODO Auto-generated method stub
+
+    }
+
+    public void setHeight(double height) {
+        // TODO Auto-generated method stub
+
+    }
+
+    /**
+     * @return
+     */
+    public Compatlib.System.String getName() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    /**
+     * @param string
+     */
+    public void setName(Compatlib.System.String string) {
+        // TODO Auto-generated method stub
+
+    }
+
+    /**
+     * @param stretch
+     */
+    public void setHorizontalAlignment(HorizontalAlignment stretch) {
+        // TODO Auto-generated method stub
+
+    }
+
+    /**
+     * @param i
+     */
+    public void setMinWidth(int i) {
+        // TODO Auto-generated method stub
+
+    }
+
+    /**
+     * @param thickness
+     */
+    public void setMargin(Thickness thickness) {
+        // TODO Auto-generated method stub
+
+    }
 
 }

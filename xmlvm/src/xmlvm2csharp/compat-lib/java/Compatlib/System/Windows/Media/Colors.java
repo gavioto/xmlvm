@@ -18,18 +18,18 @@
  * For more information, visit the XMLVM Home Page at http://www.xmlvm.org
  */
 
-
 package Compatlib.System.Windows.Media;
 
 import Compatlib.System.Object;
 
 /**
  * @author Markus
- *
+ * 
  */
 public class Colors extends Object {
 
-	public static final Color White = Color.FromRgb((short)0xff, (short)0xff, (short)0xff);
-	public static final Color Blue = Color.FromRgb((short)0x00, (short)0x00, (short)0xff);
+    public static final Color White = Color.FromRgb((short) 0xff, (short) 0xff, (short) 0xff);
+    public static final Color Blue  = Color.FromRgb((short) 0x00, (short) 0x00, (short) 0xff);
+    public static final Color Black = Color.FromRgb((short) 0x00, (short) 0x00, (short) 0x00);
 
 }

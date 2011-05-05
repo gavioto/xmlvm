@@ -18,23 +18,22 @@
  * For more information, visit the XMLVM Home Page at http://www.xmlvm.org
  */
 
-
 package Compatlib.System.Threading;
 
 import Compatlib.System.Object;
 
 /**
  * @author Markus
- *
+ * 
  */
 public class Thread extends Object {
 
-	/**
-	 * @param uPDATE_DELAY
-	 */
-	public static void Sleep(int uPDATE_DELAY) {
-		// TODO Auto-generated method stub
-		
-	}
+    /**
+     * @param uPDATE_DELAY
+     */
+    public static void Sleep(int uPDATE_DELAY) {
+        // TODO Auto-generated method stub
+
+    }
 
 }

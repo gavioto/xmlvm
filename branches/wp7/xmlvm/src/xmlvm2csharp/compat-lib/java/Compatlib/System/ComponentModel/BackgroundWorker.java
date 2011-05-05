@@ -18,25 +18,41 @@
  * For more information, visit the XMLVM Home Page at http://www.xmlvm.org
  */
 
-
 package Compatlib.System.ComponentModel;
 
 import Compatlib.System.Object;
 
 /**
  * @author Markus
- *
+ * 
  */
 public class BackgroundWorker extends Object {
 
-	public final DoWorkEvent DoWork = new DoWorkEvent();
+    public final DoWorkEvent DoWork = new DoWorkEvent();
 
-	/**
-	 * @param uPDATE_DELAY
-	 */
-	public void RunWorkerAsync(int uPDATE_DELAY) {
-		// TODO Auto-generated method stub
-		
-	}
+
+    /**
+     * @param uPDATE_DELAY
+     */
+    public void RunWorkerAsync(int uPDATE_DELAY) {
+        // TODO Auto-generated method stub
+
+    }
+
+    /**
+     * 
+     */
+    public void CancelAsync() {
+        // TODO Auto-generated method stub
+
+    }
+
+    /**
+     * @param b
+     */
+    public void setWorkerSupportsCancellation(boolean b) {
+        // TODO Auto-generated method stub
+
+    }
 
 }

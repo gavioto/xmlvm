@@ -18,19 +18,27 @@
  * For more information, visit the XMLVM Home Page at http://www.xmlvm.org
  */
 
-
 package Compatlib.System.Windows.Controls;
 
 import Compatlib.System.Windows.FrameworkElement;
+import Compatlib.System.Windows.Media.Stretch;
 import Compatlib.System.Windows.Media.Imaging.BitmapImage;
 
 /**
  * @author Markus
- *
+ * 
  */
 public class Image extends FrameworkElement {
 
-	public void setSource(BitmapImage bitmapImage) {
-	}
+    public void setSource(BitmapImage bitmapImage) {
+    }
+
+    /**
+     * @param fill
+     */
+    public void setStretch(Stretch fill) {
+        // TODO Auto-generated method stub
+
+    }
 
 }

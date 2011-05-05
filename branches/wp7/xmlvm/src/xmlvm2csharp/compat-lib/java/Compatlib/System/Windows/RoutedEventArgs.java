@@ -18,15 +18,22 @@
  * For more information, visit the XMLVM Home Page at http://www.xmlvm.org
  */
 
-
 package Compatlib.System.Windows;
 
 import Compatlib.System.EventArgs;
+import Compatlib.System.Object;
 
 /**
  * @author Markus
- *
+ * 
  */
 public class RoutedEventArgs extends EventArgs {
+
+    /**
+     * @return
+     */
+    public Object getOriginalSource() {
+        return null;
+    }
 
 }

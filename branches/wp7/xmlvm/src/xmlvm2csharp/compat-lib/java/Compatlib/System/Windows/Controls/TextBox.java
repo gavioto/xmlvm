@@ -18,38 +18,37 @@
  * For more information, visit the XMLVM Home Page at http://www.xmlvm.org
  */
 
-
 package Compatlib.System.Windows.Controls;
 
 import org.xmlvm.wp7.TextBoxRenderer;
 
 import Compatlib.System.String;
 
-
-
 /**
  * @author Markus
- *
+ * 
  */
 public class TextBox extends Control {
 
-	private String text = new String("");
-	
-	public TextBox() {
-		xmlvmSetRenderer(new TextBoxRenderer(this));
-	}
+    private String text = new String("");
 
-	/**
-	 * @return the text
-	 */
-	public String getText() {
-		return text;
-	}
 
-	/**
-	 * @param text the text to set
-	 */
-	public void setText(String text) {
-		this.text = text;
-	}
+    public TextBox() {
+        xmlvmSetRenderer(new TextBoxRenderer(this));
+    }
+
+    /**
+     * @return the text
+     */
+    public String getText() {
+        return text;
+    }
+
+    /**
+     * @param text
+     *            the text to set
+     */
+    public void setText(String text) {
+        this.text = text;
+    }
 }

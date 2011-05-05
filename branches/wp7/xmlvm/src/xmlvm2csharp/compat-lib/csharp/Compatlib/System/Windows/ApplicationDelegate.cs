@@ -15,7 +15,7 @@ namespace Compatlib.System.Windows
     {
         public ApplicationDelegate()
         {
-            __APP_CLASS__ appClass = new __APP_CLASS__();
+            org.xmlvm.demo.wp7xokoban.Xokoban appClass = new org.xmlvm.demo.wp7xokoban.Xokoban();
             appClass.@this();
         }
     }

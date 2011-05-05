@@ -18,7 +18,6 @@
  * For more information, visit the XMLVM Home Page at http://www.xmlvm.org
  */
 
-
 package Compatlib.System.Windows.Input;
 
 import org.xmlvm.wp7.DelegateHelper;
@@ -30,15 +29,16 @@ import Compatlib.System.String;
 
 /**
  * @author Markus
- *
+ * 
  */
-public class FrameReportedEventHandler  extends EventHandler {
+public class FrameReportedEventHandler extends EventHandler {
 
-	/**
-	 * @param sayHello
-	 * @param string
-	 */
-	public FrameReportedEventHandler(Object arg0, String method) {
-		super(arg0, DelegateManager.registerFunctionPtr(arg0.getClass().getName(), method.value, DelegateHelper.getSignature(arg0, method.value)));
-	}
+    /**
+     * @param sayHello
+     * @param string
+     */
+    public FrameReportedEventHandler(Object arg0, String method) {
+        super(arg0, DelegateManager.registerFunctionPtr(arg0.getClass().getName(), method.value,
+                DelegateHelper.getSignature(arg0, method.value)));
+    }
 }

@@ -20,12 +20,12 @@
 
 package Compatlib.System;
 
-
 public class String extends Object {
 
     public java.lang.String value;
 
     public static String    Empty = new String("");
+
 
     public String(java.lang.String value) {
         this.value = value;
@@ -34,12 +34,49 @@ public class String extends Object {
     public String ToString() {
         return this;
     }
-    
-    /* (non-Javadoc)
+
+    /*
+     * (non-Javadoc)
+     * 
      * @see java.lang.Object#toString()
      */
     @Override
     public java.lang.String toString() {
-    	return value.toString();
+        return value.toString();
+    }
+
+    /**
+     * @param string
+     * @return
+     */
+    public boolean Equals(String string) {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    /**
+     * @param i
+     * @return
+     */
+    public char __access(int i) {
+        // TODO Auto-generated method stub
+        return 0;
+    }
+
+    /**
+     * @param string
+     * @return
+     */
+    public boolean EndsWith(String string) {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    /**
+     * @return
+     */
+    public int getLength() {
+        // TODO Auto-generated method stub
+        return 0;
     }
 }

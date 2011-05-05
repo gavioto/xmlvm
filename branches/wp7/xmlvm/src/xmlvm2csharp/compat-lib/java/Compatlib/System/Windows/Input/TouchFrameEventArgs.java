@@ -18,7 +18,6 @@
  * For more information, visit the XMLVM Home Page at http://www.xmlvm.org
  */
 
-
 package Compatlib.System.Windows.Input;
 
 import Compatlib.System.EventArgs;
@@ -26,16 +25,16 @@ import Compatlib.System.Windows.UIElement;
 
 /**
  * @author Markus
- *
+ * 
  */
 public class TouchFrameEventArgs extends EventArgs {
 
-	/**
-	 * @param object
-	 * @return
-	 */
-	public TouchPoint GetPrimaryTouchPoint(UIElement object) {
-		return null;
-	}
+    /**
+     * @param object
+     * @return
+     */
+    public TouchPoint GetPrimaryTouchPoint(UIElement object) {
+        return null;
+    }
 
 }

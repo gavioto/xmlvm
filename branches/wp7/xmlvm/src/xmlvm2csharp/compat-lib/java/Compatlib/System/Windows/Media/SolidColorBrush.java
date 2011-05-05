@@ -18,36 +18,38 @@
  * For more information, visit the XMLVM Home Page at http://www.xmlvm.org
  */
 
-
 package Compatlib.System.Windows.Media;
 
 /**
  * @author Markus
- *
+ * 
  */
 public class SolidColorBrush extends Brush {
 
-	/**
-	 * @param white
-	 */
-	public SolidColorBrush(Color color) {
-		this.setColor(color);
-	}
-	
-	private Color Color;
+    /**
+     * @param white
+     */
+    public SolidColorBrush(Color color) {
+        this.setColor(color);
+    }
 
-	/**
-	 * @return the color
-	 */
-	public Color getColor() {
-		return Color;
-	}
 
-	/**
-	 * @param color the color to set
-	 */
-	public void setColor(Color color) {
-		Color = color;
-	}
+    private Color Color;
+
+
+    /**
+     * @return the color
+     */
+    public Color getColor() {
+        return Color;
+    }
+
+    /**
+     * @param color
+     *            the color to set
+     */
+    public void setColor(Color color) {
+        Color = color;
+    }
 
 }

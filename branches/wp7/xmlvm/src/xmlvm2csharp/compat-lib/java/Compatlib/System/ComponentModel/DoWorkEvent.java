@@ -18,7 +18,6 @@
  * For more information, visit the XMLVM Home Page at http://www.xmlvm.org
  */
 
-
 package Compatlib.System.ComponentModel;
 
 import java.util.ArrayList;
@@ -29,23 +28,24 @@ import Compatlib.System.Object;
 
 /**
  * @author Markus
- *
+ * 
  */
 public class DoWorkEvent extends Event {
 
-	private final List<DoWorkEventHandler> eventHandler = new ArrayList<DoWorkEventHandler>();
-	
-	public DoWorkEvent() {
-	}
-	
-	public void __add(DoWorkEventHandler handler) {
-		eventHandler.add(handler);
-	}
-	
-	public void __fire(Object sender, DoWorkEventArgs args) {
-		for(DoWorkEventHandler each : eventHandler) {
-			each.Invoke(sender, args);
-		}
-	}
-	
+    private final List<DoWorkEventHandler> eventHandler = new ArrayList<DoWorkEventHandler>();
+
+
+    public DoWorkEvent() {
+    }
+
+    public void __add(DoWorkEventHandler handler) {
+        eventHandler.add(handler);
+    }
+
+    public void __fire(Object sender, DoWorkEventArgs args) {
+        for (DoWorkEventHandler each : eventHandler) {
+            each.Invoke(sender, args);
+        }
+    }
+
 }

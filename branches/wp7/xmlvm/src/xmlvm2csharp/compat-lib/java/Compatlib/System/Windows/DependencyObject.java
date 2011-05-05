@@ -18,14 +18,13 @@
  * For more information, visit the XMLVM Home Page at http://www.xmlvm.org
  */
 
-
 package Compatlib.System.Windows;
 
 import Compatlib.System.Windows.Threading.DispatcherObject;
 
 /**
  * @author Markus
- *
+ * 
  */
 public class DependencyObject extends DispatcherObject {
 

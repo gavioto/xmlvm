@@ -19,22 +19,19 @@
  */
 package Compatlib.System;
 
-
 /**
  * @author Markus
- *
+ * 
  */
-public class EventArgs extends Object
-{
+public class EventArgs extends Object {
 
-    public EventArgs()
-    {
+    public EventArgs() {
     }
 
-    private static void cctor()
-    {
+    private static void cctor() {
         Empty = new EventArgs();
     }
+
 
     public static EventArgs Empty;
 }

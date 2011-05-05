@@ -18,7 +18,6 @@
  * For more information, visit the XMLVM Home Page at http://www.xmlvm.org
  */
 
-
 package Compatlib.System.Windows.Controls;
 
 import java.util.ArrayList;
@@ -29,47 +28,71 @@ import org.xmlvm.XMLVMIgnore;
 import Compatlib.System.Collections.Generics.IEnumerator;
 import Compatlib.System.Windows.DependencyObject;
 
-
-
 /**
  * @author Markus
- *
+ * 
  */
 public class PresentationFrameworkCollection<T> extends DependencyObject {
 
-	private List<T> elements = new ArrayList<T>();
-	
-	public void Add(T t) {
-		elements.add(t);
-	}
-	
-	public IEnumerator<T> GetEnumerator() {
-		return new PresentationFrameworkCollectionEnumerator(elements); 
-	}
-	
-	private class PresentationFrameworkCollectionEnumerator implements IEnumerator<T> {
+    private List<T> elements = new ArrayList<T>();
 
-		private int index;
-		private List<T> elements;
-		
-		/**
+
+    public void Add(T t) {
+        elements.add(t);
+    }
+
+    public IEnumerator<T> GetEnumerator() {
+        return new PresentationFrameworkCollectionEnumerator(elements);
+    }
+
+
+    private class PresentationFrameworkCollectionEnumerator implements IEnumerator<T> {
+
+        private int     index;
+        private List<T> elements;
+
+
+        /**
          * 
          */
-		@XMLVMIgnore
+        @XMLVMIgnore
         public PresentationFrameworkCollectionEnumerator(List<T> elements) {
             this.elements = elements;
         }
-		
-		@Override
-		public T getCurrent() {
-			return this.elements.get(index);
-		}
 
-		@Override
-		public boolean MoveNext() {
-			index++;
-			return index < this.elements.size();
-		}
-	};
-	
+        @Override
+        public T getCurrent() {
+            return this.elements.get(index);
+        }
+
+        @Override
+        public boolean MoveNext() {
+            index++;
+            return index < this.elements.size();
+        }
+    };
+
+
+    public void Clear() {
+
+    }
+
+    public void Insert(int index, T t) {
+
+    }
+
+    /**
+     * @return
+     */
+    public int getCount() {
+        // TODO Auto-generated method stub
+        return 0;
+    }
+
+    public T __access(int i) {
+        return null;
+    }
+
+    public void Remove(T t) {
+    }
 }

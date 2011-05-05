@@ -18,7 +18,6 @@
  * For more information, visit the XMLVM Home Page at http://www.xmlvm.org
  */
 
-
 package Compatlib.System.Windows.Media;
 
 import javax.swing.JComponent;
@@ -27,25 +26,24 @@ import org.xmlvm.XMLVMIgnore;
 
 import Compatlib.System.Windows.DependencyObject;
 
-
-
 /**
  * @author Markus, Andru
- *
+ * 
  */
 public class Visual extends DependencyObject {
 
-	@XMLVMIgnore
-	protected JComponent renderer;
-	
-	@XMLVMIgnore
-	public void xmlvmSetRenderer(JComponent renderer) {
-		this.renderer=renderer;
-	}
-	
-	@XMLVMIgnore
-	public JComponent xmlvmGetRenderer() {
-		return this.renderer;
-	}
-	
+    @XMLVMIgnore
+    protected JComponent renderer;
+
+
+    @XMLVMIgnore
+    public void xmlvmSetRenderer(JComponent renderer) {
+        this.renderer = renderer;
+    }
+
+    @XMLVMIgnore
+    public JComponent xmlvmGetRenderer() {
+        return this.renderer;
+    }
+
 }

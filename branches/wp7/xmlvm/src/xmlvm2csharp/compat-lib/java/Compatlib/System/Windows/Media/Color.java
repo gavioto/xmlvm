@@ -18,75 +18,78 @@
  * For more information, visit the XMLVM Home Page at http://www.xmlvm.org
  */
 
-
 package Compatlib.System.Windows.Media;
 
 import Compatlib.System.Object;
 
 /**
  * @author Markus
- *
+ * 
  */
 public class Color extends Object {
 
-	private short R, G, B;
-	
-	/**
-	 * @return the r
-	 */
-	public short getR() {
-		return R;
-	}
+    private short R, G, B;
 
-	/**
-	 * @param r the r to set
-	 */
-	public void setR(short r) {
-		R = r;
-	}
 
-	/**
-	 * @return the g
-	 */
-	public short getG() {
-		return G;
-	}
+    /**
+     * @return the r
+     */
+    public short getR() {
+        return R;
+    }
 
-	/**
-	 * @param g the g to set
-	 */
-	public void setG(short g) {
-		G = g;
-	}
+    /**
+     * @param r
+     *            the r to set
+     */
+    public void setR(short r) {
+        R = r;
+    }
 
-	/**
-	 * @return the b
-	 */
-	public short getB() {
-		return B;
-	}
+    /**
+     * @return the g
+     */
+    public short getG() {
+        return G;
+    }
 
-	/**
-	 * @param b the b to set
-	 */
-	public void setB(short b) {
-		B = b;
-	}
+    /**
+     * @param g
+     *            the g to set
+     */
+    public void setG(short g) {
+        G = g;
+    }
 
-	private Color(short r, short g, short b) {
-		this.R = r;
-		this.G = g;
-		this.B = b;
-	}
-	
-	/**
-	 * @param i
-	 * @param j
-	 * @param k
-	 * @return
-	 */
-	public static Color FromRgb(short r, short g, short b) {
-		return new Color(r, g, b);
-	}
+    /**
+     * @return the b
+     */
+    public short getB() {
+        return B;
+    }
+
+    /**
+     * @param b
+     *            the b to set
+     */
+    public void setB(short b) {
+        B = b;
+    }
+
+    private Color(short r, short g, short b) {
+        this.R = r;
+        this.G = g;
+        this.B = b;
+    }
+
+    /**
+     * @param i
+     * @param j
+     * @param k
+     * @return
+     */
+    public static Color FromRgb(short r, short g, short b) {
+        return new Color(r, g, b);
+    }
 
 }

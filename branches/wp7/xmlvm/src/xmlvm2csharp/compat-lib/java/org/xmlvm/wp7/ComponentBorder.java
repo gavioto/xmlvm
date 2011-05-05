@@ -18,7 +18,6 @@
  * For more information, visit the XMLVM Home Page at http://www.xmlvm.org
  */
 
-
 package org.xmlvm.wp7;
 
 import java.awt.Color;
@@ -30,42 +29,45 @@ import javax.swing.border.LineBorder;
 
 /**
  * @author Markus
- *
+ * 
  */
 public class ComponentBorder extends LineBorder {
 
-	private final int PADDING = 10;
-	
-	/**
-	 * @param color
-	 * @param i
-	 */
-	public ComponentBorder(Color color, int border) {
-		super(color, border);
-	}
-	
-	/* (non-Javadoc)
-	 * @see javax.swing.border.LineBorder#paintBorder(java.awt.Component, java.awt.Graphics, int, int, int, int)
-	 */
-	@Override
-	public void paintBorder(Component component, Graphics g, int x, int y,
-			int width, int height) {
-		Color beforeColor = g.getColor();
-		g.setColor(Color.BLACK);
-		g.fillRect(x, y, x+PADDING, height);
-		g.fillRect(x, y, width, y+PADDING);
-		g.setColor(beforeColor);
-		super.paintBorder(component, g, x+PADDING, y+PADDING, width-PADDING, height-PADDING);
-	}
+    private final int PADDING = 10;
 
-	@Override
-	public Insets getBorderInsets(Component component) {
-		Insets insets = super.getBorderInsets(component);
-		insets.top+=PADDING;
-		insets.left+=PADDING;
-		insets.bottom+=PADDING;
-		insets.right+=PADDING;
-		return insets;
-	}
-	
+
+    /**
+     * @param color
+     * @param i
+     */
+    public ComponentBorder(Color color, int border) {
+        super(color, border);
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see javax.swing.border.LineBorder#paintBorder(java.awt.Component,
+     * java.awt.Graphics, int, int, int, int)
+     */
+    @Override
+    public void paintBorder(Component component, Graphics g, int x, int y, int width, int height) {
+        Color beforeColor = g.getColor();
+        g.setColor(Color.BLACK);
+        g.fillRect(x, y, x + PADDING, height);
+        g.fillRect(x, y, width, y + PADDING);
+        g.setColor(beforeColor);
+        super.paintBorder(component, g, x + PADDING, y + PADDING, width - PADDING, height - PADDING);
+    }
+
+    @Override
+    public Insets getBorderInsets(Component component) {
+        Insets insets = super.getBorderInsets(component);
+        insets.top += PADDING;
+        insets.left += PADDING;
+        insets.bottom += PADDING;
+        insets.right += PADDING;
+        return insets;
+    }
+
 }

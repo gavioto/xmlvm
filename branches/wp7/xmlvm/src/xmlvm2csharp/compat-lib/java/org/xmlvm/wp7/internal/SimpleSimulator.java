@@ -18,7 +18,6 @@
  * For more information, visit the XMLVM Home Page at http://www.xmlvm.org
  */
 
-
 package org.xmlvm.wp7.internal;
 
 import java.awt.Color;
@@ -31,51 +30,50 @@ import javax.swing.JFrame;
 
 import Compatlib.System.Windows.Application;
 
-
-
 /**
  * @author Markus
- *
+ * 
  */
 public class SimpleSimulator extends JFrame {
-	
-	private Application application;
-	private JComponent rootRenderer;
-	
-	public final static Font UI_FONT = new Font("Segoe UI", Font.PLAIN, 20);
-	
-	public SimpleSimulator(Application application) {
-		this.application = application;
-		
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setSize(480, 800);
-		this.setLocation(100, 100);
-		this.setVisible(true);
-		this.getContentPane().setBackground(Color.BLACK);
-		this.getContentPane().setLayout(null);
-		this.setResizable(false);
-	}
 
-	/**
-	 * @return
-	 */
-	public Object getRootRenderer() {
-		return this.rootRenderer;
-	}
-	
-	/**
-	 * @return
-	 */
-	public void setRootRenderer(JComponent renderer) {
-		if(!renderer.equals(this.rootRenderer)) {
-			this.rootRenderer = renderer;
-			this.getContentPane().removeAll();
-			this.getContentPane().add(renderer);			
-			Dimension size = this.rootRenderer.getPreferredSize();
-			Rectangle rectangle = new Rectangle(size);
-			this.rootRenderer.setBounds(rectangle);
-			this.getContentPane().repaint();
-		}
-	}
+    private Application      application;
+    private JComponent       rootRenderer;
+
+    public final static Font UI_FONT = new Font("Segoe UI", Font.PLAIN, 20);
+
+
+    public SimpleSimulator(Application application) {
+        this.application = application;
+
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setSize(480, 800);
+        this.setLocation(100, 100);
+        this.setVisible(true);
+        this.getContentPane().setBackground(Color.BLACK);
+        this.getContentPane().setLayout(null);
+        this.setResizable(false);
+    }
+
+    /**
+     * @return
+     */
+    public Object getRootRenderer() {
+        return this.rootRenderer;
+    }
+
+    /**
+     * @return
+     */
+    public void setRootRenderer(JComponent renderer) {
+        if (!renderer.equals(this.rootRenderer)) {
+            this.rootRenderer = renderer;
+            this.getContentPane().removeAll();
+            this.getContentPane().add(renderer);
+            Dimension size = this.rootRenderer.getPreferredSize();
+            Rectangle rectangle = new Rectangle(size);
+            this.rootRenderer.setBounds(rectangle);
+            this.getContentPane().repaint();
+        }
+    }
 
 }

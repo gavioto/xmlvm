@@ -18,30 +18,31 @@
  * For more information, visit the XMLVM Home Page at http://www.xmlvm.org
  */
 
-
 package Compatlib.System.Windows.Controls;
 
 import Compatlib.System.Object;
 
 /**
  * @author Markus
- *
+ * 
  */
 public class ContentControl extends Control {
 
-	private Object content;
+    private Object content;
 
-	/**
-	 * @return the content
-	 */
-	public Object getContent() {
-		return content;
-	}
 
-	/**
-	 * @param content the content to set
-	 */
-	public void setContent(Object content) {
-		this.content = content;
-	}
+    /**
+     * @return the content
+     */
+    public Object getContent() {
+        return content;
+    }
+
+    /**
+     * @param content
+     *            the content to set
+     */
+    public void setContent(Object content) {
+        this.content = content;
+    }
 }

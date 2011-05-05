@@ -18,15 +18,11 @@
  * For more information, visit the XMLVM Home Page at http://www.xmlvm.org
  */
 
-
 package Compatlib.System;
-
-import Compatlib.System.Object;
-
 
 /**
  * @author Markus
- *
+ * 
  */
 public abstract class Event extends Object {
 

@@ -18,31 +18,38 @@
  * For more information, visit the XMLVM Home Page at http://www.xmlvm.org
  */
 
-
 package Compatlib.System.Windows;
 
 import Compatlib.System.Object;
 
 /**
  * @author Markus
- *
+ * 
  */
-public class Size extends Object{
+public class Size extends Object {
 
-	/**
-	 * @return
-	 */
-	public double getWidth() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+    /**
+     * @param positiveInfinity
+     * @param positiveInfinity2
+     */
+    public Size(double positiveInfinity, double positiveInfinity2) {
+        // TODO Auto-generated constructor stub
+    }
 
-	/**
-	 * @return
-	 */
-	public double getHeight() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+    /**
+     * @return
+     */
+    public double getWidth() {
+        // TODO Auto-generated method stub
+        return 0;
+    }
+
+    /**
+     * @return
+     */
+    public double getHeight() {
+        // TODO Auto-generated method stub
+        return 0;
+    }
 
 }

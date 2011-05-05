@@ -18,7 +18,6 @@
  * For more information, visit the XMLVM Home Page at http://www.xmlvm.org
  */
 
-
 package Compatlib.System.Windows.Controls;
 
 import org.xmlvm.XMLVMIgnore;
@@ -27,27 +26,26 @@ import org.xmlvm.wp7.ButtonRenderer;
 import Compatlib.System.Object;
 import Compatlib.System.Windows.Controls.Primitives.ButtonBase;
 
-
 /**
  * @author Markus, Andru
- *
+ * 
  */
 public class Button extends ButtonBase {
 
-	public Button() {
-		xmlvmSetRenderer(new ButtonRenderer(this));
-	}
-	
-	
-	
-	/* (non-Javadoc)
-	 * @see System.Windows.Controls.ContentControl#setContent(System.Object)
-	 */
-	@Override
-	@XMLVMIgnore
-	public void setContent(Object content) {
-		xmlvmGetRenderer().repaint();
-		super.setContent(content);
-	}
-	
+    public Button() {
+        xmlvmSetRenderer(new ButtonRenderer(this));
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see System.Windows.Controls.ContentControl#setContent(System.Object)
+     */
+    @Override
+    @XMLVMIgnore
+    public void setContent(Object content) {
+        xmlvmGetRenderer().repaint();
+        super.setContent(content);
+    }
+
 }

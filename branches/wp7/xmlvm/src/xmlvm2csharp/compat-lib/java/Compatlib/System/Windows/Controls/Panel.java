@@ -18,28 +18,37 @@
  * For more information, visit the XMLVM Home Page at http://www.xmlvm.org
  */
 
-
 package Compatlib.System.Windows.Controls;
 
 import Compatlib.System.Windows.FrameworkElement;
+import Compatlib.System.Windows.Media.Brush;
 
 /**
  * @author Markus
- *
+ * 
  */
 public class Panel extends FrameworkElement {
 
-	private UIElementCollection Children = new UIElementCollection();
+    private UIElementCollection Children = new UIElementCollection();
 
-	/**
-	 * @return the children
-	 */
-	public UIElementCollection getChildren() {
-		return Children;
-	}
-	
-	public Panel() {
-		Children.setVis(this);
-	}
-	
+
+    /**
+     * @return the children
+     */
+    public UIElementCollection getChildren() {
+        return Children;
+    }
+
+    public Panel() {
+        Children.setVis(this);
+    }
+
+    /**
+     * @param splashImage2
+     */
+    public void setBackground(Brush brush) {
+        // TODO Auto-generated method stub
+
+    }
+
 }

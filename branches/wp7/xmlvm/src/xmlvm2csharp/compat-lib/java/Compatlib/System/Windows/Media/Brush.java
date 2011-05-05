@@ -18,14 +18,13 @@
  * For more information, visit the XMLVM Home Page at http://www.xmlvm.org
  */
 
-
 package Compatlib.System.Windows.Media;
 
 import Compatlib.System.Windows.Media.Animation.Animatable;
 
 /**
  * @author Markus
- *
+ * 
  */
 public abstract class Brush extends Animatable {
 

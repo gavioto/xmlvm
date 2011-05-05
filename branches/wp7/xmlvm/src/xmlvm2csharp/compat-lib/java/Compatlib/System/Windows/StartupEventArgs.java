@@ -18,14 +18,13 @@
  * For more information, visit the XMLVM Home Page at http://www.xmlvm.org
  */
 
-
 package Compatlib.System.Windows;
 
 import Compatlib.System.EventArgs;
 
 /**
  * @author Markus
- *
+ * 
  */
 public class StartupEventArgs extends EventArgs {
 

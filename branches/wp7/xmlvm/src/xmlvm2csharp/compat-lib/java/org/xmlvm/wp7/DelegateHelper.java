@@ -18,7 +18,6 @@
  * For more information, visit the XMLVM Home Page at http://www.xmlvm.org
  */
 
-
 package org.xmlvm.wp7;
 
 import java.lang.reflect.Method;
@@ -28,23 +27,21 @@ import System.EventArgs;
 
 /**
  * @author Markus
- *
+ * 
  */
 public class DelegateHelper {
 
-	public static String getSignature(Object obj, String method) {
-    	for(Method each : obj.getClass().getMethods()) {
-    		if(each.getName().equals(method)
-    				&& each.getReturnType().equals(void.class)) {
-    			Class<?>[] types = each.getParameterTypes();
-    			if(types[0].equals(Object.class)
-    					&& EventArgs.class.isAssignableFrom(types[1])) {
-    				String signature="void;System.Object;"+types[1].getCanonicalName();
-    				return signature;
-    			}
-    		}
-    	}
-    	throw new RuntimeException("Couldn't find matching method");
+    public static String getSignature(Object obj, String method) {
+        for (Method each : obj.getClass().getMethods()) {
+            if (each.getName().equals(method) && each.getReturnType().equals(void.class)) {
+                Class<?>[] types = each.getParameterTypes();
+                if (types[0].equals(Object.class) && EventArgs.class.isAssignableFrom(types[1])) {
+                    String signature = "void;System.Object;" + types[1].getCanonicalName();
+                    return signature;
+                }
+            }
+        }
+        throw new RuntimeException("Couldn't find matching method");
     }
-	
+
 }

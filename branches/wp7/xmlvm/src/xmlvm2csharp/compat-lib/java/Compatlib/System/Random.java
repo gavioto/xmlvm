@@ -18,20 +18,19 @@
  * For more information, visit the XMLVM Home Page at http://www.xmlvm.org
  */
 
-
 package Compatlib.System;
 
 /**
  * @author Markus
- *
+ * 
  */
 public class Random extends Object {
 
-	public Random(int ticks) {
-	}
+    public Random(int ticks) {
+    }
 
-	public double NextDouble() {
-		return 0;
-	}
+    public double NextDouble() {
+        return 0;
+    }
 
 }

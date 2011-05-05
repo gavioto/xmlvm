@@ -32,4 +32,16 @@ public class Math {
     public static int min(int a, int b) {
         return a>b ? b : a;
     }
+    
+    public static float abs(float a) {
+        return a;
+    }
+    
+    public static int abs(int a) {
+        return a;
+    }
+    
+    public static float max(float a, float b) {
+        return a>b ? a : b;
+    }
 }

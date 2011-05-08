@@ -35,6 +35,7 @@ import org.xmlvm.proc.BundlePhase2;
 import org.xmlvm.proc.DelayedXmlvmSerializationProvider;
 import org.xmlvm.proc.XmlvmProcessImpl;
 import org.xmlvm.proc.XmlvmResource;
+import org.xmlvm.proc.XmlvmResource.Tag;
 import org.xmlvm.proc.XmlvmResource.Type;
 import org.xmlvm.proc.XmlvmResource.XmlvmField;
 import org.xmlvm.proc.XmlvmResource.XmlvmInvokeInstruction;
@@ -102,21 +103,18 @@ public class VtableOutputProcess extends XmlvmProcessImpl {
 
     @Override
     public boolean processPhase2(BundlePhase2 bundle) {
-        this.hierarchyHelper = new ObjectHierarchyHelper(bundle.getResourceMap(), arguments
-                .option_gen_wrapper());
+        this.hierarchyHelper = new ObjectHierarchyHelper(bundle.getResourceMap());
         hierarchyHelper.redeclareInterfaceMethodsInAbstractClasses();
         hierarchyHelper.calculateInterfaceIndices();
         computeInvocationTables(bundle.getResources());
         Log.debug(TAG, "Done computing vtables/itables");
 
-        if (!arguments.option_gen_wrapper()) {
-            processVtableInvokes(bundle.getResources());
-            Log.debug(TAG, "Done annotating invokes");
-            adjustTypes(bundle.getResources());
-            Log.debug(TAG, "Done adjusting types");
-        }
+        processVtableInvokes(bundle.getResources());
+        Log.debug(TAG, "Done annotating invokes");
+        adjustTypes(bundle.getResources());
+        Log.debug(TAG, "Done adjusting types");
 
-        if (!arguments.option_gen_wrapper() && !isTargetProcess) {
+        if (!isTargetProcess) {
             OutputFile indexFile = hierarchyHelper.getInterfaceIndexFile();
             indexFile.setLocation(arguments.option_out());
             indexFile.setFileName("interfaces.h");
@@ -125,8 +123,8 @@ public class VtableOutputProcess extends XmlvmProcessImpl {
 
         if (isTargetProcess) {
             for (XmlvmResource resource : bundle.getResources()) {
-                OutputFile file = new OutputFile(new DelayedXmlvmSerializationProvider(resource
-                        .getXmlvmDocument()));
+                OutputFile file = new OutputFile(new DelayedXmlvmSerializationProvider(
+                        resource.getXmlvmDocument()));
                 file.setLocation(arguments.option_out());
                 file.setFileName(resource.getFullName() + VTABLE_ENDING);
                 bundle.addOutputFile(file);
@@ -190,20 +188,23 @@ public class VtableOutputProcess extends XmlvmProcessImpl {
                     if (method.isAbstract()
                             || hierarchyHelper.isOverridden(resource.getFullName(), method)
                             || isForcedVtable(resource, method)) {
-                        Log.debug(TAG, "Vtable method " + resource.getFullName() + " "
-                                + method.getName());
+                        Log.debug(TAG,
+                                "Vtable method " + resource.getFullName() + " " + method.getName());
                         thisClassVtable.addMethod(method);
                     } else {
-                        Log.debug(TAG, "Non-Vtable method " + resource.getFullName() + " "
-                                + method.getName());
+                        Log.debug(
+                                TAG,
+                                "Non-Vtable method " + resource.getFullName() + " "
+                                        + method.getName());
                         // Memorize method and declaring class for all classes
                         // inheriting this method
                         nonOverriddenMethods.put(getCompleteMethodIdentifier(resource, method),
                                 resource.getFullName());
                         for (XmlvmResource inheritingResource : hierarchyHelper
                                 .getChildrenRecursive(resource.getFullName())) {
-                            nonOverriddenMethods.put(getCompleteMethodIdentifier(
-                                    inheritingResource, method), resource.getFullName());
+                            nonOverriddenMethods.put(
+                                    getCompleteMethodIdentifier(inheritingResource, method),
+                                    resource.getFullName());
                         }
                     }
                 } else {
@@ -262,9 +263,7 @@ public class VtableOutputProcess extends XmlvmProcessImpl {
                             String classType = nonOverriddenMethods
                                     .get(getCompleteMethodIdentifier(resource, ifaceMethod));
                             if (classType != null) {
-                                itable
-                                        .addDirectMapping(iface.getFullName(), ifaceMethod,
-                                                classType);
+                                itable.addDirectMapping(iface.getFullName(), ifaceMethod, classType);
                             } else {
                                 Log.error("Couldn't find implementation for interface method "
                                         + iface.getFullName() + " " + ifaceMethod.getName()
@@ -302,6 +301,9 @@ public class VtableOutputProcess extends XmlvmProcessImpl {
      */
     private void processVtableInvokes(Collection<XmlvmResource> resources) {
         for (XmlvmResource resource : resources) {
+            if (resource.hasTag(Tag.SKELETON_ONLY)) {
+                continue;
+            }
             List<XmlvmMethod> methods = resource.getMethods();
             for (XmlvmMethod method : methods) {
                 for (XmlvmInvokeInstruction instruction : method.getVtableInvokeInstructions()) {
@@ -405,7 +407,7 @@ public class VtableOutputProcess extends XmlvmProcessImpl {
      */
     private void adjustTypes(Collection<XmlvmResource> resources) {
         for (XmlvmResource resource : resources) {
-            if (resource.getType() == Type.CONST_POOL) {
+            if (resource.hasTag(Tag.SKELETON_ONLY) || resource.getType() == Type.CONST_POOL) {
                 continue;
             }
             List<XmlvmInvokeInstruction> invokeInstructions = new ArrayList<XmlvmInvokeInstruction>();

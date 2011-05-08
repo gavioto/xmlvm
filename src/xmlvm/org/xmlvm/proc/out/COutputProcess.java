@@ -38,6 +38,7 @@ import org.xmlvm.proc.BundlePhase1;
 import org.xmlvm.proc.BundlePhase2;
 import org.xmlvm.proc.XmlvmProcessImpl;
 import org.xmlvm.proc.XmlvmResource;
+import org.xmlvm.proc.XmlvmResource.Tag;
 import org.xmlvm.proc.XsltRunner;
 import org.xmlvm.proc.XmlvmResource.Type;
 import org.xmlvm.util.universalfile.UniversalFile;
@@ -109,10 +110,7 @@ public class COutputProcess extends XmlvmProcessImpl {
         // Process all collected resources.
         for (XmlvmResource xmlvm : resourcePool.values()) {
             OutputFile[] files;
-            if (xmlvm.getType() == Type.CONST_POOL) {
-                if (arguments.option_gen_wrapper()) {
-                    continue;
-                }
+            if (!xmlvm.hasTag(Tag.SKELETON_ONLY) && xmlvm.getType() == Type.CONST_POOL) {
                 files = genConstantPool(xmlvm);
             } else {
                 files = genC(xmlvm);
@@ -140,8 +138,8 @@ public class COutputProcess extends XmlvmProcessImpl {
         for (OutputFile outputFile : outputFiles) {
             String fileName = outputFile.getFileName();
             if (fileName.endsWith(sourceExtension)) {
-                String typeName = fileName.substring(0, fileName.length()
-                        - sourceExtension.length());
+                String typeName = fileName.substring(0,
+                        fileName.length() - sourceExtension.length());
                 types.add(typeName);
             }
         }
@@ -177,7 +175,8 @@ public class COutputProcess extends XmlvmProcessImpl {
 
         StringBuilder headerBuffer = new StringBuilder();
         headerBuffer.append("#include \"xmlvm.h\"\n");
-        List<String> typesForHeader = getTypesForHeader(doc.getRootElement());
+        List<String> typesForHeader = getTypesForHeader(doc.getRootElement(),
+                xmlvm.hasTag(Tag.SKELETON_ONLY));
         for (String i : typesForHeader) {
             if (i.equals(inheritsFrom)) {
                 headerBuffer.append("#include \"" + i + ".h\"\n");
@@ -198,8 +197,7 @@ public class COutputProcess extends XmlvmProcessImpl {
             headerBuffer.append("#endif\n");
         }
         OutputFile headerFile = XsltRunner.runXSLT("xmlvm2c.xsl", doc, new String[][] {
-                { "pass", "emitHeader" }, { "header", headerFileName },
-                { "genWrapper", "" + arguments.option_gen_wrapper() } });
+                { "pass", "emitHeader" }, { "header", headerFileName } });
         headerFile.setData(headerProlog + headerBuffer.toString() + headerFile.getDataAsString()
                 + headerEpilog);
         headerFile.setFileName(headerFileName);
@@ -214,8 +212,7 @@ public class COutputProcess extends XmlvmProcessImpl {
         }
 
         OutputFile mFile = XsltRunner.runXSLT("xmlvm2c.xsl", doc, new String[][] {
-                { "pass", "emitImplementation" }, { "header", headerFileName },
-                { "genWrapper", "" + arguments.option_gen_wrapper() } });
+                { "pass", "emitImplementation" }, { "header", headerFileName } });
         mFile.setData(mBuffer.toString() + mFile.getDataAsString());
         mFile.setFileName(mFileName);
 
@@ -245,7 +242,7 @@ public class COutputProcess extends XmlvmProcessImpl {
         return new OutputFile[] { constPoolFile };
     }
 
-    private List<String> getTypesForHeader(Element node) {
+    private List<String> getTypesForHeader(Element node, boolean skeletonOnly) {
         HashSet<String> seen = new HashSet<String>();
         for (Object o : node.getChildren()) {
             if (!(o instanceof Element)) {
@@ -264,9 +261,9 @@ public class COutputProcess extends XmlvmProcessImpl {
                 continue;
             }
 
-            // If we generate a wrapper, do not collect types for private
+            // If we generate a skeleton only, do not collect types for private
             // fields, private methods or the code-segment of public methods
-            if (arguments.option_gen_wrapper()) {
+            if (skeletonOnly) {
                 String name = cur.getName();
                 if (name.equals("code")) {
                     continue;
@@ -320,7 +317,7 @@ public class COutputProcess extends XmlvmProcessImpl {
                     seen.add(a.getValue());
                 }
             }
-            seen.addAll(getTypesForHeader(cur));
+            seen.addAll(getTypesForHeader(cur, skeletonOnly));
         }
         HashSet<String> bad = new HashSet<String>();
         for (String t : new String[] { "char", "float", "double", "int", "void", "boolean",
@@ -362,8 +359,7 @@ public class COutputProcess extends XmlvmProcessImpl {
         mBuffer.append("#include \"" + headerFileName + "\"\n\n");
 
         OutputFile mFile = XsltRunner.runXSLT("xmlvm2c.xsl", doc, new String[][] {
-                { "pass", "emitNativeSkeletons" }, { "header", headerFileName },
-                { "genWrapper", "" + arguments.option_gen_wrapper() } });
+                { "pass", "emitNativeSkeletons" }, { "header", headerFileName } });
 
         if (mFile.isEmpty()) {
             return null;

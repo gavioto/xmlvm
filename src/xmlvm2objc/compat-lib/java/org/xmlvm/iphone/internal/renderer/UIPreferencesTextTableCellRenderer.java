@@ -24,10 +24,12 @@ import java.awt.Color;
 import java.awt.FontMetrics;
 import java.awt.Graphics2D;
 
+import org.xmlvm.XMLVMSkeletonOnly;
 import org.xmlvm.iphone.CGRect;
 import org.xmlvm.iphone.UIGraphics;
 import org.xmlvm.iphone.UIPreferencesTextTableCell;
 
+@XMLVMSkeletonOnly
 public class UIPreferencesTextTableCellRenderer extends UIViewRenderer<UIPreferencesTextTableCell> {
 
     public UIPreferencesTextTableCellRenderer(UIPreferencesTextTableCell view) {

@@ -24,10 +24,12 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.geom.AffineTransform;
 
+import org.xmlvm.XMLVMSkeletonOnly;
 import org.xmlvm.iphone.UIInterfaceOrientation;
 import org.xmlvm.iphone.UIResponder;
 import org.xmlvm.iphone.UIView;
 
+@XMLVMSkeletonOnly
 public class Simulator {
 
     static public boolean       initialized = false;

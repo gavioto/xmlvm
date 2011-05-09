@@ -135,6 +135,7 @@ public class UIAlertView extends UIView {
     }
 
 
+    @XMLVMSkeletonOnly
     private class ButtonClickCallback implements UIControlDelegate {
 
         private int buttonIndex;

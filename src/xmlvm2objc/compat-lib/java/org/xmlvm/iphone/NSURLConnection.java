@@ -28,21 +28,34 @@ import org.xmlvm.XMLVMSkeletonOnly;
 
 @XMLVMSkeletonOnly
 public class NSURLConnection extends NSObject {
+    @XMLVMSkeletonOnly
+    private class RunnableInstance implements Runnable {
+        private final NSURLConnectionDelegate delegate;
+        private final NSMutableURLRequest     req;
+
+
+        public RunnableInstance(NSMutableURLRequest req, NSURLConnectionDelegate delegate) {
+            this.req = req;
+            this.delegate = delegate;
+        }
+
+        @Override
+        public void run() {
+            NSHTTPURLResponseHolder resp = new NSHTTPURLResponseHolder();
+            NSErrorHolder error = new NSErrorHolder();
+            NSData data = sendSynchronousRequest(req, resp, error);
+            // TODO need to do something with NSError
+            delegate.connectionDidReceiveData(NSURLConnection.this, data);
+            delegate.connectionDidFinishLoading(NSURLConnection.this);
+        }
+    }
+
 
     private Thread thread;
 
 
-    private NSURLConnection(final NSMutableURLRequest req, final NSURLConnectionDelegate delegate) {
-        thread = new Thread(new Runnable() {
-            public void run() {
-                NSHTTPURLResponseHolder resp = new NSHTTPURLResponseHolder();
-                NSErrorHolder error = new NSErrorHolder();
-                NSData data = sendSynchronousRequest(req, resp, error);
-                // TODO need to do something with NSError
-                delegate.connectionDidReceiveData(NSURLConnection.this, data);
-                delegate.connectionDidFinishLoading(NSURLConnection.this);
-            }
-        });
+    private NSURLConnection(NSMutableURLRequest req, NSURLConnectionDelegate delegate) {
+        thread = new Thread(new RunnableInstance(req, delegate));
         thread.start();
     }
 

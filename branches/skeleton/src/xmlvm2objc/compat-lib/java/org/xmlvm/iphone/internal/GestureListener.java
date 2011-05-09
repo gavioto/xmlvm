@@ -20,6 +20,9 @@
 
 package org.xmlvm.iphone.internal;
 
+import org.xmlvm.XMLVMSkeletonOnly;
+
+@XMLVMSkeletonOnly
 public interface GestureListener {
 
     public void gestureDragged(int dx, int dy);

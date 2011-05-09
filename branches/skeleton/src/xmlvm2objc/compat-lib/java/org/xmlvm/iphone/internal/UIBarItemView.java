@@ -20,9 +20,11 @@
 
 package org.xmlvm.iphone.internal;
 
+import org.xmlvm.XMLVMSkeletonOnly;
 import org.xmlvm.iphone.UIButton;
 import org.xmlvm.iphone.UIButtonType;
 
+@XMLVMSkeletonOnly
 public abstract class UIBarItemView extends UIButton {
 
     public UIBarItemView() {

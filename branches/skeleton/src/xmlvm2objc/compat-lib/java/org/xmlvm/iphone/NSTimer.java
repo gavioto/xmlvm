@@ -24,6 +24,25 @@ import org.xmlvm.XMLVMSkeletonOnly;
 
 @XMLVMSkeletonOnly
 public class NSTimer extends NSObject {
+    
+    @XMLVMSkeletonOnly
+    private class ThreadInstance extends Thread {
+        @Override
+        @SuppressWarnings( { "SleepWhileHoldingLock", "SleepWhileInLoop" })
+        public void run() {
+            while (true) {
+                try {
+                    Thread.sleep(milliInterval);
+                } catch (InterruptedException e) {
+                    return;
+                }
+                timerTick();
+                if (!timer_repeats) {
+                    break;
+                }
+            }
+        }
+    }
 
     private NSTimerDelegate target;
     private Object          userInfo;
@@ -38,24 +57,7 @@ public class NSTimer extends NSObject {
         this.userInfo = userInfo;
         timer_repeats = repeats;
         this.milliInterval = (long) (timerInterval * 1000);
-        thread = new Thread() {
-
-            @Override
-            @SuppressWarnings( { "SleepWhileHoldingLock", "SleepWhileInLoop" })
-            public void run() {
-                while (true) {
-                    try {
-                        Thread.sleep(milliInterval);
-                    } catch (InterruptedException e) {
-                        return;
-                    }
-                    timerTick();
-                    if (!timer_repeats) {
-                        break;
-                    }
-                }
-            }
-        };
+        thread = new ThreadInstance();
         thread.start();
     }
 

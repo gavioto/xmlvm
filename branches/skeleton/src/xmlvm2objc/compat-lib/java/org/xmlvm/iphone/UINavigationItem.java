@@ -27,6 +27,19 @@ import org.xmlvm.iphone.internal.renderer.UIButtonRenderer.Metrics;
 
 @XMLVMSkeletonOnly
 public class UINavigationItem extends NSObject {
+    @XMLVMSkeletonOnly
+    private class UIBarButtonItemDelegateInstance implements UIBarButtonItemDelegate {
+        @Override
+        public void clicked() {
+            if (bar != null)
+                if (bar.nbcontroller != null)
+                    bar.nbcontroller.popViewControllerAnimated(true);
+                else
+                    bar.popNavigationItemAnimated(true);
+        }
+
+    }
+
 
     private String          title;
     private String          prompt;
@@ -43,16 +56,7 @@ public class UINavigationItem extends NSObject {
         setTitleView(null);
         setPrompt(null);
         backBarButtonItem = new UIBarButtonItem("Back", UIBarButtonItemStyle.Bordered,
-                new UIBarButtonItemDelegate() {
-
-                    public void clicked() {
-                        if (bar != null)
-                            if (bar.nbcontroller != null)
-                                bar.nbcontroller.popViewControllerAnimated(true);
-                            else
-                                bar.popNavigationItemAnimated(true);
-                    }
-                });
+                new UIBarButtonItemDelegateInstance());
         ((UIBarButtonItemRenderer) backBarButtonItem.getCustomView().xmlvmGetRenderer())
                 .setBack(true);
         backBarButtonItem.setTitle(backBarButtonItem.getTitle()); // Needed to

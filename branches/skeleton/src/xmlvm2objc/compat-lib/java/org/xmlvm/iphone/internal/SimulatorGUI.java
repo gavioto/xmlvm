@@ -25,8 +25,10 @@ import java.awt.Dimension;
 import java.awt.geom.AffineTransform;
 import javax.swing.JPanel;
 
+import org.xmlvm.XMLVMSkeletonOnly;
 import org.xmlvm.iphone.UIView;
 
+@XMLVMSkeletonOnly
 public class SimulatorGUI extends JPanel {
 
     private ImageLoader        imageLoader;

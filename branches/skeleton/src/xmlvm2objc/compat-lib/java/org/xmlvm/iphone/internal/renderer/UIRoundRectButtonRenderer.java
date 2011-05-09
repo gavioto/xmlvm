@@ -25,10 +25,12 @@ import java.awt.GradientPaint;
 import java.awt.Graphics2D;
 import java.awt.Paint;
 
+import org.xmlvm.XMLVMSkeletonOnly;
 import org.xmlvm.iphone.CGRect;
 import org.xmlvm.iphone.UIButton;
 import org.xmlvm.iphone.UIControlState;
 
+@XMLVMSkeletonOnly
 public class UIRoundRectButtonRenderer extends UICustomButtonRenderer {
 
     public UIRoundRectButtonRenderer(UIButton view) {

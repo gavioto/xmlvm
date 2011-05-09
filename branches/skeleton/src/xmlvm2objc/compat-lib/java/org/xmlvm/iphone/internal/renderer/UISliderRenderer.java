@@ -24,10 +24,12 @@ import java.awt.Color;
 import java.awt.GradientPaint;
 import java.awt.Graphics2D;
 
+import org.xmlvm.XMLVMSkeletonOnly;
 import org.xmlvm.iphone.CGRect;
 import org.xmlvm.iphone.UIGraphics;
 import org.xmlvm.iphone.UISlider;
 
+@XMLVMSkeletonOnly
 public class UISliderRenderer extends UIViewRenderer<UISlider> {
 
     private static final int  THICKNESS            = 8;

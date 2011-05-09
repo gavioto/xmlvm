@@ -24,6 +24,7 @@ import java.awt.Graphics2D;
 import java.awt.font.FontRenderContext;
 import java.awt.font.LineMetrics;
 
+import org.xmlvm.XMLVMSkeletonOnly;
 import org.xmlvm.iphone.CGRect;
 import org.xmlvm.iphone.UIButton;
 import org.xmlvm.iphone.UIColor;
@@ -31,6 +32,7 @@ import org.xmlvm.iphone.UIControlState;
 import org.xmlvm.iphone.UIFont;
 import org.xmlvm.iphone.UIGraphics;
 
+@XMLVMSkeletonOnly
 public abstract class UIButtonRenderer extends UIViewRenderer<UIButton> {
 
     public static final UIColor DEFAULT_TITLE_COLOR_NORMAL        = UIColor.colorWithRGBA(
@@ -114,9 +116,8 @@ public abstract class UIButtonRenderer extends UIViewRenderer<UIButton> {
         return m;
     }
 
-
+    @XMLVMSkeletonOnly
     public static class Metrics {
-
         public int width, height, descent;
     }
 

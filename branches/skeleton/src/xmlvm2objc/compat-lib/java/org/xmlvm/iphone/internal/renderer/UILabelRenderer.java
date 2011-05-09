@@ -23,9 +23,12 @@ package org.xmlvm.iphone.internal.renderer;
 import java.awt.Font;
 import java.awt.Insets;
 import java.awt.Paint;
+
+import org.xmlvm.XMLVMSkeletonOnly;
 import org.xmlvm.iphone.CGSize;
 import org.xmlvm.iphone.UILabel;
 
+@XMLVMSkeletonOnly
 public class UILabelRenderer extends UITextRenderer<UILabel> {
 
     private static final Insets INSETS = new Insets(0, 0, 0, 0);

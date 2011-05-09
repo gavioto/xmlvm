@@ -26,10 +26,12 @@ import java.awt.GradientPaint;
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
 
+import org.xmlvm.XMLVMSkeletonOnly;
 import org.xmlvm.iphone.CGRect;
 import org.xmlvm.iphone.UIGraphics;
 import org.xmlvm.iphone.UIPickerView;
 
+@XMLVMSkeletonOnly
 public class UIPickerViewRenderer extends UIViewRenderer<UIPickerView> {
 
     public final static int    INSET             = 11;

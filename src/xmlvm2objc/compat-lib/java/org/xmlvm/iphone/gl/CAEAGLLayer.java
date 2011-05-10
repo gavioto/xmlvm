@@ -20,10 +20,10 @@
 
 package org.xmlvm.iphone.gl;
 
-import org.xmlvm.XMLVMSkeletonOnly;
+import org.xmlvm.XMLVMIgnore;
 import org.xmlvm.iphone.CALayer;
 
-@XMLVMSkeletonOnly
+@XMLVMIgnore
 public class CAEAGLLayer extends CALayer implements EAGLDrawable {
 
     public EAGLDrawable getDrawable() {

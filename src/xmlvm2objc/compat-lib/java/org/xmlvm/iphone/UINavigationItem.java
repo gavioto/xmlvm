@@ -20,6 +20,7 @@
 
 package org.xmlvm.iphone;
 
+import org.xmlvm.XMLVMIgnore;
 import org.xmlvm.XMLVMSkeletonOnly;
 import org.xmlvm.iphone.internal.renderer.UIBarButtonItemRenderer;
 import org.xmlvm.iphone.internal.renderer.UIButtonRenderer;
@@ -27,7 +28,7 @@ import org.xmlvm.iphone.internal.renderer.UIButtonRenderer.Metrics;
 
 @XMLVMSkeletonOnly
 public class UINavigationItem extends NSObject {
-    @XMLVMSkeletonOnly
+    @XMLVMIgnore
     private class UIBarButtonItemDelegateInstance implements UIBarButtonItemDelegate {
         @Override
         public void clicked() {

@@ -28,12 +28,12 @@ import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
-import org.xmlvm.XMLVMSkeletonOnly;
+import org.xmlvm.XMLVMIgnore;
 
-@XMLVMSkeletonOnly
+@XMLVMIgnore
 public class SimulatorDesktop {
 
-    @XMLVMSkeletonOnly
+    @XMLVMIgnore
     private class WindowAdapterInstance extends WindowAdapter {
         @Override
         public void windowClosed(WindowEvent e) {

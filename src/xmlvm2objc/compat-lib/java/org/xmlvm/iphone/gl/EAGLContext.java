@@ -21,9 +21,9 @@
 package org.xmlvm.iphone.gl;
 
 import org.lwjgl.opengl.Display;
-import org.xmlvm.XMLVMSkeletonOnly;
+import org.xmlvm.XMLVMIgnore;
 
-@XMLVMSkeletonOnly
+@XMLVMIgnore
 public class EAGLContext {
     public static final int kEAGLRenderingAPIOpenGLES1 = 1;
 

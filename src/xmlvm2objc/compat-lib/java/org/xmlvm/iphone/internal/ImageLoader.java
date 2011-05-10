@@ -28,10 +28,10 @@ import java.net.URL;
 
 import javax.imageio.ImageIO;
 
-import org.xmlvm.XMLVMSkeletonOnly;
+import org.xmlvm.XMLVMIgnore;
 import org.xmlvm.iphone.NSBundle;
 
-@XMLVMSkeletonOnly
+@XMLVMIgnore
 public class ImageLoader {
 
     public BufferedImage loadImage(String imageName) {

@@ -32,10 +32,10 @@ import javax.swing.JScrollBar;
 import javax.swing.SwingConstants;
 import javax.swing.border.TitledBorder;
 
-import org.xmlvm.XMLVMSkeletonOnly;
+import org.xmlvm.XMLVMIgnore;
 import org.xmlvm.iphone.UIAccelerometer;
 
-@XMLVMSkeletonOnly
+@XMLVMIgnore
 public class AccelerometerPanel extends JPanel implements AdjustmentListener {
 
     private JScrollBar xAxisControl;

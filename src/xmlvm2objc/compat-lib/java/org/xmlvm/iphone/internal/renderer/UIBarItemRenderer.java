@@ -20,11 +20,11 @@
 
 package org.xmlvm.iphone.internal.renderer;
 
-import org.xmlvm.XMLVMSkeletonOnly;
+import org.xmlvm.XMLVMIgnore;
 import org.xmlvm.iphone.UIBarItem;
 import org.xmlvm.iphone.UIButton;
 
-@XMLVMSkeletonOnly
+@XMLVMIgnore
 public abstract class UIBarItemRenderer extends UIButtonRenderer {
 
     protected UIBarItem item;

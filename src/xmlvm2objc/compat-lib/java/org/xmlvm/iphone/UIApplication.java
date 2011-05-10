@@ -25,6 +25,7 @@ import java.util.List;
 
 import javax.swing.SwingUtilities;
 
+import org.xmlvm.XMLVMIgnore;
 import org.xmlvm.XMLVMSkeletonOnly;
 import org.xmlvm.iphone.internal.Simulator;
 import org.xmlvm.iphone.internal.SimulatorDesktop;
@@ -144,7 +145,7 @@ public class UIApplication extends UIResponder {
         }
     }
     
-    @XMLVMSkeletonOnly
+    @XMLVMIgnore
     private static class AppDidFinishLaunchingClosure implements Runnable {
         @Override
         public void run() {

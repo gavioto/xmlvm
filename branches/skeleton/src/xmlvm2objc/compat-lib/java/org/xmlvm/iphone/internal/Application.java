@@ -23,9 +23,9 @@ package org.xmlvm.iphone.internal;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-import org.xmlvm.XMLVMSkeletonOnly;
+import org.xmlvm.XMLVMIgnore;
 
-@XMLVMSkeletonOnly
+@XMLVMIgnore
 public class Application implements Runnable {
 
     private String appl;

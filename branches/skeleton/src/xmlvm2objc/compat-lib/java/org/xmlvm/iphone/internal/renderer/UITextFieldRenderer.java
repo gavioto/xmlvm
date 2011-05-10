@@ -31,15 +31,14 @@ import java.awt.Shape;
 import java.awt.geom.Rectangle2D;
 import java.awt.geom.RoundRectangle2D;
 
-import org.xmlvm.XMLVMSkeletonOnly;
+import org.xmlvm.XMLVMIgnore;
 import org.xmlvm.iphone.CGRect;
-
 import org.xmlvm.iphone.CGSize;
 import org.xmlvm.iphone.UILineBreakMode;
 import org.xmlvm.iphone.UITextBorderStyle;
 import org.xmlvm.iphone.UITextField;
 
-@XMLVMSkeletonOnly
+@XMLVMIgnore
 public class UITextFieldRenderer extends UITextRenderer<UITextField> {
 
     private static final Insets INSETS           = new Insets(1, 8, 1, 8);

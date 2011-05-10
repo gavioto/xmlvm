@@ -22,14 +22,14 @@ package org.xmlvm.iphone.internal.renderer;
 
 import java.awt.Graphics2D;
 
-import org.xmlvm.XMLVMSkeletonOnly;
+import org.xmlvm.XMLVMIgnore;
 import org.xmlvm.iphone.CGRect;
 import org.xmlvm.iphone.UIColor;
 import org.xmlvm.iphone.UIGraphics;
 import org.xmlvm.iphone.UIView;
 import org.xmlvm.iphone.internal.UIGenericBarHelper;
 
-@XMLVMSkeletonOnly
+@XMLVMIgnore
 public class UIToolbarRenderer extends UIViewRenderer {
 
     public final static int      HEIGHT_NOPROMT   = 44;

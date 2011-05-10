@@ -20,12 +20,13 @@
 
 package org.xmlvm.iphone;
 
+import org.xmlvm.XMLVMIgnore;
 import org.xmlvm.XMLVMSkeletonOnly;
 
 @XMLVMSkeletonOnly
 public class NSTimer extends NSObject {
     
-    @XMLVMSkeletonOnly
+    @XMLVMIgnore
     private class ThreadInstance extends Thread {
         @Override
         @SuppressWarnings( { "SleepWhileHoldingLock", "SleepWhileInLoop" })

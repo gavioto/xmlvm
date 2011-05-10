@@ -24,11 +24,11 @@ import java.awt.Color;
 import java.awt.GradientPaint;
 import java.awt.Paint;
 
-import org.xmlvm.XMLVMSkeletonOnly;
+import org.xmlvm.XMLVMIgnore;
 import org.xmlvm.iphone.CGRect;
 import org.xmlvm.iphone.UIColor;
 
-@XMLVMSkeletonOnly
+@XMLVMIgnore
 public class RendererUtilities {
 
     private final static float BRIGHTNESS = 1.3f;

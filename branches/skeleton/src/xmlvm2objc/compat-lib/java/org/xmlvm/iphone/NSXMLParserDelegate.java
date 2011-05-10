@@ -30,7 +30,7 @@ import org.xmlvm.XMLVMSkeletonOnly;
 @XMLVMSkeletonOnly
 public class NSXMLParserDelegate extends NSObject {
 
-    @XMLVMSkeletonOnly
+    @XMLVMIgnore
     private class DefaultHandlerInstance extends DefaultHandler {
         @Override
         @XMLVMIgnore

@@ -24,9 +24,9 @@ import java.nio.ByteBuffer;
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 
-import org.xmlvm.XMLVMSkeletonOnly;
+import org.xmlvm.XMLVMIgnore;
 
-@XMLVMSkeletonOnly
+@XMLVMIgnore
 public class BufferUtils {
 
     public static ByteBuffer createByteBuffer(int size) {

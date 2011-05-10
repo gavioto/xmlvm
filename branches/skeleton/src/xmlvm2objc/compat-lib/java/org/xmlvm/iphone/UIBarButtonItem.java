@@ -23,6 +23,7 @@ package org.xmlvm.iphone;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.xmlvm.XMLVMIgnore;
 import org.xmlvm.XMLVMSkeletonOnly;
 import org.xmlvm.iphone.internal.UIBarButtonItemView;
 import org.xmlvm.iphone.internal.renderer.UIBarButtonItemRenderer;
@@ -30,7 +31,7 @@ import org.xmlvm.iphone.internal.renderer.UIButtonRenderer;
 
 @XMLVMSkeletonOnly
 public class UIBarButtonItem extends UIBarItem {
-    @XMLVMSkeletonOnly
+    @XMLVMIgnore
     private class UIControlDelegateInstance implements UIControlDelegate {
         private final UIBarButtonItemDelegate action;
         

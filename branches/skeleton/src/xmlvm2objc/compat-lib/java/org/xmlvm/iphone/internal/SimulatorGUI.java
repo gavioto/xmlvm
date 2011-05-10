@@ -23,12 +23,13 @@ package org.xmlvm.iphone.internal;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.geom.AffineTransform;
+
 import javax.swing.JPanel;
 
-import org.xmlvm.XMLVMSkeletonOnly;
+import org.xmlvm.XMLVMIgnore;
 import org.xmlvm.iphone.UIView;
 
-@XMLVMSkeletonOnly
+@XMLVMIgnore
 public class SimulatorGUI extends JPanel {
 
     private ImageLoader        imageLoader;

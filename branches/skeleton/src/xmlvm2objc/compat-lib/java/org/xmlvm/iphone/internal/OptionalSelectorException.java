@@ -19,7 +19,7 @@
  */
 package org.xmlvm.iphone.internal;
 
-import org.xmlvm.XMLVMSkeletonOnly;
+import org.xmlvm.XMLVMIgnore;
 
 /**
  * This exception is thrown every time an optional method is called . Since in
@@ -60,7 +60,7 @@ import org.xmlvm.XMLVMSkeletonOnly;
  * }
  * </pre>
  */
-@XMLVMSkeletonOnly
+@XMLVMIgnore
 public class OptionalSelectorException extends NullPointerException {
 
     /**

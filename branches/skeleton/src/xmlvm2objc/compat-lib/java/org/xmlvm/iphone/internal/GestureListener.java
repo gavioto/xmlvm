@@ -20,9 +20,9 @@
 
 package org.xmlvm.iphone.internal;
 
-import org.xmlvm.XMLVMSkeletonOnly;
+import org.xmlvm.XMLVMIgnore;
 
-@XMLVMSkeletonOnly
+@XMLVMIgnore
 public interface GestureListener {
 
     public void gestureDragged(int dx, int dy);

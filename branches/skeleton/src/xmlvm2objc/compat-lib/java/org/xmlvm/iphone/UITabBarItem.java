@@ -26,7 +26,7 @@ import org.xmlvm.iphone.internal.UITabBarItemView;
 
 @XMLVMSkeletonOnly
 public class UITabBarItem extends UIBarItem {
-    @XMLVMSkeletonOnly
+    @XMLVMIgnore
     private class UIControlDelegateInstance implements UIControlDelegate {
         @Override
         public void raiseEvent(UIControl sender, int eventType) {

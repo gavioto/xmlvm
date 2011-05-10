@@ -25,12 +25,13 @@ import java.lang.reflect.Method;
 
 import javax.swing.SwingUtilities;
 
+import org.xmlvm.XMLVMIgnore;
 import org.xmlvm.XMLVMSkeletonOnly;
 
 @XMLVMSkeletonOnly
 public class NSObject {
 
-    @XMLVMSkeletonOnly
+    @XMLVMIgnore
     private static class RunnableInstance implements Runnable {
         private final Object target;
         private final String method;

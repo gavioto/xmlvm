@@ -25,14 +25,14 @@ import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.xmlvm.XMLVMSkeletonOnly;
+import org.xmlvm.XMLVMIgnore;
 import org.xmlvm.iphone.CGRect;
 import org.xmlvm.iphone.UIGraphics;
 import org.xmlvm.iphone.UIPreferencesTable;
 import org.xmlvm.iphone.UIPreferencesTableCell;
 import org.xmlvm.iphone.UIPreferencesTableDataSource;
 
-@XMLVMSkeletonOnly
+@XMLVMIgnore
 public class UIPreferencesTableRenderer extends UIViewRenderer<UIPreferencesTable> {
 
     private List<CGRect> groupFrames;

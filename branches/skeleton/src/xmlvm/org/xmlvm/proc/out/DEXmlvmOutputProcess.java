@@ -42,10 +42,10 @@ import org.jdom.Namespace;
 import org.xmlvm.Log;
 import org.xmlvm.main.Arguments;
 import org.xmlvm.main.Targets;
-import org.xmlvm.proc.DelayedXmlvmSerializationProvider;
-import org.xmlvm.proc.ResourceCache;
 import org.xmlvm.proc.BundlePhase1;
 import org.xmlvm.proc.BundlePhase2;
+import org.xmlvm.proc.DelayedXmlvmSerializationProvider;
+import org.xmlvm.proc.ResourceCache;
 import org.xmlvm.proc.XmlvmProcessImpl;
 import org.xmlvm.proc.XmlvmResource;
 import org.xmlvm.proc.XmlvmResource.Tag;
@@ -347,6 +347,11 @@ public class DEXmlvmOutputProcess extends XmlvmProcessImpl {
         // we expect the class to be a library class. Hence, it must be in the
         // green class list. If it's not, we discard it.
         if (noGenRedClass && isRedType(packagePlusClassName)) {
+            return null;
+        }
+
+        // If the class has the XMLVMIgnore annotation, it will be skipped.
+        if (hasIgnoreAnnotation(directClassFile.getAttributes())) {
             return null;
         }
 
@@ -1535,31 +1540,25 @@ public class DEXmlvmOutputProcess extends XmlvmProcessImpl {
     }
 
     /**
-     * Returns true if annotation {@link org.xmlvm.XMLVMIgnore} is found.
-     */
-    private static boolean hasIgnoreAnnotation(AttributeList attrs) {
-        BaseAnnotations a = (BaseAnnotations) attrs
-                .findFirst(AttRuntimeInvisibleAnnotations.ATTRIBUTE_NAME);
-        if (a != null) {
-            for (Annotation an : a.getAnnotations().getAnnotations()) {
-                if (an.getType().getClassType().getClassName().equals("org/xmlvm/XMLVMIgnore")) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
-    /**
      * Returns true if annotation {@link org.xmlvm.XMLVMSkeletonOnly} is found.
      */
     private static boolean hasSkeletonOnlyAnnotation(AttributeList attrs) {
+        return hasAnnotation(attrs, "org/xmlvm/XMLVMSkeletonOnly");
+    }
+
+    /**
+     * Returns true if annotation {@link org.xmlvm.XMLVMIgnore} is found.
+     */
+    private static boolean hasIgnoreAnnotation(AttributeList attrs) {
+        return hasAnnotation(attrs, "org/xmlvm/XMLVMIgnore");
+    }
+
+    private static boolean hasAnnotation(AttributeList attrs, String annotationName) {
         BaseAnnotations a = (BaseAnnotations) attrs
                 .findFirst(AttRuntimeInvisibleAnnotations.ATTRIBUTE_NAME);
         if (a != null) {
             for (Annotation an : a.getAnnotations().getAnnotations()) {
-                if (an.getType().getClassType().getClassName()
-                        .equals("org/xmlvm/XMLVMSkeletonOnly")) {
+                if (an.getType().getClassType().getClassName().equals(annotationName)) {
                     return true;
                 }
             }

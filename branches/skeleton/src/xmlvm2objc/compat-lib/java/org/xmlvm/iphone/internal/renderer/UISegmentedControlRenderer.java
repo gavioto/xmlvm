@@ -27,13 +27,13 @@ import java.awt.GradientPaint;
 import java.awt.Graphics2D;
 import java.awt.Shape;
 
-import org.xmlvm.XMLVMSkeletonOnly;
+import org.xmlvm.XMLVMIgnore;
 import org.xmlvm.iphone.CGRect;
 import org.xmlvm.iphone.UIGraphics;
 import org.xmlvm.iphone.UISegmentedControl;
 import org.xmlvm.iphone.UISegmentedControlStyle;
 
-@XMLVMSkeletonOnly
+@XMLVMIgnore
 public class UISegmentedControlRenderer extends UIViewRenderer<UISegmentedControl> {
 
     private static Font      FONT_DEFAULT = new Font("Arial", Font.BOLD, 18);

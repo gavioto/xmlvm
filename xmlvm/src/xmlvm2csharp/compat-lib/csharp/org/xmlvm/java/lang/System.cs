@@ -11,12 +11,6 @@ static System() {
 
 public static org.xmlvm.java.io.PrintStream _fout;
 
-public static void @static(){
-//XMLVM_BEGIN_WRAPPER[org.xmlvm.java.lang.System: void <clinit>()]
-	_fout = new SystemPrintStream();
-//XMLVM_END_WRAPPER[org.xmlvm.java.lang.System: void <clinit>()]
-}
-
 public new void @this(){
 //XMLVM_BEGIN_WRAPPER[org.xmlvm.java.lang.System: void <init>()]
 //XMLVM_END_WRAPPER[org.xmlvm.java.lang.System: void <init>()]
@@ -27,6 +21,12 @@ public static void arraycopy(org.xmlvm.java.lang.Object n1, int n2, org.xmlvm.ja
         // global::System.Array.Copy(n1, n2, n3, n4, n5);
 	throw new NotYetImplementedException();
 //XMLVM_END_WRAPPER[org.xmlvm.java.lang.System: void arraycopy(org.xmlvm.java.lang.Object, int, org.xmlvm.java.lang.Object, int, int)]
+}
+
+public static new void @static(){
+//XMLVM_BEGIN_WRAPPER[org.xmlvm.java.lang.System: void <clinit>()]
+	_fout = new SystemPrintStream();
+//XMLVM_END_WRAPPER[org.xmlvm.java.lang.System: void <clinit>()]
 }
 
 //XMLVM_BEGIN_WRAPPER[org.xmlvm.java.lang.System]

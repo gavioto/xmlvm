@@ -23,6 +23,7 @@ package org.xmlvm.test;
 public class ValueTypeTest {
     public static final float f2 = 5.67f;
     public static final float f3 = 1f/3;
+    public static final char EMPTY_CHAR = ' ';
 
     public static void main(String[] args) {
 	float f = 4.0f;
@@ -39,5 +40,6 @@ public class ValueTypeTest {
 	System.out.println(l);
 	System.out.println(f2);
 	System.out.println(f3);
+	//System.out.println(EMPTY_CHAR);
     }
 }

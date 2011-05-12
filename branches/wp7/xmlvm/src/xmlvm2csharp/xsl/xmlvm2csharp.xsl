@@ -387,28 +387,13 @@
 	</xsl:when>
 	<xsl:otherwise>
 	  <xsl:text> = </xsl:text>
-	  <xsl:if test="@type='float'">
-	    <xsl:text>(float)</xsl:text>
-	  </xsl:if>
-	  <xsl:value-of select="@value"/>
-	  <xsl:choose>
-	    <xsl:when test="@type='float'">
-	      <xsl:text>D</xsl:text>
-	    </xsl:when>
-	    <xsl:when test="@type='double'">
-	      <xsl:text>D</xsl:text>
-	    </xsl:when>
-	    <xsl:when test="@type='long'">
-	      <xsl:text>L</xsl:text>
-	    </xsl:when>
-	  </xsl:choose>
+	  <xsl:value-of select="vm:get-native-value(@value,@type)"/>
 	</xsl:otherwise>
       </xsl:choose>
     </xsl:if>
     <xsl:text>;&nl;&nl;</xsl:text>
   </xsl:if>
 </xsl:template>
-
 
 <xsl:template match="vm:method">
   <xsl:if test="not(vm:is-red-duplicate(.)) 
@@ -528,6 +513,86 @@
   </xsl:choose>
 </xsl:function>
 
+<xsl:function name="vm:get-reg-value" as="xs:string">
+  <xsl:param name="value" as="xs:string"/>
+  <xsl:param name="type" as="xs:string"/>
+  <xsl:value-of select="vm:get-value-helper($value,$type,false())"/>
+</xsl:function>
+
+<xsl:function name="vm:get-native-value" as="xs:string">
+  <xsl:param name="value" as="xs:string"/>
+  <xsl:param name="type" as="xs:string"/>
+  <xsl:value-of select="vm:get-value-helper($value,$type,true())"/>
+</xsl:function>
+
+<xsl:function name="vm:get-value-helper" as="xs:string">
+  <xsl:param name="value" as="xs:string"/>
+  <xsl:param name="type" as="xs:string"/>
+  <xsl:param name="is-native" as="xs:boolean"/>
+  <xsl:variable name="valSuffix" as="xs:string">
+    <xsl:choose>
+      <xsl:when test="$type='float'">
+	<xsl:text>D</xsl:text>
+      </xsl:when>
+      <xsl:when test="$type='double'">
+	<xsl:text>D</xsl:text>
+      </xsl:when>
+      <xsl:when test="$type='long'">
+	<xsl:text>L</xsl:text>
+      </xsl:when>
+      <xsl:when test="$type='boolean' and $is-native">
+	<xsl:text>!=0</xsl:text>
+      </xsl:when>
+      <xsl:otherwise>
+	<xsl:value-of select="''"/>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:variable>
+  <xsl:variable name="valCast" as="xs:string">
+    <xsl:choose>
+      <xsl:when test="$type='float'">
+	<xsl:text>(float)</xsl:text>
+      </xsl:when>
+      <xsl:when test="$type='char' and $is-native">
+	<xsl:text>(char)</xsl:text>
+      </xsl:when>
+      <xsl:when test="$type='char' and $is-native">
+	<!-- this is kinda redundant, but is left for clarity -->
+	<xsl:text>(int)</xsl:text>
+      </xsl:when>
+      <xsl:otherwise>
+	<xsl:value-of select="''"/>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:variable>
+  <!-- 
+     return concat of $valCast $value and $valSuffix, 
+     unless it is a special value (NaN, infinities, etc):
+  -->
+  <xsl:choose>
+    <xsl:when test="$value='Infinity' and $type='float'">
+      <xsl:text>global::System.Single.PositiveInfinity</xsl:text>
+    </xsl:when>
+    <xsl:when test="$value='Infinity' and $type='double'">
+      <xsl:text>global::System.Double.PositiveInfinity</xsl:text>
+    </xsl:when>
+    <xsl:when test="$value='-Infinity' and $type='float'">
+      <xsl:text>global::System.Single.NegativeInfinity</xsl:text>
+    </xsl:when>
+    <xsl:when test="$value='-Infinity' and $type='double'">
+      <xsl:text>global::System.Double.NegativeInfinity</xsl:text>
+    </xsl:when>
+    <xsl:when test="$value='NaN' and $type='float'">
+      <xsl:text>global::System.Single.NaN</xsl:text>
+    </xsl:when>
+    <xsl:when test="$value='NaN' and $type='double'">
+      <xsl:text>global::System.Double.NaN</xsl:text>
+    </xsl:when>
+    <xsl:otherwise>
+      <xsl:value-of select="fn:concat($valCast, $value, $valSuffix)"/>
+    </xsl:otherwise>
+  </xsl:choose>
+</xsl:function>
 
 <!-- checks whether the given string is a csharp reserved word -->
 <xsl:function name="vm:is-keyword" as="xs:boolean">
@@ -2115,50 +2180,14 @@
 
 
 <xsl:template match="dex:const|dex:const-4|dex:const-16|dex:const-wide|dex:const-wide-16|dex:const-wide-32|dex:const-high16|dex:const-wide-high16"> 
-	<xsl:text>    </xsl:text>
-	<xsl:call-template name="emit-register-name">
-		<xsl:with-param name="num" select="@vx"/>
-		<xsl:with-param name="type" select="@type"/>
-	</xsl:call-template> 
-	<xsl:text> = </xsl:text>
-	<xsl:if test="@type='float'">
-	  <xsl:value-of select="'(float)'"/>
-	</xsl:if>
-	<xsl:choose>
-	  <xsl:when test="@value='Infinity' and @type='float'">
-	    <xsl:text>global::System.Single.PositiveInfinity</xsl:text>
-	  </xsl:when>
-	  <xsl:when test="@value='Infinity' and @type='double'">
-	    <xsl:text>global::System.Double.PositiveInfinity</xsl:text>
-	  </xsl:when>
-	  <xsl:when test="@value='-Infinity' and @type='float'">
-	    <xsl:text>global::System.Single.NegativeInfinity</xsl:text>
-	  </xsl:when>
-	  <xsl:when test="@value='-Infinity' and @type='double'">
-	    <xsl:text>global::System.Double.NegativeInfinity</xsl:text>
-	  </xsl:when>
-	  <xsl:when test="@value='NaN' and @type='float'">
-	    <xsl:text>global::System.Single.NaN</xsl:text>
-	  </xsl:when>
-	  <xsl:when test="@value='NaN' and @type='double'">
-	    <xsl:text>global::System.Double.NaN</xsl:text>
-	  </xsl:when>
-	  <xsl:otherwise>
-	    <xsl:value-of select="@value"/>
-	    <xsl:choose>
-	      <xsl:when test="@type='float'">
-		<xsl:text>D</xsl:text>
-	      </xsl:when>
-	      <xsl:when test="@type='double'">
-		<xsl:text>D</xsl:text>
-	      </xsl:when>
-	      <xsl:when test="@type='long'">
-		<xsl:text>L</xsl:text>
-	      </xsl:when>
-	    </xsl:choose>
-	  </xsl:otherwise>
-	</xsl:choose>
-	<xs:text>;&nl;</xs:text>
+  <xsl:text>    </xsl:text>
+  <xsl:call-template name="emit-register-name">
+    <xsl:with-param name="num" select="@vx"/>
+    <xsl:with-param name="type" select="@type"/>
+  </xsl:call-template> 
+  <xsl:text> = </xsl:text>
+  <xsl:value-of select="vm:get-reg-value(@value,@type)"/>
+  <xs:text>;&nl;</xs:text>
 </xsl:template>
 
 <xsl:function name="vm:octToHex" as="xs:string">
@@ -3181,26 +3210,10 @@
 
 <xsl:template match="dex:fill-array-data">
   <xsl:variable name="base-type" select="vm:get-array-base-type(@vx-type)"/>
-  <xsl:variable name="valSuffix">
-    <xsl:choose>
-      <xsl:when test="$base-type='float'">
-	<xsl:text>D</xsl:text>
-      </xsl:when>
-      <xsl:when test="$base-type='double'">
-	<xsl:text>D</xsl:text>
-      </xsl:when>
-      <xsl:when test="$base-type='long'">
-	<xsl:text>L</xsl:text>
-      </xsl:when>
-    </xsl:choose>
-  </xsl:variable>
   <xsl:variable name="arrayInitializer">
     <xsl:text>[]{</xsl:text>
     <xsl:for-each select="dex:constant">
-      <xsl:value-of select="fn:concat(if ($base-type='float')
-			               then '(float)'
-				       else '',
-				       @value, $valSuffix)"/>
+      <xsl:value-of select="vm:get-native-value(@value,$base-type)"/>
       <xsl:if test="not(position()=last())">
 	<xsl:text>, </xsl:text>
       </xsl:if>

@@ -334,7 +334,6 @@ int main(int argc, char* argv[])
 
     <!-- Emit declarations for all methods -->
     <xsl:for-each select="vm:method">
-      <xsl:if test="vm:shouldGenerateCodeForMethod(.)">
         <xsl:if test="@vtableIndex">
           <xsl:text>// Vtable index: </xsl:text>
           <xsl:value-of select="@vtableIndex"/>
@@ -344,7 +343,6 @@ int main(int argc, char* argv[])
           <xsl:with-param name="forDeclaration" select="1"/>
         </xsl:call-template>
         <xsl:text>;&nl;</xsl:text>
-      </xsl:if>
     </xsl:for-each>
 </xsl:template>
 
@@ -947,7 +945,7 @@ int main(int argc, char* argv[])
     </xsl:for-each>
     
     <xsl:for-each select="vm:method">
-      <xsl:if test="vm:shouldGenerateCodeForMethod(.) and not(../.[@isInterface = 'true'] or @isAbstract = 'true')">
+      <xsl:if test="not(../.[@isInterface = 'true'] or @isAbstract = 'true')">
         <xsl:if test="@isNative = 'true'">
           <xsl:text>//XMLVM_NATIVE[</xsl:text>
         </xsl:if>

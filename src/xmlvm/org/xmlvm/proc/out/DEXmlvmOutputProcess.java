@@ -527,6 +527,10 @@ public class DEXmlvmOutputProcess extends XmlvmProcessImpl {
         Element classElement = processClass(cf, root, referencedTypes);
         processFields(cf.getFields(), classElement, skeletonOnly);
 
+        if (cf.getThisClass().getClassType().getClassName().contains("UIImage")) {
+            System.out.println("Breakpoint.");
+        }
+
         MethodList methods = cf.getMethods();
         int sz = methods.size();
 
@@ -721,11 +725,6 @@ public class DEXmlvmOutputProcess extends XmlvmProcessImpl {
         // Create XMLVM element for this method
         Element methodElement = new Element("method", NS_XMLVM);
         methodElement.setAttribute("name", method.getName().getString());
-        if (skeletonOnly) {
-            methodElement.setAttribute("noImplementation", "true");
-            // TODO(Sascha): Get the return type for this method.
-            methodElement.setAttribute("createReturnOfType", "TODO");
-        }
         classElement.addContent(methodElement);
 
         // Set the access flag attributes for this method.
@@ -738,161 +737,169 @@ public class DEXmlvmOutputProcess extends XmlvmProcessImpl {
         Element codeElement = new Element("code", NS_DEX);
         methodElement.addContent(codeElement);
 
+        // For skeleton-only classes we don't generate instructions.
+        if (skeletonOnly) {
+            methodElement.setAttribute("noImplementation", "true");
+            // TODO(Sascha): Get the return type for this method.
+            methodElement.setAttribute("createReturnOfType", "TODO");
+            return;
+        }
+
+        // Native and abstract methods don't have an implementation.
         if (isNative || isAbstract) {
-            // There's no code for native or abstract methods.
-        } else {
-            ConcreteMethod concrete = new ConcreteMethod(method, cf,
-                    (positionInfo != PositionList.NONE), localInfo);
+            return;
+        }
 
-            TranslationAdvice advice = DexTranslationAdvice.THE_ONE;
+        ConcreteMethod concrete = new ConcreteMethod(method, cf,
+                (positionInfo != PositionList.NONE), localInfo);
 
-            RopMethod rmeth = Ropper.convert(concrete, advice);
-            int paramSize = meth.getParameterWordCount(isStatic);
+        TranslationAdvice advice = DexTranslationAdvice.THE_ONE;
 
-            String canonicalName = method.getDefiningClass().getClassType().getDescriptor() + "."
-                    + method.getName().getString();
-            if (LOTS_OF_DEBUG) {
-                System.out.println("\n\nMethod: " + canonicalName);
+        RopMethod rmeth = Ropper.convert(concrete, advice);
+        int paramSize = meth.getParameterWordCount(isStatic);
+
+        String canonicalName = method.getDefiningClass().getClassType().getDescriptor() + "."
+                + method.getName().getString();
+        if (LOTS_OF_DEBUG) {
+            System.out.println("\n\nMethod: " + canonicalName);
+        }
+
+        // Optimize
+        rmeth = Optimizer.optimize(rmeth, paramSize, isStatic, localInfo, advice);
+
+        LocalVariableInfo locals = null;
+
+        if (localInfo) {
+            locals = LocalVariableExtractor.extract(rmeth);
+        }
+
+        DalvCode code = RopTranslator.translate(rmeth, positionInfo, locals, paramSize);
+        DalvCode.AssignIndicesCallback callback = new DalvCode.AssignIndicesCallback() {
+            public int getIndex(Constant cst) {
+                // Everything is at index 0!
+                return 0;
+            }
+        };
+        code.assignIndices(callback);
+
+        DalvInsnList instructions = code.getInsns();
+        codeElement.setAttribute("register-size", String.valueOf(instructions.getRegistersSize()));
+        processLocals(instructions.getRegistersSize(), isStatic,
+                parseClassName(cf.getThisClass().getClassType().getClassName()).toString(), meth
+                        .getPrototype().getParameterTypes(), codeElement);
+        Map<Integer, SwitchData> switchDataBlocks = extractSwitchData(instructions);
+        Map<Integer, ArrayData> arrayData = extractArrayData(instructions);
+        CatchTable catches = code.getCatches();
+        processCatchTable(catches, codeElement);
+        Map<Integer, Target> targets = extractTargets(instructions, catches);
+
+        // For each entry in the catch table, we create a try-catch element,
+        // including the try and all the catch children and append it to the
+        // code element. We store the try elements in a list, in order to
+        // append the matching instructions to them as they are processed.
+        List<Element> tryElements = new ArrayList<Element>();
+        Map<Integer, Element> tryCatchElements = new HashMap<Integer, Element>();
+        for (int i = 0; i < catches.size(); ++i) {
+            Element tryCatchElement = new Element("try-catch", NS_DEX);
+            Element tryElement = new Element("try", NS_DEX);
+            tryCatchElement.addContent(tryElement);
+            tryElements.add(tryElement);
+
+            // For each handler create a catch element as the child of the
+            // try-catch element.
+            CatchHandlerList handlers = catches.get(i).getHandlers();
+            for (int j = 0; j < handlers.size(); ++j) {
+                String exceptionType = handlers.get(j).getExceptionType().toHuman();
+
+                // We can remove the exception because a red type exception
+                // will never be created or thrown.
+                // This change is in sync with the one in processCatchTable
+                if (!isRedType(exceptionType)) {
+                    Element catchElement = new Element("catch", NS_DEX);
+                    catchElement.setAttribute("exception-type", exceptionType);
+                    catchElement.setAttribute("target",
+                            String.valueOf(handlers.get(j).getHandler()));
+                    tryCatchElement.addContent(catchElement);
+                }
+            }
+            tryCatchElements.put(catches.get(i).getStart(), tryCatchElement);
+        }
+
+        Element lastTryCatchElement = null;
+
+        // Used inside processInstruction to mark source file lines as
+        // already added, so they don't get added twice.
+        List<Integer> sourceLinesAlreadyPut = new ArrayList<Integer>();
+        // Process every single instruction of this method. Either add it do
+        // the main code element, or to a try-catch block.
+        for (int i = 0; i < instructions.size(); ++i) {
+            Element instructionParent = codeElement;
+            DalvInsn instruction = instructions.get(i);
+            int address = instruction.getAddress();
+
+            // Determine whether to add the next instruction to the
+            // codeElement or to a try block.
+            Entry currentCatch = null;
+            int tryElementIndex = 0;
+            for (tryElementIndex = 0; tryElementIndex < catches.size(); ++tryElementIndex) {
+                if (isInstructionInCatchRange(instruction, catches.get(tryElementIndex))) {
+                    instructionParent = tryElements.get(tryElementIndex);
+                    currentCatch = catches.get(tryElementIndex);
+                    break;
+                }
             }
 
-            // Optimize
-            rmeth = Optimizer.optimize(rmeth, paramSize, isStatic, localInfo, advice);
+            // Adds a label element for each target we extracted earlier.
+            if (targets.containsKey(address)) {
+                Element labelElement = new Element("label", NS_DEX);
+                labelElement.setAttribute("id", String.valueOf(address));
 
-            LocalVariableInfo locals = null;
+                if (currentCatch != null) {
+                    // Labels at the beginning of a try block need to be
+                    // moved in front of it.
+                    if (currentCatch.getStart() == address) {
+                        codeElement.addContent(labelElement);
+                    } else if (targets.get(address).requiresSplit) {
+                        // If we got here, it means that there is a target,
+                        // that is a catch-handler target and it is inside a
+                        // try block. We have to avoid this. So the way we
+                        // solve it is by splitting up the try block into
+                        // two, and adding the label in between.
 
-            if (localInfo) {
-                locals = LocalVariableExtractor.extract(rmeth);
-            }
+                        // First, add the label to the codeElement, so that
+                        // it is outside the try-catch block.
+                        codeElement.addContent(labelElement);
 
-            DalvCode code = RopTranslator.translate(rmeth, positionInfo, locals, paramSize);
-            DalvCode.AssignIndicesCallback callback = new DalvCode.AssignIndicesCallback() {
-                public int getIndex(Constant cst) {
-                    // Everything is at index 0!
-                    return 0;
-                }
-            };
-            code.assignIndices(callback);
-
-            DalvInsnList instructions = code.getInsns();
-            codeElement.setAttribute("register-size",
-                    String.valueOf(instructions.getRegistersSize()));
-            processLocals(instructions.getRegistersSize(), isStatic,
-                    parseClassName(cf.getThisClass().getClassType().getClassName()).toString(),
-                    meth.getPrototype().getParameterTypes(), codeElement);
-            Map<Integer, SwitchData> switchDataBlocks = extractSwitchData(instructions);
-            Map<Integer, ArrayData> arrayData = extractArrayData(instructions);
-            CatchTable catches = code.getCatches();
-            processCatchTable(catches, codeElement);
-            Map<Integer, Target> targets = extractTargets(instructions, catches);
-
-            // For each entry in the catch table, we create a try-catch element,
-            // including the try and all the catch children and append it to the
-            // code element. We store the try elements in a list, in order to
-            // append the matching instructions to them as they are processed.
-            List<Element> tryElements = new ArrayList<Element>();
-            Map<Integer, Element> tryCatchElements = new HashMap<Integer, Element>();
-            for (int i = 0; i < catches.size(); ++i) {
-                Element tryCatchElement = new Element("try-catch", NS_DEX);
-                Element tryElement = new Element("try", NS_DEX);
-                tryCatchElement.addContent(tryElement);
-                tryElements.add(tryElement);
-
-                // For each handler create a catch element as the child of the
-                // try-catch element.
-                CatchHandlerList handlers = catches.get(i).getHandlers();
-                for (int j = 0; j < handlers.size(); ++j) {
-                    String exceptionType = handlers.get(j).getExceptionType().toHuman();
-
-                    // We can remove the exception because a red type exception
-                    // will never be created or thrown.
-                    // This change is in sync with the one in processCatchTable
-                    if (!isRedType(exceptionType)) {
-                        Element catchElement = new Element("catch", NS_DEX);
-                        catchElement.setAttribute("exception-type", exceptionType);
-                        catchElement.setAttribute("target",
-                                String.valueOf(handlers.get(j).getHandler()));
-                        tryCatchElement.addContent(catchElement);
-                    }
-                }
-                tryCatchElements.put(catches.get(i).getStart(), tryCatchElement);
-            }
-
-            Element lastTryCatchElement = null;
-
-            // Used inside processInstruction to mark source file lines as
-            // already added, so they don't get added twice.
-            List<Integer> sourceLinesAlreadyPut = new ArrayList<Integer>();
-            // Process every single instruction of this method. Either add it do
-            // the main code element, or to a try-catch block.
-            for (int i = 0; i < instructions.size(); ++i) {
-                Element instructionParent = codeElement;
-                DalvInsn instruction = instructions.get(i);
-                int address = instruction.getAddress();
-
-                // Determine whether to add the next instruction to the
-                // codeElement or to a try block.
-                Entry currentCatch = null;
-                int tryElementIndex = 0;
-                for (tryElementIndex = 0; tryElementIndex < catches.size(); ++tryElementIndex) {
-                    if (isInstructionInCatchRange(instruction, catches.get(tryElementIndex))) {
-                        instructionParent = tryElements.get(tryElementIndex);
-                        currentCatch = catches.get(tryElementIndex);
-                        break;
-                    }
-                }
-
-                // Adds a label element for each target we extracted earlier.
-                if (targets.containsKey(address)) {
-                    Element labelElement = new Element("label", NS_DEX);
-                    labelElement.setAttribute("id", String.valueOf(address));
-
-                    if (currentCatch != null) {
-                        // Labels at the beginning of a try block need to be
-                        // moved in front of it.
-                        if (currentCatch.getStart() == address) {
-                            codeElement.addContent(labelElement);
-                        } else if (targets.get(address).requiresSplit) {
-                            // If we got here, it means that there is a target,
-                            // that is a catch-handler target and it is inside a
-                            // try block. We have to avoid this. So the way we
-                            // solve it is by splitting up the try block into
-                            // two, and adding the label in between.
-
-                            // First, add the label to the codeElement, so that
-                            // it is outside the try-catch block.
-                            codeElement.addContent(labelElement);
-
-                            // Then, make a copy of the previous try-catch
-                            // block, make sure its try block is empty and add
-                            // it. Then replace the previous try element in the
-                            // list so the next instructions can be added to it
-                            // instead of the previous one.
-                            Element secondTryCatchElement = (Element) lastTryCatchElement.clone();
-                            Element secondTry = secondTryCatchElement.getChild("try", NS_DEX);
-                            secondTry.removeContent();
-                            codeElement.addContent(secondTryCatchElement);
-                            tryElements.set(tryElementIndex, secondTry);
-                        } else {
-                            instructionParent.addContent(labelElement);
-                        }
+                        // Then, make a copy of the previous try-catch
+                        // block, make sure its try block is empty and add
+                        // it. Then replace the previous try element in the
+                        // list so the next instructions can be added to it
+                        // instead of the previous one.
+                        Element secondTryCatchElement = (Element) lastTryCatchElement.clone();
+                        Element secondTry = secondTryCatchElement.getChild("try", NS_DEX);
+                        secondTry.removeContent();
+                        codeElement.addContent(secondTryCatchElement);
+                        tryElements.set(tryElementIndex, secondTry);
                     } else {
                         instructionParent.addContent(labelElement);
                     }
-                    targets.remove(address);
+                } else {
+                    instructionParent.addContent(labelElement);
                 }
-
-                // Position the try-catch elements correctly inside the
-                // codeElement.
-                if (tryCatchElements.containsKey(address)) {
-                    Element tryCatchElement = tryCatchElements.get(address);
-                    codeElement.addContent(tryCatchElement);
-                    tryCatchElements.remove(address);
-                    lastTryCatchElement = tryCatchElement;
-                }
-
-                processInstruction(instruction, instructionParent, switchDataBlocks, arrayData,
-                        sourceLinesAlreadyPut, referencedTypes);
+                targets.remove(address);
             }
+
+            // Position the try-catch elements correctly inside the
+            // codeElement.
+            if (tryCatchElements.containsKey(address)) {
+                Element tryCatchElement = tryCatchElements.get(address);
+                codeElement.addContent(tryCatchElement);
+                tryCatchElements.remove(address);
+                lastTryCatchElement = tryCatchElement;
+            }
+
+            processInstruction(instruction, instructionParent, switchDataBlocks, arrayData,
+                    sourceLinesAlreadyPut, referencedTypes);
         }
     }
 

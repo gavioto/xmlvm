@@ -85,7 +85,7 @@ public class ObjectHierarchyHelper {
 
         // Insert all referenced resources
         for (XmlvmResource resource : resourcePool.values()) {
-            if (resource.hasTag(Tag.SKELETON_ONLY) || resource.getType() == Type.CONST_POOL) {
+            if (resource.getType() == Type.CONST_POOL) {
                 continue;
             }
 

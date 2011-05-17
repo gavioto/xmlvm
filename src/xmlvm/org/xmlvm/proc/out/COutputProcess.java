@@ -33,14 +33,13 @@ import org.jdom.Document;
 import org.jdom.Element;
 import org.xmlvm.Log;
 import org.xmlvm.main.Arguments;
-import org.xmlvm.proc.NativeResourceLoader;
 import org.xmlvm.proc.BundlePhase1;
 import org.xmlvm.proc.BundlePhase2;
+import org.xmlvm.proc.NativeResourceLoader;
 import org.xmlvm.proc.XmlvmProcessImpl;
 import org.xmlvm.proc.XmlvmResource;
-import org.xmlvm.proc.XmlvmResource.Tag;
-import org.xmlvm.proc.XsltRunner;
 import org.xmlvm.proc.XmlvmResource.Type;
+import org.xmlvm.proc.XsltRunner;
 import org.xmlvm.util.universalfile.UniversalFile;
 import org.xmlvm.util.universalfile.UniversalFileCreator;
 
@@ -110,7 +109,7 @@ public class COutputProcess extends XmlvmProcessImpl {
         // Process all collected resources.
         for (XmlvmResource xmlvm : resourcePool.values()) {
             OutputFile[] files;
-            if (!xmlvm.hasTag(Tag.SKELETON_ONLY) && xmlvm.getType() == Type.CONST_POOL) {
+            if (xmlvm.getType() == Type.CONST_POOL) {
                 files = genConstantPool(xmlvm);
             } else {
                 files = genC(xmlvm);
@@ -175,8 +174,7 @@ public class COutputProcess extends XmlvmProcessImpl {
 
         StringBuilder headerBuffer = new StringBuilder();
         headerBuffer.append("#include \"xmlvm.h\"\n");
-        List<String> typesForHeader = getTypesForHeader(doc.getRootElement(),
-                xmlvm.hasTag(Tag.SKELETON_ONLY));
+        List<String> typesForHeader = getTypesForHeader(doc.getRootElement());
         for (String i : typesForHeader) {
             if (i.equals(inheritsFrom)) {
                 headerBuffer.append("#include \"" + i + ".h\"\n");
@@ -242,7 +240,7 @@ public class COutputProcess extends XmlvmProcessImpl {
         return new OutputFile[] { constPoolFile };
     }
 
-    private List<String> getTypesForHeader(Element node, boolean skeletonOnly) {
+    private List<String> getTypesForHeader(Element node) {
         HashSet<String> seen = new HashSet<String>();
         for (Object o : node.getChildren()) {
             if (!(o instanceof Element)) {
@@ -259,19 +257,6 @@ public class COutputProcess extends XmlvmProcessImpl {
             // Ignore parameter types of invoke instructions
             if (cur.getName().equals("parameters")) {
                 continue;
-            }
-
-            // If we generate a skeleton only, do not collect types for private
-            // fields, private methods or the code-segment of public methods
-            if (skeletonOnly) {
-                String name = cur.getName();
-                if (name.equals("code")) {
-                    continue;
-                }
-                String isPrivate = cur.getAttributeValue("isPrivate");
-                if ((name.equals("method") || name.equals("field")) && isPrivate != null) {
-                    continue;
-                }
             }
 
             Attribute a = cur.getAttribute("type");
@@ -317,7 +302,7 @@ public class COutputProcess extends XmlvmProcessImpl {
                     seen.add(a.getValue());
                 }
             }
-            seen.addAll(getTypesForHeader(cur, skeletonOnly));
+            seen.addAll(getTypesForHeader(cur));
         }
         HashSet<String> bad = new HashSet<String>();
         for (String t : new String[] { "char", "float", "double", "int", "void", "boolean",

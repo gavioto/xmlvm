@@ -280,7 +280,7 @@ public class VtableOutputProcess extends XmlvmProcessImpl {
      * Returns if there should be a vtable entry for the method no matter if
      * it's overridden or abstract. This is used to force a vtable entry for
      * method we want to override in native code but wouldn't usually be allowed
-     * to (e.g. becaues they're final)
+     * to (e.g. because they're final)
      * 
      * @param resource
      *            XmlvmResource containing the method
@@ -301,9 +301,6 @@ public class VtableOutputProcess extends XmlvmProcessImpl {
      */
     private void processVtableInvokes(Collection<XmlvmResource> resources) {
         for (XmlvmResource resource : resources) {
-            if (resource.hasTag(Tag.SKELETON_ONLY)) {
-                continue;
-            }
             List<XmlvmMethod> methods = resource.getMethods();
             for (XmlvmMethod method : methods) {
                 for (XmlvmInvokeInstruction instruction : method.getVtableInvokeInstructions()) {
@@ -407,7 +404,7 @@ public class VtableOutputProcess extends XmlvmProcessImpl {
      */
     private void adjustTypes(Collection<XmlvmResource> resources) {
         for (XmlvmResource resource : resources) {
-            if (resource.hasTag(Tag.SKELETON_ONLY) || resource.getType() == Type.CONST_POOL) {
+            if (resource.getType() == Type.CONST_POOL) {
                 continue;
             }
             List<XmlvmInvokeInstruction> invokeInstructions = new ArrayList<XmlvmInvokeInstruction>();

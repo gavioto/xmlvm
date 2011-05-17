@@ -52,7 +52,7 @@
       <xsl:value-of select="$header"/>
       <xsl:text>"&nl;&nl;</xsl:text>
       <xsl:call-template name="emitImplementation"/>
-      <xsl:if test="vm:class/vm:method/@name = 'main'">
+      <xsl:if test="vm:class/vm:method/@name = 'main' and not(vm:class/@skeletonOnly = 'true')">
         <xsl:call-template name="emitMainMethod"/>
       </xsl:if>
     </xsl:otherwise>

@@ -414,8 +414,21 @@ public class DEXmlvmOutputProcess extends XmlvmProcessImpl {
             }
         }
         addReferences(document, filteredReferencesTypes);
+        
+        // If the class has the XMLVMSkeletonOnly annotation we add it to the
+        // class element, so that the stylesheet can use the information.
+        boolean skeletonOnly = hasSkeletonOnlyAnnotation(directClassFile.getAttributes());
+        if (skeletonOnly) {
+            Element classElement = document.getRootElement().getChild("class",
+                    InstructionProcessor.vm);
+            classElement.setAttribute("skeletonOnly", "true");
+        }
+        
         XmlvmResource resource = new XmlvmResource(Type.DEX, document);
-        if (hasSkeletonOnlyAnnotation(directClassFile.getAttributes())) {
+        
+        // If the class has the XMLVmSkeletonOnly annotation we add a tag to the
+        // resource, so that later processes can use this information.
+        if (skeletonOnly) {
             resource.setTag(Tag.SKELETON_ONLY, "true");
         }
         resources.addResource(resource);

@@ -35,16 +35,20 @@
 #ifdef XMLVM_NO_GC
 
 #define XMLVM_MALLOC(size) malloc(size)
+#define XMLVM_ATOMIC_MALLOC(size) malloc(size)
 #define XMLVM_FREE(pointer) free(pointer)
 #define XMLVM_FINALIZE(me, func)
+#define XMLVM_WEAK_REF(ptr)
 
 #else
 
 #include "gc.h"
 
 #define XMLVM_MALLOC(size) GC_MALLOC(size)
+#define XMLVM_ATOMIC_MALLOC(size) GC_MALLOC_ATOMIC(size)
 #define XMLVM_FREE(pointer) GC_FREE(pointer)
 #define XMLVM_FINALIZE(me, func) GC_REGISTER_FINALIZER ((void *)me, func, (void *)NULL, (GC_finalization_proc *)0, (void * *)0);
+#define XMLVM_WEAK_REF(ptr) GC_register_disappearing_link(ptr)
 
 #endif
 
@@ -62,13 +66,10 @@
 
 void xmlvm_init();
 
-void staticInitializerRecursiveLock(void* tibDefinition);
-void staticInitializerRecursiveUnlock(void* tibDefinition);
+void staticInitializerLock(void* tibDefinition);
+void staticInitializerUnlock(void* tibDefinition);
 
 typedef struct XMLVM_STATIC_INITIALIZER_CONTROLLER {
-    int recursiveLocks; // the number of recursive locks. If only synchronized once, this is 1
-    pthread_t* owningThread; // the thread that owns the lock or null for none
-    pthread_mutex_t* owningThreadMutex; // a mutex locked to check the current thread to see if locking the initMutex is already completed
     pthread_mutex_t* initMutex; // a mutex locked while statically initalizing a class or classes
 } XMLVM_STATIC_INITIALIZER_CONTROLLER;
 
@@ -198,6 +199,7 @@ typedef struct {
 typedef struct __TIB_DEFINITION_##name { \
     int                                 classInitializationBegan; \
     int                                 classInitialized; \
+    JAVA_LONG                           initializerThreadId; \
     Func_V                              classInitializer; \
     const char*                         className; \
     struct __TIB_DEFINITION_TEMPLATE*   extends; \

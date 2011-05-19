@@ -540,10 +540,6 @@ public class DEXmlvmOutputProcess extends XmlvmProcessImpl {
         Element classElement = processClass(cf, root, referencedTypes);
         processFields(cf.getFields(), classElement, skeletonOnly);
 
-        if (cf.getThisClass().getClassType().getClassName().contains("UIImage")) {
-            System.out.println("Breakpoint.");
-        }
-
         MethodList methods = cf.getMethods();
         int sz = methods.size();
 

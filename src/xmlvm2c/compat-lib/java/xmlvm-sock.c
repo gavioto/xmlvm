@@ -32,6 +32,11 @@
 #include "xmlvm-hy.h"
 #include "xmlvm-sock.h"
 
+#include "java_lang_String.h"
+#include "java_io_FileDescriptor.h"
+#include "java_net_InetAddress.h"
+#include "java_net_Inet6Address.h"
+
 
 #define MAX_RETRIES 50
 #define INVALID_SOCKET (hysocket_t) -1
@@ -40,6 +45,172 @@
 /*use a mutex if the gethostbyaddr, gethostbyname calls are not threadsafe*/
 MUTEX hostentLock = PTHREAD_MUTEX_INITIALIZER;
 #endif /*NO_R */
+
+
+static I_32 findError (I_32 errorCode)
+{
+    switch (errorCode)
+    {
+        case HYPORT_ERROR_SOCKET_UNIX_EBADF:
+            return HYPORT_ERROR_SOCKET_BADDESC;
+        case HYPORT_ERROR_SOCKET_UNIX_ENOBUFS:
+            return HYPORT_ERROR_SOCKET_NOBUFFERS;
+        case HYPORT_ERROR_SOCKET_UNIX_EOPNOTSUP:
+            return HYPORT_ERROR_SOCKET_OPNOTSUPP;
+        case HYPORT_ERROR_SOCKET_UNIX_ENOPROTOOPT:
+            return HYPORT_ERROR_SOCKET_OPTUNSUPP;
+        case HYPORT_ERROR_SOCKET_UNIX_EINVAL:
+            return HYPORT_ERROR_SOCKET_SOCKLEVELINVALID;
+        case HYPORT_ERROR_SOCKET_UNIX_ENOTSOCK:
+            return HYPORT_ERROR_SOCKET_NOTSOCK;
+        case HYPORT_ERROR_SOCKET_UNIX_EINTR:
+            return HYPORT_ERROR_SOCKET_INTERRUPTED;
+        case HYPORT_ERROR_SOCKET_UNIX_ENOTCONN:
+            return HYPORT_ERROR_SOCKET_NOTCONNECTED;
+        case HYPORT_ERROR_SOCKET_UNIX_EAFNOSUPPORT:
+            return HYPORT_ERROR_SOCKET_BADAF;
+            /* note: HYPORT_ERROR_SOCKET_UNIX_ECONNRESET not included because it has the same
+             * value as HYPORT_ERROR_SOCKET_UNIX_CONNRESET and they both map to HYPORT_ERROR_SOCKET_CONNRESET */
+        case HYPORT_ERROR_SOCKET_UNIX_CONNRESET:
+            return HYPORT_ERROR_SOCKET_CONNRESET;
+        case HYPORT_ERROR_SOCKET_UNIX_EAGAIN:
+            return HYPORT_ERROR_SOCKET_WOULDBLOCK;
+        case HYPORT_ERROR_SOCKET_UNIX_EPROTONOSUPPORT:
+            return HYPORT_ERROR_SOCKET_BADPROTO;
+        case HYPORT_ERROR_SOCKET_UNIX_EFAULT:
+            return HYPORT_ERROR_SOCKET_ARGSINVALID;
+        case HYPORT_ERROR_SOCKET_UNIX_ETIMEDOUT:
+            return HYPORT_ERROR_SOCKET_TIMEOUT;
+        case HYPORT_ERROR_SOCKET_UNIX_CONNREFUSED:
+            return HYPORT_ERROR_SOCKET_CONNECTION_REFUSED;
+        case HYPORT_ERROR_SOCKET_UNIX_ENETUNREACH:
+            return HYPORT_ERROR_SOCKET_ENETUNREACH;
+        case HYPORT_ERROR_SOCKET_UNIX_EACCES:
+            return HYPORT_ERROR_SOCKET_EACCES;
+        default:
+            return HYPORT_ERROR_SOCKET_OPFAILED;
+    }
+}
+
+
+int harmony_supports_ipv6()
+{
+    return 0;
+}
+
+
+int preferIPv4Stack()
+{
+    return 1;
+}
+
+
+int preferIPv6Addresses()
+{
+    return 0;
+}
+
+
+static socklen_t getAddrLength(hysockaddr_t addr)
+{
+    return
+#if defined(IPv6_FUNCTION_SUPPORT)
+    ((OSSOCKADDR *) & addr->addr)->sin_family == OS_AF_INET6 ?
+    sizeof(OSSOCKADDR_IN6) :
+#endif
+    sizeof(OSSOCKADDR);
+}
+
+
+U_16 hysock_htons(U_16 port)
+{
+    return htons(port);
+}
+
+
+U_16 hysock_ntohs (U_16 val)
+{
+    return ntohs (val);
+}
+
+
+
+I_32 hysock_socketIsValid (hysocket_t handle)
+{
+    return ((handle != NULL) && (handle != INVALID_SOCKET));
+}
+
+
+U_16 hysock_sockaddr_port (hysockaddr_t handle)
+{
+    if (((OSSOCKADDR *) & handle->addr)->sin_family == OS_AF_INET4)
+    {
+        return ((OSSOCKADDR *) & handle->addr)->sin_port;
+    }
+#if defined(IPv6_FUNCTION_SUPPORT)
+    else
+    {
+        return ((OSSOCKADDR_IN6 *) & handle->addr)->sin6_port;
+    }
+#endif
+    
+}
+
+void* getJavaIoFileDescriptorContentsAsAPointer (JAVA_OBJECT fd)
+{
+    return (void*) ((java_io_FileDescriptor*) fd)->fields.java_io_FileDescriptor.descriptor_;
+}
+
+
+void netGetJavaNetInetAddressValue (JAVA_OBJECT anInetAddress, U_8* buffer, U_32* length)
+{
+    org_xmlvm_runtime_XMLVMArray* byte_array = ((java_net_InetAddress*) anInetAddress)->fields.java_net_InetAddress.ipaddress_;
+    *length = byte_array->fields.org_xmlvm_runtime_XMLVMArray.length_;
+    XMLVM_MEMCPY(buffer, byte_array->fields.org_xmlvm_runtime_XMLVMArray.array_, *length);
+}
+
+
+void netGetJavaNetInetAddressScopeId (JAVA_OBJECT anInetAddress, U_32* scope_id)
+{
+    if (XMLVM_ISA(anInetAddress, __CLASS_java_net_Inet6Address)) {
+        java_net_Inet6Address* addr = (java_net_Inet6Address*) anInetAddress;
+        *scope_id = addr->fields.java_net_Inet6Address.scope_id_;
+    }
+    else {
+        *scope_id = 0;
+    }
+}
+
+
+I_32 netGetSockAddr (JAVA_OBJECT fileDescriptor, hysockaddr_t sockaddrP, JAVA_BOOLEAN preferIPv6Addresses)
+{
+    I_32 result = 0;
+    hysocket_t socketP;
+    U_8 ipAddr[HYSOCK_INADDR6_LEN];
+    memset (ipAddr, 0, HYSOCK_INADDR6_LEN);
+    
+    socketP = getJavaIoFileDescriptorContentsAsAPointer (fileDescriptor);
+    if (!hysock_socketIsValid (socketP))
+    {
+        return HYPORT_ERROR_SOCKET_UNKNOWNSOCKET;
+    }
+    else
+    {
+        if (preferIPv6Addresses)
+        {
+            hysock_sockaddr_init6 (sockaddrP, ipAddr, HYSOCK_INADDR6_LEN,
+                                   HYADDR_FAMILY_UNSPEC, 0, 0, 0, socketP);
+            result = hysock_getsockname (socketP, sockaddrP);
+        }
+        else
+        {
+            hysock_sockaddr_init6 (sockaddrP, ipAddr, HYSOCK_INADDR_LEN,
+                                   HYADDR_FAMILY_AFINET4, 0, 0, 0, socketP);
+            result = hysock_getsockname (socketP, sockaddrP);
+        }
+        return result;
+    }
+}
 
 
 I_32 map_addr_family_Hy_to_OS (I_32 addr_family)
@@ -101,6 +272,103 @@ static I_32 copy_hostent (OSHOSTENT * source, PortlibPTBuffers_t * ptBuffers)
 }
 
 
+JAVA_OBJECT newJavaByteArray (JAVA_ARRAY_BYTE* bytes, JAVA_INT length)
+{
+    JAVA_OBJECT result = XMLVMArray_createSingleDimensionWithData(__CLASS_byte_1ARRAY, (int) length, bytes);
+    return result;
+}
+
+
+JAVA_OBJECT newJavaNetInetAddressGenericBS (JAVA_ARRAY_BYTE* address, U_32 length,
+                                const char* hostName, U_32 scope_id)
+{
+    org_xmlvm_runtime_XMLVMArray* byte_array;
+    java_lang_String* aString;
+    BOOLEAN isAnyAddress = 1;
+    static JAVA_ARRAY_BYTE IPv4ANY[4] = { 0, 0, 0, 0 };
+    static JAVA_ARRAY_BYTE IPv6ANY[16] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+    U_32 i = 0;
+    JAVA_OBJECT result = JAVA_NULL;
+    
+    aString = xmlvm_create_java_string(hostName);
+    
+    /* check if the address being returned is the any address.  If so we need to check the prefer flags to see how it should be returned
+     (either as IPv4 Any or IPv6 ANY) */
+    
+    if (harmony_supports_ipv6 ())
+    {
+        /* Figure out if it is the any address */
+        for (i = 0; i < length; i++)
+        {
+            if (address[i] != 0)
+            {
+                isAnyAddress = 0;
+                break;
+            }
+        }
+    }
+    else
+    {
+        /* just do what we used to do without checking */
+        isAnyAddress = 0;
+    }
+    
+    /* If it is the any address then set up to return appropriately based on the flags */
+    if (isAnyAddress)
+    {
+        if ((!preferIPv4Stack ()) && (preferIPv6Addresses ()))
+        {
+            if ((byte_array =
+                 newJavaByteArray (IPv6ANY, sizeof (IPv6ANY))) == NULL)
+            {
+                return NULL;
+            }
+        }
+        else
+        {
+            if ((byte_array =
+                 newJavaByteArray (IPv4ANY, sizeof (IPv4ANY))) == NULL)
+            {
+                return NULL;
+            }
+        }
+    }
+    else
+    {
+        /* not any so just set up to return the address normally */
+        if ((byte_array = newJavaByteArray (address, length)) == NULL)
+        {
+            return NULL;
+        }
+    }
+    
+    if (harmony_supports_ipv6 ())
+    {
+#ifdef SUPPORTS_SCOPED_GETBYADDR
+        if (scope_id != 0) {
+            result = java_net_InetAddress_getByAddress___java_lang_String_byte_1ARRAY_int(aString, byte_array, scope_id);
+        }
+        else {
+#endif
+            result = java_net_InetAddress_getByAddress___java_lang_String_byte_1ARRAY(aString, byte_array);
+
+#ifdef SUPPORTS_SCOPED_GETBYADDR
+        }
+#endif
+        
+    }
+    else
+    {
+        result = __NEW_java_net_InetAddress();
+        java_net_InetAddress___INIT____byte_1ARRAY_java_lang_String(result, byte_array, aString);
+        //return result;
+    }
+    
+    return result;
+}
+
+
+
 I_32 hysock_socket (hysocket_t * handle, I_32 family, I_32 socktype, I_32 protocol)
 {
     I_32 rc = 0;
@@ -153,7 +421,7 @@ I_32 hysock_socket (hysocket_t * handle, I_32 family, I_32 socktype, I_32 protoc
             
             if (sock < 0)
             {
-                rc = errno;
+                rc = findError(errno);
                 return rc;
                 
                 //                HYSOCKDEBUG ("<socket failed, err=%d>\n", rc);
@@ -452,3 +720,121 @@ I_32 hysock_getnameinfo (hysockaddr_t in_addr, I_32 sockaddr_size, char *name,
     
 }
 
+
+I_32 hysock_bind (hysocket_t sock, hysockaddr_t addr)
+{
+    I_32 rc = 0;
+    I_32 length = getAddrLength(addr);
+    
+    if (bind
+        (SOCKET_CAST (sock), (struct sockaddr *) &addr->addr, length) < 0)
+    {
+        rc = errno;
+        
+        //HYSOCKDEBUG ("<bind failed, err=%d>\n", rc);
+        //rc =
+        //portLibrary->error_set_last_error (portLibrary, rc,
+        //                                   HYPORT_ERROR_SOCKET_ADDRNOTAVAIL);
+    }
+    return rc;
+}
+
+
+I_32 hysock_getsockname (hysocket_t handle, hysockaddr_t addrHandle)
+{
+    socklen_t addrlen = sizeof (addrHandle->addr);
+    
+    if (getsockname
+        (SOCKET_CAST (handle), (struct sockaddr *) &addrHandle->addr,
+         &addrlen) != 0)
+    {
+        return findError(errno);
+        // I_32 err = errno;
+        // HYSOCKDEBUG ("<getsockname failed, err=%d>\n", err);
+        // return portLibrary->error_set_last_error (portLibrary, err,
+        //                                           findError (err));
+    }
+    return 0;
+}
+
+
+I_32 hysock_connect (hysocket_t sock, hysockaddr_t addr)
+{
+    I_32 rc = 0;
+    I_32 length = getAddrLength(addr);
+    
+    if (connect
+        (SOCKET_CAST (sock), (struct sockaddr *) &addr->addr, length) < 0)
+    {
+        rc = HYPORT_ERROR_SOCKET_OPFAILED;
+        // HYSOCKDEBUG ("<connect failed, err=%d>\n", rc);
+        // rc =
+        // portLibrary->error_set_last_error (portLibrary, rc,
+        //                                    HYPORT_ERROR_SOCKET_OPFAILED);
+    }
+    return rc;
+}
+
+
+I_32 hysock_write (hysocket_t sock, U_8 * buf, I_32 nbyte, I_32 flags)
+{
+    I_32 bytesSent = 0;
+    
+    bytesSent = send (SOCKET_CAST (sock), buf, nbyte, flags);
+    
+    if (-1 == bytesSent)
+    {
+        // I_32 err = errno;
+        // HYSOCKDEBUG ("<send failed, err=%d>\n", err);
+        // return portLibrary->error_set_last_error (portLibrary, err,
+        //                                           findError (err));
+        return findError(errno);
+    }
+    else
+    {
+        return bytesSent;
+    }
+}
+
+
+I_32 hysock_read (hysocket_t sock, U_8 * buf, I_32 nbyte, I_32 flags)
+{
+    I_32 bytesRec = 0;
+    
+    bytesRec = recv (SOCKET_CAST (sock), buf, nbyte, flags);
+    if (-1 == bytesRec) {
+        // I_32 err = errno;
+        // HYSOCKDEBUG ("<recv failed, err=%d>\n", err);
+        // return portLibrary->error_set_last_error (portLibrary, err, findError(err));
+        return findError(errno);
+    } else {
+        return bytesRec;
+    }
+}
+
+
+I_32 hysock_close (hysocket_t * sock)
+{
+    I_32 rc = 0;
+    
+    if (*sock == INVALID_SOCKET) {
+        // HYSOCKDEBUGPRINT ("<closesocket failed, invalid socket>\n");
+        // return portLibrary->error_set_last_error (portLibrary,
+        //                                           HYPORT_ERROR_SOCKET_UNIX_EBADF,
+        //                                           HYPORT_ERROR_SOCKET_BADSOCKET);
+        return HYPORT_ERROR_SOCKET_BADSOCKET;
+    }
+    
+    if (close (SOCKET_CAST (*sock)) < 0) {
+        // rc = errno;
+        // HYSOCKDEBUG ("<closesocket failed, err=%d>\n", rc);
+        // rc =
+        // portLibrary->error_set_last_error (portLibrary, rc,
+        //                                    HYPORT_ERROR_SOCKET_BADSOCKET);
+        return HYPORT_ERROR_SOCKET_BADSOCKET;
+    }
+    
+    XMLVM_FREE(*sock);
+    *sock = INVALID_SOCKET;
+    return rc;
+}

@@ -55,12 +55,6 @@ void xmlvm_init()
 #endif
 
     staticInitializerController = XMLVM_MALLOC(sizeof(XMLVM_STATIC_INITIALIZER_CONTROLLER));
-    staticInitializerController->recursiveLocks = 0;
-    staticInitializerController->owningThread = NULL;
-    staticInitializerController->owningThreadMutex = XMLVM_MALLOC(sizeof(pthread_mutex_t));
-    if (0 != pthread_mutex_init(staticInitializerController->owningThreadMutex, NULL)) {
-        XMLVM_ERROR("Error initializing static initializer's owning thread mutex", __FILE__, __FUNCTION__, __LINE__);
-    }
     staticInitializerController->initMutex = XMLVM_MALLOC(sizeof(pthread_mutex_t));
     if (0 != pthread_mutex_init(staticInitializerController->initMutex, NULL)) {
         XMLVM_ERROR("Error initializing static initializer mutex", __FILE__, __FUNCTION__, __LINE__);
@@ -99,67 +93,21 @@ static void unlockOrExit(char* className, pthread_mutex_t* mut)
 }
 
 /**
- * Lock the static initializer mutex and store the thread that is currently
- * allowed to run static initializers
+ * Lock the static initializer mutex.
  */
-static void lockInitMutex(char* className, pthread_t curThread)
+void staticInitializerLock(void* tibDefinition)
 {
+    char* className = ((struct __TIB_DEFINITION_TEMPLATE*)tibDefinition)->className;
     lockOrExit(className, staticInitializerController->initMutex);
-    lockOrExit(className, staticInitializerController->owningThreadMutex);
-    staticInitializerController->owningThread = curThread;
-    unlockOrExit(className, staticInitializerController->owningThreadMutex);
 }
 
 /**
- * Allow another thread to run static initializers after unlocking the static
- * initializer mutex. 
+ * Unlock the static initializer mutex.
  */
-static void unlockInitMutex(char* className)
+void staticInitializerUnlock(void* tibDefinition)
 {
-    lockOrExit(className, staticInitializerController->owningThreadMutex);
-    staticInitializerController->owningThread = NULL;
-    unlockOrExit(className, staticInitializerController->owningThreadMutex);
+    char* className = ((struct __TIB_DEFINITION_TEMPLATE*)tibDefinition)->className;
     unlockOrExit(className, staticInitializerController->initMutex);
-}
-
-/**
- * Lock the static initializer mutex unless this thread already has the lock.
- * Increment the mutex recursion count.
- */
-void staticInitializerRecursiveLock(void* tibDefinition)
-{
-    char* className = ((struct __TIB_DEFINITION_TEMPLATE*)tibDefinition)->className;
-    int currentIsOwner = 0;
-    pthread_t curThread = pthread_self();
-    lockOrExit(className, staticInitializerController->owningThreadMutex);
-    if (staticInitializerController->owningThread != NULL) {
-        currentIsOwner = pthread_equal(curThread, staticInitializerController->owningThread);
-    }
-    unlockOrExit(className, staticInitializerController->owningThreadMutex);
-
-    if (currentIsOwner == 0) {
-        lockInitMutex(className, curThread);
-    }
-
-    staticInitializerController->recursiveLocks++;
-
-//    printf("Acquired recursive lock #%i in %s\n", staticInitializerController->recursiveLocks, className);
-}
-
-/**
- * Unlock the static initializer mutex if the thread is finished with static
- * initialization. If the thread is not finished, decrement the mutex recursion
- * count.
- */
-void staticInitializerRecursiveUnlock(void* tibDefinition)
-{
-    char* className = ((struct __TIB_DEFINITION_TEMPLATE*)tibDefinition)->className;
-//    printf("Releasing recursive lock #%i in %s\n", staticInitializerController->recursiveLocks, className);
-
-    staticInitializerController->recursiveLocks--;
-    if (staticInitializerController->recursiveLocks == 0) {
-        unlockInitMutex(className);
-    }
 }
 
 int xmlvm_java_string_cmp(JAVA_OBJECT s1, const char* s2)
@@ -187,7 +135,7 @@ const char* xmlvm_java_string_to_const_char(JAVA_OBJECT s)
     }
     java_lang_String* str = (java_lang_String*) s;
     JAVA_INT len = str->fields.java_lang_String.count_;
-    char* cs = XMLVM_MALLOC(len + 1);
+    char* cs = XMLVM_ATOMIC_MALLOC(len + 1);
     JAVA_INT offset = str->fields.java_lang_String.offset_;
     org_xmlvm_runtime_XMLVMArray* value = (org_xmlvm_runtime_XMLVMArray*) str->fields.java_lang_String.value_;
     JAVA_ARRAY_CHAR* valueArray = (JAVA_ARRAY_CHAR*) value->fields.org_xmlvm_runtime_XMLVMArray.array_;
@@ -212,7 +160,7 @@ static JAVA_OBJECT* stringConstants = JAVA_NULL;
 JAVA_OBJECT xmlvm_create_java_string_from_pool(int pool_id)
 {
     if (stringConstants == JAVA_NULL) {
-        // TODO: use XMLVM_NO_GC_MALLOC?
+        // TODO: use XMLVM_ATOMIC_MALLOC?
         stringConstants = XMLVM_MALLOC(xmlvm_constant_pool_size * sizeof(JAVA_OBJECT));
         XMLVM_BZERO(stringConstants, xmlvm_constant_pool_size * sizeof(JAVA_OBJECT));
     }
@@ -261,23 +209,23 @@ JAVA_OBJECT XMLVM_CREATE_ARRAY_CLASS_OBJECT(JAVA_OBJECT baseType)
 int XMLVM_ISA(JAVA_OBJECT obj, JAVA_OBJECT clazz)
 {
     int i;
-    __TIB_DEFINITION_TEMPLATE* objClass;
+    __TIB_DEFINITION_TEMPLATE* tib1;
     if (obj == JAVA_NULL) {
         return 0;
     }
-    objClass = (__TIB_DEFINITION_TEMPLATE*) ((java_lang_Object*) obj)->tib;
-    __TIB_DEFINITION_TEMPLATE* tib = (__TIB_DEFINITION_TEMPLATE*) ((java_lang_Class*) clazz)->fields.java_lang_Class.tib_;
-    while (objClass != JAVA_NULL) {
-        if (strcmp(objClass->className, tib->className) == 0) {
+    tib1 = (__TIB_DEFINITION_TEMPLATE*) ((java_lang_Object*) obj)->tib;
+    __TIB_DEFINITION_TEMPLATE* tib2 = (__TIB_DEFINITION_TEMPLATE*) ((java_lang_Class*) clazz)->fields.java_lang_Class.tib_;
+    while (tib1 != JAVA_NULL) {
+        if (tib1 == tib2) {
             return 1;
         }
         // Check all implemented interfaces
-        for (i = 0; i < objClass->numImplementedInterfaces; i++) {
-            if (strcmp(objClass->implementedInterfaces[0][i]->className, tib->className) == 0) {
+        for (i = 0; i < tib1->numImplementedInterfaces; i++) {
+            if (tib1->implementedInterfaces[0][i] == tib2) {
                 return 1;
             }
         }
-        objClass = objClass->extends;
+        tib1 = tib1->extends;
     }
     return 0;
 }
@@ -308,7 +256,7 @@ JAVA_OBJECT XMLVMArray_createFromString(const char* str)
     int len = strlen(str);
     int size = len * sizeof(JAVA_ARRAY_CHAR);
     int i;    
-    JAVA_ARRAY_CHAR* data = XMLVM_MALLOC(size);
+    JAVA_ARRAY_CHAR* data = XMLVM_ATOMIC_MALLOC(size);
     for (i = 0; i < len; i++) {
         data[i] = *str++;
     }
@@ -364,7 +312,6 @@ void xmlvm_unhandled_exception()
             xmlvm_java_string_to_const_char(thread_name),
             xmlvm_java_string_to_const_char(class_name),
             xmlvm_java_string_to_const_char(message));
-    XMLVM_INTERNAL_ERROR();
 }
 
 void xmlvm_unimplemented_native_method()

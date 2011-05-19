@@ -28,6 +28,22 @@
 #define __XMLVM_SOCK_H__
 
 
+int harmony_supports_ipv6();
+int preferIPv4Stack();
+int preferIPv6Addresses();
+
+U_16 hysock_htons(U_16 port);
+U_16 hysock_ntohs (U_16 val);
+I_32 hysock_socketIsValid (hysocket_t handle);
+U_16 hysock_sockaddr_port (hysockaddr_t handle);
+void* getJavaIoFileDescriptorContentsAsAPointer (JAVA_OBJECT fd);
+void netGetJavaNetInetAddressValue (JAVA_OBJECT anInetAddress, U_8* buffer, U_32* length);
+void netGetJavaNetInetAddressScopeId (JAVA_OBJECT anInetAddress, U_32* scope_id);
+I_32 netGetSockAddr (JAVA_OBJECT fileDescriptor, hysockaddr_t sockaddrP, JAVA_BOOLEAN preferIPv6Addresses);
+
+JAVA_OBJECT newJavaNetInetAddressGenericBS (JAVA_ARRAY_BYTE* address, U_32 length,
+                                            const char* hostName, U_32 scope_id);
+
 I_32 hysock_socket (hysocket_t * handle, I_32 family, I_32 socktype, I_32 protocol);
 
 I_32 hysock_sockaddr_init6 (hysockaddr_t handle, U_8 * addr, I_32 addrlength,
@@ -37,5 +53,11 @@ I_32 hysock_sockaddr_init6 (hysockaddr_t handle, U_8 * addr, I_32 addrlength,
 I_32 hysock_getnameinfo (hysockaddr_t in_addr, I_32 sockaddr_size, char *name, 
                          I_32 name_length, int flags);
 
+I_32 hysock_bind (hysocket_t sock, hysockaddr_t addr);
+I_32 hysock_getsockname (hysocket_t handle, hysockaddr_t addrHandle);
+I_32 hysock_connect (hysocket_t sock, hysockaddr_t addr);
+I_32 hysock_write (hysocket_t sock, U_8 * buf, I_32 nbyte, I_32 flags);
+I_32 hysock_read (hysocket_t sock, U_8 * buf, I_32 nbyte, I_32 flags);
+I_32 hysock_close (hysocket_t * sock);
 
 #endif

@@ -30,12 +30,12 @@ import java.util.Set;
 
 import org.xmlvm.Log;
 import org.xmlvm.main.Arguments;
+import org.xmlvm.main.Targets;
 import org.xmlvm.proc.BundlePhase1;
 import org.xmlvm.proc.BundlePhase2;
 import org.xmlvm.proc.DelayedXmlvmSerializationProvider;
 import org.xmlvm.proc.XmlvmProcessImpl;
 import org.xmlvm.proc.XmlvmResource;
-import org.xmlvm.proc.XmlvmResource.Tag;
 import org.xmlvm.proc.XmlvmResource.Type;
 import org.xmlvm.proc.XmlvmResource.XmlvmField;
 import org.xmlvm.proc.XmlvmResource.XmlvmInvokeInstruction;
@@ -114,7 +114,7 @@ public class VtableOutputProcess extends XmlvmProcessImpl {
         adjustTypes(bundle.getResources());
         Log.debug(TAG, "Done adjusting types");
 
-        if (!isTargetProcess) {
+        if (!isTargetProcess && arguments.option_target() != Targets.GENCWRAPPERS) {
             OutputFile indexFile = hierarchyHelper.getInterfaceIndexFile();
             indexFile.setLocation(arguments.option_out());
             indexFile.setFileName("interfaces.h");

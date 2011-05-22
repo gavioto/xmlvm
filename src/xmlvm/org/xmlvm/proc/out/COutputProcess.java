@@ -33,6 +33,7 @@ import org.jdom.Document;
 import org.jdom.Element;
 import org.xmlvm.Log;
 import org.xmlvm.main.Arguments;
+import org.xmlvm.main.Targets;
 import org.xmlvm.proc.BundlePhase1;
 import org.xmlvm.proc.BundlePhase2;
 import org.xmlvm.proc.NativeResourceLoader;
@@ -108,9 +109,11 @@ public class COutputProcess extends XmlvmProcessImpl {
 
         // Process all collected resources.
         for (XmlvmResource xmlvm : resourcePool.values()) {
-            OutputFile[] files;
+            OutputFile[] files = new OutputFile[0];
             if (xmlvm.getType() == Type.CONST_POOL) {
-                files = genConstantPool(xmlvm);
+                if (arguments.option_target() != Targets.GENCWRAPPERS) {
+                    files = genConstantPool(xmlvm);
+                }
             } else {
                 files = genC(xmlvm);
             }

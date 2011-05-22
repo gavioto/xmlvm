@@ -355,6 +355,13 @@ public class DEXmlvmOutputProcess extends XmlvmProcessImpl {
             return null;
         }
 
+        // If the class is synthetic, we don't want to generate code from it
+        // while generating the wrapper code.
+        if (AccessFlags.isSynthetic(directClassFile.getAccessFlags())
+                && arguments.option_target() == Targets.GENCWRAPPERS) {
+            return null;
+        }
+
         // This is for auxiliary analysis. We record all the types that are
         // referenced.
         Set<String> referencedTypes = new HashSet<String>();
@@ -414,7 +421,7 @@ public class DEXmlvmOutputProcess extends XmlvmProcessImpl {
             }
         }
         addReferences(document, filteredReferencesTypes);
-        
+
         // If the class has the XMLVMSkeletonOnly annotation we add it to the
         // class element, so that the stylesheet can use the information.
         boolean skeletonOnly = hasSkeletonOnlyAnnotation(directClassFile.getAttributes());
@@ -423,9 +430,9 @@ public class DEXmlvmOutputProcess extends XmlvmProcessImpl {
                     InstructionProcessor.vm);
             classElement.setAttribute("skeletonOnly", "true");
         }
-        
+
         XmlvmResource resource = new XmlvmResource(Type.DEX, document);
-        
+
         // If the class has the XMLVmSkeletonOnly annotation we add a tag to the
         // resource, so that later processes can use this information.
         if (skeletonOnly) {
@@ -552,16 +559,19 @@ public class DEXmlvmOutputProcess extends XmlvmProcessImpl {
                 continue;
             }
 
-            // We only want to generate skeletons. This method is private or
-            // synthetic so simply ignore it.
-            if (!(skeletonOnly && (one.getAccessFlags() & (AccessFlags.ACC_PRIVATE | AccessFlags.ACC_SYNTHETIC)) != 0)) {
-                try {
-                    processMethod(one, cf, classElement, referencedTypes, skeletonOnly);
-                } catch (RuntimeException ex) {
-                    String msg = "...while processing " + one.getName().toHuman() + " "
-                            + one.getDescriptor().toHuman();
-                    throw ExceptionWithContext.withContext(ex, msg);
-                }
+            if (skeletonOnly
+                    && (one.getAccessFlags() & (AccessFlags.ACC_PRIVATE | AccessFlags.ACC_SYNTHETIC)) != 0) {
+                // We only want to generate skeletons. This method is private or
+                // synthetic so simply ignore it.
+                continue;
+            }
+
+            try {
+                processMethod(one, cf, classElement, referencedTypes, skeletonOnly);
+            } catch (RuntimeException ex) {
+                String msg = "...while processing " + one.getName().toHuman() + " "
+                        + one.getDescriptor().toHuman();
+                throw ExceptionWithContext.withContext(ex, msg);
             }
         }
 

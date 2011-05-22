@@ -30,22 +30,47 @@ import org.xmlvm.XMLVMSkeletonOnly;
 
 @XMLVMSkeletonOnly
 public class NSObject {
+    @XMLVMIgnore
+    private static class RunnableInstance1 implements Runnable {
+        final NSSelector selector;
+        final Object     arg;
+        final double     delay;
+
+
+        public RunnableInstance1(NSSelector selector, Object arg, double delay) {
+            this.selector = selector;
+            this.arg = arg;
+            this.delay = delay;
+        }
+
+        @Override
+        public void run() {
+            if (delay > 0) {
+                try {
+                    Thread.sleep((long) (delay * 1000));
+                } catch (InterruptedException ex) {
+                }
+            }
+            selector.invokeWithArgument(arg);
+        }
+    }
+
 
     @XMLVMIgnore
-    private static class RunnableInstance implements Runnable {
-        private final Object target;
-        private final String method;
-        private final Object arg;
-        private final double delay;
-        
-        public RunnableInstance(Object target, String method, Object arg, double delay) {
+    private static class RunnableInstance2 implements Runnable {
+        final Object target;
+        final String method;
+        final Object arg;
+        final double delay;
+
+
+        public RunnableInstance2(Object target, String method, Object arg, double delay) {
             this.target = target;
             this.method = method;
             this.arg = arg;
             this.delay = delay;
         }
-        
-        
+
         @Override
         public void run() {
             Class<?>[] paramTypes = { Object.class };
@@ -88,20 +113,49 @@ public class NSObject {
     }
 
 
-    public static void performSelector(final Object target, final String method, final Object arg,
+    public static void performSelector(NSSelector selector, Object arg, double delay) {
+        performSelector(selector, arg, false, delay);
+    }
+
+    public static void performSelectorOnMainThread(NSSelector selector, Object arg,
+            boolean waitUntilDone) {
+        performSelector(selector, arg, waitUntilDone, 0);
+    }
+
+    private static void performSelector(NSSelector selector, Object arg, boolean waitUntilDone,
             double delay) {
+        final Runnable runnable = new RunnableInstance1(selector, arg, delay);
+        try {
+            if (waitUntilDone) {
+                if (SwingUtilities.isEventDispatchThread()) {
+                    runnable.run();
+                } else {
+                    SwingUtilities.invokeAndWait(runnable);
+                }
+            } else {
+                SwingUtilities.invokeLater(runnable);
+            }
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        } catch (InvocationTargetException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Deprecated
+    public static void performSelector(Object target, String method, Object arg, double delay) {
         performSelector(target, method, arg, false, delay);
     }
 
-    public static void performSelectorOnMainThread(final Object target, final String method,
-            final Object arg, boolean waitUntilDone) {
+    @Deprecated
+    public static void performSelectorOnMainThread(Object target, String method, Object arg,
+            boolean waitUntilDone) {
         performSelector(target, method, arg, waitUntilDone, 0);
     }
 
-    private static void performSelector(final Object target, final String method, final Object arg,
-            boolean waitUntilDone, final double delay) {
-        final Runnable runnable = new RunnableInstance(target, method, arg, delay);
-        
+    private static void performSelector(Object target, String method, Object arg,
+            boolean waitUntilDone, double delay) {
+        final Runnable runnable = new RunnableInstance2(target, method, arg, delay);
         try {
             if (waitUntilDone) {
                 if (SwingUtilities.isEventDispatchThread()) {

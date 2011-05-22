@@ -20,9 +20,9 @@
 
 package org.xmlvm.iphone.gl;
 
-import org.xmlvm.XMLVMIgnore;
+import org.xmlvm.XMLVMSkeletonOnly;
 
-@XMLVMIgnore
+@XMLVMSkeletonOnly
 public interface EAGLDrawable {
 
 }

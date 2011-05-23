@@ -199,9 +199,6 @@ public class FileMerger {
      */
     private void injectAllSections(Map<String, Map<String, String>> sections) {
         for (OutputFile file : skeletons) {
-            if (file.getFileName().contains("NSTimer")) {
-                System.out.println("DEBUG");
-            }
             String key = skeletonBasePath != null ? file.getRelativePath(skeletonBasePath) : file
                     .getFileName();
             if (sections.containsKey(key)) {

@@ -1,0 +1,26 @@
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <ImageView
+        android:id="@+id/background"
+        android:src="@drawable/splash_info"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scaleType="centerCrop"/>
+	<CheckBox
+	    android:id="@+id/accelerometer"
+	    android:text="@string/use_accelerometer"
+	    android:textSize="20dp"
+	    android:textStyle="bold"
+	    
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+	<Button
+	    android:id="@+id/saveButton"
+	    android:text="@string/save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="20dp"/>
+</FrameLayout>

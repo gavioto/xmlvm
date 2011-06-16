@@ -50,11 +50,9 @@ public class InputController implements SensorListener, OnTouchListener {
     /** The Y coordinate for the last touch button down event. */
     private float              lastStartY;
 
-    /** True if the current action down/action up sequence could be a tap. */
-    private boolean            couldBeTap;
-
     /** Whether the finger is currently down on the touch screen. */
     private boolean            isFingerDown            = false;
+
 
     public InputController(GameController controller) {
         this.controller = controller;
@@ -129,20 +127,15 @@ public class InputController implements SensorListener, OnTouchListener {
     public boolean onTouch(View v, MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
             isFingerDown = true;
-            couldBeTap = true;
             lastStartX = event.getX();
             lastStartY = event.getY();
         } else if (event.getAction() == MotionEvent.ACTION_UP) {
             controller.scheduleStopMan();
-            if (couldBeTap) {
-                controller.onTap(event.getX(), event.getY());
-            }
             isFingerDown = false;
         } else if (event.getAction() == MotionEvent.ACTION_MOVE) {
             lastMoveX = event.getX();
             lastMoveY = event.getY();
             if (moveWithInput(lastMoveX - lastStartX, lastMoveY - lastStartY, SWIPE_THRESHOLD)) {
-                couldBeTap = false;
                 lastStartX = lastMoveX;
                 lastStartY = lastMoveY;
             }

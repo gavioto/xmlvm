@@ -31,27 +31,27 @@ public abstract class GamePiece {
      * Simple class for describing a position.
      */
     static class Position {
-        private int x;
-        private int y;
+	private int x;
+	private int y;
 
-        public Position(int x, int y) {
-            this.x = x;
-            this.y = y;
-        }
+	public Position(int x, int y) {
+	    this.x = x;
+	    this.y = y;
+	}
 
-        public int getX() {
-            return x;
-        }
+	public int getX() {
+	    return x;
+	}
 
-        public int getY() {
-            return y;
-        }
+	public int getY() {
+	    return y;
+	}
 
-        @Override
-        public boolean equals(Object o) {
-            Position other = (Position) o;
-            return other.x == x && other.y == y;
-        }
+	@Override
+	public boolean equals(Object o) {
+	    Position other = (Position) o;
+	    return other.x == x && other.y == y;
+	}
     }
 
     /** The threshold below which the LD tiles should be used. */
@@ -60,23 +60,23 @@ public abstract class GamePiece {
     /**
      * The size of the square piece in pixels.
      */
-    private int             tileSize;
+    private int tileSize;
     /**
      * The x-coordinate of the GamePiece.
      */
-    protected int           x;
+    protected int x;
     /**
      * The y-coordinate of the GamePiece.
      */
-    protected int           y;
+    protected int y;
     /**
      * The {@link GameView} use for the current game.
      */
-    protected GameView      view;
+    protected GameView view;
     /**
      * The {@link ImageView} used to draw the GamePiece.
      */
-    protected ImageView     image;
+    protected ImageView image;
 
     /**
      * Instantiates a GamePiece object.
@@ -92,26 +92,27 @@ public abstract class GamePiece {
      * @param y
      *            The y-coordinate to draw this GamePiece.
      */
-    public GamePiece(GameView view, int resourceID, int tileSize, int x, int y, boolean addToFront) {
-        this.view = view;
-        this.x = x;
-        this.y = y;
-        this.tileSize = tileSize;
-        image = new ImageView(view.getActivity());
-        if (addToFront) {
-            view.addView(image);
-        } else {
-            view.addView(image, 0);
-        }
-        image.setImageResource(resourceID);
-        updatePosition();
+    public GamePiece(GameView view, int resourceID, int tileSize, int x, int y,
+	    boolean addToFront) {
+	this.view = view;
+	this.x = x;
+	this.y = y;
+	this.tileSize = tileSize;
+	image = new ImageView(view.getContext());
+	if (addToFront) {
+	    view.addViewToBoard(image);
+	} else {
+	    view.addViewToBoard(image, 0);
+	}
+	image.setImageResource(resourceID);
+	updatePosition();
     }
 
     /**
      * Updates the position of this GamePiece with the current location.
      */
     protected void updatePosition() {
-        updatePosition(0, 0);
+	updatePosition(0, 0);
     }
 
     /**
@@ -124,23 +125,23 @@ public abstract class GamePiece {
      *            Adds to the y-position of the GamePiece.
      */
     protected void updatePosition(int px, int py) {
-        int left = view.getOffsetLeft() + x * tileSize + px;
-        int top = view.getOffsetTop() + y * tileSize + py;
-        image.layout(left, top, left + tileSize, top + tileSize);
+	int left = view.getOffsetLeft() + x * tileSize + px;
+	int top = view.getOffsetTop() + y * tileSize + py;
+	image.layout(left, top, left + tileSize, top + tileSize);
     }
 
     /**
      * Returns the x-coordinate of the GamePiece.
      */
     public int getX() {
-        return this.x;
+	return this.x;
     }
 
     /**
      * Returns the y-coordinate of the GamePiece.
      */
     public int getY() {
-        return this.y;
+	return this.y;
     }
 
     /**
@@ -149,6 +150,6 @@ public abstract class GamePiece {
      * @return
      */
     public int getTileSize() {
-        return tileSize;
+	return tileSize;
     }
 }

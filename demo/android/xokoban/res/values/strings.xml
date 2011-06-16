@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    
     <string name="app_name">Xokoban</string>
+    <string name="use_accelerometer">Use Accelerometer</string>
+    <string name="save">Save</string>
 </resources>

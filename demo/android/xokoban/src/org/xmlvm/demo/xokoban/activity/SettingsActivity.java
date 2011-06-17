@@ -11,8 +11,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
 
 public class SettingsActivity extends Activity {
     @Override
@@ -28,10 +26,12 @@ public class SettingsActivity extends Activity {
 
         setContentView(R.layout.settings);
 
+        // Re-layout once the layouting is done.
         getRoot().getViewTreeObserver().addOnGlobalLayoutListener(new OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
                 layoutChanged();
+                getRoot().getViewTreeObserver().removeGlobalOnLayoutListener(this);
             }
         });
     }
@@ -48,8 +48,7 @@ public class SettingsActivity extends Activity {
         // other sized display.
         float sizeFactor = displayHeight / 480f;
 
-        int verticalCenterCheckBox = (int) (420 * sizeFactor);
-        int verticalCenterButton = (int) (420 * sizeFactor);
+        int verticalCenterWidgets = (int) (410 * sizeFactor);
 
         // Because the background image might be cropped at the sides, but for
         // sure will also be centered, we calculate the positions relative from
@@ -57,27 +56,42 @@ public class SettingsActivity extends Activity {
         int checkboxLeft = (int) ((displayWidth / 2f) - (310f * sizeFactor));
         int buttonLeft = (int) ((displayWidth / 2f) + (40f * sizeFactor));
 
-        // Positioning the checkbox.
-        CheckBox enableAccelerometer = getAccelerometerCheckBox();
-        int checkBoxTop = verticalCenterCheckBox - (enableAccelerometer.getMeasuredHeight() / 2);
-        LayoutParams paramsCheckBox = new LayoutParams(enableAccelerometer.getMeasuredWidth(),
-                enableAccelerometer.getMeasuredHeight());
-        paramsCheckBox.leftMargin = checkboxLeft;
-        paramsCheckBox.topMargin = checkBoxTop;
-        enableAccelerometer.setLayoutParams(paramsCheckBox);
-
-        // Positioning the button
-        Button saveButton = getSaveButton();
-        int buttonTop = verticalCenterButton - (saveButton.getMeasuredHeight() / 2);
-        LayoutParams paramsSaveButton = new LayoutParams(saveButton.getMeasuredWidth(),
-                saveButton.getMeasuredHeight());
-        paramsSaveButton.leftMargin = buttonLeft;
-        paramsSaveButton.topMargin = buttonTop;
-        saveButton.setLayoutParams(paramsSaveButton);
+        View widgetGroup = getWidgetGroup();
+        int groupBottom = verticalCenterWidgets + (widgetGroup.getMeasuredHeight() / 2);
+        int paddingBottom = displayHeight - groupBottom;
+        int buttonWidth = getSaveButton().getWidth();
+        int paddingRight = displayWidth - (buttonLeft+buttonWidth);
+        
+        widgetGroup.setPadding(checkboxLeft, 0, paddingRight, paddingBottom);
+        
+        
+//        // Positioning the checkbox.
+//        CheckBox enableAccelerometer = getAccelerometerCheckBox();
+//        int checkBoxTop = verticalCenterCheckBox - (enableAccelerometer.getMeasuredHeight() / 2);
+//        LayoutParams paramsCheckBox = new LayoutParams(enableAccelerometer.getMeasuredWidth(),
+//                enableAccelerometer.getMeasuredHeight());
+//        paramsCheckBox.leftMargin = checkboxLeft;
+//        paramsCheckBox.topMargin = checkBoxTop;
+//        enableAccelerometer.setLayoutParams(paramsCheckBox);
+//        
+//        Log.i("SA", "Checkbox Top: " + checkBoxTop);
+//
+//        // Positioning the button
+//        Button saveButton = getSaveButton();
+//        int buttonTop = verticalCenterButton - (saveButton.getMeasuredHeight() / 2);
+//        LayoutParams paramsSaveButton = new LayoutParams(saveButton.getMeasuredWidth(),
+//                saveButton.getMeasuredHeight());
+//        paramsSaveButton.leftMargin = buttonLeft;
+//        paramsSaveButton.topMargin = buttonTop;
+//        saveButton.setLayoutParams(paramsSaveButton);
     }
 
-    private FrameLayout getRoot() {
-        return (FrameLayout) findViewById(R.id.root);
+    private View getRoot() {
+        return findViewById(R.id.root);
+    }
+
+    private View getWidgetGroup() {
+        return findViewById(R.id.widgetGroup);
     }
 
     private CheckBox getAccelerometerCheckBox() {

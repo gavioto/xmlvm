@@ -35,10 +35,11 @@ import android.os.Bundle;
 import android.os.PowerManager;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 /**
  * The main controller class of the Xokoban game, implemented as an Android
@@ -95,11 +96,6 @@ public class XokobanActivity extends Activity {
         // Set main layout.
         setContentView(R.layout.gamefield);
 
-        // // NOTE: The order of the following steps in this method is
-        // // significant:
-        // // 1. Obtain SensorManager
-        // // 2. Switch to LANDSCAPE
-        //
         // Retrieve persisted data
         prefs = getPreferences(MODE_PRIVATE);
         final int currentLevel = prefs.getInt(PREFKEY_LEVEL, 0);
@@ -112,24 +108,37 @@ public class XokobanActivity extends Activity {
         // Obtain SensorManager.
         sensorManager = (SensorManager) this.getSystemService(SENSOR_SERVICE);
 
-        // // Create view and controller.
+        // Create view and controller.
         gameView = new GameView(getBoardView());
 
         gameController = new GameController(gameView, currentLevel);
         gameView.setGameController(gameController);
 
         inputController = new InputController(gameController);
-        // gameView.setOnTouchListener(inputController);
+        getBoardView().setOnTouchListener(inputController);
 
         if (useAccelerometer) {
             sensorManager.registerListener(inputController, SensorManager.SENSOR_ACCELEROMETER,
                     SensorManager.SENSOR_DELAY_FASTEST);
         }
         installButtonListeners();
+
+        getBoardView().getViewTreeObserver().addOnGlobalLayoutListener(
+                new OnGlobalLayoutListener() {
+                    @Override
+                    public void onGlobalLayout() {
+                        getBoardView().getViewTreeObserver().removeGlobalOnLayoutListener(this);
+                        layoutChanged();
+                    }
+                });
     }
 
-    private FrameLayout getBoardView() {
-        return (FrameLayout) findViewById(R.id.board);
+    private void layoutChanged() {
+        gameController.loadLevel(true);
+    }
+
+    private RelativeLayout getBoardView() {
+        return (RelativeLayout) findViewById(R.id.board);
     }
 
     private void showLevelsDialog() {
@@ -243,10 +252,8 @@ public class XokobanActivity extends Activity {
 
     public void setFirstRun(boolean firstRun) {
         this.firstRun = firstRun;
-
         Editor editor = prefs.edit();
         editor.putBoolean(PREFKEY_FIRSTRUN, firstRun);
         editor.commit();
-
     }
 }

@@ -20,6 +20,8 @@
 
 package org.xmlvm.demo.xokoban;
 
+import android.util.Log;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.ImageView;
 
 /**
@@ -31,28 +33,30 @@ public abstract class GamePiece {
      * Simple class for describing a position.
      */
     static class Position {
-	private int x;
-	private int y;
+        private int x;
+        private int y;
 
-	public Position(int x, int y) {
-	    this.x = x;
-	    this.y = y;
-	}
 
-	public int getX() {
-	    return x;
-	}
+        public Position(int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
 
-	public int getY() {
-	    return y;
-	}
+        public int getX() {
+            return x;
+        }
 
-	@Override
-	public boolean equals(Object o) {
-	    Position other = (Position) o;
-	    return other.x == x && other.y == y;
-	}
+        public int getY() {
+            return y;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            Position other = (Position) o;
+            return other.x == x && other.y == y;
+        }
     }
+
 
     /** The threshold below which the LD tiles should be used. */
     public static final int SIZE_THRESHOLD = 30;
@@ -60,23 +64,24 @@ public abstract class GamePiece {
     /**
      * The size of the square piece in pixels.
      */
-    private int tileSize;
+    private int             tileSize;
     /**
      * The x-coordinate of the GamePiece.
      */
-    protected int x;
+    protected int           x;
     /**
      * The y-coordinate of the GamePiece.
      */
-    protected int y;
+    protected int           y;
     /**
      * The {@link GameView} use for the current game.
      */
-    protected GameView view;
+    protected GameView      view;
     /**
      * The {@link ImageView} used to draw the GamePiece.
      */
-    protected ImageView image;
+    protected ImageView     image;
+
 
     /**
      * Instantiates a GamePiece object.
@@ -92,27 +97,26 @@ public abstract class GamePiece {
      * @param y
      *            The y-coordinate to draw this GamePiece.
      */
-    public GamePiece(GameView view, int resourceID, int tileSize, int x, int y,
-	    boolean addToFront) {
-	this.view = view;
-	this.x = x;
-	this.y = y;
-	this.tileSize = tileSize;
-	image = new ImageView(view.getContext());
-	if (addToFront) {
-	    view.addViewToBoard(image);
-	} else {
-	    view.addViewToBoard(image, 0);
-	}
-	image.setImageResource(resourceID);
-	updatePosition();
+    public GamePiece(GameView view, int resourceID, int tileSize, int x, int y, boolean addToFront) {
+        this.view = view;
+        this.x = x;
+        this.y = y;
+        this.tileSize = tileSize;
+        image = new ImageView(view.getContext());
+        if (addToFront) {
+            view.addViewToBoard(image);
+        } else {
+            view.addViewToBoard(image, 0);
+        }
+        image.setImageResource(resourceID);
+        updatePosition();
     }
 
     /**
      * Updates the position of this GamePiece with the current location.
      */
     protected void updatePosition() {
-	updatePosition(0, 0);
+        updatePosition(0, 0);
     }
 
     /**
@@ -125,23 +129,37 @@ public abstract class GamePiece {
      *            Adds to the y-position of the GamePiece.
      */
     protected void updatePosition(int px, int py) {
-	int left = view.getOffsetLeft() + x * tileSize + px;
-	int top = view.getOffsetTop() + y * tileSize + py;
-	image.layout(left, top, left + tileSize, top + tileSize);
+        final int left = view.getOffsetLeft() + x * tileSize + px;
+        final int top = view.getOffsetTop() + y * tileSize + py;
+        final int right = left + tileSize;
+        final int bottom = top + tileSize;
+        image.layout(left, top, right, bottom);
+
+        // TODO(Sascha): Try to get rid of this. Right now the issue is that at
+        // some point after the initial layout, the system runs it's own
+        // layouting, thus overriding the initial position. We correct it with
+        // that.
+        image.getViewTreeObserver().addOnGlobalLayoutListener(new OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                image.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+                image.layout(left, top, right, bottom);
+            }
+        });
     }
 
     /**
      * Returns the x-coordinate of the GamePiece.
      */
     public int getX() {
-	return this.x;
+        return this.x;
     }
 
     /**
      * Returns the y-coordinate of the GamePiece.
      */
     public int getY() {
-	return this.y;
+        return this.y;
     }
 
     /**
@@ -150,6 +168,6 @@ public abstract class GamePiece {
      * @return
      */
     public int getTileSize() {
-	return tileSize;
+        return tileSize;
     }
 }

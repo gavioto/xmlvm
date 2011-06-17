@@ -6,11 +6,10 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:scaleType="fitXY" />
-    <FrameLayout
+    <RelativeLayout
         android:id="@+id/board"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:background="#9f00"/>
+        android:layout_height="fill_parent"/>
     <RelativeLayout
         android:id="@+id/linearLayout1"
         android:layout_width="fill_parent"

@@ -13,11 +13,11 @@ this.sb = new global::System.Text.StringBuilder();
 public void @this(java.lang.String n1){
 //XMLVM_BEGIN_WRAPPER[org.xmlvm.java.lang.StringBuilder: void <init>(java.lang.String)]
 this.sb = new global::System.Text.StringBuilder();
-this.append(n1.toCharArray());
+this.append((org.xmlvm.Array<char>)n1.toCharArray());
 //XMLVM_END_WRAPPER[org.xmlvm.java.lang.StringBuilder: void <init>(java.lang.String)]
 }
 
-public override java.lang.String toString(){
+public override global::System.Object toString(){
 //XMLVM_BEGIN_WRAPPER[org.xmlvm.java.lang.StringBuilder: java.lang.String toString()]
 java.lang.String _tmpStr = new java.lang.String();
 _tmpStr.@this(new org.xmlvm.Array<char>(this.sb.ToString().ToCharArray()));
@@ -25,21 +25,21 @@ return _tmpStr;
 //XMLVM_END_WRAPPER[org.xmlvm.java.lang.StringBuilder: java.lang.String toString()]
 }
 
-public virtual java.lang.StringBuilder append(java.lang.String n1){
+public virtual global::System.Object append(java.lang.String n1){
 //XMLVM_BEGIN_WRAPPER[org.xmlvm.java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)]
-this.sb.Append(n1.toCharArray().getCSharpArray());
+this.sb.Append(((org.xmlvm.Array<char>)n1.toCharArray()).getCSharpArray());
 return this;
 //XMLVM_END_WRAPPER[org.xmlvm.java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)]
 }
 
-public virtual java.lang.StringBuilder append(org.xmlvm.Array<char> n1){
+public virtual global::System.Object append(org.xmlvm.Array<char> n1){
 //XMLVM_BEGIN_WRAPPER[org.xmlvm.java.lang.StringBuilder: java.lang.StringBuilder append(char[])]
 this.sb.Append(n1.getCSharpArray());
 return this;
 //XMLVM_END_WRAPPER[org.xmlvm.java.lang.StringBuilder: java.lang.StringBuilder append(char[])]
 }
 
-public virtual java.lang.StringBuilder append(int n1){
+public virtual global::System.Object append(int n1){
 //XMLVM_BEGIN_WRAPPER[org.xmlvm.java.lang.StringBuilder: java.lang.StringBuilder append(int)]
 this.sb.Append(n1);
 return this;

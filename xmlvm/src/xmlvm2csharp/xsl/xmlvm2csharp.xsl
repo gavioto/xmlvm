@@ -160,7 +160,7 @@
     <xsl:text>    </xsl:text>    		    
     <xsl:value-of select="vm:get-member-name(./@name,true())"/>
     <xsl:text>.</xsl:text>
-    <xsl:value-of select="fn:concat($init,'(new ',vm:get-xmlvm-array('char'))" /> 
+    <xsl:value-of select="fn:concat($init,'(new ',vm:get-xmlvm-array('char'))" /> <!-- " -->
     <xsl:text>(</xsl:text>
     <xsl:value-of select="vm:escape-string(./@value)"/>
     <xsl:text>.ToCharArray()));&nl;</xsl:text>
@@ -306,7 +306,7 @@
 			    then fn:concat(': ', fn:string-join($cs-parents, ','))
 			    else ''"/>
   </xsl:variable>
-  <!-- 
+   <!-- 
      step 1, emit an abstract class named '_i'+$class-name
      with all static fields
      (so it cannot be instantiated): 
@@ -322,9 +322,9 @@
      (e.g. java code contained static initialization block 
   -->
   <xsl:variable name="has-clinit" as="xs:boolean"
-		select="vm:method/@name = '&lt;clinit&gt;'"/>
+               select="vm:method/@name = '&lt;clinit&gt;'"/>
   <xsl:variable name="static-strings" as="node()*"
-		select="vm:field[@type='java.lang.String' and @isStatic='true' and @value]"/>
+               select="vm:field[@type='java.lang.String' and @isStatic='true' and @value]"/>
   <xsl:if test="$has-clinit or $static-strings">
     <xsl:call-template name="emit-static-constructor">
       <xsl:with-param name="name" select="$interface-satellite-name"/>
@@ -704,7 +704,7 @@
 	<xsl:value-of select="vm:get-method-signature($method-node, true())"/>
 </xsl:function>
 
-
+<!-- " -->
 <!-- 
 	returns the csharp or java signature (as determined by csharpMode) 
 	of the given method node as "returnType methodName (type n1, type n2, ...)" 
@@ -712,11 +712,15 @@
 <xsl:function name="vm:get-method-signature" as="xs:string">
 	<xsl:param name="method-node" as="node()"/>
 	<xsl:param name="csharp-mode" as="xs:boolean"/>
-		
+
+	<xsl:variable name="java-return-type" 
+		      select="$method-node/vm:signature/vm:return/@type"/>
 	<xsl:variable name="return-type" 
 		select="if ($csharp-mode)
-				then vm:get-type($method-node/vm:signature/vm:return/@type)
-				else $method-node/vm:signature/vm:return/@type"/>
+				then if (vm:is-object-ref($java-return-type))
+				      then $obj-regtype 
+				      else vm:get-type($java-return-type)
+				else $java-return-type"/>
 	<xsl:variable name="method-name" 
 		select="if ($csharp-mode) 
 				then vm:get-member-name($method-node/@name) 
@@ -839,13 +843,27 @@
 <xsl:template name="emit-register-decl">
   <xsl:param name="num"/>
   <!-- value register -->
+  <xsl:variable name="nonobj-regname" as="xs:string">
+    <xsl:value-of select="fn:concat($regname,$num,$nonobj-regname-suffix)"/>    
+  </xsl:variable>
   <xsl:text>    </xsl:text>
   <xsl:value-of select="$nonobj-regtype"/>
   <xsl:text> </xsl:text>
-  <xsl:value-of select="$regname"/>
-  <xsl:value-of select="$num"/>
-  <xsl:value-of select="$nonobj-regname-suffix"/>    
+  <xsl:value-of select="$nonobj-regname"/>
   <xsl:text>;&nl;</xsl:text>
+  <!-- initialize -->
+  <xsl:text>    </xsl:text>
+  <xsl:value-of select="$nonobj-regname"/>
+  <xsl:text>.i = 0;&nl;</xsl:text>
+  <xsl:text>    </xsl:text>
+  <xsl:value-of select="$nonobj-regname"/>
+  <xsl:text>.l = 0;&nl;</xsl:text>
+  <xsl:text>    </xsl:text>
+  <xsl:value-of select="$nonobj-regname"/>
+  <xsl:text>.f = 0;&nl;</xsl:text>
+  <xsl:text>    </xsl:text>
+  <xsl:value-of select="$nonobj-regname"/>
+  <xsl:text>.d = 0;&nl;</xsl:text>
   <!-- object register -->
   <xsl:text>    </xsl:text>
   <xsl:value-of select="$obj-regtype"/>
@@ -853,7 +871,7 @@
   <xsl:value-of select="$regname"/>
   <xsl:value-of select="$num"/>
   <xsl:value-of select="$obj-regname-suffix"/>
-  <xsl:text>;&nl;</xsl:text>
+  <xsl:text> = null;&nl;</xsl:text>
 </xsl:template>
 
 
@@ -892,9 +910,9 @@
   <xsl:variable name="numRegs" select="dex:code/@register-size" as="xs:integer"/>
   <xsl:variable name="numArgs" select="count(vm:signature/vm:parameter)" as="xs:integer"/>
   <xsl:for-each select="1 to $numRegs">
-  	<xsl:call-template name="emit-register-decl">
-  		<xsl:with-param name="num" select="position()-1"/>
-  	</xsl:call-template>
+    <xsl:call-template name="emit-register-decl">
+      <xsl:with-param name="num" select="position()-1"/>
+    </xsl:call-template>
   </xsl:for-each>
   <xsl:apply-templates select="dex:var"/>
 <!--

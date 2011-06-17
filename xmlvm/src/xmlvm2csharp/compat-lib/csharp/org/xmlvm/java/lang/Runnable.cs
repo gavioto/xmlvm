@@ -3,10 +3,6 @@
 using org.xmlvm;
 using java = org.xmlvm.java;
 namespace org.xmlvm.java.lang {
-public abstract class _iRunnable {
-
-} // end of abstract class: _iRunnable
-
 public interface Runnable {
  void run();
 

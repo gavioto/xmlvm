@@ -14,7 +14,7 @@ public void @this(){
 //XMLVM_END_WRAPPER[org.xmlvm.java.lang.Object: void <init>()]
 }
 
-public virtual java.lang.String toString(){
+public virtual global::System.Object toString(){
 //XMLVM_BEGIN_WRAPPER[org.xmlvm.java.lang.Object: java.lang.String toString()]
 throw new NotYetImplementedException();
 //XMLVM_END_WRAPPER[org.xmlvm.java.lang.Object: java.lang.String toString()]

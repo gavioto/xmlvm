@@ -9,7 +9,7 @@ public new void @this(){
 //XMLVM_END_WRAPPER[org.xmlvm.java.lang.Class: void <init>()]
 }
 
-public virtual org.xmlvm.java.lang.String getName(){
+public virtual global::System.Object getName(){
 //XMLVM_BEGIN_WRAPPER[org.xmlvm.java.lang.Class: org.xmlvm.java.lang.String getName()]
 throw new NotYetImplementedException();
 //XMLVM_END_WRAPPER[org.xmlvm.java.lang.Class: org.xmlvm.java.lang.String getName()]

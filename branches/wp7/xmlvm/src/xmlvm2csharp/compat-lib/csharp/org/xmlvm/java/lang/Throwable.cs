@@ -32,31 +32,31 @@ _cause = n1;
 //XMLVM_END_WRAPPER[org.xmlvm.java.lang.Throwable: void <init>(java.lang.Throwable)]
 }
 
-public virtual java.lang.Throwable fillInStackTrace(){
+public virtual global::System.Object fillInStackTrace(){
 //XMLVM_BEGIN_WRAPPER[org.xmlvm.java.lang.Throwable: java.lang.Throwable fillInStackTrace()]
 throw new NotYetImplementedException();
 //XMLVM_END_WRAPPER[org.xmlvm.java.lang.Throwable: java.lang.Throwable fillInStackTrace()]
 }
 
-public virtual java.lang.Throwable getCause(){
+public virtual global::System.Object getCause(){
 //XMLVM_BEGIN_WRAPPER[org.xmlvm.java.lang.Throwable: java.lang.Throwable getCause()]
 return _cause;
 //XMLVM_END_WRAPPER[org.xmlvm.java.lang.Throwable: java.lang.Throwable getCause()]
 }
 
-public virtual java.lang.String getLocalizedMessage(){
+public virtual global::System.Object getLocalizedMessage(){
 //XMLVM_BEGIN_WRAPPER[org.xmlvm.java.lang.Throwable: java.lang.String getLocalizedMessage()]
 return getMessage();
 //XMLVM_END_WRAPPER[org.xmlvm.java.lang.Throwable: java.lang.String getLocalizedMessage()]
 }
 
-public virtual java.lang.String getMessage(){
+public virtual global::System.Object getMessage(){
 //XMLVM_BEGIN_WRAPPER[org.xmlvm.java.lang.Throwable: java.lang.String getMessage()]
 return _message;
 //XMLVM_END_WRAPPER[org.xmlvm.java.lang.Throwable: java.lang.String getMessage()]
 }
 
-public virtual java.lang.Throwable initCause(java.lang.Throwable n1){
+public virtual global::System.Object initCause(java.lang.Throwable n1){
 //XMLVM_BEGIN_WRAPPER[org.xmlvm.java.lang.Throwable: java.lang.Throwable initCause(java.lang.Throwable)]
 if (n1 == this) {
     throw new global::System.ArgumentException("A Throwable cannot be its own cause.");
@@ -88,14 +88,14 @@ throw new NotYetImplementedException();
 //XMLVM_END_WRAPPER[org.xmlvm.java.lang.Throwable: void setStackTrace(org.xmlvm.java.lang.StackTraceElement[])]
 }
 
-public virtual org.xmlvm.java.lang.StackTraceElement getStackTrace(){
+public virtual global::System.Object getStackTrace(){
 //XMLVM_BEGIN_WRAPPER[org.xmlvm.java.lang.Throwable: org.xmlvm.java.lang.StackTraceElement getStackTrace()]
 //return _stackTrace;
 throw new NotYetImplementedException();
 //XMLVM_END_WRAPPER[org.xmlvm.java.lang.Throwable: org.xmlvm.java.lang.StackTraceElement getStackTrace()]
 }
 
-public override java.lang.String toString(){
+public override global::System.Object toString(){
 //XMLVM_BEGIN_WRAPPER[org.xmlvm.java.lang.Throwable: java.lang.String toString()]
 throw new NotYetImplementedException();
 //XMLVM_END_WRAPPER[org.xmlvm.java.lang.Throwable: java.lang.String toString()]

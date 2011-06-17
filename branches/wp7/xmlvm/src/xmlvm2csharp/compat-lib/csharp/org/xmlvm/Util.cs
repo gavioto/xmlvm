@@ -10,7 +10,7 @@ namespace org.xmlvm {
 
         public static global::System.String toNativeString(java.lang.String str)
         {
-            return new global::System.String(str.toCharArray().getCSharpArray());
+            return new global::System.String(((org.xmlvm.Array<char>) str.toCharArray()).getCSharpArray());
         }
     }
 }

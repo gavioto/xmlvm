@@ -252,7 +252,7 @@ public class CSharpOutputProcess extends XmlvmProcessImpl<XmlvmResourceProvider>
 		    availableMethods.put(myMethod.getName(), newList);
 		} else {
 		    for (XmlvmMethod parentMethod : overloadedMethods) {
-			if (parentMethod.doesContravariantOverrideMethod(myMethod) ) {
+			if (parentMethod.doesOverrideMethod(myMethod) ) {
 			    myMethod.setOverride();
 			    continue myMethodLoop;
 			}

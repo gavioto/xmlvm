@@ -16,25 +16,25 @@ public virtual void println(java.lang.String n1){
 
 public virtual void println(int n1){
 //XMLVM_BEGIN_WRAPPER[org.xmlvm.java.io.PrintStream: void println(int)]
-this.println(java.lang.String.valueOf(n1));
+this.println((java.lang.String) java.lang.String.valueOf(n1));
 //XMLVM_END_WRAPPER[org.xmlvm.java.io.PrintStream: void println(int)]
 }
 
 public virtual void println(float n1){
 //XMLVM_BEGIN_WRAPPER[org.xmlvm.java.io.PrintStream: void println(float)]
-this.println(java.lang.String.valueOf(n1));
+this.println((java.lang.String) java.lang.String.valueOf(n1));
 //XMLVM_END_WRAPPER[org.xmlvm.java.io.PrintStream: void println(float)]
 }
 
 public virtual void println(double n1){
 //XMLVM_BEGIN_WRAPPER[org.xmlvm.java.io.PrintStream: void println(double)]
-this.println(java.lang.String.valueOf(n1));
+this.println((java.lang.String) java.lang.String.valueOf(n1));
 //XMLVM_END_WRAPPER[org.xmlvm.java.io.PrintStream: void println(double)]
 }
 
 public virtual void println(long n1){
 //XMLVM_BEGIN_WRAPPER[org.xmlvm.java.io.PrintStream: void println(long)]
-this.println(java.lang.String.valueOf(n1));
+this.println((java.lang.String) java.lang.String.valueOf(n1));
 //XMLVM_END_WRAPPER[org.xmlvm.java.io.PrintStream: void println(long)]
 }
 

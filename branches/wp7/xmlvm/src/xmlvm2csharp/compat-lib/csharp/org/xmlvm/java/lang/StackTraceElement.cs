@@ -41,13 +41,13 @@ return true;
 //XMLVM_END_WRAPPER[org.xmlvm.java.lang.StackTraceElement: boolean equals(java.lang.Object)]
 }
 
-public virtual java.lang.String getClassName(){
+public virtual global::System.Object getClassName(){
 //XMLVM_BEGIN_WRAPPER[org.xmlvm.java.lang.StackTraceElement: java.lang.String getClassName()]
 return _declaringClass;
 //XMLVM_END_WRAPPER[org.xmlvm.java.lang.StackTraceElement: java.lang.String getClassName()]
 }
 
-public virtual java.lang.String getFileName(){
+public virtual global::System.Object getFileName(){
 //XMLVM_BEGIN_WRAPPER[org.xmlvm.java.lang.StackTraceElement: java.lang.String getFileName()]
 return _fileName;
 //XMLVM_END_WRAPPER[org.xmlvm.java.lang.StackTraceElement: java.lang.String getFileName()]
@@ -59,7 +59,7 @@ return _lineNumber;
 //XMLVM_END_WRAPPER[org.xmlvm.java.lang.StackTraceElement: int getLineNumber()]
 }
 
-public virtual java.lang.String getMethodName(){
+public virtual global::System.Object getMethodName(){
 //XMLVM_BEGIN_WRAPPER[org.xmlvm.java.lang.StackTraceElement: java.lang.String getMethodName()]
 return _methodName;
 //XMLVM_END_WRAPPER[org.xmlvm.java.lang.StackTraceElement: java.lang.String getMethodName()]
@@ -77,7 +77,7 @@ throw new NotYetImplementedException();
 //XMLVM_END_WRAPPER[org.xmlvm.java.lang.StackTraceElement: boolean isNativeMethod()]
 }
 
-public override java.lang.String toString(){
+public override global::System.Object toString(){
 //XMLVM_BEGIN_WRAPPER[org.xmlvm.java.lang.StackTraceElement: java.lang.String toString()]
 throw new NotYetImplementedException();
 //XMLVM_END_WRAPPER[org.xmlvm.java.lang.StackTraceElement: java.lang.String toString()]

@@ -16,13 +16,13 @@ public void @this(org.xmlvm.Array<char> n1){
 //XMLVM_END_WRAPPER[org.xmlvm.java.lang.String: void <init>(char[])]
 }
 
-public override java.lang.String toString(){
+public override global::System.Object toString(){
 //XMLVM_BEGIN_WRAPPER[org.xmlvm.java.lang.String: java.lang.String toString()]
 	return this;
 //XMLVM_END_WRAPPER[org.xmlvm.java.lang.String: java.lang.String toString()]
 }
 
-public virtual org.xmlvm.Array<char> toCharArray(){
+public virtual global::System.Object toCharArray(){
 //XMLVM_BEGIN_WRAPPER[org.xmlvm.java.lang.String: char[] toCharArray()]
     return new org.xmlvm.Array<char>(this.str.ToCharArray());    
 //XMLVM_END_WRAPPER[org.xmlvm.java.lang.String: char[] toCharArray()]
@@ -49,7 +49,7 @@ if (this.str.Equals(_other.str)) {
 //XMLVM_END_WRAPPER[org.xmlvm.java.lang.String: boolean equals(java.lang.Object)]
 }
 
-public static java.lang.String valueOf(int n1){
+public static global::System.Object valueOf(int n1){
 //XMLVM_BEGIN_WRAPPER[org.xmlvm.java.lang.String: java.lang.String valueOf(int)]
 java.lang.String _tmpStr = new java.lang.String();
 _tmpStr.@this(new org.xmlvm.Array<char>(global::System.Convert.ToString(n1).ToCharArray()));
@@ -57,7 +57,7 @@ return _tmpStr;
 //XMLVM_END_WRAPPER[org.xmlvm.java.lang.String: java.lang.String valueOf(int)]
 }
 
-public static java.lang.String valueOf(float n1){
+public static global::System.Object valueOf(float n1){
 //XMLVM_BEGIN_WRAPPER[org.xmlvm.java.lang.String: java.lang.String valueOf(float)]
 java.lang.String _tmpStr = new java.lang.String();
 _tmpStr.@this(new org.xmlvm.Array<char>(global::System.Convert.ToString(n1).ToCharArray()));
@@ -65,7 +65,7 @@ return _tmpStr;
 //XMLVM_END_WRAPPER[org.xmlvm.java.lang.String: java.lang.String valueOf(float)]
 }
 
-public static java.lang.String valueOf(long n1){
+public static global::System.Object valueOf(long n1){
 //XMLVM_BEGIN_WRAPPER[org.xmlvm.java.lang.String: java.lang.String valueOf(long)]
 java.lang.String _tmpStr = new java.lang.String();
 _tmpStr.@this(new org.xmlvm.Array<char>(global::System.Convert.ToString(n1).ToCharArray()));
@@ -73,7 +73,7 @@ return _tmpStr;
 //XMLVM_END_WRAPPER[org.xmlvm.java.lang.String: java.lang.String valueOf(long)]
 }
 
-public static java.lang.String valueOf(double n1){
+public static global::System.Object valueOf(double n1){
 //XMLVM_BEGIN_WRAPPER[org.xmlvm.java.lang.String: java.lang.String valueOf(double)]
 java.lang.String _tmpStr = new java.lang.String();
 _tmpStr.@this(new org.xmlvm.Array<char>(global::System.Convert.ToString(n1).ToCharArray()));

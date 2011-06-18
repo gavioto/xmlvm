@@ -142,6 +142,7 @@
 
 		<copy todir="${xmlvm.bin}/lib">
 			<fileset file="lib/harmony6-build.jar" />
+			<fileset file="lib/saxon.jar" />
 		</copy>
 
 		<unjar src="lib/one-jar-boot.jar" dest="${xmlvm.build}">

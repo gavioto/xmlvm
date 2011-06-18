@@ -1,4 +1,0 @@
-349c349
-<         m_audioFileFormat = AudioSystem.getAudioFileFormat(m_audioInputStream);
----
->         m_audioFileFormat = AudioSystem.getAudioFileFormat(inputStream);

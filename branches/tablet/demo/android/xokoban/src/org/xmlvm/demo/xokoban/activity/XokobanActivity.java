@@ -20,6 +20,7 @@
 
 package org.xmlvm.demo.xokoban.activity;
 
+import org.xmlvm.demo.xokoban.NonLayoutingLayout;
 import org.xmlvm.demo.xokoban.GameController;
 import org.xmlvm.demo.xokoban.GameView;
 import org.xmlvm.demo.xokoban.InputController;
@@ -39,7 +40,6 @@ import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 
 /**
  * The main controller class of the Xokoban game, implemented as an Android
@@ -137,8 +137,8 @@ public class XokobanActivity extends Activity {
         gameController.loadLevel(true);
     }
 
-    private RelativeLayout getBoardView() {
-        return (RelativeLayout) findViewById(R.id.board);
+    private NonLayoutingLayout getBoardView() {
+        return (NonLayoutingLayout) findViewById(R.id.board);
     }
 
     private void showLevelsDialog() {

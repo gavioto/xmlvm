@@ -6,7 +6,7 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:scaleType="fitXY" />
-    <RelativeLayout
+    <org.xmlvm.demo.xokoban.NonLayoutingLayout
         android:id="@+id/board"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"/>

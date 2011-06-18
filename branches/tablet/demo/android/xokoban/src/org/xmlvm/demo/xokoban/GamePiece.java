@@ -20,8 +20,6 @@
 
 package org.xmlvm.demo.xokoban;
 
-import android.util.Log;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.ImageView;
 
 /**
@@ -134,18 +132,6 @@ public abstract class GamePiece {
         final int right = left + tileSize;
         final int bottom = top + tileSize;
         image.layout(left, top, right, bottom);
-
-        // TODO(Sascha): Try to get rid of this. Right now the issue is that at
-        // some point after the initial layout, the system runs it's own
-        // layouting, thus overriding the initial position. We correct it with
-        // that.
-        image.getViewTreeObserver().addOnGlobalLayoutListener(new OnGlobalLayoutListener() {
-            @Override
-            public void onGlobalLayout() {
-                image.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-                image.layout(left, top, right, bottom);
-            }
-        });
     }
 
     /**

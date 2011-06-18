@@ -1,2 +1,0 @@
-MP3SPI is distributed under the terms of the GNU Library General Public License.
-For more details see: See http://www.gnu.org/copyleft/lesser.html

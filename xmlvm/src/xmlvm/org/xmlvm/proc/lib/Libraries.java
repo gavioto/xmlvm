@@ -40,7 +40,6 @@ public class Libraries {
         libraries.add(new CocoaJavaLibrary());
         libraries.add(new XmlvmUtilLibrary());
         libraries.add(new IPhoneAndroidLibrary());
-        libraries.add(new SaxonLibrary());
     }
 
 

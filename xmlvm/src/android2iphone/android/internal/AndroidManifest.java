@@ -20,27 +20,19 @@
 
 package android.internal;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
-
-import org.xml.sax.Attributes;
-import org.xml.sax.SAXException;
-import org.xml.sax.helpers.DefaultHandler;
 import org.xmlvm.iphone.NSBundle;
+import org.xmlvm.iphone.NSData;
+import org.xmlvm.iphone.NSXMLParser;
+import org.xmlvm.iphone.NSXMLParserDelegate;
 
 import android.R;
 import android.content.pm.ActivityInfo;
 import android.util.Log;
 
-class AndroidManifestParser extends DefaultHandler {
+class AndroidManifestParser extends NSXMLParserDelegate {
 
     private String                   prefix = "";
     private AndroidManifest          manifest;
@@ -52,28 +44,29 @@ class AndroidManifestParser extends DefaultHandler {
     }
 
     @Override
-    public void startPrefixMapping(String prefix, String uri) {
-         if (uri.equals("http://schemas.android.com/apk/res/android")) {
-             this.prefix = prefix + ":";
-         }
+    public void didStartMappingPrefix(NSXMLParser parser, String prefix, String namespaceURI) {
+        if (namespaceURI.equals("http://schemas.android.com/apk/res/android")) {
+            this.prefix = prefix + ":";
+        }
     }
-    
+
     @Override
-    public void startElement(String uri, String localName, String qualifiedName, Attributes attributes) {
+    public void didStartElement(NSXMLParser parser, String elementName, String namespaceURI,
+            String qualifiedName, Map<String, String> attributes) {
         if (qualifiedName.equals("application")) {
             // For now simply check for the Theme.Light string to enable NATIVE
             // theme instead of the dark Android theme
-            String theme = attributes.getValue(prefix + "theme");
+            String theme = attributes.get(prefix + "theme");
             if (theme != null && theme.equals("@android:style/Theme.Light")) {
                 manifest.appTheme = R.style.Theme_Light;
             }
         }
         if (qualifiedName.equals("manifest")) {
-            manifest.appPackage = attributes.getValue("package");
+            manifest.appPackage = attributes.get("package");
         }
         if (qualifiedName.equals("activity")) {
             currentActivity = new AndroidManifest.Activity();
-            String className = attributes.getValue(prefix + "name");
+            String className = attributes.get(prefix + "name");
             if (className.indexOf('.') == -1) {
                 className = manifest.appPackage + '.' + className;
             }
@@ -82,7 +75,7 @@ class AndroidManifestParser extends DefaultHandler {
             }
             currentActivity.className = className;
 
-            String screenOrientation = attributes.getValue(prefix + "screenOrientation");
+            String screenOrientation = attributes.get(prefix + "screenOrientation");
             if (screenOrientation == null) {
                 return;
             }
@@ -95,11 +88,15 @@ class AndroidManifestParser extends DefaultHandler {
             }
         }
         if (qualifiedName.equals("action")) {
-            String action = attributes.getValue(prefix + "name");
+            String action = attributes.get(prefix + "name");
             manifest.addActivity(action, currentActivity);
         }
     }
-    
+
+    @Override
+    public void didEndElement(NSXMLParser parser, String elementName, String namespaceURI,
+            String qualifiedName) {
+    }
 }
 
 
@@ -122,24 +119,12 @@ public class AndroidManifest {
         String filePath = NSBundle.mainBundle().pathForResource("AndroidManifest", "xml");
         if (filePath == null)
             Log.e("xmlvm", "Unable to locate AndroidManifest.xml file");
-        SAXParserFactory factory = SAXParserFactory.newInstance();
-        System.out.println(filePath);
-        factory.setNamespaceAware(true);
-        
-        // Parse the input
-        try {
-            SAXParser saxParser = factory.newSAXParser();
-            System.out.println(saxParser.getClass().getName());
-            saxParser.parse(new FileInputStream(filePath), new AndroidManifestParser(this));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (SAXException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ParserConfigurationException e) {
-            e.printStackTrace();
-        }
+        NSData manifestFile = NSData.dataWithContentsOfFile(filePath);
+        NSXMLParser xmlParser = new NSXMLParser(manifestFile);
+        xmlParser.setShouldProcessNamespaces(true);
+        xmlParser.setShouldReportNamespacePrefixes(true);
+        xmlParser.setDelegate(new AndroidManifestParser(this));
+        boolean success = xmlParser.parse();
         // TODO what to do if success == false?
     }
 

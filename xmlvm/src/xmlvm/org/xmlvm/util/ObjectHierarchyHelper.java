@@ -584,7 +584,7 @@ public class ObjectHierarchyHelper {
             }
 
             for (int currentColor : node.getColors()) {
-                if (currentColor != -1 && usedColors.contains(currentColor)) {
+                if (usedColors.contains(currentColor)) {
                     throw new RuntimeException("Color conflict with neighbor in interface "
                             + node.getResource().getFullName() + "!");
                 }

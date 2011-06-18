@@ -20,8 +20,6 @@
 
 package javax.xml.xpath;
 
-import java.util.ArrayList;
-
 import javax.xml.namespace.NamespaceContext;
 import javax.xml.namespace.QName;
 
@@ -34,8 +32,8 @@ public class XPath {
     public Object evaluate(String expression, Object inputSource, QName returnType) {
         Document doc = (Document) inputSource;
         String[] path = expression.split("/");
-        XPathNodeList top = new XPathNodeList();
-        top.nodes.add(doc.getDocumentElement());
+        NodeList top = new NodeList();
+        top.addChild(doc.getDocumentElement());
         Object o = match(top, path, 1);
         return o == null ? "" : o;
     }
@@ -64,21 +62,5 @@ public class XPath {
     public void setNamespaceContext(NamespaceContext context) {
         // TODO Auto-generated method stub
 
-    }
-    
-    private class XPathNodeList implements NodeList  {
-
-        private ArrayList<Node> nodes = new ArrayList<Node>();
-        
-        @Override
-        public Node item(int index) {
-            return nodes.get(index);
-        }
-
-        @Override
-        public int getLength() {
-            return getLength();
-        }
-        
     }
 }

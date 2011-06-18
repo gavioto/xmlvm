@@ -24,7 +24,6 @@ import java.io.ObjectOutputStream;
 import java.util.Hashtable;
 //import java.util.StringTokenizer;
 
-import org.apache.harmony.luni.internal.net.www.protocol.http.Handler;
 import org.apache.harmony.luni.internal.nls.Messages;
 //import org.apache.harmony.luni.util.PriviAction;
 import org.apache.harmony.luni.util.Util;
@@ -44,7 +43,9 @@ public final class URL implements java.io.Serializable {
 
     private int hashCode;
     
-    private Handler tmpHandler = null;
+    //Enforce dependencies!
+    private org.apache.harmony.luni.internal.net.www.protocol.http.Handler httpHandler = null;
+    private org.apache.harmony.luni.internal.net.www.protocol.file.Handler fileHandler = null;
 
     /**
      * The receiver's filename.

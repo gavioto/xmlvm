@@ -1,0 +1,27 @@
+#ifndef __ORG_XMLVM_DEMO_XOKOBAN_MOVEFINISHEDHANDLER__
+#define __ORG_XMLVM_DEMO_XOKOBAN_MOVEFINISHEDHANDLER__
+
+#include "xmlvm.h"
+#include "java_lang_Object.h"
+
+// Circular references:
+#ifndef XMLVM_FORWARD_DECL_java_lang_Object
+#define XMLVM_FORWARD_DECL_java_lang_Object
+XMLVM_FORWARD_DECL(java_lang_Object)
+#endif
+
+XMLVM_DEFINE_CLASS(org_xmlvm_demo_xokoban_MoveFinishedHandler, 0, 0)
+
+extern JAVA_OBJECT __CLASS_org_xmlvm_demo_xokoban_MoveFinishedHandler;
+extern JAVA_OBJECT __CLASS_org_xmlvm_demo_xokoban_MoveFinishedHandler_1ARRAY;
+extern JAVA_OBJECT __CLASS_org_xmlvm_demo_xokoban_MoveFinishedHandler_2ARRAY;
+extern JAVA_OBJECT __CLASS_org_xmlvm_demo_xokoban_MoveFinishedHandler_3ARRAY;
+#ifndef XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_MoveFinishedHandler
+#define XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_MoveFinishedHandler
+typedef struct org_xmlvm_demo_xokoban_MoveFinishedHandler org_xmlvm_demo_xokoban_MoveFinishedHandler;
+#endif
+
+void __INIT_org_xmlvm_demo_xokoban_MoveFinishedHandler();
+void __INIT_IMPL_org_xmlvm_demo_xokoban_MoveFinishedHandler();
+
+#endif

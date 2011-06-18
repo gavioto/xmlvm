@@ -1,0 +1,104 @@
+#ifndef __ORG_XMLVM_DEMO_XOKOBAN_INFOVIEW__
+#define __ORG_XMLVM_DEMO_XOKOBAN_INFOVIEW__
+
+#include "xmlvm.h"
+#include "org_xmlvm_demo_xokoban_SplashView.h"
+#include "org_xmlvm_demo_xokoban_SplashView.h"
+
+// Circular references:
+#ifndef XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_InfoView_1
+#define XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_InfoView_1
+XMLVM_FORWARD_DECL(org_xmlvm_demo_xokoban_InfoView_1)
+#endif
+#ifndef XMLVM_FORWARD_DECL_android_widget_CheckBox
+#define XMLVM_FORWARD_DECL_android_widget_CheckBox
+XMLVM_FORWARD_DECL(android_widget_CheckBox)
+#endif
+#ifndef XMLVM_FORWARD_DECL_android_content_Context
+#define XMLVM_FORWARD_DECL_android_content_Context
+XMLVM_FORWARD_DECL(android_content_Context)
+#endif
+#ifndef XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_GameView
+#define XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_GameView
+XMLVM_FORWARD_DECL(org_xmlvm_demo_xokoban_GameView)
+#endif
+#ifndef XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_InfoView
+#define XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_InfoView
+XMLVM_FORWARD_DECL(org_xmlvm_demo_xokoban_InfoView)
+#endif
+#ifndef XMLVM_FORWARD_DECL_android_view_View
+#define XMLVM_FORWARD_DECL_android_view_View
+XMLVM_FORWARD_DECL(android_view_View)
+#endif
+#ifndef XMLVM_FORWARD_DECL_java_lang_Object
+#define XMLVM_FORWARD_DECL_java_lang_Object
+XMLVM_FORWARD_DECL(java_lang_Object)
+#endif
+#ifndef XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_SplashView
+#define XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_SplashView
+XMLVM_FORWARD_DECL(org_xmlvm_demo_xokoban_SplashView)
+#endif
+#ifndef XMLVM_FORWARD_DECL_android_widget_Button
+#define XMLVM_FORWARD_DECL_android_widget_Button
+XMLVM_FORWARD_DECL(android_widget_Button)
+#endif
+#ifndef XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_Xokoban
+#define XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_Xokoban
+XMLVM_FORWARD_DECL(org_xmlvm_demo_xokoban_Xokoban)
+#endif
+#ifndef XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_OnCloseHandler
+#define XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_OnCloseHandler
+XMLVM_FORWARD_DECL(org_xmlvm_demo_xokoban_OnCloseHandler)
+#endif
+#ifndef XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_SplashView
+#define XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_SplashView
+XMLVM_FORWARD_DECL(org_xmlvm_demo_xokoban_SplashView)
+#endif
+// Class declarations for org.xmlvm.demo.xokoban.InfoView
+XMLVM_DEFINE_CLASS(org_xmlvm_demo_xokoban_InfoView, 27, XMLVM_ITABLE_SIZE_org_xmlvm_demo_xokoban_InfoView)
+
+extern JAVA_OBJECT __CLASS_org_xmlvm_demo_xokoban_InfoView;
+extern JAVA_OBJECT __CLASS_org_xmlvm_demo_xokoban_InfoView_1ARRAY;
+extern JAVA_OBJECT __CLASS_org_xmlvm_demo_xokoban_InfoView_2ARRAY;
+extern JAVA_OBJECT __CLASS_org_xmlvm_demo_xokoban_InfoView_3ARRAY;
+//XMLVM_BEGIN_DECLARATIONS
+#define __ADDITIONAL_INSTANCE_FIELDS_org_xmlvm_demo_xokoban_InfoView
+//XMLVM_END_DECLARATIONS
+
+#define __INSTANCE_FIELDS_org_xmlvm_demo_xokoban_InfoView \
+    __INSTANCE_FIELDS_org_xmlvm_demo_xokoban_SplashView; \
+    struct { \
+        JAVA_OBJECT onCloseHandler_; \
+        JAVA_OBJECT enableAccelerometer_; \
+        JAVA_OBJECT okButton_; \
+        __ADDITIONAL_INSTANCE_FIELDS_org_xmlvm_demo_xokoban_InfoView \
+    } org_xmlvm_demo_xokoban_InfoView
+
+struct org_xmlvm_demo_xokoban_InfoView {
+    __TIB_DEFINITION_org_xmlvm_demo_xokoban_InfoView* tib;
+    struct {
+        __INSTANCE_FIELDS_org_xmlvm_demo_xokoban_InfoView;
+    } fields;
+};
+#ifndef XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_InfoView
+#define XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_InfoView
+typedef struct org_xmlvm_demo_xokoban_InfoView org_xmlvm_demo_xokoban_InfoView;
+#endif
+
+#define XMLVM_VTABLE_SIZE_org_xmlvm_demo_xokoban_InfoView 27
+
+void __INIT_org_xmlvm_demo_xokoban_InfoView();
+void __INIT_IMPL_org_xmlvm_demo_xokoban_InfoView();
+void __DELETE_org_xmlvm_demo_xokoban_InfoView(void* me, void* client_data);
+void __INIT_INSTANCE_MEMBERS_org_xmlvm_demo_xokoban_InfoView(JAVA_OBJECT me);
+JAVA_OBJECT __NEW_org_xmlvm_demo_xokoban_InfoView();
+JAVA_OBJECT __NEW_INSTANCE_org_xmlvm_demo_xokoban_InfoView();
+void org_xmlvm_demo_xokoban_InfoView___INIT____android_content_Context_org_xmlvm_demo_xokoban_GameView(JAVA_OBJECT me, JAVA_OBJECT n1, JAVA_OBJECT n2);
+void org_xmlvm_demo_xokoban_InfoView_layoutUi__(JAVA_OBJECT me);
+void org_xmlvm_demo_xokoban_InfoView_setOnCloseHandler___org_xmlvm_demo_xokoban_OnCloseHandler(JAVA_OBJECT me, JAVA_OBJECT n1);
+JAVA_OBJECT org_xmlvm_demo_xokoban_InfoView_getGameController__(JAVA_OBJECT me);
+JAVA_OBJECT org_xmlvm_demo_xokoban_InfoView_access$000___org_xmlvm_demo_xokoban_InfoView(JAVA_OBJECT n1);
+JAVA_OBJECT org_xmlvm_demo_xokoban_InfoView_access$100___org_xmlvm_demo_xokoban_InfoView(JAVA_OBJECT n1);
+JAVA_OBJECT org_xmlvm_demo_xokoban_InfoView_access$200___org_xmlvm_demo_xokoban_InfoView(JAVA_OBJECT n1);
+
+#endif

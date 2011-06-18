@@ -1,0 +1,35 @@
+#ifndef __ORG_XMLVM_IPHONE_UINAVIGATIONBARDELEGATE__
+#define __ORG_XMLVM_IPHONE_UINAVIGATIONBARDELEGATE__
+
+#include "xmlvm.h"
+#include "java_lang_Object.h"
+
+// Circular references:
+#ifndef XMLVM_FORWARD_DECL_java_lang_Object
+#define XMLVM_FORWARD_DECL_java_lang_Object
+XMLVM_FORWARD_DECL(java_lang_Object)
+#endif
+#ifndef XMLVM_FORWARD_DECL_org_xmlvm_iphone_UINavigationBar
+#define XMLVM_FORWARD_DECL_org_xmlvm_iphone_UINavigationBar
+XMLVM_FORWARD_DECL(org_xmlvm_iphone_UINavigationBar)
+#endif
+#ifndef XMLVM_FORWARD_DECL_org_xmlvm_iphone_UINavigationItem
+#define XMLVM_FORWARD_DECL_org_xmlvm_iphone_UINavigationItem
+XMLVM_FORWARD_DECL(org_xmlvm_iphone_UINavigationItem)
+#endif
+
+XMLVM_DEFINE_CLASS(org_xmlvm_iphone_UINavigationBarDelegate, 0, 0)
+
+extern JAVA_OBJECT __CLASS_org_xmlvm_iphone_UINavigationBarDelegate;
+extern JAVA_OBJECT __CLASS_org_xmlvm_iphone_UINavigationBarDelegate_1ARRAY;
+extern JAVA_OBJECT __CLASS_org_xmlvm_iphone_UINavigationBarDelegate_2ARRAY;
+extern JAVA_OBJECT __CLASS_org_xmlvm_iphone_UINavigationBarDelegate_3ARRAY;
+#ifndef XMLVM_FORWARD_DECL_org_xmlvm_iphone_UINavigationBarDelegate
+#define XMLVM_FORWARD_DECL_org_xmlvm_iphone_UINavigationBarDelegate
+typedef struct org_xmlvm_iphone_UINavigationBarDelegate org_xmlvm_iphone_UINavigationBarDelegate;
+#endif
+
+void __INIT_org_xmlvm_iphone_UINavigationBarDelegate();
+void __INIT_IMPL_org_xmlvm_iphone_UINavigationBarDelegate();
+
+#endif

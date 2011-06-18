@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.view.Window;
 import android.view.WindowManager;
@@ -60,30 +61,15 @@ public class SettingsActivity extends Activity {
         int groupBottom = verticalCenterWidgets + (widgetGroup.getMeasuredHeight() / 2);
         int paddingBottom = displayHeight - groupBottom;
         int buttonWidth = getSaveButton().getWidth();
-        int paddingRight = displayWidth - (buttonLeft+buttonWidth);
-        
+        int paddingRight = displayWidth - (buttonLeft + buttonWidth);
         widgetGroup.setPadding(checkboxLeft, 0, paddingRight, paddingBottom);
-        
-        
-//        // Positioning the checkbox.
-//        CheckBox enableAccelerometer = getAccelerometerCheckBox();
-//        int checkBoxTop = verticalCenterCheckBox - (enableAccelerometer.getMeasuredHeight() / 2);
-//        LayoutParams paramsCheckBox = new LayoutParams(enableAccelerometer.getMeasuredWidth(),
-//                enableAccelerometer.getMeasuredHeight());
-//        paramsCheckBox.leftMargin = checkboxLeft;
-//        paramsCheckBox.topMargin = checkBoxTop;
-//        enableAccelerometer.setLayoutParams(paramsCheckBox);
-//        
-//        Log.i("SA", "Checkbox Top: " + checkBoxTop);
-//
-//        // Positioning the button
-//        Button saveButton = getSaveButton();
-//        int buttonTop = verticalCenterButton - (saveButton.getMeasuredHeight() / 2);
-//        LayoutParams paramsSaveButton = new LayoutParams(saveButton.getMeasuredWidth(),
-//                saveButton.getMeasuredHeight());
-//        paramsSaveButton.leftMargin = buttonLeft;
-//        paramsSaveButton.topMargin = buttonTop;
-//        saveButton.setLayoutParams(paramsSaveButton);
+
+        getSaveButton().setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SettingsActivity.this.finish();
+            }
+        });
     }
 
     private View getRoot() {

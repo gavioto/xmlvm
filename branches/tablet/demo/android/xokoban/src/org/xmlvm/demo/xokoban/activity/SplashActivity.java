@@ -29,8 +29,6 @@ public class SplashActivity extends Activity {
         // Set the layout.
         setContentView(R.layout.splash);
 
-        ImageView view = getSplashImage();
-
         // On click on the splash image, the game activity should start.
         getSplashImage().setOnClickListener(new OnClickListener() {
             @Override

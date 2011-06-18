@@ -413,9 +413,9 @@ JAVA_OBJECT org_xmlvm_iphone_NSUserDefaults_standardUserDefaults__()
 JAVA_OBJECT org_xmlvm_iphone_NSUserDefaults_objectForKey___java_lang_String(JAVA_OBJECT me, JAVA_OBJECT n1)
 {
     //XMLVM_BEGIN_WRAPPER[org_xmlvm_iphone_NSUserDefaults_objectForKey___java_lang_String]
-    org_xmlvm_iphone_NSUserDefaults* thiz = me;
-    NSString* key = toNSString(n1);
-    id value = [((NSUserDefaults*) (thiz->fields.org_xmlvm_iphone_NSObject.wrappedObjCObj)) objectForKey:key];
+    XMLVM_VAR_THIZ;
+    XMLVM_VAR_NSString(key, n1);
+    id value = [thiz objectForKey:key];
     [key release];
     if (value == nil) {
         return JAVA_NULL;
@@ -436,6 +436,8 @@ JAVA_OBJECT org_xmlvm_iphone_NSUserDefaults_objectForKey___java_lang_String(JAVA
     } else if ([className isEqualToString:@"NSCFNumber"]) {
         jvalue = __NEW_java_lang_Integer();
         java_lang_Integer___INIT____int(jvalue, [value intValue]);
+    } else if ([className isEqualToString:@"NSCFString"]) {
+        jvalue = xmlvm_create_java_string([value cStringUsingEncoding:NSASCIIStringEncoding]);
     }
     else {
         XMLVM_NOT_IMPLEMENTED();
@@ -456,7 +458,7 @@ void org_xmlvm_iphone_NSUserDefaults_setInteger___int_java_lang_String(JAVA_OBJE
 {
     //XMLVM_BEGIN_WRAPPER[org_xmlvm_iphone_NSUserDefaults_setInteger___int_java_lang_String]
     XMLVM_VAR_THIZ;
-    NSString* key = toNSString(n2);
+    XMLVM_VAR_NSString(key, n2);
     [thiz setInteger:n1 forKey:key];
     [key release];
     //XMLVM_END_WRAPPER
@@ -466,7 +468,7 @@ JAVA_INT org_xmlvm_iphone_NSUserDefaults_integerForKey___java_lang_String(JAVA_O
 {
     //XMLVM_BEGIN_WRAPPER[org_xmlvm_iphone_NSUserDefaults_integerForKey___java_lang_String]
     XMLVM_VAR_THIZ;
-    NSString* key = toNSString(n1);
+    XMLVM_VAR_NSString(key, n1);
     JAVA_INT v = [thiz integerForKey:key];
     [key release];
     return v;
@@ -485,7 +487,7 @@ void org_xmlvm_iphone_NSUserDefaults_setBool___boolean_java_lang_String(JAVA_OBJ
 {
     //XMLVM_BEGIN_WRAPPER[org_xmlvm_iphone_NSUserDefaults_setBool___boolean_java_lang_String]
     XMLVM_VAR_THIZ;
-    NSString* key = toNSString(n2);
+    XMLVM_VAR_NSString(key, n2);
     [thiz setBool:n1 forKey:key];
     [key release];
     //XMLVM_END_WRAPPER
@@ -495,7 +497,7 @@ JAVA_BOOLEAN org_xmlvm_iphone_NSUserDefaults_boolForKey___java_lang_String(JAVA_
 {
     //XMLVM_BEGIN_WRAPPER[org_xmlvm_iphone_NSUserDefaults_boolForKey___java_lang_String]
     XMLVM_VAR_THIZ;
-    NSString* key = toNSString(n1);
+    XMLVM_VAR_NSString(key, n1);
     JAVA_BOOLEAN v = [thiz boolForKey:key];
     [key release];
     return v;
@@ -506,7 +508,7 @@ void org_xmlvm_iphone_NSUserDefaults_setFloat___float_java_lang_String(JAVA_OBJE
 {
     //XMLVM_BEGIN_WRAPPER[org_xmlvm_iphone_NSUserDefaults_setFloat___float_java_lang_String]
     XMLVM_VAR_THIZ;
-    NSString* key = toNSString(n2);
+    XMLVM_VAR_NSString(key, n2);
     [thiz setFloat:n1 forKey:key];
     [key release];
     //XMLVM_END_WRAPPER
@@ -516,7 +518,7 @@ JAVA_FLOAT org_xmlvm_iphone_NSUserDefaults_floatForKey___java_lang_String(JAVA_O
 {
     //XMLVM_BEGIN_WRAPPER[org_xmlvm_iphone_NSUserDefaults_floatForKey___java_lang_String]
     XMLVM_VAR_THIZ;
-    NSString* key = toNSString(n1);
+    XMLVM_VAR_NSString(key, n1);
     JAVA_FLOAT v = [thiz floatForKey:key];
     [key release];
     return v;
@@ -533,7 +535,11 @@ JAVA_OBJECT org_xmlvm_iphone_NSUserDefaults_dataForKey___java_lang_String(JAVA_O
 JAVA_OBJECT org_xmlvm_iphone_NSUserDefaults_stringForKey___java_lang_String(JAVA_OBJECT me, JAVA_OBJECT n1)
 {
     //XMLVM_BEGIN_WRAPPER[org_xmlvm_iphone_NSUserDefaults_stringForKey___java_lang_String]
-    XMLVM_NOT_IMPLEMENTED();
+    XMLVM_VAR_THIZ;
+    XMLVM_VAR_NSString(key, n1);
+    JAVA_OBJECT v = xmlvm_create_java_string([[thiz stringForKey:key] cStringUsingEncoding:NSASCIIStringEncoding]);
+    [key release];
+    return v;
     //XMLVM_END_WRAPPER
 }
 

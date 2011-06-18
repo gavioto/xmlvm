@@ -22,7 +22,6 @@ package org.xmlvm.demo.xokoban;
 
 import android.content.Context;
 import android.view.View;
-import android.widget.RelativeLayout;
 
 /**
  * The GameView class wraps everything that is required for displaying a game.
@@ -30,19 +29,19 @@ import android.widget.RelativeLayout;
 public class GameView {
 
     /** The view which is the board for our moving sprites. */
-    private RelativeLayout boardView;
+    private NonLayoutingLayout boardView;
 
     /** The GameController controlling the game. */
-    private GameController gameController;
+    private GameController     gameController;
 
     /** The helper used to animate the man's moves. */
-    private GamePieceMover mover;
+    private GamePieceMover     mover;
 
     /** The boards Y offset from the display's top left corner. */
-    private int            offsetTop;
+    private int                offsetTop;
 
     /** The boards X offset from the display's top left corner. */
-    private int            offsetLeft;
+    private int                offsetLeft;
 
 
     /**
@@ -52,7 +51,7 @@ public class GameView {
      * @param boardView
      *            The view which will contain the game sprites.
      */
-    public GameView(RelativeLayout boardView) {
+    public GameView(NonLayoutingLayout boardView) {
         this.boardView = boardView;
         this.mover = new GamePieceMover();
     }
@@ -81,7 +80,7 @@ public class GameView {
         int tileSize = determineTileSize(width, height);
 
         offsetTop = (boardView.getHeight() - (height * tileSize)) / 2;
-        offsetLeft = (boardView.getHeight() - (width * tileSize)) / 2;
+        offsetLeft = (boardView.getWidth() - (width * tileSize)) / 2;
 
         // Start with an empty display.
         boardView.removeAllViews();

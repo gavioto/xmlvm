@@ -1,0 +1,231 @@
+#ifndef __ORG_XMLVM_DEMO_XOKOBAN_GAMECONTROLLER__
+#define __ORG_XMLVM_DEMO_XOKOBAN_GAMECONTROLLER__
+
+#include "xmlvm.h"
+#include "java_lang_Object.h"
+#include "java_lang_Object.h"
+#include "org_xmlvm_demo_xokoban_MoveFinishedHandler.h"
+#include "java_lang_Runnable.h"
+
+// Circular references:
+#ifndef XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_MovableGamePiece
+#define XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_MovableGamePiece
+XMLVM_FORWARD_DECL(org_xmlvm_demo_xokoban_MovableGamePiece)
+#endif
+#ifndef XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_Levels
+#define XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_Levels
+XMLVM_FORWARD_DECL(org_xmlvm_demo_xokoban_Levels)
+#endif
+#ifndef XMLVM_FORWARD_DECL_java_lang_Runnable
+#define XMLVM_FORWARD_DECL_java_lang_Runnable
+XMLVM_FORWARD_DECL(java_lang_Runnable)
+#endif
+#ifndef XMLVM_FORWARD_DECL_java_lang_Object
+#define XMLVM_FORWARD_DECL_java_lang_Object
+XMLVM_FORWARD_DECL(java_lang_Object)
+#endif
+#ifndef XMLVM_FORWARD_DECL_android_app_AlertDialog
+#define XMLVM_FORWARD_DECL_android_app_AlertDialog
+XMLVM_FORWARD_DECL(android_app_AlertDialog)
+#endif
+#ifndef XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_Man
+#define XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_Man
+XMLVM_FORWARD_DECL(org_xmlvm_demo_xokoban_Man)
+#endif
+#ifndef XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_Ball
+#define XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_Ball
+XMLVM_FORWARD_DECL(org_xmlvm_demo_xokoban_Ball)
+#endif
+#ifndef XMLVM_FORWARD_DECL_android_app_Dialog
+#define XMLVM_FORWARD_DECL_android_app_Dialog
+XMLVM_FORWARD_DECL(android_app_Dialog)
+#endif
+#ifndef XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_SplashView
+#define XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_SplashView
+XMLVM_FORWARD_DECL(org_xmlvm_demo_xokoban_SplashView)
+#endif
+#ifndef XMLVM_FORWARD_DECL_java_util_List
+#define XMLVM_FORWARD_DECL_java_util_List
+XMLVM_FORWARD_DECL(java_util_List)
+#endif
+#ifndef XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_CharField
+#define XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_CharField
+XMLVM_FORWARD_DECL(org_xmlvm_demo_xokoban_CharField)
+#endif
+#ifndef XMLVM_FORWARD_DECL_android_os_Handler
+#define XMLVM_FORWARD_DECL_android_os_Handler
+XMLVM_FORWARD_DECL(android_os_Handler)
+#endif
+#ifndef XMLVM_FORWARD_DECL_java_lang_Math
+#define XMLVM_FORWARD_DECL_java_lang_Math
+XMLVM_FORWARD_DECL(java_lang_Math)
+#endif
+#ifndef XMLVM_FORWARD_DECL_java_util_ArrayList
+#define XMLVM_FORWARD_DECL_java_util_ArrayList
+XMLVM_FORWARD_DECL(java_util_ArrayList)
+#endif
+#ifndef XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_GameController_1
+#define XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_GameController_1
+XMLVM_FORWARD_DECL(org_xmlvm_demo_xokoban_GameController_1)
+#endif
+#ifndef XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_GameController_2
+#define XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_GameController_2
+XMLVM_FORWARD_DECL(org_xmlvm_demo_xokoban_GameController_2)
+#endif
+#ifndef XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_GameController_3
+#define XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_GameController_3
+XMLVM_FORWARD_DECL(org_xmlvm_demo_xokoban_GameController_3)
+#endif
+#ifndef XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_GameController_4
+#define XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_GameController_4
+XMLVM_FORWARD_DECL(org_xmlvm_demo_xokoban_GameController_4)
+#endif
+#ifndef XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_Board
+#define XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_Board
+XMLVM_FORWARD_DECL(org_xmlvm_demo_xokoban_Board)
+#endif
+#ifndef XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_GameController_5
+#define XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_GameController_5
+XMLVM_FORWARD_DECL(org_xmlvm_demo_xokoban_GameController_5)
+#endif
+#ifndef XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_GameView
+#define XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_GameView
+XMLVM_FORWARD_DECL(org_xmlvm_demo_xokoban_GameView)
+#endif
+#ifndef XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_InfoView
+#define XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_InfoView
+XMLVM_FORWARD_DECL(org_xmlvm_demo_xokoban_InfoView)
+#endif
+#ifndef XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_MoveFinishedHandler
+#define XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_MoveFinishedHandler
+XMLVM_FORWARD_DECL(org_xmlvm_demo_xokoban_MoveFinishedHandler)
+#endif
+#ifndef XMLVM_FORWARD_DECL_java_lang_Object
+#define XMLVM_FORWARD_DECL_java_lang_Object
+XMLVM_FORWARD_DECL(java_lang_Object)
+#endif
+#ifndef XMLVM_FORWARD_DECL_android_app_AlertDialog_Builder
+#define XMLVM_FORWARD_DECL_android_app_AlertDialog_Builder
+XMLVM_FORWARD_DECL(android_app_AlertDialog_Builder)
+#endif
+#ifndef XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_GameController
+#define XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_GameController
+XMLVM_FORWARD_DECL(org_xmlvm_demo_xokoban_GameController)
+#endif
+#ifndef XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_GamePieceMover
+#define XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_GamePieceMover
+XMLVM_FORWARD_DECL(org_xmlvm_demo_xokoban_GamePieceMover)
+#endif
+#ifndef XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_GamePiece
+#define XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_GamePiece
+XMLVM_FORWARD_DECL(org_xmlvm_demo_xokoban_GamePiece)
+#endif
+#ifndef XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_Goal
+#define XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_Goal
+XMLVM_FORWARD_DECL(org_xmlvm_demo_xokoban_Goal)
+#endif
+#ifndef XMLVM_FORWARD_DECL_java_lang_StringBuilder
+#define XMLVM_FORWARD_DECL_java_lang_StringBuilder
+XMLVM_FORWARD_DECL(java_lang_StringBuilder)
+#endif
+#ifndef XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_Xokoban
+#define XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_Xokoban
+XMLVM_FORWARD_DECL(org_xmlvm_demo_xokoban_Xokoban)
+#endif
+// Class declarations for org.xmlvm.demo.xokoban.GameController
+XMLVM_DEFINE_CLASS(org_xmlvm_demo_xokoban_GameController, 8, XMLVM_ITABLE_SIZE_org_xmlvm_demo_xokoban_GameController)
+
+extern JAVA_OBJECT __CLASS_org_xmlvm_demo_xokoban_GameController;
+extern JAVA_OBJECT __CLASS_org_xmlvm_demo_xokoban_GameController_1ARRAY;
+extern JAVA_OBJECT __CLASS_org_xmlvm_demo_xokoban_GameController_2ARRAY;
+extern JAVA_OBJECT __CLASS_org_xmlvm_demo_xokoban_GameController_3ARRAY;
+//XMLVM_BEGIN_DECLARATIONS
+#define __ADDITIONAL_INSTANCE_FIELDS_org_xmlvm_demo_xokoban_GameController
+//XMLVM_END_DECLARATIONS
+
+#define __INSTANCE_FIELDS_org_xmlvm_demo_xokoban_GameController \
+    __INSTANCE_FIELDS_java_lang_Object; \
+    struct { \
+        JAVA_BOOLEAN gamePaused_; \
+        JAVA_INT currentLevel_; \
+        JAVA_BOOLEAN levelStarted_; \
+        JAVA_INT moveCount_; \
+        JAVA_OBJECT man_; \
+        JAVA_OBJECT balls_; \
+        JAVA_OBJECT goals_; \
+        JAVA_OBJECT board_; \
+        JAVA_OBJECT gameView_; \
+        JAVA_OBJECT splashView_; \
+        JAVA_OBJECT infoView_; \
+        JAVA_OBJECT currentLevelDialog_; \
+        JAVA_OBJECT changeLevelDialog_; \
+        JAVA_OBJECT congratulationDialog_; \
+        JAVA_INT nextDX_; \
+        JAVA_INT nextDY_; \
+        JAVA_BOOLEAN stopMovement_; \
+        JAVA_BOOLEAN timerIsRunning_; \
+        JAVA_LONG animationDelay_; \
+        JAVA_OBJECT timerHandler_; \
+        __ADDITIONAL_INSTANCE_FIELDS_org_xmlvm_demo_xokoban_GameController \
+    } org_xmlvm_demo_xokoban_GameController
+
+struct org_xmlvm_demo_xokoban_GameController {
+    __TIB_DEFINITION_org_xmlvm_demo_xokoban_GameController* tib;
+    struct {
+        __INSTANCE_FIELDS_org_xmlvm_demo_xokoban_GameController;
+    } fields;
+};
+#ifndef XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_GameController
+#define XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_GameController
+typedef struct org_xmlvm_demo_xokoban_GameController org_xmlvm_demo_xokoban_GameController;
+#endif
+
+#define XMLVM_VTABLE_SIZE_org_xmlvm_demo_xokoban_GameController 8
+#define XMLVM_VTABLE_IDX_org_xmlvm_demo_xokoban_GameController_onMoveFinished__ 6
+#define XMLVM_VTABLE_IDX_org_xmlvm_demo_xokoban_GameController_run__ 7
+
+void __INIT_org_xmlvm_demo_xokoban_GameController();
+void __INIT_IMPL_org_xmlvm_demo_xokoban_GameController();
+void __DELETE_org_xmlvm_demo_xokoban_GameController(void* me, void* client_data);
+void __INIT_INSTANCE_MEMBERS_org_xmlvm_demo_xokoban_GameController(JAVA_OBJECT me);
+JAVA_OBJECT __NEW_org_xmlvm_demo_xokoban_GameController();
+JAVA_OBJECT __NEW_INSTANCE_org_xmlvm_demo_xokoban_GameController();
+JAVA_INT org_xmlvm_demo_xokoban_GameController_GET_DEFAULT_DELAY_IN_MILLIS();
+void org_xmlvm_demo_xokoban_GameController_PUT_DEFAULT_DELAY_IN_MILLIS(JAVA_INT v);
+void org_xmlvm_demo_xokoban_GameController___INIT____org_xmlvm_demo_xokoban_GameView_org_xmlvm_demo_xokoban_SplashView_org_xmlvm_demo_xokoban_InfoView_int(JAVA_OBJECT me, JAVA_OBJECT n1, JAVA_OBJECT n2, JAVA_OBJECT n3, JAVA_INT n4);
+JAVA_BOOLEAN org_xmlvm_demo_xokoban_GameController_isLevelFinished__(JAVA_OBJECT me);
+void org_xmlvm_demo_xokoban_GameController_setMovingSpeed___float_float(JAVA_OBJECT me, JAVA_FLOAT n1, JAVA_FLOAT n2);
+void org_xmlvm_demo_xokoban_GameController_scheduleMoveMan___int_int(JAVA_OBJECT me, JAVA_INT n1, JAVA_INT n2);
+void org_xmlvm_demo_xokoban_GameController_scheduleStopMan__(JAVA_OBJECT me);
+JAVA_INT org_xmlvm_demo_xokoban_GameController_getDelayInMillis__(JAVA_OBJECT me);
+JAVA_BOOLEAN org_xmlvm_demo_xokoban_GameController_moveMan__(JAVA_OBJECT me);
+JAVA_OBJECT org_xmlvm_demo_xokoban_GameController_getBallAtPosition___int_int(JAVA_OBJECT me, JAVA_INT n1, JAVA_INT n2);
+void org_xmlvm_demo_xokoban_GameController_setMan___org_xmlvm_demo_xokoban_Man(JAVA_OBJECT me, JAVA_OBJECT n1);
+void org_xmlvm_demo_xokoban_GameController_addBall___org_xmlvm_demo_xokoban_Ball(JAVA_OBJECT me, JAVA_OBJECT n1);
+void org_xmlvm_demo_xokoban_GameController_addGoal___org_xmlvm_demo_xokoban_Goal(JAVA_OBJECT me, JAVA_OBJECT n1);
+void org_xmlvm_demo_xokoban_GameController_loadLevel___boolean(JAVA_OBJECT me, JAVA_BOOLEAN n1);
+void org_xmlvm_demo_xokoban_GameController_loadLevel___int_boolean(JAVA_OBJECT me, JAVA_INT n1, JAVA_BOOLEAN n2);
+void org_xmlvm_demo_xokoban_GameController_showLevelDialog__(JAVA_OBJECT me);
+void org_xmlvm_demo_xokoban_GameController_showCongratulationDialog__(JAVA_OBJECT me);
+void org_xmlvm_demo_xokoban_GameController_showSplashScreen__(JAVA_OBJECT me);
+void org_xmlvm_demo_xokoban_GameController_showInfoView__(JAVA_OBJECT me);
+JAVA_INT org_xmlvm_demo_xokoban_GameController_getMoveCount__(JAVA_OBJECT me);
+JAVA_INT org_xmlvm_demo_xokoban_GameController_getCurrentLevel__(JAVA_OBJECT me);
+JAVA_BOOLEAN org_xmlvm_demo_xokoban_GameController_isGamePaused__(JAVA_OBJECT me);
+// Vtable index: 6
+void org_xmlvm_demo_xokoban_GameController_onMoveFinished__(JAVA_OBJECT me);
+void org_xmlvm_demo_xokoban_GameController_onDestroy__(JAVA_OBJECT me);
+void org_xmlvm_demo_xokoban_GameController_onTap___float_float(JAVA_OBJECT me, JAVA_FLOAT n1, JAVA_FLOAT n2);
+// Vtable index: 7
+void org_xmlvm_demo_xokoban_GameController_run__(JAVA_OBJECT me);
+JAVA_BOOLEAN org_xmlvm_demo_xokoban_GameController_access$002___org_xmlvm_demo_xokoban_GameController_boolean(JAVA_OBJECT n1, JAVA_BOOLEAN n2);
+JAVA_BOOLEAN org_xmlvm_demo_xokoban_GameController_access$100___org_xmlvm_demo_xokoban_GameController(JAVA_OBJECT n1);
+JAVA_INT org_xmlvm_demo_xokoban_GameController_access$200___org_xmlvm_demo_xokoban_GameController(JAVA_OBJECT n1);
+JAVA_INT org_xmlvm_demo_xokoban_GameController_access$210___org_xmlvm_demo_xokoban_GameController(JAVA_OBJECT n1);
+JAVA_INT org_xmlvm_demo_xokoban_GameController_access$208___org_xmlvm_demo_xokoban_GameController(JAVA_OBJECT n1);
+JAVA_OBJECT org_xmlvm_demo_xokoban_GameController_access$300___org_xmlvm_demo_xokoban_GameController(JAVA_OBJECT n1);
+JAVA_BOOLEAN org_xmlvm_demo_xokoban_GameController_access$402___org_xmlvm_demo_xokoban_GameController_boolean(JAVA_OBJECT n1, JAVA_BOOLEAN n2);
+JAVA_BOOLEAN org_xmlvm_demo_xokoban_GameController_access$502___org_xmlvm_demo_xokoban_GameController_boolean(JAVA_OBJECT n1, JAVA_BOOLEAN n2);
+void org_xmlvm_demo_xokoban_GameController___CLINIT_();
+
+#endif

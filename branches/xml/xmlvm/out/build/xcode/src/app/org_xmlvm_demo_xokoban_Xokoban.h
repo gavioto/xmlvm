@@ -1,0 +1,147 @@
+#ifndef __ORG_XMLVM_DEMO_XOKOBAN_XOKOBAN__
+#define __ORG_XMLVM_DEMO_XOKOBAN_XOKOBAN__
+
+#include "xmlvm.h"
+#include "android_app_Activity.h"
+#include "android_app_Activity.h"
+
+// Circular references:
+#ifndef XMLVM_FORWARD_DECL_android_os_PowerManager
+#define XMLVM_FORWARD_DECL_android_os_PowerManager
+XMLVM_FORWARD_DECL(android_os_PowerManager)
+#endif
+#ifndef XMLVM_FORWARD_DECL_android_content_Context
+#define XMLVM_FORWARD_DECL_android_content_Context
+XMLVM_FORWARD_DECL(android_content_Context)
+#endif
+#ifndef XMLVM_FORWARD_DECL_android_content_SharedPreferences
+#define XMLVM_FORWARD_DECL_android_content_SharedPreferences
+XMLVM_FORWARD_DECL(android_content_SharedPreferences)
+#endif
+#ifndef XMLVM_FORWARD_DECL_android_hardware_SensorManager
+#define XMLVM_FORWARD_DECL_android_hardware_SensorManager
+XMLVM_FORWARD_DECL(android_hardware_SensorManager)
+#endif
+#ifndef XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_GameView
+#define XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_GameView
+XMLVM_FORWARD_DECL(org_xmlvm_demo_xokoban_GameView)
+#endif
+#ifndef XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_InfoView
+#define XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_InfoView
+XMLVM_FORWARD_DECL(org_xmlvm_demo_xokoban_InfoView)
+#endif
+#ifndef XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_GameController
+#define XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_GameController
+XMLVM_FORWARD_DECL(org_xmlvm_demo_xokoban_GameController)
+#endif
+#ifndef XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_SplashView
+#define XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_SplashView
+XMLVM_FORWARD_DECL(org_xmlvm_demo_xokoban_SplashView)
+#endif
+#ifndef XMLVM_FORWARD_DECL_android_os_Bundle
+#define XMLVM_FORWARD_DECL_android_os_Bundle
+XMLVM_FORWARD_DECL(android_os_Bundle)
+#endif
+#ifndef XMLVM_FORWARD_DECL_android_os_PowerManager_WakeLock
+#define XMLVM_FORWARD_DECL_android_os_PowerManager_WakeLock
+XMLVM_FORWARD_DECL(android_os_PowerManager_WakeLock)
+#endif
+#ifndef XMLVM_FORWARD_DECL_android_view_View
+#define XMLVM_FORWARD_DECL_android_view_View
+XMLVM_FORWARD_DECL(android_view_View)
+#endif
+#ifndef XMLVM_FORWARD_DECL_android_app_Activity
+#define XMLVM_FORWARD_DECL_android_app_Activity
+XMLVM_FORWARD_DECL(android_app_Activity)
+#endif
+#ifndef XMLVM_FORWARD_DECL_android_app_Activity
+#define XMLVM_FORWARD_DECL_android_app_Activity
+XMLVM_FORWARD_DECL(android_app_Activity)
+#endif
+#ifndef XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_InputController
+#define XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_InputController
+XMLVM_FORWARD_DECL(org_xmlvm_demo_xokoban_InputController)
+#endif
+#ifndef XMLVM_FORWARD_DECL_android_view_Window
+#define XMLVM_FORWARD_DECL_android_view_Window
+XMLVM_FORWARD_DECL(android_view_Window)
+#endif
+#ifndef XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_Xokoban
+#define XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_Xokoban
+XMLVM_FORWARD_DECL(org_xmlvm_demo_xokoban_Xokoban)
+#endif
+#ifndef XMLVM_FORWARD_DECL_android_content_SharedPreferences_Editor
+#define XMLVM_FORWARD_DECL_android_content_SharedPreferences_Editor
+XMLVM_FORWARD_DECL(android_content_SharedPreferences_Editor)
+#endif
+#ifndef XMLVM_FORWARD_DECL_java_lang_String
+#define XMLVM_FORWARD_DECL_java_lang_String
+XMLVM_FORWARD_DECL(java_lang_String)
+#endif
+// Class declarations for org.xmlvm.demo.xokoban.Xokoban
+XMLVM_DEFINE_CLASS(org_xmlvm_demo_xokoban_Xokoban, 23, XMLVM_ITABLE_SIZE_org_xmlvm_demo_xokoban_Xokoban)
+
+extern JAVA_OBJECT __CLASS_org_xmlvm_demo_xokoban_Xokoban;
+extern JAVA_OBJECT __CLASS_org_xmlvm_demo_xokoban_Xokoban_1ARRAY;
+extern JAVA_OBJECT __CLASS_org_xmlvm_demo_xokoban_Xokoban_2ARRAY;
+extern JAVA_OBJECT __CLASS_org_xmlvm_demo_xokoban_Xokoban_3ARRAY;
+//XMLVM_BEGIN_DECLARATIONS
+#define __ADDITIONAL_INSTANCE_FIELDS_org_xmlvm_demo_xokoban_Xokoban
+//XMLVM_END_DECLARATIONS
+
+#define __INSTANCE_FIELDS_org_xmlvm_demo_xokoban_Xokoban \
+    __INSTANCE_FIELDS_android_app_Activity; \
+    struct { \
+        JAVA_OBJECT gameView_; \
+        JAVA_OBJECT gameController_; \
+        JAVA_OBJECT inputController_; \
+        JAVA_OBJECT prefs_; \
+        JAVA_OBJECT wakeLock_; \
+        JAVA_OBJECT sensorManager_; \
+        JAVA_BOOLEAN useAccelerometer_; \
+        JAVA_BOOLEAN firstRun_; \
+        __ADDITIONAL_INSTANCE_FIELDS_org_xmlvm_demo_xokoban_Xokoban \
+    } org_xmlvm_demo_xokoban_Xokoban
+
+struct org_xmlvm_demo_xokoban_Xokoban {
+    __TIB_DEFINITION_org_xmlvm_demo_xokoban_Xokoban* tib;
+    struct {
+        __INSTANCE_FIELDS_org_xmlvm_demo_xokoban_Xokoban;
+    } fields;
+};
+#ifndef XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_Xokoban
+#define XMLVM_FORWARD_DECL_org_xmlvm_demo_xokoban_Xokoban
+typedef struct org_xmlvm_demo_xokoban_Xokoban org_xmlvm_demo_xokoban_Xokoban;
+#endif
+
+#define XMLVM_VTABLE_SIZE_org_xmlvm_demo_xokoban_Xokoban 23
+#define XMLVM_VTABLE_IDX_org_xmlvm_demo_xokoban_Xokoban_onCreate___android_os_Bundle 17
+#define XMLVM_VTABLE_IDX_org_xmlvm_demo_xokoban_Xokoban_onDestroy__ 21
+
+void __INIT_org_xmlvm_demo_xokoban_Xokoban();
+void __INIT_IMPL_org_xmlvm_demo_xokoban_Xokoban();
+void __DELETE_org_xmlvm_demo_xokoban_Xokoban(void* me, void* client_data);
+void __INIT_INSTANCE_MEMBERS_org_xmlvm_demo_xokoban_Xokoban(JAVA_OBJECT me);
+JAVA_OBJECT __NEW_org_xmlvm_demo_xokoban_Xokoban();
+JAVA_OBJECT __NEW_INSTANCE_org_xmlvm_demo_xokoban_Xokoban();
+JAVA_OBJECT org_xmlvm_demo_xokoban_Xokoban_GET_PREFKEY_LEVEL();
+void org_xmlvm_demo_xokoban_Xokoban_PUT_PREFKEY_LEVEL(JAVA_OBJECT v);
+JAVA_OBJECT org_xmlvm_demo_xokoban_Xokoban_GET_PREFKEY_USERACCELEROMETER();
+void org_xmlvm_demo_xokoban_Xokoban_PUT_PREFKEY_USERACCELEROMETER(JAVA_OBJECT v);
+JAVA_OBJECT org_xmlvm_demo_xokoban_Xokoban_GET_PREFKEY_FIRSTRUN();
+void org_xmlvm_demo_xokoban_Xokoban_PUT_PREFKEY_FIRSTRUN(JAVA_OBJECT v);
+void org_xmlvm_demo_xokoban_Xokoban___INIT___(JAVA_OBJECT me);
+// Vtable index: 17
+void org_xmlvm_demo_xokoban_Xokoban_onCreate___android_os_Bundle(JAVA_OBJECT me, JAVA_OBJECT n1);
+void org_xmlvm_demo_xokoban_Xokoban_setDeviceNoSleep__(JAVA_OBJECT me);
+void org_xmlvm_demo_xokoban_Xokoban_storeCurrentLevel__(JAVA_OBJECT me);
+// Vtable index: 21
+void org_xmlvm_demo_xokoban_Xokoban_onDestroy__(JAVA_OBJECT me);
+void org_xmlvm_demo_xokoban_Xokoban_enableAccelerometer__(JAVA_OBJECT me);
+void org_xmlvm_demo_xokoban_Xokoban_disableAccelerometer__(JAVA_OBJECT me);
+JAVA_BOOLEAN org_xmlvm_demo_xokoban_Xokoban_isAccelerometerEnabled__(JAVA_OBJECT me);
+void org_xmlvm_demo_xokoban_Xokoban_storeAccelerometerUsage__(JAVA_OBJECT me);
+JAVA_BOOLEAN org_xmlvm_demo_xokoban_Xokoban_isFirstRun__(JAVA_OBJECT me);
+void org_xmlvm_demo_xokoban_Xokoban_setFirstRun___boolean(JAVA_OBJECT me, JAVA_BOOLEAN n1);
+
+#endif

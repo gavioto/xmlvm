@@ -1588,7 +1588,8 @@ public final class String implements Serializable, Comparable<String>,
      */
     public String toUpperCase(Locale locale) {
         System.err.println("java.lang.String.toUpperCase() not mplemented");
-        System.exit(-1);
+        return this;
+        /*System.exit(-1);
         String result = null;//UCharacter.toUpperCase(locale, this);
 
         // Must return self if chars unchanged
@@ -1600,8 +1601,9 @@ public final class String implements Serializable, Comparable<String>,
                 return result;
             }
         }
-        return this;
+        return this;*/
     }
+    
 
     /**
      * Copies this string removing white space characters from the beginning and

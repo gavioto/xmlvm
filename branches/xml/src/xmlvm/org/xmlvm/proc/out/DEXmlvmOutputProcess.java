@@ -331,6 +331,7 @@ public class DEXmlvmOutputProcess extends XmlvmProcessImpl {
         try {
             directClassFile.getMagic();
         } catch (ParseException ex) {
+            ex.printStackTrace();
             Log.debug(TAG, "Could not parse class.");
             return null;
         }

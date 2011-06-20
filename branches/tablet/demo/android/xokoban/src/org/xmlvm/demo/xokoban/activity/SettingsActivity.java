@@ -3,6 +3,7 @@ package org.xmlvm.demo.xokoban.activity;
 import org.xmlvm.demo.xokoban.R;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,6 +15,9 @@ import android.widget.Button;
 import android.widget.CheckBox;
 
 public class SettingsActivity extends Activity {
+    public static final String KEY_ACCELEROMETER_ENABLED = "accelerometerEnabled:";
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,17 +31,23 @@ public class SettingsActivity extends Activity {
 
         setContentView(R.layout.settings);
 
+        // Read accelerometer state we got from calling activity.
+        final boolean accelerometerEnabled = getIntent().getBooleanExtra(KEY_ACCELEROMETER_ENABLED,
+                false);
+
         // Re-layout once the layouting is done.
         getRoot().getViewTreeObserver().addOnGlobalLayoutListener(new OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
-                layoutChanged();
+                layoutChanged(accelerometerEnabled);
                 getRoot().getViewTreeObserver().removeGlobalOnLayoutListener(this);
             }
         });
     }
 
-    private void layoutChanged() {
+    private void layoutChanged(boolean accelerometerEnabled) {
+        getAccelerometerCheckBox().setChecked(accelerometerEnabled);
+
         View backgroundImage = findViewById(R.id.background);
         int displayHeight = backgroundImage.getHeight();
         int displayWidth = backgroundImage.getWidth();
@@ -67,6 +77,10 @@ public class SettingsActivity extends Activity {
         getSaveButton().setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
+                // Send the information about the checkbox state back to the
+                // calling activity.
+                setResult(RESULT_OK, new Intent().putExtra(KEY_ACCELEROMETER_ENABLED,
+                        getAccelerometerCheckBox().isChecked()));
                 SettingsActivity.this.finish();
             }
         });

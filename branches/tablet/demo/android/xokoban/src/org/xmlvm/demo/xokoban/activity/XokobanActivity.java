@@ -34,6 +34,7 @@ import android.content.SharedPreferences.Editor;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.PowerManager;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
@@ -46,6 +47,11 @@ import android.widget.ImageView;
  * {@link Activity}.
  */
 public class XokobanActivity extends Activity {
+    /** Tag for use in logging. */
+    private static final String   TAG                       = XokobanActivity.class.getSimpleName();
+
+    /** Result code of the settings activity. */
+    private static final int      REQUEST_CODE_SETTINGS     = 1;
 
     /** Used to store the level in the user prefs. */
     private static final String   PREFKEY_LEVEL             = "level";
@@ -83,7 +89,7 @@ public class XokobanActivity extends Activity {
 
     /** Called when the activity is first created. */
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         // No title bar.
@@ -133,6 +139,78 @@ public class XokobanActivity extends Activity {
                 });
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // Parse the result we got from the settings activity to determine
+        // whether the accelerometer should be enabled or not.
+        if (requestCode == REQUEST_CODE_SETTINGS && resultCode == RESULT_OK) {
+            boolean accelerometerEnabled = data.getBooleanExtra(
+                    SettingsActivity.KEY_ACCELEROMETER_ENABLED, false);
+            Log.i(TAG, "Accelerometer Enabled: " + accelerometerEnabled);
+            if (accelerometerEnabled) {
+                enableAccelerometer();
+            } else {
+                disableAccelerometer();
+            }
+            // Resume game.
+            gameController.setGamePaused(false);
+        }
+    }
+
+    /**
+     * Stores the current level in the preferences, so it can be loaded when the
+     * application is restarted.
+     */
+    protected void storeCurrentLevel() {
+        Editor editor = prefs.edit();
+        editor.putInt(PREFKEY_LEVEL, gameController.getCurrentLevel());
+        editor.commit();
+    }
+
+    /**
+     * Called when the Activity is being deleted.
+     */
+    @Override
+    protected void onDestroy() {
+        storeCurrentLevel();
+        wakeLock.release();
+        gameController.onDestroy();
+        super.onDestroy();
+    }
+
+    /**
+     * Determines whether the accelerometer can be used to control the man's
+     * movements.
+     * 
+     * @return true if the accelerometer is enabled, false otherwise
+     */
+    private boolean isAccelerometerEnabled() {
+        return useAccelerometer;
+    }
+
+    /**
+     * Enables the accelerometer by registering the SensorListener.
+     */
+    private void enableAccelerometer() {
+        if (!useAccelerometer) {
+            useAccelerometer = true;
+            sensorManager.registerListener(inputController, SensorManager.SENSOR_ACCELEROMETER,
+                    SensorManager.SENSOR_DELAY_FASTEST);
+            storeAccelerometerUsage();
+        }
+    }
+
+    /**
+     * Disables the accelerometer by unregistering the SensorListener.
+     */
+    private void disableAccelerometer() {
+        if (useAccelerometer) {
+            useAccelerometer = false;
+            sensorManager.unregisterListener(inputController);
+            storeAccelerometerUsage();
+        }
+    }
+
     private void layoutChanged() {
         gameController.loadLevel(true);
     }
@@ -147,7 +225,9 @@ public class XokobanActivity extends Activity {
 
     private void switchToSettings() {
         gameController.setGamePaused(true);
-        startActivity(new Intent(this, SettingsActivity.class));
+        startActivityForResult(new Intent(this, SettingsActivity.class).putExtra(
+                SettingsActivity.KEY_ACCELEROMETER_ENABLED, isAccelerometerEnabled()),
+                REQUEST_CODE_SETTINGS);
     }
 
     /**
@@ -176,64 +256,10 @@ public class XokobanActivity extends Activity {
      * Sets the device to not sleep or go to standby, and keeps the display
      * bright.
      */
-    public void setDeviceNoSleep() {
+    private void setDeviceNoSleep() {
         PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
         wakeLock = pm.newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK, "Xokoban");
         wakeLock.acquire();
-    }
-
-    /**
-     * Stores the current level in the preferences, so it can be loaded when the
-     * application is restarted.
-     */
-    protected void storeCurrentLevel() {
-        Editor editor = prefs.edit();
-        editor.putInt(PREFKEY_LEVEL, gameController.getCurrentLevel());
-        editor.commit();
-    }
-
-    /**
-     * Called when the Activity is being deleted.
-     */
-    @Override
-    protected void onDestroy() {
-        storeCurrentLevel();
-        wakeLock.release();
-        gameController.onDestroy();
-        super.onDestroy();
-    }
-
-    /**
-     * Enables the accelerometer by registering the SensorListener.
-     */
-    public void enableAccelerometer() {
-        if (!useAccelerometer) {
-            useAccelerometer = true;
-            sensorManager.registerListener(inputController, SensorManager.SENSOR_ACCELEROMETER,
-                    SensorManager.SENSOR_DELAY_FASTEST);
-            storeAccelerometerUsage();
-        }
-    }
-
-    /**
-     * Disables the accelerometer by unregistering the SensorListener.
-     */
-    public void disableAccelerometer() {
-        if (useAccelerometer) {
-            useAccelerometer = false;
-            sensorManager.unregisterListener(inputController);
-            storeAccelerometerUsage();
-        }
-    }
-
-    /**
-     * Determines whether the accelerometer can be used to control the man's
-     * movements.
-     * 
-     * @return true if the accelerometer is enabled, false otherwise
-     */
-    public boolean isAccelerometerEnabled() {
-        return useAccelerometer;
     }
 
     /**

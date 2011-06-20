@@ -31,6 +31,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.PowerManager;
@@ -80,6 +81,9 @@ public class XokobanActivity extends Activity {
     /** The SensorManager used to register/unregister SensorListeners. */
     private SensorManager         sensorManager;
 
+    /** The accelerometer sensor. */
+    private Sensor                sensorAccelerometer;
+
     /** Determines whether the man can be controlled using the accelerometer. */
     private boolean               useAccelerometer;
 
@@ -113,6 +117,7 @@ public class XokobanActivity extends Activity {
 
         // Obtain SensorManager.
         sensorManager = (SensorManager) this.getSystemService(SENSOR_SERVICE);
+        sensorAccelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 
         // Create view and controller.
         gameView = new GameView(getBoardView());
@@ -124,8 +129,8 @@ public class XokobanActivity extends Activity {
         getBoardView().setOnTouchListener(inputController);
 
         if (useAccelerometer) {
-            sensorManager.registerListener(inputController, SensorManager.SENSOR_ACCELEROMETER,
-                    SensorManager.SENSOR_DELAY_FASTEST);
+            sensorManager.registerListener(inputController, sensorAccelerometer,
+                    SensorManager.SENSOR_ACCELEROMETER);
         }
         installButtonListeners();
 
@@ -194,7 +199,7 @@ public class XokobanActivity extends Activity {
     private void enableAccelerometer() {
         if (!useAccelerometer) {
             useAccelerometer = true;
-            sensorManager.registerListener(inputController, SensorManager.SENSOR_ACCELEROMETER,
+            sensorManager.registerListener(inputController, sensorAccelerometer,
                     SensorManager.SENSOR_DELAY_FASTEST);
             storeAccelerometerUsage();
         }

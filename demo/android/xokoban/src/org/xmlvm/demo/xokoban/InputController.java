@@ -20,7 +20,9 @@
 
 package org.xmlvm.demo.xokoban;
 
-import android.hardware.SensorListener;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
@@ -28,7 +30,7 @@ import android.view.View.OnTouchListener;
 /**
  * This controller handles input coming from the various controllers.
  */
-public class InputController implements SensorListener, OnTouchListener {
+public class InputController implements SensorEventListener, OnTouchListener {
     /** Accelerometer threshold to start moving the man. */
     private static final float ACCELEROMETER_THRESHOLD = 2.0f;
 
@@ -58,25 +60,15 @@ public class InputController implements SensorListener, OnTouchListener {
         this.controller = controller;
     }
 
-    /**
-     * Callback to process sensor events. Sensor events are used to move the
-     * game's man. They are translated to either -1, 0 or 1 meaning a movement
-     * to the left, no movement or to the right (up and down respectively).
-     * 
-     * @param sensor
-     *            Indicates which sensor generated the event.
-     * @param values
-     *            The values retrieved from the sensor. To determine the man's
-     *            movement the first two values (x and y) are used.
-     */
-    public void onSensorChanged(int sensor, float[] values) {
+    @Override
+    public void onSensorChanged(SensorEvent event) {
         // No need to process updates when the game is paused.
         if (controller.isGamePaused() || isFingerDown) {
             return;
         }
 
-        float x = values[0];
-        float y = -values[1];
+        float x = event.values[1];
+        float y = event.values[0];
         controller.setMovingSpeed(x, y);
         if (!moveWithInput(x, y, ACCELEROMETER_THRESHOLD)) {
             controller.scheduleStopMan();
@@ -119,11 +111,6 @@ public class InputController implements SensorListener, OnTouchListener {
     }
 
     @Override
-    public void onAccuracyChanged(int arg0, int arg1) {
-        // Do nothing.
-    }
-
-    @Override
     public boolean onTouch(View v, MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
             isFingerDown = true;
@@ -141,5 +128,10 @@ public class InputController implements SensorListener, OnTouchListener {
             }
         }
         return true;
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor arg0, int arg1) {
+        // Do nothing.
     }
 }

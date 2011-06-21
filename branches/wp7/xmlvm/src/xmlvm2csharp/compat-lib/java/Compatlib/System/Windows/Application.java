@@ -60,7 +60,31 @@ public class Application extends DispatcherObject {
         simulator.repaint();
     }
 
-    public void test() {
+    public static Application getCurrent() {
+        return null;
+    }
 
+    /**
+     * @param orientation
+     */
+    public void setOrientation(int orientation) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    /**
+     * @param b
+     */
+    public void setStatusBarHidden(boolean b) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    /**
+     * @return
+     */
+    public int getOrientation() {
+        // TODO Auto-generated method stub
+        return 0;
     }
 }

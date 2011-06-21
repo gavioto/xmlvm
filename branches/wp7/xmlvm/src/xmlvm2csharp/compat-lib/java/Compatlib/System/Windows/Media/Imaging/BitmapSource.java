@@ -28,4 +28,14 @@ import Compatlib.System.Windows.Media.ImageSource;
  */
 public class BitmapSource extends ImageSource {
 
+    public int getPixelWidth() {
+        // TODO Auto-generated method stub
+        return 0;
+    }
+    
+    public int getPixelHeight() {
+        // TODO Auto-generated method stub
+        return 0;
+    }
+    
 }

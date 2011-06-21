@@ -18,7 +18,6 @@
 	<classpathentry kind="src" path="src/xmlvm2c/compat-lib/java"/>
 	<classpathentry kind="src" output="bin-csharp" path="src/xmlvm2csharp/compat-lib/java"/>
 	<classpathentry kind="src" path="src/xmlvm2csharp/xsl"/>
-	<classpathentry kind="src" path="src/androidfireworks"/>
 	<classpathentry kind="src" path="demo/android/afireworks/gen"/>
 	<classpathentry kind="src" path="demo/android/afireworks/src"/>
 	<classpathentry kind="src" path="demo/wp7/fireworks/src"/>
@@ -28,6 +27,13 @@
 	<classpathentry kind="src" path="src/test/java"/>
 	<classpathentry kind="src" path="src/test/cs"/>
 	<classpathentry kind="src" path="src/xmlvm2csharp/compat-lib/dummy"/>
+	<classpathentry kind="src" path="src/acl"/>
+	<classpathentry kind="src" path="src/commondevice/commondeviceapi"/>
+	<classpathentry kind="src" path="src/commondevice/iphone"/>
+	<classpathentry kind="src" path="src/commondevice/wp7"/>
+	<classpathentry kind="src" path="src/xmlvm2objc/compat-lib/java"/>
+	<classpathentry kind="src" path="demo/android/xokoban/src"/>
+	<classpathentry kind="src" path="demo/android/xokoban/gen"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="lib/bcel.jar"/>
 	<classpathentry kind="lib" path="lib/jakarta-regexp.jar"/>

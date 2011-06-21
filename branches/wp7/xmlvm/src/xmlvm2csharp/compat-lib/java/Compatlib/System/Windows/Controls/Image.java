@@ -20,6 +20,8 @@
 
 package Compatlib.System.Windows.Controls;
 
+import org.xmlvm.commondevice.adapter.BitmapDrawableAdapter;
+
 import Compatlib.System.Windows.FrameworkElement;
 import Compatlib.System.Windows.Media.Stretch;
 import Compatlib.System.Windows.Media.Imaging.BitmapImage;
@@ -39,6 +41,14 @@ public class Image extends FrameworkElement {
     public void setStretch(Stretch fill) {
         // TODO Auto-generated method stub
 
+    }
+
+    /**
+     * @return
+     */
+    public BitmapImage getSource() {
+        // TODO Auto-generated method stub
+        return null;
     }
 
 }

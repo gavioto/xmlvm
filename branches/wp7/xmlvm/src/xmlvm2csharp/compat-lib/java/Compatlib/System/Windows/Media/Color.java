@@ -92,4 +92,15 @@ public class Color extends Object {
         return new Color(r, g, b);
     }
 
+    /**
+     * @param red
+     * @param green
+     * @param blue
+     * @return
+     */
+    public static Color FromArgb(int alpha, int red, int green, int blue) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
 }

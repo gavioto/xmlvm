@@ -45,5 +45,12 @@ public class Visual extends DependencyObject {
     public JComponent xmlvmGetRenderer() {
         return this.renderer;
     }
+    
+    /**
+     * @return
+     */
+    public Visual getVisualParent() {
+        return null;
+    }
 
 }

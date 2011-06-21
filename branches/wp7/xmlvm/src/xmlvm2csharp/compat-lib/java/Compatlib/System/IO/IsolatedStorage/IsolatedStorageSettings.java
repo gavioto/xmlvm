@@ -85,4 +85,12 @@ public class IsolatedStorageSettings implements ICollection<KeyValuePair<String,
         return false;
     }
 
+    /**
+     * @param string
+     * @return
+     */
+    public boolean Contains(Compatlib.System.String string) {
+        return false;
+    }
+
 }

@@ -455,4 +455,12 @@ public class UIView extends UIResponder {
     public int xmlvmGetOffsetTop() {
         return this.offsetTop;
     }
+
+    /**
+     * @param nativeDrawable
+     */
+    public void setImage(UIImage nativeDrawable) {
+        // TODO Auto-generated method stub
+        
+    }
 }

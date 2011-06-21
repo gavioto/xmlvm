@@ -20,6 +20,7 @@
 
 package Compatlib.System.Windows;
 
+import Compatlib.System.Windows.Controls.Panel;
 import Compatlib.System.Windows.Media.Visual;
 
 /**
@@ -58,6 +59,14 @@ public class UIElement extends Visual {
     public Size getDesiredSize() {
         // TODO Auto-generated method stub
         return null;
+    }
+
+    /**
+     * @param size
+     */
+    public void setDesiredSize(Size size) {
+        // TODO Auto-generated method stub
+        
     }
 
 }

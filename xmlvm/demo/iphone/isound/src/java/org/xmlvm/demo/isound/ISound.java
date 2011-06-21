@@ -121,7 +121,7 @@ public class ISound extends UIApplicationDelegate implements AVAudioPlayerDelega
     }
 
     private void initAudioPlayer(String audioFile) {
-        NSURL url = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource(audioFile, "mp3"));
+        NSURL url = NSURL.fileURLWithPath(CommonDeviceAPIFinder.instance().pathForResource(audioFile, "mp3"));
         NSErrorHolder errorHolder = new NSErrorHolder();
         audioPlayer = AVAudioPlayer.audioPlayerWithContentsOfURL(url, errorHolder);
         if (audioPlayer == null) {

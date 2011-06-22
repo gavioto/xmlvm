@@ -9,7 +9,7 @@ public new void @this(){
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.Media.FontFamily: void <init>()]
 }
 
-public virtual Compatlib.System.String getSource(){
+public virtual global::System.Object getSource(){
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.Media.FontFamily: Compatlib.System.String getSource()]
     return null;
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.Media.FontFamily: Compatlib.System.String getSource()]

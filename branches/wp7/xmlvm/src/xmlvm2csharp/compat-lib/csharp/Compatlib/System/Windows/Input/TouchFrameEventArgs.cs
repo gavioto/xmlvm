@@ -9,7 +9,7 @@ public new void @this(){
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.Input.TouchFrameEventArgs: void <init>()]
 }
 
-public virtual Compatlib.System.Windows.Input.TouchPoint GetPrimaryTouchPoint(Compatlib.System.Windows.UIElement n1){
+public virtual global::System.Object GetPrimaryTouchPoint(Compatlib.System.Windows.UIElement n1){
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.Input.TouchFrameEventArgs: Compatlib.System.Windows.Input.TouchPoint GetPrimaryTouchPoint(Compatlib.System.Windows.UIElement)]
     TouchPoint point = new TouchPoint();
     point.touchPoint = args.GetPrimaryTouchPoint(n1 != null ? n1.element : null);

@@ -17,9 +17,9 @@ public static Compatlib.System.Windows.Media.Color _fBlack;
 
 public static new void @static(){
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.Media.Colors: void <clinit>()]
-    _fWhite = Color.FromRgb(0xFF, 0xFF, 0xFF);
-    _fBlue = Color.FromRgb(0x00, 0x00, 0xFF);
-    _fBlack = Color.FromRgb(0x00, 0x00, 0x00);
+    _fWhite = (Color) Color.FromRgb(0xFF, 0xFF, 0xFF);
+    _fBlue = (Color) Color.FromRgb(0x00, 0x00, 0xFF);
+    _fBlack = (Color) Color.FromRgb(0x00, 0x00, 0x00);
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.Media.Colors: void <clinit>()]
 }
 

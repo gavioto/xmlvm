@@ -37,7 +37,7 @@ public override int getCount(){
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.Controls.UIElementCollection: int getCount()]
 }
 
-public virtual Compatlib.System.Windows.UIElement _1_1access(int n1){
+public override global::System.Object _1_1access(int n1){
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.Controls.UIElementCollection: Compatlib.System.Windows.UIElement __access(int)]
     return (Compatlib.System.Windows.UIElement) base._1_1access(n1);
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.Controls.UIElementCollection: Compatlib.System.Windows.UIElement __access(int)]

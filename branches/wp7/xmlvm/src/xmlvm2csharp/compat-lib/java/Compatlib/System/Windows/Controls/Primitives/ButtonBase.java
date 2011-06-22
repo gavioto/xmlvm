@@ -20,6 +20,7 @@
 
 package Compatlib.System.Windows.Controls.Primitives;
 
+import Compatlib.System.Windows.RoutedEvent;
 import Compatlib.System.Windows.Controls.ContentControl;
 
 /**
@@ -28,6 +29,6 @@ import Compatlib.System.Windows.Controls.ContentControl;
  */
 public class ButtonBase extends ContentControl {
 
-    public final ClickEvent Click = new ClickEvent();
+    public final RoutedEvent Click = new RoutedEvent();
 
 }

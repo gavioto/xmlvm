@@ -6,11 +6,10 @@ namespace Compatlib.Microsoft.Phone.Shell {
 public class PhoneApplicationService: Compatlib.System.Object {
 public new void @this(){
 //XMLVM_BEGIN_WRAPPER[Compatlib.Microsoft.Phone.Shell.PhoneApplicationService: void <init>()]
-      throw new org.xmlvm.NotYetImplementedException("native/wrapper method not yet implemented");
 //XMLVM_END_WRAPPER[Compatlib.Microsoft.Phone.Shell.PhoneApplicationService: void <init>()]
 }
 
-public static Compatlib.Microsoft.Phone.Shell.PhoneApplicationService getCurrent(){
+public static global::System.Object getCurrent(){
 //XMLVM_BEGIN_WRAPPER[Compatlib.Microsoft.Phone.Shell.PhoneApplicationService: Compatlib.Microsoft.Phone.Shell.PhoneApplicationService getCurrent()]
     if(current==null) {
         current = new Compatlib.Microsoft.Phone.Shell.PhoneApplicationService();

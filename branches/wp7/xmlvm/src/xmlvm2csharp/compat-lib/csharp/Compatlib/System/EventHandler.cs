@@ -7,7 +7,7 @@ public class EventHandler: Compatlib.System.MulticastDelegate {
 public void @this(Compatlib.System.Object n1, Compatlib.System.String n2){
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.EventHandler: void <init>(Compatlib.System.Object, Compatlib.System.String)]
             this.owner = n1;
-	        string newName = org.xmlvm.Util.toNativeString(n2.toString()).Replace("_", "_1");
+	        string newName = org.xmlvm.Util.toNativeString((java.lang.String)n2.toString()).Replace("_", "_1");
             java.lang.String newJavaName = org.xmlvm.Util.toJavaString(newName);
 	        Compatlib.System.String newCompatName = new Compatlib.System.String();
 	        newCompatName._fvalue = newJavaName;

@@ -9,13 +9,13 @@ public new void @this(){
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.FrameworkElement: void <init>()]
 }
 
-public virtual Compatlib.System.Windows.Size ArrangeOverride(Compatlib.System.Windows.Size n1){
+public virtual global::System.Object ArrangeOverride(Compatlib.System.Windows.Size n1){
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.FrameworkElement: Compatlib.System.Windows.Size ArrangeOverride(Compatlib.System.Windows.Size)]
     return null;
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.FrameworkElement: Compatlib.System.Windows.Size ArrangeOverride(Compatlib.System.Windows.Size)]
 }
 
-public virtual Compatlib.System.Windows.Size MeasureOverride(Compatlib.System.Windows.Size n1){
+public virtual global::System.Object MeasureOverride(Compatlib.System.Windows.Size n1){
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.FrameworkElement: Compatlib.System.Windows.Size MeasureOverride(Compatlib.System.Windows.Size)]
     return null;
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.FrameworkElement: Compatlib.System.Windows.Size MeasureOverride(Compatlib.System.Windows.Size)]
@@ -33,7 +33,7 @@ public virtual void setHeight(double n1){
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.FrameworkElement: void setHeight(double)]
 }
 
-public virtual Compatlib.System.String getName(){
+public virtual global::System.Object getName(){
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.FrameworkElement: Compatlib.System.String getName()]
     Compatlib.System.String ret = new Compatlib.System.String();
     ret.@this(org.xmlvm.Util.toJavaString(((global::System.Windows.FrameworkElement)base.element).Name));
@@ -43,7 +43,7 @@ public virtual Compatlib.System.String getName(){
 
 public virtual void setName(Compatlib.System.String n1){
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.FrameworkElement: void setName(Compatlib.System.String)]
-    ((global::System.Windows.FrameworkElement)base.element).Name = org.xmlvm.Util.toNativeString(n1.toString());
+    ((global::System.Windows.FrameworkElement)base.element).Name = org.xmlvm.Util.toNativeString((java.lang.String)n1.toString());
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.FrameworkElement: void setName(Compatlib.System.String)]
 }
 

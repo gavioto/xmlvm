@@ -16,7 +16,7 @@ public new void @this(){
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.Application: void <init>()]
 }
 
-public virtual Compatlib.System.Windows.UIElement getRootVisual(){
+public virtual global::System.Object getRootVisual(){
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.Application: Compatlib.System.Windows.UIElement getRootVisual()]
     return rootVisual;
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.Application: Compatlib.System.Windows.UIElement getRootVisual()]
@@ -30,15 +30,60 @@ public virtual void setRootVisual(Compatlib.System.Windows.UIElement n1){
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.Application: void setRootVisual(Compatlib.System.Windows.UIElement)]
 }
 
-public virtual void test(){
-//XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.Application: void test()]
-      throw new org.xmlvm.NotYetImplementedException("native/wrapper method not yet implemented");
-//XMLVM_END_WRAPPER[Compatlib.System.Windows.Application: void test()]
+public static global::System.Object getCurrent(){
+//XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.Application: Compatlib.System.Windows.Application getCurrent()]
+    return app;
+//XMLVM_END_WRAPPER[Compatlib.System.Windows.Application: Compatlib.System.Windows.Application getCurrent()]
+}
+
+public virtual void setOrientation(int n1){
+//XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.Application: void setOrientation(int)]
+    if(n1 == ORIENTATION_LANDSCAPE_LEFT) {
+        ((global::Internal.Redirect)frame.Content).SupportedOrientations = global::Microsoft.Phone.Controls.SupportedPageOrientation.Landscape;
+    } else if(n1 == ORIENTATION_PORTRAIT) {
+        ((global::Internal.Redirect)frame.Content).SupportedOrientations = global::Microsoft.Phone.Controls.SupportedPageOrientation.Portrait;
+    }
+//XMLVM_END_WRAPPER[Compatlib.System.Windows.Application: void setOrientation(int)]
+}
+
+public virtual void setStatusBarHidden(bool n1){
+//XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.Application: void setStatusBarHidden(boolean)]
+    global::Microsoft.Phone.Shell.SystemTray.IsVisible = n1;
+//XMLVM_END_WRAPPER[Compatlib.System.Windows.Application: void setStatusBarHidden(boolean)]
+}
+
+public virtual int getOrientation(){
+//XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.Application: int getOrientation()]
+    switch (((global::Internal.Redirect)frame.Content).Orientation)
+    {
+        case global::Microsoft.Phone.Controls.PageOrientation.Landscape:
+        case global::Microsoft.Phone.Controls.PageOrientation.LandscapeLeft:
+            return ORIENTATION_LANDSCAPE_LEFT;
+        case global::Microsoft.Phone.Controls.PageOrientation.LandscapeRight:
+            return ORIENTATION_LANDSCAPE_RIGHT;
+        case global::Microsoft.Phone.Controls.PageOrientation.Portrait:
+        case global::Microsoft.Phone.Controls.PageOrientation.PortraitDown: 
+            return ORIENTATION_PORTRAIT;
+        case global::Microsoft.Phone.Controls.PageOrientation.PortraitUp:
+            return ORIENTATION_PORTRAIT_UPSIDE_DOWN;
+        default:
+            return ORIENTATION_UNKNOWN;
+    }
+//XMLVM_END_WRAPPER[Compatlib.System.Windows.Application: int getOrientation()]
 }
 
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.Application]
+private static global::System.Windows.Application app = Compatlib.System.Windows.ApplicationDelegate.Current;
+
+public static const int ORIENTATION_UNKNOWN            = 0;
+public static const int ORIENTATION_PORTRAIT           = 1;
+public static const int ORIENTATION_PORTRAIT_UPSIDE_DOWN = 2;
+public static const int ORIENTATION_LANDSCAPE_LEFT      = 3;
+public static const int ORIENTATION_LANDSCAPE_RIGHT     = 4;
+public static const int ORIENTATION_FACE_UP             = 5;
+public static const int ORIENTATION_FACE_DOWN = 6;
+
 private Compatlib.System.Windows.UIElement rootVisual;
-private global::System.Windows.Application app = Compatlib.System.Windows.ApplicationDelegate.Current;
 private global::Microsoft.Phone.Controls.PhoneApplicationFrame frame = new global::Microsoft.Phone.Controls.PhoneApplicationFrame();
 private bool rootVisualChanged = false;
 private bool pageInitialized = false;

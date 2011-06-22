@@ -22,10 +22,16 @@ package org.xmlvm.common.wp7.objects;
 
 import java.awt.Color;
 import java.awt.Rectangle;
+import java.util.Set;
 
+import org.xmlvm.common.iphone.objects.IPhoneView;
 import org.xmlvm.commondevice.objects.CommonDeviceView;
+import org.xmlvm.iphone.CGPoint;
+import org.xmlvm.iphone.UIEvent;
+import org.xmlvm.iphone.UITouch;
 
 import android.internal.Assert;
+import android.view.MotionEvent;
 import android.view.View;
 
 import Compatlib.System.Object;
@@ -41,10 +47,12 @@ import Compatlib.System.Windows.Media.Stretch;
 public class WP7View extends Object implements CommonDeviceView {
 
     private UIElement element;
-    private View view;
+    private View androidView;
     
     public WP7View(View view) {
-        this.view = view;
+        this.androidView = view;
+        this.element = new Panel();
+//        ((Panel)this.element).M
     }
     
     public UIElement getElement() {
@@ -126,6 +134,26 @@ public class WP7View extends Object implements CommonDeviceView {
             Assert.NOT_IMPLEMENTED();
         }
     }
+    
+    public boolean xmlvmTouchesEvent(int action, Set<UITouch> touches, UIEvent event) {
+        if (action == MotionEvent.ACTION_UP && androidView.getOnClickListener() != null) {
+            androidView.getOnClickListener().onClick(androidView);
+        }
+
+        UITouch firstTouch = touches.iterator().next();
+        CGPoint point = firstTouch.locationInView(((IPhoneView)androidView.xmlvmGetViewHandler().getMetricsView()).getView());
+        MotionEvent motionEvent = new MotionEvent(action, (int) point.x, (int) point.y);
+        if (androidView.onTouchEvent(motionEvent)) {
+            return true;
+        }
+        if (androidView.getOnTouchListener() != null && androidView.getOnTouchListener().onTouch(androidView, motionEvent)) {
+            return true;
+        }
+        if (androidView.getParent() != null && (androidView.getParent() instanceof View)) {
+            return ((IPhoneView)((View) androidView.getParent()).xmlvmGetViewHandler().getContentView()).xmlvmTouchesEvent(action, touches, event);
+        }
+        return false;
+    }    
     
     public static Rectangle toRectangle(Size desiredSize) {
         return new Rectangle((int) desiredSize.getWidth(), (int) desiredSize.getHeight());

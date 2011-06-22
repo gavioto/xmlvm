@@ -16,7 +16,7 @@ public virtual void setIsChecked(bool n1){
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.Controls.Primitives.ToggleButton: void setIsChecked(boolean)]
 }
 
-public virtual Compatlib.System.Boolean getIsChecked(){
+public virtual global::System.Object getIsChecked(){
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.Controls.Primitives.ToggleButton: Compatlib.System.Boolean getIsChecked()]
     Compatlib.System.Boolean ret = new Compatlib.System.Boolean();
     ret.boolean = ((global::System.Windows.Controls.Primitives.ToggleButton)base.element).IsChecked.Value;

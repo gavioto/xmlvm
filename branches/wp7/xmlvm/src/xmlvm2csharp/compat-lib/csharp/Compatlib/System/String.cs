@@ -24,13 +24,13 @@ public void @this(java.lang.String n1){
 //XMLVM_END_WRAPPER[Compatlib.System.String: void <init>(java.lang.String)]
 }
 
-public override Compatlib.System.String ToString(){
+public override global::System.Object ToString(){
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.String: Compatlib.System.String ToString()]
     return this;
 //XMLVM_END_WRAPPER[Compatlib.System.String: Compatlib.System.String ToString()]
 }
 
-public override java.lang.String toString(){
+public override global::System.Object toString(){
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.String: java.lang.String toString()]
     return this._fvalue;
 //XMLVM_END_WRAPPER[Compatlib.System.String: java.lang.String toString()]
@@ -38,25 +38,26 @@ public override java.lang.String toString(){
 
 public virtual bool Equals(Compatlib.System.String n1){
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.String: boolean Equals(Compatlib.System.String)]
-    return this.toString().equals(n1.toString());
+    return ((java.lang.String)this.toString()).equals(((java.lang.String)n1.toString()));
 //XMLVM_END_WRAPPER[Compatlib.System.String: boolean Equals(Compatlib.System.String)]
 }
 
 public virtual char _1_1access(int n1){
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.String: char __access(int)]
-    return this.toString().toCharArray().get(n1);
+    return ((org.xmlvm.Array<char>)((java.lang.String)this.toString()).toCharArray()).get(n1);
 //XMLVM_END_WRAPPER[Compatlib.System.String: char __access(int)]
 }
 
 public virtual bool EndsWith(Compatlib.System.String n1){
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.String: boolean EndsWith(Compatlib.System.String)]
-    return org.xmlvm.Util.toNativeString(this.toString()).EndsWith(org.xmlvm.Util.toNativeString(n1.toString()));
+    return ((global::System.String)org.xmlvm.Util.toNativeString((java.lang.String)this.toString()))
+                .EndsWith((global::System.String)org.xmlvm.Util.toNativeString((java.lang.String)n1.toString()));
 //XMLVM_END_WRAPPER[Compatlib.System.String: boolean EndsWith(Compatlib.System.String)]
 }
 
 public virtual int getLength(){
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.String: int getLength()]
-    return org.xmlvm.Util.toNativeString(this.toString()).Length;
+    return org.xmlvm.Util.toNativeString((java.lang.String)this.toString()).Length;
 //XMLVM_END_WRAPPER[Compatlib.System.String: int getLength()]
 }
 

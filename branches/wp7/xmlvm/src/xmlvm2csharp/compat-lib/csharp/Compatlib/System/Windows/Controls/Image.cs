@@ -22,6 +22,12 @@ public virtual void setStretch(Compatlib.System.Windows.Media.Stretch n1){
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.Controls.Image: void setStretch(Compatlib.System.Windows.Media.Stretch)]
 }
 
+public virtual global::System.Object getSource(){
+//XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.Controls.Image: Compatlib.System.Windows.Media.Imaging.BitmapImage getSource()]
+      throw new org.xmlvm.NotYetImplementedException("native/wrapper method not yet implemented");
+//XMLVM_END_WRAPPER[Compatlib.System.Windows.Controls.Image: Compatlib.System.Windows.Media.Imaging.BitmapImage getSource()]
+}
+
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.Controls.Image]
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.Controls.Image]
 

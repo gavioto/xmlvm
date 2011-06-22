@@ -9,7 +9,7 @@ public new void @this(){
 //XMLVM_END_WRAPPER[Compatlib.System.IO.IsolatedStorage.IsolatedStorageSettings: void <init>()]
 }
 
-public static Compatlib.System.IO.IsolatedStorage.IsolatedStorageSettings getApplicationSettings(){
+public static global::System.Object getApplicationSettings(){
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.IO.IsolatedStorage.IsolatedStorageSettings: Compatlib.System.IO.IsolatedStorage.IsolatedStorageSettings getApplicationSettings()]
     if (current == null)
     {
@@ -23,7 +23,7 @@ public static Compatlib.System.IO.IsolatedStorage.IsolatedStorageSettings getApp
 public virtual bool TryGetValue(Compatlib.System.String n1, Compatlib.System.Integer n2){
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.IO.IsolatedStorage.IsolatedStorageSettings: boolean TryGetValue(Compatlib.System.String, Compatlib.System.Integer)]
     int temp;
-    bool ret = applicationSettings.TryGetValue(org.xmlvm.Util.toNativeString(n1.toString()), out temp);
+    bool ret = applicationSettings.TryGetValue(org.xmlvm.Util.toNativeString((java.lang.String)n1.toString()), out temp);
     n2.integer = temp;
     return ret;
 //XMLVM_END_WRAPPER[Compatlib.System.IO.IsolatedStorage.IsolatedStorageSettings: boolean TryGetValue(Compatlib.System.String, Compatlib.System.Integer)]
@@ -37,23 +37,29 @@ public virtual void Save(){
 
 public virtual void Add(Compatlib.System.String n1, Compatlib.System.Boolean n2){
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.IO.IsolatedStorage.IsolatedStorageSettings: void Add(Compatlib.System.String, Compatlib.System.Boolean)]
-    applicationSettings.Add(org.xmlvm.Util.toNativeString(n1.toString()), n2.boolean);
+    applicationSettings.Add(org.xmlvm.Util.toNativeString((java.lang.String)n1.toString()), n2.boolean);
 //XMLVM_END_WRAPPER[Compatlib.System.IO.IsolatedStorage.IsolatedStorageSettings: void Add(Compatlib.System.String, Compatlib.System.Boolean)]
 }
 
 public virtual void Add(Compatlib.System.String n1, int n2){
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.IO.IsolatedStorage.IsolatedStorageSettings: void Add(Compatlib.System.String, int)]
-    applicationSettings.Add(org.xmlvm.Util.toNativeString(n1.toString()), n2);
+    applicationSettings.Add(org.xmlvm.Util.toNativeString((java.lang.String)n1.toString()), n2);
 //XMLVM_END_WRAPPER[Compatlib.System.IO.IsolatedStorage.IsolatedStorageSettings: void Add(Compatlib.System.String, int)]
 }
 
 public virtual bool TryGetValue(Compatlib.System.String n1, Compatlib.System.Boolean n2){
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.IO.IsolatedStorage.IsolatedStorageSettings: boolean TryGetValue(Compatlib.System.String, Compatlib.System.Boolean)]
     bool temp;
-    bool ret = applicationSettings.TryGetValue(org.xmlvm.Util.toNativeString(n1.toString()), out temp);
+    bool ret = applicationSettings.TryGetValue(org.xmlvm.Util.toNativeString((java.lang.String)n1.toString()), out temp);
     n2.boolean = temp;
     return ret;
 //XMLVM_END_WRAPPER[Compatlib.System.IO.IsolatedStorage.IsolatedStorageSettings: boolean TryGetValue(Compatlib.System.String, Compatlib.System.Boolean)]
+}
+
+public virtual bool Contains(Compatlib.System.String n1){
+//XMLVM_BEGIN_WRAPPER[Compatlib.System.IO.IsolatedStorage.IsolatedStorageSettings: boolean Contains(Compatlib.System.String)]
+      throw new org.xmlvm.NotYetImplementedException("native/wrapper method not yet implemented");
+//XMLVM_END_WRAPPER[Compatlib.System.IO.IsolatedStorage.IsolatedStorageSettings: boolean Contains(Compatlib.System.String)]
 }
 
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.IO.IsolatedStorage.IsolatedStorageSettings]

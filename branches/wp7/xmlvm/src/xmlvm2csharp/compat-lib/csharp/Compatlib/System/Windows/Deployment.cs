@@ -9,7 +9,7 @@ public new void @this(){
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.Deployment: void <init>()]
 }
 
-public static Compatlib.System.Windows.Deployment getCurrent(){
+public static global::System.Object getCurrent(){
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.Deployment: Compatlib.System.Windows.Deployment getCurrent()]
     Deployment deployment = new Deployment();
     deployment.deployment = global::System.Windows.Deployment.Current;
@@ -17,7 +17,7 @@ public static Compatlib.System.Windows.Deployment getCurrent(){
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.Deployment: Compatlib.System.Windows.Deployment getCurrent()]
 }
 
-public virtual Compatlib.System.Windows.Threading.Dispatcher getDispatcher(){
+public virtual global::System.Object getDispatcher(){
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.Deployment: Compatlib.System.Windows.Threading.Dispatcher getDispatcher()]
     Compatlib.System.Windows.Threading.Dispatcher dispatcher = new Compatlib.System.Windows.Threading.Dispatcher();
     dispatcher.dispatcher = deployment.Dispatcher;

@@ -9,7 +9,7 @@ public new void @this(){
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.Controls.ContentControl: void <init>()]
 }
 
-public virtual Compatlib.System.Object getContent(){
+public virtual global::System.Object getContent(){
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.Controls.ContentControl: Compatlib.System.Object getContent()]
     return this.content;
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.Controls.ContentControl: Compatlib.System.Object getContent()]

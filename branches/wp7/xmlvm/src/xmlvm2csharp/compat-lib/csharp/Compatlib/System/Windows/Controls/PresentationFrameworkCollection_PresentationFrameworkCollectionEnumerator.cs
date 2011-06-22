@@ -6,7 +6,7 @@ namespace Compatlib.System.Windows.Controls {
 public class PresentationFrameworkCollection_2PresentationFrameworkCollectionEnumerator: java.lang.Object,Compatlib.System.Collections.Generics.IEnumerator {
 public Compatlib.System.Windows.Controls.PresentationFrameworkCollection _fthis_20;
 
-public virtual java.lang.Object getCurrent(){
+public virtual global::System.Object getCurrent(){
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.Controls.PresentationFrameworkCollection$PresentationFrameworkCollectionEnumerator: java.lang.Object getCurrent()]
 return null;
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.Controls.PresentationFrameworkCollection$PresentationFrameworkCollectionEnumerator: java.lang.Object getCurrent()]

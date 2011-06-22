@@ -9,6 +9,12 @@ public new void @this(){
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.Media.Visual: void <init>()]
 }
 
+public virtual global::System.Object getVisualParent(){
+//XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.Media.Visual: Compatlib.System.Windows.Media.Visual getVisualParent()]
+      throw new org.xmlvm.NotYetImplementedException("native/wrapper method not yet implemented");
+//XMLVM_END_WRAPPER[Compatlib.System.Windows.Media.Visual: Compatlib.System.Windows.Media.Visual getVisualParent()]
+}
+
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.Media.Visual]
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.Media.Visual]
 

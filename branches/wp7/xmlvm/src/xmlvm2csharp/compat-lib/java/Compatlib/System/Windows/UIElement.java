@@ -20,7 +20,6 @@
 
 package Compatlib.System.Windows;
 
-import Compatlib.System.Windows.Controls.Panel;
 import Compatlib.System.Windows.Media.Visual;
 
 /**
@@ -29,6 +28,10 @@ import Compatlib.System.Windows.Media.Visual;
  */
 public class UIElement extends Visual {
 
+    public RoutedEvent ManipulationStarted;
+    public RoutedEvent ManipulationDelta;
+    public RoutedEvent ManipulationCompleted;
+    
     /**
      * @param rect
      */

@@ -8,7 +8,7 @@ public abstract class _iIEnumerator: Compatlib.System.IDisposable {
 } // end of abstract class: _iIEnumerator
 
 public interface IEnumerator: Compatlib.System.IDisposable {
- java.lang.Object getCurrent();
+ global::System.Object getCurrent();
 
  bool MoveNext();
 

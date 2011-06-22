@@ -6,7 +6,7 @@ namespace Compatlib.System {
 public class Uri: Compatlib.System.Object {
 public void @this(Compatlib.System.String n1, Compatlib.System.UriKind n2){
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.Uri: void <init>(Compatlib.System.String, Compatlib.System.UriKind)]
-    uri = new global::System.Uri(org.xmlvm.Util.toNativeString(n1.toString()), n2.uriKind);
+    uri = new global::System.Uri(org.xmlvm.Util.toNativeString((java.lang.String)n1.toString()), n2.uriKind);
 //XMLVM_END_WRAPPER[Compatlib.System.Uri: void <init>(Compatlib.System.String, Compatlib.System.UriKind)]
 }
 

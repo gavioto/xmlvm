@@ -11,7 +11,7 @@ public void @this(Compatlib.System.Windows.Media.Color n1){
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.Media.SolidColorBrush: void <init>(Compatlib.System.Windows.Media.Color)]
 }
 
-public virtual Compatlib.System.Windows.Media.Color getColor(){
+public virtual global::System.Object getColor(){
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.Media.SolidColorBrush: Compatlib.System.Windows.Media.Color getColor()]
     return color;
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.Media.SolidColorBrush: Compatlib.System.Windows.Media.Color getColor()]

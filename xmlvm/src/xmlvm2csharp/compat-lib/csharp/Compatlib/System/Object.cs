@@ -9,7 +9,7 @@ public new void @this(){
 //XMLVM_END_WRAPPER[Compatlib.System.Object: void <init>()]
 }
 
-public virtual Compatlib.System.String ToString(){
+public virtual global::System.Object ToString(){
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.Object: Compatlib.System.String ToString()]
     java.lang.String jst = org.xmlvm.Util.toJavaString(base.ToString());
     Compatlib.System.String st = new Compatlib.System.String();

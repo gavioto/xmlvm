@@ -4,7 +4,7 @@ using org.xmlvm;
 using java = org.xmlvm.java;
 namespace Compatlib.System.Windows.Controls {
 public class TextBlock: Compatlib.System.Windows.FrameworkElement {
-public virtual Compatlib.System.Windows.Media.Brush getForeground(){
+public virtual global::System.Object getForeground(){
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.Controls.TextBlock: Compatlib.System.Windows.Media.Brush getForeground()]
     return this.foreground;
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.Controls.TextBlock: Compatlib.System.Windows.Media.Brush getForeground()]
@@ -17,7 +17,7 @@ public virtual void setForeground(Compatlib.System.Windows.Media.Brush n1){
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.Controls.TextBlock: void setForeground(Compatlib.System.Windows.Media.Brush)]
 }
 
-public virtual Compatlib.System.String getText(){
+public virtual global::System.Object getText(){
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.Controls.TextBlock: Compatlib.System.String getText()]
     string nativeText = ((global::System.Windows.Controls.TextBlock)base.element).Text;
     java.lang.String temp = org.xmlvm.Util.toJavaString(nativeText);
@@ -33,7 +33,7 @@ public virtual void setText(Compatlib.System.String n1){
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.Controls.TextBlock: void setText(Compatlib.System.String)]
 }
 
-public virtual Compatlib.System.Windows.Media.FontFamily getFontFamily(){
+public virtual global::System.Object getFontFamily(){
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.Controls.TextBlock: Compatlib.System.Windows.Media.FontFamily getFontFamily()]
     return this.fontFamily;
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.Controls.TextBlock: Compatlib.System.Windows.Media.FontFamily getFontFamily()]

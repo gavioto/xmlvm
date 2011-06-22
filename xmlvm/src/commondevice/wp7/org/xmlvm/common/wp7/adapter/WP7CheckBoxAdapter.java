@@ -23,16 +23,30 @@ package org.xmlvm.common.wp7.adapter;
 import org.xmlvm.common.wp7.objects.WP7View;
 import org.xmlvm.commondevice.adapter.CheckBoxAdapter;
 
+import Compatlib.System.Object;
+import Compatlib.System.Windows.RoutedEventArgs;
+import Compatlib.System.Windows.RoutedEventHandler;
+import android.view.View;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 
 /**
  *
  */
 public class WP7CheckBoxAdapter extends WP7View implements CheckBoxAdapter {
 
+    private CheckBox checkBox;
+
     public WP7CheckBoxAdapter(CheckBox checkBox) {
         super(checkBox);
+        this.checkBox = checkBox;
         this.setElement(new Compatlib.System.Windows.Controls.CheckBox());
+        ((Compatlib.System.Windows.Controls.CheckBox)this.getElement()).Click.__add(new RoutedEventHandler(this, new Compatlib.System.String("checkbox_onClick")));
+    }
+    
+    public void checkbox_onClick(Object sender, RoutedEventArgs e) {
+        this.checkBox.setChecked(!checkBox.isChecked());
+        this.checkBox.xmlvmSetDrawableState(checkBox.isChecked() ? CompoundButton.CHECKED_STATE_SET : View.EMPTY_STATE_SET);
     }
 
     @Override

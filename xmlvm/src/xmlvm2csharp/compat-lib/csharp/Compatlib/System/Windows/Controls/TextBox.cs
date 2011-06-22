@@ -10,7 +10,7 @@ public new void @this(){
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.Controls.TextBox: void <init>()]
 }
 
-public virtual Compatlib.System.String getText(){
+public virtual global::System.Object getText(){
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.Controls.TextBox: Compatlib.System.String getText()]
     string nativeText = ((global::System.Windows.Controls.TextBox)base.element).Text;
     java.lang.String temp = org.xmlvm.Util.toJavaString(nativeText);

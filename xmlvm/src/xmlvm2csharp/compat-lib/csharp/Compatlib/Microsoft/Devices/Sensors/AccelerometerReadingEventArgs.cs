@@ -11,7 +11,7 @@ public new void @this(){
 
 public virtual double getZ(){
 //XMLVM_BEGIN_WRAPPER[Compatlib.Microsoft.Devices.Sensors.AccelerometerReadingEventArgs: double getZ()]
-      throw new org.xmlvm.NotYetImplementedException("native/wrapper method not yet implemented");
+    return args.Z;
 //XMLVM_END_WRAPPER[Compatlib.Microsoft.Devices.Sensors.AccelerometerReadingEventArgs: double getZ()]
 }
 

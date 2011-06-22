@@ -9,7 +9,7 @@ public new void @this(){
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.RoutedEventArgs: void <init>()]
 }
 
-public virtual Compatlib.System.Object getOriginalSource(){
+public virtual global::System.Object getOriginalSource(){
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.RoutedEventArgs: Compatlib.System.Object getOriginalSource()]
     return originalSource;
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.RoutedEventArgs: Compatlib.System.Object getOriginalSource()]

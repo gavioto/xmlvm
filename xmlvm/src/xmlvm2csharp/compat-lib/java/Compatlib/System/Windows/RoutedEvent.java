@@ -18,26 +18,24 @@
  * For more information, visit the XMLVM Home Page at http://www.xmlvm.org
  */
 
-package Compatlib.System.Windows.Controls.Primitives;
+package Compatlib.System.Windows;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import Compatlib.System.Event;
 import Compatlib.System.Object;
-import Compatlib.System.Windows.RoutedEventArgs;
-import Compatlib.System.Windows.RoutedEventHandler;
 
 /**
  * @author Markus
  * 
  */
-public class ClickEvent extends Event {
+public class RoutedEvent extends Event {
 
     private final List<RoutedEventHandler> eventHandler = new ArrayList<RoutedEventHandler>();
 
 
-    public ClickEvent() {
+    public RoutedEvent() {
     }
 
     public void __add(RoutedEventHandler handler) {

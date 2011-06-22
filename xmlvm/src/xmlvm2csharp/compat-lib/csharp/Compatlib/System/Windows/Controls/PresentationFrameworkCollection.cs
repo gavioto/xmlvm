@@ -16,7 +16,7 @@ public virtual void Add(java.lang.Object n1){
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.Controls.PresentationFrameworkCollection: void Add(java.lang.Object)]
 }
 
-public virtual Compatlib.System.Collections.Generics.IEnumerator GetEnumerator(){
+public virtual global::System.Object GetEnumerator(){
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.Controls.PresentationFrameworkCollection: Compatlib.System.Collections.Generics.IEnumerator GetEnumerator()]
     return new Enumerator(elements);
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.Controls.PresentationFrameworkCollection: Compatlib.System.Collections.Generics.IEnumerator GetEnumerator()]
@@ -40,7 +40,7 @@ public virtual int getCount(){
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.Controls.PresentationFrameworkCollection: int getCount()]
 }
 
-public virtual java.lang.Object _1_1access(int n1){
+public virtual global::System.Object _1_1access(int n1){
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.Controls.PresentationFrameworkCollection: java.lang.Object __access(int)]
     return elements[n1];
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.Controls.PresentationFrameworkCollection: java.lang.Object __access(int)]
@@ -60,7 +60,7 @@ private class Enumerator : Compatlib.System.Collections.Generics.IEnumerator
     private int index;
     private global::System.Collections.Generic.List<java.lang.Object> elements;
 
-    public java.lang.Object getCurrent()
+    public global::System.Object getCurrent()
     {
         return this.elements[index];
     }

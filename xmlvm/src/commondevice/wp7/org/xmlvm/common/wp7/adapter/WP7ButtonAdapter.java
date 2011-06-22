@@ -62,7 +62,7 @@ public class WP7ButtonAdapter extends WP7View implements ButtonAdapter {
         ((Button)this.getElement()).Click.__add(new RoutedEventHandler(this, new Compatlib.System.String("okButton_onClick")));
     }
     
-    public void okButton_onClick(Object sender, RoutedEventArgs e) {
+    public void button_onClick(Object sender, RoutedEventArgs e) {
         listener.onClick(button);
     }
 

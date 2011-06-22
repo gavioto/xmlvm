@@ -9,7 +9,7 @@ public new void @this(){
 //XMLVM_END_WRAPPER[Compatlib.System.DateTime: void <init>()]
 }
 
-public static Compatlib.System.DateTime getNow(){
+public static global::System.Object getNow(){
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.DateTime: Compatlib.System.DateTime getNow()]
     DateTime dateTime = new DateTime();
     dateTime.dateTime = global::System.DateTime.Now;

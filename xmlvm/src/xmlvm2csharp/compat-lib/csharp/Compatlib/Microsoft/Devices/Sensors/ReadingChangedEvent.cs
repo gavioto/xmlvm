@@ -27,7 +27,7 @@ public virtual void _1_1fire(Compatlib.System.Object n1, Compatlib.Microsoft.Dev
 
 public virtual void _1_1remove(Compatlib.Microsoft.Devices.Sensors.ReadingChangedEventHandler n1){
 //XMLVM_BEGIN_WRAPPER[Compatlib.Microsoft.Devices.Sensors.ReadingChangedEvent: void __remove(Compatlib.Microsoft.Devices.Sensors.ReadingChangedEventHandler)]
-      throw new org.xmlvm.NotYetImplementedException("native/wrapper method not yet implemented");
+    this.handlers.Remove(n1);
 //XMLVM_END_WRAPPER[Compatlib.Microsoft.Devices.Sensors.ReadingChangedEvent: void __remove(Compatlib.Microsoft.Devices.Sensors.ReadingChangedEventHandler)]
 }
 

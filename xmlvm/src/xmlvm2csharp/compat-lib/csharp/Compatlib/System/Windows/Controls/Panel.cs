@@ -4,7 +4,7 @@ using org.xmlvm;
 using java = org.xmlvm.java;
 namespace Compatlib.System.Windows.Controls {
 public class Panel: Compatlib.System.Windows.FrameworkElement {
-public virtual Compatlib.System.Windows.Controls.UIElementCollection getChildren(){
+public virtual global::System.Object getChildren(){
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.Controls.Panel: Compatlib.System.Windows.Controls.UIElementCollection getChildren()]
     return children;
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.Controls.Panel: Compatlib.System.Windows.Controls.UIElementCollection getChildren()]
@@ -42,14 +42,14 @@ public virtual void setBackground(Compatlib.System.Windows.Media.Brush n1){
         {
             Size size = new Size();
             size.size = finalSize;
-            return panel.ArrangeOverride(size) != null ? panel.ArrangeOverride(size).size : base.ArrangeOverride(finalSize);
+            return panel.ArrangeOverride(size) != null ? ((System.Windows.Size)panel.ArrangeOverride(size)).size : base.ArrangeOverride(finalSize);
         }
 
         protected override global::System.Windows.Size MeasureOverride(global::System.Windows.Size availableSize)
         {
             Size size = new Size();
             size.size = availableSize;
-            return panel.MeasureOverride(size) != null ? panel.MeasureOverride(size).size : base.MeasureOverride(availableSize);
+            return panel.MeasureOverride(size) != null ? ((System.Windows.Size)panel.MeasureOverride(size)).size : base.MeasureOverride(availableSize);
         }
     }
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.Controls.Panel]

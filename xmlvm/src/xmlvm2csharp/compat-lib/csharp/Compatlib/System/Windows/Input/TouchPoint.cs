@@ -9,7 +9,7 @@ public new void @this(){
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.Input.TouchPoint: void <init>()]
 }
 
-public virtual Compatlib.System.Windows.Point getPosition(){
+public virtual global::System.Object getPosition(){
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.Input.TouchPoint: Compatlib.System.Windows.Point getPosition()]
     Compatlib.System.Windows.Point point = new Compatlib.System.Windows.Point();
     point.point = touchPoint.Position;
@@ -17,7 +17,7 @@ public virtual Compatlib.System.Windows.Point getPosition(){
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.Input.TouchPoint: Compatlib.System.Windows.Point getPosition()]
 }
 
-public virtual Compatlib.System.Windows.Input.TouchAction getAction(){
+public virtual global::System.Object getAction(){
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.Input.TouchPoint: Compatlib.System.Windows.Input.TouchAction getAction()]
     switch (touchPoint.Action)
     {

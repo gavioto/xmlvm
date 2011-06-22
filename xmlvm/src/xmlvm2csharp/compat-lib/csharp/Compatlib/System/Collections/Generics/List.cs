@@ -9,7 +9,7 @@ public new void @this(){
 //XMLVM_END_WRAPPER[Compatlib.System.Collections.Generics.List: void <init>()]
 }
 
-public virtual java.lang.Object _1_1access(int n1){
+public virtual global::System.Object _1_1access(int n1){
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.Collections.Generics.List: java.lang.Object __access(int)]
     return list[n1];
 //XMLVM_END_WRAPPER[Compatlib.System.Collections.Generics.List: java.lang.Object __access(int)]

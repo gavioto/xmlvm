@@ -40,7 +40,7 @@ public virtual void setB(short n1){
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.Media.Color: void setB(short)]
 }
 
-public static Compatlib.System.Windows.Media.Color FromRgb(short n1, short n2, short n3){
+public static global::System.Object FromRgb(short n1, short n2, short n3){
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.Media.Color: Compatlib.System.Windows.Media.Color FromRgb(short, short, short)]
     Compatlib.System.Windows.Media.Color newColor = new Compatlib.System.Windows.Media.Color();
     newColor.setR(n1);
@@ -49,6 +49,12 @@ public static Compatlib.System.Windows.Media.Color FromRgb(short n1, short n2, s
     newColor.color.A = 0xFF;
     return newColor;
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.Media.Color: Compatlib.System.Windows.Media.Color FromRgb(short, short, short)]
+}
+
+public static global::System.Object FromArgb(int n1, int n2, int n3, int n4){
+//XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.Media.Color: Compatlib.System.Windows.Media.Color FromArgb(int, int, int, int)]
+      throw new org.xmlvm.NotYetImplementedException("native/wrapper method not yet implemented");
+//XMLVM_END_WRAPPER[Compatlib.System.Windows.Media.Color: Compatlib.System.Windows.Media.Color FromArgb(int, int, int, int)]
 }
 
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.Media.Color]

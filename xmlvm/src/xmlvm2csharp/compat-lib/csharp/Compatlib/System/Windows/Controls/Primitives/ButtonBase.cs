@@ -4,11 +4,11 @@ using org.xmlvm;
 using java = org.xmlvm.java;
 namespace Compatlib.System.Windows.Controls.Primitives {
 public class ButtonBase: Compatlib.System.Windows.Controls.ContentControl {
-public Compatlib.System.Windows.Controls.Primitives.ClickEvent _fClick;
+public Compatlib.System.Windows.RoutedEvent _fClick;
 
 public new void @this(){
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.Controls.Primitives.ButtonBase: void <init>()]
-    this._fClick = new ClickEvent();
+    this._fClick = new RoutedEvent();
     this._fClick.@this();
 
     ((global::System.Windows.Controls.Primitives.ButtonBase)base.element).Click += ClickHandler;

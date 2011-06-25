@@ -20,10 +20,10 @@
 
 package org.xmlvm.demo.xokoban.activity;
 
-import org.xmlvm.demo.xokoban.NonLayoutingLayout;
 import org.xmlvm.demo.xokoban.GameController;
 import org.xmlvm.demo.xokoban.GameView;
 import org.xmlvm.demo.xokoban.InputController;
+import org.xmlvm.demo.xokoban.NonLayoutingLayout;
 import org.xmlvm.demo.xokoban.R;
 
 import android.app.Activity;
@@ -36,6 +36,7 @@ import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.PowerManager;
 import android.util.Log;
+import android.view.Display;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
@@ -125,7 +126,9 @@ public class XokobanActivity extends Activity {
         gameController = new GameController(gameView, currentLevel);
         gameView.setGameController(gameController);
 
-        inputController = new InputController(gameController);
+        Display display = ((WindowManager) getSystemService(Context.WINDOW_SERVICE))
+                .getDefaultDisplay();
+        inputController = new InputController(gameController, display);
         getBoardView().setOnTouchListener(inputController);
 
         if (useAccelerometer) {

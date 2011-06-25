@@ -23,7 +23,10 @@ package org.xmlvm.demo.xokoban;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
+import android.util.Log;
+import android.view.Display;
 import android.view.MotionEvent;
+import android.view.Surface;
 import android.view.View;
 import android.view.View.OnTouchListener;
 
@@ -31,33 +34,52 @@ import android.view.View.OnTouchListener;
  * This controller handles input coming from the various controllers.
  */
 public class InputController implements SensorEventListener, OnTouchListener {
+    private static class SensorData {
+        public final float x;
+        public final float y;
+
+
+        public SensorData(float x, float y) {
+            this.x = x;
+            this.y = y;
+        }
+    }
+
+
+    /** Tag used for logging. */
+    private static final String TAG                     = InputController.class.getSimpleName();
+
     /** Accelerometer threshold to start moving the man. */
-    private static final float ACCELEROMETER_THRESHOLD = 2.0f;
+    private static final float  ACCELEROMETER_THRESHOLD = 2.0f;
 
     /** Swiping threshold to start moving the man. */
-    private static final float SWIPE_THRESHOLD         = 30f;
+    private static final float  SWIPE_THRESHOLD         = 30f;
 
     /** The GameController associated with this InputController. */
-    private GameController     controller              = null;
+    private GameController      controller              = null;
+
+    /** The current Display instance, used for proper rotation mapping. */
+    private Display             display                 = null;
 
     /** The X coordinate for the last move event. */
-    private float              lastMoveX;
+    private float               lastMoveX;
 
     /** The Y coordinate for the last move event. */
-    private float              lastMoveY;
+    private float               lastMoveY;
 
     /** The X coordinate for the last touch button down event. */
-    private float              lastStartX;
+    private float               lastStartX;
 
     /** The Y coordinate for the last touch button down event. */
-    private float              lastStartY;
+    private float               lastStartY;
 
     /** Whether the finger is currently down on the touch screen. */
-    private boolean            isFingerDown            = false;
+    private boolean             isFingerDown            = false;
 
 
-    public InputController(GameController controller) {
+    public InputController(GameController controller, Display display) {
         this.controller = controller;
+        this.display = display;
     }
 
     @Override
@@ -67,11 +89,13 @@ public class InputController implements SensorEventListener, OnTouchListener {
             return;
         }
 
-        float x = event.values[1];
-        float y = event.values[0];
-        controller.setMovingSpeed(x, y);
-        if (!moveWithInput(x, y, ACCELEROMETER_THRESHOLD)) {
-            controller.scheduleStopMan();
+        if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
+            SensorData data = new SensorData(-event.values[0], event.values[1]);
+            data = mapToScreenCoordinates(data);
+            controller.setMovingSpeed(data.x, data.y);
+            if (!moveWithInput(data.x, data.y, ACCELEROMETER_THRESHOLD)) {
+                controller.scheduleStopMan();
+            }
         }
     }
 
@@ -133,5 +157,25 @@ public class InputController implements SensorEventListener, OnTouchListener {
     @Override
     public void onAccuracyChanged(Sensor arg0, int arg1) {
         // Do nothing.
+    }
+
+    /**
+     * With the new Sensor API, Android made a change in the data returned:
+     * Depending on the default way you hold a device, the coordinates might be
+     * swapped. This method makes sure that the sensor data is mapped to the
+     * coordinate system of the current game screen.
+     */
+    private SensorData mapToScreenCoordinates(SensorData data) {
+        switch (display.getRotation()) {
+        case Surface.ROTATION_90:
+            return new SensorData(data.y, -data.x);
+        case Surface.ROTATION_180:
+            return new SensorData(-data.x, -data.y);
+        case Surface.ROTATION_270:
+            return new SensorData(-data.y, data.x);
+        case Surface.ROTATION_0:
+        default:
+            return new SensorData(data.x, data.y);
+        }
     }
 }

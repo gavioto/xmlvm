@@ -160,8 +160,6 @@ public class XokobanActivity extends Activity {
             } else {
                 disableAccelerometer();
             }
-            // Resume game.
-            gameController.setGamePaused(false);
         }
     }
 
@@ -184,6 +182,13 @@ public class XokobanActivity extends Activity {
         wakeLock.release();
         gameController.onDestroy();
         super.onDestroy();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // Resume game.
+        gameController.setGamePaused(false);
     }
 
     /**

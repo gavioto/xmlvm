@@ -104,6 +104,7 @@ public class View {
     private Resources                 mResources;
     private Handler                   handler;
     private OnClickListener           onClickListener;
+    private ViewTreeObserver          viewTreeObserver;
     private UIColor                   savedBackgroundColor       = null;
 
     /**
@@ -611,6 +612,9 @@ public class View {
         if (changed || (flags & LAYOUT_REQUIRED) == LAYOUT_REQUIRED) {
             onLayout(changed, left, top, right, bottom);
             flags &= ~LAYOUT_REQUIRED;
+            if (viewTreeObserver != null) {
+                viewTreeObserver.dispatchOnGlobalLayout();
+            }
         }
 
         flags &= ~FORCE_LAYOUT;
@@ -1050,7 +1054,9 @@ public class View {
 
 
     public ViewTreeObserver getViewTreeObserver() {
-        Assert.NOT_IMPLEMENTED();
-        return null;
+        if (viewTreeObserver == null) {
+            viewTreeObserver = new ViewTreeObserver();
+        }
+        return viewTreeObserver;
     }
 }

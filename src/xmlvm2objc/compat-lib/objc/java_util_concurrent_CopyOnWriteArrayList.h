@@ -19,7 +19,9 @@
  */
 
 #import "xmlvm.h"
-#import "java_util_ArrayList.h"
+#import "java_util_IteratorImpl.h"
+#import "java_util_List.h"
+#import "java_util_Collection.h"
 
 /*
  * NOTE: This is not a proper implementation! The methods should be thread-safe, but
@@ -27,5 +29,11 @@
  * and since Xokoban is single-threaded, this is OK. The C backend will handle
  * this correctly.
  */
- 
-typedef java_util_ArrayList java_util_concurrent_CopyOnWriteArrayList;
+
+typedef NSMutableArray java_util_concurrent_CopyOnWriteArrayList;
+
+@interface NSMutableArray (cat_java_util_concurrent_CopyOnWriteArrayList) <java_util_List>
+- (void) __init_java_util_concurrent_CopyOnWriteArrayList__;
+- (void) __init_java_util_concurrent_CopyOnWriteArrayList___int:(int)initialCapacity;
+- (void) __init_java_util_concurrent_CopyOnWriteArrayList___java_util_Collection:(java_util_Collection*)c;
+@end

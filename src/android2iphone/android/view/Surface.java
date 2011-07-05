@@ -175,8 +175,8 @@ public class Surface /*implements Parcelable*/ {
      * We use a class initializer to allow the native code to cache some
      * field offsets.
      */
-    native private static void nativeClassInit();
-    static { nativeClassInit(); }
+//    native private static void nativeClassInit();
+//    static { nativeClassInit(); }
 
     
     /**
@@ -288,47 +288,47 @@ public class Surface /*implements Parcelable*/ {
      * to the same data as the original surface, and is -not- the owner.
      * {@hide}
      */
-    public native   void copyFrom(Surface o);
+//    public native   void copyFrom(Surface o);
     
     /**
      * Does this object hold a valid surface?  Returns true if it holds
      * a physical surface, so lockCanvas() will succeed.  Otherwise
      * returns false.
      */
-    public native   boolean isValid();
+//    public native   boolean isValid();
     
     /** Free all server-side state associated with this surface and
      * release this object's reference. {@hide} */
-    public native void destroy();
+//    public native void destroy();
     
     /** Release the local reference to the server-side surface. @hide */
-    public native void release();
+//    public native void release();
     
     /** draw into a surface */
-    public Canvas lockCanvas(Rect dirty) throws OutOfResourcesException, IllegalArgumentException
-    {
-        /* the dirty rectangle may be expanded to the surface's size, if
-         * for instance it has been resized or if the bits were lost, since
-         * the last call.
-         */
-        return lockCanvasNative(dirty);
-    }
+//    public Canvas lockCanvas(Rect dirty) throws OutOfResourcesException, IllegalArgumentException
+//    {
+//        /* the dirty rectangle may be expanded to the surface's size, if
+//         * for instance it has been resized or if the bits were lost, since
+//         * the last call.
+//         */
+//        return lockCanvasNative(dirty);
+//    }
 
-    private native Canvas lockCanvasNative(Rect dirty);
+//    private native Canvas lockCanvasNative(Rect dirty);
 
     /** unlock the surface and asks a page flip */
-    public native   void unlockCanvasAndPost(Canvas canvas);
+//    public native   void unlockCanvasAndPost(Canvas canvas);
 
     /** 
      * unlock the surface. the screen won't be updated until
      * post() or postAll() is called
      */
-    public native   void unlockCanvas(Canvas canvas);
+//    public native   void unlockCanvas(Canvas canvas);
     
     /** start/end a transaction {@hide} */
-    public static native   void openTransaction();
+//    public static native   void openTransaction();
     /** {@hide} */
-    public static native   void closeTransaction();
+//    public static native   void closeTransaction();
 
     /**
      * Freezes the specified display, No updating of the screen will occur
@@ -337,14 +337,14 @@ public class Surface /*implements Parcelable*/ {
      * @param display
      * {@hide}
      */
-    public static native   void freezeDisplay(int display);
+//    public static native   void freezeDisplay(int display);
 
     /**
      * resume updating the specified display.
      * @param display
      * {@hide}
      */
-    public static native   void unfreezeDisplay(int display);
+//    public static native   void unfreezeDisplay(int display);
 
     /**
      * set the orientation of the given display.
@@ -353,16 +353,16 @@ public class Surface /*implements Parcelable*/ {
      * @param flags
      * {@hide}
      */
-    public static native   void setOrientation(int display, int orientation, int flags);
+//    public static native   void setOrientation(int display, int orientation, int flags);
 
     /**
      * set the orientation of the given display.
      * @param display
      * @param orientation
      */
-    public static void setOrientation(int display, int orientation) {
-        setOrientation(display, orientation, 0);
-    }
+//    public static void setOrientation(int display, int orientation) {
+//        setOrientation(display, orientation, 0);
+//    }
     
     /**
      * set surface parameters.

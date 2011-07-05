@@ -3,4 +3,9 @@
     <string name="app_name">Xokoban</string>
     <string name="use_accelerometer">Use Accelerometer</string>
     <string name="save">Save</string>
+    <string name="previous">Previous</string>
+    <string name="next">Next</string>
+    <string name="cancel">Cancel</string>
+    <string name="reset">Reset</string>
+    <string name="current_level">Current Level: %1$s</string>
 </resources>

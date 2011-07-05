@@ -165,7 +165,7 @@ public class Activity extends ContextThemeWrapper {
                 parent = null;
                 state = STATE_DESTROYED;
             }
-        }, null, true);
+        }, null, false);
     }
 
     public void xmlvmRestart() {

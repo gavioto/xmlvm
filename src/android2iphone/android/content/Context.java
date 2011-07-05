@@ -249,10 +249,12 @@ public abstract class Context {
         newActivity.xmlvmSetIntent(intent);
         newActivity.xmlvmSetComponentName(componentName);
         newActivity.xmlvmSetRequestedOrientation(AndroidManifest
-                .getActivityScreenOrientation(action));
+                .getActivityScreenOrientation(action, this));
 
-        if (this instanceof Activity)
+        if (this instanceof Activity) {
             newActivity.xmlvmSetParent((Activity) this);
+        }
+        
         newActivity.xmlvmCreate(null);
     }
 

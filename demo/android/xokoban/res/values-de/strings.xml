@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="use_accelerometer">Lagesensor ein</string>
+    <string name="save">Speichern</string>
+    <string name="previous">Zurück</string>
+    <string name="next">Vor</string>
+    <string name="cancel">Abbrechen</string>
+    <string name="reset">Zurücksetzen</string>
+    <string name="current_level">Derzeitiges Level: %1$s</string>
+</resources>

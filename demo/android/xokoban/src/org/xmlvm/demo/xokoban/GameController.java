@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Handler;
 
@@ -321,17 +322,19 @@ public class GameController implements MoveFinishedHandler, Runnable {
             }
 
         };
+        Context context = gameView.getContext();
         changeLevelDialog = new AlertDialog.Builder(gameView.getContext()).create();
-        changeLevelDialog.setTitle("   Current Level: " + (currentLevel + 1) + "   ");
+        changeLevelDialog.setTitle(context.getString(R.string.current_level, (currentLevel + 1)
+                + "   "));
         if (!levelStarted && currentLevel > 0) {
-            changeLevelDialog.setButton("Previous", listener);
+            changeLevelDialog.setButton(context.getString(R.string.previous), listener);
         } else {
-            changeLevelDialog.setButton("Reset", listener);
+            changeLevelDialog.setButton(context.getString(R.string.reset), listener);
         }
-        changeLevelDialog.setButton2("Cancel", listener);
+        changeLevelDialog.setButton2(context.getString(R.string.cancel), listener);
 
         if (currentLevel < Levels.getSize() - 1) {
-            changeLevelDialog.setButton3("Next", listener);
+            changeLevelDialog.setButton3(context.getString(R.string.next), listener);
         }
         changeLevelDialog.show();
     }

@@ -65,13 +65,12 @@ public class SettingsActivity extends Activity {
         // sure will also be centered, we calculate the positions relative from
         // the center.
         int checkboxLeft = (int) ((displayWidth / 2f) - (310f * sizeFactor));
-        int buttonLeft = (int) ((displayWidth / 2f) + (40f * sizeFactor));
+        int buttonRight = (int) ((displayWidth / 2f) + (145f * sizeFactor));
 
         View widgetGroup = getWidgetGroup();
         int groupBottom = verticalCenterWidgets + (widgetGroup.getMeasuredHeight() / 2);
         int paddingBottom = displayHeight - groupBottom;
-        int buttonWidth = getSaveButton().getWidth();
-        int paddingRight = displayWidth - (buttonLeft + buttonWidth);
+        int paddingRight = displayWidth - buttonRight;
         widgetGroup.setPadding(checkboxLeft, 0, paddingRight, paddingBottom);
 
         getSaveButton().setOnClickListener(new OnClickListener() {

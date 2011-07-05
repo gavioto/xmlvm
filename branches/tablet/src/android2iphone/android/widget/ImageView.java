@@ -240,8 +240,8 @@ public class ImageView extends View {
     private void parseImageViewAttributes(AttributeSet attrs) {
         setIgnoreRequestLayout(true);
 
-        String str = attrs.getAttributeValue(null, "src");
         // Resolve drawable background
+        String str = attrs.getAttributeValue(null, "src");
         if (str != null) {
             int srcId = attrs.getAttributeResourceValue(null, "src", -1);
             if (srcId != -1) {
@@ -249,6 +249,7 @@ public class ImageView extends View {
             }
         }
 
+        // Resolve scale type
         str = attrs.getAttributeValue(null, "scaleType");
         if (str != null) {
             setScaleType(resolveScaleType(str));

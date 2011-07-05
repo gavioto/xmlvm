@@ -28,6 +28,7 @@ import org.xmlvm.iphone.UIAccelerometer;
 import org.xmlvm.iphone.UIAccelerometerDelegate;
 
 import android.content.pm.ActivityInfo;
+import android.internal.Assert;
 import android.internal.TopActivity;
 
 public class SensorManager implements UIAccelerometerDelegate {
@@ -134,6 +135,10 @@ public class SensorManager implements UIAccelerometerDelegate {
      */
     public boolean registerListener(SensorEventListener listener, Sensor sensor, int rate) {
         return eventListeners.add(new RegisteredEventListener(listener, sensor, rate));
+    }
+
+    public void unregisterListener(SensorEventListener listener) {
+        Assert.NOT_IMPLEMENTED();
     }
 }
 

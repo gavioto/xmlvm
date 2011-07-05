@@ -22,6 +22,7 @@ package android.view;
 
 import android.app.Activity;
 import android.content.pm.ActivityInfo;
+import android.internal.Assert;
 import android.internal.ConfigurationFactory;
 import android.internal.TopActivity;
 import android.util.DisplayMetrics;
@@ -85,5 +86,10 @@ public class Display {
         }
         
         metrics.scaledDensity = metrics.density;
+    }
+
+    public int getRotation() {
+        Assert.NOT_IMPLEMENTED();
+        return 0;
     }
 }

@@ -17,6 +17,7 @@
 package android.view;
 
 import android.graphics.Rect;
+import android.internal.Assert;
 
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -282,6 +283,8 @@ public final class ViewTreeObserver {
      * @throws IllegalStateException If {@link #isAlive()} returns false
      */
     public void addOnGlobalFocusChangeListener(OnGlobalFocusChangeListener listener) {
+        //TODO We don't support this kind of listener in XMLVM and therefore don't allow to register a listener
+        Assert.NOT_IMPLEMENTED();
         checkIsAlive();
 
         if (mOnGlobalFocusListeners == null) {
@@ -351,6 +354,8 @@ public final class ViewTreeObserver {
      * @throws IllegalStateException If {@link #isAlive()} returns false
      */
     public void addOnPreDrawListener(OnPreDrawListener listener) {
+        //TODO We don't support this kind of listener in XMLVM and therefore don't allow to register a listener
+        Assert.NOT_IMPLEMENTED();
         checkIsAlive();
 
         if (mOnPreDrawListeners == null) {
@@ -385,6 +390,8 @@ public final class ViewTreeObserver {
      * @throws IllegalStateException If {@link #isAlive()} returns false
      */
     public void addOnScrollChangedListener(OnScrollChangedListener listener) {
+        //TODO We don't support this kind of listener in XMLVM and therefore don't allow to register a listener
+        Assert.NOT_IMPLEMENTED();
         checkIsAlive();
 
         if (mOnScrollChangedListeners == null) {
@@ -419,6 +426,8 @@ public final class ViewTreeObserver {
      * @throws IllegalStateException If {@link #isAlive()} returns false
      */
     public void addOnTouchModeChangeListener(OnTouchModeChangeListener listener) {
+        //TODO We don't support this kind of listener in XMLVM and therefore don't allow to register a listener
+        Assert.NOT_IMPLEMENTED();
         checkIsAlive();
 
         if (mOnTouchModeChangeListeners == null) {
@@ -457,6 +466,8 @@ public final class ViewTreeObserver {
      * @hide
      */
     public void addOnComputeInternalInsetsListener(OnComputeInternalInsetsListener listener) {
+        //TODO We don't support this kind of listener in XMLVM and therefore don't allow to register a listener
+        Assert.NOT_IMPLEMENTED();
         checkIsAlive();
 
         if (mOnComputeInternalInsetsListeners == null) {

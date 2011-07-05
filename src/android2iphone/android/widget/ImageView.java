@@ -234,7 +234,9 @@ public class ImageView extends View {
         width = Math.max(getSuggestedMinimumWidth(), width + paddingLeft + paddingRight);
         height = Math.max(getSuggestedMinimumHeight(), height + paddingTop + paddingBottom);
 
-        setMeasuredDimension(width, height);
+        int w = resolveSize(width, widthMeasureSpec);
+        int h = resolveSize(height, heightMeasureSpec);
+        setMeasuredDimension(w, h);
     }
 
     private void parseImageViewAttributes(AttributeSet attrs) {

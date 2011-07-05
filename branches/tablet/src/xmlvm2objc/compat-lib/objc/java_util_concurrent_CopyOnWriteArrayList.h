@@ -19,27 +19,13 @@
  */
 
 #import "xmlvm.h"
-#import "java_lang_Object.h"
-#import "java_lang_String.h"
+#import "java_util_ArrayList.h"
 
-@class java_lang_reflect_Constructor;
-
-
-// java.lang.Class
-//----------------------------------------------------------------------------
-@interface java_lang_Class : java_lang_Object {
-
-@public Class clazz;
-
-}
-
-- (void) __init_java_lang_Class__;
-- (BOOL) desiredAssertionStatus__;
-- (java_lang_String*) getName__;
-- (java_lang_String*) getSimpleName__;
-+ (java_lang_Class*) forName___java_lang_String :(java_lang_String*) className;
-- (XMLVMArray*) getDeclaredFields__;
-- (NSObject*) newInstance__;
-- (java_lang_reflect_Constructor*) getConstructor___java_lang_Class_ARRAYTYPE :(XMLVMArray*) signature;
-
-@end
+/*
+ * NOTE: This is not a proper implementation! The methods should be thread-safe, but
+ * they are not! This is only used in Xokoban (via android.view.ViewTreeObserver)
+ * and since Xokoban is single-threaded, this is OK. The C backend will handle
+ * this correctly.
+ */
+ 
+typedef java_util_ArrayList java_util_concurrent_CopyOnWriteArrayList;

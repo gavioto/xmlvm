@@ -1047,4 +1047,10 @@ public class View {
 
         }
     }
+
+
+    public ViewTreeObserver getViewTreeObserver() {
+        Assert.NOT_IMPLEMENTED();
+        return null;
+    }
 }

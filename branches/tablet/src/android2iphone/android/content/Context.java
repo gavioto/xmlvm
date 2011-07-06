@@ -197,8 +197,7 @@ public abstract class Context {
     public abstract boolean deleteFile(String name);
 
     public String getString(int resId) {
-        Assert.NOT_IMPLEMENTED();
-        return null;
+        return getResources().getString(resId);
     }
 
     public String getString(int resId, Object... formatArgs) {

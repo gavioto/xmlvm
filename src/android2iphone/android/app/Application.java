@@ -19,8 +19,12 @@
  */
 package android.app;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.xmlvm.iphone.CGRect;
 import org.xmlvm.iphone.UIScreen;
+import org.xmlvm.iphone.UIViewController;
 import org.xmlvm.iphone.UIWindow;
 
 import android.content.Intent;
@@ -30,8 +34,18 @@ import android.internal.TopActivity;
 
 public class Application extends ContextWrapper {
 
-    private UIWindow topLevelWindow;
-    private boolean  appJustCreated;
+    /**
+     * Top-level UIWindow for the Android application. According to Apple
+     * guidelines there should only be one UIWindow instance per iOS
+     * application.
+     */
+    private UIWindow               topLevelWindow;
+    /**
+     * Each Android Activity has an associated UIViewController that is kept in
+     * this list.
+     */
+    private List<UIViewController> activityViews;
+    private boolean                appJustCreated;
 
 
     public void onCreate() {
@@ -43,6 +57,7 @@ public class Application extends ContextWrapper {
         CGRect rect = UIScreen.mainScreen().getBounds();
         topLevelWindow.setFrame(rect);
         topLevelWindow.makeKeyAndVisible();
+        activityViews = new ArrayList<UIViewController>();
         startActivity(new Intent("android.intent.action.MAIN"));
     }
 
@@ -71,6 +86,11 @@ public class Application extends ContextWrapper {
         // Configuration doesn't change in iPhone
     }
 
+    public void xmlvmAddActivityViewController(UIViewController vc) {
+        activityViews.add(vc);
+    }
+    
+    
     public UIWindow xmlvmGetTopLevelWindow() {
         return topLevelWindow;
     }

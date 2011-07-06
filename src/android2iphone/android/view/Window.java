@@ -209,7 +209,7 @@ public class Window {
         if (iContainerView == null) {
             return;
         }
-        CGRect rect = getCGRect();
+        CGRect rect = xmlvmGetCGRect();
         // AndroidAppLauncher.getApplication().xmlvmGetTopLevelWindow().setFrame(rect);
         iContainerView.setTransform(null);
         iContainerView.setFrame(rect);
@@ -249,7 +249,7 @@ public class Window {
         }
         int widthMeasureSpec;
         int heightMeasureSpec;
-        CGRect rect = getCGRect();
+        CGRect rect = xmlvmGetCGRect();
         LayoutParams lp = view.getLayoutParams();
 
         if (lp == null || lp.width == LayoutParams.FILL_PARENT) {
@@ -276,10 +276,7 @@ public class Window {
         view.requestLayout();
     }
 
-    /**
-     * Internal. Not part of Android API.
-     */
-    public CGRect getCGRect() {
+    public CGRect xmlvmGetCGRect() {
         UIScreen screen = UIScreen.mainScreen();
         CGRect rect = screen.getApplicationFrame();
         if (activity.getRequestedOrientation() == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE) {

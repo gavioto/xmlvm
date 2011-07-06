@@ -201,6 +201,11 @@ public abstract class Context {
         return null;
     }
 
+    public String getString(int currentLevel, Object... formatArgs) {
+        Assert.NOT_IMPLEMENTED();
+        return null;
+    }
+
     public void bindService(Intent intent, ServiceConnection conn, int flags) {
         Assert.NOT_IMPLEMENTED();
     }

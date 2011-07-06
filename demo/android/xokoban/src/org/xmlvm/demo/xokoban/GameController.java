@@ -96,12 +96,6 @@ public class GameController implements MoveFinishedHandler, Runnable {
      */
     public GameController(GameView gameView, int currentLevel) {
         this.gameView = gameView;
-        // this.infoView.setOnCloseHandler(new OnCloseHandler() {
-        // @Override
-        // public void onClose() {
-        // gamePaused = false;
-        // }
-        // });
         this.currentLevel = currentLevel;
     }
 
@@ -276,15 +270,17 @@ public class GameController implements MoveFinishedHandler, Runnable {
 
         gameView.displayBoard(board);
 
+        Context context = gameView.getContext();
         // Display current level
         if (showLevel) {
             currentLevelDialog = new AlertDialog.Builder(gameView.getContext())
-                    .setTitle("Level: " + (currentLevel + 1))
-                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int whichButton) {
-                            gamePaused = false;
-                        }
-                    }).create();
+                    .setTitle(context.getString(R.string.level) + " " + (currentLevel + 1))
+                    .setPositiveButton(context.getString(R.string.ok),
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int whichButton) {
+                                    gamePaused = false;
+                                }
+                            }).create();
             currentLevelDialog.show();
         } else {
             gamePaused = false;
@@ -324,8 +320,8 @@ public class GameController implements MoveFinishedHandler, Runnable {
         };
         Context context = gameView.getContext();
         changeLevelDialog = new AlertDialog.Builder(gameView.getContext()).create();
-        changeLevelDialog.setTitle(context.getString(R.string.current_level, (currentLevel + 1)
-                + "   "));
+        changeLevelDialog.setTitle(context.getString(R.string.current_level) + " "
+                + (currentLevel + 1));
         if (!levelStarted && currentLevel > 0) {
             changeLevelDialog.setButton(context.getString(R.string.previous), listener);
         } else {
@@ -352,10 +348,10 @@ public class GameController implements MoveFinishedHandler, Runnable {
             }
 
         };
-
+        Context context = gameView.getContext();
         congratulationDialog = new AlertDialog.Builder(gameView.getContext()).create();
-        congratulationDialog.setTitle("Congratulations! All levels finished. Skipping to level 1.");
-        congratulationDialog.setButton("OK", listener);
+        congratulationDialog.setTitle(context.getString(R.string.congrats));
+        congratulationDialog.setButton(context.getString(R.string.ok), listener);
         congratulationDialog.show();
     }
 

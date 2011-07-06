@@ -6,5 +6,8 @@
     <string name="next">Vor</string>
     <string name="cancel">Abbrechen</string>
     <string name="reset">Zurücksetzen</string>
-    <string name="current_level">Derzeitiges Level: %1$s</string>
+    <string name="ok">Ok</string>
+    <string name="level">Level:</string>
+    <string name="current_level">Derzeitiges Level:</string>
+    <string name="congrats">Gratulation! Alle Levels durchgespielt!"</string>
 </resources>

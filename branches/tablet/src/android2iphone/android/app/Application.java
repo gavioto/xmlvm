@@ -88,10 +88,14 @@ public class Application extends ContextWrapper {
 
     public void xmlvmAddActivityViewController(UIViewController vc) {
         activityViews.add(vc);
+        topLevelWindow.setRootViewController(vc);
     }
-    
-    
-    public UIWindow xmlvmGetTopLevelWindow() {
-        return topLevelWindow;
+
+    public void xmlvmRemoveActivityViewController(UIViewController vc) {
+        activityViews.remove(vc);
+        int size = activityViews.size();
+        if (size > 0) {
+            topLevelWindow.setRootViewController(activityViews.get(size - 1));
+        }
     }
 }

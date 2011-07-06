@@ -80,7 +80,6 @@ public class GameView {
         int height = board.getHeight();
         int tileSize = determineTileSize(width, height);
 
-        tileSize *= 2;
         Log.d("GameView", "GameView displayBoard()");
         Log.d("GameView", "GameView Board Dimensions: " + width + " x " + height);
         Log.d("GameView", "GameView Tile Size: " + tileSize);

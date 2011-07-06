@@ -144,7 +144,7 @@ public class ImageView extends View {
     }
 
     private void initImageView(Context c, AttributeSet attrs) {
-        setScaleType(ScaleType.CENTER);
+        setScaleType(ScaleType.FIT_CENTER);
 
         if (attrs != null && attrs.getAttributeCount() > 0) {
             parseImageViewAttributes(attrs);

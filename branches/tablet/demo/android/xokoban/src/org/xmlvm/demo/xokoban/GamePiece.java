@@ -21,6 +21,7 @@
 package org.xmlvm.demo.xokoban;
 
 import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
 
 /**
  * A GamePiece represents the base class for a single tile in the game.
@@ -107,6 +108,7 @@ public abstract class GamePiece {
             view.addViewToBoard(image, 0);
         }
         image.setImageResource(resourceID);
+        image.setScaleType(ScaleType.CENTER_CROP);
         updatePosition();
     }
 

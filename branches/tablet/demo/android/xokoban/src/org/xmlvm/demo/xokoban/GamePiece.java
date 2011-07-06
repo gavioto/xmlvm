@@ -108,7 +108,6 @@ public abstract class GamePiece {
             view.addViewToBoard(image, 0);
         }
         image.setImageResource(resourceID);
-        image.setScaleType(ScaleType.CENTER_CROP);
         updatePosition();
     }
 

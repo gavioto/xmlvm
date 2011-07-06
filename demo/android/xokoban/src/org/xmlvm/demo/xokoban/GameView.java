@@ -21,6 +21,7 @@
 package org.xmlvm.demo.xokoban;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 
 /**
@@ -78,6 +79,10 @@ public class GameView {
         int width = board.getWidth();
         int height = board.getHeight();
         int tileSize = determineTileSize(width, height);
+
+        Log.d("GameView", "displayBoard()");
+        Log.d("GameView", "Board Dimensions: " + width + " x " + height);
+        Log.d("GameView", "Tile Size: " + tileSize);
 
         offsetTop = (boardView.getHeight() - (height * tileSize)) / 2;
         offsetLeft = (boardView.getWidth() - (width * tileSize)) / 2;

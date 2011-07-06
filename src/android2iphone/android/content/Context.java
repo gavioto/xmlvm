@@ -201,7 +201,7 @@ public abstract class Context {
         return null;
     }
 
-    public String getString(int currentLevel, Object... formatArgs) {
+    public String getString(int resId, Object... formatArgs) {
         Assert.NOT_IMPLEMENTED();
         return null;
     }

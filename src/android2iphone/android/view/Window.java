@@ -20,17 +20,17 @@
 
 package android.view;
 
-import org.xmlvm.iphone.CGAffineTransform;
 import org.xmlvm.iphone.CGPoint;
 import org.xmlvm.iphone.CGRect;
 import org.xmlvm.iphone.UIApplication;
 import org.xmlvm.iphone.UIColor;
+import org.xmlvm.iphone.UIInterfaceOrientation;
 import org.xmlvm.iphone.UIScreen;
 import org.xmlvm.iphone.UIScrollView;
 import org.xmlvm.iphone.UITextField;
 import org.xmlvm.iphone.UITextFieldDelegate;
 import org.xmlvm.iphone.UIView;
-import org.xmlvm.iphone.UIWindow;
+import org.xmlvm.iphone.UIViewController;
 
 import android.app.Activity;
 import android.content.pm.ActivityInfo;
@@ -51,6 +51,7 @@ import android.widget.FrameLayout;
 public class Window {
     public static final int     FEATURE_NO_TITLE = 1;
     private Activity            activity;
+    private UIViewController    iContainerViewController;
     private UIView              iContainerView;
     private UIScrollView        iScrollView;
     private UITextFieldDelegate iTextFieldDelegate;
@@ -136,8 +137,26 @@ public class Window {
         adjustFrameSize();
         setEditTextDelegates(view);
 
-        UIWindow topLevelWindow = AndroidAppLauncher.getApplication().xmlvmGetTopLevelWindow();
-        topLevelWindow.addSubview(iContainerView);
+        iContainerViewController = new UIViewController() {
+
+            @Override
+            public boolean shouldAutorotateToInterfaceOrientation(int orientation) {
+                int requestedOrientation = activity.getRequestedOrientation();
+                if (requestedOrientation == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE) {
+                    return (orientation == UIInterfaceOrientation.LandscapeLeft)
+                            || (orientation == UIInterfaceOrientation.LandscapeRight);
+                }
+                return false;
+            }
+
+            @Override
+            public void loadView() {
+                setView(iContainerView);
+            }
+        };
+
+        AndroidAppLauncher.getApplication()
+                .xmlvmAddActivityViewController(iContainerViewController);
         xmlvmSetHidden(false);
     }
 
@@ -195,8 +214,9 @@ public class Window {
             contentParent = null;
             iScrollView.removeFromSuperview();
             iScrollView = null;
-            iContainerView.removeFromSuperview();
+            AndroidAppLauncher.getApplication().xmlvmRemoveActivityViewController(iContainerViewController);
             iContainerView = null;
+            iContainerViewController = null;
         }
     }
 
@@ -211,20 +231,11 @@ public class Window {
         }
         CGRect rect = xmlvmGetCGRect();
         // AndroidAppLauncher.getApplication().xmlvmGetTopLevelWindow().setFrame(rect);
-        iContainerView.setTransform(null);
+        //iContainerView.setTransform(null);
         iContainerView.setFrame(rect);
         rect.origin.x = 0;
         rect.origin.y = 0;
         iScrollView.setFrame(rect);
-        if (activity.getRequestedOrientation() == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE) {
-            CGAffineTransform rotation = CGAffineTransform
-                    .makeRotation((float) ((Math.PI / 180) * 90));
-            // TODO Translate should be 90, 90 for visible status bar (i.e.,
-            // non-fullscreen)
-            CGAffineTransform translation = CGAffineTransform.translate(rotation, 80, 80);
-            iContainerView.setTransform(translation);
-        }
-
         layoutContentView(internalView);
     }
 

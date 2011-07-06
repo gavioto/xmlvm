@@ -1,0 +1,188 @@
+<?xml version="1.0"?>
+
+<!--
+ * Copyright (c) 2002-2011 by XMLVM.org
+ *
+ * Project Info:  http://www.xmlvm.org
+ *
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published by
+ * the Free Software Foundation; either version 2.1 of the License, or
+ * (at your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+ * or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
+ * License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301,
+ * USA.
+-->
+
+<tutorial title="XMLVM Tutorial">
+
+<ios-tutorials>
+
+  <text>
+  The following applications give a step-by-step tutorial for iOS applications. Each respective application
+  can be run by cd-ing to the base directory and invoking "ant run-Xcode".
+  </text>
+
+  <tutorials>
+
+    <application name="HelloWorld" link="tutorial/ios/helloworld/portrait">
+    <text>Simple HelloWorld application for iOS.</text>
+    </application>
+
+    <application name="HelloWorld (Fullscreen)" link="tutorial/ios/helloworld/fullscreen">
+    <text>Simple HelloWorld application running in fullscreen mode.</text>
+    </application>
+
+    <application name="HelloWorld (Auto-Rotate)" link="tutorial/ios/helloworld/autorotate">
+    <text>HelloWorld application that rotates depending on device orientation.</text>
+    </application>
+
+    <application name="HelloWorld (Landscape)" link="tutorial/ios/helloworld/landscape">
+    <text>HelloWorld application that runs in landscape mode.</text>
+    </application>
+
+    <application name="AutoResize" link="tutorial/ios/autoresize">
+    <text>Use iOS' builtin mechanism for auto-resizing widgets when device orientation changes.</text>
+    </application>
+
+    <application name="Relayout" link="tutorial/ios/relayout">
+    <text>Programmatically change the layout when device orientation changes.</text>
+    </application>
+
+    <application name="Drawing" link="tutorial/ios/drawing">
+    <text>Simple drawing example.</text>
+    </application>
+
+    <application name="MultiTouch" link="tutorial/ios/touch">
+    <text>A simple multi-touch example. Fingers placed on the screen are tracked while being moved.</text>
+    </application>
+
+    <application name="SayHello" link="tutorial/ios/sayhello/portrait">
+    <text>Lets the user enter a name and upon pressing a button, the name will be set as a greeting in a label.</text>
+    </application>
+
+    <application name="Dialog" link="tutorial/ios/dialog">
+    <text>Use a modal dialog to let the user edit a name.</text>
+    </application>
+
+    <application name="TabBar" link="tutorial/ios/navigation/tabbar">
+    <text>Example for a UITabBarController that allows the user to select between different tabs.</text>
+    </application>
+
+    <application name="Stack" link="tutorial/ios/navigation/stack">
+    <text>Example for a UINavigationController that implements a stack of views.</text>
+    </application>
+
+    <application name="Accelerometer" link="tutorial/ios/sensor/accelerometer">
+    <text>Display the current (x, y, z) accelerometer values as text labels.</text>
+    </application>
+
+  </tutorials>
+
+</ios-tutorials>
+
+
+<android-tutorials>
+
+  <text>
+  The following applications give a step-by-step tutorial for Android applications. Each respective application
+  can be run by cd-ing to the base directory and invoking "ant run-Android".
+  </text>
+
+  <tutorials>
+
+    <application name="HelloWorld (prog)" link="tutorial/android/helloworld/prog">
+    <text>Simple HelloWorld application for Android. Implementation without any
+    layout resources.</text>
+    <xmlvm-status>Partially working. Rotation does not work.</xmlvm-status>
+    </application>
+
+    <application name="HelloWorld (decl)" link="tutorial/android/helloworld/decl">
+    <text>Simple HelloWorld application for Android. Implementation using a simple
+    layout resource to declare the content view.</text>
+    <xmlvm-status>Partially working. Rotation does not work.</xmlvm-status>
+    </application>
+
+    <application name="HelloWorld (fullscreen)" link="tutorial/android/helloworld/fullscreen">
+    <text>Simple HelloWorld application for Android. Implementation using a simple
+    layout resource to declare the content view being showed in fullscreen mode
+    without title bar.</text>
+    <xmlvm-status>Partially working. Title bar not hidden.</xmlvm-status>
+    </application>
+
+    <application name="HelloWorld (portrait)" link="tutorial/android/helloworld/portrait">
+    <text>Simple HelloWorld application for Android. Implementation using a simple
+    layout resource to declare the content view being showed. The orientation is
+    locked to portrait mode.</text>
+    <xmlvm-status>Working</xmlvm-status>
+    </application>
+
+    <application name="HelloWorld (landscape)" link="tutorial/android/helloworld/landscape">
+    <text>Simple HelloWorld application for Android. Implementation using a simple
+    layout resource to declare the content view being showed. The orientation is
+    locked to landscape mode.</text>
+    <xmlvm-status>Working</xmlvm-status>
+    </application>
+
+    <application name="HelloWorld (i18n)" link="tutorial/android/helloworld/i18n">
+    <text>Simple HelloWorld application for Android. Implementation using a simple
+    layout resource to declare the content view being showed. Application name
+    and the greeting text are defined by String resources to support internationalization
+    </text>
+    <xmlvm-status>Partially working. Rotation does not work.</xmlvm-status>
+    </application>
+
+	<application name="Layout (linear)" link="tutorial/android/layout/linear">
+	<text>A simple Android application demonstrating layout capabilities using
+	a LinearLayout.</text>
+	<xmlvm-status>Partially working. Rotation does not work.</xmlvm-status>
+	</application>
+
+	<application name="Layout (relative)" link="tutorial/android/layout/relative">
+	<text>A simple Android application demonstrating layout capabilities using
+	a RelativeLayout.</text>
+	<xmlvm-status>Partially working. Rotation does not work.</xmlvm-status>
+	</application>
+
+	<application name="SayHello (prog)" link="tutorial/android/sayhello/prog">
+	<text>A simple Android application demonstrating simple event handling with
+	a button as well as accessing UI widgets. The application is implemented
+	without declaring layout resources.</text>
+	<xmlvm-status>Partially working. Rotation does not work.</xmlvm-status>
+	</application>
+
+	<application name="SayHello (decl)" link="tutorial/android/sayhello/decl">
+	<text>A simple Android application demonstrating simple event handling with
+	a button as well as accessing UI widgets. The application is implemented
+	declaring a layout resources which also declares the Button's event handler.
+	</text>
+	<xmlvm-status>Partially working. Rotation does not work. Objc backend not
+	working due to missing reflection functionality.</xmlvm-status>
+	</application>
+
+	<application name="Drawing" link="tutorial/android/drawing">
+	<text>A simple Android application demonstrating drawing capabilities using
+	the Canvas and Paint classes.
+	</text>
+	<xmlvm-status>Partially working. Rotation does not work.</xmlvm-status>
+	</application>
+
+	<application name="ActivitySwitch" link="tutorial/android/activityswitch">
+	<text>A simple Android application demonstrating switching between activities
+	with the called activity providing a result to the calling activity. Additionally
+	the application facilitates a BackKey handler.
+	</text>
+	<xmlvm-status>Not working</xmlvm-status>
+	</application>
+  </tutorials>
+
+</android-tutorials>
+
+</tutorial>

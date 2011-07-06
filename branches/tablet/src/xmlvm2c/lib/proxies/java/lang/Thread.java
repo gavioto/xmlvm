@@ -20,6 +20,7 @@ package java.lang;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.xmlvm.runtime.Condition;
 import org.xmlvm.runtime.Mutex;
 
 /**
@@ -100,8 +101,11 @@ public class Thread implements Runnable {
     /**
      * Don't delete these exception objects. They are used natively.
      */
+    @SuppressWarnings("unused")
     private Object xmlvmExceptionEnv;
+    @SuppressWarnings("unused")
     private Object xmlvmException;
+    @SuppressWarnings("unused")
     private Object ptBuffers;
 
     // Use a mutex instead of the synchronized keyword for 2 reasons:
@@ -123,9 +127,13 @@ public class Thread implements Runnable {
     private String threadName;
     private int priority = NORM_PRIORITY;
     private boolean daemon = false;
+    private boolean alive = false;
 //    private ClassLoader contextClassLoader;
     private Runnable targetRunnable;
     private ThreadGroup threadGroup;
+
+    private boolean interrupted;
+    private Condition waitingCondition; // the Condition on which the thread is waiting for a signal/broadcast, if any. This is used to interrupt a "wait" or "sleep"
 
     // A map of a native thread id to the Thread instance.
     // There is no need for a WeakHashMap, since the threads removed themselves
@@ -657,8 +665,21 @@ public class Thread implements Runnable {
         if (action != null) {
             action.run();
         }
-// TODO
-        return;
+
+        Condition conditionForInterrupt = null;
+        synchronized (this) {
+            interrupted = true;
+
+            if (waitingCondition != null) {
+                conditionForInterrupt = waitingCondition;
+            }
+        }
+
+        // Interrupt the "wait" outside of the synchronized block.
+        // Otherwise, a deadlock could occur.
+        if (conditionForInterrupt != null) {
+            conditionForInterrupt.getSynchronizedObject().interruptWait(conditionForInterrupt);
+        }
     }
 
     /**
@@ -672,7 +693,15 @@ public class Thread implements Runnable {
      * @see Thread#interrupt
      * @see Thread#isInterrupted
      */
-    public native static boolean interrupted();
+    public static boolean interrupted() {
+        boolean result = false;
+        Thread curThread = Thread.currentThread();
+        synchronized (curThread) {
+            result = curThread.isInterrupted();
+            curThread.interrupted = false;
+        }
+        return result;
+    }
 
     /**
      * Returns <code>true</code> if the receiver has already been started and
@@ -683,7 +712,9 @@ public class Thread implements Runnable {
      * @return a <code>boolean</code> indicating the lifeness of the Thread
      * @see Thread#start
      */
-    public native final boolean isAlive();
+    public synchronized final boolean isAlive() {
+        return alive;
+    }
 
     /**
      * Returns a <code>boolean</code> indicating whether the receiver is a
@@ -708,7 +739,13 @@ public class Thread implements Runnable {
      * @see Thread#interrupt
      * @see Thread#interrupted
      */
-    public native boolean isInterrupted();
+    public boolean isInterrupted() {
+        boolean result = false;
+        synchronized (this) {
+            result = interrupted;
+        }
+        return result;
+    }
 
     /**
      * Blocks the current Thread (<code>Thread.currentThread()</code>) until
@@ -719,7 +756,9 @@ public class Thread implements Runnable {
      * @see Object#notifyAll
      * @see java.lang.ThreadDeath
      */
-    public native final void join() throws InterruptedException;
+    public final void join() throws InterruptedException {
+        join(0L);
+    }
 
     /**
      * Blocks the current Thread (<code>Thread.currentThread()</code>) until
@@ -732,7 +771,33 @@ public class Thread implements Runnable {
      * @see Object#notifyAll
      * @see java.lang.ThreadDeath
      */
-    public native final void join(long millis) throws InterruptedException;
+    public synchronized final void join(long millis) throws InterruptedException {
+        long base = System.currentTimeMillis();
+        long now = 0L;
+
+        if (millis < 0) {
+            throw new IllegalArgumentException("timeout value is negative");
+        }
+
+        if (millis == 0) {
+            while (isAlive()) {
+                // Wait for the notifyAll() in run0()
+                wait();
+            }
+        } else {
+            boolean done = false;
+            while (!done && isAlive()) {
+                long delay = millis - now;
+                if (delay <= 0) {
+                    done = true;
+                } else {
+                    // Wait for either the timeout or the notifyAll() in run0()
+                    wait(delay);
+                    now = System.currentTimeMillis() - base;
+                }
+            }
+        }
+    }
 
     /**
      * Blocks the current Thread (<code>Thread.currentThread()</code>) until
@@ -776,6 +841,10 @@ public class Thread implements Runnable {
 
         this.threadGroup.add(this);
 
+        synchronized (this) {
+            alive = true;
+        }
+
         try {
             if (targetRunnable == null) {
                 run();
@@ -786,6 +855,14 @@ public class Thread implements Runnable {
             System.out.println("Exception in thread \"" + this.getName() + "\" "
                     + t.getClass().getName() + ": " + t.getMessage());
         }
+
+        synchronized (this) {
+            alive = false;
+
+            // Notify the thread is finished
+            notifyAll();
+        }
+
         removeSelfFromMap();
     }
 
@@ -907,7 +984,14 @@ public class Thread implements Runnable {
      *             it was sleeping
      * @see Thread#interrupt()
      */
-    public native static void sleep(long time) throws InterruptedException;
+    public static void sleep(long time) throws InterruptedException {
+        if (time != 0L) {
+            final Object obj = new Object();
+            synchronized (obj) {
+                obj.wait(time);
+            }
+        }
+    }
 
     /**
      * Causes the thread which sent this message to sleep for the given interval
@@ -1039,5 +1123,15 @@ public class Thread implements Runnable {
          * @param ex the exception that was thrown
          */
         void uncaughtException(Thread thread, Throwable ex);
+    }
+
+    /**
+     * Set the condition on which the thread is waiting, if any. This should ONLY be called within java_lang_Object's wait(), wait(long) or wait(long, int).
+     * @param signalCondition the Condition on which the thread is waiting for a signal/broadcast or null for none. This is used to interrupt a "wait" or "sleep".
+     */
+    void setWaitingCondition(Condition signalCondition) {
+        synchronized (this) {
+            waitingCondition = signalCondition;
+        }
     }
 }

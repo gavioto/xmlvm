@@ -21,6 +21,10 @@ XMLVM_FORWARD_DECL(org_xmlvm_iphone_UITabBarController)
 #define XMLVM_FORWARD_DECL_org_xmlvm_iphone_UIResponder
 XMLVM_FORWARD_DECL(org_xmlvm_iphone_UIResponder)
 #endif
+#ifndef XMLVM_FORWARD_DECL_org_xmlvm_iphone_UINavigationController
+#define XMLVM_FORWARD_DECL_org_xmlvm_iphone_UINavigationController
+XMLVM_FORWARD_DECL(org_xmlvm_iphone_UINavigationController)
+#endif
 #ifndef XMLVM_FORWARD_DECL_org_xmlvm_iphone_UITabBarItem
 #define XMLVM_FORWARD_DECL_org_xmlvm_iphone_UITabBarItem
 XMLVM_FORWARD_DECL(org_xmlvm_iphone_UITabBarItem)
@@ -76,7 +80,7 @@ void __DELETE_org_xmlvm_iphone_UIViewController(void* me, void* client_data);
 void __INIT_INSTANCE_MEMBERS_org_xmlvm_iphone_UIViewController(JAVA_OBJECT me);
 JAVA_OBJECT __NEW_org_xmlvm_iphone_UIViewController();
 JAVA_OBJECT __NEW_INSTANCE_org_xmlvm_iphone_UIViewController();
-void org_xmlvm_iphone_UIViewController_dummyMethod___org_xmlvm_iphone_UITabBarController(JAVA_OBJECT me, JAVA_OBJECT n1);
+void org_xmlvm_iphone_UIViewController_dummyMethod___org_xmlvm_iphone_UINavigationController_org_xmlvm_iphone_UITabBarController(JAVA_OBJECT me, JAVA_OBJECT n1, JAVA_OBJECT n2);
 void org_xmlvm_iphone_UIViewController___INIT___(JAVA_OBJECT me);
 // Vtable index: 8
 void org_xmlvm_iphone_UIViewController_loadView__(JAVA_OBJECT me);
@@ -109,6 +113,10 @@ void org_xmlvm_iphone_UIViewController_setTitle___java_lang_String(JAVA_OBJECT m
 JAVA_BOOLEAN org_xmlvm_iphone_UIViewController_wantsFullScreenLayout__(JAVA_OBJECT me);
 void org_xmlvm_iphone_UIViewController_setWantsFullScreenLayout___boolean(JAVA_OBJECT me, JAVA_BOOLEAN n1);
 JAVA_INT org_xmlvm_iphone_UIViewController_getInterfaceOrientation__(JAVA_OBJECT me);
+JAVA_INT org_xmlvm_iphone_UIViewController_getModalPresentationStyle__(JAVA_OBJECT me);
+void org_xmlvm_iphone_UIViewController_setModalPresentationStyle___int(JAVA_OBJECT me, JAVA_INT n1);
+JAVA_INT org_xmlvm_iphone_UIViewController_getModalTransitionStyle__(JAVA_OBJECT me);
+void org_xmlvm_iphone_UIViewController_setModalTransitionStyle___int(JAVA_OBJECT me, JAVA_INT n1);
 JAVA_OBJECT org_xmlvm_iphone_UIViewController_getNavigationController__(JAVA_OBJECT me);
 JAVA_OBJECT org_xmlvm_iphone_UIViewController_getNavigationItem__(JAVA_OBJECT me);
 JAVA_OBJECT org_xmlvm_iphone_UIViewController_editButtonItem__(JAVA_OBJECT me);

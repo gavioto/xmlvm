@@ -133,9 +133,11 @@ public class Window {
         contentParent.setBackgroundColor(0x00000000);
         contentParent.addView(view);
         decorView.addView(contentParent);
-
-        adjustFrameSize();
         setEditTextDelegates(view);
+    }
+    
+    public void xmlvmComputeLayout() {
+        adjustFrameSize();
 
         iContainerViewController = new UIViewController() {
 

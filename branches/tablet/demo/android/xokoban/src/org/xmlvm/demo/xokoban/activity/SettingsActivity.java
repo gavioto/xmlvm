@@ -59,13 +59,13 @@ public class SettingsActivity extends Activity {
         // other sized display.
         float sizeFactor = displayHeight / 480f;
 
-        int verticalCenterWidgets = (int) (410 * sizeFactor);
+        int verticalCenterWidgets = (int) (389 * sizeFactor);
 
         // Because the background image might be cropped at the sides, but for
         // sure will also be centered, we calculate the positions relative from
         // the center.
-        int checkboxLeft = (int) ((displayWidth / 2f) - (310f * sizeFactor));
-        int buttonRight = (int) ((displayWidth / 2f) + (145f * sizeFactor));
+        int checkboxLeft = (int) ((displayWidth / 2f) - (300f * sizeFactor));
+        int buttonRight = (int) ((displayWidth / 2f) + (135f * sizeFactor));
 
         View widgetGroup = getWidgetGroup();
         int groupBottom = verticalCenterWidgets + (widgetGroup.getMeasuredHeight() / 2);

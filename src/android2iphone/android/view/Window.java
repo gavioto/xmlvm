@@ -135,7 +135,7 @@ public class Window {
         decorView.addView(contentParent);
         setEditTextDelegates(view);
     }
-    
+
     public void xmlvmComputeLayout() {
         adjustFrameSize();
 
@@ -143,12 +143,31 @@ public class Window {
 
             @Override
             public boolean shouldAutorotateToInterfaceOrientation(int orientation) {
+                if (AndroidAppLauncher.getApplication().xmlvmShouldFreezeInterfaceOrientation()) {
+                    /*
+                     * Orientation should be frozen because the application uses
+                     * the accelerometer. Only allow the current interface
+                     * orientation.
+                     */
+                    return orientation == AndroidAppLauncher.getApplication()
+                            .xmlvmGetCurrentInterfaceOrientation();
+                }
                 int requestedOrientation = activity.getRequestedOrientation();
                 if (requestedOrientation == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE) {
                     return (orientation == UIInterfaceOrientation.LandscapeLeft)
                             || (orientation == UIInterfaceOrientation.LandscapeRight);
                 }
+                if (requestedOrientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) {
+                    return (orientation == UIInterfaceOrientation.Portrait)
+                            || (orientation == UIInterfaceOrientation.PortraitUpsideDown);
+                }
                 return false;
+            }
+
+            @Override
+            public void didRotateFromInterfaceOrientation(int orientation) {
+                AndroidAppLauncher.getApplication().xmlvmSetCurrentInterfaceOrientation(
+                        this.getInterfaceOrientation());
             }
 
             @Override
@@ -216,7 +235,8 @@ public class Window {
             contentParent = null;
             iScrollView.removeFromSuperview();
             iScrollView = null;
-            AndroidAppLauncher.getApplication().xmlvmRemoveActivityViewController(iContainerViewController);
+            AndroidAppLauncher.getApplication().xmlvmRemoveActivityViewController(
+                    iContainerViewController);
             iContainerView = null;
             iContainerViewController = null;
         }
@@ -233,7 +253,7 @@ public class Window {
         }
         CGRect rect = xmlvmGetCGRect();
         // AndroidAppLauncher.getApplication().xmlvmGetTopLevelWindow().setFrame(rect);
-        //iContainerView.setTransform(null);
+        // iContainerView.setTransform(null);
         iContainerView.setFrame(rect);
         rect.origin.x = 0;
         rect.origin.y = 0;

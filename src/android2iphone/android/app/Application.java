@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.xmlvm.iphone.CGRect;
+import org.xmlvm.iphone.UIInterfaceOrientation;
 import org.xmlvm.iphone.UIScreen;
 import org.xmlvm.iphone.UIViewController;
 import org.xmlvm.iphone.UIWindow;
@@ -46,13 +47,17 @@ public class Application extends ContextWrapper {
      */
     private List<UIViewController> activityViews;
     private boolean                appJustCreated;
+    private int                    currentInterfaceOrientation;
+    private boolean                freezeInterfaceOrientation;
 
 
     public void onCreate() {
-        appJustCreated = true;
         // Important: the UIWindow instance should *not* be created in the
         // constructor of class Application because it will then be created
         // before UIAppication exists. That seems to be illegal in iOS.
+        appJustCreated = true;
+        xmlvmFreezeInterfaceOrientation(false);
+        xmlvmSetCurrentInterfaceOrientation(UIInterfaceOrientation.Portrait);
         topLevelWindow = new UIWindow();
         CGRect rect = UIScreen.mainScreen().getBounds();
         topLevelWindow.setFrame(rect);
@@ -68,6 +73,7 @@ public class Application extends ContextWrapper {
             TopActivity.get().xmlvmRestart();
         }
         appJustCreated = false;
+        topLevelWindow.setNeedsDisplay();
     }
 
     public void onStop() {
@@ -97,5 +103,21 @@ public class Application extends ContextWrapper {
         if (size > 0) {
             topLevelWindow.setRootViewController(activityViews.get(size - 1));
         }
+    }
+
+    public void xmlvmFreezeInterfaceOrientation(boolean flag) {
+        freezeInterfaceOrientation = flag;
+    }
+
+    public boolean xmlvmShouldFreezeInterfaceOrientation() {
+        return freezeInterfaceOrientation;
+    }
+
+    public void xmlvmSetCurrentInterfaceOrientation(int orientation) {
+        currentInterfaceOrientation = orientation;
+    }
+
+    public int xmlvmGetCurrentInterfaceOrientation() {
+        return currentInterfaceOrientation;
     }
 }

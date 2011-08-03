@@ -721,6 +721,12 @@ public final class System {
         if (prop.length() == 0) {
             throw new IllegalArgumentException();
         }
+        if (systemProperties!=null) {
+            return systemProperties.getProperty(prop, defaultValue);
+        }
+        if (prop.equals("line.separator")) {
+            return "\n";
+        }
         if (prop.equals("file.separator")) {
             return "/";
         }

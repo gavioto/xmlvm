@@ -103,7 +103,7 @@ public class Arguments {
             "Usage: ",
             "xmlvm [--in=<path> [--out=<dir>]]",
             "      [--target=[xmlvm|dexmlvm|jvm|clr|dfa|class|exe|dex|js|java|c|gen-c-wrappers|python",
-	    "                 |objc|iphone|qooxdoo|vtable|webos|csharp|gen-csharp-wrappers]]",
+	    "                 |objc|iphone|qooxdoo|vtable|webos|csharp]]",
             "      [--skeleton=<type>]", "      [--lib=<name>", "      [--app-name=<app-name>]",
             "      [--resource=<path>]", "      [--qx-main=<main-class> [--qx-debug]]",
             "      [--debug=[none|error|warning|all]]", "      [--version] [--help]" };
@@ -135,9 +135,7 @@ public class Arguments {
             "    qooxdoo          JavaScript Qooxdoo web application",
             "    vtable           Vtable calculation (pre-step for e.g. C generation)",
             "    webos            WebOS JavaScript Project",
-	    "    csharp           C Sharp source code",
-	    "    gen-csharp-wrappers",
-	    "                     Generates C sharp wrappers while preserving hand-written ",
+	    "    csharp           C Sharp source code, preserving hand-written ",
 	    "                     code from overridden files in the 'out' directory.",
             "",
             "--gen-native-skeletons Generates skeletons for Java native methods in the target",
@@ -337,12 +335,11 @@ public class Arguments {
         if (option_skeleton != null && option_target != Targets.NONE) {
             parseError("Only one argument of '--target' or '--skeleton' is allowed");
         }
-        if (option_gen_wrapper && option_target != Targets.C 
-	                       && option_target != Targets.CSHARP) {
-            parseError("--gen-wrapper only available for --target=c or --target=csharp");
+        if (option_gen_wrapper && option_target != Targets.C) {
+            parseError("--gen-wrapper only available for --target=c");
         }
-        if (option_gen_wrapper && option_target != Targets.CSHARP) {
-            parseError(ARG_NO_USING+" only available for --target=csharp");
+        if (option_no_using && option_target != Targets.CSHARP) {
+            parseError(ARG_NO_USING + " only available for --target=csharp");
         }
         if (option_gen_native_skeletons
                 && (option_target != Targets.C && option_target != Targets.GENCWRAPPERS)
@@ -409,8 +406,7 @@ public class Arguments {
             option_c_source_extension = "m";
         }
 
-        if (option_target == Targets.GENCWRAPPERS
-	    || option_target == Targets.GENCSHARPWRAPPERS) {
+        if (option_target == Targets.GENCWRAPPERS) {
             option_gen_wrapper = true;
             Log.debug("Forcing --gen_wrapper for target " + option_target);
         }

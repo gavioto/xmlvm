@@ -36,4 +36,17 @@ public class Poly2 {
     }
 }
 
+class Poly2Parent {
+    public String getStr() {
+	return "parent";
+    }
+}
+
+class Poly2Child extends Poly2Parent {
+    public String getStr() {
+	return "child";
+    }
+}
+
+
 

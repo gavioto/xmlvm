@@ -29,3 +29,13 @@ public class Poly6 {
 	System.out.println(i.getStr());
     }
 }
+
+class Poly6Child implements Poly6Interface {
+    public String getStr() {
+	return "child";
+    }
+}
+
+interface Poly6Interface {
+    public String getStr();
+}

@@ -616,6 +616,15 @@ public class XmlvmResource {
                 .getAttributeValue("isInterface"));
     }
 
+    /**
+     * Returns whether this resource represents an abstract class.
+     */
+    public boolean isAbstract() {
+        return Boolean.parseBoolean(xmlvmDocument.getRootElement()
+                .getChild("class", nsXMLVM)
+                .getAttributeValue("isAbstract"));
+    }
+
     @SuppressWarnings("unchecked")
     // JDOM's non-generic API.
     private List<Element> getMethodElements() {
@@ -681,6 +690,26 @@ public class XmlvmResource {
         xmlvmDocument.getRootElement().getChild("class", nsXMLVM).addContent(vtableElement);
         return new XmlvmVtable(vtableElement);
 
+    }
+
+    public void setInterfaceField(XmlvmField field, String definingInterface) {
+        Element interfaceFieldElement = new Element("field", nsXMLVM);
+        interfaceFieldElement.setAttribute("name",field.getName());
+        interfaceFieldElement.setAttribute("type", field.getType());
+        interfaceFieldElement.setAttribute("isPublic", "true");
+        interfaceFieldElement.setAttribute("isStatic", "true");
+        interfaceFieldElement.setAttribute("definingInterface", definingInterface);
+        xmlvmDocument.getRootElement().getChild("class", nsXMLVM)
+                .addContent(interfaceFieldElement);
+    }
+
+    public void setInterfaceMethod(XmlvmMethod method) {
+        Element interfaceMethodElement = (Element) method.methodElement.clone();
+        //interfaceMethodElement.setAttribute("name",method.getName());
+        interfaceMethodElement.setAttribute("isPublic", "true");
+        interfaceMethodElement.setAttribute("isNative", "true");
+        xmlvmDocument.getRootElement().getChild("class", nsXMLVM)
+                .addContent(interfaceMethodElement);
     }
 
     /**

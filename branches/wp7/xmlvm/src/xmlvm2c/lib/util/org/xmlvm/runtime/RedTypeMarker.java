@@ -23,7 +23,7 @@ package org.xmlvm.runtime;
  * This class is not supposed to be used in a regular application. It serves as
  * a replacement for a Red Class.
  */
-public class RedTypeMarker {
+public class RedTypeMarker extends Exception{
 
     private RedTypeMarker() {
     }

@@ -11,12 +11,12 @@ public class StackTraceElement extends org.xmlvm.java.lang.Object {
 			     java.lang.String fileName,
 			     int lineNumber) {}
 
-    public boolean equals(java.lang.Object obj) {return false;}
-    public java.lang.String getClassName() {return null;}
-    public java.lang.String getFileName() {return null;}
-    public int getLineNumber() {return 0;}
-    public java.lang.String getMethodName() {return null;}
-    public int hashCode() {return 0;}
-    public boolean isNativeMethod() {return false;}
-    public java.lang.String toString() {return null;}
+    public native boolean equals(java.lang.Object obj);
+    public native java.lang.String getClassName();
+    public native java.lang.String getFileName();
+    public native int getLineNumber();
+    public native java.lang.String getMethodName();
+    public native int hashCode();
+    public native boolean isNativeMethod();
+    public native java.lang.String toString();
 }

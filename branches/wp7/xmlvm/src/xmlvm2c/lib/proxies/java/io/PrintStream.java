@@ -55,7 +55,7 @@ public class PrintStream extends FilterOutputStream implements Appendable,
 
 //    private final String lineSeparator = AccessController
 //    .doPrivileged(new PriviAction<String>("line.separator")); //$NON-NLS-1$
-    private final String lineSeparator = "\n";
+    private final String lineSeparator = System.getProperty("line.separator");
 
     // private Formatter formatter;
 

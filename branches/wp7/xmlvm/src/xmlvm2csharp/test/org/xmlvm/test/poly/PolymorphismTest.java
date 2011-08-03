@@ -38,7 +38,7 @@ public class PolymorphismTest {
     private int privateMember;
 
     public PolymorphismTest() {
-        //Log(this.getClass().getName());
+        Log(this.getClass().getName());
         Log("PolymorphismTest's constructor");
         publicMember = 1;
         privateMember = 2;
@@ -117,7 +117,7 @@ public class PolymorphismTest {
     }
     
     public static void main(String[] args) {
-        //Log(PolymorphismTest.class.getName());
+        Log(PolymorphismTest.class.getName());
         PolymorphismTest a = new PolymorphismTest();
         a.print();
         Log(a.publicMember);
@@ -173,7 +173,7 @@ public class PolymorphismTest {
         }
         Log("===============");
         doCast(b);
-        //Class<?> cl = int.class;
-        //Log(cl.getName());
+        Class<?> cl = int.class;
+        Log(cl.getName());
     }
 }

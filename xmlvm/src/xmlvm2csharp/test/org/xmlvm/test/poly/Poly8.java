@@ -20,3 +20,34 @@ public class Poly8 {
 	System.out.println(cb.getStr(8));
     }
 }
+
+class Poly8ChildA extends Poly8Parent {
+
+    public String getStr() {
+	return "childA";
+    }
+
+    public String getStr(int i) {
+	return "childA: "+i;
+    }
+
+}
+
+class Poly8ChildB extends Poly8Parent {
+
+    public String getStr() {
+	return "childB";
+    }
+
+    public String getStr(int i) {
+	return "childB: "+i;
+    }
+
+}
+
+class Poly8Parent {
+    public String getStr() {
+	return "parent";
+    }
+}
+

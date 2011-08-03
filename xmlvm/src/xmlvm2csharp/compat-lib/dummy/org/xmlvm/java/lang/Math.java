@@ -24,24 +24,10 @@ package org.xmlvm.java.lang;
  *
  */
 public class Math {
-
-    public static int max(int a, int b) {
-        return a>b ? a : b;
-    }
-    
-    public static int min(int a, int b) {
-        return a>b ? b : a;
-    }
-    
-    public static float abs(float a) {
-        return a;
-    }
-    
-    public static int abs(int a) {
-        return a;
-    }
-    
-    public static float max(float a, float b) {
-        return a>b ? a : b;
-    }
+    private Math() {}
+    public native static int max(int a, int b);
+    public native static int min(int a, int b);
+    public native static float abs(float a);
+    public native static int abs(int a);
+    public native static float max(float a, float b);
 }

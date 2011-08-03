@@ -36,4 +36,11 @@ public class Poly3 {
     }
 }
 
+class Poly3Parent {
+    public String str = "parent";
+}
+
+class Poly3Child extends Poly3Parent {
+}
+
 

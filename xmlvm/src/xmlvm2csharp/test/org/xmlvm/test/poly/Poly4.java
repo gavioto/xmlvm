@@ -36,4 +36,10 @@ public class Poly4 {
     }
 }
 
+class Poly4Parent {
+    public String str = "parent";
+}
 
+class Poly4Child extends Poly4Parent {
+    public String str = "child";
+}

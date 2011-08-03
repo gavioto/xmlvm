@@ -42,9 +42,13 @@ public class PolyB {
     }
 }
 
-interface PolyBInterface {
-    public String str = "interface field";
+interface PolyBInterface extends PolyBSuperInterface{
+    //public String str = "interface field";
     public String getStr();
+}
+
+interface PolyBSuperInterface {
+    public String str = "interface field";
 }
 
 class PolyBParent implements PolyBInterface {

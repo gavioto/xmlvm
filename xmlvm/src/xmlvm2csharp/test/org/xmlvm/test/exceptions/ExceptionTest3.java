@@ -22,18 +22,18 @@ package org.xmlvm.test.exceptions;
 /*
  * tests hierarchy of exceptions
  */
-public class ExceptionTest3 extends ExceptionTest2 {
+public class ExceptionTest3 extends ExceptionTest3Parent {
 
     public static void main(String[] args) {
 	System.out.println("Exception Test 3: Hierarchy:");
 	try {
 	    System.out.println("before subtest1:");
 	    if (true)
-		throw new ExceptionTest2();
+		throw new ExceptionTest3Parent();
 	    System.out.println("should not be printed");
 	} catch (ExceptionTest3 ex) {
 	    System.out.println("Bad catch");
-	} catch (ExceptionTest2 ex) {
+	} catch (ExceptionTest3Parent ex) {
 	    System.out.println("Good catch");
 	}
 	try {
@@ -43,7 +43,7 @@ public class ExceptionTest3 extends ExceptionTest2 {
 	    System.out.println("should not be printed");
 	} catch (ExceptionTest3 ex) {
 	    System.out.println("Good catch");
-	} catch (ExceptionTest2 ex) {
+	} catch (ExceptionTest3Parent ex) {
 	    System.out.println("Bad catch");
 	}
 
@@ -52,7 +52,7 @@ public class ExceptionTest3 extends ExceptionTest2 {
 	    if (true)
 		throw new ExceptionTest3();
 	    System.out.println("should not be printed");
-	} catch (ExceptionTest2 ex) {
+	} catch (ExceptionTest3Parent ex) {
 	    System.out.println("Good catch");
 	} catch (Exception ex) {
 	    System.out.println("Bad catch");
@@ -62,3 +62,5 @@ public class ExceptionTest3 extends ExceptionTest2 {
 	
     }
 }
+
+class ExceptionTest3Parent extends Exception {}

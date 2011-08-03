@@ -31,3 +31,21 @@ public class Poly5 {
 	System.out.println(p.getStr2());
     }
 }
+
+abstract class Poly5AbstractParent {
+    public abstract String getStr1();
+    public String getStr2() {
+	return "parent";
+    }
+}
+
+class Poly5Child extends Poly5AbstractParent {
+    public String getStr1() {
+	return "child1";
+    }
+
+    public String getStr2() {
+	return "child2";
+    }
+
+}

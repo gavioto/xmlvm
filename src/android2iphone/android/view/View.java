@@ -609,6 +609,7 @@ public class View {
 
     public final void layout(int left, int top, int right, int bottom) {
         boolean changed = setFrame(left, top, right, bottom);
+        flags &= ~FORCE_LAYOUT;
         if (changed || (flags & LAYOUT_REQUIRED) == LAYOUT_REQUIRED) {
             onLayout(changed, left, top, right, bottom);
             flags &= ~LAYOUT_REQUIRED;
@@ -616,8 +617,6 @@ public class View {
                 viewTreeObserver.dispatchOnGlobalLayout();
             }
         }
-
-        flags &= ~FORCE_LAYOUT;
     }
 
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
@@ -695,11 +694,27 @@ public class View {
     }
 
     public void setPadding(int paddingLeft, int paddingTop, int paddingRight, int paddingBottom) {
-        this.paddingLeft = paddingLeft;
-        this.paddingTop = paddingTop;
-        this.paddingRight = paddingRight;
-        this.paddingBottom = paddingBottom;
-        requestLayout();
+        boolean changed = false;
+        
+        if (this.paddingLeft != paddingLeft) {
+            this.paddingLeft = paddingLeft;
+            changed = true;
+        }
+        if (this.paddingTop != paddingTop) {
+            this.paddingTop = paddingTop;
+            changed = true;
+        }
+        if (this.paddingRight != paddingRight) {
+            this.paddingRight = paddingRight;
+            changed = true;
+        }
+        if (this.paddingBottom != paddingBottom) {
+            this.paddingBottom = paddingBottom;
+            changed = true;
+        }
+        if (changed) {
+            requestLayout();
+        }
     }
 
     public int getMinimumWidth() {

@@ -27,6 +27,7 @@ import java.util.LinkedList;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Rect;
+import android.internal.Assert;
 import android.util.AttributeSet;
 import android.util.Pool;
 import android.util.Poolable;
@@ -775,6 +776,7 @@ public class RelativeLayout extends ViewGroup {
             if (myHeight >= 0) {
                 childParams.mBottom = myHeight - paddingBottom - childParams.bottomMargin;
             } else {
+                Assert.NOT_IMPLEMENTED();
                 // FIXME uh oh...
             }
         }
@@ -801,6 +803,7 @@ public class RelativeLayout extends ViewGroup {
             if (myHeight >= 0) {
                 childParams.mBottom = myHeight - paddingBottom - childParams.bottomMargin;
             } else {
+                Assert.NOT_IMPLEMENTED();
                 // FIXME uh oh...
             }
         }
@@ -813,6 +816,7 @@ public class RelativeLayout extends ViewGroup {
             if (myHeight >= 0) {
                 childParams.mBottom = myHeight - paddingBottom - childParams.bottomMargin;
             } else {
+                Assert.NOT_IMPLEMENTED();
                 // FIXME uh oh...
             }
         }

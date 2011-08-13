@@ -104,7 +104,7 @@ public class View {
     protected Drawable                backgroundDrawable;
     private Resources                 mResources;
     private Handler                   handler;
-    private OnClickListener           onClickListener;
+    protected OnClickListener         onClickListener;
     private ViewTreeObserver          viewTreeObserver;
     private UIColor                   savedBackgroundColor       = null;
 

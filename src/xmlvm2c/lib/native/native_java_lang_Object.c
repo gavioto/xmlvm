@@ -38,7 +38,7 @@ JAVA_BOOLEAN java_lang_Object_equals___java_lang_Object(JAVA_OBJECT me, JAVA_OBJ
 void java_lang_Object_finalize_java_lang_Object__(JAVA_OBJECT me)
 {
     //XMLVM_BEGIN_NATIVE[java_lang_Object_finalize_java_lang_Object__]
-    XMLVM_UNIMPLEMENTED_NATIVE_METHOD();
+    // do nothing
     //XMLVM_END_NATIVE
 }
 
@@ -54,13 +54,6 @@ JAVA_INT java_lang_Object_hashCode__(JAVA_OBJECT me)
 {
     //XMLVM_BEGIN_NATIVE[java_lang_Object_hashCode__]
     return (JAVA_INT) me;
-    //XMLVM_END_NATIVE
-}
-
-JAVA_OBJECT java_lang_Object_toString__(JAVA_OBJECT me)
-{
-    //XMLVM_BEGIN_NATIVE[java_lang_Object_toString__]
-    XMLVM_UNIMPLEMENTED_NATIVE_METHOD();
     //XMLVM_END_NATIVE
 }
 
@@ -93,10 +86,6 @@ void xmlvm_init_native_java_lang_Object()
 #ifdef XMLVM_VTABLE_IDX_java_lang_Object_hashCode__
     __TIB_java_lang_Object.vtable[XMLVM_VTABLE_IDX_java_lang_Object_hashCode__] = 
         (VTABLE_PTR) java_lang_Object_hashCode__;
-#endif
-#ifdef XMLVM_VTABLE_IDX_java_lang_Object_toString__
-    __TIB_java_lang_Object.vtable[XMLVM_VTABLE_IDX_java_lang_Object_toString__] = 
-        (VTABLE_PTR) java_lang_Object_toString__;
 #endif
 #ifdef XMLVM_VTABLE_IDX_java_lang_Object_wait___long_int
     __TIB_java_lang_Object.vtable[XMLVM_VTABLE_IDX_java_lang_Object_wait___long_int] = 

@@ -17,17 +17,11 @@
 
 package java.lang;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.FileDescriptor;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintStream;
 import java.nio.channels.Channel;
 import java.nio.channels.spi.SelectorProvider;
-import java.security.Policy;
 import java.util.Map;
 import java.util.Properties;
 import java.util.PropertyPermission;
@@ -85,6 +79,8 @@ public final class System {
         initNativeLayer();
         // Fill in the properties from the VM information.
 //        ensureProperties();
+//        
+//        security = new SecurityManager();
         // Set up standard in, out, and err.
         // This will be done by XMLVMUtil.init()
 //        err = new String.ConsolePrintStream(new BufferedOutputStream(new FileOutputStream(
@@ -572,8 +568,17 @@ public final class System {
      * @see SecurityManager#checkExit
      */
     public static void exit(int code) {
-        RUNTIME.exit(code);
+// TODO call RUNTIME.exit(code); instead
+        nativeExit(code);
     }
+
+    /**
+     * Causes the program to exit. This does NOT invoke finalizers on exit. It
+     * just exits immediately.
+     *
+     * @param code the return code.
+     */
+    private static native void nativeExit(int code);
 
     /**
      * Indicates to the virtual machine that it would be a good time to run the
@@ -732,6 +737,7 @@ public final class System {
         if (prop.equals("user.dir")) {
             return XMLVMUtil.getCurrentWorkingDirectory();
         }
+
         if (prop.equals("os.encoding")) {
             return null;
         }
@@ -815,7 +821,7 @@ public final class System {
 
     /**
      * Returns the active security manager.
-     *
+     *vi 
      * @return the system security manager object.
      */
     public static SecurityManager getSecurityManager() {
@@ -864,9 +870,10 @@ public final class System {
      * @throws SecurityException
      *             if the library was not allowed to be loaded.
      */
-//    public static void loadLibrary(String libName) {
+    public static void loadLibrary(String libName) {
+        throw new IllegalArgumentException(libName + " couldn't be loaded. Library loading is not yet implemented");
 //        ClassLoader.loadLibraryWithClassLoader(libName, ClassLoader.callerClassLoader());
-//    }
+    }
 
     /**
      * Provides a hint to the virtual machine that it would be useful to attempt

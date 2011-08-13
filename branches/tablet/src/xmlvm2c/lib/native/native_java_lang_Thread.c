@@ -14,18 +14,29 @@ void threadRunner(JAVA_OBJECT me)
 {
     java_lang_Thread* thiz = me;
     XMLVM_JMP_BUF xmlvm_exception_env;
+    JAVA_LONG nativeThreadId = (JAVA_LONG) pthread_self();
     
 #ifdef __OBJC__
     NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
 #endif
+#ifdef XMLVM_ENABLE_STACK_TRACES
+    createStackForNewThread(nativeThreadId);
+#endif
+
     if (XMLVM_SETJMP(xmlvm_exception_env)) {
+        // Technically, XMLVM_UNWIND_EXCEPTION() should be called, but
+        // exceptions will not be used anymore and XMLVM_ENTER_METHOD() wasn't
+        // called (excessive), so a compilation error would occur
+
         xmlvm_unhandled_exception();
     } else {
         thiz->fields.java_lang_Thread.xmlvmExceptionEnv_ = &xmlvm_exception_env;
-
-        JAVA_LONG nativeThreadId = (JAVA_LONG) pthread_self();
         java_lang_Thread_run0___long(thiz, nativeThreadId);
     }
+
+#ifdef XMLVM_ENABLE_STACK_TRACES
+    destroyStackForExitingThread(nativeThreadId);
+#endif
 #ifdef __OBJC__
     [pool release];
 #endif
@@ -99,7 +110,10 @@ JAVA_OBJECT java_lang_Thread_getAllStackTraces__()
 JAVA_OBJECT java_lang_Thread_getContextClassLoader__(JAVA_OBJECT me)
 {
     //XMLVM_BEGIN_NATIVE[java_lang_Thread_getContextClassLoader__]
-    XMLVM_UNIMPLEMENTED_NATIVE_METHOD();
+    XMLVMElem _r0;
+    _r0.o = __NEW_org_xmlvm_runtime_XMLVMClassLoader();
+    org_xmlvm_runtime_XMLVMClassLoader___INIT___(_r0.o);
+    return _r0.o;
     //XMLVM_END_NATIVE
 }
 
@@ -113,13 +127,6 @@ JAVA_OBJECT java_lang_Thread_getDefaultUncaughtExceptionHandler__()
 JAVA_OBJECT java_lang_Thread_getStackTrace__(JAVA_OBJECT me)
 {
     //XMLVM_BEGIN_NATIVE[java_lang_Thread_getStackTrace__]
-    XMLVM_UNIMPLEMENTED_NATIVE_METHOD();
-    //XMLVM_END_NATIVE
-}
-
-JAVA_OBJECT java_lang_Thread_getState__(JAVA_OBJECT me)
-{
-    //XMLVM_BEGIN_NATIVE[java_lang_Thread_getState__]
     XMLVM_UNIMPLEMENTED_NATIVE_METHOD();
     //XMLVM_END_NATIVE
 }
@@ -152,16 +159,20 @@ void java_lang_Thread_resume__(JAVA_OBJECT me)
     //XMLVM_END_NATIVE
 }
 
-void java_lang_Thread_setContextClassLoader___java_lang_ClassLoader(JAVA_OBJECT me, JAVA_OBJECT n1)
+JAVA_BOOLEAN java_lang_Thread_stackTracesEnabled__()
 {
-    //XMLVM_BEGIN_NATIVE[java_lang_Thread_setContextClassLoader___java_lang_ClassLoader]
-    XMLVM_UNIMPLEMENTED_NATIVE_METHOD();
+    //XMLVM_BEGIN_NATIVE[java_lang_Thread_stackTracesEnabled__]
+#ifdef XMLVM_ENABLE_STACK_TRACES
+    return 1;
+#else
+    return 0;
+#endif
     //XMLVM_END_NATIVE
 }
 
-void java_lang_Thread_setDaemon___boolean(JAVA_OBJECT me, JAVA_BOOLEAN n1)
+void java_lang_Thread_setContextClassLoader___java_lang_ClassLoader(JAVA_OBJECT me, JAVA_OBJECT n1)
 {
-    //XMLVM_BEGIN_NATIVE[java_lang_Thread_setDaemon___boolean]
+    //XMLVM_BEGIN_NATIVE[java_lang_Thread_setContextClassLoader___java_lang_ClassLoader]
     XMLVM_UNIMPLEMENTED_NATIVE_METHOD();
     //XMLVM_END_NATIVE
 }
@@ -194,9 +205,9 @@ void java_lang_Thread_setUncaughtExceptionHandler___java_lang_Thread_UncaughtExc
     //XMLVM_END_NATIVE
 }
 
-void java_lang_Thread_start__(JAVA_OBJECT me)
+void java_lang_Thread_start0__(JAVA_OBJECT me)
 {
-    //XMLVM_BEGIN_NATIVE[java_lang_Thread_start__]
+    //XMLVM_BEGIN_NATIVE[java_lang_Thread_start0__]
     pthread_t pt;
     pthread_attr_t attr;
     pthread_attr_init(&attr);
@@ -268,10 +279,6 @@ void xmlvm_init_native_java_lang_Thread()
     __TIB_java_lang_Thread.vtable[XMLVM_VTABLE_IDX_java_lang_Thread_getStackTrace__] = 
         (VTABLE_PTR) java_lang_Thread_getStackTrace__;
 #endif
-#ifdef XMLVM_VTABLE_IDX_java_lang_Thread_getState__
-    __TIB_java_lang_Thread.vtable[XMLVM_VTABLE_IDX_java_lang_Thread_getState__] = 
-        (VTABLE_PTR) java_lang_Thread_getState__;
-#endif
 #ifdef XMLVM_VTABLE_IDX_java_lang_Thread_getThreadLocal___java_lang_ThreadLocal
     __TIB_java_lang_Thread.vtable[XMLVM_VTABLE_IDX_java_lang_Thread_getThreadLocal___java_lang_ThreadLocal] = 
         (VTABLE_PTR) java_lang_Thread_getThreadLocal___java_lang_ThreadLocal;
@@ -292,10 +299,6 @@ void xmlvm_init_native_java_lang_Thread()
     __TIB_java_lang_Thread.vtable[XMLVM_VTABLE_IDX_java_lang_Thread_setContextClassLoader___java_lang_ClassLoader] = 
         (VTABLE_PTR) java_lang_Thread_setContextClassLoader___java_lang_ClassLoader;
 #endif
-#ifdef XMLVM_VTABLE_IDX_java_lang_Thread_setDaemon___boolean
-    __TIB_java_lang_Thread.vtable[XMLVM_VTABLE_IDX_java_lang_Thread_setDaemon___boolean] = 
-        (VTABLE_PTR) java_lang_Thread_setDaemon___boolean;
-#endif
 #ifdef XMLVM_VTABLE_IDX_java_lang_Thread_setPriority___int
     __TIB_java_lang_Thread.vtable[XMLVM_VTABLE_IDX_java_lang_Thread_setPriority___int] = 
         (VTABLE_PTR) java_lang_Thread_setPriority___int;
@@ -308,9 +311,9 @@ void xmlvm_init_native_java_lang_Thread()
     __TIB_java_lang_Thread.vtable[XMLVM_VTABLE_IDX_java_lang_Thread_setUncaughtExceptionHandler___java_lang_Thread_UncaughtExceptionHandler] = 
         (VTABLE_PTR) java_lang_Thread_setUncaughtExceptionHandler___java_lang_Thread_UncaughtExceptionHandler;
 #endif
-#ifdef XMLVM_VTABLE_IDX_java_lang_Thread_start__
-    __TIB_java_lang_Thread.vtable[XMLVM_VTABLE_IDX_java_lang_Thread_start__] = 
-        (VTABLE_PTR) java_lang_Thread_start__;
+#ifdef XMLVM_VTABLE_IDX_java_lang_Thread_start0__
+    __TIB_java_lang_Thread.vtable[XMLVM_VTABLE_IDX_java_lang_Thread_start0__] = 
+        (VTABLE_PTR) java_lang_Thread_start0__;
 #endif
 #ifdef XMLVM_VTABLE_IDX_java_lang_Thread_stop__
     __TIB_java_lang_Thread.vtable[XMLVM_VTABLE_IDX_java_lang_Thread_stop__] = 

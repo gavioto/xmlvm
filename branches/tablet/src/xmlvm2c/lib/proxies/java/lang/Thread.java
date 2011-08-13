@@ -123,6 +123,9 @@ public class Thread implements Runnable {
         return id;
     }
 
+    // The main thread is the initial active non-daemon thread
+    private static int numberOfActiveNonDaemonThreads = 1;
+
     private long threadId;
     private String threadName;
     private int priority = NORM_PRIORITY;
@@ -131,6 +134,7 @@ public class Thread implements Runnable {
 //    private ClassLoader contextClassLoader;
     private Runnable targetRunnable;
     private ThreadGroup threadGroup;
+    private State threadState = State.NEW;
 
     private boolean interrupted;
     private Condition waitingCondition; // the Condition on which the thread is waiting for a signal/broadcast, if any. This is used to interrupt a "wait" or "sleep"
@@ -139,6 +143,11 @@ public class Thread implements Runnable {
     // There is no need for a WeakHashMap, since the threads removed themselves
     // from the map when they finish.
     private static final Map<Long, Thread> threadMap = new HashMap<Long, Thread>();
+
+    // This is the "main" thread group. All thread groups are ancestors to this group.
+    // All threads have a thread group, so they can always be referenced until
+    // they are removed from their thread group on termination.
+    private static final ThreadGroup mainThreadGroup = new ThreadGroup((ThreadGroup)null);
 
     /**
      * After having set the nativeThreadId, add "this" to the threadMap
@@ -182,7 +191,7 @@ public class Thread implements Runnable {
         this.threadId = 1;
         this.threadName = "main";
 
-        this.threadGroup = new ThreadGroup((ThreadGroup)null);
+        this.threadGroup = mainThreadGroup;
         this.threadGroup.add(this);
     }
 
@@ -587,9 +596,6 @@ public class Thread implements Runnable {
      * @since 1.5
      */
     public native StackTraceElement[] getStackTrace();
-//    public StackTraceElement[] getStackTrace() {
-//        return new StackTraceElement[0];
-//    }
 
     /**
      * Returns the current state of the Thread. This method is useful for
@@ -598,7 +604,11 @@ public class Thread implements Runnable {
      * @return a {@link State} value.
      * @since 1.5
      */
-    public native State getState();
+    public synchronized State getState() {
+// TODO update the thread state for BLOCKED, WAITING and TIMED_WAITING.
+System.out.println("Thread.getState() is not fully implemented. Specifically, you will not currently find BLOCKED, WAITING and TIMED_WAITING.");
+        return threadState;
+    }
 
     /**
      * Returns the ThreadGroup to which this Thread belongs.
@@ -726,7 +736,7 @@ public class Thread implements Runnable {
      * @return a <code>boolean</code> indicating whether the Thread is a daemon
      * @see Thread#setDaemon
      */
-    public final boolean isDaemon() {
+    public synchronized final boolean isDaemon() {
         return daemon;
     }
 
@@ -839,8 +849,6 @@ public class Thread implements Runnable {
         this.nativeThreadId = nativeThreadId;
         addSelfToMap();
 
-        this.threadGroup.add(this);
-
         synchronized (this) {
             alive = true;
         }
@@ -852,18 +860,47 @@ public class Thread implements Runnable {
                 targetRunnable.run();
             }
         } catch (Throwable t) {
-            System.out.println("Exception in thread \"" + this.getName() + "\" "
-                    + t.getClass().getName() + ": " + t.getMessage());
+            if (stackTracesEnabled()) {
+                System.out.print("Exception in thread \"" + this.getName() + "\" ");
+                t.printStackTrace();
+            } else {
+                System.out.println("Exception in thread \"" + this.getName() + "\" "
+                        + t.getClass().getName() + ": " + t.getMessage());
+            }
         }
 
         synchronized (this) {
             alive = false;
 
-            // Notify the thread is finished
+            // Notify the thread is finished. See join(long)
             notifyAll();
         }
 
         removeSelfFromMap();
+
+        this.threadGroup.remove(this);
+
+        threadTerminating();
+    }
+
+    private static native boolean stackTracesEnabled();
+
+    private void threadTerminating() {
+        synchronized (this) {
+            this.threadState = State.TERMINATED;
+        }
+
+        // No need to synchronize for "daemon". It can only be manipulated
+        // before the thread starts
+        if (!this.daemon) {
+            synchronized (Thread.class) {
+                numberOfActiveNonDaemonThreads--;
+                // If there are no more non-daemon threads, exit the whole process
+                if (numberOfActiveNonDaemonThreads == 0) {
+                    System.exit(0);
+                }
+            }
+        }
     }
 
     /**
@@ -900,7 +937,12 @@ public class Thread implements Runnable {
      *             if <code>checkAccess()</code> fails with a SecurityException
      * @see Thread#isDaemon
      */
-    public native final void setDaemon(boolean isDaemon);
+    public synchronized final void setDaemon(boolean isDaemon) {
+        if (this.threadState != State.NEW) {
+            throw new IllegalThreadStateException();
+        }
+        this.daemon = isDaemon;
+    }
 
     /**
      * Sets the default uncaught exception handler. This handler is invoked in
@@ -1032,7 +1074,26 @@ public class Thread implements Runnable {
      * @throws IllegalThreadStateException if the Thread has been started before
      * @see Thread#run
      */
-    public native void start();
+    public void start() {
+        synchronized (this) {
+            if (this.threadState != State.NEW) {
+                throw new IllegalThreadStateException();
+            }
+            this.threadState = State.RUNNABLE;
+        }
+
+        // No need to synchronize for "daemon". It can only be manipulated
+        // before the thread starts 
+        if (!this.daemon) {
+            synchronized (Thread.class) {
+                numberOfActiveNonDaemonThreads++;
+            }
+        }
+        this.threadGroup.add(this);
+        start0();
+    }
+
+    public native void start0();
 
     /**
      * Requests the receiver Thread to stop and throw ThreadDeath. The Thread is

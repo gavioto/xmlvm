@@ -41,6 +41,7 @@ public class Button extends TextView {
     private static final int INSETS_X = 10;
     private static final int INSETS_Y = 5;
 
+
     public Button(Context c) {
         super(c);
         initButton(c, null);
@@ -57,6 +58,18 @@ public class Button extends TextView {
         }
         setTextColor(XMLVMTheme.BUTTONTEXT_COLOR);
         xmlvmGetViewHandler().setUserInteractionEnabled(true);
+        if (!(this instanceof CompoundButton)) {
+            ((UIControl) xmlvmGetViewHandler().getContentView()).addTarget(new UIControlDelegate() {
+
+                @Override
+                public void raiseEvent(UIControl sender, int eventType) {
+                    if (onClickListener != null) {
+                        onClickListener.onClick(Button.this);
+                    }
+                }
+
+            }, UIControlEvent.TouchUpInside);
+        }
     }
 
     @Override
@@ -88,30 +101,14 @@ public class Button extends TextView {
 
     @Override
     public void setTextColor(int color) {
-        ((UIButton) xmlvmGetViewHandler().getContentView()).setTitleColor(xmlvmConvertIntToUIColor(color), UIControlState.Normal);
+        ((UIButton) xmlvmGetViewHandler().getContentView()).setTitleColor(
+                xmlvmConvertIntToUIColor(color), UIControlState.Normal);
     }
 
     @Override
     public void setGravity(int gravity) {
         this.gravity = gravity;
         // gravity not supported under iOS UIButton
-    }
-
-    @Override
-    public void setOnClickListener(OnClickListener listener) {
-        if (!(this instanceof CompoundButton)) {
-            final OnClickListener theListener = listener;
-            ((UIControl) xmlvmGetViewHandler().getContentView()).addTarget(new UIControlDelegate() {
-
-                @Override
-                public void raiseEvent(UIControl sender, int eventType) {
-                    theListener.onClick(Button.this);
-                }
-
-            }, UIControlEvent.TouchUpInside);
-        } else {
-            super.setOnClickListener(listener);
-        }
     }
 
     @Override

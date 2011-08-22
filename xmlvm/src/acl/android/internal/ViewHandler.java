@@ -20,12 +20,11 @@
 
 package android.internal;
 
-import java.awt.Color;
-import java.awt.Rectangle;
-
 import org.xmlvm.commondevice.adapter.BitmapDrawableAdapter;
 import org.xmlvm.commondevice.objects.CommonDeviceView;
 
+import android.graphics.Color;
+import android.graphics.Rect;
 import android.view.View;
 
 /**
@@ -102,10 +101,10 @@ public class ViewHandler {
      * @param frame
      *            the CGRect defining the size and location
      */
-    public final void setFrame(Rectangle frame) {
+    public final void setFrame(Rect frame) {
         layerBack.setFrame(frame);
         if (layerFront != null) {
-            Rectangle bounds = new Rectangle(0, 0, frame.width, frame.height);
+            Rect bounds = new Rect(0, 0, frame.right, frame.bottom);
             layerFront.setFrame(bounds);
         }
     }
@@ -153,9 +152,9 @@ public class ViewHandler {
      * @param bcolor
      *            the UIColor to use as background
      */
-    public void setBackgroundColor(Color bcolor) {
+    public void setBackgroundColor(int bcolor) {
         if (layerFront != null) {
-            layerFront.setBackgroundColor(null);
+            layerFront.setBackgroundColor(-1);
             layerBack.setBackgroundColor(bcolor);
         } else {
             layerBack.setBackgroundColor(bcolor);

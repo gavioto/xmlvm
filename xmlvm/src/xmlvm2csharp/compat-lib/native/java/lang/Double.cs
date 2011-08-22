@@ -8,7 +8,7 @@ public static long doubleToLongBits(double n1){
     if (global::System.Double.IsNaN(n1)) {
         return 0x7FF8000000000000L;
     }
-    return global::System.BitConverter.DoubleToInt64Bits(n1);
+    return global::System.BitConverter.ToInt64(global::System.BitConverter.GetBytes(n1),0);
 //XMLVM_END_WRAPPER[java.lang.Double: long doubleToLongBits(double)]
 }
 
@@ -20,7 +20,7 @@ public static long doubleToRawLongBits(double n1){
 
 public static double longBitsToDouble(long n1){
 //XMLVM_BEGIN_WRAPPER[java.lang.Double: double longBitsToDouble(long)]
-    return global::System.BitConverter.Int64BitsToDouble(n1);
+    return global::System.BitConverter.ToDouble(global::System.BitConverter.GetBytes(n1),0);
 //XMLVM_END_WRAPPER[java.lang.Double: double longBitsToDouble(long)]
 }
 

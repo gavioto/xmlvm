@@ -16,9 +16,6 @@
 
 package android.text;
 
-import org.apache.harmony.awt.text.TextUtils;
-
-
 /**
  * Bit definitions for an integer defining the basic content type of text
  * held in an {@link Editable} object. Supported classes may be combined

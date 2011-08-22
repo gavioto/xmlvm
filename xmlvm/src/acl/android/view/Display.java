@@ -20,12 +20,11 @@
 
 package android.view;
 
-import java.awt.Rectangle;
-
 import org.xmlvm.commondevice.subsystems.CommonDeviceProperties;
 
 import android.app.Activity;
 import android.content.pm.ActivityInfo;
+import android.graphics.Rect;
 import android.internal.CommonDeviceAPIFinder;
 import android.internal.ConfigurationFactory;
 import android.internal.TopActivity;
@@ -40,9 +39,9 @@ public class Display {
      */
     public int getWidth() {
         Activity activity = TopActivity.get();
-        Rectangle s = CommonDeviceAPIFinder.instance().getProperties().getScreenBounds();
-        return (int) (activity.getRequestedOrientation() == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE ? s.getHeight()
-                : s.getWidth());
+        Rect s = CommonDeviceAPIFinder.instance().getProperties().getScreenBounds();
+        return (int) (activity.getRequestedOrientation() == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE ? s.bottom
+                : s.right);
     }
 
     /**
@@ -51,15 +50,15 @@ public class Display {
      */
     public int getHeight() {
         Activity activity = TopActivity.get();
-        Rectangle s = CommonDeviceAPIFinder.instance().getProperties().getScreenBounds();
-        return (int) (activity.getRequestedOrientation() == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE ? s.getWidth()
-                : s.getHeight());
+        Rect s = CommonDeviceAPIFinder.instance().getProperties().getScreenBounds();
+        return (int) (activity.getRequestedOrientation() == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE ? s.right
+                : s.bottom);
     }
 
     public void getMetrics(DisplayMetrics metrics) {
-        Rectangle size = CommonDeviceAPIFinder.instance().getProperties().getScreenBounds();
-        metrics.heightPixels = (int) size.getHeight();
-        metrics.widthPixels = (int) size.getWidth();
+        Rect size = CommonDeviceAPIFinder.instance().getProperties().getScreenBounds();
+        metrics.heightPixels = (int) size.right;
+        metrics.widthPixels = (int) size.bottom;
 
         int device = ConfigurationFactory.detectDevice();
         switch (device) {

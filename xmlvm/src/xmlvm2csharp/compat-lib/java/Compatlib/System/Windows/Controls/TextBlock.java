@@ -20,8 +20,6 @@
 
 package Compatlib.System.Windows.Controls;
 
-import org.xmlvm.wp7.TextBlockRenderer;
-
 import Compatlib.System.String;
 import Compatlib.System.Windows.FrameworkElement;
 import Compatlib.System.Windows.Media.Brush;
@@ -103,7 +101,7 @@ public class TextBlock extends FrameworkElement {
     }
 
     public TextBlock() {
-        xmlvmSetRenderer(new TextBlockRenderer(this));
+//        xmlvmSetRenderer(new TextBlockRenderer(this));
     }
 
 }

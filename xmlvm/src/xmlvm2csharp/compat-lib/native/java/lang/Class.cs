@@ -94,7 +94,7 @@ public virtual global::System.Object getConstructors(){
           | global::System.Reflection.BindingFlags.NonPublic;
     global::System.Reflection.MemberInfo[] constructorInfos 
         = nativeType.FindMembers(global::System.Reflection.MemberTypes.Method,
-                                 bindingFlags, global::System.Type.FilterName, "this");
+                                 bindingFlags, global::System.Type.FilterNameIgnoreCase, "this");
     global::System.Collections.Generic.IList<java.lang.reflect.Constructor> jConstructors 
         = new global::System.Collections.Generic.List<java.lang.reflect.Constructor>();
     // note each MemberInfo is casted to MethodInfo:
@@ -134,7 +134,7 @@ public virtual global::System.Object getDeclaredConstructors(){
           | global::System.Reflection.BindingFlags.NonPublic;
     global::System.Reflection.MemberInfo[] constructorInfos 
         = nativeType.FindMembers(global::System.Reflection.MemberTypes.Method,
-                                 bindingFlags, global::System.Type.FilterName, "this");
+                                 bindingFlags, global::System.Type.FilterNameIgnoreCase, "this");
     global::System.Collections.Generic.IList<java.lang.reflect.Constructor> jConstructors 
         = new global::System.Collections.Generic.List<java.lang.reflect.Constructor>();
     // note each MemberInfo is casted to MethodInfo:

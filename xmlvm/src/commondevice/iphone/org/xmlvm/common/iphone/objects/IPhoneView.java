@@ -20,8 +20,6 @@
 
 package org.xmlvm.common.iphone.objects;
 
-import java.awt.Color;
-import java.awt.Rectangle;
 import java.util.Set;
 
 import org.xmlvm.commondevice.objects.CommonDeviceView;
@@ -34,6 +32,8 @@ import org.xmlvm.iphone.UITouch;
 import org.xmlvm.iphone.UIView;
 import org.xmlvm.iphone.UIViewContentMode;
 
+import android.graphics.Color;
+import android.graphics.Rect;
 import android.internal.Assert;
 import android.view.MotionEvent;
 import android.view.View;
@@ -93,7 +93,7 @@ public class IPhoneView implements CommonDeviceView {
     }
 
     @Override
-    public void setFrame(Rectangle frame) {
+    public void setFrame(Rect frame) {
         this.view.setFrame(IPhoneView.toCGRect(frame));
     }
 
@@ -108,7 +108,7 @@ public class IPhoneView implements CommonDeviceView {
     }
 
     @Override
-    public void setBackgroundColor(Color bcolor) {
+    public void setBackgroundColor(int bcolor) {
         this.view.setBackgroundColor(IPhoneView.toUIColor(bcolor));
     }
 
@@ -149,7 +149,7 @@ public class IPhoneView implements CommonDeviceView {
     }
 
     @Override
-    public Rectangle getFrame() {
+    public Rect getFrame() {
         return IPhoneView.toRectangle(this.view.getFrame());
     }
     
@@ -181,24 +181,24 @@ public class IPhoneView implements CommonDeviceView {
         this.androidView = androidView;
     }
 
-    public static Rectangle toRectangle(CGRect frame) {
-        return new Rectangle((int)frame.origin.x, (int)frame.origin.y, (int)frame.size.width, (int)frame.size.height);
+    public static Rect toRectangle(CGRect frame) {
+        return new Rect((int)frame.origin.x, (int)frame.origin.y, (int)frame.origin.x+(int)frame.size.width, (int)frame.origin.y+(int)frame.size.height);
     }
     
-    public static Rectangle toRectangle(CGSize frame) {
-        return new Rectangle((int)frame.width, (int)frame.height);
+    public static Rect toRectangle(CGSize frame) {
+        return new Rect (0, 0, (int)frame.width, (int)frame.height);
     }
 
-    public static CGRect toCGRect(Rectangle frame) {
-        return new CGRect(frame.x, frame.y, frame.width, frame.height);
+    public static CGRect toCGRect(Rect frame) {
+        return new CGRect(frame.left, frame.top, frame.right - frame.left, frame.bottom - frame.top);
     }
 
-    public static CGSize toCGSize(Rectangle frame) {
-        return new CGSize(frame.width, frame.height);
+    public static CGSize toCGSize(Rect frame) {
+        return new CGSize(frame.right - frame.left, frame.bottom - frame.top);
     }
     
-    public static UIColor toUIColor(Color color) {
-        return UIColor.colorWithRGBA(color.getRed(), color.getGreen(), color.getBlue(), color.getAlpha());
+    public static UIColor toUIColor(int color) {
+        return UIColor.colorWithRGBA(Color.red(color), Color.green(color), Color.blue(color), Color.alpha(color));
     }
 
 }

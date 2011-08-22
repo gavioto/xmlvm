@@ -20,9 +20,9 @@
 
 package org.xmlvm.commondevice.subsystems;
 
-import java.awt.Rectangle;
-
 import org.xmlvm.commondevice.objects.CommonDeviceFont;
+
+import android.graphics.Rect;
 
 /**
  *
@@ -42,9 +42,9 @@ public interface CommonDeviceFontFactory {
 
     CommonDeviceFont fontWithNameSize(String string, float pointSize);
 
-    Rectangle sizeWithFont(String string, CommonDeviceFont font);
+    Rect sizeWithFont(String string, CommonDeviceFont font);
     
-    Rectangle sizeWithFont(String string, CommonDeviceFont font, Rectangle constraints, int lineBreakMode);
+    Rect sizeWithFont(String string, CommonDeviceFont font, Rect constraints, int lineBreakMode);
 
     int getAlignmentFromGravity(int gravity);
     

@@ -1,9 +1,9 @@
-﻿namespace org.xmlvm {
+namespace org.xmlvm {
     public interface _nIJavaClient {
         void @this(java.lang.Object memberInfoAdapter);
     }
 
-    public class _nMemberInfoAdapter<A,C> : java.lang.Object 
+    public class _nMemberInfoAdapter<A,C> : global::java.lang.Object 
             where C : org.xmlvm._nIJavaClient, new() {
         private A memberInfoAdaptee;
         private C javaClient;

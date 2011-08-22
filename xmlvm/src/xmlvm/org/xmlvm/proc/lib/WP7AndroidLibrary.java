@@ -33,7 +33,7 @@ import org.xmlvm.util.universalfile.UniversalFileCreator;
  */
 public class WP7AndroidLibrary extends Library {
     private static final String ONE_JAR_LOCATION     = "/lib/wp7-android-java.jar";
-    private static final String FILE_SYSTEM_LOCATION = "bin-androidsimple";
+    private static final String FILE_SYSTEM_LOCATION = "bin-android";
 
 
     @Override

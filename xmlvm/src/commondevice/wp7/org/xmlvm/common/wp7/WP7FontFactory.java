@@ -20,12 +20,11 @@
 
 package org.xmlvm.common.wp7;
 
-import java.awt.Rectangle;
-
 import org.xmlvm.common.wp7.objects.WP7Font;
 import org.xmlvm.commondevice.objects.CommonDeviceFont;
 import org.xmlvm.commondevice.subsystems.CommonDeviceFontFactory;
 
+import android.graphics.Rect;
 import android.internal.Assert;
 
 /**
@@ -49,13 +48,13 @@ public class WP7FontFactory implements CommonDeviceFontFactory {
     }
 
     @Override
-    public Rectangle sizeWithFont(String string, CommonDeviceFont font) {
+    public Rect sizeWithFont(String string, CommonDeviceFont font) {
         Assert.NOT_IMPLEMENTED();
         return null;
     }
 
     @Override
-    public Rectangle sizeWithFont(String string, CommonDeviceFont font, Rectangle constraints,
+    public Rect sizeWithFont(String string, CommonDeviceFont font, Rect constraints,
             int lineBreakMode) {
         Assert.NOT_IMPLEMENTED();
         return null;

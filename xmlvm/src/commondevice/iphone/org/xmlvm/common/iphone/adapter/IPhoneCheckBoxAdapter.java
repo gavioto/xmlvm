@@ -20,7 +20,6 @@
 
 package org.xmlvm.common.iphone.adapter;
 
-import java.awt.Rectangle;
 import java.util.Set;
 
 import org.xmlvm.common.iphone.objects.IPhoneView;
@@ -29,6 +28,7 @@ import org.xmlvm.iphone.UIEvent;
 import org.xmlvm.iphone.UISwitch;
 import org.xmlvm.iphone.UITouch;
 
+import android.graphics.Rect;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.CheckBox;
@@ -58,8 +58,8 @@ public class IPhoneCheckBoxAdapter extends IPhoneView implements CheckBoxAdapter
     }
     
     @Override
-    public Rectangle getFrame() {
-        return new Rectangle(0, 0, (int) UISwitch.kSwitchButtonWidth, (int) UISwitch.kSwitchButtonHeight);
+    public Rect getFrame() {
+        return new Rect(0, 0, (int) UISwitch.kSwitchButtonWidth, (int) UISwitch.kSwitchButtonHeight);
     }
 
     @Override

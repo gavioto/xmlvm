@@ -20,8 +20,6 @@
 
 package android.view;
 
-import java.awt.Color;
-import java.awt.Rectangle;
 import java.lang.ref.WeakReference;
 
 import org.xmlvm.commondevice.objects.CommonDeviceView;
@@ -29,6 +27,8 @@ import org.xmlvm.commondevice.objects.CommonDeviceView;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.internal.Assert;
 import android.internal.CommonDeviceAPIFinder;
@@ -452,7 +452,7 @@ public class View {
     }
 
     public void setBackgroundColor(int color) {        
-        viewHandler.setBackgroundColor(xmlvmConvertIntToColor(color));
+        viewHandler.setBackgroundColor(color);
     }
 
     public boolean postDelayed(Runnable runnable, long delay) {
@@ -792,7 +792,7 @@ public class View {
             this.top = top;
             this.width = right - left;
             this.height = bottom - top;
-            viewHandler.setFrame(new Rectangle(left, top, width, height));
+            viewHandler.setFrame(new Rect(left, top, right, bottom));
 
             // mPrivateFlags |= HAS_BOUNDS;
 
@@ -951,11 +951,4 @@ public class View {
         return this.listener;
     }
     
-    protected Color xmlvmConvertIntToColor(int color) {
-        float alpha = (float) (((color >> 24) & 0xff) / 255.0f);
-        float red = (float) (((color >> 16) & 0xff) / 255.0f);
-        float green = (float) (((color >> 8) & 0xff) / 255.0f);
-        float blue = (float) ((color & 0xff) / 255.0f);
-        return new Color(red, green, blue, alpha);
-    }
 }

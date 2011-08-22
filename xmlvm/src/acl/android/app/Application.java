@@ -19,13 +19,12 @@
  */
 package android.app;
 
-import java.awt.Rectangle;
-
 import org.xmlvm.commondevice.subsystems.CommonDeviceWindow;
 
 import android.content.ContextWrapper;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Rect;
 import android.internal.CommonDeviceAPIFinder;
 import android.internal.TopActivity;
 
@@ -41,7 +40,7 @@ public class Application extends ContextWrapper {
         // constructor of class Application because it will then be created
         // before UIAppication exists. That seems to be illegal in iOS.
         topLevelWindow = CommonDeviceAPIFinder.instance().getWindow();
-        Rectangle rect = CommonDeviceAPIFinder.instance().getProperties().getScreenBounds();
+        Rect rect = CommonDeviceAPIFinder.instance().getProperties().getScreenBounds();
         //MISSING ACL
 //        topLevelWindow.setFrame(rect);
 //        topLevelWindow.makeKeyAndVisible();

@@ -21,7 +21,6 @@
 package Compatlib.System.Windows.Controls;
 
 import org.xmlvm.XMLVMIgnore;
-import org.xmlvm.wp7.ButtonRenderer;
 
 import Compatlib.System.Object;
 import Compatlib.System.Windows.Controls.Primitives.ButtonBase;
@@ -33,7 +32,7 @@ import Compatlib.System.Windows.Controls.Primitives.ButtonBase;
 public class Button extends ButtonBase {
 
     public Button() {
-        xmlvmSetRenderer(new ButtonRenderer(this));
+//        xmlvmSetRenderer(new ButtonRenderer(this));
     }
 
     /*

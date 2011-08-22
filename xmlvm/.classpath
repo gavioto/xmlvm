@@ -26,11 +26,10 @@
 	<classpathentry kind="src" path="demo/wp7/xokoban/src"/>
 	<classpathentry kind="src" path="src/test/java"/>
 	<classpathentry kind="src" path="src/test/cs"/>
-	<classpathentry kind="src" path="src/xmlvm2csharp/compat-lib/dummy"/>
-	<classpathentry kind="src" path="src/acl"/>
-	<classpathentry kind="src" path="src/commondevice/commondeviceapi"/>
-	<classpathentry kind="src" path="src/commondevice/iphone"/>
-	<classpathentry kind="src" path="src/commondevice/wp7"/>
+	<classpathentry kind="src" output="bin-android" path="src/acl"/>
+	<classpathentry kind="src" output="bin-android" path="src/commondevice/commondeviceapi"/>
+	<classpathentry kind="src" output="bin-iphone" path="src/commondevice/iphone"/>
+	<classpathentry kind="src" output="bin-wp7" path="src/commondevice/wp7"/>
 	<classpathentry kind="src" path="src/xmlvm2objc/compat-lib/java"/>
 	<classpathentry kind="src" path="demo/android/xokoban/src"/>
 	<classpathentry kind="src" path="demo/android/xokoban/gen"/>
@@ -55,5 +54,6 @@
 	<classpathentry kind="lib" path="lib/httpcore-4.0.1.jar"/>
 	<classpathentry kind="lib" path="lib/saxon9-jdom.jar"/>
 	<classpathentry kind="lib" path="lib/harmony6-build.jar"/>
+	<classpathentry kind="lib" path="lib/saxon.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

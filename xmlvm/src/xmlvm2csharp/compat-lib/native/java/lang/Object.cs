@@ -11,7 +11,7 @@ private static void initNativeLayer(){
 
 public virtual global::System.Object clone(){
 //XMLVM_BEGIN_WRAPPER[java.lang.Object: java.lang.Object clone()]
-      throw new org.xmlvm._nNotYetImplementedException("native/wrapper method not yet implemented");
+      return base.MemberwiseClone();
 //XMLVM_END_WRAPPER[java.lang.Object: java.lang.Object clone()]
 }
 

@@ -1475,6 +1475,8 @@ public class DEXmlvmOutputProcess extends XmlvmProcessImpl<XmlvmProcess<?>> impl
         String returnType = prototype.getReturnType().getType().toHuman();
         if (isRedType(returnType)) {
             returnType = JLO;
+        } else if (!bad.contains(returnType)) {
+            referencedTypes.add(returnType);
         }
 
         returnElement.setAttribute("type", returnType);

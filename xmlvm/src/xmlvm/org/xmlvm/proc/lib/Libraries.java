@@ -42,6 +42,7 @@ public class Libraries {
         libraries.add(new IPhoneAndroidLibrary());
         libraries.add(new WP7WrapperLibrary());
         libraries.add(new WP7AndroidLibrary());
+        libraries.add(new SaxonLibrary());
     }
 
 

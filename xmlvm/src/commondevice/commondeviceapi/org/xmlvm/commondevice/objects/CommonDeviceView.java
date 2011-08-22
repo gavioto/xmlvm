@@ -20,8 +20,9 @@
 
 package org.xmlvm.commondevice.objects;
 
-import java.awt.Color;
-import java.awt.Rectangle;
+import android.graphics.Color;
+import android.graphics.Rect;
+
 
 /**
  *
@@ -43,12 +44,12 @@ public interface CommonDeviceView {
     public static final int BOTTOM_RIGHT = 12;
     
 
-    Rectangle getFrame();
-    void setFrame(Rectangle frame);
+    Rect getFrame();
+    void setFrame(Rect frame);
     
     void setHidden(boolean b);
     void setNeedsDisplay();
-    void setBackgroundColor(Color bcolor);
+    void setBackgroundColor(int bcolor);
 
     void addSubview(CommonDeviceView metricsView);
     void insertSubview(CommonDeviceView metricsView, int idx);

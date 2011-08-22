@@ -20,13 +20,12 @@
 
 package android.widget;
 
-import java.awt.Rectangle;
-
 import org.xmlvm.commondevice.adapter.ButtonAdapter;
 import org.xmlvm.commondevice.objects.CommonDeviceFont;
 import org.xmlvm.commondevice.objects.CommonDeviceView;
 
 import android.content.Context;
+import android.graphics.Rect;
 import android.internal.CommonDeviceAPIFinder;
 import android.internal.XMLVMTheme;
 import android.util.AttributeSet;
@@ -36,6 +35,7 @@ import android.widget.AbsoluteLayout.LayoutParams;
 public class Button extends TextView {
     private static final int INSETS_X = 10;
     private static final int INSETS_Y = 5;
+
 
     public Button(Context c) {
         super(c);
@@ -63,15 +63,17 @@ public class Button extends TextView {
         int height;
 
         if (l instanceof AbsoluteLayout.LayoutParams) {
-            Rectangle size = xmlvmGetTextSize();
-            width = l.width == LayoutParams.WRAP_CONTENT ? (int) size.width + 2 * INSETS_X
+            Rect size = xmlvmGetTextSize();
+            width = l.width == LayoutParams.WRAP_CONTENT ? (int) size.right + 2 * INSETS_X
                     : l.width;
-            height = l.height == LayoutParams.WRAP_CONTENT ? (int) size.height + 2 * INSETS_Y
+            height = l.height == LayoutParams.WRAP_CONTENT ? (int) size.bottom + 2 * INSETS_Y
                     : l.height;
 
             xmlvmGetViewHandler().setFrame(
-                    new Rectangle(((AbsoluteLayout.LayoutParams) l).x,
-                            ((AbsoluteLayout.LayoutParams) l).y, width, height));
+                    new Rect(((AbsoluteLayout.LayoutParams) l).x,
+                            ((AbsoluteLayout.LayoutParams) l).y,
+                            ((AbsoluteLayout.LayoutParams) l).x + width,
+                            ((AbsoluteLayout.LayoutParams) l).y + height));
         }
     }
 
@@ -84,7 +86,8 @@ public class Button extends TextView {
 
     @Override
     public void setTextColor(int color) {
-        ((ButtonAdapter) xmlvmGetViewHandler().getContentView()).setTitleColor(xmlvmConvertIntToColor(color));
+        ((ButtonAdapter) xmlvmGetViewHandler().getContentView())
+                .setTitleColor(color);
     }
 
     @Override
@@ -106,7 +109,7 @@ public class Button extends TextView {
     @Override
     protected CommonDeviceView xmlvmNewUIView(AttributeSet attrs) {
         return CommonDeviceAPIFinder.instance().getWidgetFactory().createButton(this);
-//        return UIButton.buttonWithType(UIButtonType.RoundedRect);
+        // return UIButton.buttonWithType(UIButtonType.RoundedRect);
     }
 
     private void parseButtonAttributes(AttributeSet attrs) {

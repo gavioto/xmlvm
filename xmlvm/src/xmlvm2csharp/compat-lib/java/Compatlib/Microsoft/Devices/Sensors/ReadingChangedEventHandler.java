@@ -20,9 +20,6 @@
 
 package Compatlib.Microsoft.Devices.Sensors;
 
-import org.xmlvm.wp7.DelegateHelper;
-import org.xmlvm.wp7.DelegateManager;
-
 import Compatlib.System.EventHandler;
 import Compatlib.System.Object;
 import Compatlib.System.String;
@@ -38,7 +35,8 @@ public class ReadingChangedEventHandler extends EventHandler {
      * @param string
      */
     public ReadingChangedEventHandler(Object arg0, String method) {
-        super(arg0, DelegateManager.registerFunctionPtr(arg0.getClass().getName(), method.value,
-                DelegateHelper.getSignature(arg0, method.value)));
+        super(null, 0);
+//        super(arg0, DelegateManager.registerFunctionPtr(arg0.getClass().getName(), method.value,
+//                DelegateHelper.getSignature(arg0, method.value)));
     }
 }

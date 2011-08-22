@@ -22,7 +22,9 @@ package org.xmlvm.proc.out;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.xmlvm.Log;
 import org.xmlvm.main.Arguments;
@@ -39,9 +41,11 @@ import org.xmlvm.util.universalfile.UniversalFileCreator;
  * the Android API.
  */
 public class Android2WP7OutputProcess extends XmlvmProcessImpl<WP7OutputProcess> {
-    public static final String  ANDROID_SRC_LIB               = "lib";
+    public static final String  ANDROID_SRC_LIB               = "src";
 
     private static final String ANDROID_WP7_COMPAT_LIB_JAR = "/wp7/wp7-android-compat.jar";
+    private static final String ANDROID_ACL_SOURCE = "bin-android";
+    private static final String ANDROID_WP7_SOURCE = "bin-wp7";
     private List<OutputFile>    result                        = new ArrayList<OutputFile>();
 
 
@@ -93,12 +97,31 @@ public class Android2WP7OutputProcess extends XmlvmProcessImpl<WP7OutputProcess>
             // will process the compatibility library.
             File dir = new File(path);
             dir.mkdirs();
-            Arguments args = new Arguments(new String[] {
-                    "--in=" + (new File("bin-androidsimple")).getAbsolutePath(),
-                    "--out=" + path, "--target=csharp" });
+            List<String> stringArgs = new ArrayList<String>();
+            stringArgs.add("--in=" + (new File(ANDROID_WP7_SOURCE)).getAbsolutePath());
+            stringArgs.add("--in=" + (new File(ANDROID_ACL_SOURCE)).getAbsolutePath());
+            stringArgs.add("--out=" + path);
+            stringArgs.add("--target=csharp");
+            stringArgs.add("--load-dependencies");
+            stringArgs.add("--no-using");
+            if(this.arguments.option_no_cache()) {
+                stringArgs.add("--no-cache");
+            }
+            Arguments args = new Arguments(stringArgs.toArray(new String[] {}));
             XmlvmProcessor subProcessor = new XmlvmProcessor(args);
+            
+            Set<String> alreadyAdded = new HashSet<String>();
+            for(OutputFile file : result) {
+                alreadyAdded.add(file.getFullPath());
+            }
+            
             if (subProcessor.process()) {
-                result.addAll(subProcessor.getTargetProcess().getOutputFiles());
+                for(OutputFile file : subProcessor.getTargetProcess().getOutputFiles()) {
+                    if(!file.getFullPath().contains("Compatlib") || file.getFullPath().contains("ApplicationDelegate")) {
+                        result.add(file);
+                        alreadyAdded.add(file.getFullPath());
+                    }
+                }
             } else {
                 Log.error("Sub-Process for processing android iphone compat lib has failed.");
                 return false;
@@ -106,9 +129,8 @@ public class Android2WP7OutputProcess extends XmlvmProcessImpl<WP7OutputProcess>
         }
         
         String dataAsString = applicationDelegate.getDataAsString();
-        //TODO replace with a generic android app launcher class
-        dataAsString = dataAsString.replaceAll(WP7OutputProcess.TEMPL_APP_CLASS, "org.xmlvm.demo.afireworks.AndroidFireworks");
-        applicationDelegate.setData(dataAsString.getBytes(), applicationDelegate.getLastModified());
+        dataAsString = dataAsString.replaceAll(WP7OutputProcess.TEMPL_APP_CLASS, "global::org.xmlvm.common.wp7.WP7AndroidAppLauncher");
+        applicationDelegate.setData(dataAsString, applicationDelegate.getLastModified());
         
         VisualStudioFile vs = new VisualStudioFile();
         Log.error(vs.composeBuildFiles(result, arguments));

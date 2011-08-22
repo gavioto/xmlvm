@@ -20,7 +20,6 @@
 
 package org.xmlvm.common.iphone.adapter;
 
-import java.awt.Color;
 
 import org.xmlvm.common.iphone.objects.IPhoneFont;
 import org.xmlvm.common.iphone.objects.IPhoneView;
@@ -74,7 +73,7 @@ public class IPhoneButtonAdapter extends IPhoneView implements ButtonAdapter {
     }
 
     @Override
-    public void setTitleColor(Color color) {
+    public void setTitleColor(int color) {
         ((UIButton)this.getView()).setTitleColor(IPhoneView.toUIColor(color), UIControlState.Normal);
     }
 

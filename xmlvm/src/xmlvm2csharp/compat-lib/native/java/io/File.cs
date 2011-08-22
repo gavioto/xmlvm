@@ -5,7 +5,7 @@ namespace java.io {
 public class File: java.lang.Object,java.io.Serializable,java.lang.Comparable {
 private static void oneTimeInitialization(){
 //XMLVM_BEGIN_WRAPPER[java.io.File: void oneTimeInitialization()]
-      throw new org.xmlvm._nNotYetImplementedException("native/wrapper method not yet implemented");
+      //Do nothing
 //XMLVM_END_WRAPPER[java.io.File: void oneTimeInitialization()]
 }
 
@@ -17,7 +17,7 @@ private static global::System.Object rootsImpl(){
 
 private static bool isCaseSensitiveImpl(){
 //XMLVM_BEGIN_WRAPPER[java.io.File: boolean isCaseSensitiveImpl()]
-      throw new org.xmlvm._nNotYetImplementedException("native/wrapper method not yet implemented");
+      return true;
 //XMLVM_END_WRAPPER[java.io.File: boolean isCaseSensitiveImpl()]
 }
 
@@ -41,7 +41,7 @@ private bool existsImpl(org.xmlvm._nArrayAdapter<sbyte> n1){
 
 private global::System.Object getCanonImpl(org.xmlvm._nArrayAdapter<sbyte> n1){
 //XMLVM_BEGIN_WRAPPER[java.io.File: byte[] getCanonImpl(byte[])]
-      throw new org.xmlvm._nNotYetImplementedException("native/wrapper method not yet implemented");
+      return n1;
 //XMLVM_END_WRAPPER[java.io.File: byte[] getCanonImpl(byte[])]
 }
 
@@ -95,7 +95,7 @@ private bool isWriteOnlyImpl(org.xmlvm._nArrayAdapter<sbyte> n1){
 
 private global::System.Object getLinkImpl(org.xmlvm._nArrayAdapter<sbyte> n1){
 //XMLVM_BEGIN_WRAPPER[java.io.File: byte[] getLinkImpl(byte[])]
-      throw new org.xmlvm._nNotYetImplementedException("native/wrapper method not yet implemented");
+      return n1;
 //XMLVM_END_WRAPPER[java.io.File: byte[] getLinkImpl(byte[])]
 }
 

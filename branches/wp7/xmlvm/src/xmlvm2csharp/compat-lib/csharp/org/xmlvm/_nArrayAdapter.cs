@@ -6,7 +6,7 @@ namespace org.xmlvm {
 	}
     }
 
-    public class _nArrayAdapter<T> : java.lang.Object,org.xmlvm._nIArray {
+    public class _nArrayAdapter<T> : global::java.lang.Object,org.xmlvm._nIArray {
 	private T[] _myArray;
 
 	public _nArrayAdapter(T[] myArray) {

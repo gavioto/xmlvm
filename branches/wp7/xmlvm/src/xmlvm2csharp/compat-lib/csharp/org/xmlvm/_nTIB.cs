@@ -1,6 +1,6 @@
-﻿namespace org.xmlvm {
+namespace org.xmlvm {
     // represents the java.lang.Object on which synchronization of class methods is done
-    public class _nTIB : java.lang.Object {
+    public class _nTIB : global::java.lang.Object {
         // implemented as a wrapper for native type:
         private global::System.Type myType;
         private java.lang.Class myClass;
@@ -261,6 +261,8 @@
             }
             // else:not in bootstrap, no tib is waiting for us
             string nativeStr = org.xmlvm._nUtil.toNativeString(javaTypeName);
+            nativeStr = nativeStr.Replace("_", "_1");
+            nativeStr = nativeStr.Replace("$", "_2");
             if (nativeStr.StartsWith("[L")) {
                 // only allowed arrays of reference type are of objects
                 nativeStr = "[Ljava.lang.Object";
@@ -269,9 +271,16 @@
                 // if it is not already in the table, 
                 //   then the native type name is the same as the java type name
                 global::System.Type resultType = global::System.Type.GetType(nativeStr);
-                result = getTIB(resultType, nativeStr);
-                // also, store this for faster future retrievals:
-                jNameTable.Add(nativeStr, result);
+                if (resultType != null)
+                {
+                    result = getTIB(resultType, nativeStr);
+                    // also, store this for faster future retrievals:
+                    jNameTable.Add(nativeStr, result);
+                }
+                else
+                {
+                    throw new global::org.xmlvm._nExceptionAdapter(new global::java.lang.ClassNotFoundException());
+                }
             }
             return result;
         }

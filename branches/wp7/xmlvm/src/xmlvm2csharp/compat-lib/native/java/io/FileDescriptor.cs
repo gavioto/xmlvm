@@ -5,7 +5,7 @@ namespace java.io {
 public class FileDescriptor: java.lang.Object {
 private static void oneTimeInitialization(){
 //XMLVM_BEGIN_WRAPPER[java.io.FileDescriptor: void oneTimeInitialization()]
-      throw new org.xmlvm._nNotYetImplementedException("native/wrapper method not yet implemented");
+      //Do nothing
 //XMLVM_END_WRAPPER[java.io.FileDescriptor: void oneTimeInitialization()]
 }
 

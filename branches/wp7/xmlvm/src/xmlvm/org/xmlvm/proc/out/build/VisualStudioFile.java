@@ -23,7 +23,9 @@ package org.xmlvm.proc.out.build;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.xmlvm.main.Arguments;
 import org.xmlvm.proc.lib.Libraries;
@@ -133,13 +135,15 @@ public class VisualStudioFile extends BuildFile {
 
         private void constructSources() {
             StringBuilder compiles = new StringBuilder();
-
+            Set<String> inserted = new HashSet<String>();            
+            
             for(OutputFile file : allfiles) {
-                if(file.getFileName().endsWith(".cs")) {
+                if(file.getFileName().endsWith(".cs") && !inserted.contains(file.getFullPath())) {
                     String compile = "    <Compile Include=\"";
                     compile += file.getFullPath();
                     compile += "\" />";
                     compiles.append(compile + "\n");
+                    inserted.add(file.getFullPath());
                 }
             }
             

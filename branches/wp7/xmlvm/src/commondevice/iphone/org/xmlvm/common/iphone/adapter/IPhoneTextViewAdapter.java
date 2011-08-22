@@ -20,7 +20,6 @@
 
 package org.xmlvm.common.iphone.adapter;
 
-import java.awt.Color;
 
 import org.xmlvm.common.iphone.objects.IPhoneFont;
 import org.xmlvm.common.iphone.objects.IPhoneView;
@@ -71,7 +70,7 @@ public class IPhoneTextViewAdapter extends IPhoneView implements TextViewAdapter
     }
 
     @Override
-    public void setTextColor(Color color) {
+    public void setTextColor(int color) {
         ((UITextField)this.getView()).setTextColor(IPhoneView.toUIColor(color));
     }
     

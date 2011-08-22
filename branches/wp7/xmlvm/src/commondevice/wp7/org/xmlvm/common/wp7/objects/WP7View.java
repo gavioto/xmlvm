@@ -20,16 +20,12 @@
 
 package org.xmlvm.common.wp7.objects;
 
-import java.awt.Color;
-import java.awt.Rectangle;
 import java.util.Set;
 
 import org.xmlvm.common.iphone.objects.IPhoneView;
 import org.xmlvm.commondevice.objects.CommonDeviceView;
-import org.xmlvm.iphone.CGPoint;
-import org.xmlvm.iphone.UIEvent;
-import org.xmlvm.iphone.UITouch;
 
+import android.graphics.Rect;
 import android.internal.Assert;
 import android.view.MotionEvent;
 import android.view.View;
@@ -64,12 +60,12 @@ public class WP7View extends Object implements CommonDeviceView {
     }
 
     @Override
-    public Rectangle getFrame() {
+    public Rect getFrame() {
         return WP7View.toRectangle(element.getDesiredSize());
     }
 
     @Override
-    public void setFrame(Rectangle frame) {
+    public void setFrame(Rect frame) {
         element.setDesiredSize(WP7View.toSize(frame));
     }
 
@@ -85,7 +81,7 @@ public class WP7View extends Object implements CommonDeviceView {
     }
 
     @Override
-    public void setBackgroundColor(Color bcolor) {
+    public void setBackgroundColor(int bcolor) {
         // TODO Auto-generated method stub
     }
 
@@ -135,32 +131,32 @@ public class WP7View extends Object implements CommonDeviceView {
         }
     }
     
-    public boolean xmlvmTouchesEvent(int action, Set<UITouch> touches, UIEvent event) {
-        if (action == MotionEvent.ACTION_UP && androidView.getOnClickListener() != null) {
-            androidView.getOnClickListener().onClick(androidView);
-        }
-
-        UITouch firstTouch = touches.iterator().next();
-        CGPoint point = firstTouch.locationInView(((IPhoneView)androidView.xmlvmGetViewHandler().getMetricsView()).getView());
-        MotionEvent motionEvent = new MotionEvent(action, (int) point.x, (int) point.y);
-        if (androidView.onTouchEvent(motionEvent)) {
-            return true;
-        }
-        if (androidView.getOnTouchListener() != null && androidView.getOnTouchListener().onTouch(androidView, motionEvent)) {
-            return true;
-        }
-        if (androidView.getParent() != null && (androidView.getParent() instanceof View)) {
-            return ((IPhoneView)((View) androidView.getParent()).xmlvmGetViewHandler().getContentView()).xmlvmTouchesEvent(action, touches, event);
-        }
-        return false;
-    }    
+//    public boolean xmlvmTouchesEvent(int action, Set<UITouch> touches, UIEvent event) {
+//        if (action == MotionEvent.ACTION_UP && androidView.getOnClickListener() != null) {
+//            androidView.getOnClickListener().onClick(androidView);
+//        }
+//
+//        UITouch firstTouch = touches.iterator().next();
+//        CGPoint point = firstTouch.locationInView(((IPhoneView)androidView.xmlvmGetViewHandler().getMetricsView()).getView());
+//        MotionEvent motionEvent = new MotionEvent(action, (int) point.x, (int) point.y);
+//        if (androidView.onTouchEvent(motionEvent)) {
+//            return true;
+//        }
+//        if (androidView.getOnTouchListener() != null && androidView.getOnTouchListener().onTouch(androidView, motionEvent)) {
+//            return true;
+//        }
+//        if (androidView.getParent() != null && (androidView.getParent() instanceof View)) {
+//            return ((IPhoneView)((View) androidView.getParent()).xmlvmGetViewHandler().getContentView()).xmlvmTouchesEvent(action, touches, event);
+//        }
+//        return false;
+//    }    
     
-    public static Rectangle toRectangle(Size desiredSize) {
-        return new Rectangle((int) desiredSize.getWidth(), (int) desiredSize.getHeight());
+    public static Rect toRectangle(Size desiredSize) {
+        return new Rect(0, 0, (int) desiredSize.getWidth(), (int) desiredSize.getHeight());
     }
     
-    public static Size toSize(Rectangle frame) {
-        return new Size(frame.width, frame.height);
+    public static Size toSize(Rect frame) {
+        return new Size(frame.right - frame.left, frame.bottom - frame.top);
     }
 
 }

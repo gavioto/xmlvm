@@ -25,7 +25,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.xmlvm.XMLVMIgnore;
-import org.xmlvm.wp7.DelegateManager;
 
 public class MulticastDelegate extends Delegate {
 
@@ -83,36 +82,36 @@ public class MulticastDelegate extends Delegate {
     @SuppressWarnings("rawtypes")
     @XMLVMIgnore
     protected void helpInvoke(java.lang.Object[] params) throws Exception {
-        for (int _signatureIndex : targets) {
-            // A signature string could look like the following:
-            // "void;System.Object;System.EventArgs"
-            java.lang.String signature = DelegateManager.getSignature(_signatureIndex);
-            java.lang.String method = DelegateManager.getMethod(_signatureIndex);
-
-            // Get each piece of the signature
-            java.lang.String signatureValues[] = signature.split(";");
-            Class[] paramTypes = new Class[signatureValues.length - 1];
-
-            // Save the argument types
-            for (int i = 1; i < signatureValues.length; i++) {
-                paramTypes[i - 1] = Class.forName(signatureValues[i]);
-            }
-
-            // Class targetClass = _targetObj.getClass();
-            // For a static method, null will be pushed onto the stack
-            // instead of the class. Thus, the target object will be null
-            // in this case, so we have to use DelegateManager to get the
-            // name of the target class
-            java.lang.String className = DelegateManager.getClassType(_signatureIndex);
-            Class targetClass = Class.forName(className);
-
-            Method m = targetClass.getDeclaredMethod(method, paramTypes);
-
-            if (!m.isAccessible())
-                m.setAccessible(true);
-
-            m.invoke(_targetObj, params);
-        }
+////        for (int _signatureIndex : targets) {
+//            // A signature string could look like the following:
+//            // "void;System.Object;System.EventArgs"
+////            java.lang.String signature = DelegateManager.getSignature(_signatureIndex);
+////            java.lang.String method = DelegateManager.getMethod(_signatureIndex);
+//
+//            // Get each piece of the signature
+//            java.lang.String signatureValues[] = signature.split(";");
+//            Class[] paramTypes = new Class[signatureValues.length - 1];
+//
+//            // Save the argument types
+//            for (int i = 1; i < signatureValues.length; i++) {
+//                paramTypes[i - 1] = Class.forName(signatureValues[i]);
+//            }
+//
+//            // Class targetClass = _targetObj.getClass();
+//            // For a static method, null will be pushed onto the stack
+//            // instead of the class. Thus, the target object will be null
+//            // in this case, so we have to use DelegateManager to get the
+//            // name of the target class
+//            java.lang.String className = DelegateManager.getClassType(_signatureIndex);
+//            Class targetClass = Class.forName(className);
+//
+//            Method m = targetClass.getDeclaredMethod(method, paramTypes);
+//
+//            if (!m.isAccessible())
+//                m.setAccessible(true);
+//
+//            m.invoke(_targetObj, params);
+//        }
 
     } // end helpInvoke
 

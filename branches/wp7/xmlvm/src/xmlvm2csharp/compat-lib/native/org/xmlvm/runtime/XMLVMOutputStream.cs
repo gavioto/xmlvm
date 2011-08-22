@@ -8,12 +8,21 @@ public static void nativeWrite(int n1){
 #if CONSOLE
     global::System.Console.Write((char) n1);
 #else 
-    throw new org.xmlvm._nNotYetImplementedException("native/wrapper method not yet implemented");
+    if ((char)n1 == '\n')
+    {
+        global::System.Diagnostics.Debug.WriteLine(buffer);
+        buffer = "";
+    }
+    else
+    {
+        buffer += (char)n1;
+    }
 #endif
 //XMLVM_END_WRAPPER[org.xmlvm.runtime.XMLVMOutputStream: void nativeWrite(int)]
 }
 
 //XMLVM_BEGIN_WRAPPER[org.xmlvm.runtime.XMLVMOutputStream]
+private static global::System.String buffer = "";
 //XMLVM_END_WRAPPER[org.xmlvm.runtime.XMLVMOutputStream]
 
 } // end of class: XMLVMOutputStream

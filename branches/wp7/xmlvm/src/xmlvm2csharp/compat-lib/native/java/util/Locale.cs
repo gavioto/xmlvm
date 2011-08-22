@@ -5,7 +5,9 @@ namespace java.util {
 public class Locale: java.lang.Object,java.lang.Cloneable,java.io.Serializable {
 private static void initNativeLayer(){
 //XMLVM_BEGIN_WRAPPER[java.util.Locale: void initNativeLayer()]
-      throw new org.xmlvm._nNotYetImplementedException("native/wrapper method not yet implemented");
+    global::java.util.Locale._fENGLISH = new global::java.util.Locale();
+    global::java.util.Locale._fENGLISH.@this(global::org.xmlvm._nUtil.toJavaString("en"), global::org.xmlvm._nUtil.toJavaString(""));
+    setDefault(_fENGLISH);
 //XMLVM_END_WRAPPER[java.util.Locale: void initNativeLayer()]
 }
 

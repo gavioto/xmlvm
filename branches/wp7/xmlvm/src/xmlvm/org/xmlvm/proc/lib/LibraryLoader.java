@@ -119,7 +119,8 @@ public class LibraryLoader {
                 return resource;
             }
         }
-        Log.debug(TAG, "Could not find resource: " + typeName);
+        Log.error(TAG, "Could not find resource: " + typeName);
+        System.exit(-1);
         return null;
     }
 
@@ -245,7 +246,10 @@ public class LibraryLoader {
         String[] classesToLoad = toLoad.toArray(new String[0]);
 
         for (String classToLoad : classesToLoad) {
-            resources.put(classToLoad, load(classToLoad));
+            XmlvmResource load = load(classToLoad);
+            if(load!=null) {
+                resources.put(classToLoad, load);
+            }
         }
         return classesToLoad.length == 0;
     }

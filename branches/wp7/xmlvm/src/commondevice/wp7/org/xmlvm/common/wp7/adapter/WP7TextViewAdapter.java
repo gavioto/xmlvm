@@ -20,8 +20,6 @@
 
 package org.xmlvm.common.wp7.adapter;
 
-import java.awt.Color;
-
 import org.xmlvm.common.wp7.objects.WP7Font;
 import org.xmlvm.common.wp7.objects.WP7View;
 import org.xmlvm.commondevice.adapter.TextViewAdapter;
@@ -30,6 +28,7 @@ import org.xmlvm.commondevice.objects.CommonDeviceFont;
 import Compatlib.System.Windows.Controls.TextBlock;
 import Compatlib.System.Windows.Media.FontFamily;
 import Compatlib.System.Windows.Media.SolidColorBrush;
+import android.graphics.Color;
 import android.internal.Assert;
 import android.view.View;
 
@@ -45,15 +44,16 @@ public class WP7TextViewAdapter extends WP7View implements TextViewAdapter {
 
     @Override
     public CommonDeviceFont getFont() {
-        return new WP7Font(((TextBlock)this.getElement()).getFontFamily().getSource().value, (float) ((TextBlock)this.getElement()).getFontSize());
+        return new WP7Font(((TextBlock) this.getElement()).getFontFamily().getSource().value,
+                (float) ((TextBlock) this.getElement()).getFontSize());
     }
 
     @Override
     public void setFont(CommonDeviceFont font) {
         FontFamily fontFamily = new FontFamily();
-        fontFamily.setSource(new Compatlib.System.String(((WP7Font)font).familyName()));
-        ((TextBlock)this.getElement()).setFontFamily(fontFamily);
-        ((TextBlock)this.getElement()).setFontSize(((WP7Font)font).pointSize());
+        fontFamily.setSource(new Compatlib.System.String(((WP7Font) font).familyName()));
+        ((TextBlock) this.getElement()).setFontFamily(fontFamily);
+        ((TextBlock) this.getElement()).setFontSize(((WP7Font) font).pointSize());
     }
 
     @Override
@@ -63,12 +63,12 @@ public class WP7TextViewAdapter extends WP7View implements TextViewAdapter {
 
     @Override
     public void setText(String string) {
-        ((TextBlock)this.getElement()).setText(new Compatlib.System.String(string));
+        ((TextBlock) this.getElement()).setText(new Compatlib.System.String(string));
     }
 
     @Override
     public String getText() {
-        return ((TextBlock)this.getElement()).getText().value;
+        return ((TextBlock) this.getElement()).getText().value;
     }
 
     @Override
@@ -77,10 +77,10 @@ public class WP7TextViewAdapter extends WP7View implements TextViewAdapter {
     }
 
     @Override
-    public void setTextColor(Color color) {
+    public void setTextColor(int color) {
         ((TextBlock) this.getElement()).setForeground(new SolidColorBrush(
-                Compatlib.System.Windows.Media.Color.FromArgb(color.getAlpha(), color.getRed(),
-                        color.getGreen(), color.getBlue())));
+                Compatlib.System.Windows.Media.Color.FromArgb(Color.alpha(color), Color.red(color),
+                        Color.green(color), Color.blue(color))));
     }
 
 }

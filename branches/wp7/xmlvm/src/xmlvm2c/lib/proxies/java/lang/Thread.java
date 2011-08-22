@@ -20,6 +20,7 @@ package java.lang;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.xmlvm.runtime.Condition;
 import org.xmlvm.runtime.Mutex;
 
 /**
@@ -97,6 +98,16 @@ public class Thread implements Runnable {
         TERMINATED
     }
 
+    /**
+     * Don't delete these exception objects. They are used natively.
+     */
+    @SuppressWarnings("unused")
+    private Object xmlvmExceptionEnv;
+    @SuppressWarnings("unused")
+    private Object xmlvmException;
+    @SuppressWarnings("unused")
+    private Object ptBuffers;
+
     // Use a mutex instead of the synchronized keyword for 2 reasons:
     // 1. It isn't used recursively, so it'll be more efficient
     // 2. It won't enter an infinite loop from calling initThread() or
@@ -112,18 +123,31 @@ public class Thread implements Runnable {
         return id;
     }
 
+    // The main thread is the initial active non-daemon thread
+    private static int numberOfActiveNonDaemonThreads = 1;
+
     private long threadId;
     private String threadName;
     private int priority = NORM_PRIORITY;
     private boolean daemon = false;
+    private boolean alive = false;
 //    private ClassLoader contextClassLoader;
     private Runnable targetRunnable;
     private ThreadGroup threadGroup;
+    private State threadState = State.NEW;
+
+    private boolean interrupted;
+    private Condition waitingCondition; // the Condition on which the thread is waiting for a signal/broadcast, if any. This is used to interrupt a "wait" or "sleep"
 
     // A map of a native thread id to the Thread instance.
     // There is no need for a WeakHashMap, since the threads removed themselves
     // from the map when they finish.
     private static final Map<Long, Thread> threadMap = new HashMap<Long, Thread>();
+
+    // This is the "main" thread group. All thread groups are ancestors to this group.
+    // All threads have a thread group, so they can always be referenced until
+    // they are removed from their thread group on termination.
+    private static final ThreadGroup mainThreadGroup = new ThreadGroup((ThreadGroup)null);
 
     /**
      * After having set the nativeThreadId, add "this" to the threadMap
@@ -157,6 +181,8 @@ public class Thread implements Runnable {
      * @param nativeThreadId
      */
     private Thread(long nativeThreadId) {
+        initMainThread();
+
         this.nativeThreadId = nativeThreadId;
 
         // The main thread is already running, so add it to the map
@@ -165,9 +191,14 @@ public class Thread implements Runnable {
         this.threadId = 1;
         this.threadName = "main";
 
-        this.threadGroup = new ThreadGroup((ThreadGroup)null);
+        this.threadGroup = mainThreadGroup;
         this.threadGroup.add(this);
     }
+
+    /**
+     * Do any necessary native initialization for the main thread.
+     */
+    private native void initMainThread();
 
     /**
      * @param nativeThreadId
@@ -565,9 +596,6 @@ public class Thread implements Runnable {
      * @since 1.5
      */
     public native StackTraceElement[] getStackTrace();
-//    public StackTraceElement[] getStackTrace() {
-//        return new StackTraceElement[0];
-//    }
 
     /**
      * Returns the current state of the Thread. This method is useful for
@@ -576,7 +604,11 @@ public class Thread implements Runnable {
      * @return a {@link State} value.
      * @since 1.5
      */
-    public native State getState();
+    public synchronized State getState() {
+// TODO update the thread state for BLOCKED, WAITING and TIMED_WAITING.
+System.out.println("Thread.getState() is not fully implemented. Specifically, you will not currently find BLOCKED, WAITING and TIMED_WAITING.");
+        return threadState;
+    }
 
     /**
      * Returns the ThreadGroup to which this Thread belongs.
@@ -643,8 +675,21 @@ public class Thread implements Runnable {
         if (action != null) {
             action.run();
         }
-// TODO
-        return;
+
+        Condition conditionForInterrupt = null;
+        synchronized (this) {
+            interrupted = true;
+
+            if (waitingCondition != null) {
+                conditionForInterrupt = waitingCondition;
+            }
+        }
+
+        // Interrupt the "wait" outside of the synchronized block.
+        // Otherwise, a deadlock could occur.
+        if (conditionForInterrupt != null) {
+            conditionForInterrupt.getSynchronizedObject().interruptWait(conditionForInterrupt);
+        }
     }
 
     /**
@@ -658,7 +703,15 @@ public class Thread implements Runnable {
      * @see Thread#interrupt
      * @see Thread#isInterrupted
      */
-    public native static boolean interrupted();
+    public static boolean interrupted() {
+        boolean result = false;
+        Thread curThread = Thread.currentThread();
+        synchronized (curThread) {
+            result = curThread.isInterrupted();
+            curThread.interrupted = false;
+        }
+        return result;
+    }
 
     /**
      * Returns <code>true</code> if the receiver has already been started and
@@ -669,7 +722,9 @@ public class Thread implements Runnable {
      * @return a <code>boolean</code> indicating the lifeness of the Thread
      * @see Thread#start
      */
-    public native final boolean isAlive();
+    public synchronized final boolean isAlive() {
+        return alive;
+    }
 
     /**
      * Returns a <code>boolean</code> indicating whether the receiver is a
@@ -681,7 +736,7 @@ public class Thread implements Runnable {
      * @return a <code>boolean</code> indicating whether the Thread is a daemon
      * @see Thread#setDaemon
      */
-    public final boolean isDaemon() {
+    public synchronized final boolean isDaemon() {
         return daemon;
     }
 
@@ -694,7 +749,13 @@ public class Thread implements Runnable {
      * @see Thread#interrupt
      * @see Thread#interrupted
      */
-    public native boolean isInterrupted();
+    public boolean isInterrupted() {
+        boolean result = false;
+        synchronized (this) {
+            result = interrupted;
+        }
+        return result;
+    }
 
     /**
      * Blocks the current Thread (<code>Thread.currentThread()</code>) until
@@ -705,7 +766,9 @@ public class Thread implements Runnable {
      * @see Object#notifyAll
      * @see java.lang.ThreadDeath
      */
-    public native final void join() throws InterruptedException;
+    public final void join() throws InterruptedException {
+        join(0L);
+    }
 
     /**
      * Blocks the current Thread (<code>Thread.currentThread()</code>) until
@@ -718,7 +781,33 @@ public class Thread implements Runnable {
      * @see Object#notifyAll
      * @see java.lang.ThreadDeath
      */
-    public native final void join(long millis) throws InterruptedException;
+    public synchronized final void join(long millis) throws InterruptedException {
+        long base = System.currentTimeMillis();
+        long now = 0L;
+
+        if (millis < 0) {
+            throw new IllegalArgumentException("timeout value is negative");
+        }
+
+        if (millis == 0) {
+            while (isAlive()) {
+                // Wait for the notifyAll() in run0()
+                wait();
+            }
+        } else {
+            boolean done = false;
+            while (!done && isAlive()) {
+                long delay = millis - now;
+                if (delay <= 0) {
+                    done = true;
+                } else {
+                    // Wait for either the timeout or the notifyAll() in run0()
+                    wait(delay);
+                    now = System.currentTimeMillis() - base;
+                }
+            }
+        }
+    }
 
     /**
      * Blocks the current Thread (<code>Thread.currentThread()</code>) until
@@ -760,7 +849,9 @@ public class Thread implements Runnable {
         this.nativeThreadId = nativeThreadId;
         addSelfToMap();
 
-        this.threadGroup.add(this);
+        synchronized (this) {
+            alive = true;
+        }
 
         try {
             if (targetRunnable == null) {
@@ -768,8 +859,47 @@ public class Thread implements Runnable {
             } else {
                 targetRunnable.run();
             }
-        } finally {
-            removeSelfFromMap();
+        } catch (Throwable t) {
+            if (stackTracesEnabled()) {
+                System.out.print("Exception in thread \"" + this.getName() + "\" ");
+                t.printStackTrace();
+            } else {
+                System.out.println("Exception in thread \"" + this.getName() + "\" "
+                        + t.getClass().getName() + ": " + t.getMessage());
+            }
+        }
+
+        synchronized (this) {
+            alive = false;
+
+            // Notify the thread is finished. See join(long)
+            notifyAll();
+        }
+
+        removeSelfFromMap();
+
+        this.threadGroup.remove(this);
+
+        threadTerminating();
+    }
+
+    private static native boolean stackTracesEnabled();
+
+    private void threadTerminating() {
+        synchronized (this) {
+            this.threadState = State.TERMINATED;
+        }
+
+        // No need to synchronize for "daemon". It can only be manipulated
+        // before the thread starts
+        if (!this.daemon) {
+            synchronized (Thread.class) {
+                numberOfActiveNonDaemonThreads--;
+                // If there are no more non-daemon threads, exit the whole process
+                if (numberOfActiveNonDaemonThreads == 0) {
+                    System.exit(0);
+                }
+            }
         }
     }
 
@@ -807,7 +937,12 @@ public class Thread implements Runnable {
      *             if <code>checkAccess()</code> fails with a SecurityException
      * @see Thread#isDaemon
      */
-    public native final void setDaemon(boolean isDaemon);
+    public synchronized final void setDaemon(boolean isDaemon) {
+        if (this.threadState != State.NEW) {
+            throw new IllegalThreadStateException();
+        }
+        this.daemon = isDaemon;
+    }
 
     /**
      * Sets the default uncaught exception handler. This handler is invoked in
@@ -891,7 +1026,14 @@ public class Thread implements Runnable {
      *             it was sleeping
      * @see Thread#interrupt()
      */
-    public native static void sleep(long time) throws InterruptedException;
+    public static void sleep(long time) throws InterruptedException {
+        if (time != 0L) {
+            final Object obj = new Object();
+            synchronized (obj) {
+                obj.wait(time);
+            }
+        }
+    }
 
     /**
      * Causes the thread which sent this message to sleep for the given interval
@@ -932,7 +1074,26 @@ public class Thread implements Runnable {
      * @throws IllegalThreadStateException if the Thread has been started before
      * @see Thread#run
      */
-    public native void start();
+    public void start() {
+        synchronized (this) {
+            if (this.threadState != State.NEW) {
+                throw new IllegalThreadStateException();
+            }
+            this.threadState = State.RUNNABLE;
+        }
+
+        // No need to synchronize for "daemon". It can only be manipulated
+        // before the thread starts 
+        if (!this.daemon) {
+            synchronized (Thread.class) {
+                numberOfActiveNonDaemonThreads++;
+            }
+        }
+        this.threadGroup.add(this);
+        start0();
+    }
+
+    public native void start0();
 
     /**
      * Requests the receiver Thread to stop and throw ThreadDeath. The Thread is
@@ -1023,5 +1184,15 @@ public class Thread implements Runnable {
          * @param ex the exception that was thrown
          */
         void uncaughtException(Thread thread, Throwable ex);
+    }
+
+    /**
+     * Set the condition on which the thread is waiting, if any. This should ONLY be called within java_lang_Object's wait(), wait(long) or wait(long, int).
+     * @param signalCondition the Condition on which the thread is waiting for a signal/broadcast or null for none. This is used to interrupt a "wait" or "sleep".
+     */
+    void setWaitingCondition(Condition signalCondition) {
+        synchronized (this) {
+            waitingCondition = signalCondition;
+        }
     }
 }

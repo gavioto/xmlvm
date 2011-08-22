@@ -228,7 +228,7 @@
 
 
 <xsl:template name="emit-namespace">
-  <xsl:variable name="namespace" select="vm:get-type(@package)"/>
+  <xsl:variable name="namespace" select="vm:get-type(@package,'true','false')"/>
   <xsl:choose>
     <xsl:when test="$namespace and not($namespace='')">
       <xsl:text>namespace </xsl:text>
@@ -512,6 +512,11 @@
 
 <xsl:function name="vm:get-type" as="xs:string">
   <xsl:param name="j-type" as="xs:string"/>
+  <xsl:value-of select="vm:get-type($j-type, 'true', 'true')"/>
+</xsl:function>
+
+<xsl:function name="vm:get-type" as="xs:string">
+  <xsl:param name="j-type" as="xs:string"/>
   <xsl:param name="isRedType" as="xs:string?"/>
   <xsl:value-of select="if ($isRedType and $isRedType='true') 
 			then $xmlvm-red-type
@@ -521,6 +526,8 @@
 <!-- converts the given java type to csharp -->
 <xsl:function name="vm:get-type" as="xs:string">
   <xsl:param name="j-type" as="xs:string"/>
+  <xsl:param name="placeHolder" as="xs:string?"/>
+  <xsl:param name="emitGlobal" as="xs:string?"/>
   <xsl:choose>
     <xsl:when test="$j-type = 'void'">
       <xsl:value-of select="'void'" />
@@ -564,7 +571,12 @@
    	  <xsl:sequence select="vm:get-member-name(.)"/>
     	</xsl:for-each>
       </xsl:variable>
-      <xsl:value-of select="fn:string-join($cs-types,'.')"/>
+      <xsl:if test="$emitGlobal = 'true'">
+      	<xsl:value-of select="fn:concat('global::', fn:string-join($cs-types,'.'))"/>
+      </xsl:if>
+      <xsl:if test="$emitGlobal != 'true'">
+        <xsl:value-of select="fn:string-join($cs-types,'.')"/>
+      </xsl:if>
     </xsl:otherwise>
   </xsl:choose>
 </xsl:function>

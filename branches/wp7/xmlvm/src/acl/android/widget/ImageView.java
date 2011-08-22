@@ -20,7 +20,6 @@
 
 package android.widget;
 
-import java.awt.Rectangle;
 
 import org.xmlvm.commondevice.adapter.BitmapDrawableAdapter;
 import org.xmlvm.commondevice.adapter.ImageViewAdapter;
@@ -164,7 +163,7 @@ public class ImageView extends View {
         int x = l instanceof AbsoluteLayout.LayoutParams ? ((AbsoluteLayout.LayoutParams) l).x : 0;
         int y = l instanceof AbsoluteLayout.LayoutParams ? ((AbsoluteLayout.LayoutParams) l).y : 0;
 
-        xmlvmGetViewHandler().getMetricsView().setFrame(new Rectangle(x, y, width, height));
+        xmlvmGetViewHandler().getMetricsView().setFrame(new Rect(x, y, x+width, y+height));
     }
 
     public void setScaleType(ScaleType type) {

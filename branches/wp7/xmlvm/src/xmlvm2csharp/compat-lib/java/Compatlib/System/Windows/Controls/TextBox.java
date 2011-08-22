@@ -20,8 +20,6 @@
 
 package Compatlib.System.Windows.Controls;
 
-import org.xmlvm.wp7.TextBoxRenderer;
-
 import Compatlib.System.String;
 
 /**
@@ -34,7 +32,7 @@ public class TextBox extends Control {
 
 
     public TextBox() {
-        xmlvmSetRenderer(new TextBoxRenderer(this));
+//        xmlvmSetRenderer(new TextBoxRenderer(this));
     }
 
     /**

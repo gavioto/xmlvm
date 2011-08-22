@@ -20,12 +20,11 @@
 
 package android.widget;
 
-import java.awt.Rectangle;
-
 import org.xmlvm.commondevice.adapter.CheckBoxAdapter;
 import org.xmlvm.commondevice.objects.CommonDeviceView;
 
 import android.content.Context;
+import android.graphics.Rect;
 import android.internal.CommonDeviceAPIFinder;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -43,10 +42,12 @@ public class CheckBox extends CompoundButton {
 
         if (l instanceof AbsoluteLayout.LayoutParams) {
             AbsoluteLayout.LayoutParams a = (AbsoluteLayout.LayoutParams) l;
-            xmlvmGetViewHandler().getMetricsView()
-                    .setFrame(
-                            new Rectangle(a.x, a.y, xmlvmGetViewHandler().getContentView().getFrame().width,
-                                    xmlvmGetViewHandler().getContentView().getFrame().height));
+            xmlvmGetViewHandler().getMetricsView().setFrame(
+                    new Rect(a.x, a.y, a.x
+                            + xmlvmGetViewHandler().getContentView().getFrame().right
+                            - xmlvmGetViewHandler().getContentView().getFrame().left, a.y
+                            + xmlvmGetViewHandler().getContentView().getFrame().bottom
+                            - xmlvmGetViewHandler().getContentView().getFrame().top));
         }
     }
 
@@ -70,13 +71,16 @@ public class CheckBox extends CompoundButton {
         return CommonDeviceAPIFinder.instance().getWidgetFactory().createCheckBox(this);
         // TODO mapping a CheckBox to a UISwitch is not entirely correct since
         // the latter does not setText()
-//        return new UISwitch();
+        // return new UISwitch();
     }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        setMeasuredDimension((int)xmlvmGetViewHandler().getContentView().getFrame().width + paddingLeft + paddingRight,
-                xmlvmGetViewHandler().getContentView().getFrame().height + paddingTop + paddingBottom);
+        setMeasuredDimension(
+                (int) (xmlvmGetViewHandler().getContentView().getFrame().right - xmlvmGetViewHandler()
+                        .getContentView().getFrame().left) + paddingLeft + paddingRight,
+                (xmlvmGetViewHandler().getContentView().getFrame().bottom - xmlvmGetViewHandler()
+                        .getContentView().getFrame().top) + paddingTop + paddingBottom);
     }
 
     @Override

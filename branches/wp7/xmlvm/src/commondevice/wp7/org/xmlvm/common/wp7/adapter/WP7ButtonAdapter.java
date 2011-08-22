@@ -20,8 +20,6 @@
 
 package org.xmlvm.common.wp7.adapter;
 
-import java.awt.Color;
-
 import org.xmlvm.common.wp7.objects.WP7Font;
 import org.xmlvm.common.wp7.objects.WP7View;
 import org.xmlvm.commondevice.adapter.ButtonAdapter;
@@ -53,7 +51,7 @@ public class WP7ButtonAdapter extends WP7View implements ButtonAdapter {
     }
 
     @Override
-    public void setTitleColor(Color xmlvmConvertIntToColor) {
+    public void setTitleColor(int xmlvmConvertIntToColor) {
     }
 
     @Override

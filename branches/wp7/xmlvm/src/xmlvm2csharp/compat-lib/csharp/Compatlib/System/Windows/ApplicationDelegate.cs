@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Net;
 using System.Windows;
 using System.Windows.Controls;
@@ -15,7 +15,7 @@ namespace Compatlib.System.Windows
     {
         public ApplicationDelegate()
         {
-            org.xmlvm.demo.fireworks.WP7Fireworks appClass = new org.xmlvm.demo.fireworks.WP7Fireworks();
+            __APP_CLASS__ appClass = new __APP_CLASS__();
             appClass.@this();
         }
     }

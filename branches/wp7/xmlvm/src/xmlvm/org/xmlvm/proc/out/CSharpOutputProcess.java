@@ -130,8 +130,13 @@ public class CSharpOutputProcess extends XmlvmProcessImpl<XmlvmResourceProvider>
         // step 3c: create a string for xslt, reporting all interfaces
         Set<String> interfaceNames = new HashSet<String>();
         Collection<XmlvmResource> resourceSet = resourceTable.values();
-        resourceSet.addAll(linkLoader.values());
         for (XmlvmResource xmlvmResource : resourceSet) {
+            if (xmlvmResource.isInterface()) {
+                interfaceNames.add(xmlvmResource.getFullName());
+            }
+        }
+        
+        for (XmlvmResource xmlvmResource : linkLoader.values()) {
             if (xmlvmResource.isInterface()) {
                 interfaceNames.add(xmlvmResource.getFullName());
             }

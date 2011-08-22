@@ -20,8 +20,6 @@
 
 package org.xmlvm.common.iphone.subsystems;
 
-import java.awt.Rectangle;
-
 import org.xmlvm.common.iphone.objects.IPhoneFont;
 import org.xmlvm.common.iphone.objects.IPhoneView;
 import org.xmlvm.commondevice.objects.CommonDeviceFont;
@@ -30,6 +28,7 @@ import org.xmlvm.iphone.NSString;
 import org.xmlvm.iphone.UILineBreakMode;
 import org.xmlvm.iphone.UITextAlignment;
 
+import android.graphics.Rect;
 import android.internal.Assert;
 import android.view.Gravity;
 
@@ -54,12 +53,12 @@ public class IPhoneFontFactory implements CommonDeviceFontFactory {
     }
 
     @Override
-    public Rectangle sizeWithFont(String text, CommonDeviceFont font) {
+    public Rect sizeWithFont(String text, CommonDeviceFont font) {
         return IPhoneView.toRectangle(NSString.sizeWithFont(text, ((IPhoneFont)font).getFont()));
     }
 
     @Override
-    public Rectangle sizeWithFont(String text, CommonDeviceFont font, Rectangle constraints, int lineBreakMode) {
+    public Rect sizeWithFont(String text, CommonDeviceFont font, Rect constraints, int lineBreakMode) {
         switch(lineBreakMode) {
         case CommonDeviceFontFactory.LINEBREAK_WORD_WRAP:
             return IPhoneView.toRectangle(NSString.sizeWithFont(text, ((IPhoneFont)font).getFont(), IPhoneView.toCGSize(constraints), UILineBreakMode.WordWrap));

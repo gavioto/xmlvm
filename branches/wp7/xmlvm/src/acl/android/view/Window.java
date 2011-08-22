@@ -20,13 +20,12 @@
 
 package android.view;
 
-import java.awt.Rectangle;
-
 import org.xmlvm.commondevice.subsystems.CommonDeviceWindow;
 
 import android.app.Activity;
 import android.app.Application;
 import android.content.pm.ActivityInfo;
+import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.internal.Assert;
 import android.internal.CommonDeviceAPIFinder;
@@ -256,24 +255,24 @@ public class Window {
         }
         int widthMeasureSpec;
         int heightMeasureSpec;
-        Rectangle rect = getCGRect();
+        Rect rect = getCGRect();
         LayoutParams lp = view.getLayoutParams();
 
         if (lp == null || lp.width == LayoutParams.FILL_PARENT) {
-            widthMeasureSpec = MeasureSpec.makeMeasureSpec((int) rect.width,
+            widthMeasureSpec = MeasureSpec.makeMeasureSpec((int) rect.right,
                     MeasureSpec.EXACTLY);
         } else if (lp.width == LayoutParams.WRAP_CONTENT) {
-            widthMeasureSpec = MeasureSpec.makeMeasureSpec((int) rect.width,
+            widthMeasureSpec = MeasureSpec.makeMeasureSpec((int) rect.right,
                     MeasureSpec.AT_MOST);
         } else {
             widthMeasureSpec = MeasureSpec.makeMeasureSpec(lp.width, MeasureSpec.EXACTLY);
         }
 
         if (lp == null || lp.height == LayoutParams.FILL_PARENT) {
-            heightMeasureSpec = MeasureSpec.makeMeasureSpec((int) rect.height,
+            heightMeasureSpec = MeasureSpec.makeMeasureSpec((int) rect.bottom,
                     MeasureSpec.EXACTLY);
         } else if (lp.height == LayoutParams.WRAP_CONTENT) {
-            heightMeasureSpec = MeasureSpec.makeMeasureSpec((int) rect.height,
+            heightMeasureSpec = MeasureSpec.makeMeasureSpec((int) rect.bottom,
                     MeasureSpec.AT_MOST);
         } else {
             heightMeasureSpec = MeasureSpec.makeMeasureSpec(lp.height, MeasureSpec.EXACTLY);
@@ -286,12 +285,12 @@ public class Window {
     /**
      * Internal. Not part of Android API.
      */
-    public Rectangle getCGRect() {
-        Rectangle rect = CommonDeviceAPIFinder.instance().getProperties().getScreenBounds();
+    public Rect getCGRect() {
+        Rect rect = CommonDeviceAPIFinder.instance().getProperties().getScreenBounds();
         if (activity.getRequestedOrientation() == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE) {
-            int t = rect.height;
-            rect.height = rect.width;
-            rect.width = t;
+            int t = rect.bottom;
+            rect.bottom = rect.right;
+            rect.right = t;
         }
         return rect;
     }

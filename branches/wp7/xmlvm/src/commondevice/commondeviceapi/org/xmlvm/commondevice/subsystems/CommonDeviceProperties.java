@@ -20,7 +20,7 @@
 
 package org.xmlvm.commondevice.subsystems;
 
-import java.awt.Rectangle;
+import android.graphics.Rect;
 
 /**
  *
@@ -52,8 +52,8 @@ public interface CommonDeviceProperties {
     public static final int DEVICE_WP7 = 4;
 
     public int detectDevice();
-    public Rectangle getScreenBounds();
-    public Rectangle getApplicationFrame();
+    public Rect getScreenBounds();
+    public Rect getApplicationFrame();
     public int getOrientation();
     public void setOrientation(int orientation);
     public void setStatusBarHidden(boolean b);

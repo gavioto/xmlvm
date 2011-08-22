@@ -20,15 +20,13 @@
 
 package android.widget;
 
-
-import java.awt.Rectangle;
-
 import org.xmlvm.commondevice.adapter.TextViewAdapter;
 import org.xmlvm.commondevice.objects.CommonDeviceFont;
 import org.xmlvm.commondevice.objects.CommonDeviceView;
 import org.xmlvm.commondevice.subsystems.CommonDeviceFontFactory;
 
 import android.content.Context;
+import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.internal.Assert;
 import android.internal.CommonDeviceAPIFinder;
@@ -79,15 +77,17 @@ public class TextView extends View {
         int height;
 
         if (l instanceof AbsoluteLayout.LayoutParams) {
-            Rectangle size = xmlvmGetTextSize();
-            width = l.width == LayoutParams.WRAP_CONTENT ? (int) size.width + 2 * INSETS_X
+            Rect size = xmlvmGetTextSize();
+            width = l.width == LayoutParams.WRAP_CONTENT ? (int) size.right + 2 * INSETS_X
                     : l.width;
-            height = l.height == LayoutParams.WRAP_CONTENT ? (int) size.height + 2 * INSETS_Y
+            height = l.height == LayoutParams.WRAP_CONTENT ? (int) size.bottom + 2 * INSETS_Y
                     : l.height;
 
             xmlvmGetViewHandler().setFrame(
-                    new Rectangle(((AbsoluteLayout.LayoutParams) l).x,
-                            ((AbsoluteLayout.LayoutParams) l).y, width, height));
+                    new Rect(((AbsoluteLayout.LayoutParams) l).x,
+                            ((AbsoluteLayout.LayoutParams) l).y,
+                            ((AbsoluteLayout.LayoutParams) l).x + width,
+                            ((AbsoluteLayout.LayoutParams) l).y + height));
         }
     }
 
@@ -122,14 +122,16 @@ public class TextView extends View {
         TextViewAdapter content = (TextViewAdapter) xmlvmGetViewHandler().getContentView();
         CommonDeviceFont font = content.getFont();
         if (font == null) {
-            content.setFont(CommonDeviceAPIFinder.instance().getFontFactory().systemFontOfSize(size));
+            content.setFont(CommonDeviceAPIFinder.instance().getFontFactory()
+                    .systemFontOfSize(size));
         } else {
             content.setFont(font.fontWithSize(size));
         }
     }
 
     public float getTextSize() {
-        CommonDeviceFont font = ((TextViewAdapter) xmlvmGetViewHandler().getContentView()).getFont();
+        CommonDeviceFont font = ((TextViewAdapter) xmlvmGetViewHandler().getContentView())
+                .getFont();
         if (font == null) {
             return CommonDeviceAPIFinder.instance().getFontFactory().labelFontSize();
         } else {
@@ -151,7 +153,7 @@ public class TextView extends View {
     @Override
     protected CommonDeviceView xmlvmNewUIView(AttributeSet attrs) {
         return CommonDeviceAPIFinder.instance().getWidgetFactory().createTextView(this);
-//        return new UITextField();
+        // return new UITextField();
     }
 
     private void parseTextViewAttributes(AttributeSet attrs) {
@@ -227,12 +229,13 @@ public class TextView extends View {
     }
 
     public void setTextColor(int color) {
-        ((TextViewAdapter) xmlvmGetViewHandler().getContentView()).setTextColor(xmlvmConvertIntToColor(color));
+        ((TextViewAdapter) xmlvmGetViewHandler().getContentView()).setTextColor(color);
     }
 
     public void setGravity(int gravity) {
         this.gravity = gravity;
-        ((TextViewAdapter) xmlvmGetViewHandler().getContentView()).setTextAlignment(xmlvmGetAlignmentFromGravity(gravity));
+        ((TextViewAdapter) xmlvmGetViewHandler().getContentView())
+                .setTextAlignment(xmlvmGetAlignmentFromGravity(gravity));
     }
 
     public int getGravity() {
@@ -244,23 +247,23 @@ public class TextView extends View {
         int minWidth = getSuggestedMinimumWidth();
         int minHeight = getSuggestedMinimumHeight();
 
-        Rectangle size = xmlvmGetTextSize();
+        Rect size = xmlvmGetTextSize();
         int width = MeasureSpec.getMode(widthMeasureSpec) == MeasureSpec.EXACTLY ? MeasureSpec
                 .getSize(widthMeasureSpec) : Math.max(2 * xmlvmGetInsetsX(), paddingLeft
                 + paddingRight)
-                + (int) size.width;
+                + (int) size.right;
         int height = MeasureSpec.getMode(heightMeasureSpec) == MeasureSpec.EXACTLY ? MeasureSpec
                 .getSize(heightMeasureSpec) : Math.max(2 * xmlvmGetInsetsY(), paddingTop
                 + paddingBottom)
-                + (int) size.height;
+                + (int) size.right;
         setMeasuredDimension(Math.max(width, minWidth), Math.max(height, minHeight));
     }
 
-    protected Rectangle xmlvmGetTextSize() {
-        Rectangle rect = CommonDeviceAPIFinder.instance().getProperties().getScreenBounds();
-        Rectangle totalPaddings = computeTotalPadding();
-        Rectangle constraints = new Rectangle(rect.width - totalPaddings.width, rect.height
-                - totalPaddings.height);
+    protected Rect xmlvmGetTextSize() {
+        Rect rect = CommonDeviceAPIFinder.instance().getProperties().getScreenBounds();
+        Rect totalPaddings = computeTotalPadding();
+        Rect constraints = new Rect(0, 0, rect.right - totalPaddings.right, rect.bottom
+                - totalPaddings.bottom);
 
         CommonDeviceFont font = xmlvmGetUIFont();
         if (font == null) {
@@ -268,26 +271,26 @@ public class TextView extends View {
                     .instance()
                     .getFontFactory()
                     .systemFontOfSize(
-                            CommonDeviceAPIFinder.instance().getFontFactory()
-                                    .labelFontSize());
+                            CommonDeviceAPIFinder.instance().getFontFactory().labelFontSize());
         }
 
-        Rectangle mSize = CommonDeviceAPIFinder.instance().getFontFactory().sizeWithFont("M", font);
-        Rectangle textSize = CommonDeviceAPIFinder.instance().getFontFactory().sizeWithFont(text, font, constraints, CommonDeviceFontFactory.LINEBREAK_WORD_WRAP);
+        Rect mSize = CommonDeviceAPIFinder.instance().getFontFactory().sizeWithFont("M", font);
+        Rect textSize = CommonDeviceAPIFinder.instance().getFontFactory()
+                .sizeWithFont(text, font, constraints, CommonDeviceFontFactory.LINEBREAK_WORD_WRAP);
         if (text.length() == 0) {
-            textSize.height = mSize.height;
+            textSize.bottom = mSize.bottom;
         }
 
         return textSize;
     }
 
-    private Rectangle computeTotalPadding() {
+    private Rect computeTotalPadding() {
         View v = this;
-        Rectangle result = new Rectangle(0, 0);
+        Rect result = new Rect(0, 0, 0, 0);
 
         do {
-            result.width += (v.getPaddingLeft() + v.getPaddingRight());
-            result.height += (v.getPaddingTop() + v.getPaddingBottom());
+            result.right += (v.getPaddingLeft() + v.getPaddingRight());
+            result.bottom += (v.getPaddingTop() + v.getPaddingBottom());
             v = (View) v.getParent();
         } while (v != null);
 

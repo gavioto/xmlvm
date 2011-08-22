@@ -32,9 +32,9 @@ public class AlertDialog extends Dialog implements DialogInterface {
 
     public static class Builder {
 
-        private String                          title;
-        private String                          message;
-        private String                          positiveButtonTitle;
+        private CharSequence                    title;
+        private CharSequence                    message;
+        private CharSequence                    positiveButtonTitle;
         private DialogInterface.OnClickListener clickListener;
         private Context                         context;
 
@@ -43,12 +43,12 @@ public class AlertDialog extends Dialog implements DialogInterface {
             this.context = context;
         }
 
-        public Builder setTitle(String title) {
+        public Builder setTitle(CharSequence title) {
             this.title = title;
             return this;
         }
 
-        public Builder setPositiveButton(String title, DialogInterface.OnClickListener clickListener) {
+        public Builder setPositiveButton(CharSequence title, DialogInterface.OnClickListener clickListener) {
             this.positiveButtonTitle = title;
             this.clickListener = clickListener;
             return this;
@@ -76,10 +76,10 @@ public class AlertDialog extends Dialog implements DialogInterface {
 
 
     private Builder           builder;
-    private String[]          buttonTitles = new String[3];
+    private CharSequence[]          buttonTitles = new CharSequence[3];
     private OnClickListener[] listeners    = new OnClickListener[3];
-    private String            title;
-    private String            message;
+    private CharSequence      title;
+    private CharSequence      message;
     private Context           context;
 
 
@@ -104,40 +104,40 @@ public class AlertDialog extends Dialog implements DialogInterface {
     public void show() {
         CommonDeviceWidgetFactory widgetFactory = CommonDeviceAPIFinder.instance().getWidgetFactory();
         String message = "";
-        String cancelButtonTitle = builder.positiveButtonTitle;
-        AlertDialogAdapter adapter = widgetFactory.createAlertDialog(title, message, this, cancelButtonTitle);
+        CharSequence cancelButtonTitle = builder.positiveButtonTitle;
+        AlertDialogAdapter adapter = widgetFactory.createAlertDialog((String)title, message, this, (String) cancelButtonTitle);
         
-        adapter.setTitle(title);
+        adapter.setTitle((String)title);
         adapter.setMessage(message);
 
         for (int i = 0; i < buttonTitles.length; ++i) {
             if (buttonTitles[i] != null) {
-                adapter.addButtonWithTitle(buttonTitles[i]);
+                adapter.addButtonWithTitle((String) buttonTitles[i]);
             }
         }
         adapter.show();
     }
 
-    public void setTitle(String title) {
+    public void setTitle(CharSequence title) {
         this.title = title;
     }
 
-    public void setButton(String string, OnClickListener listener) {
+    public void setButton(CharSequence string, OnClickListener listener) {
         buttonTitles[0] = string;
         listeners[0] = listener;
     }
 
-    public void setButton2(String string, OnClickListener listener) {
+    public void setButton2(CharSequence string, OnClickListener listener) {
         buttonTitles[2] = string;
         listeners[2] = listener;
     }
 
-    public void setButton3(String string, OnClickListener listener) {
+    public void setButton3(CharSequence string, OnClickListener listener) {
         buttonTitles[1] = string;
         listeners[1] = listener;
     }
 
-    public void setButton(int whichButton, String string, OnClickListener listener) {
+    public void setButton(int whichButton, CharSequence string, OnClickListener listener) {
         switch (whichButton) {
         case BUTTON_POSITIVE:
             setButton(string, listener);
@@ -157,7 +157,7 @@ public class AlertDialog extends Dialog implements DialogInterface {
         // Do nothing: UIAlertView does not support icons
     }
 
-    public void setMessage(String message) {
+    public void setMessage(CharSequence message) {
         this.message = message;
     }
 

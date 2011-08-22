@@ -20,10 +20,10 @@
 
 package org.xmlvm.commondevice.adapter;
 
-import java.awt.Color;
-
 import org.xmlvm.commondevice.objects.CommonDeviceFont;
 import org.xmlvm.commondevice.objects.CommonDeviceView;
+
+import android.graphics.Color;
 
 /**
  *
@@ -37,7 +37,6 @@ public interface TextViewAdapter extends CommonDeviceView {
     void setText(String string);
     String getText();
     void setTextAlignment(int alignment);
-    void setTextColor(Color xmlvmConvertIntToColor);
-
+    void setTextColor(int color);
 
 }

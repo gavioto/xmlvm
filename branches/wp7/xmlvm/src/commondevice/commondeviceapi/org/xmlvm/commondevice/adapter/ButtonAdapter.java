@@ -20,11 +20,10 @@
 
 package org.xmlvm.commondevice.adapter;
 
-import java.awt.Color;
-
 import org.xmlvm.commondevice.objects.CommonDeviceFont;
 import org.xmlvm.commondevice.objects.CommonDeviceView;
 
+import android.graphics.Color;
 import android.view.View.OnClickListener;
 
 /**
@@ -33,7 +32,7 @@ import android.view.View.OnClickListener;
 public interface ButtonAdapter extends CommonDeviceView {
 
     void setTitle(String text);
-    void setTitleColor(Color xmlvmConvertIntToColor);
+    void setTitleColor(int color);
 
     void setOnClickListener(OnClickListener listener);
 

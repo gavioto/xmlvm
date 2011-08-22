@@ -20,8 +20,6 @@
 
 package Compatlib.System.Windows.Controls;
 
-import org.xmlvm.wp7.StackPanelRenderer;
-
 /**
  * @author Markus
  * 
@@ -29,7 +27,7 @@ import org.xmlvm.wp7.StackPanelRenderer;
 public class StackPanel extends Panel {
 
     public StackPanel() {
-        xmlvmSetRenderer(new StackPanelRenderer(this));
+//        xmlvmSetRenderer(new StackPanelRenderer(this));
     }
 
 }

@@ -20,9 +20,9 @@
 
 package org.xmlvm.common.wp7.subsystems;
 
-import java.awt.Rectangle;
-
 import org.xmlvm.commondevice.subsystems.CommonDeviceProperties;
+
+import android.graphics.Rect;
 
 import Compatlib.System.Windows.Application;
 
@@ -37,13 +37,13 @@ public class WP7Properties implements CommonDeviceProperties {
     }
 
     @Override
-    public Rectangle getScreenBounds() {
-        return new Rectangle(480, 800);
+    public Rect getScreenBounds() {
+        return new Rect(0, 0, 480, 800);
     }
 
     @Override
-    public Rectangle getApplicationFrame() {
-        return new Rectangle(480, 800);
+    public Rect getApplicationFrame() {
+        return new Rect(0, 0, 480, 800);
     }
 
     @Override

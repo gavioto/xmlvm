@@ -20,13 +20,13 @@
 
 package android.view;
 
-import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Rect;
 import android.internal.Assert;
 import android.internal.Dimension;
 import android.util.AttributeSet;
@@ -168,7 +168,7 @@ public class ViewGroup extends View implements ViewParent {
         this.subViews = new ArrayList<View>();
 
         if (c instanceof Activity) {
-            Rectangle rect = ((Activity) c).getWindow().getCGRect();
+            Rect rect = ((Activity) c).getWindow().getCGRect();
             this.xmlvmGetViewHandler().setFrame(rect);
         }
 

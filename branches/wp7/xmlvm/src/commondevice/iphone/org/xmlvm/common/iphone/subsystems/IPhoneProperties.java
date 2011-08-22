@@ -20,8 +20,6 @@
 
 package org.xmlvm.common.iphone.subsystems;
 
-import java.awt.Rectangle;
-
 import org.xmlvm.commondevice.subsystems.CommonDeviceProperties;
 import org.xmlvm.iphone.CGRect;
 import org.xmlvm.iphone.CGSize;
@@ -31,6 +29,7 @@ import org.xmlvm.iphone.UIDeviceOrientation;
 import org.xmlvm.iphone.UIInterfaceOrientation;
 import org.xmlvm.iphone.UIScreen;
 
+import android.graphics.Rect;
 import android.internal.CommonDeviceAPIFinder;
 
 /**
@@ -39,24 +38,25 @@ import android.internal.CommonDeviceAPIFinder;
 public class IPhoneProperties implements CommonDeviceProperties {
 
     @Override
-    public Rectangle getScreenBounds() {
+    public Rect getScreenBounds() {
         CGSize size = UIScreen.mainScreen().getBounds().size;
-        return new Rectangle((int) size.width, (int) size.height);
+        return new Rect(0, 0, (int) size.width, (int) size.height);
     }
 
     @Override
-    public Rectangle getApplicationFrame() {
+    public Rect getApplicationFrame() {
         CGRect rect = UIScreen.mainScreen().getApplicationFrame();
-        return new Rectangle((int) rect.origin.x, (int) rect.origin.y, (int) rect.size.width, (int) rect.size.height);
+        return new Rect((int) rect.origin.x, (int) rect.origin.y,
+                (int) (rect.origin.x + rect.size.width), (int) (rect.origin.y + rect.size.height));
     }
 
     @Override
     public int detectDevice() {
-        Rectangle rect = CommonDeviceAPIFinder.instance().getProperties().getScreenBounds();
+        Rect rect = CommonDeviceAPIFinder.instance().getProperties().getScreenBounds();
 
         // Determine configuration based on the sum of width and height, which
         // is unique for all iPhone and iPad devices
-        int totalPixels = (int) rect.getWidth() + (int) rect.getHeight();
+        int totalPixels = (int) rect.right + (int) rect.bottom;
 
         switch (totalPixels) {
         // All iPhone before iPhone4
@@ -75,14 +75,16 @@ public class IPhoneProperties implements CommonDeviceProperties {
         return CommonDeviceProperties.DEVICE_UNKNOWN;
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see org.xmlvm.commondevice.CommonDeviceAPI#getOrientation()
      */
     @Override
     public int getOrientation() {
         int nativeOrientation = UIDevice.currentDevice().getOrientation();
         int orientation = ORIENTATION_UNKNOWN;
-        
+
         switch (nativeOrientation) {
         case UIDeviceOrientation.Portrait:
             orientation = ORIENTATION_PORTRAIT;
@@ -103,7 +105,7 @@ public class IPhoneProperties implements CommonDeviceProperties {
             orientation = ORIENTATION_LANDSCAPE_RIGHT;
             break;
         }
-        
+
         return orientation;
     }
 

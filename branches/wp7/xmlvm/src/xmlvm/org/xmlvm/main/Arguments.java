@@ -338,7 +338,7 @@ public class Arguments {
         if (option_gen_wrapper && option_target != Targets.C) {
             parseError("--gen-wrapper only available for --target=c");
         }
-        if (option_no_using && option_target != Targets.CSHARP) {
+        if (option_no_using && (option_target != Targets.CSHARP && option_target != Targets.WP7 && option_target != Targets.WP7ANDROID)) {
             parseError(ARG_NO_USING + " only available for --target=csharp");
         }
         if (option_gen_native_skeletons

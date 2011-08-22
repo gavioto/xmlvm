@@ -28,16 +28,14 @@ import org.xmlvm.Log;
 import org.xmlvm.main.Arguments;
 import org.xmlvm.main.Targets;
 import org.xmlvm.proc.XmlvmProcessImpl;
-import org.xmlvm.proc.out.build.ResourceManager;
 import org.xmlvm.proc.out.build.VisualStudioFile;
-import org.xmlvm.util.FileUtil;
 import org.xmlvm.util.universalfile.UniversalFile;
 import org.xmlvm.util.universalfile.UniversalFileCreator;
 
 public class WP7OutputProcess extends XmlvmProcessImpl<CSharpOutputProcess> {
 
     public static final String         WP7_SRC            = "src";
-    public static final String         WP7_SRC_COMPAT_LIB = "lib";
+    public static final String         WP7_SRC_COMPAT_LIB = "src";
     public static final String         WP7_RESOURCES      = "res";
 
     private List<OutputFile>           result             = new ArrayList<OutputFile>();

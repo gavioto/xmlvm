@@ -39,7 +39,6 @@ import android.util.Log;
 import android.view.Display;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
@@ -136,15 +135,6 @@ public class XokobanActivity extends Activity {
                     SensorManager.SENSOR_ACCELEROMETER);
         }
         installButtonListeners();
-
-        getBoardView().getViewTreeObserver().addOnGlobalLayoutListener(
-                new OnGlobalLayoutListener() {
-                    @Override
-                    public void onGlobalLayout() {
-                        getBoardView().getViewTreeObserver().removeGlobalOnLayoutListener(this);
-                        layoutChanged();
-                    }
-                });
     }
 
     @Override
@@ -224,7 +214,7 @@ public class XokobanActivity extends Activity {
         }
     }
 
-    private void layoutChanged() {
+    public void loadGame() {
         gameController.loadLevel(true);
     }
 

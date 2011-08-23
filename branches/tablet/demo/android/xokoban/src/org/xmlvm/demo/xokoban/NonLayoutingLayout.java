@@ -1,5 +1,7 @@
 package org.xmlvm.demo.xokoban;
 
+import org.xmlvm.demo.xokoban.activity.XokobanActivity;
+
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.ViewGroup;
@@ -18,4 +20,15 @@ public class NonLayoutingLayout extends ViewGroup {
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         // No layouting.
     }
+
+    @Override
+    protected void onSizeChanged(int width, int height, int oldWidth, int oldHeight) {
+        /*
+         * When this method is called, we know the size of the game field which
+         * is needed to compute the geometry of the tiles. Now we can load the
+         * game that depends on that geometry.
+         */
+        ((XokobanActivity) this.getContext()).loadGame();
+    }
+
 }

@@ -39,8 +39,8 @@ public class SettingsActivity extends Activity {
         getRoot().getViewTreeObserver().addOnGlobalLayoutListener(new OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
-                layoutChanged(accelerometerEnabled);
                 getRoot().getViewTreeObserver().removeGlobalOnLayoutListener(this);
+                layoutChanged(accelerometerEnabled);
             }
         });
     }

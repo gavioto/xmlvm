@@ -25,6 +25,7 @@ import java.util.List;
 import org.xmlvm.iphone.CGRect;
 import org.xmlvm.iphone.UIInterfaceOrientation;
 import org.xmlvm.iphone.UIScreen;
+import org.xmlvm.iphone.UIView;
 import org.xmlvm.iphone.UIViewController;
 import org.xmlvm.iphone.UIWindow;
 
@@ -94,15 +95,35 @@ public class Application extends ContextWrapper {
 
     public void xmlvmAddActivityViewController(UIViewController vc) {
         activityViews.add(vc);
-        topLevelWindow.setRootViewController(vc);
+        xmlvmSetRootViewController(vc);
     }
 
     public void xmlvmRemoveActivityViewController(UIViewController vc) {
         activityViews.remove(vc);
         int size = activityViews.size();
         if (size > 0) {
-            topLevelWindow.setRootViewController(activityViews.get(size - 1));
+            xmlvmSetRootViewController(activityViews.get(size - 1));
         }
+    }
+
+    private void xmlvmSetRootViewController(UIViewController vc) {
+        /*
+         * Ordinarily we would just call
+         * topLevelWindow.setRootViewController(vc). However, since this API is
+         * only available since iOS 4.0, we do the same thing with API before
+         * iOS 4.0.
+         */
+        // Remove old view hierarchy
+        while (true) {
+            List<UIView> subviews = topLevelWindow.getSubviews();
+            if (subviews.size() == 0) {
+                break;
+            }
+            UIView view = subviews.get(0);
+            view.removeFromSuperview();
+        }
+        // Install new view controller
+        topLevelWindow.addSubview(vc.getView());
     }
 
     public void xmlvmFreezeInterfaceOrientation(boolean flag) {

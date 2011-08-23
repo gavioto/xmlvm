@@ -171,6 +171,11 @@ public class ImageView extends View {
     }
 
     @Override
+    protected boolean setFrame(int left, int top, int right, int bottom) {
+        return super.setFrame(left + paddingLeft, top + paddingTop, right - paddingRight, bottom - paddingBottom);
+    }
+    
+    @Override
     public void setLayoutParams(ViewGroup.LayoutParams l) {
         layoutParams = l;
         int width = l.width;

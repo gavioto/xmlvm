@@ -5,14 +5,13 @@ import org.xmlvm.demo.xokoban.R;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.TextView;
 
 public class SettingsActivity extends Activity {
     public static final String KEY_ACCELEROMETER_ENABLED = "accelerometerEnabled:";
@@ -28,52 +27,14 @@ public class SettingsActivity extends Activity {
         // Switch to fullscreen view, getting rid of the status bar as well.
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
         setContentView(R.layout.settings);
 
         // Read accelerometer state we got from calling activity.
         final boolean accelerometerEnabled = getIntent().getBooleanExtra(KEY_ACCELEROMETER_ENABLED,
                 false);
-
-        // Re-layout once the layouting is done.
-//        getRoot().getViewTreeObserver().addOnGlobalLayoutListener(new OnGlobalLayoutListener() {
-//            @Override
-//            public void onGlobalLayout() {
-//                getRoot().getViewTreeObserver().removeGlobalOnLayoutListener(this);
-//                layoutChanged(accelerometerEnabled);
-//            }
-//        });
-        layoutChanged(accelerometerEnabled);
-    }
-
-    private void layoutChanged(boolean accelerometerEnabled) {
         getAccelerometerCheckBox().setChecked(accelerometerEnabled);
 
-//        View backgroundImage = findViewById(R.id.background);
-//        int displayHeight = backgroundImage.getHeight();
-//        int displayWidth = backgroundImage.getWidth();
-//
-//        Log.i("SA", "Height: " + displayHeight + "  Width:" + displayWidth);
-//
-//        // The positions below are calculated from the 800x480 original. So this
-//        // is the factor we need to use in order to get the positions on any
-//        // other sized display.
-//        float sizeFactor = displayHeight / 480f;
-//
-//        int verticalCenterWidgets = (int) (389 * sizeFactor);
-//
-//        // Because the background image might be cropped at the sides, but for
-//        // sure will also be centered, we calculate the positions relative from
-//        // the center.
-//        int checkboxLeft = (int) ((displayWidth / 2f) - (300f * sizeFactor));
-//        int buttonRight = (int) ((displayWidth / 2f) + (135f * sizeFactor));
-//
-//        View widgetGroup = getWidgetGroup();
-//        int groupBottom = verticalCenterWidgets + (widgetGroup.getMeasuredHeight() / 2);
-//        int paddingBottom = displayHeight - groupBottom;
-//        int paddingRight = displayWidth - buttonRight;
-//        widgetGroup.setPadding(checkboxLeft, 0, paddingRight, paddingBottom);
-
+        // Hook up save button listener.
         getSaveButton().setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -84,18 +45,25 @@ public class SettingsActivity extends Activity {
                 SettingsActivity.this.finish();
             }
         });
-    }
 
-    private View getRoot() {
-        return findViewById(R.id.root);
-    }
-
-    private View getWidgetGroup() {
-        return findViewById(R.id.widgetGroup);
+        // As iOS doesn't have checkbox labels, we emulate here that a label
+        // click will toggle the state of the checkbox, just as a real label
+        // would.
+        getCheckBoxLabel().setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                CheckBox checkBox = getAccelerometerCheckBox();
+                checkBox.setChecked(!checkBox.isChecked());
+            }
+        });
     }
 
     private CheckBox getAccelerometerCheckBox() {
         return (CheckBox) findViewById(R.id.accelerometer);
+    }
+
+    private TextView getCheckBoxLabel() {
+        return (TextView) findViewById(R.id.checkBoxLabel);
     }
 
     private Button getSaveButton() {

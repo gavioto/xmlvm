@@ -70,6 +70,11 @@ JAVA_OBJECT __CLASS_org_xmlvm_iphone_UIAlertViewDelegate_3ARRAY;
 
 @end
 
+void org_xmlvm_iphone_UIAlertViewDelegate_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me, NSObject* wrappedObj)
+{
+    org_xmlvm_iphone_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
+}
+
 //XMLVM_END_IMPLEMENTATION
 
 
@@ -191,6 +196,7 @@ void __INIT_IMPL_org_xmlvm_iphone_UIAlertViewDelegate()
 void __DELETE_org_xmlvm_iphone_UIAlertViewDelegate(void* me, void* client_data)
 {
     //XMLVM_BEGIN_WRAPPER[__DELETE_org_xmlvm_iphone_UIAlertViewDelegate]
+    __DELETE_org_xmlvm_iphone_NSObject(me, client_data);
     //XMLVM_END_WRAPPER
 }
 
@@ -222,7 +228,8 @@ void org_xmlvm_iphone_UIAlertViewDelegate___INIT___(JAVA_OBJECT me)
 {
     //XMLVM_BEGIN_WRAPPER[org_xmlvm_iphone_UIAlertViewDelegate___INIT___]
     UIAlertViewDelegateWrapper* obj = [[UIAlertViewDelegateWrapper alloc] initWithDelegate:me];
-    org_xmlvm_iphone_NSObject_INTERNAL_CONSTRUCTOR(me, obj);
+    org_xmlvm_iphone_UIAlertViewDelegate_INTERNAL_CONSTRUCTOR(me, obj);
+    XMLVM_FINALIZE(me, __DELETE_org_xmlvm_iphone_UIAlertViewDelegate);
     //XMLVM_END_WRAPPER
 }
 

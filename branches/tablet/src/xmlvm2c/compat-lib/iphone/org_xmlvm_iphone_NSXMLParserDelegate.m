@@ -384,7 +384,6 @@ JAVA_OBJECT __NEW_org_xmlvm_iphone_NSXMLParserDelegate()
     me->tib = &__TIB_org_xmlvm_iphone_NSXMLParserDelegate;
     __INIT_INSTANCE_MEMBERS_org_xmlvm_iphone_NSXMLParserDelegate(me);
     //XMLVM_BEGIN_WRAPPER[__NEW_org_xmlvm_iphone_NSXMLParserDelegate]
-    XMLVM_FINALIZE(me, __DELETE_org_xmlvm_iphone_NSXMLParserDelegate);
     //XMLVM_END_WRAPPER
     return me;
 }
@@ -402,6 +401,7 @@ void org_xmlvm_iphone_NSXMLParserDelegate___INIT___(JAVA_OBJECT me)
     //XMLVM_BEGIN_WRAPPER[org_xmlvm_iphone_NSXMLParserDelegate___INIT___]
     NSXMLParserDelegateWrapper* obj = [[NSXMLParserDelegateWrapper alloc] initWithDelegate:me];
     org_xmlvm_iphone_NSObject_INTERNAL_CONSTRUCTOR(me, obj);
+    XMLVM_FINALIZE(me, __DELETE_org_xmlvm_iphone_NSXMLParserDelegate);
     //XMLVM_END_WRAPPER
 }
 

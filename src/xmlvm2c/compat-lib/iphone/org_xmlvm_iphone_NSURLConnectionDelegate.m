@@ -267,7 +267,6 @@ JAVA_OBJECT __NEW_org_xmlvm_iphone_NSURLConnectionDelegate()
     me->tib = &__TIB_org_xmlvm_iphone_NSURLConnectionDelegate;
     __INIT_INSTANCE_MEMBERS_org_xmlvm_iphone_NSURLConnectionDelegate(me);
     //XMLVM_BEGIN_WRAPPER[__NEW_org_xmlvm_iphone_NSURLConnectionDelegate]
-    XMLVM_FINALIZE(me, __DELETE_org_xmlvm_iphone_NSURLConnectionDelegate);
     //XMLVM_END_WRAPPER
     return me;
 }
@@ -285,6 +284,7 @@ void org_xmlvm_iphone_NSURLConnectionDelegate___INIT___(JAVA_OBJECT me)
     //XMLVM_BEGIN_WRAPPER[org_xmlvm_iphone_NSURLConnectionDelegate___INIT___]
     NSURLConnectionDelegateWrapper* delegate = [[NSURLConnectionDelegateWrapper alloc] initWithDelegate: me];
     org_xmlvm_iphone_NSObject_INTERNAL_CONSTRUCTOR(me, delegate);
+    XMLVM_FINALIZE(me, __DELETE_org_xmlvm_iphone_NSURLConnectionDelegate);
     //XMLVM_END_WRAPPER
 }
 

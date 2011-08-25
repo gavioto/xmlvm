@@ -370,7 +370,6 @@ JAVA_OBJECT __NEW_org_xmlvm_iphone_UITextFieldDelegate()
     me->tib = &__TIB_org_xmlvm_iphone_UITextFieldDelegate;
     __INIT_INSTANCE_MEMBERS_org_xmlvm_iphone_UITextFieldDelegate(me);
     //XMLVM_BEGIN_WRAPPER[__NEW_org_xmlvm_iphone_UITextFieldDelegate]
-    XMLVM_FINALIZE(me, __DELETE_org_xmlvm_iphone_UITextFieldDelegate);
     //XMLVM_END_WRAPPER
     return me;
 }
@@ -388,6 +387,7 @@ void org_xmlvm_iphone_UITextFieldDelegate___INIT___(JAVA_OBJECT me)
     //XMLVM_BEGIN_WRAPPER[org_xmlvm_iphone_UITextFieldDelegate___INIT___]
     UITextFieldDelegateWrapper* obj = [[UITextFieldDelegateWrapper alloc] initWithDelegate:me];
     org_xmlvm_iphone_NSObject_INTERNAL_CONSTRUCTOR(me, obj);
+    XMLVM_FINALIZE(me, __DELETE_org_xmlvm_iphone_UITextFieldDelegate);
     //XMLVM_END_WRAPPER
 }
 

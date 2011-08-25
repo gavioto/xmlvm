@@ -38,7 +38,7 @@ extern JAVA_OBJECT __CLASS_org_xmlvm_iphone_UITextFieldDelegate_3ARRAY;
 XMLVM_FORWARD_DECL(org_xmlvm_iphone_UITextFieldDelegate)
 #endif
 
-@interface UITextFieldDelegateWrapper : DelegateWrapper <UITextFieldDelegate> {
+@interface UITextFieldDelegateWrapper : NSObject /*DelegateWrapper*/ <UITextFieldDelegate> {
     org_xmlvm_iphone_UITextFieldDelegate* delegate;
 }
 

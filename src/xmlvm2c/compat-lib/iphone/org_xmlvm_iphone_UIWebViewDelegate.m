@@ -302,7 +302,6 @@ JAVA_OBJECT __NEW_org_xmlvm_iphone_UIWebViewDelegate()
     me->tib = &__TIB_org_xmlvm_iphone_UIWebViewDelegate;
     __INIT_INSTANCE_MEMBERS_org_xmlvm_iphone_UIWebViewDelegate(me);
     //XMLVM_BEGIN_WRAPPER[__NEW_org_xmlvm_iphone_UIWebViewDelegate]
-    XMLVM_FINALIZE(me, __DELETE_org_xmlvm_iphone_UIWebViewDelegate);
     //XMLVM_END_WRAPPER
     return me;
 }
@@ -320,6 +319,7 @@ void org_xmlvm_iphone_UIWebViewDelegate___INIT___(JAVA_OBJECT me)
     //XMLVM_BEGIN_WRAPPER[org_xmlvm_iphone_UIWebViewDelegate___INIT___]
     UIWebViewDelegateWrapper* delegate = [[UIWebViewDelegateWrapper alloc] initWithDelegate: me];
     org_xmlvm_iphone_UIWebViewDelegate_INTERNAL_CONSTRUCTOR(me, delegate);
+    XMLVM_FINALIZE(me, __DELETE_org_xmlvm_iphone_UIWebViewDelegate);
     //XMLVM_END_WRAPPER
 }
 

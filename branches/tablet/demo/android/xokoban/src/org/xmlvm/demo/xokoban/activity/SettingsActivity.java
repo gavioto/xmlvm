@@ -36,42 +36,43 @@ public class SettingsActivity extends Activity {
                 false);
 
         // Re-layout once the layouting is done.
-        getRoot().getViewTreeObserver().addOnGlobalLayoutListener(new OnGlobalLayoutListener() {
-            @Override
-            public void onGlobalLayout() {
-                getRoot().getViewTreeObserver().removeGlobalOnLayoutListener(this);
-                layoutChanged(accelerometerEnabled);
-            }
-        });
+//        getRoot().getViewTreeObserver().addOnGlobalLayoutListener(new OnGlobalLayoutListener() {
+//            @Override
+//            public void onGlobalLayout() {
+//                getRoot().getViewTreeObserver().removeGlobalOnLayoutListener(this);
+//                layoutChanged(accelerometerEnabled);
+//            }
+//        });
+        layoutChanged(accelerometerEnabled);
     }
 
     private void layoutChanged(boolean accelerometerEnabled) {
         getAccelerometerCheckBox().setChecked(accelerometerEnabled);
 
-        View backgroundImage = findViewById(R.id.background);
-        int displayHeight = backgroundImage.getHeight();
-        int displayWidth = backgroundImage.getWidth();
-
-        Log.i("SA", "Height: " + displayHeight + "  Width:" + displayWidth);
-
-        // The positions below are calculated from the 800x480 original. So this
-        // is the factor we need to use in order to get the positions on any
-        // other sized display.
-        float sizeFactor = displayHeight / 480f;
-
-        int verticalCenterWidgets = (int) (389 * sizeFactor);
-
-        // Because the background image might be cropped at the sides, but for
-        // sure will also be centered, we calculate the positions relative from
-        // the center.
-        int checkboxLeft = (int) ((displayWidth / 2f) - (300f * sizeFactor));
-        int buttonRight = (int) ((displayWidth / 2f) + (135f * sizeFactor));
-
-        View widgetGroup = getWidgetGroup();
-        int groupBottom = verticalCenterWidgets + (widgetGroup.getMeasuredHeight() / 2);
-        int paddingBottom = displayHeight - groupBottom;
-        int paddingRight = displayWidth - buttonRight;
-        widgetGroup.setPadding(checkboxLeft, 0, paddingRight, paddingBottom);
+//        View backgroundImage = findViewById(R.id.background);
+//        int displayHeight = backgroundImage.getHeight();
+//        int displayWidth = backgroundImage.getWidth();
+//
+//        Log.i("SA", "Height: " + displayHeight + "  Width:" + displayWidth);
+//
+//        // The positions below are calculated from the 800x480 original. So this
+//        // is the factor we need to use in order to get the positions on any
+//        // other sized display.
+//        float sizeFactor = displayHeight / 480f;
+//
+//        int verticalCenterWidgets = (int) (389 * sizeFactor);
+//
+//        // Because the background image might be cropped at the sides, but for
+//        // sure will also be centered, we calculate the positions relative from
+//        // the center.
+//        int checkboxLeft = (int) ((displayWidth / 2f) - (300f * sizeFactor));
+//        int buttonRight = (int) ((displayWidth / 2f) + (135f * sizeFactor));
+//
+//        View widgetGroup = getWidgetGroup();
+//        int groupBottom = verticalCenterWidgets + (widgetGroup.getMeasuredHeight() / 2);
+//        int paddingBottom = displayHeight - groupBottom;
+//        int paddingRight = displayWidth - buttonRight;
+//        widgetGroup.setPadding(checkboxLeft, 0, paddingRight, paddingBottom);
 
         getSaveButton().setOnClickListener(new OnClickListener() {
             @Override

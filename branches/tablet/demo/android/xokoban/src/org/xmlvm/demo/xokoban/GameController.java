@@ -157,7 +157,7 @@ public class GameController implements MoveFinishedHandler, Runnable {
     }
 
     private int getDelayInMillis() {
-        return (int) (DEFAULT_DELAY_IN_MILLIS * (20f / man.getTileSize()));
+        return (int) (DEFAULT_DELAY_IN_MILLIS * (20f / (man != null ? man.getTileSize() : 20f)));
     }
 
     /**

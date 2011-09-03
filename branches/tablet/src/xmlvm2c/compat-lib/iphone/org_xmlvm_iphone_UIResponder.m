@@ -170,6 +170,7 @@ static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
     if ([obj class] == [UIResponder class]) {
         JAVA_OBJECT jobj = __NEW_org_xmlvm_iphone_UIResponder();
         org_xmlvm_iphone_UIResponder_INTERNAL_CONSTRUCTOR(jobj, obj);
+        //TODO [obj retain] + XMLVM_REGISTER_FINALIZER?
         return jobj;
     }
     return JAVA_NULL;

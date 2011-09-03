@@ -429,7 +429,7 @@ public class View {
             }
             // background specifies a color value, so create a ColorDrawable
             else if (str.charAt(0) == '#') {
-                int color = parseColorValue(str);
+                int color = xmlvmParseColorValue(str);
                 ColorDrawable d = new ColorDrawable(color);
                 setBackgroundDrawable(d);
             }
@@ -481,7 +481,7 @@ public class View {
         setIgnoreRequestLayout(false);
     }
 
-    private int parseColorValue(String str) {
+    protected int xmlvmParseColorValue(String str) {
         int color = 0;
         int a;
         int r;

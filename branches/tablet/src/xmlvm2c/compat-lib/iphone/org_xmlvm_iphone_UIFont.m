@@ -31,6 +31,18 @@ void org_xmlvm_iphone_UIFont_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me, NSObject* wrap
     org_xmlvm_iphone_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
 }
 
+static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
+{
+    NSString* name = NSStringFromClass([obj class]);
+    if ([obj class] == [UIFont class] || ([name isEqual:@"UICFFont"])) {
+        JAVA_OBJECT jobj = __NEW_org_xmlvm_iphone_UIFont();
+        org_xmlvm_iphone_UIFont_INTERNAL_CONSTRUCTOR(jobj, obj);
+        //TODO [obj retain] + XMLVM_REGISTER_FINALIZER?
+        return jobj;
+    }
+    return JAVA_NULL;
+}
+
 //XMLVM_END_IMPLEMENTATION
 
 
@@ -286,6 +298,7 @@ void __INIT_IMPL_org_xmlvm_iphone_UIFont()
     __CLASS_org_xmlvm_iphone_UIFont_2ARRAY = XMLVM_CREATE_ARRAY_CLASS_OBJECT(__CLASS_org_xmlvm_iphone_UIFont_1ARRAY);
     __CLASS_org_xmlvm_iphone_UIFont_3ARRAY = XMLVM_CREATE_ARRAY_CLASS_OBJECT(__CLASS_org_xmlvm_iphone_UIFont_2ARRAY);
     //XMLVM_BEGIN_WRAPPER[__INIT_org_xmlvm_iphone_UIFont]
+    xmlvm_register_wrapper_creator(__WRAPPER_CREATOR);
     //XMLVM_END_WRAPPER
 
     __TIB_org_xmlvm_iphone_UIFont.classInitialized = 1;

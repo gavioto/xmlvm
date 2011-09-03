@@ -24,10 +24,11 @@ package android.widget;
 import org.xmlvm.iphone.CGRect;
 import org.xmlvm.iphone.CGSize;
 import org.xmlvm.iphone.NSString;
+import org.xmlvm.iphone.UIColor;
 import org.xmlvm.iphone.UIFont;
+import org.xmlvm.iphone.UILabel;
 import org.xmlvm.iphone.UILineBreakMode;
 import org.xmlvm.iphone.UIScreen;
-import org.xmlvm.iphone.UITextField;
 import org.xmlvm.iphone.UIView;
 
 import android.content.Context;
@@ -65,12 +66,12 @@ public class TextView extends View {
     }
 
     private void initTextView(Context c, AttributeSet attrs) {
-        if (attrs != null && attrs.getAttributeCount() > 0) {
-            parseTextViewAttributes(attrs);
-        }
         setBackgroundColor(XMLVMTheme.NOBACKGROUND_COLOR);
         setTextColor(XMLVMTheme.TEXT_COLOR);
         xmlvmGetViewHandler().setUserInteractionEnabled(false);
+        if (attrs != null && attrs.getAttributeCount() > 0) {
+            parseTextViewAttributes(attrs);
+        }
     }
 
     @Override
@@ -99,13 +100,14 @@ public class TextView extends View {
     }
 
     public void setText(String string) {
+        string = string.replaceAll("\\n", "");
         this.text = string;
-        ((UITextField) xmlvmGetViewHandler().getContentView()).setText(string);
+        ((UILabel) xmlvmGetViewHandler().getContentView()).setText(string);
         requestLayout();
     }
 
     public String getText() {
-        return ((UITextField) xmlvmGetViewHandler().getContentView()).getText();
+        return ((UILabel) xmlvmGetViewHandler().getContentView()).getText();
     }
 
     public final void setText(CharSequence text) {
@@ -121,7 +123,7 @@ public class TextView extends View {
     }
 
     public void setTextSize(float size) {
-        UITextField content = (UITextField) xmlvmGetViewHandler().getContentView();
+        UILabel content = (UILabel) xmlvmGetViewHandler().getContentView();
         UIFont font = content.getFont();
         if (font == null) {
             content.setFont(UIFont.systemFontOfSize(size));
@@ -131,7 +133,7 @@ public class TextView extends View {
     }
 
     public float getTextSize() {
-        UIFont font = ((UITextField) xmlvmGetViewHandler().getContentView()).getFont();
+        UIFont font = ((UILabel) xmlvmGetViewHandler().getContentView()).getFont();
         if (font == null) {
             return UIFont.labelFontSize();
         } else {
@@ -145,14 +147,17 @@ public class TextView extends View {
 
     public void setTypeface(Typeface tf) {
         if (tf != null) {
-            UITextField content = (UITextField) xmlvmGetViewHandler().getContentView();
+            UILabel content = (UILabel) xmlvmGetViewHandler().getContentView();
             content.setFont(tf.xmlvmGetUIFont(content.getFont().pointSize()));
         }
     }
 
     @Override
     protected UIView xmlvmNewUIView(AttributeSet attrs) {
-        return new UITextField();
+        UILabel label = new UILabel();
+        label.setLineBreakMode(UILineBreakMode.WordWrap);
+        label.setNumberOfLines(0);
+        return label;
     }
 
     private void parseTextViewAttributes(AttributeSet attrs) {
@@ -193,6 +198,11 @@ public class TextView extends View {
             setTypeface(null, style);
         }
 
+        value = attrs.getAttributeValue(null, "textColor");
+        if (value != null && value.length() > 0) {
+            setTextColor(this.xmlvmParseColorValue(value));
+        }
+        
         value = attrs.getAttributeValue(null, "hint");
         if (value != null && value.length() > 0) {
             if (value.startsWith("@string/")) {
@@ -228,12 +238,12 @@ public class TextView extends View {
     }
 
     public void setTextColor(int color) {
-        ((UITextField) xmlvmGetViewHandler().getContentView()).setTextColor(xmlvmConvertIntToUIColor(color));
+        ((UILabel) xmlvmGetViewHandler().getContentView()).setTextColor(xmlvmConvertIntToUIColor(color));
     }
 
     public void setGravity(int gravity) {
         this.gravity = gravity;
-        ((UITextField) xmlvmGetViewHandler().getContentView()).setTextAlignment(xmlvmGetAlignmentFromGravity(gravity));
+        ((UILabel) xmlvmGetViewHandler().getContentView()).setTextAlignment(xmlvmGetAlignmentFromGravity(gravity));
     }
 
     public int getGravity() {
@@ -292,7 +302,7 @@ public class TextView extends View {
     }
 
     protected UIFont xmlvmGetUIFont() {
-        return ((UITextField) xmlvmGetViewHandler().getContentView()).getFont();
+        return ((UILabel) xmlvmGetViewHandler().getContentView()).getFont();
     }
 
     protected int xmlvmGetInsetsX() {
@@ -320,7 +330,7 @@ public class TextView extends View {
     }
 
     public void setHint(CharSequence hint) {
-        ((UITextField) xmlvmGetViewHandler().getContentView()).setPlaceholder(hint.toString());
+        Assert.NOT_IMPLEMENTED();
     }
 
 }

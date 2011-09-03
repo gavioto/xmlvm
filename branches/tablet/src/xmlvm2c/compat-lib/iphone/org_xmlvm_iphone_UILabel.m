@@ -498,11 +498,10 @@ void org_xmlvm_iphone_UILabel___INIT____org_xmlvm_iphone_CGRect(JAVA_OBJECT me, 
 void org_xmlvm_iphone_UILabel_setText___java_lang_String(JAVA_OBJECT me, JAVA_OBJECT n1)
 {
     //XMLVM_BEGIN_WRAPPER[org_xmlvm_iphone_UILabel_setText___java_lang_String]
-    NSString* nsStr = toNSString(n1);
-	org_xmlvm_iphone_UILabel *thiz = me;
-	UILabel* obj = thiz->fields.org_xmlvm_iphone_NSObject.wrappedObjCObj;
-    [obj setText:nsStr];
-    [nsStr release];
+    XMLVM_VAR_THIZ;
+    XMLVM_VAR_NSString(str, n1);
+    [thiz setText:str];
+    [str release];
     //XMLVM_END_WRAPPER
 }
 
@@ -526,6 +525,7 @@ JAVA_OBJECT org_xmlvm_iphone_UILabel_getFont__(JAVA_OBJECT me)
 {
     //XMLVM_BEGIN_WRAPPER[org_xmlvm_iphone_UILabel_getFont__]
     XMLVM_VAR_THIZ;
+    if (!__TIB_org_xmlvm_iphone_UIFont.classInitialized) __INIT_org_xmlvm_iphone_UIFont();
     return xmlvm_get_associated_c_object(thiz.font);
     //XMLVM_END_WRAPPER
 }
@@ -549,9 +549,9 @@ JAVA_OBJECT org_xmlvm_iphone_UILabel_getTextColor__(JAVA_OBJECT me)
 void org_xmlvm_iphone_UILabel_setTextAlignment___int(JAVA_OBJECT me, JAVA_INT n1)
 {
     //XMLVM_BEGIN_WRAPPER[org_xmlvm_iphone_UILabel_setTextAlignment___int]
-    org_xmlvm_iphone_UILabel* thiz = (org_xmlvm_iphone_UILabel*) me;
-    UILabel* obj = thiz->fields.org_xmlvm_iphone_NSObject.wrappedObjCObj;
-    [obj setTextAlignment:n1];
+    XMLVM_VAR_THIZ;
+    XMLVM_VAR_INT(align, n1);
+    [thiz setTextAlignment:align];
     //XMLVM_END_WRAPPER
 }
 

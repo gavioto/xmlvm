@@ -460,10 +460,9 @@ JAVA_OBJECT org_xmlvm_iphone_NSString_sizeWithFont___java_lang_String_org_xmlvm_
 {
     if (!__TIB_org_xmlvm_iphone_NSString.classInitialized) __INIT_org_xmlvm_iphone_NSString();
     //XMLVM_BEGIN_WRAPPER[org_xmlvm_iphone_NSString_sizeWithFont___java_lang_String_org_xmlvm_iphone_UIFont]
-    NSString* str = toNSString(n1);
-    org_xmlvm_iphone_UIFont* font = n2;
-    UIFont* font_ = font->fields.org_xmlvm_iphone_NSObject.wrappedObjCObj;
-    CGSize size_ = [str sizeWithFont:font_];
+    XMLVM_VAR_NSString(str, n1);
+    XMLVM_VAR_IOS(UIFont, font, n2);
+    CGSize size_ = [str sizeWithFont:font];
     [str release];
     org_xmlvm_iphone_CGSize* size = __NEW_org_xmlvm_iphone_CGSize();
     org_xmlvm_iphone_CGSize___INIT____float_float(size, size_.width, size_.height);

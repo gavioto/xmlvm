@@ -137,8 +137,7 @@ static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 
     if (([obj class] == [UIView class]) || ([name isEqual:@"UILayoutContainerView"])) {
         JAVA_OBJECT jobj = __NEW_org_xmlvm_iphone_UIView();
-        org_xmlvm_iphone_UIView_INTERNAL_CONSTRUCTOR(jobj, obj);
-        XMLVM_FINALIZE(jobj, __DELETE_org_xmlvm_iphone_UIView);
+        org_xmlvm_iphone_UIView_INTERNAL_CONSTRUCTOR(jobj, [obj retain]);
         return jobj;
     }
     return JAVA_NULL;

@@ -22,6 +22,23 @@ JAVA_OBJECT __CLASS_org_xmlvm_iphone_UIScreen_3ARRAY;
 //XMLVM_BEGIN_IMPLEMENTATION
 #import "UIKit/UIScreen.h"
 #include "org_xmlvm_iphone_CGRect.h"
+
+void org_xmlvm_iphone_UIScreen_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me, NSObject* wrappedObjCObj)
+{
+    org_xmlvm_iphone_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObjCObj);
+}
+
+static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
+{
+    if ([obj class] == [UIScreen class]) {
+        JAVA_OBJECT jobj = __NEW_org_xmlvm_iphone_UIScreen();
+        org_xmlvm_iphone_UIScreen_INTERNAL_CONSTRUCTOR(jobj, [obj retain]);
+        XMLVM_FINALIZE(jobj, __DELETE_org_xmlvm_iphone_UIScreen);
+        return jobj;
+    }
+    return JAVA_NULL;
+}
+
 //XMLVM_END_IMPLEMENTATION
 
 
@@ -182,6 +199,7 @@ void __INIT_IMPL_org_xmlvm_iphone_UIScreen()
     __CLASS_org_xmlvm_iphone_UIScreen_3ARRAY = XMLVM_CREATE_ARRAY_CLASS_OBJECT(__CLASS_org_xmlvm_iphone_UIScreen_2ARRAY);
     org_xmlvm_iphone_UIScreen___CLINIT_();
     //XMLVM_BEGIN_WRAPPER[__INIT_org_xmlvm_iphone_UIScreen]
+    xmlvm_register_wrapper_creator(__WRAPPER_CREATOR);
     //XMLVM_END_WRAPPER
 
     __TIB_org_xmlvm_iphone_UIScreen.classInitialized = 1;
@@ -190,6 +208,7 @@ void __INIT_IMPL_org_xmlvm_iphone_UIScreen()
 void __DELETE_org_xmlvm_iphone_UIScreen(void* me, void* client_data)
 {
     //XMLVM_BEGIN_WRAPPER[__DELETE_org_xmlvm_iphone_UIScreen]
+    __DELETE_org_xmlvm_iphone_NSObject(me, client_data);
     //XMLVM_END_WRAPPER
 }
 
@@ -219,9 +238,7 @@ JAVA_OBJECT org_xmlvm_iphone_UIScreen_mainScreen__()
 {
     if (!__TIB_org_xmlvm_iphone_UIScreen.classInitialized) __INIT_org_xmlvm_iphone_UIScreen();
     //XMLVM_BEGIN_WRAPPER[org_xmlvm_iphone_UIScreen_mainScreen__]
-	org_xmlvm_iphone_UIScreen* toRet = __NEW_org_xmlvm_iphone_UIScreen();
-    org_xmlvm_iphone_NSObject_INTERNAL_CONSTRUCTOR(toRet, [UIScreen mainScreen]);
-	return toRet;
+    return xmlvm_get_associated_c_object([UIScreen mainScreen]);
     //XMLVM_END_WRAPPER
 }
 

@@ -31,7 +31,7 @@ static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
     if ([obj class] == [NSError class]) {
         JAVA_OBJECT jobj = __NEW_org_xmlvm_iphone_NSError();
-        org_xmlvm_iphone_NSError_INTERNAL_CONSTRUCTOR(jobj, obj);
+        org_xmlvm_iphone_NSError_INTERNAL_CONSTRUCTOR(jobj, [obj retain]);
         return jobj;
     }
     return JAVA_NULL;
@@ -254,6 +254,7 @@ JAVA_OBJECT __NEW_org_xmlvm_iphone_NSError()
     me->tib = &__TIB_org_xmlvm_iphone_NSError;
     __INIT_INSTANCE_MEMBERS_org_xmlvm_iphone_NSError(me);
     //XMLVM_BEGIN_WRAPPER[__NEW_org_xmlvm_iphone_NSError]
+    XMLVM_FINALIZE(me, __DELETE_org_xmlvm_iphone_NSError);
     //XMLVM_END_WRAPPER
     return me;
 }

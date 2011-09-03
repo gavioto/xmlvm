@@ -268,6 +268,7 @@ void org_xmlvm_iphone_NSObject_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me, NSObject* wr
     java_lang_Object___INIT___(me);
     org_xmlvm_iphone_NSObject* thiz = (org_xmlvm_iphone_NSObject*) me;
     thiz->fields.org_xmlvm_iphone_NSObject.wrappedObjCObj = wrappedObjCObj;
+    xmlvm_set_associated_c_object(me, wrappedObjCObj);
 }
 
 //XMLVM_END_IMPLEMENTATION
@@ -483,7 +484,8 @@ void __DELETE_org_xmlvm_iphone_NSObject(void* me, void* client_data)
      * object that needs to be wrapped.
      */
     XMLVM_VAR_THIZ;
-	[thiz release];
+    [thiz removeExtraMembers];
+    [thiz release];
     //XMLVM_END_WRAPPER
 }
 

@@ -36,8 +36,7 @@ static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
     NSString* name = NSStringFromClass([obj class]);
     if ([obj class] == [UIFont class] || ([name isEqual:@"UICFFont"])) {
         JAVA_OBJECT jobj = __NEW_org_xmlvm_iphone_UIFont();
-        org_xmlvm_iphone_UIFont_INTERNAL_CONSTRUCTOR(jobj, obj);
-        //TODO [obj retain] + XMLVM_REGISTER_FINALIZER?
+        org_xmlvm_iphone_UIFont_INTERNAL_CONSTRUCTOR(jobj, [obj retain]);
         return jobj;
     }
     return JAVA_NULL;
@@ -340,12 +339,9 @@ JAVA_OBJECT org_xmlvm_iphone_UIFont_systemFontOfSize___float(JAVA_FLOAT n1)
     //XMLVM_BEGIN_WRAPPER[org_xmlvm_iphone_UIFont_systemFontOfSize___float]
     NSAutoreleasePool* p = [[NSAutoreleasePool alloc] init];
     UIFont* font = [UIFont systemFontOfSize: n1];
-    [font retain];
+    JAVA_OBJECT jfont = xmlvm_get_associated_c_object(font);
     [p release];
-    
-    org_xmlvm_iphone_UIFont* font_ = __NEW_org_xmlvm_iphone_UIFont();
-    org_xmlvm_iphone_UIFont_INTERNAL_CONSTRUCTOR(font_, font);
-    return font_;
+    return jfont;
     //XMLVM_END_WRAPPER
 }
 
@@ -368,17 +364,14 @@ JAVA_OBJECT org_xmlvm_iphone_UIFont_italicSystemFontOfSize___float(JAVA_FLOAT n1
 JAVA_OBJECT org_xmlvm_iphone_UIFont_fontWithSize___float(JAVA_OBJECT me, JAVA_FLOAT n1)
 {
     //XMLVM_BEGIN_WRAPPER[org_xmlvm_iphone_UIFont_fontWithSize___float]
-    org_xmlvm_iphone_UIFont* thiz_ = me;
-    UIFont* thiz = thiz_->fields.org_xmlvm_iphone_NSObject.wrappedObjCObj;
+    XMLVM_VAR_THIZ;
+    XMLVM_VAR_FLOAT(size, n1);
     
     NSAutoreleasePool* p = [[NSAutoreleasePool alloc] init];
     UIFont* font = [thiz fontWithSize: n1];
-    [font retain];
+    JAVA_OBJECT jfont = xmlvm_get_associated_c_object(font);
     [p release];
-    
-    org_xmlvm_iphone_UIFont* font_ = __NEW_org_xmlvm_iphone_UIFont();
-    org_xmlvm_iphone_UIFont_INTERNAL_CONSTRUCTOR(font_, font);
-    return font_;
+    return jfont;
     //XMLVM_END_WRAPPER
 }
 
@@ -390,12 +383,10 @@ JAVA_OBJECT org_xmlvm_iphone_UIFont_fontWithNameSize___java_lang_String_float(JA
     NSString* name = toNSString(name_);
     NSAutoreleasePool* p = [[NSAutoreleasePool alloc] init];
     UIFont* font = [UIFont fontWithName: name size: n2];
-    [font retain];
+    JAVA_OBJECT jfont = xmlvm_get_associated_c_object(font);
     [p release];
     [name release];
-    org_xmlvm_iphone_UIFont* font_ = __NEW_org_xmlvm_iphone_UIFont();
-    org_xmlvm_iphone_UIFont_INTERNAL_CONSTRUCTOR(font_, font);
-    return font_;
+    return jfont;
     //XMLVM_END_WRAPPER
 }
 
@@ -418,8 +409,7 @@ JAVA_FLOAT org_xmlvm_iphone_UIFont_labelFontSize__()
 JAVA_OBJECT org_xmlvm_iphone_UIFont_familyName__(JAVA_OBJECT me)
 {
     //XMLVM_BEGIN_WRAPPER[org_xmlvm_iphone_UIFont_familyName__]
-    org_xmlvm_iphone_UIFont* thiz_ = me;
-    UIFont* thiz = thiz_->fields.org_xmlvm_iphone_NSObject.wrappedObjCObj;
+    XMLVM_VAR_THIZ;
     return toJavaString(thiz.familyName);
     //XMLVM_END_WRAPPER
 }
@@ -434,8 +424,7 @@ JAVA_OBJECT org_xmlvm_iphone_UIFont_fontName__(JAVA_OBJECT me)
 JAVA_FLOAT org_xmlvm_iphone_UIFont_pointSize__(JAVA_OBJECT me)
 {
     //XMLVM_BEGIN_WRAPPER[org_xmlvm_iphone_UIFont_pointSize__]
-    org_xmlvm_iphone_UIFont* thiz_ = me;
-    UIFont* thiz = thiz_->fields.org_xmlvm_iphone_NSObject.wrappedObjCObj;
+    XMLVM_VAR_THIZ;
     return thiz.pointSize;
     //XMLVM_END_WRAPPER
 }

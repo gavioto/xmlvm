@@ -141,7 +141,7 @@ static char memberKey; // key for associative reference for member variables
 
 - (void) removeExtraMembers
 {
-    objc_removeAssociatedObjects(self);
+    objc_setAssociatedObject(self, &memberKey, nil, OBJC_ASSOCIATION_RETAIN);
 }
 
 @end

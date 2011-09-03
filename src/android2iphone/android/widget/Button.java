@@ -106,6 +106,27 @@ public class Button extends TextView {
     }
 
     @Override
+    public void setTextSize(float size) {
+        UIButton content = (UIButton) xmlvmGetViewHandler().getContentView();
+        UIFont font = content.getFont();
+        if (font == null) {
+            content.setFont(UIFont.systemFontOfSize(size));
+        } else {
+            content.setFont(font.fontWithSize(size));
+        }
+    }
+
+    @Override
+    public float getTextSize() {
+        UIFont font = ((UIButton) xmlvmGetViewHandler().getContentView()).getFont();
+        if (font == null) {
+            return UIFont.labelFontSize();
+        } else {
+            return font.pointSize();
+        }
+    }
+
+    @Override
     public void setGravity(int gravity) {
         this.gravity = gravity;
         // gravity not supported under iOS UIButton

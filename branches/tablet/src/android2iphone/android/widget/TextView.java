@@ -24,7 +24,6 @@ package android.widget;
 import org.xmlvm.iphone.CGRect;
 import org.xmlvm.iphone.CGSize;
 import org.xmlvm.iphone.NSString;
-import org.xmlvm.iphone.UIColor;
 import org.xmlvm.iphone.UIFont;
 import org.xmlvm.iphone.UILabel;
 import org.xmlvm.iphone.UILineBreakMode;
@@ -100,7 +99,7 @@ public class TextView extends View {
     }
 
     public void setText(String string) {
-        string = string.replaceAll("\\n", "");
+        //string = string.replaceAll("\\n", "");
         this.text = string;
         ((UILabel) xmlvmGetViewHandler().getContentView()).setText(string);
         requestLayout();

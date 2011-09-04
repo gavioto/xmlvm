@@ -208,7 +208,7 @@ public class ImageView extends View {
             view.setContentMode(UIViewContentMode.ScaleAspectFit);
             break;
         case FIT_CENTER:
-            view.setContentMode(UIViewContentMode.ScaleAspectFill);
+            view.setContentMode(UIViewContentMode.ScaleAspectFit);
             break;
         case FIT_END:
             Assert.NOT_IMPLEMENTED();

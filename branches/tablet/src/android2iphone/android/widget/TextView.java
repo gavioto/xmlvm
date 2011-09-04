@@ -20,11 +20,11 @@
 
 package android.widget;
 
-
 import org.xmlvm.iphone.CGRect;
 import org.xmlvm.iphone.CGSize;
 import org.xmlvm.iphone.NSString;
 import org.xmlvm.iphone.UIFont;
+import org.xmlvm.iphone.UIInterfaceOrientation;
 import org.xmlvm.iphone.UILabel;
 import org.xmlvm.iphone.UILineBreakMode;
 import org.xmlvm.iphone.UIScreen;
@@ -32,6 +32,7 @@ import org.xmlvm.iphone.UIView;
 
 import android.content.Context;
 import android.graphics.Typeface;
+import android.internal.AndroidAppLauncher;
 import android.internal.Assert;
 import android.internal.Dimension;
 import android.internal.XMLVMTheme;
@@ -99,7 +100,8 @@ public class TextView extends View {
     }
 
     public void setText(String string) {
-        //string = string.replaceAll("\\n", "");
+        string = string.replaceAll("\\n", "");
+        string = string.replaceAll("\\\\n", "\n");
         this.text = string;
         ((UILabel) xmlvmGetViewHandler().getContentView()).setText(string);
         requestLayout();
@@ -201,7 +203,7 @@ public class TextView extends View {
         if (value != null && value.length() > 0) {
             setTextColor(this.xmlvmParseColorValue(value));
         }
-        
+
         value = attrs.getAttributeValue(null, "hint");
         if (value != null && value.length() > 0) {
             if (value.startsWith("@string/")) {
@@ -237,12 +239,14 @@ public class TextView extends View {
     }
 
     public void setTextColor(int color) {
-        ((UILabel) xmlvmGetViewHandler().getContentView()).setTextColor(xmlvmConvertIntToUIColor(color));
+        ((UILabel) xmlvmGetViewHandler().getContentView())
+                .setTextColor(xmlvmConvertIntToUIColor(color));
     }
 
     public void setGravity(int gravity) {
         this.gravity = gravity;
-        ((UILabel) xmlvmGetViewHandler().getContentView()).setTextAlignment(xmlvmGetAlignmentFromGravity(gravity));
+        ((UILabel) xmlvmGetViewHandler().getContentView())
+                .setTextAlignment(xmlvmGetAlignmentFromGravity(gravity));
     }
 
     public int getGravity() {
@@ -269,6 +273,13 @@ public class TextView extends View {
     protected CGSize xmlvmGetTextSize() {
         UIScreen screen = UIScreen.mainScreen();
         CGRect rect = screen.getApplicationFrame();
+        int orientation = AndroidAppLauncher.getApplication().xmlvmGetCurrentInterfaceOrientation();
+        if (orientation == UIInterfaceOrientation.LandscapeLeft
+                || orientation == UIInterfaceOrientation.LandscapeRight) {
+            float tmp = rect.size.width;
+            rect.size.width = rect.size.height;
+            rect.size.height = tmp;
+        }
         CGSize totalPaddings = computeTotalPadding();
         CGSize constraints = new CGSize(rect.size.width - totalPaddings.width, rect.size.height
                 - totalPaddings.height);
@@ -314,13 +325,13 @@ public class TextView extends View {
 
     protected int xmlvmGetAlignmentFromGravity(int gravity) {
         switch (gravity & Gravity.HORIZONTAL_GRAVITY_MASK) {
-            case Gravity.CENTER_HORIZONTAL:
-                return UITextAlignment.Center;
-            case Gravity.RIGHT:
-                return UITextAlignment.Right;
-            case Gravity.LEFT:
-            default:
-                return UITextAlignment.Left;
+        case Gravity.CENTER_HORIZONTAL:
+            return UITextAlignment.Center;
+        case Gravity.RIGHT:
+            return UITextAlignment.Right;
+        case Gravity.LEFT:
+        default:
+            return UITextAlignment.Left;
         }
     }
 

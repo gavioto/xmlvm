@@ -430,6 +430,8 @@ void __DELETE_org_xmlvm_iphone_UITableViewDelegate(void* me, void* client_data)
 void __INIT_INSTANCE_MEMBERS_org_xmlvm_iphone_UITableViewDelegate(JAVA_OBJECT me, int derivedClassWillRegisterFinalizer)
 {
     __INIT_INSTANCE_MEMBERS_org_xmlvm_iphone_NSObject(me, 0 || derivedClassWillRegisterFinalizer);
+    //XMLVM_BEGIN_WRAPPER[__INIT_INSTANCE_MEMBERS_org_xmlvm_iphone_UITableViewDelegate]
+    //XMLVM_END_WRAPPER
 }
 
 JAVA_OBJECT __NEW_org_xmlvm_iphone_UITableViewDelegate()
@@ -456,7 +458,6 @@ void org_xmlvm_iphone_UITableViewDelegate___INIT___(JAVA_OBJECT me)
     //XMLVM_BEGIN_WRAPPER[org_xmlvm_iphone_UITableViewDelegate___INIT___]
     UITableViewDelegateWrapper* wrapper = [[UITableViewDelegateWrapper alloc] initWithDelegate: me];
     org_xmlvm_iphone_NSObject_INTERNAL_CONSTRUCTOR(me, wrapper);
-    XMLVM_FINALIZE(me, __DELETE_org_xmlvm_iphone_UITableViewDelegate);
     //XMLVM_END_WRAPPER
 }
 

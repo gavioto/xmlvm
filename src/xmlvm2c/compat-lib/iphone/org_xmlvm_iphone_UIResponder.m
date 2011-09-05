@@ -441,6 +441,8 @@ void __INIT_INSTANCE_MEMBERS_org_xmlvm_iphone_UIResponder(JAVA_OBJECT me, int de
 {
     __INIT_INSTANCE_MEMBERS_org_xmlvm_iphone_NSObject(me, 0 || derivedClassWillRegisterFinalizer);
     ((org_xmlvm_iphone_UIResponder*) me)->fields.org_xmlvm_iphone_UIResponder.callDelegates_ = 0;
+    //XMLVM_BEGIN_WRAPPER[__INIT_INSTANCE_MEMBERS_org_xmlvm_iphone_UIResponder]
+    //XMLVM_END_WRAPPER
 }
 
 JAVA_OBJECT __NEW_org_xmlvm_iphone_UIResponder()
@@ -450,7 +452,6 @@ JAVA_OBJECT __NEW_org_xmlvm_iphone_UIResponder()
     me->tib = &__TIB_org_xmlvm_iphone_UIResponder;
     __INIT_INSTANCE_MEMBERS_org_xmlvm_iphone_UIResponder(me, 0);
     //XMLVM_BEGIN_WRAPPER[__NEW_org_xmlvm_iphone_UIResponder]
-    XMLVM_FINALIZE(me, __DELETE_org_xmlvm_iphone_UIResponder);
     //XMLVM_END_WRAPPER
     return me;
 }

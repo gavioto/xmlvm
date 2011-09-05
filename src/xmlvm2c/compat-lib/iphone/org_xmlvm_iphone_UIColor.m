@@ -385,6 +385,8 @@ void __DELETE_org_xmlvm_iphone_UIColor(void* me, void* client_data)
 void __INIT_INSTANCE_MEMBERS_org_xmlvm_iphone_UIColor(JAVA_OBJECT me, int derivedClassWillRegisterFinalizer)
 {
     __INIT_INSTANCE_MEMBERS_org_xmlvm_iphone_NSObject(me, 0 || derivedClassWillRegisterFinalizer);
+    //XMLVM_BEGIN_WRAPPER[__INIT_INSTANCE_MEMBERS_org_xmlvm_iphone_UIColor]
+    //XMLVM_END_WRAPPER
 }
 
 JAVA_OBJECT __NEW_org_xmlvm_iphone_UIColor()
@@ -652,7 +654,7 @@ JAVA_OBJECT org_xmlvm_iphone_UIColor_colorWithRGBA___float_float_float_float(JAV
 {
     if (!__TIB_org_xmlvm_iphone_UIColor.classInitialized) __INIT_org_xmlvm_iphone_UIColor();
     //XMLVM_BEGIN_WRAPPER[org_xmlvm_iphone_UIColor_colorWithRGBA___float_float_float_float]
-    UIColor* obj = [UIColor colorWithRed:n1 green:n2 blue:n3 alpha:n4];
+    UIColor* obj = [[UIColor alloc] initWithRed:n1 green:n2 blue:n3 alpha:n4];
     JAVA_OBJECT color = __NEW_org_xmlvm_iphone_UIColor();
     org_xmlvm_iphone_UIColor_INTERNAL_CONSTRUCTOR(color, obj);
     return color;

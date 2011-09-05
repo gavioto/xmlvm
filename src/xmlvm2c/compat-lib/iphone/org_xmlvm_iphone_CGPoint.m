@@ -228,6 +228,8 @@ void __INIT_INSTANCE_MEMBERS_org_xmlvm_iphone_CGPoint(JAVA_OBJECT me, int derive
     __INIT_INSTANCE_MEMBERS_org_xmlvm_iphone_NSObject(me, 0 || derivedClassWillRegisterFinalizer);
     ((org_xmlvm_iphone_CGPoint*) me)->fields.org_xmlvm_iphone_CGPoint.x_ = 0;
     ((org_xmlvm_iphone_CGPoint*) me)->fields.org_xmlvm_iphone_CGPoint.y_ = 0;
+    //XMLVM_BEGIN_WRAPPER[__INIT_INSTANCE_MEMBERS_org_xmlvm_iphone_CGPoint]
+    //XMLVM_END_WRAPPER
 }
 
 JAVA_OBJECT __NEW_org_xmlvm_iphone_CGPoint()

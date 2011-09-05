@@ -1114,6 +1114,8 @@ void __INIT_INSTANCE_MEMBERS_org_xmlvm_iphone_UIViewController(JAVA_OBJECT me, i
 {
     __INIT_INSTANCE_MEMBERS_org_xmlvm_iphone_UIResponder(me, 0 || derivedClassWillRegisterFinalizer);
     ((org_xmlvm_iphone_UIViewController*) me)->fields.org_xmlvm_iphone_UIViewController.pcontroller_ = (org_xmlvm_iphone_UIViewController*) JAVA_NULL;
+    //XMLVM_BEGIN_WRAPPER[__INIT_INSTANCE_MEMBERS_org_xmlvm_iphone_UIViewController]
+    //XMLVM_END_WRAPPER
 }
 
 JAVA_OBJECT __NEW_org_xmlvm_iphone_UIViewController()
@@ -1148,7 +1150,6 @@ void org_xmlvm_iphone_UIViewController___INIT___(JAVA_OBJECT me)
     UIViewControllerWrapper* obj = [[UIViewControllerWrapper alloc] init];
     obj->wrappedCObj = me;
     org_xmlvm_iphone_UIResponder_INTERNAL_CONSTRUCTOR(me, obj);
-    XMLVM_FINALIZE(me, __DELETE_org_xmlvm_iphone_UIViewController);
     //XMLVM_END_WRAPPER
 }
 

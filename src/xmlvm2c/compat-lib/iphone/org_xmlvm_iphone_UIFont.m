@@ -313,6 +313,8 @@ void __DELETE_org_xmlvm_iphone_UIFont(void* me, void* client_data)
 void __INIT_INSTANCE_MEMBERS_org_xmlvm_iphone_UIFont(JAVA_OBJECT me, int derivedClassWillRegisterFinalizer)
 {
     __INIT_INSTANCE_MEMBERS_org_xmlvm_iphone_NSObject(me, 0 || derivedClassWillRegisterFinalizer);
+    //XMLVM_BEGIN_WRAPPER[__INIT_INSTANCE_MEMBERS_org_xmlvm_iphone_UIFont]
+    //XMLVM_END_WRAPPER
 }
 
 JAVA_OBJECT __NEW_org_xmlvm_iphone_UIFont()
@@ -322,7 +324,6 @@ JAVA_OBJECT __NEW_org_xmlvm_iphone_UIFont()
     me->tib = &__TIB_org_xmlvm_iphone_UIFont;
     __INIT_INSTANCE_MEMBERS_org_xmlvm_iphone_UIFont(me, 0);
     //XMLVM_BEGIN_WRAPPER[__NEW_org_xmlvm_iphone_UIFont]
-    XMLVM_FINALIZE(me, __DELETE_org_xmlvm_iphone_UIFont);
     //XMLVM_END_WRAPPER
     return me;
 }

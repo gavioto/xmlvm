@@ -1402,6 +1402,8 @@ void __DELETE_org_xmlvm_iphone_UIView(void* me, void* client_data)
 void __INIT_INSTANCE_MEMBERS_org_xmlvm_iphone_UIView(JAVA_OBJECT me, int derivedClassWillRegisterFinalizer)
 {
     __INIT_INSTANCE_MEMBERS_org_xmlvm_iphone_UIResponder(me, 0 || derivedClassWillRegisterFinalizer);
+    //XMLVM_BEGIN_WRAPPER[__INIT_INSTANCE_MEMBERS_org_xmlvm_iphone_UIView]
+    //XMLVM_END_WRAPPER
 }
 
 JAVA_OBJECT __NEW_org_xmlvm_iphone_UIView()
@@ -1411,16 +1413,6 @@ JAVA_OBJECT __NEW_org_xmlvm_iphone_UIView()
     me->tib = &__TIB_org_xmlvm_iphone_UIView;
     __INIT_INSTANCE_MEMBERS_org_xmlvm_iphone_UIView(me, 0);
     //XMLVM_BEGIN_WRAPPER[__NEW_org_xmlvm_iphone_UIView]
-	/*********************************************************************************************
-	 * README: Ordinarily the garbage collector will just silently release the memory of
-	 * garbage collected objects. If some cleanup needs to be done before this happens, we
-	 * need to register a so-called finalizer for this object with the garbage collector.
-	 * Since the finalization mechanism is relatively expensive, we only do it for those
-	 * objects for which this is necessary. The finalizer to be invoked should always be
-	 * the respective __DELETE_* function.
-	 */
-    // Tell the GC to finalize us
-    XMLVM_FINALIZE(me, __DELETE_org_xmlvm_iphone_UIView);
     //XMLVM_END_WRAPPER
     return me;
 }

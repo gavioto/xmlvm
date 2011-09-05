@@ -244,6 +244,8 @@ void __DELETE_org_xmlvm_iphone_NSXMLParser(void* me, void* client_data)
 void __INIT_INSTANCE_MEMBERS_org_xmlvm_iphone_NSXMLParser(JAVA_OBJECT me, int derivedClassWillRegisterFinalizer)
 {
     __INIT_INSTANCE_MEMBERS_org_xmlvm_iphone_NSObject(me, 0 || derivedClassWillRegisterFinalizer);
+    //XMLVM_BEGIN_WRAPPER[__INIT_INSTANCE_MEMBERS_org_xmlvm_iphone_NSXMLParser]
+    //XMLVM_END_WRAPPER
 }
 
 JAVA_OBJECT __NEW_org_xmlvm_iphone_NSXMLParser()
@@ -271,7 +273,6 @@ void org_xmlvm_iphone_NSXMLParser___INIT____org_xmlvm_iphone_NSData(JAVA_OBJECT 
     org_xmlvm_iphone_NSData* data = n1;
     NSXMLParser* parser = [[NSXMLParser alloc] initWithData:data->fields.org_xmlvm_iphone_NSObject.wrappedObjCObj];
     org_xmlvm_iphone_NSObject_INTERNAL_CONSTRUCTOR(me, parser);
-    XMLVM_FINALIZE(me, __DELETE_org_xmlvm_iphone_NSXMLParser);
     //XMLVM_END_WRAPPER
 }
 

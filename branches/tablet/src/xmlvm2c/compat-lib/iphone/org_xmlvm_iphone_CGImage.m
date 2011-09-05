@@ -26,8 +26,6 @@ JAVA_OBJECT __CLASS_org_xmlvm_iphone_CGImage_3ARRAY;
 void org_xmlvm_iphone_CGImage_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me, CGImageRef wrappedImage)
 {
     org_xmlvm_iphone_NSObject_INTERNAL_CONSTRUCTOR(me, (NSObject*) wrappedImage);
-    // Tell the GC to finalize us
-//    XMLVM_FINALIZE(me, __DELETE_org_xmlvm_iphone_CGImage);
 }
 
 //XMLVM_END_IMPLEMENTATION
@@ -192,6 +190,8 @@ void __DELETE_org_xmlvm_iphone_CGImage(void* me, void* client_data)
 void __INIT_INSTANCE_MEMBERS_org_xmlvm_iphone_CGImage(JAVA_OBJECT me, int derivedClassWillRegisterFinalizer)
 {
     __INIT_INSTANCE_MEMBERS_org_xmlvm_iphone_NSObject(me, 0 || derivedClassWillRegisterFinalizer);
+    //XMLVM_BEGIN_WRAPPER[__INIT_INSTANCE_MEMBERS_org_xmlvm_iphone_CGImage]
+    //XMLVM_END_WRAPPER
 }
 
 JAVA_OBJECT __NEW_org_xmlvm_iphone_CGImage()

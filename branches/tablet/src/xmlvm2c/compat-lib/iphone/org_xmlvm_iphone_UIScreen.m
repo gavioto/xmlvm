@@ -33,7 +33,6 @@ static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
     if ([obj class] == [UIScreen class]) {
         JAVA_OBJECT jobj = __NEW_org_xmlvm_iphone_UIScreen();
         org_xmlvm_iphone_UIScreen_INTERNAL_CONSTRUCTOR(jobj, [obj retain]);
-        XMLVM_FINALIZE(jobj, __DELETE_org_xmlvm_iphone_UIScreen);
         return jobj;
     }
     return JAVA_NULL;
@@ -215,6 +214,8 @@ void __DELETE_org_xmlvm_iphone_UIScreen(void* me, void* client_data)
 void __INIT_INSTANCE_MEMBERS_org_xmlvm_iphone_UIScreen(JAVA_OBJECT me, int derivedClassWillRegisterFinalizer)
 {
     __INIT_INSTANCE_MEMBERS_org_xmlvm_iphone_NSObject(me, 0 || derivedClassWillRegisterFinalizer);
+    //XMLVM_BEGIN_WRAPPER[__INIT_INSTANCE_MEMBERS_org_xmlvm_iphone_UIScreen]
+    //XMLVM_END_WRAPPER
 }
 
 JAVA_OBJECT __NEW_org_xmlvm_iphone_UIScreen()

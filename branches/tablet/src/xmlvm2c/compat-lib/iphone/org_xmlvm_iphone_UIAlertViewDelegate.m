@@ -203,6 +203,8 @@ void __DELETE_org_xmlvm_iphone_UIAlertViewDelegate(void* me, void* client_data)
 void __INIT_INSTANCE_MEMBERS_org_xmlvm_iphone_UIAlertViewDelegate(JAVA_OBJECT me, int derivedClassWillRegisterFinalizer)
 {
     __INIT_INSTANCE_MEMBERS_org_xmlvm_iphone_NSObject(me, 0 || derivedClassWillRegisterFinalizer);
+    //XMLVM_BEGIN_WRAPPER[__INIT_INSTANCE_MEMBERS_org_xmlvm_iphone_UIAlertViewDelegate]
+    //XMLVM_END_WRAPPER
 }
 
 JAVA_OBJECT __NEW_org_xmlvm_iphone_UIAlertViewDelegate()
@@ -229,7 +231,6 @@ void org_xmlvm_iphone_UIAlertViewDelegate___INIT___(JAVA_OBJECT me)
     //XMLVM_BEGIN_WRAPPER[org_xmlvm_iphone_UIAlertViewDelegate___INIT___]
     UIAlertViewDelegateWrapper* obj = [[UIAlertViewDelegateWrapper alloc] initWithDelegate:me];
     org_xmlvm_iphone_UIAlertViewDelegate_INTERNAL_CONSTRUCTOR(me, obj);
-    XMLVM_FINALIZE(me, __DELETE_org_xmlvm_iphone_UIAlertViewDelegate);
     //XMLVM_END_WRAPPER
 }
 

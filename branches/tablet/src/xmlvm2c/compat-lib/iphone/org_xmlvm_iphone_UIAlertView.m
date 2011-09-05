@@ -273,6 +273,8 @@ void __DELETE_org_xmlvm_iphone_UIAlertView(void* me, void* client_data)
 void __INIT_INSTANCE_MEMBERS_org_xmlvm_iphone_UIAlertView(JAVA_OBJECT me, int derivedClassWillRegisterFinalizer)
 {
     __INIT_INSTANCE_MEMBERS_org_xmlvm_iphone_UIView(me, 0 || derivedClassWillRegisterFinalizer);
+    //XMLVM_BEGIN_WRAPPER[__INIT_INSTANCE_MEMBERS_org_xmlvm_iphone_UIAlertView]
+    //XMLVM_END_WRAPPER
 }
 
 JAVA_OBJECT __NEW_org_xmlvm_iphone_UIAlertView()
@@ -317,7 +319,6 @@ void org_xmlvm_iphone_UIAlertView___INIT____java_lang_String_java_lang_String_or
     [message release];
     [cancelButtonTitle release];
     org_xmlvm_iphone_UIAlertView_INTERNAL_CONSTRUCTOR(me, alertView);
-    XMLVM_FINALIZE(me, __DELETE_org_xmlvm_iphone_UIAlertView);
     //XMLVM_END_WRAPPER
 }
 

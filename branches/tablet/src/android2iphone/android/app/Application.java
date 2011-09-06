@@ -30,8 +30,10 @@ import org.xmlvm.iphone.UIViewController;
 import org.xmlvm.iphone.UIWindow;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.content.ContextWrapper;
+import android.internal.AndroidAppLauncher;
 import android.internal.TopActivity;
 
 public class Application extends ContextWrapper {
@@ -41,15 +43,22 @@ public class Application extends ContextWrapper {
      * guidelines there should only be one UIWindow instance per iOS
      * application.
      */
-    private UIWindow               topLevelWindow;
+    private UIWindow         topLevelWindow;
+
     /**
-     * Each Android Activity has an associated UIViewController that is kept in
-     * this list.
+     * Top-level UIView that serves as a container for all subviews belonging to
+     * various activities.
      */
-    private List<UIViewController> activityViews;
-    private boolean                appJustCreated;
-    private int                    currentInterfaceOrientation;
-    private boolean                freezeInterfaceOrientation;
+    private UIView           topLevelView;
+
+    /**
+     * View controller that manages the topLevelView.
+     */
+    private UIViewController viewController;
+
+    private boolean          appJustCreated;
+    private int              currentInterfaceOrientation;
+    private boolean          freezeInterfaceOrientation;
 
 
     public void onCreate() {
@@ -62,8 +71,44 @@ public class Application extends ContextWrapper {
         topLevelWindow = new UIWindow();
         CGRect rect = UIScreen.mainScreen().getBounds();
         topLevelWindow.setFrame(rect);
-        topLevelWindow.makeKeyAndVisible();
-        activityViews = new ArrayList<UIViewController>();
+        topLevelView = new UIView(rect);
+        viewController = new UIViewController() {
+
+            @Override
+            public boolean shouldAutorotateToInterfaceOrientation(int orientation) {
+                if (AndroidAppLauncher.getApplication().xmlvmShouldFreezeInterfaceOrientation()) {
+                    /*
+                     * Orientation should be frozen because the application uses
+                     * the accelerometer. Only allow the current interface
+                     * orientation.
+                     */
+                    return orientation == AndroidAppLauncher.getApplication()
+                            .xmlvmGetCurrentInterfaceOrientation();
+                }
+                int requestedOrientation = TopActivity.get().getRequestedOrientation();
+                if (requestedOrientation == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE) {
+                    return (orientation == UIInterfaceOrientation.LandscapeLeft)
+                            || (orientation == UIInterfaceOrientation.LandscapeRight);
+                }
+                if (requestedOrientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) {
+                    return (orientation == UIInterfaceOrientation.Portrait)
+                            || (orientation == UIInterfaceOrientation.PortraitUpsideDown);
+                }
+                return false;
+            }
+
+            @Override
+            public void didRotateFromInterfaceOrientation(int orientation) {
+                AndroidAppLauncher.getApplication().xmlvmSetCurrentInterfaceOrientation(
+                        this.getInterfaceOrientation());
+            }
+
+            @Override
+            public void loadView() {
+                setView(topLevelView);
+            }
+        };
+        topLevelWindow.setRootViewController(viewController);
         startActivity(new Intent("android.intent.action.MAIN"));
     }
 
@@ -93,38 +138,22 @@ public class Application extends ContextWrapper {
         // Configuration doesn't change in iPhone
     }
 
-    public void xmlvmAddActivityViewController(UIViewController vc) {
-        activityViews.add(vc);
-        xmlvmSetRootViewController(vc);
-    }
-
-    public void xmlvmRemoveActivityViewController(UIViewController vc) {
-        activityViews.remove(vc);
-        int size = activityViews.size();
-        if (size > 0) {
-            xmlvmSetRootViewController(activityViews.get(size - 1));
+    public void xmlvmAddActivityView(UIView view) {
+        topLevelView.addSubview(view);
+        if (topLevelWindow.isHidden()) {
+            /*
+             * Only after the first activity registered its view we tell the
+             * main UIWindow to become visible. That is because a call to
+             * makeKeyAndVisible() will trigger the view controller to load the
+             * view (which doesn't exist before the first activity becomes
+             * visible).
+             */
+            topLevelWindow.makeKeyAndVisible();
         }
     }
 
-    private void xmlvmSetRootViewController(UIViewController vc) {
-        /*
-         * Ordinarily we would just call
-         * topLevelWindow.setRootViewController(vc). However, since this API is
-         * only available since iOS 4.0, we do the same thing with API before
-         * iOS 4.0.
-         */
-        // Remove old view hierarchy
-//        while (true) {
-//            List<UIView> subviews = topLevelWindow.getSubviews();
-//            if (subviews.size() == 0) {
-//                break;
-//            }
-//            UIView view = subviews.get(0);
-//            view.removeFromSuperview();
-//        }
-//        // Install new view controller
-//        topLevelWindow.addSubview(vc.getView());
-        topLevelWindow.setRootViewController(vc);
+    public void xmlvmRemoveActivityView(UIView view) {
+        view.removeFromSuperview();
     }
 
     public void xmlvmFreezeInterfaceOrientation(boolean flag) {

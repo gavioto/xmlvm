@@ -1661,13 +1661,7 @@ JAVA_OBJECT org_xmlvm_iphone_UIView_getBackgroundColor__(JAVA_OBJECT me)
 {
     //XMLVM_BEGIN_WRAPPER[org_xmlvm_iphone_UIView_getBackgroundColor__]
     XMLVM_VAR_THIZ;
-    UIColor* color = thiz.backgroundColor;
-    if (color == nil) {
-        return JAVA_NULL;
-    }
-    org_xmlvm_iphone_UIColor* color_ = __NEW_org_xmlvm_iphone_UIColor();
-    org_xmlvm_iphone_UIColor_INTERNAL_CONSTRUCTOR(color_, color);
-    return color_;
+    return xmlvm_get_associated_c_object(thiz.backgroundColor);
     //XMLVM_END_WRAPPER
 }
 

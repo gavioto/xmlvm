@@ -134,9 +134,6 @@ public class Window {
         contentParent.addView(view);
         decorView.addView(contentParent);
         setEditTextDelegates(view);
-    }
-
-    public void xmlvmComputeLayout() {
         adjustFrameSize();
 
         iContainerViewController = new UIViewController() {

@@ -29,7 +29,7 @@ JAVA_OBJECT __CLASS_org_xmlvm_iphone_NSObject_3ARRAY;
 #include "org_xmlvm_iphone_NSString.h"
 
 
-#define MAX_WRAPPER_CREATOR_FUNCS 10
+#define MAX_WRAPPER_CREATOR_FUNCS 20
 
 static int numWrapperCreatorFuncs = 0;
 

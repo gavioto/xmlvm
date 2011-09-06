@@ -114,16 +114,17 @@ public class Application extends ContextWrapper {
          * iOS 4.0.
          */
         // Remove old view hierarchy
-        while (true) {
-            List<UIView> subviews = topLevelWindow.getSubviews();
-            if (subviews.size() == 0) {
-                break;
-            }
-            UIView view = subviews.get(0);
-            view.removeFromSuperview();
-        }
-        // Install new view controller
-        topLevelWindow.addSubview(vc.getView());
+//        while (true) {
+//            List<UIView> subviews = topLevelWindow.getSubviews();
+//            if (subviews.size() == 0) {
+//                break;
+//            }
+//            UIView view = subviews.get(0);
+//            view.removeFromSuperview();
+//        }
+//        // Install new view controller
+//        topLevelWindow.addSubview(vc.getView());
+        topLevelWindow.setRootViewController(vc);
     }
 
     public void xmlvmFreezeInterfaceOrientation(boolean flag) {

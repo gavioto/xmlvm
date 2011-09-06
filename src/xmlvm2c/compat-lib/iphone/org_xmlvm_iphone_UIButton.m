@@ -701,6 +701,7 @@ JAVA_OBJECT org_xmlvm_iphone_UIButton_getFont__(JAVA_OBJECT me)
 {
     //XMLVM_BEGIN_WRAPPER[org_xmlvm_iphone_UIButton_getFont__]
     XMLVM_VAR_THIZ;
+    if (!__TIB_org_xmlvm_iphone_UIFont.classInitialized) __INIT_org_xmlvm_iphone_UIFont();
     return xmlvm_get_associated_c_object(thiz.font);
     //XMLVM_END_WRAPPER
 }

@@ -24,13 +24,11 @@ import org.xmlvm.iphone.CGPoint;
 import org.xmlvm.iphone.CGRect;
 import org.xmlvm.iphone.UIApplication;
 import org.xmlvm.iphone.UIColor;
-import org.xmlvm.iphone.UIInterfaceOrientation;
 import org.xmlvm.iphone.UIScreen;
 import org.xmlvm.iphone.UIScrollView;
 import org.xmlvm.iphone.UITextField;
 import org.xmlvm.iphone.UITextFieldDelegate;
 import org.xmlvm.iphone.UIView;
-import org.xmlvm.iphone.UIViewController;
 
 import android.app.Activity;
 import android.content.pm.ActivityInfo;
@@ -51,7 +49,6 @@ import android.widget.FrameLayout;
 public class Window {
     public static final int     FEATURE_NO_TITLE = 1;
     private Activity            activity;
-    private UIViewController    iContainerViewController;
     private UIView              iContainerView;
     private UIScrollView        iScrollView;
     private UITextFieldDelegate iTextFieldDelegate;
@@ -135,46 +132,7 @@ public class Window {
         decorView.addView(contentParent);
         setEditTextDelegates(view);
         adjustFrameSize();
-
-        iContainerViewController = new UIViewController() {
-
-            @Override
-            public boolean shouldAutorotateToInterfaceOrientation(int orientation) {
-                if (AndroidAppLauncher.getApplication().xmlvmShouldFreezeInterfaceOrientation()) {
-                    /*
-                     * Orientation should be frozen because the application uses
-                     * the accelerometer. Only allow the current interface
-                     * orientation.
-                     */
-                    return orientation == AndroidAppLauncher.getApplication()
-                            .xmlvmGetCurrentInterfaceOrientation();
-                }
-                int requestedOrientation = activity.getRequestedOrientation();
-                if (requestedOrientation == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE) {
-                    return (orientation == UIInterfaceOrientation.LandscapeLeft)
-                            || (orientation == UIInterfaceOrientation.LandscapeRight);
-                }
-                if (requestedOrientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) {
-                    return (orientation == UIInterfaceOrientation.Portrait)
-                            || (orientation == UIInterfaceOrientation.PortraitUpsideDown);
-                }
-                return false;
-            }
-
-            @Override
-            public void didRotateFromInterfaceOrientation(int orientation) {
-                AndroidAppLauncher.getApplication().xmlvmSetCurrentInterfaceOrientation(
-                        this.getInterfaceOrientation());
-            }
-
-            @Override
-            public void loadView() {
-                setView(iContainerView);
-            }
-        };
-
-        AndroidAppLauncher.getApplication()
-                .xmlvmAddActivityViewController(iContainerViewController);
+        AndroidAppLauncher.getApplication().xmlvmAddActivityView(iContainerView);
         xmlvmSetHidden(false);
     }
 
@@ -232,10 +190,8 @@ public class Window {
             contentParent = null;
             iScrollView.removeFromSuperview();
             iScrollView = null;
-            AndroidAppLauncher.getApplication().xmlvmRemoveActivityViewController(
-                    iContainerViewController);
+            AndroidAppLauncher.getApplication().xmlvmRemoveActivityView(iContainerView);
             iContainerView = null;
-            iContainerViewController = null;
         }
     }
 

@@ -188,8 +188,8 @@ public class Activity extends ContextThemeWrapper {
     }
 
     private void start() {
+        window.xmlvmSetHidden(false);
         onStart();
-        window.xmlvmComputeLayout();
         state = STATE_PAUSED;
     }
 

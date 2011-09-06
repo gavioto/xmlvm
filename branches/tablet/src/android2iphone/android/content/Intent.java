@@ -89,7 +89,7 @@ public class Intent {
         this.uri = uri;
     }
 
-    private Bundle getExtras() {
+    public Bundle getExtras() {
         if (extras == null) {
             extras = new Bundle();
         }

@@ -27,6 +27,8 @@ import java.util.Set;
 
 import org.xmlvm.iphone.CGPoint;
 import org.xmlvm.iphone.CGRect;
+import org.xmlvm.iphone.NSObject;
+import org.xmlvm.iphone.NSSelector;
 import org.xmlvm.iphone.UIColor;
 import org.xmlvm.iphone.UIEvent;
 import org.xmlvm.iphone.UIGraphics;
@@ -903,6 +905,7 @@ public class View {
      * @return true if the new size and position are different than the previous
      *         ones {@hide}
      */
+    @SuppressWarnings("unchecked")
     protected boolean setFrame(int left, int top, int right, int bottom) {
         boolean changed = false;
 
@@ -915,8 +918,8 @@ public class View {
             // Invalidate our old position
             invalidate();
 
-            int oldWidth = width;
-            int oldHeight = height;
+            final int oldWidth = width;
+            final int oldHeight = height;
 
             this.left = left;
             this.top = top;
@@ -926,11 +929,16 @@ public class View {
 
             // mPrivateFlags |= HAS_BOUNDS;
 
-            int newWidth = right - left;
-            int newHeight = bottom - top;
+            final int newWidth = right - left;
+            final int newHeight = bottom - top;
 
             if (newWidth != oldWidth || newHeight != oldHeight) {
-                onSizeChanged(newWidth, newHeight, oldWidth, oldHeight);
+                NSObject.performSelectorOnMainThread(new NSSelector() {
+
+                    public void invokeWithArgument(Object arg) {
+                        onSizeChanged(newWidth, newHeight, oldWidth, oldHeight);
+                    }
+                }, null, false);
             }
 
             if (visibility == VISIBLE) {

@@ -20,12 +20,15 @@
 
 package Compatlib.System.Collections.Generics;
 
+import org.xmlvm.XMLVMSkeletonOnly;
+
 import Compatlib.System.Object;
 
 /**
  * @author Markus
  * 
  */
+@XMLVMSkeletonOnly
 public class List<T> extends Object implements IList<T>, ICollection<T>, IEnumerable<T> {
 
     public T __access(int i) {

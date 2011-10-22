@@ -27,9 +27,8 @@ import java.io.InputStream;
 import java.net.URL;
 
 import javax.imageio.ImageIO;
-import org.xmlvm.iphone.NSBundle;
 
-import android.internal.CommonDeviceAPIFinder;
+import org.xmlvm.iphone.NSBundle;
 
 public class ImageLoader {
 
@@ -49,7 +48,7 @@ public class ImageLoader {
         }
         type = imageName.substring(lastdot + 1);
 
-        String path = CommonDeviceAPIFinder.instance().getFileSystem().getPathForResource(resource, type, directory);
+        String path = NSBundle.mainBundle().pathForResource(resource, type, directory);
         if (path == null) {
             // Not found
             System.err.println("Unable to locate image with name " + imageName);

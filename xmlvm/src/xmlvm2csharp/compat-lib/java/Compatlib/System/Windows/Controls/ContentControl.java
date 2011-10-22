@@ -20,12 +20,15 @@
 
 package Compatlib.System.Windows.Controls;
 
+import org.xmlvm.XMLVMSkeletonOnly;
+
 import Compatlib.System.Object;
 
 /**
  * @author Markus
  * 
  */
+@XMLVMSkeletonOnly
 public class ContentControl extends Control {
 
     private Object content;

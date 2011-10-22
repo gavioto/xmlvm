@@ -20,6 +20,9 @@
 
 package Compatlib.System;
 
+import org.xmlvm.XMLVMSkeletonOnly;
+
+@XMLVMSkeletonOnly
 public class UriKind {
 
     public final static UriKind RelativeOrAbsolute = new UriKind();

@@ -1147,6 +1147,14 @@ public class DEXmlvmOutputProcess extends XmlvmProcessImpl<XmlvmProcess<?>> impl
                 lastDexInstruction.addContent(moveInstruction);
             } else {
                 dexInstruction = new Element(sanitizeInstructionName(instructionName), NS_DEX);
+                
+                if (instructionName.startsWith("throw")) {
+                    String regType = registers.get(0).getType().toHuman();
+                    if(isRedType(regType)) {
+                        dexInstruction.setAttribute("isRedType", "true");
+                    }
+                }
+                
                 addRegistersAsAttributes(registers, dexInstruction);
 
                 // For simple instructions with only one register, we also add

@@ -20,6 +20,8 @@
 
 package Compatlib.System.Windows.Controls;
 
+import org.xmlvm.XMLVMSkeletonOnly;
+
 import Compatlib.System.Windows.FrameworkElement;
 import Compatlib.System.Windows.Media.Brush;
 
@@ -27,6 +29,7 @@ import Compatlib.System.Windows.Media.Brush;
  * @author Markus
  * 
  */
+@XMLVMSkeletonOnly
 public class Panel extends FrameworkElement {
 
     private UIElementCollection Children = new UIElementCollection();

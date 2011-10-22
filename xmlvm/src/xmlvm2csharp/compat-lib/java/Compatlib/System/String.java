@@ -20,6 +20,9 @@
 
 package Compatlib.System;
 
+import org.xmlvm.XMLVMSkeletonOnly;
+
+@XMLVMSkeletonOnly
 public class String extends Object {
 
     public java.lang.String value;

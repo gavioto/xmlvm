@@ -20,12 +20,15 @@
 
 package Compatlib.Microsoft.Devices.Sensors;
 
+import org.xmlvm.XMLVMSkeletonOnly;
+
 import Compatlib.System.EventArgs;
 
 /**
  * @author Markus
  * 
  */
+@XMLVMSkeletonOnly
 public class AccelerometerReadingEventArgs extends EventArgs {
 
     /**

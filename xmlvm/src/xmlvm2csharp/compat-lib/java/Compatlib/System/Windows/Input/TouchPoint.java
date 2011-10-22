@@ -20,6 +20,8 @@
 
 package Compatlib.System.Windows.Input;
 
+import org.xmlvm.XMLVMSkeletonOnly;
+
 import Compatlib.System.Windows.DependencyObject;
 import Compatlib.System.Windows.Point;
 
@@ -27,6 +29,7 @@ import Compatlib.System.Windows.Point;
  * @author Markus
  * 
  */
+@XMLVMSkeletonOnly
 public class TouchPoint extends DependencyObject {
 
     /**

@@ -20,12 +20,15 @@
 
 package Compatlib.System.ComponentModel;
 
+import org.xmlvm.XMLVMSkeletonOnly;
+
 import Compatlib.System.EventArgs;
 
 /**
  * @author Markus
  * 
  */
+@XMLVMSkeletonOnly
 public class DoWorkEventArgs extends EventArgs {
 
 }

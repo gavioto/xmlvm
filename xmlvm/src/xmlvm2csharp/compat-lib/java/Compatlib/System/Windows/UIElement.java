@@ -20,12 +20,15 @@
 
 package Compatlib.System.Windows;
 
+import org.xmlvm.XMLVMSkeletonOnly;
+
 import Compatlib.System.Windows.Media.Visual;
 
 /**
  * @author Markus
  * 
  */
+@XMLVMSkeletonOnly
 public class UIElement extends Visual {
 
     public RoutedEvent ManipulationStarted;
@@ -62,14 +65,6 @@ public class UIElement extends Visual {
     public Size getDesiredSize() {
         // TODO Auto-generated method stub
         return null;
-    }
-
-    /**
-     * @param size
-     */
-    public void setDesiredSize(Size size) {
-        // TODO Auto-generated method stub
-        
     }
 
 }

@@ -21,7 +21,9 @@
 package Compatlib.System;
 
 import org.xmlvm.XMLVMIgnore;
+import org.xmlvm.XMLVMSkeletonOnly;
 
+@XMLVMSkeletonOnly
 public class EventHandler extends MulticastDelegate {
 
     @XMLVMIgnore

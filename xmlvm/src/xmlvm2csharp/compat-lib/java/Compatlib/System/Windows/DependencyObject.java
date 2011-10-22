@@ -20,12 +20,15 @@
 
 package Compatlib.System.Windows;
 
+import org.xmlvm.XMLVMSkeletonOnly;
+
 import Compatlib.System.Windows.Threading.DispatcherObject;
 
 /**
  * @author Markus
  * 
  */
+@XMLVMSkeletonOnly
 public class DependencyObject extends DispatcherObject {
 
 }

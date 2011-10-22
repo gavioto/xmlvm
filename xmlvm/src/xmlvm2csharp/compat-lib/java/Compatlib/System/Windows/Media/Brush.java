@@ -20,12 +20,15 @@
 
 package Compatlib.System.Windows.Media;
 
+import org.xmlvm.XMLVMSkeletonOnly;
+
 import Compatlib.System.Windows.Media.Animation.Animatable;
 
 /**
  * @author Markus
  * 
  */
+@XMLVMSkeletonOnly
 public abstract class Brush extends Animatable {
 
 }

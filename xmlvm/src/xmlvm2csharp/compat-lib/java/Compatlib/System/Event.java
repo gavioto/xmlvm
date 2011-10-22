@@ -20,10 +20,13 @@
 
 package Compatlib.System;
 
+import org.xmlvm.XMLVMSkeletonOnly;
+
 /**
  * @author Markus
  * 
  */
+@XMLVMSkeletonOnly
 public abstract class Event extends Object {
 
 }

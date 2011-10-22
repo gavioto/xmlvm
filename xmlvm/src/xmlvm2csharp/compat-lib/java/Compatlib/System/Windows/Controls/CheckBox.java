@@ -20,11 +20,14 @@
 
 package Compatlib.System.Windows.Controls;
 
+import org.xmlvm.XMLVMSkeletonOnly;
+
 import Compatlib.System.Windows.Controls.Primitives.ToggleButton;
 
 /**
  *
  */
+@XMLVMSkeletonOnly
 public class CheckBox extends ToggleButton {
 
 }

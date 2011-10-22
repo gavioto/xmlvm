@@ -19,10 +19,13 @@
  */
 package Compatlib.System;
 
+import org.xmlvm.XMLVMSkeletonOnly;
+
 /**
  * @author Markus
  * 
  */
+@XMLVMSkeletonOnly
 public class EventArgs extends Object {
 
     public EventArgs() {

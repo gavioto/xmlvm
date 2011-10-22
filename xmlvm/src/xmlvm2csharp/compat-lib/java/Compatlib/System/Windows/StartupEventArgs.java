@@ -20,12 +20,15 @@
 
 package Compatlib.System.Windows;
 
+import org.xmlvm.XMLVMSkeletonOnly;
+
 import Compatlib.System.EventArgs;
 
 /**
  * @author Markus
  * 
  */
+@XMLVMSkeletonOnly
 public class StartupEventArgs extends EventArgs {
 
 }

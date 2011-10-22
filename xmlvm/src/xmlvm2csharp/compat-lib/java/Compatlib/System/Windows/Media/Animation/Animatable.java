@@ -20,12 +20,15 @@
 
 package Compatlib.System.Windows.Media.Animation;
 
+import org.xmlvm.XMLVMSkeletonOnly;
+
 import Compatlib.System.Windows.Freezable;
 
 /**
  * @author Markus
  * 
  */
+@XMLVMSkeletonOnly
 public class Animatable extends Freezable {
 
 }

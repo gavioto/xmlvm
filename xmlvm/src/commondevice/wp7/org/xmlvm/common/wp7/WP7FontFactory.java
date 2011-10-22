@@ -49,15 +49,15 @@ public class WP7FontFactory implements CommonDeviceFontFactory {
 
     @Override
     public Rect sizeWithFont(String string, CommonDeviceFont font) {
-        Assert.NOT_IMPLEMENTED();
-        return null;
+        //TODO HACK!!!
+        return new Rect(0, 0, 100, 50);
     }
 
     @Override
     public Rect sizeWithFont(String string, CommonDeviceFont font, Rect constraints,
             int lineBreakMode) {
-        Assert.NOT_IMPLEMENTED();
-        return null;
+        //TODO HACK!!!
+        return new Rect(0, 0, 100, 50);
     }
 
     @Override

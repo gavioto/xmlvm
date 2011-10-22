@@ -20,6 +20,8 @@
 
 package Compatlib.Microsoft.Devices.Sensors;
 
+import org.xmlvm.XMLVMSkeletonOnly;
+
 import Compatlib.System.IDisposable;
 import Compatlib.System.Object;
 
@@ -27,6 +29,7 @@ import Compatlib.System.Object;
  * @author Markus
  * 
  */
+@XMLVMSkeletonOnly
 public class Accelerometer extends Object implements IDisposable {
 
     public final ReadingChangedEvent ReadingChanged = new ReadingChangedEvent();

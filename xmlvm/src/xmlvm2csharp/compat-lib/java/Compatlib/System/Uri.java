@@ -20,6 +20,9 @@
 
 package Compatlib.System;
 
+import org.xmlvm.XMLVMSkeletonOnly;
+
+@XMLVMSkeletonOnly
 public class Uri extends Object {
 
     public Uri(String string, UriKind relativeorabsolute) {

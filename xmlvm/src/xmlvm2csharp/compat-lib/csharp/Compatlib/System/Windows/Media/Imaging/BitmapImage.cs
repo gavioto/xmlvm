@@ -10,6 +10,18 @@ public void @this(Compatlib.System.Uri n1){
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.Media.Imaging.BitmapImage: void <init>(Compatlib.System.Uri)]
 }
 
+public virtual int getPixelWidth(){
+//XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.Media.Imaging.BitmapSource: int getPixelWidth()]
+    return this.bitmapImage.PixelWidth;
+//XMLVM_END_WRAPPER[Compatlib.System.Windows.Media.Imaging.BitmapSource: int getPixelWidth()]
+}
+
+public virtual int getPixelHeight(){
+//XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.Media.Imaging.BitmapSource: int getPixelHeight()]
+    return this.bitmapImage.PixelHeight;
+//XMLVM_END_WRAPPER[Compatlib.System.Windows.Media.Imaging.BitmapSource: int getPixelHeight()]
+}
+
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.Media.Imaging.BitmapImage]
 public global::System.Windows.Media.Imaging.BitmapImage bitmapImage;
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.Media.Imaging.BitmapImage]

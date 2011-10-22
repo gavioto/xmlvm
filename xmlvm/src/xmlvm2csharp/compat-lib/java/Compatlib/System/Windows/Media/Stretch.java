@@ -20,9 +20,12 @@
 
 package Compatlib.System.Windows.Media;
 
+import org.xmlvm.XMLVMSkeletonOnly;
+
 /**
  *
  */
+@XMLVMSkeletonOnly
 public class Stretch {
 
     public static final Stretch Fill    = new Stretch();

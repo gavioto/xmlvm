@@ -20,12 +20,15 @@
 
 package Compatlib.System.Windows.Controls.Primitives;
 
+import org.xmlvm.XMLVMSkeletonOnly;
+
 import Compatlib.System.Windows.FrameworkElement;
 import Compatlib.System.Windows.UIElement;
 
 /**
  *
  */
+@XMLVMSkeletonOnly
 public class Popup extends FrameworkElement {
 
     /**

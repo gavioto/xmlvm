@@ -20,7 +20,7 @@
 
 package Compatlib.System.Windows.Controls;
 
-import org.xmlvm.commondevice.adapter.BitmapDrawableAdapter;
+import org.xmlvm.XMLVMSkeletonOnly;
 
 import Compatlib.System.Windows.FrameworkElement;
 import Compatlib.System.Windows.Media.Stretch;
@@ -30,6 +30,7 @@ import Compatlib.System.Windows.Media.Imaging.BitmapImage;
  * @author Markus
  * 
  */
+@XMLVMSkeletonOnly
 public class Image extends FrameworkElement {
 
     public void setSource(BitmapImage bitmapImage) {

@@ -20,12 +20,15 @@
 
 package Compatlib.System.Diagnostics;
 
+import org.xmlvm.XMLVMSkeletonOnly;
+
 import Compatlib.System.Object;
 
 /**
  * @author Markus
  * 
  */
+@XMLVMSkeletonOnly
 public class Debug extends Object {
 
     public static void WriteLine(Object o) {

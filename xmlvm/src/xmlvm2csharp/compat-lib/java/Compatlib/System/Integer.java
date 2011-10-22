@@ -20,9 +20,12 @@
 
 package Compatlib.System;
 
+import org.xmlvm.XMLVMSkeletonOnly;
+
 /**
  *
  */
+@XMLVMSkeletonOnly
 public class Integer extends Object {
 
     /**

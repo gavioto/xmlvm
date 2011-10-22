@@ -23,6 +23,8 @@ package Compatlib.System.Windows;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.xmlvm.XMLVMSkeletonOnly;
+
 import Compatlib.System.Event;
 import Compatlib.System.Object;
 
@@ -30,6 +32,7 @@ import Compatlib.System.Object;
  * @author Markus
  * 
  */
+@XMLVMSkeletonOnly
 public class RoutedEvent extends Event {
 
     private final List<RoutedEventHandler> eventHandler = new ArrayList<RoutedEventHandler>();

@@ -20,22 +20,23 @@
 
 package org.xmlvm.common.wp7.objects;
 
-import java.util.Set;
-
-import org.xmlvm.common.iphone.objects.IPhoneView;
 import org.xmlvm.commondevice.objects.CommonDeviceView;
 
-import android.graphics.Rect;
-import android.internal.Assert;
-import android.view.MotionEvent;
-import android.view.View;
-
 import Compatlib.System.Object;
+import Compatlib.System.String;
+import Compatlib.System.Windows.RoutedEventHandler;
 import Compatlib.System.Windows.Size;
 import Compatlib.System.Windows.UIElement;
 import Compatlib.System.Windows.Controls.Image;
 import Compatlib.System.Windows.Controls.Panel;
+import Compatlib.System.Windows.Input.ManipulationCompletedEventArgs;
+import Compatlib.System.Windows.Input.ManipulationDeltaEventArgs;
+import Compatlib.System.Windows.Input.ManipulationStartedEventArgs;
 import Compatlib.System.Windows.Media.Stretch;
+import android.graphics.Rect;
+import android.internal.Assert;
+import android.view.MotionEvent;
+import android.view.View;
 
 /**
  *
@@ -47,8 +48,7 @@ public class WP7View extends Object implements CommonDeviceView {
     
     public WP7View(View view) {
         this.androidView = view;
-        this.element = new Panel();
-//        ((Panel)this.element).M
+        setElement(new Panel());
     }
     
     public UIElement getElement() {
@@ -57,6 +57,9 @@ public class WP7View extends Object implements CommonDeviceView {
 
     public void setElement(UIElement element) {
         this.element = element;
+        this.element.ManipulationStarted.__add(new RoutedEventHandler(this, new String("OnManipulationStarted")));
+        this.element.ManipulationDelta.__add(new RoutedEventHandler(this, new String("OnManipulationDelta")));
+        this.element.ManipulationCompleted.__add(new RoutedEventHandler(this, new String("OnManipulationCompleted")));
     }
 
     @Override
@@ -66,7 +69,7 @@ public class WP7View extends Object implements CommonDeviceView {
 
     @Override
     public void setFrame(Rect frame) {
-        element.setDesiredSize(WP7View.toSize(frame));
+        element.Measure(WP7View.toSize(frame));
     }
 
     @Override
@@ -131,25 +134,35 @@ public class WP7View extends Object implements CommonDeviceView {
         }
     }
     
-//    public boolean xmlvmTouchesEvent(int action, Set<UITouch> touches, UIEvent event) {
-//        if (action == MotionEvent.ACTION_UP && androidView.getOnClickListener() != null) {
-//            androidView.getOnClickListener().onClick(androidView);
-//        }
-//
-//        UITouch firstTouch = touches.iterator().next();
-//        CGPoint point = firstTouch.locationInView(((IPhoneView)androidView.xmlvmGetViewHandler().getMetricsView()).getView());
-//        MotionEvent motionEvent = new MotionEvent(action, (int) point.x, (int) point.y);
-//        if (androidView.onTouchEvent(motionEvent)) {
-//            return true;
-//        }
-//        if (androidView.getOnTouchListener() != null && androidView.getOnTouchListener().onTouch(androidView, motionEvent)) {
-//            return true;
-//        }
-//        if (androidView.getParent() != null && (androidView.getParent() instanceof View)) {
-//            return ((IPhoneView)((View) androidView.getParent()).xmlvmGetViewHandler().getContentView()).xmlvmTouchesEvent(action, touches, event);
-//        }
-//        return false;
-//    }    
+    public void OnManipulationStarted(Object sender, ManipulationStartedEventArgs args) {
+        xmlvmTouchesEvent(MotionEvent.ACTION_DOWN, (int) args.getManipulationOrigin().getX(), (int) args.getManipulationOrigin().getY());
+    }
+    
+    public void OnManipulationDelta(Object sender, ManipulationDeltaEventArgs args) {
+        xmlvmTouchesEvent(MotionEvent.ACTION_DOWN, (int) args.getDeltaManipulation().getTranslation().getX(), (int) args.getDeltaManipulation().getTranslation().getY());
+    }
+    
+    public void OnManipulationCompleted(Object sender, ManipulationCompletedEventArgs args) {
+        xmlvmTouchesEvent(MotionEvent.ACTION_DOWN, (int) args.getManipulationOrigin().getX(), (int) args.getManipulationOrigin().getY());
+    }
+    
+    public boolean xmlvmTouchesEvent(int action, int x, int y) {
+        if (action == MotionEvent.ACTION_UP && androidView.getOnClickListener() != null) {
+            androidView.getOnClickListener().onClick(androidView);
+        }
+
+        MotionEvent motionEvent = new MotionEvent(action, x, y);
+        if (androidView.onTouchEvent(motionEvent)) {
+            return true;
+        }
+        if (androidView.getOnTouchListener() != null && androidView.getOnTouchListener().onTouch(androidView, motionEvent)) {
+            return true;
+        }
+        if (androidView.getParent() != null && (androidView.getParent() instanceof View)) {
+            return ((WP7View)((View) androidView.getParent()).xmlvmGetViewHandler().getContentView()).xmlvmTouchesEvent(action, x, y);
+        }
+        return false;
+    }    
     
     public static Rect toRectangle(Size desiredSize) {
         return new Rect(0, 0, (int) desiredSize.getWidth(), (int) desiredSize.getHeight());

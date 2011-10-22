@@ -20,9 +20,12 @@
 
 package Compatlib.System.Collections.Generics;
 
+import org.xmlvm.XMLVMSkeletonOnly;
+
 /**
  *
  */
+@XMLVMSkeletonOnly
 public class KeyValuePair<T1, T2> {
 
 }

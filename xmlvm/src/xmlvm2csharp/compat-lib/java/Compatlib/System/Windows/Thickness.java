@@ -20,9 +20,12 @@
 
 package Compatlib.System.Windows;
 
+import org.xmlvm.XMLVMSkeletonOnly;
+
 /**
  *
  */
+@XMLVMSkeletonOnly
 public class Thickness {
 
     /**

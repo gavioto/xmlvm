@@ -20,11 +20,14 @@
 
 package Compatlib.System.Windows;
 
+import org.xmlvm.XMLVMSkeletonOnly;
+
 import Compatlib.System.Object;
 
 /**
  *
  */
+@XMLVMSkeletonOnly
 public class HorizontalAlignment extends Object {
 
     public static final HorizontalAlignment Stretch = new HorizontalAlignment();

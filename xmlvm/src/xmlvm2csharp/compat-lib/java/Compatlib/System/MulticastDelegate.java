@@ -20,12 +20,13 @@
 
 package Compatlib.System;
 
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.xmlvm.XMLVMIgnore;
+import org.xmlvm.XMLVMSkeletonOnly;
 
+@XMLVMSkeletonOnly
 public class MulticastDelegate extends Delegate {
 
     @XMLVMIgnore

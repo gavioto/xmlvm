@@ -20,9 +20,12 @@
 
 package Compatlib.System.Windows.Media;
 
+import org.xmlvm.XMLVMSkeletonOnly;
+
 /**
  *
  */
+@XMLVMSkeletonOnly
 public abstract class TileBrush extends Brush {
 
 }

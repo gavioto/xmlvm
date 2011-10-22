@@ -20,6 +20,8 @@
 
 package Compatlib.System.Windows.Input;
 
+import org.xmlvm.XMLVMSkeletonOnly;
+
 import Compatlib.System.EventArgs;
 import Compatlib.System.Windows.UIElement;
 
@@ -27,6 +29,7 @@ import Compatlib.System.Windows.UIElement;
  * @author Markus
  * 
  */
+@XMLVMSkeletonOnly
 public class TouchFrameEventArgs extends EventArgs {
 
     /**

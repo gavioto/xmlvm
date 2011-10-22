@@ -1,5 +1,8 @@
 package Compatlib.System;
 
+import org.xmlvm.XMLVMSkeletonOnly;
+
+@XMLVMSkeletonOnly
 public class Object {
 
     public String ToString() {

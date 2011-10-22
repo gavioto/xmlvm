@@ -23,6 +23,8 @@ package Compatlib.System.Windows.Input;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.xmlvm.XMLVMSkeletonOnly;
+
 import Compatlib.System.Event;
 import Compatlib.System.Object;
 
@@ -30,6 +32,7 @@ import Compatlib.System.Object;
  * @author Markus
  * 
  */
+@XMLVMSkeletonOnly
 public class FrameReportedEvent extends Event {
 
     private final List<FrameReportedEventHandler> eventHandler = new ArrayList<FrameReportedEventHandler>();

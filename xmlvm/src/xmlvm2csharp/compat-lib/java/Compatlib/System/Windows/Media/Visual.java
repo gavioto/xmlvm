@@ -23,6 +23,7 @@ package Compatlib.System.Windows.Media;
 import javax.swing.JComponent;
 
 import org.xmlvm.XMLVMIgnore;
+import org.xmlvm.XMLVMSkeletonOnly;
 
 import Compatlib.System.Windows.DependencyObject;
 
@@ -30,6 +31,7 @@ import Compatlib.System.Windows.DependencyObject;
  * @author Markus, Andru
  * 
  */
+@XMLVMSkeletonOnly
 public class Visual extends DependencyObject {
 
     @XMLVMIgnore

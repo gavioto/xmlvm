@@ -20,12 +20,15 @@
 
 package Compatlib.System.Windows.Media.Imaging;
 
+import org.xmlvm.XMLVMSkeletonOnly;
+
 import Compatlib.System.Uri;
 
 /**
  * @author Markus
  * 
  */
+@XMLVMSkeletonOnly
 public class BitmapImage extends BitmapSource {
 
     public BitmapImage(Uri uri) {

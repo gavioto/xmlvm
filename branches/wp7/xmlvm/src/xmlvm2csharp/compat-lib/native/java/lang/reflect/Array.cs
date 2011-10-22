@@ -301,8 +301,9 @@ public static global::System.Object newInstance(java.lang.Class n1, org.xmlvm._n
 
 public static global::System.Object newInstance(java.lang.Class n1, int n2){
 //XMLVM_BEGIN_WRAPPER[java.lang.reflect.Array: java.lang.Object newInstance(java.lang.Class, int)]
-    throw new org.xmlvm._nNotYetImplementedException("native/wrapper method not yet implemented");
-
+    global::System.Object[] csharpArray = (global::System.Object[]) global::System.Array.CreateInstance(((org.xmlvm._nTIB)n1._ftib).getNativeType(), n2);
+    org.xmlvm._nArrayAdapter<global::System.Object> adapter = new org.xmlvm._nArrayAdapter<global::System.Object>(csharpArray);
+    return adapter;
 //XMLVM_END_WRAPPER[java.lang.reflect.Array: java.lang.Object newInstance(java.lang.Class, int)]
 }
 

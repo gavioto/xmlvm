@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.xmlvm.XMLVMIgnore;
+import org.xmlvm.XMLVMSkeletonOnly;
 
 import Compatlib.System.Collections.Generics.IEnumerator;
 import Compatlib.System.Windows.DependencyObject;
@@ -32,6 +33,7 @@ import Compatlib.System.Windows.DependencyObject;
  * @author Markus
  * 
  */
+@XMLVMSkeletonOnly
 public class PresentationFrameworkCollection<T> extends DependencyObject {
 
     private List<T> elements = new ArrayList<T>();

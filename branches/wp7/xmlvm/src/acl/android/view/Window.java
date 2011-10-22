@@ -179,7 +179,7 @@ public class Window {
     }
 
     public void xmlvmSetHidden(boolean flag) {
-        Assert.NOT_IMPLEMENTED();
+//        Assert.NOT_IMPLEMENTED();
         //MISSING ACL
 //        if (iContainerView != null) {
 //            iContainerView.setHidden(flag);
@@ -187,7 +187,6 @@ public class Window {
     }
 
     public void xmlvmRemoveWindow() {
-        Assert.NOT_IMPLEMENTED();
         //MISSING ACL
 //        if (iContainerView != null) {
 //            xmlvmSetHidden(true);
@@ -230,6 +229,10 @@ public class Window {
 //            iContainerView.setTransform(translation);
 //        }
 
+        if(internalView == null) {
+            return;
+        }
+        
         layoutContentView(internalView);
     }
 

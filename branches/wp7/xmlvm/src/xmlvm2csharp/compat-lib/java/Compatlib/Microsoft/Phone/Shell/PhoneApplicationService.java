@@ -20,11 +20,14 @@
 
 package Compatlib.Microsoft.Phone.Shell;
 
+import org.xmlvm.XMLVMSkeletonOnly;
+
 import Compatlib.System.Object;
 
 /**
  *
  */
+@XMLVMSkeletonOnly
 public class PhoneApplicationService extends Object {
 
     public static PhoneApplicationService getCurrent() {

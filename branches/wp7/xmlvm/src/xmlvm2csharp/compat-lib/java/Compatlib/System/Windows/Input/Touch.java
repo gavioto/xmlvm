@@ -20,12 +20,15 @@
 
 package Compatlib.System.Windows.Input;
 
+import org.xmlvm.XMLVMSkeletonOnly;
+
 import Compatlib.System.Object;
 
 /**
  * @author Markus
  * 
  */
+@XMLVMSkeletonOnly
 public class Touch extends Object {
 
     public static final FrameReportedEvent FrameReported = new FrameReportedEvent();

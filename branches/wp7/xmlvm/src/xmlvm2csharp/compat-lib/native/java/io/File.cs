@@ -131,7 +131,12 @@ private bool setWritableImpl(org.xmlvm._nArrayAdapter<sbyte> n1, bool n2, bool n
 
 private long lengthImpl(org.xmlvm._nArrayAdapter<sbyte> n1){
 //XMLVM_BEGIN_WRAPPER[java.io.File: long lengthImpl(byte[])]
-      throw new org.xmlvm._nNotYetImplementedException("native/wrapper method not yet implemented");
+    if (this.info == null)
+    {
+        initNativeFileInfo(n1);
+    }
+    global::System.Diagnostics.Debug.WriteLine(info.Stream.Length);
+    return info.Stream.Length;
 //XMLVM_END_WRAPPER[java.io.File: long lengthImpl(byte[])]
 }
 
@@ -172,6 +177,19 @@ private bool isExecutableImpl(org.xmlvm._nArrayAdapter<sbyte> n1){
 }
 
 //XMLVM_BEGIN_WRAPPER[java.io.File]
+private global::System.Windows.Resources.StreamResourceInfo info;
+
+private void initNativeFileInfo(global::org.xmlvm._nArrayAdapter<sbyte> n1)
+{
+    global::java.lang.String str = new global::java.lang.String();
+    str.@this(n1);
+    string nativeStr = global::org.xmlvm._nUtil.toNativeString(str);
+    if(nativeStr.StartsWith("/")) {
+        nativeStr = nativeStr.Substring(1);
+    }
+    global::System.Uri uri = new global::System.Uri(nativeStr, global::System.UriKind.Relative);
+    info = global::System.Windows.Application.GetResourceStream(uri);
+}
 //XMLVM_END_WRAPPER[java.io.File]
 
 } // end of class: File

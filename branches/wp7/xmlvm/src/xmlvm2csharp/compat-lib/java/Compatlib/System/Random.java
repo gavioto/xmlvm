@@ -20,10 +20,13 @@
 
 package Compatlib.System;
 
+import org.xmlvm.XMLVMSkeletonOnly;
+
 /**
  * @author Markus
  * 
  */
+@XMLVMSkeletonOnly
 public class Random extends Object {
 
     public Random(int ticks) {

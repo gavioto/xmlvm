@@ -20,12 +20,15 @@
 
 package Compatlib.System.Windows.Controls;
 
+import org.xmlvm.XMLVMSkeletonOnly;
+
 import Compatlib.System.String;
 
 /**
  * @author Markus
  * 
  */
+@XMLVMSkeletonOnly
 public class TextBox extends Control {
 
     private String text = new String("");

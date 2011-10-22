@@ -20,11 +20,14 @@
 
 package Compatlib.System.Windows;
 
+import org.xmlvm.XMLVMSkeletonOnly;
+
 import Compatlib.System.Object;
 
 /**
  *
  */
+@XMLVMSkeletonOnly
 public class MessageBoxResult extends Object {
 
 }

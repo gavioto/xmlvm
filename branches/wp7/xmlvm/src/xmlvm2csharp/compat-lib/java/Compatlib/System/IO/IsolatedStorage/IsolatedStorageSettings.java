@@ -20,6 +20,8 @@
 
 package Compatlib.System.IO.IsolatedStorage;
 
+import org.xmlvm.XMLVMSkeletonOnly;
+
 import Compatlib.System.Integer;
 import Compatlib.System.Object;
 import Compatlib.System.String;
@@ -31,6 +33,7 @@ import Compatlib.System.Collections.Generics.KeyValuePair;
 /**
  *
  */
+@XMLVMSkeletonOnly
 public class IsolatedStorageSettings implements ICollection<KeyValuePair<String, Object>>,
         IEnumerable<KeyValuePair<String, Object>>, IDictionary<String, Object> {
 

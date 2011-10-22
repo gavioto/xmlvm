@@ -20,12 +20,15 @@
 
 package Compatlib.System.Windows.Media;
 
+import org.xmlvm.XMLVMSkeletonOnly;
+
 import Compatlib.System.Object;
 
 /**
  * @author Markus
  * 
  */
+@XMLVMSkeletonOnly
 public class Colors extends Object {
 
     public static final Color White = Color.FromRgb((short) 0xff, (short) 0xff, (short) 0xff);

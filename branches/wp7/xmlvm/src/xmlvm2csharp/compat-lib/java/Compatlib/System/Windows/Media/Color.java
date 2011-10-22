@@ -20,12 +20,15 @@
 
 package Compatlib.System.Windows.Media;
 
+import org.xmlvm.XMLVMSkeletonOnly;
+
 import Compatlib.System.Object;
 
 /**
  * @author Markus
  * 
  */
+@XMLVMSkeletonOnly
 public class Color extends Object {
 
     private short R, G, B;

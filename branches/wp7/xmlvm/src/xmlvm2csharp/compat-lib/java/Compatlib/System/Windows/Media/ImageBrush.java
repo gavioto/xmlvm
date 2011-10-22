@@ -20,11 +20,14 @@
 
 package Compatlib.System.Windows.Media;
 
+import org.xmlvm.XMLVMSkeletonOnly;
+
 import Compatlib.System.Windows.Media.Imaging.BitmapImage;
 
 /**
  *
  */
+@XMLVMSkeletonOnly
 public class ImageBrush extends TileBrush {
 
     /**

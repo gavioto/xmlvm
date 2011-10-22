@@ -58,7 +58,7 @@ public virtual bool TryGetValue(Compatlib.System.String n1, Compatlib.System.Boo
 
 public virtual bool Contains(Compatlib.System.String n1){
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.IO.IsolatedStorage.IsolatedStorageSettings: boolean Contains(Compatlib.System.String)]
-      throw new org.xmlvm._nNotYetImplementedException("native/wrapper method not yet implemented");
+      return applicationSettings.Contains(org.xmlvm._nUtil.toNativeString((java.lang.String)n1.toString()));
 //XMLVM_END_WRAPPER[Compatlib.System.IO.IsolatedStorage.IsolatedStorageSettings: boolean Contains(Compatlib.System.String)]
 }
 

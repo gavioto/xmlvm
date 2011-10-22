@@ -25,6 +25,7 @@ import java.util.List;
 
 import org.xmlvm.commondevice.subsystems.CommonDeviceFileSystem;
 
+import Compatlib.System.Windows.Application;
 import android.internal.Assert;
 
 /**
@@ -63,9 +64,8 @@ public class WP7FileSystem implements CommonDeviceFileSystem {
 
     @Override
     public List<String> listDirectory(String path) {
-        if(path.equals("drawable")) {
-            //TODO ACL
-            return null;
+        if(path.equals("/res")) {
+            return Application.listDirectory(path);
         } else {
             return new ArrayList<String>();
         }

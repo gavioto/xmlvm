@@ -20,6 +20,8 @@
 
 package Compatlib.System.ComponentModel;
 
+import org.xmlvm.XMLVMSkeletonOnly;
+
 import Compatlib.System.EventHandler;
 import Compatlib.System.Object;
 import Compatlib.System.String;
@@ -28,6 +30,7 @@ import Compatlib.System.String;
  * @author Markus
  * 
  */
+@XMLVMSkeletonOnly
 public class DoWorkEventHandler extends EventHandler {
 
     /**

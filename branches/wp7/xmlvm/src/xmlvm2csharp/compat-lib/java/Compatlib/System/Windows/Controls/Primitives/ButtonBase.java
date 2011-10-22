@@ -20,6 +20,8 @@
 
 package Compatlib.System.Windows.Controls.Primitives;
 
+import org.xmlvm.XMLVMSkeletonOnly;
+
 import Compatlib.System.Windows.RoutedEvent;
 import Compatlib.System.Windows.Controls.ContentControl;
 
@@ -27,6 +29,7 @@ import Compatlib.System.Windows.Controls.ContentControl;
  * @author Markus
  * 
  */
+@XMLVMSkeletonOnly
 public class ButtonBase extends ContentControl {
 
     public final RoutedEvent Click = new RoutedEvent();

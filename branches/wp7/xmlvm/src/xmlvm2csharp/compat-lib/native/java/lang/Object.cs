@@ -17,7 +17,7 @@ public virtual global::System.Object clone(){
 
 public virtual bool equals(java.lang.Object n1){
 //XMLVM_BEGIN_WRAPPER[java.lang.Object: boolean equals(java.lang.Object)]
-      throw new org.xmlvm._nNotYetImplementedException("native/wrapper method not yet implemented");
+      return this.Equals(n1);
 //XMLVM_END_WRAPPER[java.lang.Object: boolean equals(java.lang.Object)]
 }
 

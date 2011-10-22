@@ -20,10 +20,13 @@
 
 package Compatlib.System.Windows.Media;
 
+import org.xmlvm.XMLVMSkeletonOnly;
+
 /**
  * @author Markus
  * 
  */
+@XMLVMSkeletonOnly
 public class SolidColorBrush extends Brush {
 
     /**

@@ -20,10 +20,13 @@
 
 package Compatlib.System.Windows.Controls;
 
+import org.xmlvm.XMLVMSkeletonOnly;
+
 /**
  * @author Markus
  * 
  */
+@XMLVMSkeletonOnly
 public class StackPanel extends Panel {
 
     public StackPanel() {

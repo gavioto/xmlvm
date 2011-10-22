@@ -21,6 +21,8 @@
 package Compatlib.System.Windows.Input;
 
 
+import org.xmlvm.XMLVMSkeletonOnly;
+
 import Compatlib.System.EventHandler;
 import Compatlib.System.Object;
 import Compatlib.System.String;
@@ -29,6 +31,7 @@ import Compatlib.System.String;
  * @author Markus
  * 
  */
+@XMLVMSkeletonOnly
 public class FrameReportedEventHandler extends EventHandler {
 
     /**

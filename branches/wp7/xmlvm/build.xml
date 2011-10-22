@@ -103,7 +103,9 @@
 
 	<target name="build-android-compat-lib" depends="build-objc-compat-lib, build-csharp-compat-lib">
 		<mkdir dir="${xmlvm.android-compat-lib.java}" />
-		<javac srcdir="./src/android2iphone" destdir="${xmlvm.android-compat-lib.java}" debug="${debug}">
+		<javac destdir="${xmlvm.android-compat-lib.java}" debug="${debug}">
+			<src path="./src/acl"/>
+			<src path="./src/commondevice/commondeviceapi"/>
 			<classpath>
 				<pathelement location="${xmlvm.libjars}/objc-compat.jar" />
 			</classpath>
@@ -111,17 +113,6 @@
 		</javac>
 		<jar destfile="${xmlvm.libjars}/android-compat.jar">
 			<fileset dir="${xmlvm.android-compat-lib.java}" />
-		</jar>
-		
-		<mkdir dir="${xmlvm.wp7-android-compat-lib.java}" />
-		<javac srcdir="./src/androidfireworks" destdir="${xmlvm.wp7-android-compat-lib.java}" debug="${debug}">
-			<classpath>
-				<pathelement location="${xmlvm.libjars}/csharp-compat.jar" />
-			</classpath>
-			<include name="**/*.java" />
-		</javac>
-		<jar destfile="${xmlvm.libjars}/wp7-android-compat.jar">
-			<fileset dir="${xmlvm.wp7-android-compat-lib.java}" />
 		</jar>
 	</target>
 	
@@ -200,12 +191,6 @@
 			</patternset>
 		</unjar>
 		
-		<unjar src="dist/lib/wp7-android-compat.jar" dest="${xmlvm.build}">
-			<patternset>
-				<include name="**/*.class" />
-			</patternset>
-		</unjar>
-
 		<javac srcdir="src/tools/ant/xcode-updater/" destdir="${xmlvm.build}" debug="${debug}">
 			<include name="**/*.java" />
 		</javac>
@@ -280,6 +265,7 @@
 			<classpath>
 				<pathelement location="${xmlvm.xmlvm-util-java}" />
 				<pathelement location="lib/harmony6-build.jar" />
+				<pathelement location="lib/saxon.jar" />
 			</classpath>
 			<include name="**/*.java" />
 		</javac>
@@ -288,7 +274,9 @@
 		</jar>
 		
 		<mkdir dir="${xmlvm.iphone-android-java}" />
-		<javac srcdir="./src/android2iphone" destdir="${xmlvm.iphone-android-java}" debug="${debug}">
+		<javac destdir="${xmlvm.android-compat-lib.java}" debug="${debug}">
+			<src path="./src/acl"/>
+			<src path="./src/commondevice/commondeviceapi"/>
 			<classpath>
 				<pathelement location="${xmlvm.libjars}/objc-compat.jar" />
 			</classpath>
@@ -296,18 +284,6 @@
 		</javac>
 		<jar destfile="${xmlvm.bin}/lib/iphone-android-java.jar">
 			<fileset dir="${xmlvm.iphone-android-java}" />
-		</jar>
-		
-		<mkdir dir="${xmlvm.wp7-android-java}" />
-		<javac srcdir="./src/androidfireworks" destdir="${xmlvm.wp7-android-java}" debug="${debug}">
-			<classpath>
-				<pathelement location="${xmlvm.libjars}/csharp-compat.jar" />
-				<pathelement location="${xmlvm.bin}"/>
-			</classpath>
-			<include name="**/*.java" />
-		</javac>
-		<jar destfile="${xmlvm.bin}/lib/wp7-android-java.jar">
-			<fileset dir="${xmlvm.wp7-android-java}" />
 		</jar>
 		
 		<jar destfile="${xmlvm.bin}/lib/native-c-lib.jar">

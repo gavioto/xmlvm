@@ -21,6 +21,7 @@
 package Compatlib.System.Windows.Controls;
 
 import org.xmlvm.XMLVMIgnore;
+import org.xmlvm.XMLVMSkeletonOnly;
 
 import Compatlib.System.Object;
 import Compatlib.System.Windows.Controls.Primitives.ButtonBase;
@@ -29,6 +30,7 @@ import Compatlib.System.Windows.Controls.Primitives.ButtonBase;
  * @author Markus, Andru
  * 
  */
+@XMLVMSkeletonOnly
 public class Button extends ButtonBase {
 
     public Button() {

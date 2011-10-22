@@ -32,42 +32,69 @@ public virtual void setRootVisual(Compatlib.System.Windows.UIElement n1){
 
 public static global::System.Object getCurrent(){
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.Application: Compatlib.System.Windows.Application getCurrent()]
-    return app;
+    return global::Compatlib.System.Windows.ApplicationDelegate.appClass;
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.Application: Compatlib.System.Windows.Application getCurrent()]
+}
+
+public static global::System.Object listDirectory(global::java.lang.String n1){
+//XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.Application: java.util.List listDirectory(java.lang.String)]
+    return global::Compatlib.System.Windows.ApplicationDelegate.ListDirectory(n1);
+//XMLVM_END_WRAPPER[Compatlib.System.Windows.Application:java.util.List listDirectory(java.lang.String)]
 }
 
 public virtual void setOrientation(int n1){
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.Application: void setOrientation(int)]
-    if(n1 == ORIENTATION_LANDSCAPE_LEFT) {
-        ((global::Internal.Redirect)frame.Content).SupportedOrientations = global::Microsoft.Phone.Controls.SupportedPageOrientation.Landscape;
-    } else if(n1 == ORIENTATION_PORTRAIT) {
-        ((global::Internal.Redirect)frame.Content).SupportedOrientations = global::Microsoft.Phone.Controls.SupportedPageOrientation.Portrait;
+    if (((global::Internal.Redirect)frame.Content) == null)
+    {
+        orientation = n1;
+    }
+    else
+    {
+        if(n1 == ORIENTATION_LANDSCAPE_LEFT) {
+            ((global::Internal.Redirect)frame.Content).SupportedOrientations = global::Microsoft.Phone.Controls.SupportedPageOrientation.Landscape;
+        } else if(n1 == ORIENTATION_PORTRAIT) {
+            ((global::Internal.Redirect)frame.Content).SupportedOrientations = global::Microsoft.Phone.Controls.SupportedPageOrientation.Portrait;
+        }
     }
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.Application: void setOrientation(int)]
 }
 
 public virtual void setStatusBarHidden(bool n1){
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.Application: void setStatusBarHidden(boolean)]
-    global::Microsoft.Phone.Shell.SystemTray.IsVisible = n1;
+    if (((global::Internal.Redirect)frame.Content) == null)
+    {
+        shellVisibility = n1;
+    }
+    else
+    {
+        global::Microsoft.Phone.Shell.SystemTray.IsVisible = !n1;
+    }
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.Application: void setStatusBarHidden(boolean)]
 }
 
 public virtual int getOrientation(){
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.Application: int getOrientation()]
-    switch (((global::Internal.Redirect)frame.Content).Orientation)
+    if (((global::Internal.Redirect)frame.Content) == null)
     {
-        case global::Microsoft.Phone.Controls.PageOrientation.Landscape:
-        case global::Microsoft.Phone.Controls.PageOrientation.LandscapeLeft:
-            return ORIENTATION_LANDSCAPE_LEFT;
-        case global::Microsoft.Phone.Controls.PageOrientation.LandscapeRight:
-            return ORIENTATION_LANDSCAPE_RIGHT;
-        case global::Microsoft.Phone.Controls.PageOrientation.Portrait:
-        case global::Microsoft.Phone.Controls.PageOrientation.PortraitDown: 
-            return ORIENTATION_PORTRAIT;
-        case global::Microsoft.Phone.Controls.PageOrientation.PortraitUp:
-            return ORIENTATION_PORTRAIT_UPSIDE_DOWN;
-        default:
-            return ORIENTATION_UNKNOWN;
+        return orientation;
+    }
+    else
+    {
+        switch (((global::Internal.Redirect)frame.Content).Orientation)
+        {
+            case global::Microsoft.Phone.Controls.PageOrientation.Landscape:
+            case global::Microsoft.Phone.Controls.PageOrientation.LandscapeLeft:
+                return ORIENTATION_LANDSCAPE_LEFT;
+            case global::Microsoft.Phone.Controls.PageOrientation.LandscapeRight:
+                return ORIENTATION_LANDSCAPE_RIGHT;
+            case global::Microsoft.Phone.Controls.PageOrientation.Portrait:
+            case global::Microsoft.Phone.Controls.PageOrientation.PortraitDown: 
+                return ORIENTATION_PORTRAIT;
+            case global::Microsoft.Phone.Controls.PageOrientation.PortraitUp:
+                return ORIENTATION_PORTRAIT_UPSIDE_DOWN;
+            default:
+                return ORIENTATION_UNKNOWN;
+        }
     }
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.Application: int getOrientation()]
 }
@@ -87,6 +114,8 @@ private Compatlib.System.Windows.UIElement rootVisual;
 private global::Microsoft.Phone.Controls.PhoneApplicationFrame frame = new global::Microsoft.Phone.Controls.PhoneApplicationFrame();
 private bool rootVisualChanged = false;
 private bool pageInitialized = false;
+private int orientation;
+private bool shellVisibility;
 
 public void StartUpHandler(object sender, global::System.Windows.StartupEventArgs args)
 {
@@ -104,6 +133,8 @@ public void Navigated(object sender, global::System.Windows.Navigation.Navigatio
     if(rootVisualChanged) {
         this.changeRootVisual();
     }
+    this.setOrientation(orientation);
+    this.setStatusBarHidden(shellVisibility);
 }
 
 public void changeRootVisual() 
@@ -111,7 +142,6 @@ public void changeRootVisual()
     if(this.pageInitialized) {
         ((global::Internal.Redirect)frame.Content).setContent(this.rootVisual.element);
     }
-    
 }
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.Application]
 

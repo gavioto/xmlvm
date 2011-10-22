@@ -20,6 +20,8 @@
 
 package Compatlib.System.Windows;
 
+import org.xmlvm.XMLVMSkeletonOnly;
+
 import Compatlib.System.EventArgs;
 import Compatlib.System.Object;
 
@@ -27,6 +29,7 @@ import Compatlib.System.Object;
  * @author Markus
  * 
  */
+@XMLVMSkeletonOnly
 public class RoutedEventArgs extends EventArgs {
 
     /**

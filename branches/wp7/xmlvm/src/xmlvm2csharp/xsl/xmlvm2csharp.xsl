@@ -1370,8 +1370,8 @@
       <xsl:value-of select="vm:get-type(@vx-type)"/>
       <xsl:text>) </xsl:text>
       <xsl:call-template name="emit-register-name">
-	<xsl:with-param name="num" select="@vx"/>
-	<xsl:with-param name="type" select="'obj'"/>
+        <xsl:with-param name="num" select="@vx"/>
+        <xsl:with-param name="type" select="'obj'"/>
       </xsl:call-template> 
     </xsl:otherwise>
   </xsl:choose>

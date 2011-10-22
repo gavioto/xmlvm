@@ -20,12 +20,17 @@
 
 package Compatlib.System.Windows;
 
+import java.util.List;
+
+import org.xmlvm.XMLVMSkeletonOnly;
+
 import Compatlib.System.Windows.Threading.DispatcherObject;
 
 /**
  * @author Markus
  * 
  */
+@XMLVMSkeletonOnly
 public class Application extends DispatcherObject {
 
 //    private SimpleSimulator   simulator;
@@ -84,5 +89,14 @@ public class Application extends DispatcherObject {
     public int getOrientation() {
         // TODO Auto-generated method stub
         return 0;
+    }
+
+    /**
+     * @param path 
+     * @return 
+     * 
+     */
+    public static List<String> listDirectory(String path) {
+        return null;
     }
 }

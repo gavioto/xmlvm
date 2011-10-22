@@ -20,12 +20,15 @@
 
 package Compatlib.System.Threading;
 
+import org.xmlvm.XMLVMSkeletonOnly;
+
 import Compatlib.System.Object;
 
 /**
  * @author Markus
  * 
  */
+@XMLVMSkeletonOnly
 public class Thread extends Object {
 
     /**

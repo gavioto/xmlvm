@@ -20,12 +20,15 @@
 
 package Compatlib.System.Windows.Controls;
 
+import org.xmlvm.XMLVMSkeletonOnly;
+
 import Compatlib.System.Windows.FrameworkElement;
 
 /**
  * @author Markus
  * 
  */
+@XMLVMSkeletonOnly
 public class Control extends FrameworkElement {
 
 }

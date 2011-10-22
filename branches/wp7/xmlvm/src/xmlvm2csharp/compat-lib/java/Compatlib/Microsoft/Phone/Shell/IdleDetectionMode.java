@@ -20,11 +20,14 @@
 
 package Compatlib.Microsoft.Phone.Shell;
 
+import org.xmlvm.XMLVMSkeletonOnly;
+
 import Compatlib.System.Object;
 
 /**
  *
  */
+@XMLVMSkeletonOnly
 public class IdleDetectionMode extends Object {
 
     public static final IdleDetectionMode Disabled = new IdleDetectionMode();

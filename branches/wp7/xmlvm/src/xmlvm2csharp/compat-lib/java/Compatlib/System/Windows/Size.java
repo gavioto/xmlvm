@@ -20,12 +20,15 @@
 
 package Compatlib.System.Windows;
 
+import org.xmlvm.XMLVMSkeletonOnly;
+
 import Compatlib.System.Object;
 
 /**
  * @author Markus
  * 
  */
+@XMLVMSkeletonOnly
 public class Size extends Object {
 
     /**

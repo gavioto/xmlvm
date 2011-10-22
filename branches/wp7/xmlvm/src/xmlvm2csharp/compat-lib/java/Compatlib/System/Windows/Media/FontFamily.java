@@ -20,6 +20,8 @@
 
 package Compatlib.System.Windows.Media;
 
+import org.xmlvm.XMLVMSkeletonOnly;
+
 import Compatlib.System.Object;
 import Compatlib.System.String;
 
@@ -27,6 +29,7 @@ import Compatlib.System.String;
  * @author Markus
  * 
  */
+@XMLVMSkeletonOnly
 public class FontFamily extends Object {
 
     private String source = new String("Segoe UI");

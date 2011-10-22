@@ -20,12 +20,15 @@
 
 package Compatlib.System.ComponentModel;
 
+import org.xmlvm.XMLVMSkeletonOnly;
+
 import Compatlib.System.Object;
 
 /**
  * @author Markus
  * 
  */
+@XMLVMSkeletonOnly
 public class BackgroundWorker extends Object {
 
     public final DoWorkEvent DoWork = new DoWorkEvent();

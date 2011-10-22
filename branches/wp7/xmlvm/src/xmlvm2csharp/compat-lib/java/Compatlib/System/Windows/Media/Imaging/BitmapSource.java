@@ -20,12 +20,15 @@
 
 package Compatlib.System.Windows.Media.Imaging;
 
+import org.xmlvm.XMLVMSkeletonOnly;
+
 import Compatlib.System.Windows.Media.ImageSource;
 
 /**
  * @author Markus
  * 
  */
+@XMLVMSkeletonOnly
 public class BitmapSource extends ImageSource {
 
     public int getPixelWidth() {

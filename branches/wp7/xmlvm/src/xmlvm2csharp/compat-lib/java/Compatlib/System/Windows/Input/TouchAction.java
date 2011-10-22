@@ -20,12 +20,15 @@
 
 package Compatlib.System.Windows.Input;
 
+import org.xmlvm.XMLVMSkeletonOnly;
+
 import Compatlib.System.Object;
 
 /**
  * @author Markus
  * 
  */
+@XMLVMSkeletonOnly
 public class TouchAction extends Object {
 
     public final static TouchAction Down = new TouchAction();

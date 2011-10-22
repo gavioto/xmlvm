@@ -21,6 +21,7 @@
 package Compatlib.System.Windows.Controls;
 
 import org.xmlvm.XMLVMIgnore;
+import org.xmlvm.XMLVMSkeletonOnly;
 
 import Compatlib.System.Windows.UIElement;
 import Compatlib.System.Windows.Media.Visual;
@@ -29,6 +30,7 @@ import Compatlib.System.Windows.Media.Visual;
  * @author Markus
  * 
  */
+@XMLVMSkeletonOnly
 public class UIElementCollection extends PresentationFrameworkCollection<UIElement> {
 
     private Visual vis;

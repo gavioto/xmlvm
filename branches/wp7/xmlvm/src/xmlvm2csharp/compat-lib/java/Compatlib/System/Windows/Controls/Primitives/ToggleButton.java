@@ -20,11 +20,14 @@
 
 package Compatlib.System.Windows.Controls.Primitives;
 
+import org.xmlvm.XMLVMSkeletonOnly;
+
 import Compatlib.System.Boolean;
 
 /**
  *
  */
+@XMLVMSkeletonOnly
 public class ToggleButton extends ButtonBase {
 
     /**

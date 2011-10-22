@@ -42,6 +42,7 @@ public class WP7Dispatcher extends Object implements CommonDeviceDispatcher {
 
     @Override
     public void postDelayed(Runnable r, long delayMillis) {
+        this.toRun = r;
         if(delayMillis>0) {
             this.delay = delayMillis;
             timerHandler.DoWork.__add(new DoWorkEventHandler(this, new Compatlib.System.String("run")));

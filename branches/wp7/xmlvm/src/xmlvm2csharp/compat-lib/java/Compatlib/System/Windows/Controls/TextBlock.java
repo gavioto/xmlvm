@@ -20,6 +20,8 @@
 
 package Compatlib.System.Windows.Controls;
 
+import org.xmlvm.XMLVMSkeletonOnly;
+
 import Compatlib.System.String;
 import Compatlib.System.Windows.FrameworkElement;
 import Compatlib.System.Windows.Media.Brush;
@@ -29,6 +31,7 @@ import Compatlib.System.Windows.Media.FontFamily;
  * @author Markus
  * 
  */
+@XMLVMSkeletonOnly
 public class TextBlock extends FrameworkElement {
 
     private Brush      Foreground;

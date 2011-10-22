@@ -20,10 +20,13 @@
 
 package Compatlib.System;
 
+import org.xmlvm.XMLVMSkeletonOnly;
+
 /**
  * @author Markus
  * 
  */
+@XMLVMSkeletonOnly
 public class DateTime extends Object implements IComparable<DateTime>, IConvertible, IFormattable,
         IEquatable<DateTime> {
 

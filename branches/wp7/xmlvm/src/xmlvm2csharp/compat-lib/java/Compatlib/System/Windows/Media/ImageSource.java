@@ -20,12 +20,15 @@
 
 package Compatlib.System.Windows.Media;
 
+import org.xmlvm.XMLVMSkeletonOnly;
+
 import Compatlib.System.Windows.DependencyObject;
 
 /**
  * @author Markus
  * 
  */
+@XMLVMSkeletonOnly
 public class ImageSource extends DependencyObject {
 
 }

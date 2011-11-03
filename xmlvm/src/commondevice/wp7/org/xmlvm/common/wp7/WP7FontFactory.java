@@ -50,14 +50,14 @@ public class WP7FontFactory implements CommonDeviceFontFactory {
     @Override
     public Rect sizeWithFont(String string, CommonDeviceFont font) {
         //TODO HACK!!!
-        return new Rect(0, 0, 100, 50);
+        return new Rect(0, 0, 72, 50);
     }
 
     @Override
     public Rect sizeWithFont(String string, CommonDeviceFont font, Rect constraints,
             int lineBreakMode) {
         //TODO HACK!!!
-        return new Rect(0, 0, 100, 50);
+        return new Rect(0, 0, 72, 50);
     }
 
     @Override

@@ -31,6 +31,21 @@ import Compatlib.System.Windows.Point;
 public class ManipulationStartedEventArgs extends InputEventArgs {
 
     private Point ManipulationOrigin;
+    private boolean Handled;
+
+    /**
+     * @return the handled
+     */
+    public boolean isHandled() {
+        return Handled;
+    }
+
+    /**
+     * @param handled the handled to set
+     */
+    public void setHandled(boolean handled) {
+        Handled = handled;
+    }
 
     /**
      * @return the manipulationOrigin

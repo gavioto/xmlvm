@@ -20,7 +20,6 @@
 
 package org.xmlvm.commondevice.objects;
 
-import android.graphics.Color;
 import android.graphics.Rect;
 
 

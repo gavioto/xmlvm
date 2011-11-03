@@ -47,6 +47,7 @@ public class WP7AlertDialogAdapter extends Object implements AlertDialogAdapter 
     
     private Popup popup;
     private TextBlock textblock1;
+    private TextBlock textblock2;
     private List<Button> buttons = new ArrayList<Button>();
     private StackPanel panel2;
     private AlertDialog alertDialog;
@@ -67,28 +68,37 @@ public class WP7AlertDialogAdapter extends Object implements AlertDialogAdapter 
         panel2 = new StackPanel();
         panel2.setHorizontalAlignment(HorizontalAlignment.Left);
         
-        setTitle(title);
         
         textblock1 = new TextBlock();
-        setMessage(message);
-
+        setTitle(title);
         textblock1.setMargin(new Thickness(5.0));
         textblock1.setFontSize(20);
         textblock1.setForeground(new SolidColorBrush(Colors.White));
         panel2.getChildren().Add(textblock1);
         
+        textblock2 = new TextBlock();
+        setMessage(message);
+        textblock2.setMargin(new Thickness(5.0));
+        textblock2.setFontSize(20);
+        textblock2.setForeground(new SolidColorBrush(Colors.White));
+        panel2.getChildren().Add(textblock2);
+        
         if (cancelButtonTitle != null)
             addButtonWithTitle(cancelButtonTitle);
+        
+        panel1.getChildren().Add(panel2);
+        
+        popup.setChild(panel1);
     }
 
     @Override
     public void setTitle(String title) {
-        this.popup.setName(new Compatlib.System.String(title));
+        textblock1.setText(new Compatlib.System.String(title));
     }
 
     @Override
     public void setMessage(String message) {
-        textblock1.setText(new Compatlib.System.String(message));
+        textblock2.setText(new Compatlib.System.String(message));
     }
 
     @Override
@@ -102,7 +112,7 @@ public class WP7AlertDialogAdapter extends Object implements AlertDialogAdapter 
         buttons.add(button1);
     }
     
-    public void changeLevelDialog_Click(Object sender, RoutedEventArgs e)
+    public void dialog_Click(Object sender, RoutedEventArgs e)
     {
         alertDialog.clickedButtonAtIndex(Integer.parseInt(((Button)e.getOriginalSource()).getName().value));
 

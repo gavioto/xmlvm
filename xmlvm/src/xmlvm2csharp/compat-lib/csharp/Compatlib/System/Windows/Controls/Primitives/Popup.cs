@@ -12,6 +12,20 @@ public new void @this(){
 
 public virtual void setIsOpen(bool n1){
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.Controls.Primitives.Popup: void setIsOpen(boolean)]
+    global::Compatlib.System.Windows.Application app = (global::Compatlib.System.Windows.Application)global::Compatlib.System.Windows.Application.getCurrent();
+    global::Compatlib.System.Windows.UIElement rootVisual = ((global::Compatlib.System.Windows.UIElement)app.getRootVisual());
+    global::Compatlib.System.Windows.Controls.UIElementCollection collection = (global::Compatlib.System.Windows.Controls.UIElementCollection)((global::Compatlib.System.Windows.Controls.Panel)rootVisual).getChildren();
+    if (n1)
+    {
+        collection.Add(this);
+        //rootVisual.InvalidateMeasure();
+        base.element.Measure(new global::System.Windows.Size(double.PositiveInfinity, double.PositiveInfinity));
+        rootVisual.InvalidateArrange();
+    }
+    else
+    {
+        collection.Remove(this);
+    }
     ((global::System.Windows.Controls.Primitives.Popup)base.element).IsOpen = n1;
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.Controls.Primitives.Popup: void setIsOpen(boolean)]
 }

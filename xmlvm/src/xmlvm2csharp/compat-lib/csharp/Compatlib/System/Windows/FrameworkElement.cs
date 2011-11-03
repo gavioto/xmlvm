@@ -6,6 +6,7 @@ namespace Compatlib.System.Windows {
 public class FrameworkElement: global::Compatlib.System.Windows.UIElement {
 public new void @this(){
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.FrameworkElement: void <init>()]
+    base.@this();
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.FrameworkElement: void <init>()]
 }
 
@@ -57,6 +58,12 @@ public virtual void setMinWidth(int n1){
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.FrameworkElement: void setMinWidth(int)]
     ((global::System.Windows.FrameworkElement)base.element).MinWidth = n1;
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.FrameworkElement: void setMinWidth(int)]
+}
+
+public virtual void setMinHeight(int n1){
+//XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.FrameworkElement: void setMinHeight(int)]
+    ((global::System.Windows.FrameworkElement)base.element).MinHeight = n1;
+//XMLVM_END_WRAPPER[Compatlib.System.Windows.FrameworkElement: void setMinHeight(int)]
 }
 
 public virtual void setMargin(Compatlib.System.Windows.Thickness n1){

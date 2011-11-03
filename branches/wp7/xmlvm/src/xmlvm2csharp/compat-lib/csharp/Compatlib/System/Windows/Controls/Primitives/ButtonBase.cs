@@ -8,6 +8,7 @@ public Compatlib.System.Windows.RoutedEvent _fClick;
 
 public new void @this(){
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.Controls.Primitives.ButtonBase: void <init>()]
+    base.@this();
     this._fClick = new RoutedEvent();
     this._fClick.@this();
 

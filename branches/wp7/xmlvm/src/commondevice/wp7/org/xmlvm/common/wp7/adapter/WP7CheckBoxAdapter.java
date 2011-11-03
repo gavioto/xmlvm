@@ -23,6 +23,7 @@ package org.xmlvm.common.wp7.adapter;
 import org.xmlvm.common.wp7.objects.WP7View;
 import org.xmlvm.commondevice.adapter.CheckBoxAdapter;
 
+import Compatlib.System.Boolean;
 import Compatlib.System.Object;
 import Compatlib.System.Windows.RoutedEventArgs;
 import Compatlib.System.Windows.RoutedEventHandler;
@@ -45,6 +46,10 @@ public class WP7CheckBoxAdapter extends WP7View implements CheckBoxAdapter {
     }
     
     public void checkbox_onClick(Object sender, RoutedEventArgs e) {
+        Boolean isChecked = ((Compatlib.System.Windows.Controls.CheckBox)this.getElement()).getIsChecked();
+        if(isChecked!=null) {
+            ((Compatlib.System.Windows.Controls.CheckBox)this.getElement()).setIsChecked(!isChecked.getValue());
+        }
         this.checkBox.setChecked(!checkBox.isChecked());
         this.checkBox.xmlvmSetDrawableState(checkBox.isChecked() ? CompoundButton.CHECKED_STATE_SET : View.EMPTY_STATE_SET);
     }

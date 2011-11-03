@@ -14,11 +14,16 @@ public virtual void Add(Compatlib.System.Windows.UIElement n1){
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.Controls.UIElementCollection: void Add(Compatlib.System.Windows.UIElement)]
     collection.Add(n1.element);
     base.Add(n1);
+    n1.parent = owner;
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.Controls.UIElementCollection: void Add(Compatlib.System.Windows.UIElement)]
 }
 
 public override void Clear(){
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.Controls.UIElementCollection: void Clear()]
+    for(int i=0; i<base.getCount(); i++)
+    {
+        ((Compatlib.System.Windows.UIElement)base._1_1access(i)).parent = null;
+    }
     base.Clear();
     collection.Clear();
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.Controls.UIElementCollection: void Clear()]
@@ -28,6 +33,7 @@ public virtual void Insert(int n1, Compatlib.System.Windows.UIElement n2){
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.Controls.UIElementCollection: void Insert(int, Compatlib.System.Windows.UIElement)]
     base.Insert(n1, n2);
     collection.Insert(n1, n2.element);
+    n2.parent = owner;
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.Controls.UIElementCollection: void Insert(int, Compatlib.System.Windows.UIElement)]
 }
 
@@ -47,6 +53,7 @@ public virtual void Remove(Compatlib.System.Windows.UIElement n1){
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.Controls.UIElementCollection: void Remove(Compatlib.System.Windows.UIElement)]
     base.Remove(n1);
     collection.Remove(n1.element);
+    n1.parent = null;
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.Controls.UIElementCollection: void Remove(Compatlib.System.Windows.UIElement)]
 }
 
@@ -70,6 +77,7 @@ public override void Insert(int n1, java.lang.Object n2){
 
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.Controls.UIElementCollection]
 public global::System.Windows.Controls.UIElementCollection collection;
+public global::Compatlib.System.Windows.UIElement owner;
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.Controls.UIElementCollection]
 
 } // end of class: UIElementCollection

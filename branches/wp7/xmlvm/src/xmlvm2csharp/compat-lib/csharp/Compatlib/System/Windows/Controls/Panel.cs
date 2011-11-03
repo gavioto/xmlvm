@@ -16,7 +16,9 @@ public new void @this(){
     {
         base.element = new OverridePanel(this);
     }
+    base.@this();
     children.@this();
+    children.owner = this;
     children.collection = ((global::System.Windows.Controls.Panel)base.element).Children;
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.Controls.Panel: void <init>()]
 }
@@ -36,12 +38,40 @@ public virtual void setBackground(Compatlib.System.Windows.Media.Brush n1){
         public OverridePanel(Panel panel)
         {
             this.panel = panel;
+            this.Loaded += OverridePanel_Loaded;
+        }
+
+        void OverridePanel_Loaded(object sender, global::System.Windows.RoutedEventArgs e)
+        {
+            global::System.Diagnostics.Debug.WriteLine("Loaded fired");
+
+            foreach (global::System.Windows.UIElement child in base.Children)
+            {
+                global::System.Diagnostics.Debug.WriteLine("Rendering " + child.GetType().Name);
+            }
+
+            InvalidateMeasure();
+            InvalidateArrange();
         }
 
         protected override global::System.Windows.Size ArrangeOverride(global::System.Windows.Size finalSize)
         {
             Size size = new Size();
             size.size = finalSize;
+
+            for(int i=0; i<panel.children.getCount(); i++)
+            {
+                global::Compatlib.System.Windows.UIElement child = (global::Compatlib.System.Windows.UIElement)panel.children._1_1access(i);
+                global::Compatlib.System.Windows.Rect rect = new global::Compatlib.System.Windows.Rect();
+                rect.rect = new global::System.Windows.Rect(child.x, child.y, child.element.DesiredSize.Width, child.element.DesiredSize.Height);
+                if (child.element is global::System.Windows.Controls.Primitives.Popup)
+                {
+                    rect.rect = new global::System.Windows.Rect(child.x, child.y, 800, 200);
+                }
+                //global::System.Diagnostics.Debug.WriteLine("Arranging child: " + rect.rect);
+                child.Arrange(rect);
+            }
+
             return panel.ArrangeOverride(size) != null ? ((System.Windows.Size)panel.ArrangeOverride(size)).size : base.ArrangeOverride(finalSize);
         }
 
@@ -49,6 +79,14 @@ public virtual void setBackground(Compatlib.System.Windows.Media.Brush n1){
         {
             Size size = new Size();
             size.size = availableSize;
+
+            for (int i = 0; i < panel.children.getCount(); i++)
+            {
+                global::Compatlib.System.Windows.UIElement child = (global::Compatlib.System.Windows.UIElement)panel.children._1_1access(i);
+                child.element.Measure(new global::System.Windows.Size(child.width, child.height));
+                //global::System.Diagnostics.Debug.WriteLine("Measured child: " + child.element.DesiredSize);
+            }
+
             return panel.MeasureOverride(size) != null ? ((System.Windows.Size)panel.MeasureOverride(size)).size : base.MeasureOverride(availableSize);
         }
     }

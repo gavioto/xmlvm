@@ -6,6 +6,7 @@ namespace Compatlib.System.Windows.Controls {
 public class ContentControl: global::Compatlib.System.Windows.Controls.Control {
 public new void @this(){
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.Controls.ContentControl: void <init>()]
+    base.@this();
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.Controls.ContentControl: void <init>()]
 }
 

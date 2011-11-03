@@ -14,7 +14,7 @@ public static int floatToIntBits(float n1){
 
 public static int floatToRawIntBits(float n1){
 //XMLVM_BEGIN_WRAPPER[java.lang.Float: int floatToRawIntBits(float)]
-      throw new org.xmlvm._nNotYetImplementedException("native/wrapper method not yet implemented");
+      return global::System.BitConverter.ToInt32(global::System.BitConverter.GetBytes(n1), 0);
 //XMLVM_END_WRAPPER[java.lang.Float: int floatToRawIntBits(float)]
 }
 

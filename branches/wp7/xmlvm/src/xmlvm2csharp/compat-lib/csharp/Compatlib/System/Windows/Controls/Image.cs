@@ -7,6 +7,7 @@ public class Image: global::Compatlib.System.Windows.FrameworkElement {
 public new void @this(){
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.Controls.Image: void <init>()]
     base.element = new global::System.Windows.Controls.Image();
+    base.@this();
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.Controls.Image: void <init>()]
 }
 

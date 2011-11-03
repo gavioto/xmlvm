@@ -29,6 +29,7 @@ import Compatlib.System.Windows.Size;
 import Compatlib.System.Windows.UIElement;
 import Compatlib.System.Windows.Controls.Image;
 import Compatlib.System.Windows.Controls.Panel;
+import Compatlib.System.Windows.Controls.Primitives.ButtonBase;
 import Compatlib.System.Windows.Input.ManipulationCompletedEventArgs;
 import Compatlib.System.Windows.Input.ManipulationDeltaEventArgs;
 import Compatlib.System.Windows.Input.ManipulationStartedEventArgs;
@@ -70,6 +71,7 @@ public class WP7View extends Object implements CommonDeviceView {
     @Override
     public void setFrame(Rect frame) {
         element.Measure(WP7View.toSize(frame));
+        element.xmlvmSetXY(frame.top, frame.left);
     }
 
     @Override
@@ -135,28 +137,36 @@ public class WP7View extends Object implements CommonDeviceView {
     }
     
     public void OnManipulationStarted(Object sender, ManipulationStartedEventArgs args) {
-        xmlvmTouchesEvent(MotionEvent.ACTION_DOWN, (int) args.getManipulationOrigin().getX(), (int) args.getManipulationOrigin().getY());
+        boolean event = xmlvmTouchesEvent(MotionEvent.ACTION_DOWN, (int) args.getManipulationOrigin().getX(), (int) args.getManipulationOrigin().getY());
+        args.setHandled(event);
     }
     
     public void OnManipulationDelta(Object sender, ManipulationDeltaEventArgs args) {
-        xmlvmTouchesEvent(MotionEvent.ACTION_DOWN, (int) args.getDeltaManipulation().getTranslation().getX(), (int) args.getDeltaManipulation().getTranslation().getY());
+        int x = (int) (args.getDeltaManipulation().getTranslation().getX() + args.getManipulationOrigin().getX());
+        int y = (int) (args.getDeltaManipulation().getTranslation().getY() + args.getManipulationOrigin().getY());
+        boolean event = xmlvmTouchesEvent(MotionEvent.ACTION_MOVE, x, y);
+        args.setHandled(event);
     }
     
     public void OnManipulationCompleted(Object sender, ManipulationCompletedEventArgs args) {
-        xmlvmTouchesEvent(MotionEvent.ACTION_DOWN, (int) args.getManipulationOrigin().getX(), (int) args.getManipulationOrigin().getY());
+        boolean event = xmlvmTouchesEvent(MotionEvent.ACTION_UP, (int) args.getManipulationOrigin().getX(), (int) args.getManipulationOrigin().getY());
+        args.setHandled(event);
     }
     
     public boolean xmlvmTouchesEvent(int action, int x, int y) {
         if (action == MotionEvent.ACTION_UP && androidView.getOnClickListener() != null) {
             androidView.getOnClickListener().onClick(androidView);
         }
-
+        
         MotionEvent motionEvent = new MotionEvent(action, x, y);
         if (androidView.onTouchEvent(motionEvent)) {
             return true;
         }
         if (androidView.getOnTouchListener() != null && androidView.getOnTouchListener().onTouch(androidView, motionEvent)) {
             return true;
+        }
+        if(element instanceof ButtonBase) {
+            return false;
         }
         if (androidView.getParent() != null && (androidView.getParent() instanceof View)) {
             return ((WP7View)((View) androidView.getParent()).xmlvmGetViewHandler().getContentView()).xmlvmTouchesEvent(action, x, y);

@@ -116,15 +116,15 @@ private bool rootVisualChanged = false;
 private bool pageInitialized = false;
 private int orientation;
 private bool shellVisibility;
+private Compatlib.System.Windows.StartupEventArgs newArgs;
 
 public void StartUpHandler(object sender, global::System.Windows.StartupEventArgs args)
 {
     frame.Navigated += new global::System.Windows.Navigation.NavigatedEventHandler(Navigated);
     app.RootVisual = frame;
 
-    Compatlib.System.Windows.StartupEventArgs newArgs = new Compatlib.System.Windows.StartupEventArgs();
+    newArgs = new Compatlib.System.Windows.StartupEventArgs();
     newArgs.args = args;
-    this._fStartup._1_1fire(this, newArgs);
 }
 
 public void Navigated(object sender, global::System.Windows.Navigation.NavigationEventArgs args)
@@ -135,6 +135,7 @@ public void Navigated(object sender, global::System.Windows.Navigation.Navigatio
     }
     this.setOrientation(orientation);
     this.setStatusBarHidden(shellVisibility);
+    this._fStartup._1_1fire(this, newArgs);
 }
 
 public void changeRootVisual() 

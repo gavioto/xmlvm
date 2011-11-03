@@ -22,6 +22,9 @@ package Compatlib.System.Windows.Input;
 
 import org.xmlvm.XMLVMSkeletonOnly;
 
+import Compatlib.System.Windows.Point;
+import android.view.MotionEvent;
+
 /**
  *
  */
@@ -29,6 +32,21 @@ import org.xmlvm.XMLVMSkeletonOnly;
 public class ManipulationDeltaEventArgs extends InputEventArgs {
 
     private ManipulationDelta  DeltaManipulation;
+    private boolean Handled;
+
+    /**
+     * @return the handled
+     */
+    public boolean isHandled() {
+        return Handled;
+    }
+
+    /**
+     * @param handled the handled to set
+     */
+    public void setHandled(boolean handled) {
+        Handled = handled;
+    }
 
     /**
      * @return the deltaManipulation
@@ -43,5 +61,22 @@ public class ManipulationDeltaEventArgs extends InputEventArgs {
     public void setDeltaManipulation(ManipulationDelta deltaManipulation) {
         DeltaManipulation = deltaManipulation;
     }
+
+    private Point ManipulationOrigin;
+
+    /**
+     * @return the manipulationOrigin
+     */
+    public Point getManipulationOrigin() {
+        return ManipulationOrigin;
+    }
+
+    /**
+     * @param manipulationOrigin the manipulationOrigin to set
+     */
+    public void setManipulationOrigin(Point manipulationOrigin) {
+        ManipulationOrigin = manipulationOrigin;
+    }
+
     
 }

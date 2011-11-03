@@ -22,6 +22,7 @@ package Compatlib.System.Windows.Input;
 
 import org.xmlvm.XMLVMSkeletonOnly;
 
+import Compatlib.System.Windows.Point;
 import Compatlib.System.Windows.Vector;
 
 /**
@@ -30,19 +31,19 @@ import Compatlib.System.Windows.Vector;
 @XMLVMSkeletonOnly
 public class ManipulationDelta {
 
-    private Vector Translation;
+    private Point Translation;
 
     /**
      * @return the translation
      */
-    public Vector getTranslation() {
+    public Point getTranslation() {
         return Translation;
     }
 
     /**
      * @param translation the translation to set
      */
-    public void setTranslation(Vector translation) {
+    public void setTranslation(Point translation) {
         Translation = translation;
     }
     

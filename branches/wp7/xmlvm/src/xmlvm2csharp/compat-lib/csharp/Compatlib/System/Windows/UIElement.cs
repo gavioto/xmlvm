@@ -15,6 +15,10 @@ public new void @this(){
     _fManipulationStarted = new RoutedEvent();
     _fManipulationDelta = new RoutedEvent();
     _fManipulationCompleted = new RoutedEvent();
+
+    element.ManipulationStarted += element_ManipulationStarted;
+    element.ManipulationCompleted += element_ManipulationCompleted;
+    element.ManipulationDelta += element_ManipulationDelta;
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.UIElement: void <init>()]
 }
 
@@ -30,16 +34,44 @@ public virtual void InvalidateArrange(){
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.UIElement: void InvalidateArrange()]
 }
 
+public virtual void InvalidateMeasure() {
+//XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.UIElement: void InvalidateMeasure()]
+    element.InvalidateMeasure();
+//XMLVM_END_WRAPPER[Compatlib.System.Windows.UIElement: void InvalidateMeasure()]
+}
+
 public virtual void Measure(Compatlib.System.Windows.Size n1){
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.UIElement: void Measure(Compatlib.System.Windows.Size)]
     element.Measure(n1.size);
+    width = n1.size.Width;
+    height = n1.size.Height;
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.UIElement: void Measure(Compatlib.System.Windows.Size)]
 }
 
 public virtual global::System.Object getDesiredSize(){
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.UIElement: Compatlib.System.Windows.Size getDesiredSize()]
     Compatlib.System.Windows.Size ret = new Compatlib.System.Windows.Size();
-    ret.size = element.DesiredSize;
+    if (!measured)
+    {
+        element.Measure(new global::System.Windows.Size(double.PositiveInfinity, double.PositiveInfinity));
+        measured = true;
+    }
+
+    if (element.DesiredSize.Width == 0 && element.DesiredSize.Height == 0)
+    {
+        //Hack to ensure minimum width/height before we are part of the view hierarchy
+        if (element is global::System.Windows.Controls.CheckBox)
+        {
+            ret.size = new global::System.Windows.Size(68, 72);
+        } else if (element is global::System.Windows.Controls.Button) 
+        {
+            ret.size = new global::System.Windows.Size(85, 72);
+        }
+    }
+    else
+    {
+        ret.size = element.DesiredSize;
+    }
     return ret;
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.UIElement: Compatlib.System.Windows.Size getDesiredSize()]
 }
@@ -50,8 +82,44 @@ public virtual void setDesiredSize(Compatlib.System.Windows.Size n1){
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.UIElement: void setDesiredSize(Compatlib.System.Windows.Size)]
 }
 
+public virtual void xmlvmSetXY(int n1, int n2)
+{
+//XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.UIElement: void xmlvmSetXY(int, int)]
+    x = n1;
+    y = n2;
+//XMLVM_END_WRAPPER[Compatlib.System.Windows.UIElement: void xmlvmSetXY(int, int)]
+}
+
 //XMLVM_BEGIN_WRAPPER[Compatlib.System.Windows.UIElement]
 public global::System.Windows.UIElement element;
+public global::Compatlib.System.Windows.UIElement parent;
+public bool measured;
+public int x, y;
+public double width, height;
+
+public void element_ManipulationStarted(object sender, global::System.Windows.Input.ManipulationStartedEventArgs args)
+{
+    global::Compatlib.System.Windows.Input.ManipulationStartedEventArgs newArgs = new global::Compatlib.System.Windows.Input.ManipulationStartedEventArgs();
+    newArgs.args = args;
+    _fManipulationStarted._1_1fire(this, newArgs);
+}
+
+public void element_ManipulationDelta(object sender, global::System.Windows.Input.ManipulationDeltaEventArgs args)
+{
+    global::Compatlib.System.Windows.Input.ManipulationDeltaEventArgs newArgs = new global::Compatlib.System.Windows.Input.ManipulationDeltaEventArgs();
+    newArgs.args = args;
+    _fManipulationDelta._1_1fire(this, newArgs);
+}
+
+public void element_ManipulationCompleted(object sender, global::System.Windows.Input.ManipulationCompletedEventArgs args)
+{
+    global::Compatlib.System.Windows.Input.ManipulationCompletedEventArgs newArgs = new global::Compatlib.System.Windows.Input.ManipulationCompletedEventArgs();
+    newArgs.args = args;
+
+    global::System.Diagnostics.Debug.WriteLine(sender.GetHashCode());
+    
+    _fManipulationCompleted._1_1fire(this, newArgs);
+}
 //XMLVM_END_WRAPPER[Compatlib.System.Windows.UIElement]
 
 } // end of class: UIElement

@@ -50,6 +50,11 @@ public class UIElement extends Visual {
         // TODO Auto-generated method stub
 
     }
+    
+    public void InvalidateMeasure() {
+        // TODO Auto-generated method stub
+
+    }
 
     /**
      * @param size
@@ -65,6 +70,15 @@ public class UIElement extends Visual {
     public Size getDesiredSize() {
         // TODO Auto-generated method stub
         return null;
+    }
+
+    /**
+     * @param top
+     * @param left
+     */
+    public void xmlvmSetXY(int top, int left) {
+        // TODO Auto-generated method stub
+        
     }
 
 }

@@ -20,13 +20,13 @@
 
 package org.xmlvm.iphone.subsystems;
 
-import org.xmlvm.common.subsystems.CommonDevicePowerManager;
+import org.xmlvm.common.subsystems.CommonPowerManager;
 import org.xmlvm.iphone.UIApplication;
 
 /**
  *
  */
-public class IPhonePowerManager implements CommonDevicePowerManager {
+public class IPhonePowerManager implements CommonPowerManager {
     
     @Override
     public void acquireWakeLock() {

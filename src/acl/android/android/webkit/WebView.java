@@ -21,7 +21,7 @@
 package android.webkit;
 
 import org.xmlvm.common.adapter.WebViewAdapter;
-import org.xmlvm.common.objects.CommonDeviceView;
+import org.xmlvm.common.objects.CommonView;
 
 import android.content.Context;
 import android.internal.CommonDeviceAPIFinder;
@@ -44,7 +44,7 @@ public class WebView extends ViewGroup {
     }
 
     @Override
-    protected CommonDeviceView xmlvmNewCommonDeviceView(AttributeSet attrs) {
+    protected CommonView xmlvmNewCommonDeviceView(AttributeSet attrs) {
         this.webViewAdapter = CommonDeviceAPIFinder.instance().getWidgetFactory().createWebView(this);
         return this.webViewAdapter;
     }

@@ -20,19 +20,19 @@
 
 package org.xmlvm.common;
 
-import org.xmlvm.common.subsystems.CommonDeviceAccelerometer;
-import org.xmlvm.common.subsystems.CommonDeviceDispatcher;
-import org.xmlvm.common.subsystems.CommonDeviceFileSystem;
-import org.xmlvm.common.subsystems.CommonDeviceFontFactory;
-import org.xmlvm.common.subsystems.CommonDeviceLocationManager;
-import org.xmlvm.common.subsystems.CommonDevicePowerManager;
-import org.xmlvm.common.subsystems.CommonDevicePreferences;
-import org.xmlvm.common.subsystems.CommonDeviceProperties;
-import org.xmlvm.common.subsystems.CommonDeviceTextFieldDelegate;
-import org.xmlvm.common.subsystems.CommonDeviceWebBrowser;
-import org.xmlvm.common.subsystems.CommonDeviceWidgetFactory;
-import org.xmlvm.common.subsystems.CommonDeviceWindow;
-import org.xmlvm.common.subsystems.CommonDeviceMediaPlayer;
+import org.xmlvm.common.subsystems.CommonAccelerometer;
+import org.xmlvm.common.subsystems.CommonDispatcher;
+import org.xmlvm.common.subsystems.CommonFileSystem;
+import org.xmlvm.common.subsystems.CommonFontFactory;
+import org.xmlvm.common.subsystems.CommonLocationManager;
+import org.xmlvm.common.subsystems.CommonPowerManager;
+import org.xmlvm.common.subsystems.CommonPreferences;
+import org.xmlvm.common.subsystems.CommonProperties;
+import org.xmlvm.common.subsystems.CommonTextFieldDelegate;
+import org.xmlvm.common.subsystems.CommonWebBrowser;
+import org.xmlvm.common.subsystems.CommonWidgetFactory;
+import org.xmlvm.common.subsystems.CommonWindow;
+import org.xmlvm.common.subsystems.CommonMediaPlayer;
 
 import android.hardware.SensorManager;
 import android.location.LocationManager;
@@ -44,18 +44,18 @@ import android.view.Window;
  */
 public interface CommonDeviceAPI {
 
-    public CommonDeviceFileSystem getFileSystem();
-    public CommonDevicePreferences getPreferences();
-    public CommonDeviceAccelerometer getAccelerometer(SensorManager sensorManager);
-    public CommonDeviceProperties getProperties();
-    public CommonDeviceWidgetFactory getWidgetFactory();
-    public CommonDeviceDispatcher getDispatcher();
-    public CommonDeviceWindow getWindow();
-    public CommonDeviceFontFactory getFontFactory();
-    public CommonDevicePowerManager getPowerManager();
-    public CommonDeviceLocationManager getLocationManager(LocationManager locationManager);
-    public CommonDeviceWebBrowser getWebBrowser();
-    public CommonDeviceTextFieldDelegate getTextFieldDelegate(Window window);
-    public CommonDeviceMediaPlayer getMediaPlayer(MediaPlayer mediaPlayer);
+    public CommonFileSystem getFileSystem();
+    public CommonPreferences getPreferences();
+    public CommonAccelerometer getAccelerometer(SensorManager sensorManager);
+    public CommonProperties getProperties();
+    public CommonWidgetFactory getWidgetFactory();
+    public CommonDispatcher getDispatcher();
+    public CommonWindow getWindow();
+    public CommonFontFactory getFontFactory();
+    public CommonPowerManager getPowerManager();
+    public CommonLocationManager getLocationManager(LocationManager locationManager);
+    public CommonWebBrowser getWebBrowser();
+    public CommonTextFieldDelegate getTextFieldDelegate(Window window);
+    public CommonMediaPlayer getMediaPlayer(MediaPlayer mediaPlayer);
     
 }

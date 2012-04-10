@@ -21,23 +21,19 @@
 package org.xmlvm.wp7;
 
 import org.xmlvm.common.CommonDeviceAPI;
-import org.xmlvm.common.subsystems.CommonDeviceAccelerometer;
-import org.xmlvm.common.subsystems.CommonDeviceDispatcher;
-import org.xmlvm.common.subsystems.CommonDeviceFileSystem;
-import org.xmlvm.common.subsystems.CommonDeviceFontFactory;
-import org.xmlvm.common.subsystems.CommonDeviceLocationManager;
-import org.xmlvm.common.subsystems.CommonDevicePowerManager;
-import org.xmlvm.common.subsystems.CommonDevicePreferences;
-import org.xmlvm.common.subsystems.CommonDeviceProperties;
-import org.xmlvm.common.subsystems.CommonDeviceTextFieldDelegate;
-import org.xmlvm.common.subsystems.CommonDeviceWebBrowser;
-import org.xmlvm.common.subsystems.CommonDeviceWidgetFactory;
-import org.xmlvm.common.subsystems.CommonDeviceWindow;
-import org.xmlvm.common.subsystems.CommonDeviceMediaPlayer;
-import org.xmlvm.iphone.subsystems.IPhoneFileSystem;
-import org.xmlvm.iphone.subsystems.IPhoneFontFactory;
-import org.xmlvm.iphone.subsystems.IPhoneProperties;
-import org.xmlvm.iphone.subsystems.IPhoneWidgetFactory;
+import org.xmlvm.common.subsystems.CommonAccelerometer;
+import org.xmlvm.common.subsystems.CommonDispatcher;
+import org.xmlvm.common.subsystems.CommonFileSystem;
+import org.xmlvm.common.subsystems.CommonFontFactory;
+import org.xmlvm.common.subsystems.CommonLocationManager;
+import org.xmlvm.common.subsystems.CommonMediaPlayer;
+import org.xmlvm.common.subsystems.CommonPowerManager;
+import org.xmlvm.common.subsystems.CommonPreferences;
+import org.xmlvm.common.subsystems.CommonProperties;
+import org.xmlvm.common.subsystems.CommonTextFieldDelegate;
+import org.xmlvm.common.subsystems.CommonWebBrowser;
+import org.xmlvm.common.subsystems.CommonWidgetFactory;
+import org.xmlvm.common.subsystems.CommonWindow;
 import org.xmlvm.wp7.subsystems.WP7Accelerometer;
 import org.xmlvm.wp7.subsystems.WP7Dispatcher;
 import org.xmlvm.wp7.subsystems.WP7FileSystem;
@@ -69,42 +65,42 @@ public class WP7API implements CommonDeviceAPI {
     }
 
     @Override
-    public CommonDeviceFileSystem getFileSystem() {
+    public CommonFileSystem getFileSystem() {
         return wp7FileSystem;
     }
 
     @Override
-    public CommonDevicePreferences getPreferences() {
+    public CommonPreferences getPreferences() {
         return new WP7Preferences();
     }
 
     @Override
-    public CommonDeviceAccelerometer getAccelerometer(SensorManager sensorManager) {
+    public CommonAccelerometer getAccelerometer(SensorManager sensorManager) {
         return new WP7Accelerometer(sensorManager);
     }
 
     @Override
-    public CommonDeviceProperties getProperties() {
+    public CommonProperties getProperties() {
         return wp7Properties;
     }
 
     @Override
-    public CommonDeviceWidgetFactory getWidgetFactory() {
+    public CommonWidgetFactory getWidgetFactory() {
         return wp7WidgetFactory;
     }
 
     @Override
-    public CommonDeviceDispatcher getDispatcher() {
+    public CommonDispatcher getDispatcher() {
         return new WP7Dispatcher();
     }
 
     @Override
-    public CommonDeviceWindow getWindow() {
+    public CommonWindow getWindow() {
         return new WP7Window();
     }
 
     @Override
-    public CommonDeviceFontFactory getFontFactory() {
+    public CommonFontFactory getFontFactory() {
         return wp7FontFactory;
     }
 
@@ -112,7 +108,7 @@ public class WP7API implements CommonDeviceAPI {
      * @see org.xmlvm.common.CommonDeviceAPI#getPowerManager()
      */
     @Override
-    public CommonDevicePowerManager getPowerManager() {
+    public CommonPowerManager getPowerManager() {
         // TODO Auto-generated method stub
         return null;
     }
@@ -121,7 +117,7 @@ public class WP7API implements CommonDeviceAPI {
      * @see org.xmlvm.common.CommonDeviceAPI#getLocationManager(android.location.LocationManager)
      */
     @Override
-    public CommonDeviceLocationManager getLocationManager(LocationManager locationManager) {
+    public CommonLocationManager getLocationManager(LocationManager locationManager) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -130,7 +126,7 @@ public class WP7API implements CommonDeviceAPI {
      * @see org.xmlvm.common.CommonDeviceAPI#getWebBrowser()
      */
     @Override
-    public CommonDeviceWebBrowser getWebBrowser() {
+    public CommonWebBrowser getWebBrowser() {
         // TODO Auto-generated method stub
         return null;
     }
@@ -139,7 +135,7 @@ public class WP7API implements CommonDeviceAPI {
      * @see org.xmlvm.common.CommonDeviceAPI#getTextFieldDelegate(android.view.Window)
      */
     @Override
-    public CommonDeviceTextFieldDelegate getTextFieldDelegate(Window window) {
+    public CommonTextFieldDelegate getTextFieldDelegate(Window window) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -148,7 +144,7 @@ public class WP7API implements CommonDeviceAPI {
      * @see org.xmlvm.common.CommonDeviceAPI#getMediaPlayer(android.media.MediaPlayer)
      */
     @Override
-    public CommonDeviceMediaPlayer getMediaPlayer(MediaPlayer mediaPlayer) {
+    public CommonMediaPlayer getMediaPlayer(MediaPlayer mediaPlayer) {
         // TODO Auto-generated method stub
         return null;
     }

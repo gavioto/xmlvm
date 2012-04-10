@@ -21,7 +21,7 @@
 package org.xmlvm.wp7.adapter;
 
 import org.xmlvm.common.adapter.TextViewAdapter;
-import org.xmlvm.common.objects.CommonDeviceFont;
+import org.xmlvm.common.objects.CommonFont;
 import org.xmlvm.wp7.objects.WP7Font;
 import org.xmlvm.wp7.objects.WP7View;
 
@@ -43,13 +43,13 @@ public class WP7TextViewAdapter extends WP7View implements TextViewAdapter {
     }
 
     @Override
-    public CommonDeviceFont getFont() {
+    public CommonFont getFont() {
         return new WP7Font(((TextBlock) this.getElement()).getFontFamily().getSource().value,
                 (float) ((TextBlock) this.getElement()).getFontSize());
     }
 
     @Override
-    public void setFont(CommonDeviceFont font) {
+    public void setFont(CommonFont font) {
         FontFamily fontFamily = new FontFamily();
         fontFamily.setSource(new Compatlib.System.String(((WP7Font) font).familyName()));
         ((TextBlock) this.getElement()).setFontFamily(fontFamily);

@@ -20,13 +20,13 @@
 
 package org.xmlvm.common.adapter;
 
-import org.xmlvm.common.objects.CommonDeviceView;
+import org.xmlvm.common.objects.CommonView;
 
 
 /**
  *
  */
-public interface ImageViewAdapter extends CommonDeviceView {
+public interface ImageViewAdapter extends CommonView {
 
     void setImage(BitmapDrawableAdapter xmlvmGetImage);
     BitmapDrawableAdapter getImage();

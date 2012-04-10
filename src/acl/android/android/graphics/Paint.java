@@ -23,8 +23,8 @@ package android.graphics;
  import android.text.GraphicsOperations;
  */
 
-import org.xmlvm.common.objects.CommonDeviceContext;
-import org.xmlvm.common.objects.CommonDeviceFont;
+import org.xmlvm.common.objects.CommonContext;
+import org.xmlvm.common.objects.CommonFont;
 
 import android.internal.Assert;
 import android.internal.CommonDeviceAPIFinder;
@@ -1638,7 +1638,7 @@ public class Paint {
         Assert.NOT_IMPLEMENTED();
     }
 
-    public CommonDeviceFont xmlvmGetUIFont() {
+    public CommonFont xmlvmGetUIFont() {
         return (mTypeface == null ? Typeface.create(Typeface.DEFAULT, mFlags) : Typeface.create(mTypeface, mFlags)).xmlvmGetUIFont(mTextSize);
     }
 
@@ -1651,7 +1651,7 @@ public class Paint {
         return color;
     }
 
-    public void xmlvmSetCGContextParameters(CommonDeviceContext context) {
+    public void xmlvmSetCGContextParameters(CommonContext context) {
         if (mShadowRadius != 0) {
             context.setShadowWithColor(mShadowDX, mShadowDY, mShadowRadius, mShadowColor);
         }

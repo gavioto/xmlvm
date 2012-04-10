@@ -21,8 +21,8 @@
 package android.widget;
 
 import org.xmlvm.common.adapter.RadioGroupAdapter;
-import org.xmlvm.common.objects.CommonDeviceFont;
-import org.xmlvm.common.objects.CommonDeviceView;
+import org.xmlvm.common.objects.CommonFont;
+import org.xmlvm.common.objects.CommonView;
 
 import android.content.Context;
 import android.internal.Assert;

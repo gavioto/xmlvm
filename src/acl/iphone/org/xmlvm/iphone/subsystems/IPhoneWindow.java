@@ -21,8 +21,8 @@
 package org.xmlvm.iphone.subsystems;
 
 import org.xmlvm.common.adapter.ScrollViewAdapter;
-import org.xmlvm.common.objects.CommonDeviceView;
-import org.xmlvm.common.subsystems.CommonDeviceWindow;
+import org.xmlvm.common.objects.CommonView;
+import org.xmlvm.common.subsystems.CommonWindow;
 import org.xmlvm.iphone.UIApplication;
 import org.xmlvm.iphone.UIWindow;
 import org.xmlvm.iphone.objects.IPhoneView;
@@ -32,7 +32,7 @@ import android.graphics.Rect;
 /**
  *
  */
-public class IPhoneWindow implements CommonDeviceWindow {
+public class IPhoneWindow implements CommonWindow {
 
     private UIWindow window;
     
@@ -44,7 +44,7 @@ public class IPhoneWindow implements CommonDeviceWindow {
     }
 
     @Override
-    public void addSubview(CommonDeviceView view) {
+    public void addSubview(CommonView view) {
         window.addSubview(((IPhoneView) view).getView());
     }
 

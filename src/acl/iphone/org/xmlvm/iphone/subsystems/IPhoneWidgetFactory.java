@@ -33,10 +33,10 @@ import org.xmlvm.common.adapter.ScrollViewAdapter;
 import org.xmlvm.common.adapter.TextViewAdapter;
 import org.xmlvm.common.adapter.ToggleButtonAdapter;
 import org.xmlvm.common.adapter.WebViewAdapter;
-import org.xmlvm.common.objects.CommonDeviceContext;
-import org.xmlvm.common.objects.CommonDeviceView;
-import org.xmlvm.common.subsystems.CommonDeviceWidgetFactory;
-import org.xmlvm.common.subsystems.CommonDeviceMediaPlayer;
+import org.xmlvm.common.objects.CommonContext;
+import org.xmlvm.common.objects.CommonView;
+import org.xmlvm.common.subsystems.CommonWidgetFactory;
+import org.xmlvm.common.subsystems.CommonMediaPlayer;
 import org.xmlvm.iphone.CGSize;
 import org.xmlvm.iphone.UIGraphics;
 import org.xmlvm.iphone.UIImage;
@@ -46,6 +46,7 @@ import org.xmlvm.iphone.adapter.IPhoneButtonAdapter;
 import org.xmlvm.iphone.adapter.IPhoneCheckBoxAdapter;
 import org.xmlvm.iphone.adapter.IPhoneEditTextAdapter;
 import org.xmlvm.iphone.adapter.IPhoneImageViewAdapter;
+import org.xmlvm.iphone.adapter.IPhoneListViewAdapter;
 import org.xmlvm.iphone.adapter.IPhoneProgressBarAdapter;
 import org.xmlvm.iphone.adapter.IPhoneRadioGroupAdapter;
 import org.xmlvm.iphone.adapter.IPhoneScrollViewAdapter;
@@ -78,7 +79,7 @@ import android.widget.ToggleButton;
 /**
  *
  */
-public class IPhoneWidgetFactory implements CommonDeviceWidgetFactory {
+public class IPhoneWidgetFactory implements CommonWidgetFactory {
 
     @Override
     public AlertDialogAdapter createAlertDialog(String title, String message, final AlertDialog alertDialog, String cancelButtonTitle) {
@@ -119,12 +120,12 @@ public class IPhoneWidgetFactory implements CommonDeviceWidgetFactory {
     }
 
     @Override
-    public CommonDeviceView createView(View view) {
+    public CommonView createView(View view) {
         return new IPhoneView(view);
     }
 
     @Override
-    public CommonDeviceContext createCommonDeviceContext(Bitmap bitmap, float width, float height) {
+    public CommonContext createCommonDeviceContext(Bitmap bitmap, float width, float height) {
         return new IPhoneContext(bitmap, width, height);
     }
 

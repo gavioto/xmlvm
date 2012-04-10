@@ -22,11 +22,10 @@ package org.xmlvm.wp7.adapter;
 
 import org.xmlvm.common.adapter.BitmapDrawableAdapter;
 
-import android.graphics.Rect;
-
 import Compatlib.System.Uri;
 import Compatlib.System.UriKind;
 import Compatlib.System.Windows.Media.Imaging.BitmapImage;
+import android.graphics.Rect;
 
 /**
  *

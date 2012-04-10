@@ -40,7 +40,7 @@ import java.util.Set;
 
 import org.xmlvm.common.adapter.BitmapDrawableAdapter;
 import org.xmlvm.common.adapter.ImageViewAdapter;
-import org.xmlvm.common.objects.CommonDeviceView;
+import org.xmlvm.common.objects.CommonView;
 
 public class ImageView extends View {
     
@@ -121,9 +121,7 @@ public class ImageView extends View {
 
     }
 
-
     protected Drawable drawable;
-
 
     public ImageView(Context c) {
         super(c);
@@ -196,16 +194,16 @@ public class ImageView extends View {
         ViewHandler view = xmlvmGetViewHandler();
         switch (type) {
         case CENTER:
-            view.setContentMode(CommonDeviceView.CENTER);
+            view.setContentMode(CommonView.CENTER);
             break;
         case CENTER_CROP:
-            view.setContentMode(CommonDeviceView.SCALE_ASPECT_FILL);
+            view.setContentMode(CommonView.SCALE_ASPECT_FILL);
             break;
         case CENTER_INSIDE:
-            view.setContentMode(CommonDeviceView.SCALE_ASPECT_FIT);
+            view.setContentMode(CommonView.SCALE_ASPECT_FIT);
             break;
         case FIT_CENTER:
-            view.setContentMode(CommonDeviceView.SCALE_ASPECT_FILL);
+            view.setContentMode(CommonView.SCALE_ASPECT_FIT);
             break;
         case FIT_END:
             Assert.NOT_IMPLEMENTED();
@@ -214,7 +212,7 @@ public class ImageView extends View {
             Assert.NOT_IMPLEMENTED();
             break;
         case FIT_XY:
-            view.setContentMode(CommonDeviceView.SCALE_TO_FILL);
+            view.setContentMode(CommonView.SCALE_TO_FILL);
             break;
         case MATRIX:
             Assert.NOT_IMPLEMENTED();
@@ -266,7 +264,7 @@ public class ImageView extends View {
     }
 
     @Override
-    protected CommonDeviceView xmlvmNewCommonDeviceView(AttributeSet attrs) {
+    protected CommonView xmlvmNewCommonDeviceView(AttributeSet attrs) {
         return CommonDeviceAPIFinder.instance().getWidgetFactory().createImageView(this);
     }
 

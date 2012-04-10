@@ -23,7 +23,6 @@ package Compatlib.System.Windows.Input;
 import org.xmlvm.XMLVMSkeletonOnly;
 
 import Compatlib.System.Windows.Point;
-import android.view.MotionEvent;
 
 /**
  *

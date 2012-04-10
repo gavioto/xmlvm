@@ -21,8 +21,8 @@
 package android.view;
 
 import org.xmlvm.common.adapter.ScrollViewAdapter;
-import org.xmlvm.common.objects.CommonDeviceView;
-import org.xmlvm.common.subsystems.CommonDeviceTextFieldDelegate;
+import org.xmlvm.common.objects.CommonView;
+import org.xmlvm.common.subsystems.CommonTextFieldDelegate;
 
 import android.app.Activity;
 import android.app.Application;
@@ -47,9 +47,9 @@ import android.widget.ScrollView;
 public class Window {
     public static final int     FEATURE_NO_TITLE = 1;
     private Activity            activity;
-    private CommonDeviceView    iContainerView;
+    private CommonView    iContainerView;
     private ScrollViewAdapter   iScrollView;
-    private CommonDeviceTextFieldDelegate iTextFieldDelegate;
+    private CommonTextFieldDelegate iTextFieldDelegate;
     private FrameLayout         internalView;
     private DecorView           decorView;
     private FrameLayout         contentParent;
@@ -141,7 +141,7 @@ public class Window {
 
     public void xmlvmShowToast(View toast) {
         layoutContentView(toast);
-        CommonDeviceView itoast = toast.xmlvmGetViewHandler().getMetricsView();
+        CommonView itoast = toast.xmlvmGetViewHandler().getMetricsView();
         itoast.setUserInteractionEnabled(false);
         iContainerView.addSubview(itoast);
     }

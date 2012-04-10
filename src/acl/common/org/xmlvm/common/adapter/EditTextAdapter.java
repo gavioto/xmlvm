@@ -20,7 +20,7 @@
 
 package org.xmlvm.common.adapter;
 
-import org.xmlvm.common.subsystems.CommonDeviceTextFieldDelegate;
+import org.xmlvm.common.subsystems.CommonTextFieldDelegate;
 
 /**
  *
@@ -29,7 +29,7 @@ public interface EditTextAdapter extends TextViewAdapter {
 
     void setSecureTextEntry(boolean b);
 
-    void setDelegate(CommonDeviceTextFieldDelegate iTextFieldDelegate);
+    void setDelegate(CommonTextFieldDelegate iTextFieldDelegate);
     
     void setPlaceholder(String string);
 

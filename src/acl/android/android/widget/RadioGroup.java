@@ -24,8 +24,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.xmlvm.common.adapter.RadioGroupAdapter;
-import org.xmlvm.common.objects.CommonDeviceFont;
-import org.xmlvm.common.objects.CommonDeviceView;
+import org.xmlvm.common.objects.CommonFont;
+import org.xmlvm.common.objects.CommonView;
 
 import android.content.Context;
 import android.graphics.Rect;
@@ -275,7 +275,7 @@ public class RadioGroup extends LinearLayout {
      */
 
     private Rect getTextSize(String text) {
-        CommonDeviceFont font = CommonDeviceAPIFinder.instance().getFontFactory().systemFontOfSize(CommonDeviceAPIFinder.instance().getFontFactory().labelFontSize());
+        CommonFont font = CommonDeviceAPIFinder.instance().getFontFactory().systemFontOfSize(CommonDeviceAPIFinder.instance().getFontFactory().labelFontSize());
 
         Rect mSize = CommonDeviceAPIFinder.instance().getFontFactory().sizeWithFont("M", font);
         Rect textSize = CommonDeviceAPIFinder.instance().getFontFactory().sizeWithFont(text, font);
@@ -321,7 +321,7 @@ public class RadioGroup extends LinearLayout {
      */
 
     @Override
-    protected CommonDeviceView xmlvmNewCommonDeviceView(AttributeSet attrs) {
+    protected CommonView xmlvmNewCommonDeviceView(AttributeSet attrs) {
         return CommonDeviceAPIFinder.instance().getWidgetFactory().createRadioGroup(this);
     }
 

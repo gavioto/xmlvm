@@ -22,9 +22,9 @@ package android.app;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.xmlvm.common.objects.CommonDeviceView;
-import org.xmlvm.common.subsystems.CommonDeviceProperties;
-import org.xmlvm.common.subsystems.CommonDeviceWindow;
+import org.xmlvm.common.objects.CommonView;
+import org.xmlvm.common.subsystems.CommonProperties;
+import org.xmlvm.common.subsystems.CommonWindow;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -42,13 +42,13 @@ public class Application extends ContextWrapper {
      * guidelines there should only be one UIWindow instance per iOS
      * application.
      */
-    private CommonDeviceWindow  topLevelWindow;
+    private CommonWindow  topLevelWindow;
 
     /**
      * Top-level UIView that serves as a container for all subviews belonging to
      * various activities.
      */
-    private CommonDeviceView topLevelView;
+    private CommonView topLevelView;
 
     private boolean          appJustCreated;
     private boolean          firstActivityView;
@@ -62,7 +62,7 @@ public class Application extends ContextWrapper {
         appJustCreated = true;
         firstActivityView = true;
         xmlvmFreezeInterfaceOrientation(false);
-        xmlvmSetCurrentInterfaceOrientation(CommonDeviceProperties.ORIENTATION_PORTRAIT);
+        xmlvmSetCurrentInterfaceOrientation(CommonProperties.ORIENTATION_PORTRAIT);
         topLevelWindow = CommonDeviceAPIFinder.instance().getWindow();
         Rect rect = CommonDeviceAPIFinder.instance().getProperties().getScreenBounds();
         topLevelWindow.setFrame(rect);
@@ -99,10 +99,11 @@ public class Application extends ContextWrapper {
         // Configuration doesn't change in iPhone
     }
 
-    public void xmlvmAddActivityView(CommonDeviceView view) {
+    public void xmlvmAddActivityView(CommonView view) {
         topLevelView.addSubview(view);
         if (firstActivityView) {
             firstActivityView = false;
+            topLevelView.loadViewInController();
             topLevelWindow.addSubview(topLevelView);
             /*
              * Only after the first activity registered its view we tell the
@@ -115,7 +116,7 @@ public class Application extends ContextWrapper {
         }
     }
 
-    public void xmlvmRemoveActivityView(CommonDeviceView view) {
+    public void xmlvmRemoveActivityView(CommonView view) {
         view.removeFromSuperview();
     }
 

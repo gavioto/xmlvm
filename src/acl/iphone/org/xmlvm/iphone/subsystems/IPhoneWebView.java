@@ -20,7 +20,7 @@
 
 package org.xmlvm.iphone.subsystems;
 
-import org.xmlvm.common.subsystems.CommonDeviceWebBrowser;
+import org.xmlvm.common.subsystems.CommonWebBrowser;
 import org.xmlvm.iphone.NSURL;
 import org.xmlvm.iphone.UIApplication;
 
@@ -29,7 +29,7 @@ import android.net.Uri;
 /**
  *
  */
-public class IPhoneWebView implements CommonDeviceWebBrowser {
+public class IPhoneWebView implements CommonWebBrowser {
 
     /* (non-Javadoc)
      * @see org.xmlvm.common.subsystems.CommonDeviceWebView#openURL(android.net.Uri)

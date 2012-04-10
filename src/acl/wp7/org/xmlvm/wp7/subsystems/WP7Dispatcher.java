@@ -20,7 +20,7 @@
 
 package org.xmlvm.wp7.subsystems;
 
-import org.xmlvm.common.subsystems.CommonDeviceDispatcher;
+import org.xmlvm.common.subsystems.CommonDispatcher;
 
 import Compatlib.System.Action;
 import Compatlib.System.Object;
@@ -33,7 +33,7 @@ import Compatlib.System.Windows.Deployment;
 /**
  *
  */
-public class WP7Dispatcher extends Object implements CommonDeviceDispatcher {
+public class WP7Dispatcher extends Object implements CommonDispatcher {
 
     private BackgroundWorker timerHandler = new BackgroundWorker();
     Runnable                 toRun        = null;

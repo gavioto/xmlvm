@@ -20,8 +20,8 @@
 
 package org.xmlvm.iphone.subsystems;
 
-import org.xmlvm.common.objects.CommonDeviceFont;
-import org.xmlvm.common.subsystems.CommonDeviceFontFactory;
+import org.xmlvm.common.objects.CommonFont;
+import org.xmlvm.common.subsystems.CommonFontFactory;
 import org.xmlvm.iphone.NSString;
 import org.xmlvm.iphone.UILineBreakMode;
 import org.xmlvm.iphone.UITextAlignment;
@@ -35,10 +35,10 @@ import android.view.Gravity;
 /**
  *
  */
-public class IPhoneFontFactory implements CommonDeviceFontFactory {
+public class IPhoneFontFactory implements CommonFontFactory {
 
     @Override
-    public CommonDeviceFont systemFontOfSize(float size) {
+    public CommonFont systemFontOfSize(float size) {
         return IPhoneFont.systemFontOfSize(size);
     }
 
@@ -48,19 +48,19 @@ public class IPhoneFontFactory implements CommonDeviceFontFactory {
     }
 
     @Override
-    public CommonDeviceFont fontWithNameSize(String name, float pointSize) {
+    public CommonFont fontWithNameSize(String name, float pointSize) {
         return IPhoneFont.fontWithNameSize(name, pointSize);
     }
 
     @Override
-    public Rect sizeWithFont(String text, CommonDeviceFont font) {
+    public Rect sizeWithFont(String text, CommonFont font) {
         return IPhoneView.toRectangle(NSString.sizeWithFont(text, ((IPhoneFont)font).getFont()));
     }
 
     @Override
-    public Rect sizeWithFont(String text, CommonDeviceFont font, Rect constraints, int lineBreakMode) {
+    public Rect sizeWithFont(String text, CommonFont font, Rect constraints, int lineBreakMode) {
         switch(lineBreakMode) {
-        case CommonDeviceFontFactory.LINEBREAK_WORD_WRAP:
+        case CommonFontFactory.LINEBREAK_WORD_WRAP:
             return IPhoneView.toRectangle(NSString.sizeWithFont(text, ((IPhoneFont)font).getFont(), IPhoneView.toCGSize(constraints), UILineBreakMode.WordWrap));
         default:
             Assert.NOT_IMPLEMENTED();
@@ -88,7 +88,7 @@ public class IPhoneFontFactory implements CommonDeviceFontFactory {
      * @see org.xmlvm.common.subsystems.CommonDeviceFontFactory#drawAtPoint(java.lang.String, android.graphics.Rect, org.xmlvm.common.objects.CommonDeviceFont)
      */
     @Override
-    public void drawAtPoint(String text, Rect rect, CommonDeviceFont font) {
+    public void drawAtPoint(String text, Rect rect, CommonFont font) {
         NSString.drawAtPoint(text, IPhoneView.toCGPoint(rect), ((IPhoneFont)font).getFont());
     }
     

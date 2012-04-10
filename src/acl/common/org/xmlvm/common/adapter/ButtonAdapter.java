@@ -20,21 +20,21 @@
 
 package org.xmlvm.common.adapter;
 
-import org.xmlvm.common.objects.CommonDeviceFont;
-import org.xmlvm.common.objects.CommonDeviceView;
+import org.xmlvm.common.objects.CommonFont;
+import org.xmlvm.common.objects.CommonView;
 
 import android.view.View.OnClickListener;
 
 /**
  *
  */
-public interface ButtonAdapter extends CommonDeviceView {
+public interface ButtonAdapter extends CommonView {
 
     void setTitle(String text);
     void setTitleColor(int color);
     void setOnClickListener(OnClickListener listener);
-    CommonDeviceFont getFont();
-    void setFont(CommonDeviceFont font);
+    CommonFont getFont();
+    void setFont(CommonFont font);
     void setImage(BitmapDrawableAdapter img, int controlState);
     float getTextSize();
     void setTextSize(float size);

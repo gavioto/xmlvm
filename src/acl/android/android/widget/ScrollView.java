@@ -29,7 +29,7 @@ import android.view.View;
 import java.util.Set;
 
 import org.xmlvm.common.adapter.ScrollViewAdapter;
-import org.xmlvm.common.objects.CommonDeviceView;
+import org.xmlvm.common.objects.CommonView;
 
 public class ScrollView extends FrameLayout {
 
@@ -45,7 +45,7 @@ public class ScrollView extends FrameLayout {
     }
 
     @Override
-    protected CommonDeviceView xmlvmNewCommonDeviceView(AttributeSet attrs) {
+    protected CommonView xmlvmNewCommonDeviceView(AttributeSet attrs) {
         ScrollViewAdapter view = CommonDeviceAPIFinder.instance().getWidgetFactory().createScrollView(this);
         //TODO if we don't do this, the scroll view will intercept motion events.
         view.setScrollEnabled(false);

@@ -27,7 +27,6 @@ import Compatlib.System.Boolean;
 import Compatlib.System.Object;
 import Compatlib.System.Windows.RoutedEventArgs;
 import Compatlib.System.Windows.RoutedEventHandler;
-import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 

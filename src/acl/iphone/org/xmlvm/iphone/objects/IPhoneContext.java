@@ -21,7 +21,7 @@
 package org.xmlvm.iphone.objects;
 
 import org.xmlvm.common.adapter.BitmapDrawableAdapter;
-import org.xmlvm.common.objects.CommonDeviceContext;
+import org.xmlvm.common.objects.CommonContext;
 import org.xmlvm.iphone.CGContext;
 import org.xmlvm.iphone.CGLineCap;
 import org.xmlvm.iphone.CGRect;
@@ -37,10 +37,9 @@ import android.graphics.drawable.BitmapDrawable;
 /**
  *
  */
-public class IPhoneContext implements CommonDeviceContext {
+public class IPhoneContext implements CommonContext {
 
     private CGContext context;
-
 
     public IPhoneContext(Bitmap bitmap, float width, float height) {
         UIGraphics.beginImageContext(new CGSize(width, height));
@@ -51,6 +50,13 @@ public class IPhoneContext implements CommonDeviceContext {
         context.translate(0, -height);
         context.drawImage(new CGRect(0, 0, width, height), image.getCGImage());
         context.restoreState();
+    }
+
+    /**
+     * 
+     */
+    public IPhoneContext() {
+        this.context = UIGraphics.getCurrentContext();
     }
 
     @Override
@@ -96,13 +102,13 @@ public class IPhoneContext implements CommonDeviceContext {
     @Override
     public void setLineCap(int linecap) {
         switch (linecap) {
-        case CommonDeviceContext.LineCapButt:
+        case CommonContext.LineCapButt:
             context.setLineCap(CGLineCap.kCGLineCapButt);
             break;
-        case CommonDeviceContext.LineCapRound:
+        case CommonContext.LineCapRound:
             context.setLineCap(CGLineCap.kCGLineCapRound);
             break;
-        case CommonDeviceContext.LineCapSquare:
+        case CommonContext.LineCapSquare:
             context.setLineCap(CGLineCap.kCGLineCapSquare);
             break;
         default:

@@ -23,7 +23,7 @@ package org.xmlvm.wp7.subsystems;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.xmlvm.common.subsystems.CommonDeviceFileSystem;
+import org.xmlvm.common.subsystems.CommonFileSystem;
 
 import Compatlib.System.Windows.Application;
 import android.internal.Assert;
@@ -31,7 +31,7 @@ import android.internal.Assert;
 /**
  *
  */
-public class WP7FileSystem implements CommonDeviceFileSystem {
+public class WP7FileSystem implements CommonFileSystem {
 
     @Override
     public String getPathForResource(String resource, String type, String directory) {

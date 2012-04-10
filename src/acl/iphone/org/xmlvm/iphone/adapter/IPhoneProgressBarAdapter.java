@@ -24,7 +24,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.xmlvm.common.adapter.ProgressBarAdapter;
-import org.xmlvm.common.objects.CommonDeviceView;
+import org.xmlvm.common.objects.CommonView;
 import org.xmlvm.iphone.UIActivityIndicatorView;
 import org.xmlvm.iphone.UIActivityIndicatorViewStyle;
 import org.xmlvm.iphone.UITouch;

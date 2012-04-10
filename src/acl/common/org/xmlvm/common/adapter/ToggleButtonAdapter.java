@@ -25,4 +25,19 @@ package org.xmlvm.common.adapter;
  */
 public interface ToggleButtonAdapter extends ButtonAdapter {
 
+    /**
+     * @param text
+     */
+    void setText(String text);
+
+    /**
+     * @param textOff
+     */
+    void setTextOff(String textOff);
+
+    /**
+     * @param checked
+     */
+    void setSelected(boolean checked);
+
 }

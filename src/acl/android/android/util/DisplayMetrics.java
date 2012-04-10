@@ -18,7 +18,7 @@ package android.util;
 
 //import android.content.res.CompatibilityInfo;
 
-import org.xmlvm.common.subsystems.CommonDeviceProperties;
+import org.xmlvm.common.subsystems.CommonProperties;
 
 import android.content.res.Configuration;
 import android.internal.ConfigurationFactory;
@@ -225,13 +225,13 @@ public class DisplayMetrics {
     private static int getDeviceDensity() {
         int device = ConfigurationFactory.detectDevice();
         switch (device) {
-        case CommonDeviceProperties.DEVICE_IPHONE:
+        case CommonProperties.DEVICE_IPHONE:
             return 160;
             
-        case CommonDeviceProperties.DEVICE_IPHONE4:
+        case CommonProperties.DEVICE_IPHONE4:
             return 326;
             
-        case CommonDeviceProperties.DEVICE_IPAD:
+        case CommonProperties.DEVICE_IPAD:
             return 132;
         }
         

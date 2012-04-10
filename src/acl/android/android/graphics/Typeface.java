@@ -23,7 +23,7 @@ import android.util.Log;
 
 import java.io.File;
 
-import org.xmlvm.common.objects.CommonDeviceFont;
+import org.xmlvm.common.objects.CommonFont;
 
 /**
  * The Typeface class specifies the typeface and intrinsic style of a font. This
@@ -187,7 +187,7 @@ public class Typeface {
         Assert.NOT_IMPLEMENTED();
     }
 
-    public CommonDeviceFont xmlvmGetUIFont(float pointSize) {
+    public CommonFont xmlvmGetUIFont(float pointSize) {
         String family = mFamilyName == null ? CommonDeviceAPIFinder.instance().getFontFactory().systemFontOfSize(pointSize).familyName() : mFamilyName;
         String type = "";
         if ((mStyle & Typeface.BOLD) > 0) {

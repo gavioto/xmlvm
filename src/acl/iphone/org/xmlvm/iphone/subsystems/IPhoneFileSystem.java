@@ -22,14 +22,14 @@ package org.xmlvm.iphone.subsystems;
 
 import java.util.List;
 
-import org.xmlvm.common.subsystems.CommonDeviceFileSystem;
+import org.xmlvm.common.subsystems.CommonFileSystem;
 import org.xmlvm.iphone.NSBundle;
 import org.xmlvm.iphone.NSFileManager;
 
 /**
  *
  */
-public class IPhoneFileSystem implements CommonDeviceFileSystem {
+public class IPhoneFileSystem implements CommonFileSystem {
 
     @Override
     public String getApplicationPath() {

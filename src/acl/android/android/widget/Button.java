@@ -21,8 +21,8 @@
 package android.widget;
 
 import org.xmlvm.common.adapter.ButtonAdapter;
-import org.xmlvm.common.objects.CommonDeviceFont;
-import org.xmlvm.common.objects.CommonDeviceView;
+import org.xmlvm.common.objects.CommonFont;
+import org.xmlvm.common.objects.CommonView;
 
 import android.content.Context;
 import android.graphics.Rect;
@@ -106,7 +106,7 @@ public class Button extends TextView {
     }
 
     @Override
-    protected CommonDeviceView xmlvmNewCommonDeviceView(AttributeSet attrs) {
+    protected CommonView xmlvmNewCommonDeviceView(AttributeSet attrs) {
         return CommonDeviceAPIFinder.instance().getWidgetFactory().createButton(this);
     }
 
@@ -119,7 +119,7 @@ public class Button extends TextView {
     }
 
     @Override
-    protected CommonDeviceFont xmlvmGetCommonDeviceFont() {
+    protected CommonFont xmlvmGetCommonDeviceFont() {
         return ((ButtonAdapter) xmlvmGetViewHandler().getContentView()).getFont();
     }
 

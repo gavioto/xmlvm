@@ -21,19 +21,19 @@
 package org.xmlvm.iphone;
 
 import org.xmlvm.common.CommonDeviceAPI;
-import org.xmlvm.common.subsystems.CommonDeviceAccelerometer;
-import org.xmlvm.common.subsystems.CommonDeviceDispatcher;
-import org.xmlvm.common.subsystems.CommonDeviceFileSystem;
-import org.xmlvm.common.subsystems.CommonDeviceFontFactory;
-import org.xmlvm.common.subsystems.CommonDeviceLocationManager;
-import org.xmlvm.common.subsystems.CommonDevicePowerManager;
-import org.xmlvm.common.subsystems.CommonDevicePreferences;
-import org.xmlvm.common.subsystems.CommonDeviceProperties;
-import org.xmlvm.common.subsystems.CommonDeviceTextFieldDelegate;
-import org.xmlvm.common.subsystems.CommonDeviceWebBrowser;
-import org.xmlvm.common.subsystems.CommonDeviceWidgetFactory;
-import org.xmlvm.common.subsystems.CommonDeviceWindow;
-import org.xmlvm.common.subsystems.CommonDeviceMediaPlayer;
+import org.xmlvm.common.subsystems.CommonAccelerometer;
+import org.xmlvm.common.subsystems.CommonDispatcher;
+import org.xmlvm.common.subsystems.CommonFileSystem;
+import org.xmlvm.common.subsystems.CommonFontFactory;
+import org.xmlvm.common.subsystems.CommonLocationManager;
+import org.xmlvm.common.subsystems.CommonPowerManager;
+import org.xmlvm.common.subsystems.CommonPreferences;
+import org.xmlvm.common.subsystems.CommonProperties;
+import org.xmlvm.common.subsystems.CommonTextFieldDelegate;
+import org.xmlvm.common.subsystems.CommonWebBrowser;
+import org.xmlvm.common.subsystems.CommonWidgetFactory;
+import org.xmlvm.common.subsystems.CommonWindow;
+import org.xmlvm.common.subsystems.CommonMediaPlayer;
 import org.xmlvm.iphone.subsystems.IPhoneAccelerometer;
 import org.xmlvm.iphone.subsystems.IPhoneDispatcher;
 import org.xmlvm.iphone.subsystems.IPhoneFileSystem;
@@ -73,52 +73,52 @@ public class IPhoneAPI implements CommonDeviceAPI {
     }
     
     @Override
-    public CommonDeviceFileSystem getFileSystem() {
+    public CommonFileSystem getFileSystem() {
         return this.iphoneFileSystem;
     }
     
     @Override
-    public CommonDevicePreferences getPreferences() {
+    public CommonPreferences getPreferences() {
         return new IPhonePreferences();
     }
     
     @Override
-    public CommonDeviceAccelerometer getAccelerometer(SensorManager sensorManager) {
+    public CommonAccelerometer getAccelerometer(SensorManager sensorManager) {
         return new IPhoneAccelerometer(sensorManager);
     }
     
     @Override
-    public CommonDeviceProperties getProperties() {
+    public CommonProperties getProperties() {
         return this.iphoneProperties;
     }
 
     @Override
-    public CommonDeviceWidgetFactory getWidgetFactory() {
+    public CommonWidgetFactory getWidgetFactory() {
         return this.iphoneWidgetFactory;
     }
 
     @Override
-    public CommonDeviceDispatcher getDispatcher() {
+    public CommonDispatcher getDispatcher() {
         return new IPhoneDispatcher();
     }
 
     @Override
-    public CommonDeviceWindow getWindow() {
+    public CommonWindow getWindow() {
         return new IPhoneWindow();
     }
 
     @Override
-    public CommonDeviceFontFactory getFontFactory() {
+    public CommonFontFactory getFontFactory() {
         return this.iphoneFontFactory;
     }
 
     @Override
-    public CommonDevicePowerManager getPowerManager() {
+    public CommonPowerManager getPowerManager() {
         return this.iphonePowerManager;
     }
 
     @Override
-    public CommonDeviceLocationManager getLocationManager(LocationManager locationManager) {
+    public CommonLocationManager getLocationManager(LocationManager locationManager) {
         return new IPhoneLocationManager(locationManager);
     }
 
@@ -126,7 +126,7 @@ public class IPhoneAPI implements CommonDeviceAPI {
      * @see org.xmlvm.common.CommonDeviceAPI#getWebView()
      */
     @Override
-    public CommonDeviceWebBrowser getWebBrowser() {
+    public CommonWebBrowser getWebBrowser() {
         return new IPhoneWebView();
     }
 
@@ -134,7 +134,7 @@ public class IPhoneAPI implements CommonDeviceAPI {
      * @see org.xmlvm.common.CommonDeviceAPI#getTextFieldDelegate()
      */
     @Override
-    public CommonDeviceTextFieldDelegate getTextFieldDelegate(Window window) {
+    public CommonTextFieldDelegate getTextFieldDelegate(Window window) {
         return new IPhoneTextFieldDelegate(window);
     }
 
@@ -142,7 +142,7 @@ public class IPhoneAPI implements CommonDeviceAPI {
      * @see org.xmlvm.common.CommonDeviceAPI#getMediaPlayer(android.media.MediaPlayer)
      */
     @Override
-    public CommonDeviceMediaPlayer getMediaPlayer(MediaPlayer mediaPlayer) {
+    public CommonMediaPlayer getMediaPlayer(MediaPlayer mediaPlayer) {
         return new IPhoneMediaPlayer(mediaPlayer);
     }
 

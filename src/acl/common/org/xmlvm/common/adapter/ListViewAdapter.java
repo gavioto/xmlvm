@@ -20,14 +20,14 @@
 
 package org.xmlvm.common.adapter;
 
-import org.xmlvm.common.objects.CommonDeviceView;
+import org.xmlvm.common.objects.CommonView;
 
 import android.widget.ListAdapter;
 
 /**
  *
  */
-public interface ListViewAdapter extends CommonDeviceView {
+public interface ListViewAdapter extends CommonView {
 
     /**
      * @param adapter

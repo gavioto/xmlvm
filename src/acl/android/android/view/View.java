@@ -26,7 +26,7 @@ import java.lang.reflect.Method;
 import java.util.Set;
 
 import org.xmlvm.common.adapter.BitmapDrawableAdapter;
-import org.xmlvm.common.objects.CommonDeviceView;
+import org.xmlvm.common.objects.CommonView;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -289,7 +289,7 @@ public class View {
         }
     }
 
-    protected CommonDeviceView xmlvmNewCommonDeviceView(AttributeSet attrs) {
+    protected CommonView xmlvmNewCommonDeviceView(AttributeSet attrs) {
         return CommonDeviceAPIFinder.instance().getWidgetFactory().createView(this);
     }
 
@@ -314,8 +314,8 @@ public class View {
     }
 
     public void bringToFront() {
-        CommonDeviceView view = viewHandler.getMetricsView();
-        CommonDeviceView superView = view.getSuperview();
+        CommonView view = viewHandler.getMetricsView();
+        CommonView superView = view.getSuperview();
         if (superView != null)
             superView.bringSubviewToFront(view);
     }

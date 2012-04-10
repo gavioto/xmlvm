@@ -22,7 +22,6 @@ package org.xmlvm.iphone.adapter;
 
 import java.util.Set;
 
-import org.xmlvm.Log;
 import org.xmlvm.common.adapter.BitmapDrawableAdapter;
 import org.xmlvm.common.adapter.ImageViewAdapter;
 import org.xmlvm.iphone.UIEvent;
@@ -31,7 +30,6 @@ import org.xmlvm.iphone.UITouch;
 import org.xmlvm.iphone.objects.IPhoneView;
 
 import android.view.MotionEvent;
-import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
@@ -77,8 +75,7 @@ public class IPhoneImageViewAdapter extends IPhoneView implements ImageViewAdapt
     @Override
     public BitmapDrawableAdapter getImage() {
         if(drawable==null && ((UIImageView) this.getView()).getImage()!=null) {
-            Log.error("Image not set in native adapter!");
-            return null;
+            throw new RuntimeException("Image not set in native adapter");
         } else {
             return drawable;
         }

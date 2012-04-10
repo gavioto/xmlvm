@@ -20,18 +20,18 @@
 
 package org.xmlvm.common.adapter;
 
-import org.xmlvm.common.objects.CommonDeviceFont;
-import org.xmlvm.common.objects.CommonDeviceView;
+import org.xmlvm.common.objects.CommonFont;
+import org.xmlvm.common.objects.CommonView;
 
 import android.graphics.Color;
 
 /**
  *
  */
-public interface TextViewAdapter extends CommonDeviceView {
+public interface TextViewAdapter extends CommonView {
 
-    CommonDeviceFont getFont();
-    void setFont(CommonDeviceFont systemFontOfSize);
+    CommonFont getFont();
+    void setFont(CommonFont systemFontOfSize);
 
     void setText(String string);
     String getText();

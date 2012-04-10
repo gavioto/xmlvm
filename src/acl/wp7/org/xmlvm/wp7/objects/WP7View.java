@@ -22,7 +22,7 @@ package org.xmlvm.wp7.objects;
 
 import java.util.List;
 
-import org.xmlvm.common.objects.CommonDeviceView;
+import org.xmlvm.common.objects.CommonView;
 
 import Compatlib.System.Object;
 import Compatlib.System.String;
@@ -44,7 +44,7 @@ import android.view.View;
 /**
  *
  */
-public class WP7View extends Object implements CommonDeviceView {
+public class WP7View extends Object implements CommonView {
 
     private UIElement element;
     private View androidView;
@@ -88,7 +88,7 @@ public class WP7View extends Object implements CommonDeviceView {
     }
 
     @Override
-    public void addSubview(CommonDeviceView metricsView) {
+    public void addSubview(CommonView metricsView) {
         if(element instanceof Panel) {
             ((Panel) element).getChildren().Add(((WP7View)metricsView).getElement());
         } else {
@@ -97,7 +97,7 @@ public class WP7View extends Object implements CommonDeviceView {
     }
 
     @Override
-    public void insertSubview(CommonDeviceView metricsView, int idx) {
+    public void insertSubview(CommonView metricsView, int idx) {
         if(element instanceof Panel) {
             ((Panel) element).getChildren().Insert(idx, ((WP7View)metricsView).getElement());
         } else {
@@ -118,13 +118,13 @@ public class WP7View extends Object implements CommonDeviceView {
     public void setContentMode(int mode) {
         if(element instanceof Image) {
             switch(mode) {
-            case CommonDeviceView.CENTER:
+            case CommonView.CENTER:
                 break;
-            case CommonDeviceView.SCALE_ASPECT_FILL:
-            case CommonDeviceView.SCALE_ASPECT_FIT:
+            case CommonView.SCALE_ASPECT_FILL:
+            case CommonView.SCALE_ASPECT_FIT:
                 ((Image) element).setStretch(Stretch.Uniform);
                 break;
-            case CommonDeviceView.SCALE_TO_FILL:
+            case CommonView.SCALE_TO_FILL:
                 ((Image) element).setStretch(Stretch.Fill);
                 break;
             }
@@ -233,7 +233,7 @@ public class WP7View extends Object implements CommonDeviceView {
      * @see org.xmlvm.common.objects.CommonDeviceView#bringSubviewToFront(org.xmlvm.common.objects.CommonDeviceView)
      */
     @Override
-    public void bringSubviewToFront(CommonDeviceView view) {
+    public void bringSubviewToFront(CommonView view) {
         Assert.NOT_IMPLEMENTED();
     }
 
@@ -241,7 +241,7 @@ public class WP7View extends Object implements CommonDeviceView {
      * @see org.xmlvm.common.objects.CommonDeviceView#getSuperview()
      */
     @Override
-    public CommonDeviceView getSuperview() {
+    public CommonView getSuperview() {
         Assert.NOT_IMPLEMENTED();
         return null;
     }
@@ -258,9 +258,17 @@ public class WP7View extends Object implements CommonDeviceView {
      * @see org.xmlvm.common.objects.CommonDeviceView#getSubviews()
      */
     @Override
-    public List<CommonDeviceView> getSubviews() {
+    public List<CommonView> getSubviews() {
         Assert.NOT_IMPLEMENTED();
         return null;
+    }
+
+    /* (non-Javadoc)
+     * @see org.xmlvm.common.objects.CommonView#getViewFromController()
+     */
+    @Override
+    public void loadViewInController() {
+        Assert.NOT_IMPLEMENTED();
     }
 
 }

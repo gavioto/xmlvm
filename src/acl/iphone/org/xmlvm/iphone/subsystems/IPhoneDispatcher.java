@@ -20,7 +20,7 @@
 
 package org.xmlvm.iphone.subsystems;
 
-import org.xmlvm.common.subsystems.CommonDeviceDispatcher;
+import org.xmlvm.common.subsystems.CommonDispatcher;
 import org.xmlvm.iphone.NSObject;
 import org.xmlvm.iphone.NSSelector;
 import org.xmlvm.iphone.NSTimer;
@@ -29,7 +29,7 @@ import org.xmlvm.iphone.NSTimerDelegate;
 /**
  *
  */
-public class IPhoneDispatcher implements CommonDeviceDispatcher {
+public class IPhoneDispatcher implements CommonDispatcher {
 
     Runnable toRun = null;
     NSTimer  timer = null;
@@ -55,15 +55,11 @@ public class IPhoneDispatcher implements CommonDeviceDispatcher {
     @SuppressWarnings("unused")
     private void startTimer(Object ticks) {
         // TODO what to do witch ticks?
-        if(this.delay > 0) {
-            timer = NSTimer.scheduledTimerWithTimeInterval(delay, new NSTimerDelegate() {
-                public void timerEvent(NSTimer notUsed) {
-                    toRun.run();
-                }
-            }, null, false);
-        } else {
-            toRun.run();
-        }
+        timer = NSTimer.scheduledTimerWithTimeInterval(delay, new NSTimerDelegate() {
+            public void timerEvent(NSTimer notUsed) {
+                toRun.run();
+            }
+        }, null, false);
     }
     
     public void invalidate() {

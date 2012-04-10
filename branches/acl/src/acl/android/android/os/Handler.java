@@ -20,14 +20,14 @@
 
 package android.os;
 
-import org.xmlvm.common.subsystems.CommonDeviceDispatcher;
+import org.xmlvm.common.subsystems.CommonDispatcher;
 
 import android.internal.Assert;
 import android.internal.CommonDeviceAPIFinder;
 
 public class Handler {
     Runnable toRun = null;
-    CommonDeviceDispatcher timer = null;
+    CommonDispatcher timer = null;
 
     public Handler() {
     }

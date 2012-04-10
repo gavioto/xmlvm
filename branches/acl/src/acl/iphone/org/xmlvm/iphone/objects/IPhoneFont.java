@@ -20,13 +20,13 @@
 
 package org.xmlvm.iphone.objects;
 
-import org.xmlvm.common.objects.CommonDeviceFont;
+import org.xmlvm.common.objects.CommonFont;
 import org.xmlvm.iphone.UIFont;
 
 /**
  *
  */
-public class IPhoneFont implements CommonDeviceFont {
+public class IPhoneFont implements CommonFont {
 
     private UIFont font;
     
@@ -43,7 +43,7 @@ public class IPhoneFont implements CommonDeviceFont {
     }
 
     @Override
-    public CommonDeviceFont fontWithSize(float size) {
+    public CommonFont fontWithSize(float size) {
         return new IPhoneFont(this.font.fontWithSize(size));
     }
 
@@ -57,11 +57,11 @@ public class IPhoneFont implements CommonDeviceFont {
         return font.familyName();
     }
     
-    public static CommonDeviceFont systemFontOfSize(float size) {
+    public static CommonFont systemFontOfSize(float size) {
         return new IPhoneFont(UIFont.systemFontOfSize(size));
     }
 
-    public static CommonDeviceFont fontWithNameSize(String name, float pointSize) {
+    public static CommonFont fontWithNameSize(String name, float pointSize) {
         return new IPhoneFont(UIFont.fontWithNameSize(name, pointSize));
     }
     

@@ -25,8 +25,6 @@ import java.util.List;
 
 import org.xmlvm.common.adapter.AlertDialogAdapter;
 
-import android.app.AlertDialog;
-
 import Compatlib.System.Object;
 import Compatlib.System.Windows.HorizontalAlignment;
 import Compatlib.System.Windows.RoutedEventArgs;
@@ -38,6 +36,7 @@ import Compatlib.System.Windows.Controls.TextBlock;
 import Compatlib.System.Windows.Controls.Primitives.Popup;
 import Compatlib.System.Windows.Media.Colors;
 import Compatlib.System.Windows.Media.SolidColorBrush;
+import android.app.AlertDialog;
 
 /**
  *

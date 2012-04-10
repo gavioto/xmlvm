@@ -20,7 +20,7 @@
 
 package org.xmlvm.iphone.subsystems;
 
-import org.xmlvm.common.subsystems.CommonDeviceLocationManager;
+import org.xmlvm.common.subsystems.CommonLocationManager;
 import org.xmlvm.iphone.CLLocation;
 import org.xmlvm.iphone.CLLocationCoordinate2D;
 import org.xmlvm.iphone.CLLocationManager;
@@ -33,7 +33,7 @@ import android.location.LocationManager;
 /**
  *
  */
-public class IPhoneLocationManager extends CLLocationManagerDelegate implements CommonDeviceLocationManager {
+public class IPhoneLocationManager extends CLLocationManagerDelegate implements CommonLocationManager {
     
     private LocationManager locationManager;
     private CLLocationManager clLocationManager;

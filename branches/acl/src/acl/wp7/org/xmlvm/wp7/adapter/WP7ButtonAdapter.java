@@ -24,8 +24,8 @@ import java.util.List;
 
 import org.xmlvm.common.adapter.BitmapDrawableAdapter;
 import org.xmlvm.common.adapter.ButtonAdapter;
-import org.xmlvm.common.objects.CommonDeviceFont;
-import org.xmlvm.common.objects.CommonDeviceView;
+import org.xmlvm.common.objects.CommonFont;
+import org.xmlvm.common.objects.CommonView;
 import org.xmlvm.wp7.objects.WP7Font;
 import org.xmlvm.wp7.objects.WP7View;
 
@@ -69,12 +69,12 @@ public class WP7ButtonAdapter extends WP7View implements ButtonAdapter {
     }
 
     @Override
-    public CommonDeviceFont getFont() {
+    public CommonFont getFont() {
         return new WP7Font("Sesoe UI", 16);
     }
 
     @Override
-    public void setFont(CommonDeviceFont font) {
+    public void setFont(CommonFont font) {
     }
 
     /* (non-Javadoc)
@@ -135,7 +135,7 @@ public class WP7ButtonAdapter extends WP7View implements ButtonAdapter {
      * @see org.xmlvm.common.objects.CommonDeviceView#bringSubviewToFront(org.xmlvm.common.objects.CommonDeviceView)
      */
     @Override
-    public void bringSubviewToFront(CommonDeviceView view) {
+    public void bringSubviewToFront(CommonView view) {
         // TODO Auto-generated method stub
         
     }
@@ -144,7 +144,7 @@ public class WP7ButtonAdapter extends WP7View implements ButtonAdapter {
      * @see org.xmlvm.common.objects.CommonDeviceView#getSuperview()
      */
     @Override
-    public CommonDeviceView getSuperview() {
+    public CommonView getSuperview() {
         // TODO Auto-generated method stub
         return null;
     }
@@ -162,7 +162,7 @@ public class WP7ButtonAdapter extends WP7View implements ButtonAdapter {
      * @see org.xmlvm.common.objects.CommonDeviceView#getSubviews()
      */
     @Override
-    public List<CommonDeviceView> getSubviews() {
+    public List<CommonView> getSubviews() {
         // TODO Auto-generated method stub
         return null;
     }

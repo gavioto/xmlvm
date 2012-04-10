@@ -20,7 +20,7 @@
 
 package org.xmlvm.iphone.subsystems;
 
-import org.xmlvm.common.subsystems.CommonDeviceAccelerometer;
+import org.xmlvm.common.subsystems.CommonAccelerometer;
 import org.xmlvm.iphone.UIAcceleration;
 import org.xmlvm.iphone.UIAccelerometer;
 import org.xmlvm.iphone.UIAccelerometerDelegate;
@@ -35,7 +35,7 @@ import android.internal.TopActivity;
 /**
  *
  */
-public class IPhoneAccelerometer implements CommonDeviceAccelerometer, UIAccelerometerDelegate {
+public class IPhoneAccelerometer implements CommonAccelerometer, UIAccelerometerDelegate {
     
     public static final float             GRAVITY_EARTH        = 9.80665f;
     public static final int               SENSOR_ACCELEROMETER = 0x00000002;

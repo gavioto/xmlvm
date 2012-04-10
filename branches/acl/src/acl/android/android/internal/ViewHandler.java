@@ -23,7 +23,7 @@ package android.internal;
 import org.xmlvm.common.adapter.BitmapDrawableAdapter;
 import org.xmlvm.common.adapter.ButtonAdapter;
 import org.xmlvm.common.adapter.ImageViewAdapter;
-import org.xmlvm.common.objects.CommonDeviceView;
+import org.xmlvm.common.objects.CommonView;
 
 import android.app.Application;
 import android.graphics.Rect;
@@ -50,7 +50,7 @@ public class ViewHandler {
      * required, then this holds a reference to the iPhone UI object (and
      * layerFront is null).
      */
-    private CommonDeviceView layerBack;
+    private CommonView layerBack;
     /**
      * The extra object required to display this Android widget. Usually it is
      * null.
@@ -61,7 +61,7 @@ public class ViewHandler {
      * requested, then this object holds the special UI object, while the
      * background image is stored in the layerBack object.
      */
-    private CommonDeviceView layerFront;
+    private CommonView layerFront;
 
     /**
      * Create a new ViewHandler for a specified UIView
@@ -72,7 +72,7 @@ public class ViewHandler {
      * @param aview
      *            reference to the actual Android View object
      */
-    public ViewHandler(CommonDeviceView uiitem) {
+    public ViewHandler(CommonView uiitem) {
         layerBack = uiitem;
     }
 
@@ -82,7 +82,7 @@ public class ViewHandler {
      * 
      * @return the UI object
      */
-    public CommonDeviceView getContentView() {
+    public CommonView getContentView() {
         if (layerFront != null) {
             return layerFront;
         }
@@ -94,7 +94,7 @@ public class ViewHandler {
      * 
      * @return the UI object responsible for metrics
      */
-    public CommonDeviceView getMetricsView() {
+    public CommonView getMetricsView() {
         return layerBack;
     }
 
@@ -173,16 +173,16 @@ public class ViewHandler {
      *            UIView to resign as first responder.
      */
     public void resignFirstResponder() {
-        CommonDeviceView view = layerBack;
+        CommonView view = layerBack;
         while (view.getSuperview() != null) {
             view = view.getSuperview();
         }
         resignFirstResponderForViewHierarchy(layerBack);
     }
 
-    private static void resignFirstResponderForViewHierarchy(CommonDeviceView view) {
+    private static void resignFirstResponderForViewHierarchy(CommonView view) {
         view.resignFirstResponder();
-        for (CommonDeviceView subview : view.getSubviews()) {
+        for (CommonView subview : view.getSubviews()) {
             resignFirstResponderForViewHierarchy(subview);
         }
     }
@@ -244,7 +244,7 @@ public class ViewHandler {
                                                         // the background image,
                                                         // since it is a
                                                         // UIButton
-                ((ButtonAdapter) layerBack).setImage(img, CommonDeviceView.CONTROL_STATE_NORMAL);
+                ((ButtonAdapter) layerBack).setImage(img, CommonView.CONTROL_STATE_NORMAL);
             } else { // The back button is NOT able to accomodate the background
                      // image, needs to be put higher in hierarchy
                 if (layerFront != null) {
@@ -255,7 +255,7 @@ public class ViewHandler {
                 Rect frame = layerBack.getFrame(); // First remember the
                                                      // actual location of the
                                                      // widget
-                CommonDeviceView superview = layerBack.getSuperview(); // get the parent
+                CommonView superview = layerBack.getSuperview(); // get the parent
                                                              // of the widget
                 if (superview != null)
                     zorder = superview.getSubviews().indexOf(layerBack); // Get
@@ -301,14 +301,14 @@ public class ViewHandler {
                                                             // deleted from a
                                                             // UIImageView
                                                             // object
-                    ((ButtonAdapter) layerBack).setImage(img, CommonDeviceView.CONTROL_STATE_NORMAL);
+                    ((ButtonAdapter) layerBack).setImage(img, CommonView.CONTROL_STATE_NORMAL);
                 }
             } else { // A layer "front" is present, so we have to remove the
                      // UIImageView (the current layer back)
                 int zorder = 0; // somewhere to store the Z-order of the widget
                 Rect frame = layerBack.getFrame(); // Get the location of the
                                                      // widget
-                CommonDeviceView parent = layerBack.getSuperview(); // get the parent
+                CommonView parent = layerBack.getSuperview(); // get the parent
                                                           // UIView
                 if (parent != null)
                     zorder = parent.getSubviews().indexOf(layerBack); // Get the

@@ -20,12 +20,12 @@
 
 package org.xmlvm.common.adapter;
 
-import org.xmlvm.common.objects.CommonDeviceView;
+import org.xmlvm.common.objects.CommonView;
 
 /**
  *
  */
-public interface CheckBoxAdapter extends CommonDeviceView {
+public interface CheckBoxAdapter extends CommonView {
 
     void setOn(boolean checked);
 

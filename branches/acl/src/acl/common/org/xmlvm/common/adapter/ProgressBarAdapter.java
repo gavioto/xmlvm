@@ -20,11 +20,11 @@
 
 package org.xmlvm.common.adapter;
 
-import org.xmlvm.common.objects.CommonDeviceView;
+import org.xmlvm.common.objects.CommonView;
 
 /**
  *
  */
-public interface ProgressBarAdapter extends CommonDeviceView {
+public interface ProgressBarAdapter extends CommonView {
 
 }

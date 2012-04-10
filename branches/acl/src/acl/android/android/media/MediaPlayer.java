@@ -26,7 +26,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.lang.ref.WeakReference;
 
-import org.xmlvm.common.subsystems.CommonDeviceMediaPlayer;
+import org.xmlvm.common.subsystems.CommonMediaPlayer;
 
 import android.content.Context;
 import android.internal.CommonDeviceAPIFinder;
@@ -39,7 +39,7 @@ public class MediaPlayer {
 
     private OnCompletionListener onCompletionListener = null;
 
-    private CommonDeviceMediaPlayer mediaPlayerAdapter;
+    private CommonMediaPlayer mediaPlayerAdapter;
 
 
     public MediaPlayer() {
@@ -52,7 +52,7 @@ public class MediaPlayer {
         return player;
     }
 
-    private CommonDeviceMediaPlayer xmlvmGetMediaPlayerAdapter() {
+    private CommonMediaPlayer xmlvmGetMediaPlayerAdapter() {
         return this.mediaPlayerAdapter;
     }
 

@@ -22,11 +22,10 @@ package org.xmlvm.iphone.adapter;
 
 
 import org.xmlvm.common.adapter.TextViewAdapter;
-import org.xmlvm.common.objects.CommonDeviceFont;
+import org.xmlvm.common.objects.CommonFont;
 import org.xmlvm.iphone.UILabel;
 import org.xmlvm.iphone.UILineBreakMode;
 import org.xmlvm.iphone.UITextAlignment;
-import org.xmlvm.iphone.UITextField;
 import org.xmlvm.iphone.objects.IPhoneFont;
 import org.xmlvm.iphone.objects.IPhoneView;
 
@@ -47,12 +46,12 @@ public class IPhoneTextViewAdapter extends IPhoneView implements TextViewAdapter
     }
 
     @Override
-    public CommonDeviceFont getFont() {
+    public CommonFont getFont() {
         return new IPhoneFont(((UILabel)this.getView()).getFont());
     }
 
     @Override
-    public void setFont(CommonDeviceFont font) {
+    public void setFont(CommonFont font) {
         ((UILabel)this.getView()).setFont(((IPhoneFont)font).getFont());
     }
 

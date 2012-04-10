@@ -28,7 +28,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import java.util.Set;
 
-import org.xmlvm.common.objects.CommonDeviceView;
+import org.xmlvm.common.objects.CommonView;
 
 /* TODO: This implementation of ProgressBar is currently hard coded
  * for indeterminate mode.
@@ -49,7 +49,7 @@ public class ProgressBar extends View {
     }
 
     @Override
-    protected CommonDeviceView xmlvmNewCommonDeviceView(AttributeSet attrs) {
+    protected CommonView xmlvmNewCommonDeviceView(AttributeSet attrs) {
         return CommonDeviceAPIFinder.instance().getWidgetFactory().createProgressBar(this);
     }
 

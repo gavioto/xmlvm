@@ -20,7 +20,7 @@
 
 package android.internal;
 
-import org.xmlvm.common.subsystems.CommonDeviceProperties;
+import org.xmlvm.common.subsystems.CommonProperties;
 
 import android.content.res.Configuration;
 
@@ -66,17 +66,17 @@ public class ConfigurationFactory {
         int device = detectDevice();
 
         switch (device) {
-        case CommonDeviceProperties.DEVICE_IPHONE:
+        case CommonProperties.DEVICE_IPHONE:
             config.screenLayout |= Configuration.SCREENLAYOUT_SIZE_NORMAL;
             config.screenLayout |= Configuration.SCREENLAYOUT_LONG_NO;
             break;
 
-        case CommonDeviceProperties.DEVICE_IPHONE4:
+        case CommonProperties.DEVICE_IPHONE4:
             config.screenLayout |= Configuration.SCREENLAYOUT_SIZE_LARGE;
             config.screenLayout |= Configuration.SCREENLAYOUT_LONG_YES;
             break;
 
-        case CommonDeviceProperties.DEVICE_IPAD:
+        case CommonProperties.DEVICE_IPAD:
             config.screenLayout |= Configuration.SCREENLAYOUT_SIZE_XLARGE;
             config.screenLayout |= Configuration.SCREENLAYOUT_LONG_NO;
             break;
@@ -96,15 +96,15 @@ public class ConfigurationFactory {
         int orientation = CommonDeviceAPIFinder.instance().getProperties().getOrientation();
 
         switch (orientation) {
-        case CommonDeviceProperties.ORIENTATION_PORTRAIT:
-        case CommonDeviceProperties.ORIENTATION_PORTRAIT_UPSIDE_DOWN:
-        case CommonDeviceProperties.ORIENTATION_FACE_DOWN:
-        case CommonDeviceProperties.ORIENTATION_FACE_UP:
+        case CommonProperties.ORIENTATION_PORTRAIT:
+        case CommonProperties.ORIENTATION_PORTRAIT_UPSIDE_DOWN:
+        case CommonProperties.ORIENTATION_FACE_DOWN:
+        case CommonProperties.ORIENTATION_FACE_UP:
             config.orientation = Configuration.ORIENTATION_PORTRAIT;
             break;
 
-        case CommonDeviceProperties.ORIENTATION_LANDSCAPE_LEFT:
-        case CommonDeviceProperties.ORIENTATION_LANDSCAPE_RIGHT:
+        case CommonProperties.ORIENTATION_LANDSCAPE_LEFT:
+        case CommonProperties.ORIENTATION_LANDSCAPE_RIGHT:
             config.orientation = Configuration.ORIENTATION_LANDSCAPE;
             break;
 
@@ -125,16 +125,16 @@ public class ConfigurationFactory {
         int device = detectDevice();
 
         switch (device) {
-        case CommonDeviceProperties.DEVICE_IPHONE:
+        case CommonProperties.DEVICE_IPHONE:
             return Density.DENSITY_MEDIUM;
 
-        case CommonDeviceProperties.DEVICE_IPHONE4:
+        case CommonProperties.DEVICE_IPHONE4:
             return Density.DENSITY_HIGH;
 
-        case CommonDeviceProperties.DEVICE_IPAD:
+        case CommonProperties.DEVICE_IPAD:
             return Density.DENSITY_MEDIUM;
             
-        case CommonDeviceProperties.DEVICE_WP7:
+        case CommonProperties.DEVICE_WP7:
             return Density.DENSITY_MEDIUM;
         }
 

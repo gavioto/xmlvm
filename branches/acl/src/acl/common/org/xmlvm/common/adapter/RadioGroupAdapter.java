@@ -20,12 +20,12 @@
 
 package org.xmlvm.common.adapter;
 
-import org.xmlvm.common.objects.CommonDeviceView;
+import org.xmlvm.common.objects.CommonView;
 
 /**
  *
  */
-public interface RadioGroupAdapter extends CommonDeviceView {
+public interface RadioGroupAdapter extends CommonView {
 
     int getSelectedSegmentIndex();
 

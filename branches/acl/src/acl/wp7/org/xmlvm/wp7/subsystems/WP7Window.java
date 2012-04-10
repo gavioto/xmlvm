@@ -20,22 +20,21 @@
 
 package org.xmlvm.wp7.subsystems;
 
-import org.xmlvm.common.objects.CommonDeviceView;
-import org.xmlvm.common.subsystems.CommonDeviceWindow;
+import org.xmlvm.common.objects.CommonView;
+import org.xmlvm.common.subsystems.CommonWindow;
 import org.xmlvm.wp7.objects.WP7View;
 
+import Compatlib.System.Windows.Application;
 import android.graphics.Rect;
 import android.internal.Assert;
-
-import Compatlib.System.Windows.Application;
 
 /**
  *
  */
-public class WP7Window implements CommonDeviceWindow {
+public class WP7Window implements CommonWindow {
 
     @Override
-    public void addSubview(CommonDeviceView view) {
+    public void addSubview(CommonView view) {
         Application.getCurrent().setRootVisual(((WP7View)view).getElement());
     }
 

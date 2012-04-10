@@ -21,10 +21,10 @@
 package android.widget;
 
 import org.xmlvm.common.adapter.TextViewAdapter;
-import org.xmlvm.common.objects.CommonDeviceFont;
-import org.xmlvm.common.objects.CommonDeviceView;
-import org.xmlvm.common.subsystems.CommonDeviceFontFactory;
-import org.xmlvm.common.subsystems.CommonDeviceProperties;
+import org.xmlvm.common.objects.CommonFont;
+import org.xmlvm.common.objects.CommonView;
+import org.xmlvm.common.subsystems.CommonFontFactory;
+import org.xmlvm.common.subsystems.CommonProperties;
 
 import android.app.Application;
 import android.content.Context;
@@ -124,7 +124,7 @@ public class TextView extends View {
 
     public void setTextSize(float size) {
         TextViewAdapter content = (TextViewAdapter) xmlvmGetViewHandler().getContentView();
-        CommonDeviceFont font = content.getFont();
+        CommonFont font = content.getFont();
         if (font == null) {
             content.setFont(CommonDeviceAPIFinder.instance().getFontFactory()
                     .systemFontOfSize(size));
@@ -134,7 +134,7 @@ public class TextView extends View {
     }
 
     public float getTextSize() {
-        CommonDeviceFont font = ((TextViewAdapter) xmlvmGetViewHandler().getContentView())
+        CommonFont font = ((TextViewAdapter) xmlvmGetViewHandler().getContentView())
                 .getFont();
         if (font == null) {
             return CommonDeviceAPIFinder.instance().getFontFactory().labelFontSize();
@@ -155,7 +155,7 @@ public class TextView extends View {
     }
 
     @Override
-    protected CommonDeviceView xmlvmNewCommonDeviceView(AttributeSet attrs) {
+    protected CommonView xmlvmNewCommonDeviceView(AttributeSet attrs) {
         TextViewAdapter view = CommonDeviceAPIFinder.instance().getWidgetFactory().createTextView(this);
         return view;
     }
@@ -270,8 +270,8 @@ public class TextView extends View {
     protected Rect xmlvmGetTextSize() {
         Rect rect = CommonDeviceAPIFinder.instance().getProperties().getApplicationFrame();
         int orientation = Application.getApplication().xmlvmGetCurrentInterfaceOrientation();
-        if (orientation == CommonDeviceProperties.ORIENTATION_LANDSCAPE_LEFT
-                || orientation == CommonDeviceProperties.ORIENTATION_LANDSCAPE_RIGHT) {
+        if (orientation == CommonProperties.ORIENTATION_LANDSCAPE_LEFT
+                || orientation == CommonProperties.ORIENTATION_LANDSCAPE_RIGHT) {
             float tmp = rect.width();
             rect.right = rect.left + rect.height();
             rect.bottom = (int) (rect.top + tmp);
@@ -281,7 +281,7 @@ public class TextView extends View {
         Rect constraints = new Rect(0, 0, rect.width() - totalPaddings.width(), rect.height()
                 - totalPaddings.height());
 
-        CommonDeviceFont font = xmlvmGetCommonDeviceFont();
+        CommonFont font = xmlvmGetCommonDeviceFont();
         if (font == null) {
             font = CommonDeviceAPIFinder
                     .instance()
@@ -292,7 +292,7 @@ public class TextView extends View {
 
         Rect mSize = CommonDeviceAPIFinder.instance().getFontFactory().sizeWithFont("M", font);
         Rect textSize = CommonDeviceAPIFinder.instance().getFontFactory()
-                .sizeWithFont(text, font, constraints, CommonDeviceFontFactory.LINEBREAK_WORD_WRAP);
+                .sizeWithFont(text, font, constraints, CommonFontFactory.LINEBREAK_WORD_WRAP);
         if (text.length() == 0) {
             textSize.bottom = mSize.bottom;
         }
@@ -313,7 +313,7 @@ public class TextView extends View {
         return result;
     }
 
-    protected CommonDeviceFont  xmlvmGetCommonDeviceFont() {
+    protected CommonFont  xmlvmGetCommonDeviceFont() {
         return ((TextViewAdapter) xmlvmGetViewHandler().getContentView()).getFont();
     }
 

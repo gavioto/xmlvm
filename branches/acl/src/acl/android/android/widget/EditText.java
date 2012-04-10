@@ -21,9 +21,9 @@
 package android.widget;
 
 import org.xmlvm.common.adapter.EditTextAdapter;
-import org.xmlvm.common.objects.CommonDeviceFont;
-import org.xmlvm.common.objects.CommonDeviceView;
-import org.xmlvm.common.subsystems.CommonDeviceTextFieldDelegate;
+import org.xmlvm.common.objects.CommonFont;
+import org.xmlvm.common.objects.CommonView;
+import org.xmlvm.common.subsystems.CommonTextFieldDelegate;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -61,7 +61,7 @@ public class EditText extends TextView {
     }
 
     @Override
-    protected CommonDeviceView xmlvmNewCommonDeviceView(AttributeSet attrs) {
+    protected CommonView xmlvmNewCommonDeviceView(AttributeSet attrs) {
         return CommonDeviceAPIFinder.instance().getWidgetFactory().createEditText(this);
     }
 
@@ -94,7 +94,7 @@ public class EditText extends TextView {
     @Override
     public void setTextSize(float size) {
         EditTextAdapter content = (EditTextAdapter) xmlvmGetViewHandler().getContentView();
-        CommonDeviceFont font = content.getFont();
+        CommonFont font = content.getFont();
         if (font == null) {
             content.setFont(CommonDeviceAPIFinder.instance().getFontFactory().systemFontOfSize(size));
         } else {
@@ -104,7 +104,7 @@ public class EditText extends TextView {
 
     @Override
     public float getTextSize() {
-        CommonDeviceFont font = ((EditTextAdapter) xmlvmGetViewHandler().getContentView()).getFont();
+        CommonFont font = ((EditTextAdapter) xmlvmGetViewHandler().getContentView()).getFont();
         if (font == null) {
             return CommonDeviceAPIFinder.instance().getFontFactory().labelFontSize();
         } else {
@@ -132,7 +132,7 @@ public class EditText extends TextView {
     }
 
     @Override
-    protected CommonDeviceFont xmlvmGetCommonDeviceFont() {
+    protected CommonFont xmlvmGetCommonDeviceFont() {
         return ((EditTextAdapter) xmlvmGetViewHandler().getContentView()).getFont();
     }
 
@@ -146,7 +146,7 @@ public class EditText extends TextView {
         return INSETS_Y;
     }
 
-    public void xmlvmSetKeyboardDelegate(CommonDeviceTextFieldDelegate iTextFieldDelegate) {
+    public void xmlvmSetKeyboardDelegate(CommonTextFieldDelegate iTextFieldDelegate) {
         ((EditTextAdapter) xmlvmGetViewHandler().getContentView()).setDelegate(iTextFieldDelegate);
     }
 

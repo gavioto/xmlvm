@@ -20,7 +20,7 @@
 
 package org.xmlvm.iphone.subsystems;
 
-import org.xmlvm.common.subsystems.CommonDeviceProperties;
+import org.xmlvm.common.subsystems.CommonProperties;
 import org.xmlvm.iphone.CGRect;
 import org.xmlvm.iphone.CGSize;
 import org.xmlvm.iphone.UIApplication;
@@ -35,7 +35,7 @@ import android.internal.CommonDeviceAPIFinder;
 /**
  *
  */
-public class IPhoneProperties implements CommonDeviceProperties {
+public class IPhoneProperties implements CommonProperties {
 
     @Override
     public Rect getScreenBounds() {
@@ -61,18 +61,18 @@ public class IPhoneProperties implements CommonDeviceProperties {
         switch (totalPixels) {
         // All iPhone before iPhone4
         case 800:
-            return CommonDeviceProperties.DEVICE_IPHONE;
+            return CommonProperties.DEVICE_IPHONE;
 
             // iPhone 4
         case 1600:
-            return CommonDeviceProperties.DEVICE_IPHONE4;
+            return CommonProperties.DEVICE_IPHONE4;
 
             // iPad
         case 1792:
-            return CommonDeviceProperties.DEVICE_IPAD;
+            return CommonProperties.DEVICE_IPAD;
         }
 
-        return CommonDeviceProperties.DEVICE_UNKNOWN;
+        return CommonProperties.DEVICE_UNKNOWN;
     }
 
     /*
@@ -112,11 +112,11 @@ public class IPhoneProperties implements CommonDeviceProperties {
     @Override
     public void setOrientation(int orientation) {
         switch (orientation) {
-        case CommonDeviceProperties.ORIENTATION_LANDSCAPE_LEFT:
+        case CommonProperties.ORIENTATION_LANDSCAPE_LEFT:
             UIApplication.sharedApplication().setStatusBarOrientation(
                     UIInterfaceOrientation.LandscapeLeft);
             break;
-        case CommonDeviceProperties.ORIENTATION_PORTRAIT:
+        case CommonProperties.ORIENTATION_PORTRAIT:
             UIApplication.sharedApplication().setStatusBarOrientation(
                     UIInterfaceOrientation.Portrait);
             break;

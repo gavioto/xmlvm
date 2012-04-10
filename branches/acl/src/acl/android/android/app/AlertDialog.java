@@ -21,7 +21,7 @@
 package android.app;
 
 import org.xmlvm.common.adapter.AlertDialogAdapter;
-import org.xmlvm.common.subsystems.CommonDeviceWidgetFactory;
+import org.xmlvm.common.subsystems.CommonWidgetFactory;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -136,7 +136,7 @@ public class AlertDialog extends Dialog implements DialogInterface {
 
     @Override
     public void show() {
-        CommonDeviceWidgetFactory widgetFactory = CommonDeviceAPIFinder.instance().getWidgetFactory();
+        CommonWidgetFactory widgetFactory = CommonDeviceAPIFinder.instance().getWidgetFactory();
         String message = "";
         CharSequence cancelButtonTitle = builder.positiveButtonTitle;
         AlertDialogAdapter adapter = widgetFactory.createAlertDialog((String)title, message, this, (String) cancelButtonTitle);

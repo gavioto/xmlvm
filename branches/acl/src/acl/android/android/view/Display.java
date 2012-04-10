@@ -20,7 +20,7 @@
 
 package android.view;
 
-import org.xmlvm.common.subsystems.CommonDeviceProperties;
+import org.xmlvm.common.subsystems.CommonProperties;
 
 import android.app.Activity;
 import android.app.Application;
@@ -63,7 +63,7 @@ public class Display {
 
         int device = ConfigurationFactory.detectDevice();
         switch (device) {
-        case CommonDeviceProperties.DEVICE_IPHONE4:
+        case CommonProperties.DEVICE_IPHONE4:
             metrics.density = 326.0f / 160.0f;
             metrics.densityDpi = DisplayMetrics.DENSITY_HIGH;
             metrics.heightPixels = (int) (960.0f / metrics.density);
@@ -71,7 +71,7 @@ public class Display {
             metrics.xdpi = metrics.ydpi = 326;
             break;
 
-        case CommonDeviceProperties.DEVICE_IPAD:
+        case CommonProperties.DEVICE_IPAD:
             metrics.density = 132.0f / 160.0f;
             metrics.densityDpi = DisplayMetrics.DENSITY_MEDIUM;
             metrics.heightPixels = (int) (768.0f / metrics.density);
@@ -93,13 +93,13 @@ public class Display {
     public int getRotation() {
         
         switch (Application.getApplication().xmlvmGetCurrentInterfaceOrientation()) {
-        case CommonDeviceProperties.ORIENTATION_PORTRAIT:
+        case CommonProperties.ORIENTATION_PORTRAIT:
             return Surface.ROTATION_0;
-        case CommonDeviceProperties.ORIENTATION_LANDSCAPE_LEFT:
+        case CommonProperties.ORIENTATION_LANDSCAPE_LEFT:
             return Surface.ROTATION_90;
-        case CommonDeviceProperties.ORIENTATION_PORTRAIT_UPSIDE_DOWN:
+        case CommonProperties.ORIENTATION_PORTRAIT_UPSIDE_DOWN:
             return Surface.ROTATION_180;
-        case CommonDeviceProperties.ORIENTATION_LANDSCAPE_RIGHT:
+        case CommonProperties.ORIENTATION_LANDSCAPE_RIGHT:
             return Surface.ROTATION_270;
         }
         Assert.FAIL("Illegal device orientation");

@@ -23,7 +23,7 @@ package android.hardware;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.xmlvm.common.subsystems.CommonDeviceAccelerometer;
+import org.xmlvm.common.subsystems.CommonAccelerometer;
 
 import android.app.Application;
 import android.internal.CommonDeviceAPIFinder;
@@ -34,7 +34,7 @@ public class SensorManager {
     public static final int               SENSOR_DELAY_FASTEST = 0x00000000;
     private List<RegisteredEventListener> eventListeners       = new ArrayList<RegisteredEventListener>();
 
-    private CommonDeviceAccelerometer               accel;
+    private CommonAccelerometer               accel;
 
     public static Sensor                 xmlvmSensorAccelerometer;
 

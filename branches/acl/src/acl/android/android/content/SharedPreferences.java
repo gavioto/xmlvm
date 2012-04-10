@@ -20,7 +20,7 @@
 
 package android.content;
 
-import org.xmlvm.common.subsystems.CommonDevicePreferences;
+import org.xmlvm.common.subsystems.CommonPreferences;
 
 import android.internal.Assert;
 import android.internal.CommonDeviceAPIFinder;
@@ -32,7 +32,7 @@ import android.internal.CommonDeviceAPIFinder;
  */
 public class SharedPreferences {
 
-    private CommonDevicePreferences preferences;
+    private CommonPreferences preferences;
 
     /**
      * <i>(XMLVM Compatibility Class)</i>
@@ -43,9 +43,9 @@ public class SharedPreferences {
      */
     public class Editor {
 
-        private CommonDevicePreferences preferences;
+        private CommonPreferences preferences;
 
-        private Editor(CommonDevicePreferences preferences) {
+        private Editor(CommonPreferences preferences) {
             this.preferences = preferences;
         }
 

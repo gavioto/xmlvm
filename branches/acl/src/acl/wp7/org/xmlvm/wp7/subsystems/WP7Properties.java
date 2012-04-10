@@ -20,20 +20,19 @@
 
 package org.xmlvm.wp7.subsystems;
 
-import org.xmlvm.common.subsystems.CommonDeviceProperties;
-
-import android.graphics.Rect;
+import org.xmlvm.common.subsystems.CommonProperties;
 
 import Compatlib.System.Windows.Application;
+import android.graphics.Rect;
 
 /**
  *
  */
-public class WP7Properties implements CommonDeviceProperties {
+public class WP7Properties implements CommonProperties {
 
     @Override
     public int detectDevice() {
-        return CommonDeviceProperties.DEVICE_WP7;
+        return CommonProperties.DEVICE_WP7;
     }
 
     @Override

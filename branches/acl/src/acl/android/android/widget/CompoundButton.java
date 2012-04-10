@@ -22,7 +22,7 @@ package android.widget;
 
 import java.util.Set;
 
-import org.xmlvm.common.objects.CommonDeviceFont;
+import org.xmlvm.common.objects.CommonFont;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -97,7 +97,7 @@ public abstract class CompoundButton extends Button {
     }
 
     @Override
-    protected CommonDeviceFont xmlvmGetCommonDeviceFont() {
+    protected CommonFont xmlvmGetCommonDeviceFont() {
         // NOTE: xmlvmGetUIFont should be overriden in child classes or else
         // this method will break,
         // if child is not derived from UIButton

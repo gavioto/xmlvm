@@ -180,7 +180,6 @@ class LayoutParser extends DefaultHandler {
 public class LayoutManager {
 
     public static View getLayout(Context context, int id, ViewGroup root) {
-        
         String layoutPath = context.getResources().getLayout(id);
         
         SAXParserFactory factory = SAXParserFactory.newInstance();

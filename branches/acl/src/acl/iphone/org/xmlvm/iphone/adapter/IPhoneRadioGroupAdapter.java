@@ -21,7 +21,7 @@
 package org.xmlvm.iphone.adapter;
 
 import org.xmlvm.common.adapter.RadioGroupAdapter;
-import org.xmlvm.common.objects.CommonDeviceView;
+import org.xmlvm.common.objects.CommonView;
 import org.xmlvm.iphone.UIControl;
 import org.xmlvm.iphone.UIControlDelegate;
 import org.xmlvm.iphone.UIControlEvent;

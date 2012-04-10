@@ -20,7 +20,7 @@
 
 package org.xmlvm.wp7.subsystems;
 
-import org.xmlvm.common.subsystems.CommonDeviceAccelerometer;
+import org.xmlvm.common.subsystems.CommonAccelerometer;
 
 import Compatlib.Microsoft.Devices.Sensors.Accelerometer;
 import Compatlib.Microsoft.Devices.Sensors.AccelerometerReadingEventArgs;
@@ -36,7 +36,7 @@ import android.internal.TopActivity;
 /**
  *
  */
-public class WP7Accelerometer extends Object implements CommonDeviceAccelerometer {
+public class WP7Accelerometer extends Object implements CommonAccelerometer {
     public static final float             GRAVITY_EARTH        = 9.80665f;
     public static final int               SENSOR_ACCELEROMETER = 0x00000002;
     public static final int               SENSOR_DELAY_FASTEST = 0x00000000;

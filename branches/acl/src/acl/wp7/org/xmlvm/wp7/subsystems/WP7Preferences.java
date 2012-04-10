@@ -20,18 +20,17 @@
 
 package org.xmlvm.wp7.subsystems;
 
-import org.xmlvm.common.subsystems.CommonDevicePreferences;
-
-import android.internal.Assert;
+import org.xmlvm.common.subsystems.CommonPreferences;
 
 import Compatlib.System.Boolean;
 import Compatlib.System.Integer;
 import Compatlib.System.IO.IsolatedStorage.IsolatedStorageSettings;
+import android.internal.Assert;
 
 /**
  *
  */
-public class WP7Preferences implements CommonDevicePreferences {
+public class WP7Preferences implements CommonPreferences {
 
     private IsolatedStorageSettings settings;
     

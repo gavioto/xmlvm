@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import org.xmlvm.common.objects.CommonDeviceView;
+import org.xmlvm.common.objects.CommonView;
 import org.xmlvm.iphone.CGPoint;
 import org.xmlvm.iphone.CGRect;
 import org.xmlvm.iphone.CGSize;
@@ -38,7 +38,7 @@ import org.xmlvm.iphone.UIViewController;
 
 import android.app.Application;
 import android.content.pm.ActivityInfo;
-import android.graphics.Color;
+import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.internal.Assert;
 import android.internal.TopActivity;
@@ -48,7 +48,7 @@ import android.view.View;
 /**
  *
  */
-public class IPhoneView implements CommonDeviceView {
+public class IPhoneView implements CommonView {
 
     /**
      * View controller that manages the topLevelView.
@@ -58,8 +58,10 @@ public class IPhoneView implements CommonDeviceView {
     private UIView view;
     private View androidView;
 
-    private List<CommonDeviceView> subViews = new ArrayList<CommonDeviceView>();
-    private CommonDeviceView superView; 
+    private List<CommonView> subViews = new ArrayList<CommonView>();
+    private CommonView superView;
+
+    private Integer bcolor; 
 
     public IPhoneView(View view) {
         this.androidView = view;
@@ -87,7 +89,7 @@ public class IPhoneView implements CommonDeviceView {
 
             @Override
             public void drawRect(CGRect rect) {
-//                draw(new Canvas(UIGraphics.getCurrentContext()));
+                androidView.draw(new Canvas(new IPhoneContext()));
             }
         };
     }
@@ -124,11 +126,12 @@ public class IPhoneView implements CommonDeviceView {
 
     @Override
     public void setBackgroundColor(Integer bcolor) {
+        this.bcolor = bcolor;
         this.view.setBackgroundColor(IPhoneView.toUIColor(bcolor));
     }
 
     @Override
-    public void addSubview(CommonDeviceView view) {
+    public void addSubview(CommonView view) {
         this.view.addSubview(((IPhoneView)view).getView());
         this.subViews.add(view);
         ((IPhoneView)view).setSuperView(this);
@@ -142,7 +145,7 @@ public class IPhoneView implements CommonDeviceView {
     }
 
     @Override
-    public void insertSubview(CommonDeviceView view, int idx) {
+    public void insertSubview(CommonView view, int idx) {
         this.view.insertSubview(((IPhoneView)view).getView(), idx);
         this.subViews.add(idx, view);
         ((IPhoneView)view).setSuperView(this);
@@ -151,10 +154,14 @@ public class IPhoneView implements CommonDeviceView {
     @Override
     public void removeFromSuperview() {
         this.view.removeFromSuperview();
-        ((IPhoneView)this.getSuperview()).removeSubview(this);
+        if (this.getSuperview() == null) {
+            return;
+        } else {
+            ((IPhoneView)this.getSuperview()).removeSubview(this);
+        }
     }
     
-    public void removeSubview(CommonDeviceView view) {
+    public void removeSubview(CommonView view) {
         this.subViews.remove(view);
         ((IPhoneView)view).setSuperView(null);
     }
@@ -162,16 +169,16 @@ public class IPhoneView implements CommonDeviceView {
     @Override
     public void setContentMode(int mode) {
         switch (mode) {
-        case CommonDeviceView.SCALE_TO_FILL:
+        case CommonView.SCALE_TO_FILL:
             this.view.setContentMode(UIViewContentMode.ScaleToFill);
             break;
-        case CommonDeviceView.SCALE_ASPECT_FIT:
+        case CommonView.SCALE_ASPECT_FIT:
             this.view.setContentMode(UIViewContentMode.ScaleAspectFit);
             break;
-        case CommonDeviceView.SCALE_ASPECT_FILL:
+        case CommonView.SCALE_ASPECT_FILL:
             this.view.setContentMode(UIViewContentMode.ScaleAspectFill);
             break;
-        case CommonDeviceView.CENTER:
+        case CommonView.CENTER:
             this.view.setContentMode(UIViewContentMode.Center);
             break;
         default:
@@ -239,13 +246,17 @@ public class IPhoneView implements CommonDeviceView {
     }
     
     public static UIColor toUIColor(Integer color) {
-        return color != null ? UIColor.colorWithRGBA(Color.red(color), Color.green(color), Color.blue(color), Color.alpha(color)) : null;
+        if(color != null) {
+            float alpha = (float) (((color >> 24) & 0xff) / 255.0f);
+            float red = (float) (((color >> 16) & 0xff) / 255.0f);
+            float green = (float) (((color >> 8) & 0xff) / 255.0f);
+            float blue = (float) ((color & 0xff) / 255.0f);
+            return UIColor.colorWithRGBA(red, green, blue, alpha);
+        } else {
+            return UIColor.colorWithRGBA(0, 0, 0, 0);
+        }
     }
     
-    public static Integer toAndroidColor(UIColor color) {
-        throw new RuntimeException("Not yet implemented");
-    }
-
     @Override
     public void resignFirstResponder() {
         this.view.resignFirstResponder();
@@ -258,11 +269,11 @@ public class IPhoneView implements CommonDeviceView {
 
     @Override
     public Integer getBackgroundColor() {
-        return toAndroidColor(this.view.getBackgroundColor());
+        return this.bcolor;
     }
 
     @Override
-    public void bringSubviewToFront(CommonDeviceView view) {
+    public void bringSubviewToFront(CommonView view) {
         this.view.bringSubviewToFront(((IPhoneView)view).getView());
     }
 
@@ -270,8 +281,8 @@ public class IPhoneView implements CommonDeviceView {
      * @see org.xmlvm.common.objects.CommonDeviceView#getSuperview()
      */
     @Override
-    public CommonDeviceView getSuperview() {
-        throw new RuntimeException("getSuperview");
+    public CommonView getSuperview() {
+        return this.superView;
     }
 
     /* (non-Javadoc)
@@ -321,7 +332,7 @@ public class IPhoneView implements CommonDeviceView {
      * @see org.xmlvm.common.objects.CommonDeviceView#getSubviews()
      */
     @Override
-    public List<CommonDeviceView> getSubviews() {
+    public List<CommonView> getSubviews() {
         return subViews;
     }
 
@@ -331,6 +342,14 @@ public class IPhoneView implements CommonDeviceView {
     @Override
     public boolean isUserInteractionEnabled() {
         return view.isUserInteractionEnabled();
+    }
+
+    /* (non-Javadoc)
+     * @see org.xmlvm.common.objects.CommonView#getViewFromController()
+     */
+    @Override
+    public void loadViewInController() {
+        viewController.loadView();
     }
 
 }

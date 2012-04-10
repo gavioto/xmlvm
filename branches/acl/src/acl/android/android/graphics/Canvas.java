@@ -21,8 +21,8 @@
 package android.graphics;
 
 import org.xmlvm.common.adapter.BitmapDrawableAdapter;
-import org.xmlvm.common.objects.CommonDeviceContext;
-import org.xmlvm.common.objects.CommonDeviceFont;
+import org.xmlvm.common.objects.CommonContext;
+import org.xmlvm.common.objects.CommonFont;
 
 import android.graphics.Paint.Style;
 import android.graphics.drawable.BitmapDrawable;
@@ -34,7 +34,7 @@ public class Canvas {
 
     private static Canvas lastCanvasUsed = null;
     private boolean       usesExternalCGContext;
-    private CommonDeviceContext     context;
+    private CommonContext     context;
     private Bitmap        bitmap;
     private int           saveCount      = 0;
 
@@ -44,7 +44,7 @@ public class Canvas {
         usesExternalCGContext = false;
     }
 
-    public Canvas(CommonDeviceContext context) {
+    public Canvas(CommonContext context) {
         this.context = context;
         usesExternalCGContext = true;
     }
@@ -107,7 +107,7 @@ public class Canvas {
         startY += 0.5f;
         stopX += 0.5f;
         stopY += 0.5f;
-        context.setLineCap(CommonDeviceContext.LineCapSquare);
+        context.setLineCap(CommonContext.LineCapSquare);
         context.setStrokeColor(paint.xmlvmGetColor());
         context.setShouldAntialias(paint.isAntiAlias());
         context.beginPath();
@@ -208,7 +208,7 @@ public class Canvas {
         context.setFontSize(paint.getTextSize());
         context.setShouldAntialias(paint.isAntiAlias());
         Paint.Align align = paint.getTextAlign();
-        CommonDeviceFont font = paint.xmlvmGetUIFont();
+        CommonFont font = paint.xmlvmGetUIFont();
         if (align == Paint.Align.RIGHT || align == Paint.Align.CENTER) {
             Rect textSize = CommonDeviceAPIFinder.instance().getFontFactory().sizeWithFont(text, font);
             switch (align) {

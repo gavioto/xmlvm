@@ -188,24 +188,57 @@
         <xsl:text>; \&nl;</xsl:text>
       </xsl:for-each>
 
+      <xsl:variable name="functionType">
+        <!-- Function return type -->
+        <xsl:call-template name="emitType">
+          <xsl:with-param name="type" select="$returnType"/>
+        </xsl:call-template>
+
+        <xsl:text>(*)(</xsl:text>
+        <!-- The first parameter type. The first parameter is either the "delegate_" or "jthiz" -->
+        <xsl:text>JAVA_OBJECT</xsl:text>
+
+        <xsl:for-each select="../vm:signature/vm:parameter">
+          <xsl:text>, </xsl:text>
+          <!-- The parameter type -->
+          <xsl:call-template name="emitType">
+            <xsl:with-param name="type" select="@type"/>
+          </xsl:call-template>
+        </xsl:for-each>
+
+        <xsl:text>)</xsl:text>
+      </xsl:variable>
+
       <xsl:text>    </xsl:text>
-      <xsl:choose>
-        <xsl:when test="not($returnType = 'void')">
-          <xsl:text>return (</xsl:text>
-          <xsl:if test="not(vm:isPrimitive($returnType) = 'true')">
-            <xsl:text>id)(</xsl:text>
+      <xsl:if test="not($returnType = 'void')">
+        <xsl:text>return </xsl:text>
+        <xsl:if test="not(vm:isPrimitive($returnType) = 'true')">
 <!-- TODO need a better solution for classes with a base class besides NSObject or types such as CGRect -->
-            <xsl:text>((</xsl:text>
-            <xsl:value-of select="$packageName" />
-            <xsl:text>_NSObject*)(</xsl:text>
-          </xsl:if>
-        </xsl:when>
-        <xsl:otherwise>(</xsl:otherwise>
-      </xsl:choose>
+          <xsl:text>((</xsl:text>
+          <xsl:value-of select="$packageName" />
+          <xsl:text>_NSObject*)(</xsl:text>
+        </xsl:if>
+      </xsl:if>
+
+      <!-- Cast the function pointer to the right type -->
+      <xsl:text>((</xsl:text>
+      <xsl:value-of select="$functionType" />
+      <xsl:text>)(</xsl:text>
+      
+      <!-- UIApplicationDelegateWrapper object is created inside iOS via UIApplicationMain(), 
+      but need to associate with user defined delegate --> 
+      <xsl:variable name="delegateVarName">
+        <xsl:choose>
+          <xsl:when test="$clname eq 'org_xmlvm_ios_UIApplicationDelegate'">appToRun</xsl:when>
+          <xsl:otherwise>delegate_</xsl:otherwise>
+        </xsl:choose>
+      </xsl:variable>
 
       <xsl:choose>
         <xsl:when test="$isDelegate">
-          <xsl:text>((java_lang_Object*) delegate_)->tib->itableBegin[XMLVM_ITABLE_IDX_</xsl:text>
+          <xsl:text>((java_lang_Object*) </xsl:text>
+          <xsl:value-of select="$delegateVarName"/>
+          <xsl:text>)->tib->itableBegin[XMLVM_ITABLE_IDX_</xsl:text>
         </xsl:when>
         <xsl:otherwise>
           <xsl:text>jthiz->tib->vtable[XMLVM_VTABLE_IDX_</xsl:text>
@@ -214,10 +247,10 @@
 
       <xsl:value-of select="$methodIdentifier" />
 
-      <xsl:text>](</xsl:text>
+      <xsl:text>]))(</xsl:text>
       <xsl:choose>
         <xsl:when test="$isDelegate">
-          <xsl:text>delegate_</xsl:text>
+          <xsl:value-of select="$delegateVarName"/>
         </xsl:when>
         <xsl:otherwise>
           <xsl:text>jthiz</xsl:text>
@@ -235,7 +268,7 @@
         <xsl:value-of select="$packageName" />
         <xsl:text>_NSObject.wrappedObjCObj</xsl:text>
       </xsl:if>
-      <xsl:text>); \&nl;</xsl:text>
+      <xsl:text>; \&nl;</xsl:text>
 
       <xsl:text>}&nl;</xsl:text>
 

@@ -33,10 +33,9 @@ import org.xmlvm.common.adapter.ScrollViewAdapter;
 import org.xmlvm.common.adapter.TextViewAdapter;
 import org.xmlvm.common.adapter.ToggleButtonAdapter;
 import org.xmlvm.common.adapter.WebViewAdapter;
-import org.xmlvm.common.objects.CommonDeviceContext;
-import org.xmlvm.common.objects.CommonDeviceView;
-import org.xmlvm.common.subsystems.CommonDeviceWidgetFactory;
-import org.xmlvm.common.subsystems.CommonDeviceMediaPlayer;
+import org.xmlvm.common.objects.CommonContext;
+import org.xmlvm.common.objects.CommonView;
+import org.xmlvm.common.subsystems.CommonWidgetFactory;
 import org.xmlvm.wp7.adapter.WP7AlertDialogAdapter;
 import org.xmlvm.wp7.adapter.WP7BitmapDrawableAdapter;
 import org.xmlvm.wp7.adapter.WP7ButtonAdapter;
@@ -48,7 +47,6 @@ import org.xmlvm.wp7.objects.WP7View;
 import android.app.AlertDialog;
 import android.graphics.Bitmap;
 import android.internal.Assert;
-import android.media.MediaPlayer;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.Button;
@@ -65,7 +63,7 @@ import android.widget.ToggleButton;
 /**
  *
  */
-public class WP7WidgetFactory implements CommonDeviceWidgetFactory {
+public class WP7WidgetFactory implements CommonWidgetFactory {
 
     @Override
     public AlertDialogAdapter createAlertDialog(String title, String message,
@@ -99,7 +97,7 @@ public class WP7WidgetFactory implements CommonDeviceWidgetFactory {
     }
 
     @Override
-    public CommonDeviceView createView(View view) {
+    public CommonView createView(View view) {
         return new WP7View(view);
     }
 
@@ -143,7 +141,7 @@ public class WP7WidgetFactory implements CommonDeviceWidgetFactory {
      * @see org.xmlvm.common.subsystems.CommonDeviceWidgetFactory#createCommonDeviceContext(android.graphics.Bitmap, float, float)
      */
     @Override
-    public CommonDeviceContext createCommonDeviceContext(Bitmap bitmap, float width, float height) {
+    public CommonContext createCommonDeviceContext(Bitmap bitmap, float width, float height) {
         Assert.NOT_IMPLEMENTED();
         return null;
     }

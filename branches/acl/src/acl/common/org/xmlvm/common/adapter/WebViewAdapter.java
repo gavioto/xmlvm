@@ -20,12 +20,12 @@
 
 package org.xmlvm.common.adapter;
 
-import org.xmlvm.common.objects.CommonDeviceView;
+import org.xmlvm.common.objects.CommonView;
 
 /**
  *
  */
-public interface WebViewAdapter extends CommonDeviceView {
+public interface WebViewAdapter extends CommonView {
 
     void loadUrl(String url);
 

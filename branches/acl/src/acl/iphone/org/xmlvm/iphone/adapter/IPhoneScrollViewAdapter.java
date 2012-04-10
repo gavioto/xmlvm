@@ -23,13 +23,11 @@ package org.xmlvm.iphone.adapter;
 import java.util.Set;
 
 import org.xmlvm.common.adapter.ScrollViewAdapter;
-import org.xmlvm.common.objects.CommonDeviceView;
+import org.xmlvm.common.objects.CommonView;
 import org.xmlvm.iphone.UIScrollView;
 import org.xmlvm.iphone.UITouch;
 import org.xmlvm.iphone.UIEvent;
 import org.xmlvm.iphone.objects.IPhoneView;
-
-import com.android.dx.dex.file.UniformItemSection;
 
 import android.graphics.Rect;
 import android.view.MotionEvent;
@@ -74,7 +72,7 @@ public class IPhoneScrollViewAdapter extends IPhoneView implements ScrollViewAda
      * @see org.xmlvm.common.objects.CommonDeviceView#getSuperview()
      */
     @Override
-    public CommonDeviceView getSuperview() {
+    public CommonView getSuperview() {
         // TODO Auto-generated method stub
         return null;
     }

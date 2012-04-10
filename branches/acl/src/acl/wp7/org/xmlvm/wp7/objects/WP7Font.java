@@ -20,13 +20,12 @@
 
 package org.xmlvm.wp7.objects;
 
-import org.xmlvm.common.objects.CommonDeviceFont;
-import org.xmlvm.iphone.UIFont;
+import org.xmlvm.common.objects.CommonFont;
 
 /**
  *
  */
-public class WP7Font implements CommonDeviceFont {
+public class WP7Font implements CommonFont {
 
     private float pointSize;
     private String familyName;
@@ -37,7 +36,7 @@ public class WP7Font implements CommonDeviceFont {
     }
 
     @Override
-    public CommonDeviceFont fontWithSize(float size) {
+    public CommonFont fontWithSize(float size) {
         return new WP7Font(this.familyName, size);
     }
 
@@ -51,11 +50,11 @@ public class WP7Font implements CommonDeviceFont {
         return this.familyName;
     }
     
-    public static CommonDeviceFont systemFontOfSize(float size) {
+    public static CommonFont systemFontOfSize(float size) {
         return new WP7Font("Segoe UI", size);
     }
 
-    public static CommonDeviceFont fontWithNameSize(String name, float pointSize) {
+    public static CommonFont fontWithNameSize(String name, float pointSize) {
         return new WP7Font(name, pointSize);
     }
     

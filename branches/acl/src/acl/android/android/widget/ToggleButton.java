@@ -23,12 +23,10 @@ package android.widget;
 
 import android.content.Context;
 import android.internal.CommonDeviceAPIFinder;
-import android.internal.UIToggleButton;
 import android.util.AttributeSet;
-import android.view.MotionEvent;
-import java.util.Set;
 
-import org.xmlvm.common.objects.CommonDeviceView;
+import org.xmlvm.common.adapter.ToggleButtonAdapter;
+import org.xmlvm.common.objects.CommonView;
 
 public class ToggleButton extends CompoundButton {
 
@@ -60,24 +58,24 @@ public class ToggleButton extends CompoundButton {
     }
 
     @Override
-    protected CommonDeviceView xmlvmNewCommonDeviceView(AttributeSet attrs) {
+    protected CommonView xmlvmNewCommonDeviceView(AttributeSet attrs) {
         return CommonDeviceAPIFinder.instance().getWidgetFactory().createToggleButton(this);
     }
 
     @Override
     public void setText(String text) {
         this.text = text;
-        ((UIToggleButton) xmlvmGetViewHandler().getContentView()).setText(text);
+        ((ToggleButtonAdapter) xmlvmGetViewHandler().getContentView()).setText(text);
         requestLayout();
     }
 
     void setTextOff(String textOff) {
-        ((UIToggleButton) xmlvmGetViewHandler().getContentView()).setTextOff(textOff);
+        ((ToggleButtonAdapter) xmlvmGetViewHandler().getContentView()).setTextOff(textOff);
         requestLayout();
     }
 
     void setTextOn(String textOn) {
-        ((UIToggleButton) xmlvmGetViewHandler().getContentView()).setTextOff(textOn);
+        ((ToggleButtonAdapter) xmlvmGetViewHandler().getContentView()).setTextOff(textOn);
         requestLayout();
     }
 
@@ -92,7 +90,7 @@ public class ToggleButton extends CompoundButton {
 
     @Override
     protected void xmlvmUpdateUIView(boolean checked) {
-        ((UIToggleButton) xmlvmGetViewHandler().getContentView()).setSelected(checked);
+        ((ToggleButtonAdapter) xmlvmGetViewHandler().getContentView()).setSelected(checked);
     }
 
 }

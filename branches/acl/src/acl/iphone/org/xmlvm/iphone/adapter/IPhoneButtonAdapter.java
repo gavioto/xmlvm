@@ -25,7 +25,7 @@ import java.util.Set;
 
 import org.xmlvm.common.adapter.BitmapDrawableAdapter;
 import org.xmlvm.common.adapter.ButtonAdapter;
-import org.xmlvm.common.objects.CommonDeviceFont;
+import org.xmlvm.common.objects.CommonFont;
 import org.xmlvm.iphone.UIButton;
 import org.xmlvm.iphone.UIButtonType;
 import org.xmlvm.iphone.UIControl;
@@ -46,7 +46,7 @@ import android.widget.CompoundButton;
 /**
  *
  */
-public class IPhoneButtonAdapter extends IPhoneView implements ButtonAdapter {
+public class IPhoneButtonAdapter extends IPhoneTextViewAdapter implements ButtonAdapter {
 
     private BitmapDrawableAdapter backgroundImage;
 
@@ -74,12 +74,12 @@ public class IPhoneButtonAdapter extends IPhoneView implements ButtonAdapter {
     }
     
     @Override
-    public CommonDeviceFont getFont() {
+    public CommonFont getFont() {
         return new IPhoneFont(((UIButton)this.getView()).getFont());
     }
 
     @Override
-    public void setFont(CommonDeviceFont font) {
+    public void setFont(CommonFont font) {
         ((UIButton)this.getView()).setFont(((IPhoneFont)font).getFont());
     }
 

@@ -21,7 +21,7 @@
 package android.widget;
 
 import org.xmlvm.common.adapter.CheckBoxAdapter;
-import org.xmlvm.common.objects.CommonDeviceView;
+import org.xmlvm.common.objects.CommonView;
 
 import android.content.Context;
 import android.graphics.Rect;
@@ -74,7 +74,7 @@ public class CheckBox extends CompoundButton {
     }
 
     @Override
-    protected CommonDeviceView xmlvmNewCommonDeviceView(AttributeSet attrs) {
+    protected CommonView xmlvmNewCommonDeviceView(AttributeSet attrs) {
         return CommonDeviceAPIFinder.instance().getWidgetFactory().createCheckBox(this);
     }
 

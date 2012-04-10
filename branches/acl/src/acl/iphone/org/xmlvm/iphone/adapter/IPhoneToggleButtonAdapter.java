@@ -61,4 +61,19 @@ public class IPhoneToggleButtonAdapter extends IPhoneCompoundButtonAdapter imple
         });
     }
 
+    @Override
+    public void setText(String text) {
+        ((UIToggleButton) this.getView()).setText(text);
+    }
+
+    @Override
+    public void setTextOff(String textOff) {
+        ((UIToggleButton) this.getView()).setTextOff(textOff);
+    }
+
+    @Override
+    public void setSelected(boolean checked) {
+        ((UIToggleButton) this.getView()).setSelected(checked);
+    }
+
 }

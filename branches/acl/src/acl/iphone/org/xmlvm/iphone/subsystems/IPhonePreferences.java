@@ -20,13 +20,13 @@
 
 package org.xmlvm.iphone.subsystems;
 
-import org.xmlvm.common.subsystems.CommonDevicePreferences;
+import org.xmlvm.common.subsystems.CommonPreferences;
 import org.xmlvm.iphone.NSUserDefaults;
 
 /**
  *
  */
-public class IPhonePreferences implements CommonDevicePreferences {
+public class IPhonePreferences implements CommonPreferences {
 
     private NSUserDefaults preferences;
     

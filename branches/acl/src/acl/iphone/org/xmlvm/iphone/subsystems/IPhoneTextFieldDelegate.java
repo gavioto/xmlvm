@@ -21,7 +21,7 @@
 package org.xmlvm.iphone.subsystems;
 
 import org.xmlvm.common.adapter.ScrollViewAdapter;
-import org.xmlvm.common.subsystems.CommonDeviceTextFieldDelegate;
+import org.xmlvm.common.subsystems.CommonTextFieldDelegate;
 import org.xmlvm.iphone.CGPoint;
 import org.xmlvm.iphone.CGRect;
 import org.xmlvm.iphone.UIScreen;
@@ -35,7 +35,7 @@ import android.view.Window;
 /**
  *
  */
-public class IPhoneTextFieldDelegate implements CommonDeviceTextFieldDelegate {
+public class IPhoneTextFieldDelegate implements CommonTextFieldDelegate {
 
     private UITextFieldDelegate iTextFieldDelegate;
     

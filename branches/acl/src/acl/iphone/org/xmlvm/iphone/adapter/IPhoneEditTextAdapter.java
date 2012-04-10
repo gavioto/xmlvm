@@ -21,7 +21,7 @@
 package org.xmlvm.iphone.adapter;
 
 import org.xmlvm.common.adapter.EditTextAdapter;
-import org.xmlvm.common.subsystems.CommonDeviceTextFieldDelegate;
+import org.xmlvm.common.subsystems.CommonTextFieldDelegate;
 import org.xmlvm.iphone.UILabel;
 import org.xmlvm.iphone.UITextBorderStyle;
 import org.xmlvm.iphone.UITextField;
@@ -57,7 +57,7 @@ public class IPhoneEditTextAdapter extends IPhoneTextViewAdapter implements Edit
      * @see org.xmlvm.common.adapter.EditTextAdapter#setDelegate(org.xmlvm.common.subsystems.CommonDeviceTextFieldDelegate)
      */
     @Override
-    public void setDelegate(CommonDeviceTextFieldDelegate iTextFieldDelegate) {
+    public void setDelegate(CommonTextFieldDelegate iTextFieldDelegate) {
         ((UITextField)this.getView()).setDelegate(((IPhoneTextFieldDelegate)iTextFieldDelegate).getUITextFieldDelegate());
     }
     

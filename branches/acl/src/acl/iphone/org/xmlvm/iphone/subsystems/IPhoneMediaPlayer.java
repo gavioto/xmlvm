@@ -26,7 +26,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.lang.ref.WeakReference;
 
-import org.xmlvm.common.subsystems.CommonDeviceMediaPlayer;
+import org.xmlvm.common.subsystems.CommonMediaPlayer;
 import org.xmlvm.iphone.AVAudioPlayer;
 import org.xmlvm.iphone.AVAudioPlayerDelegate;
 import org.xmlvm.iphone.NSData;
@@ -40,7 +40,7 @@ import android.media.MediaPlayer;
 /**
  *
  */
-public class IPhoneMediaPlayer implements CommonDeviceMediaPlayer, AVAudioPlayerDelegate {
+public class IPhoneMediaPlayer implements CommonMediaPlayer, AVAudioPlayerDelegate {
     
     private static final int     BUF_SIZE             = 32767;
     private boolean              looping              = false;

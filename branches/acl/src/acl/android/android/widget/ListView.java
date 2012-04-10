@@ -27,7 +27,7 @@ import android.view.View;
 import java.util.HashMap;
 
 import org.xmlvm.common.adapter.ListViewAdapter;
-import org.xmlvm.common.objects.CommonDeviceView;
+import org.xmlvm.common.objects.CommonView;
 
 public class ListView extends AbsListView {
 
@@ -51,7 +51,7 @@ public class ListView extends AbsListView {
     }
 
     @Override
-    protected CommonDeviceView xmlvmNewCommonDeviceView(AttributeSet attrs) {
+    protected CommonView xmlvmNewCommonDeviceView(AttributeSet attrs) {
         return CommonDeviceAPIFinder.instance().getWidgetFactory().createListView(this);
     }
 

@@ -125,7 +125,6 @@ public class AndroidManifest {
         if (filePath == null)
             Log.e("xmlvm", "Unable to locate AndroidManifest.xml file");
         
-        
         SAXParserFactory factory = SAXParserFactory.newInstance();
         factory.setNamespaceAware(true);
         // Parse the input

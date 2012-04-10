@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
-import org.xmlvm.common.subsystems.CommonDeviceLocationManager;
+import org.xmlvm.common.subsystems.CommonLocationManager;
 
 import android.internal.CommonDeviceAPIFinder;
 
@@ -32,7 +32,7 @@ public class LocationManager {
 
     public static final String NETWORK_PROVIDER = "network";
     public static final String GPS_PROVIDER = "gps";
-    private final CommonDeviceLocationManager manager;
+    private final CommonLocationManager manager;
     private final HashSet<LocationListener> fine_listeners;
     private final HashSet<LocationListener> coarse_listeners;
     private Location lastKnownLocation = null;

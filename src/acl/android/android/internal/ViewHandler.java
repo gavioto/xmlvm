@@ -23,6 +23,7 @@ package android.internal;
 import org.xmlvm.common.adapter.BitmapDrawableAdapter;
 import org.xmlvm.common.adapter.ButtonAdapter;
 import org.xmlvm.common.adapter.ImageViewAdapter;
+import org.xmlvm.common.adapter.ToggleButtonAdapter;
 import org.xmlvm.common.objects.CommonView;
 
 import android.app.Application;
@@ -239,11 +240,12 @@ public class ViewHandler {
                                                     // background image, since
                                                     // it is a UIImageView
                 ((ImageViewAdapter) layerBack).setImage(img);
-            } else if (layerBack instanceof ButtonAdapter) { // The back object *is*
-                                                        // able to accomodate
-                                                        // the background image,
-                                                        // since it is a
-                                                        // UIButton
+            } else if (layerBack instanceof ButtonAdapter 
+                        && !(layerBack instanceof ToggleButtonAdapter)) { // The back object *is*
+                                                                          // able to accomodate
+                                                                          // the background image,
+                                                                          // since it is a
+                                                                          // UIButton
                 ((ButtonAdapter) layerBack).setImage(img, CommonView.CONTROL_STATE_NORMAL);
             } else { // The back button is NOT able to accomodate the background
                      // image, needs to be put higher in hierarchy
@@ -297,10 +299,12 @@ public class ViewHandler {
                                                         // deleted from a
                                                         // UIImageView object
                     ((ImageViewAdapter) layerBack).setImage(img);
-                } else if (layerBack instanceof ButtonAdapter) { // The image can be
-                                                            // deleted from a
-                                                            // UIImageView
-                                                            // object
+                } else if (layerBack instanceof ButtonAdapter
+                        && !(layerBack instanceof ToggleButtonAdapter)) { // The image
+                                                                          // can be
+                                                                          // deleted from a
+                                                                          // UIImageView
+                                                                          // object
                     ((ButtonAdapter) layerBack).setImage(img, CommonView.CONTROL_STATE_NORMAL);
                 }
             } else { // A layer "front" is present, so we have to remove the

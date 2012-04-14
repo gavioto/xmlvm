@@ -465,7 +465,7 @@ JAVA_OBJECT org_xmlvm_iphone_NSUserDefaults_objectForKey___java_lang_String(JAVA
         jvalue = __NEW_java_lang_Integer();
         java_lang_Integer___INIT____int(jvalue, [value intValue]);
     }
-    else if ([className isEqualToString:@"NSCFString" || [className isEqualToString:@"__NSCFString"]]) {
+    else if ([className isEqualToString:@"NSCFString"] || [className isEqualToString:@"__NSCFString"]) {
         jvalue = __NEW_java_lang_String();
         java_lang_String___INIT____java_lang_String(jvalue, fromNSString(value));
     }

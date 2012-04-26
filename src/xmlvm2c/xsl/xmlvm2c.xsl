@@ -139,6 +139,8 @@ int main(int argc, char* argv[])
       <xsl:text>&nl;void xmlvm_init_native_</xsl:text>
       <xsl:value-of select="$clname"/>
       <xsl:text>()&nl;{&nl;</xsl:text>
+      <xsl:text>    //XMLVM_BEGIN_NATIVE_IMPLEMENTATION_INIT&nl;</xsl:text>
+      <xsl:text>    //XMLVM_END_NATIVE_IMPLEMENTATION_INIT&nl;</xsl:text>
       <xsl:for-each select="vm:method[@isNative = 'true' and not(@isStatic = 'true') and not(@isPrivate = 'true')]">
         <xsl:variable name="mangledMethodName">
           <xsl:call-template name="emitMethodName">

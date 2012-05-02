@@ -45,15 +45,15 @@ import android.widget.ScrollView;
  * @see http://developer.android.com/reference/android/view/Window.html
  */
 public class Window {
-    public static final int     FEATURE_NO_TITLE = 1;
-    private Activity            activity;
-    private CommonView    iContainerView;
-    private ScrollViewAdapter   iScrollView;
+    public static final int         FEATURE_NO_TITLE = 1;
+    private Activity                activity;
+    private CommonView              iContainerView;
+    private ScrollViewAdapter       iScrollView;
     private CommonTextFieldDelegate iTextFieldDelegate;
-    private FrameLayout         internalView;
-    private DecorView           decorView;
-    private FrameLayout         contentParent;
-    private boolean             floating         = false;
+    private FrameLayout             internalView;
+    private DecorView               decorView;
+    private FrameLayout             contentParent;
+    private boolean                 floating         = false;
 
 
     public Window(Activity parent) {
@@ -84,6 +84,10 @@ public class Window {
         internalView.setBackgroundColor(0x80000000);
         iScrollView.addSubview(internalView.xmlvmGetViewHandler().getMetricsView());
 
+        FrameLayout rootView = new FrameLayout(activity);
+        rootView.setLayoutParams(new FrameLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, Gravity.CENTER));
+        internalView.addView(rootView);
+        
         // Create DecorView used as the window for all content views
         int gravity = ((FrameLayout.LayoutParams) view.getLayoutParams()).gravity;
         decorView = new DecorView(activity);
@@ -92,7 +96,7 @@ public class Window {
                 isFloating() ? LayoutParams.WRAP_CONTENT : LayoutParams.FILL_PARENT,
                 isFloating() ? LayoutParams.WRAP_CONTENT : LayoutParams.FILL_PARENT, gravity);
         decorView.setLayoutParams(lp);
-        internalView.addView(decorView);
+        rootView.addView(decorView);
 
         // Wrap the provided view with a FrameLayout as Android it does. Android
         // uses this to layout the window's decoration. We do it the same way to
@@ -212,11 +216,9 @@ public class Window {
         LayoutParams lp = view.getLayoutParams();
 
         if (lp == null || lp.width == LayoutParams.FILL_PARENT) {
-            widthMeasureSpec = MeasureSpec.makeMeasureSpec((int) rect.width(),
-                    MeasureSpec.EXACTLY);
+            widthMeasureSpec = MeasureSpec.makeMeasureSpec((int) rect.width(), MeasureSpec.EXACTLY);
         } else if (lp.width == LayoutParams.WRAP_CONTENT) {
-            widthMeasureSpec = MeasureSpec.makeMeasureSpec((int) rect.width(),
-                    MeasureSpec.AT_MOST);
+            widthMeasureSpec = MeasureSpec.makeMeasureSpec((int) rect.width(), MeasureSpec.AT_MOST);
         } else {
             widthMeasureSpec = MeasureSpec.makeMeasureSpec(lp.width, MeasureSpec.EXACTLY);
         }
@@ -244,7 +246,7 @@ public class Window {
         }
         return rect;
     }
-    
+
     public ScrollViewAdapter getScrollView() {
         return this.iScrollView;
     }

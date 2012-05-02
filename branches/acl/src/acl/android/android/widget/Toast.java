@@ -20,7 +20,6 @@
 
 package android.widget;
 
-import android.app.Application;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.internal.TopActivity;
@@ -33,29 +32,31 @@ import java.util.LinkedList;
 
 public class Toast {
 
-    public static final int LENGTH_LONG = 1;
-    public static final int LENGTH_SHORT = 0;
-    private int duration;
-    private View view;
-    private RelativeLayout metricsview;
-    private final Context context;
+    public static final int                          LENGTH_LONG  = 1;
+    public static final int                          LENGTH_SHORT = 0;
+    private int                                      duration;
+    private View                                     view;
+    private RelativeLayout                           metricsview;
+    private final Context                            context;
     //
     // Toast display manager lock
-    private static final Toast NO_TOAST;
-    private static Toast lasttoast;
-    private static final LinkedList<Toast> registry;
+    private static final Toast                       NO_TOAST;
+    private static Toast                             lasttoast;
+    private static final LinkedList<Toast>           registry;
     private static final RelativeLayout.LayoutParams layoutParams;
-    
-    private Handler                 handler             = new Handler();
+
+    private Handler                                  handler      = new Handler();
 
     static {
         registry = new LinkedList<Toast>();
-        layoutParams = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+        layoutParams = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT,
+                LayoutParams.WRAP_CONTENT);
         layoutParams.addRule(RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.TRUE);
         layoutParams.addRule(RelativeLayout.CENTER_VERTICAL, RelativeLayout.TRUE);
         NO_TOAST = new Toast(null);
         lasttoast = NO_TOAST;
     }
+
 
     public Toast(Context context) {
         this.context = context;
@@ -103,35 +104,23 @@ public class Toast {
     }
 
     public void show() {
-        handler.post(new Runnable() {
-            
+        TopActivity.get().runOnUiThread(new Runnable() {
+
             @Override
             public void run() {
                 updateVisuals(true);
-                notify();
             }
         });
-        try {
-            handler.wait();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 
     public void cancel() {
-        handler.post(new Runnable() {
-            
+        TopActivity.get().runOnUiThread(new Runnable() {
+
             @Override
             public void run() {
                 updateVisuals(false);
-                notify();
             }
         });
-        try {
-            handler.wait();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 
     private void updateVisuals(boolean setVisible) {
@@ -159,12 +148,12 @@ public class Toast {
 
     private void showToastVisuals() {
         handler.postDelayed(new Runnable() {
-            
+
             @Override
             public void run() {
                 cancel();
             }
-        }, duration == LENGTH_SHORT ? 2000 : 4000);        
+        }, duration == LENGTH_SHORT ? 2000 : 4000);
         lasttoast = this;
         metricsview = new RelativeLayout(context);
         metricsview.addView(view, layoutParams);

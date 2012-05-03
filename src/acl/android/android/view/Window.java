@@ -73,9 +73,11 @@ public class Window {
 
         // Create UIWindow and transparent internal FrameLayout used to layout
         // the content views.
-        iContainerView = CommonDeviceAPIFinder.instance().getWidgetFactory().createView(new View(this.activity));
+        iContainerView = CommonDeviceAPIFinder.instance().getWidgetFactory()
+                .createView(new View(this.activity));
         iContainerView.setBackgroundColor(Color.TRANSPARENT);
-        iScrollView = CommonDeviceAPIFinder.instance().getWidgetFactory().createScrollView(new ScrollView(this.activity));
+        iScrollView = CommonDeviceAPIFinder.instance().getWidgetFactory()
+                .createScrollView(new ScrollView(this.activity));
         iScrollView.setScrollEnabled(false);
         iContainerView.addSubview(iScrollView);
         internalView = new FrameLayout(activity);
@@ -85,9 +87,14 @@ public class Window {
         iScrollView.addSubview(internalView.xmlvmGetViewHandler().getMetricsView());
 
         FrameLayout rootView = new FrameLayout(activity);
-        rootView.setLayoutParams(new FrameLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, Gravity.CENTER));
+        int layoutWidth = view.layoutParams.width == LayoutParams.FILL_PARENT ? LayoutParams.FILL_PARENT
+                : LayoutParams.WRAP_CONTENT;
+        int layoutHeight = view.layoutParams.height == LayoutParams.FILL_PARENT ? LayoutParams.FILL_PARENT
+                : LayoutParams.WRAP_CONTENT;
+        rootView.setLayoutParams(new FrameLayout.LayoutParams(layoutWidth, layoutHeight,
+                Gravity.CENTER));
         internalView.addView(rootView);
-        
+
         // Create DecorView used as the window for all content views
         int gravity = ((FrameLayout.LayoutParams) view.getLayoutParams()).gravity;
         decorView = new DecorView(activity);

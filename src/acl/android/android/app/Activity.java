@@ -163,7 +163,6 @@ public class Activity extends ContextThemeWrapper {
         if (theParent != null) {
             if (TopActivity.get() == null) {
                 TopActivity.set(theParent);
-                theParent.resume();
             }
             theParent.onActivityResult(requestCode, resultCode, resultData);
         }
@@ -208,9 +207,14 @@ public class Activity extends ContextThemeWrapper {
         if (state == STATE_STOPPED) {
             start();
         }
-        window.xmlvmSetHidden(false);
         onResume();
         state = STATE_ACTIVE;
+        window.xmlvmSetHidden(false);
+        
+        Activity parent = getParent();
+        if (parent != null && parent.state != STATE_STOPPED) {
+            parent.stop();
+        }
     }
 
     private void pause() {
@@ -219,6 +223,10 @@ public class Activity extends ContextThemeWrapper {
         }
         onPause();
         state = STATE_PAUSED;
+        Activity parent = getParent();
+        if (parent != null && parent.state != STATE_ACTIVE) {
+            parent.restart(null);
+        }
     }
 
     private void stop() {

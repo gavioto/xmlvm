@@ -50,21 +50,21 @@ import android.view.ViewGroup.LayoutParams;
  */
 public class Activity extends ContextThemeWrapper {
 
-    public static final int         RESULT_CANCELED     = 0;
-    public static final int         RESULT_OK           = -1;
+    public static final int         RESULT_CANCELED       = 0;
+    public static final int         RESULT_OK             = -1;
 
     /*
      * States according to {@link
      * http://developer.motorola.com/docstools/library
      * /Android_Applications_for_Java_ME_Developers/}
      */
-    private static final int        STATE_UNINITIALIZED = 0;
-    private static final int        STATE_ACTIVE        = 1;
-    private static final int        STATE_PAUSED        = 2;
-    private static final int        STATE_STOPPED       = 3;
-    private static final int        STATE_DESTROYED     = 4;
+    private static final int        STATE_UNINITIALIZED   = 0;
+    private static final int        STATE_ACTIVE          = 1;
+    private static final int        STATE_PAUSED          = 2;
+    private static final int        STATE_STOPPED         = 3;
+    private static final int        STATE_DESTROYED       = 4;
 
-    private int                     state               = STATE_UNINITIALIZED;
+    private int                     state                 = STATE_UNINITIALIZED;
     private WeakReference<Activity> parent;
     private Activity                child;
     private Intent                  intent;
@@ -73,9 +73,11 @@ public class Activity extends ContextThemeWrapper {
     private int                     resultCode;
     private Intent                  resultData;
     private Window                  window;
-    private int                     screenOrientation   = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT;
-    private boolean                 finishing           = false;
-    private Handler                 handler             = new Handler();
+    private int                     screenOrientation     = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT;
+    private boolean                 finishing             = false;
+    private boolean                 shouldGoVisible       = true;
+    private boolean                 hasCreatedNewActivity = false;
+    private Handler                 handler               = new Handler();
 
 
     public void xmlvmSetParent(Activity parent) {
@@ -100,13 +102,25 @@ public class Activity extends ContextThemeWrapper {
     }
 
     public void xmlvmCreate(final Bundle savedInstanceState) {
+        Activity parent = getParent();
+        if (parent != null) {
+            parent.hasCreatedNewActivity = true;
+        }
+        if (parent != null && parent.state == STATE_UNINITIALIZED) {
+            // We set a flag in the parent to signal that it is about to
+            // create a child activity. This information is used to prevent
+            // the parent from becoming visible even though it might enter
+            // the visible lifecycle (since it will immediately be covered
+            // again by the new child activity)
+            parent.shouldGoVisible = false;
+        }
         handler.post(new Runnable() {
             public void run() {
                 create(savedInstanceState);
             }
         });
     }
-    
+
     private void create(Object savedInstanceState) {
         Activity prev = TopActivity.get();
         if (prev != null && prev.state == STATE_ACTIVE) {
@@ -131,7 +145,7 @@ public class Activity extends ContextThemeWrapper {
             }
         });
     }
-    
+
     private void destroy(Object unused) {
         if (state == STATE_DESTROYED) {
             return;
@@ -177,11 +191,8 @@ public class Activity extends ContextThemeWrapper {
             }
         });
     }
-    
+
     private void restart(Object unused) {
-        if (state == STATE_ACTIVE) {
-            return;
-        }
         onRestart();
         resume();
     }
@@ -195,7 +206,6 @@ public class Activity extends ContextThemeWrapper {
     }
 
     private void start() {
-        window.xmlvmSetHidden(false);
         onStart();
         state = STATE_PAUSED;
     }
@@ -208,9 +218,12 @@ public class Activity extends ContextThemeWrapper {
             start();
         }
         onResume();
+        if (this.shouldGoVisible) {
+            window.xmlvmSetHidden(false);
+        }
+        this.shouldGoVisible = true;
         state = STATE_ACTIVE;
-        window.xmlvmSetHidden(false);
-        
+
         Activity parent = getParent();
         if (parent != null && parent.state != STATE_STOPPED) {
             parent.stop();
@@ -224,9 +237,13 @@ public class Activity extends ContextThemeWrapper {
         onPause();
         state = STATE_PAUSED;
         Activity parent = getParent();
-        if (parent != null && parent.state != STATE_ACTIVE) {
+        if (parent != null && parent.state != STATE_ACTIVE && !this.hasCreatedNewActivity) {
+            // Only restart the parent if the parent is not active and
+            // this activity has not created another activity (which should
+            // be run first)
             parent.restart(null);
         }
+        this.hasCreatedNewActivity = false;
     }
 
     private void stop() {
@@ -239,7 +256,7 @@ public class Activity extends ContextThemeWrapper {
         // We don't make the window invisible because iOS will capture
         // the current content of the screen for its multitasking
         // menu
-        //window.xmlvmSetHidden(true);
+        // window.xmlvmSetHidden(true);
         onStop();
         state = STATE_STOPPED;
     }
@@ -289,13 +306,19 @@ public class Activity extends ContextThemeWrapper {
 
     public void onBackPressed() {
     }
-    
+
     public void setContentView(View view) {
         window.setContentView(view);
+        if (state == STATE_ACTIVE) {
+            window.xmlvmSetHidden(false);
+        }
     }
 
     public void setContentView(int id) {
         window.setContentView(id);
+        if (state == STATE_ACTIVE) {
+            window.xmlvmSetHidden(false);
+        }
     }
 
     public void addContentView(View view, LayoutParams params) {

@@ -117,7 +117,7 @@ public class Window {
         setEditTextDelegates(view);
         adjustFrameSize();
         Application.getApplication().xmlvmAddActivityView(iContainerView);
-        xmlvmSetHidden(false);
+        xmlvmSetHidden(true);
     }
 
     public void setContentView(int id) {

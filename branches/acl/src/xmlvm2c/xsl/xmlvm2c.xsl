@@ -3208,12 +3208,11 @@ int main(int argc, char* argv[])
   <xsl:value-of select="@vx" />
   <xsl:text>.o = __NEW_</xsl:text>
   <xsl:value-of select="vm:fixname(@value)" />
-  <xsl:text>();
-</xsl:text>
+  <xsl:text>();&nl;</xsl:text>
 </xsl:template>
 
 
-<xsl:template match="dex:iget|dex:iget-wide|dex:iget-boolean|dex:iget-byte|dex:iget-char|dex:iget-short">
+<xsl:template match="dex:iget|dex:iget-wide|dex:iget-boolean|dex:iget-byte|dex:iget-char|dex:iget-short|dex:iget-object">
   <xsl:variable name="m">
     <xsl:call-template name="emitTypedAccess">
       <xsl:with-param name="type" select="@member-type"/>
@@ -3228,32 +3227,11 @@ int main(int argc, char* argv[])
   <xsl:value-of select="vm:fixname(@class-type)"/>
   <xsl:text>.</xsl:text>
   <xsl:value-of select="vm:fixname(@member-name)"/>
-  <xsl:text>_;
-</xsl:text>
+  <xsl:text>_;&nl;</xsl:text>
 </xsl:template>
 
 
-<xsl:template match="dex:iget-object">
-  <xsl:variable name="m">
-    <xsl:call-template name="emitTypedAccess">
-      <xsl:with-param name="type" select="@member-type" />
-    </xsl:call-template>
-  </xsl:variable>
-  <xsl:text>    _r</xsl:text>
-  <xsl:value-of select="@vx" />
-  <xsl:value-of select="$m" />
-  <xsl:text> = </xsl:text>
-  <xsl:value-of select="vm:cast-register(@class-type, @vy)"/>
-  <xsl:text>->fields.</xsl:text>
-  <xsl:value-of select="vm:fixname(@class-type)" />
-  <xsl:text>.</xsl:text>
-  <xsl:value-of select="vm:fixname(@member-name)" />
-  <xsl:text>_;
-</xsl:text>
-</xsl:template>
-
-
-<xsl:template match="dex:iput|dex:iput-wide|dex:iput-boolean|dex:iput-byte|dex:iput-char|dex:iput-short">
+<xsl:template match="dex:iput|dex:iput-wide|dex:iput-boolean|dex:iput-byte|dex:iput-char|dex:iput-short|dex:iput-object">
   <xsl:variable name="m">
     <xsl:call-template name="emitTypedAccess">
       <xsl:with-param name="type" select="@member-type"/>
@@ -3265,12 +3243,10 @@ int main(int argc, char* argv[])
   <xsl:value-of select="vm:fixname(@class-type)"/>
   <xsl:text>.</xsl:text>
   <xsl:value-of select="vm:fixname(@member-name)"/>
-  <xsl:text>_ = </xsl:text>
-  <xsl:text> _r</xsl:text>
+  <xsl:text>_ = _r</xsl:text>
   <xsl:value-of select="@vx"/>
   <xsl:value-of select="$m"/>
-  <xsl:text>;
-</xsl:text>
+  <xsl:text>;&nl;</xsl:text>
 </xsl:template>
 
 
@@ -3280,21 +3256,6 @@ int main(int argc, char* argv[])
   <xsl:text>
   </xsl:text>
 </xsl:template>
-
-
-<xsl:template match="dex:iput-object">
-  <xsl:text>    </xsl:text>
-  <xsl:value-of select="vm:cast-register(@class-type, @vy)"/>
-  <xsl:text>->fields.</xsl:text>
-  <xsl:value-of select="vm:fixname(@class-type)" />
-  <xsl:text>.</xsl:text>
-  <xsl:value-of select="vm:fixname(@member-name)" />
-  <xsl:text>_ = </xsl:text>
-  <xsl:value-of select="vm:cast-register(@member-type, @vx)"/>
-  <xsl:text>;
-</xsl:text>
-</xsl:template>
-
 
 
 <xsl:template match="dex:sget|dex:sget-wide|dex:sget-boolean|dex:sget-char|dex:sget-short|dex:sget-object">
@@ -3307,20 +3268,25 @@ int main(int argc, char* argv[])
   <xsl:value-of select="vm:fixname(@class-type)"/>
   <xsl:text>_GET_</xsl:text>
   <xsl:value-of select="vm:fixname(@member-name)"/>
-  <xsl:text>();
-</xsl:text>
+  <xsl:text>();&nl;</xsl:text>
 </xsl:template>
 
 
 <xsl:template match="dex:sput|dex:sput-wide|dex:sput-boolean|dex:sput-char|dex:sput-short|dex:sput-object">
+  <xsl:variable name="m">
+    <xsl:call-template name="emitTypedAccess">
+      <xsl:with-param name="type" select="@member-type"/>
+    </xsl:call-template>
+  </xsl:variable>
   <xsl:text>    </xsl:text>
   <xsl:value-of select="vm:fixname(@class-type)"/>
   <xsl:text>_PUT_</xsl:text>
   <xsl:value-of select="vm:fixname(@member-name)"/>
   <xsl:text>(</xsl:text>
-  <xsl:value-of select="vm:cast-register(@member-type, @vx)"/>
-  <xsl:text>);
-</xsl:text>
+  <xsl:text> _r</xsl:text>
+  <xsl:value-of select="@vx"/>
+  <xsl:value-of select="$m"/>
+  <xsl:text>);&nl;</xsl:text>
 </xsl:template>
 
 

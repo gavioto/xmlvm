@@ -27,6 +27,13 @@
 #define MACOSX
 #endif
 
+#if defined(__linux__)
+#include <netinet/in.h>
+struct ip_mreq {
+    struct in_addr imr_multiaddr;
+    struct in_addr imr_interface;
+};
+#endif
 
 #include "xmlvm.h"
 #include "hycomp.h"
@@ -35,6 +42,12 @@
 
 
 #define HYERROR_DEFAULT_BUFFER_SIZE 256 /**< default customized error message size if we need to create one */
+
+#if defined(__linux__)
+typedef int64_t I_64;
+typedef uint64_t U_64;
+#define DIR_SEPARATOR '/'
+#endif
 
 
 typedef struct PortlibPTBuffers_struct

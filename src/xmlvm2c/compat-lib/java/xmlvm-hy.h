@@ -27,14 +27,6 @@
 #define MACOSX
 #endif
 
-#if defined(__linux__)
-#include <netinet/in.h>
-struct ip_mreq {
-    struct in_addr imr_multiaddr;
-    struct in_addr imr_interface;
-};
-#endif
-
 #include "xmlvm.h"
 #include "hycomp.h"
 #include "hysock.h"

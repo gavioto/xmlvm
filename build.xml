@@ -21,6 +21,10 @@
 
 <project name="xmlvm" default="jar" basedir=".">
 
+	<presetdef name="javac">
+	  <javac includeantruntime="false" />
+	</presetdef>
+	
 	<target name="demos" depends="demos-iphone,demos-android" />
 
 	<target name="init">

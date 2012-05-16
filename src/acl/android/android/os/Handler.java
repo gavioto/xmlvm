@@ -26,8 +26,8 @@ import android.internal.Assert;
 import android.internal.CommonDeviceAPIFinder;
 
 public class Handler {
-    Runnable toRun = null;
-    CommonDispatcher timer = null;
+    private Runnable toRun = null;
+    private CommonDispatcher timer = null;
 
     public Handler() {
     }
@@ -50,6 +50,7 @@ public class Handler {
     public void removeCallbacks(Runnable runnable) {
         if (runnable == toRun) {
             timer.invalidate();
+            toRun = null;
         }
     }
 

@@ -40,6 +40,7 @@ public class IPhoneImageViewAdapter extends IPhoneView implements ImageViewAdapt
 
     private BitmapDrawableAdapter drawable;
 
+
     public IPhoneImageViewAdapter(ImageView imageView) {
         super(imageView);
         this.setView(new UIImageView() {
@@ -65,28 +66,36 @@ public class IPhoneImageViewAdapter extends IPhoneView implements ImageViewAdapt
             }
         });
     }
-    
+
     @Override
     public void setImage(BitmapDrawableAdapter drawable) {
         this.drawable = drawable;
-        ((UIImageView) this.getView()).setImage(((IPhoneBitmapDrawableAdapter)drawable).getImage());
+        if (drawable != null) {
+            ((UIImageView) this.getView()).setImage(((IPhoneBitmapDrawableAdapter) drawable)
+                    .getImage());
+        }
+        else {
+            ((UIImageView) this.getView()).setImage(null);
+        }
     }
 
     @Override
     public BitmapDrawableAdapter getImage() {
-        if(drawable==null && ((UIImageView) this.getView()).getImage()!=null) {
+        if (drawable == null && ((UIImageView) this.getView()).getImage() != null) {
             throw new RuntimeException("Image not set in native adapter");
         } else {
             return drawable;
         }
     }
-    
+
     public boolean xmlvmTouchesEvent(int action, Set<UITouch> touches, UIEvent event) {
-        if(this.getAndroidView() instanceof ImageButton) {
+        if (this.getAndroidView() instanceof ImageButton) {
             if (action == MotionEvent.ACTION_DOWN) {
-                ((ImageButton)this.getAndroidView()).xmlvmSetDrawableState(((ImageButton)this.getAndroidView()).PRESSED_STATE_SET);
+                ((ImageButton) this.getAndroidView()).xmlvmSetDrawableState(((ImageButton) this
+                        .getAndroidView()).PRESSED_STATE_SET);
             } else if (action == MotionEvent.ACTION_UP) {
-                ((ImageButton)this.getAndroidView()).xmlvmSetDrawableState(((ImageButton)this.getAndroidView()).EMPTY_STATE_SET);
+                ((ImageButton) this.getAndroidView()).xmlvmSetDrawableState(((ImageButton) this
+                        .getAndroidView()).EMPTY_STATE_SET);
             }
         }
 

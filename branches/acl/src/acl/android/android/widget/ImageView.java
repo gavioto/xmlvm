@@ -43,9 +43,9 @@ import org.xmlvm.common.adapter.ImageViewAdapter;
 import org.xmlvm.common.objects.CommonView;
 
 public class ImageView extends View {
-    
+
     private static Map<String, ScaleType> scaleTypes = new HashMap<String, ImageView.ScaleType>();
-    
+
     static {
         scaleTypes.put("matrix", ScaleType.MATRIX);
         scaleTypes.put("fitXY", ScaleType.FIT_XY);
@@ -56,6 +56,7 @@ public class ImageView extends View {
         scaleTypes.put("centerCrop", ScaleType.CENTER_CROP);
         scaleTypes.put("centerInside", ScaleType.CENTER_INSIDE);
     }
+
 
     /**
      * Options for scaling the bounds of an image to the bounds of this view.
@@ -121,7 +122,9 @@ public class ImageView extends View {
 
     }
 
+
     protected Drawable drawable;
+
 
     public ImageView(Context c) {
         super(c);
@@ -158,6 +161,8 @@ public class ImageView extends View {
                     .setImage(((BitmapDrawable) drawable).xmlvmGetImage());
         } else if (drawable instanceof StateListDrawable) {
             refreshImageStateDrawable();
+        } else if (drawable == null) {
+            ((ImageViewAdapter) xmlvmGetViewHandler().getContentView()).setImage(null);
         } else {
             Assert.NOT_IMPLEMENTED();
         }
@@ -167,15 +172,17 @@ public class ImageView extends View {
 
     @Override
     protected boolean setFrame(int left, int top, int right, int bottom) {
-        return super.setFrame(left + paddingLeft, top + paddingTop, right - paddingRight, bottom - paddingBottom);
+        return super.setFrame(left + paddingLeft, top + paddingTop, right - paddingRight, bottom
+                - paddingBottom);
     }
-    
+
     @Override
     public void setLayoutParams(ViewGroup.LayoutParams l) {
         layoutParams = l;
         int width = l.width;
         int height = l.height;
-        BitmapDrawableAdapter img = ((ImageViewAdapter) xmlvmGetViewHandler().getContentView()).getImage();
+        BitmapDrawableAdapter img = ((ImageViewAdapter) xmlvmGetViewHandler().getContentView())
+                .getImage();
 
         if (width == LayoutParams.WRAP_CONTENT) {
             width = img != null ? (int) img.getWidth() : 0;
@@ -187,7 +194,7 @@ public class ImageView extends View {
         int x = l instanceof AbsoluteLayout.LayoutParams ? ((AbsoluteLayout.LayoutParams) l).x : 0;
         int y = l instanceof AbsoluteLayout.LayoutParams ? ((AbsoluteLayout.LayoutParams) l).y : 0;
 
-        xmlvmGetViewHandler().getMetricsView().setFrame(new Rect(x, y, x+width, y+height));
+        xmlvmGetViewHandler().getMetricsView().setFrame(new Rect(x, y, x + width, y + height));
     }
 
     public void setScaleType(ScaleType type) {
@@ -281,7 +288,8 @@ public class ImageView extends View {
             d.selectDrawable(i);
             Drawable currentStateDrawable = d.getStateDrawable(i);
             BitmapDrawableAdapter newImg = ((BitmapDrawable) currentStateDrawable).xmlvmGetImage();
-            BitmapDrawableAdapter currentImg = ((ImageViewAdapter) xmlvmGetViewHandler().getContentView()).getImage();
+            BitmapDrawableAdapter currentImg = ((ImageViewAdapter) xmlvmGetViewHandler()
+                    .getContentView()).getImage();
             if (currentImg != newImg) {
                 boolean relayout = currentImg != null && newImg != null
                         && !currentImg.getSize().equals(newImg.getSize());

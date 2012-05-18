@@ -64,6 +64,7 @@ public class ViewHandler {
      */
     private CommonView layerFront;
 
+
     /**
      * Create a new ViewHandler for a specified UIView
      * 
@@ -235,17 +236,28 @@ public class ViewHandler {
     public void setBackgroundImage(BitmapDrawableAdapter img) {
         // Check if we want to set or remove an image
         if (img != null) { // We want to set an image
-            if (layerBack instanceof ImageViewAdapter) { // The back object *is* able
-                                                    // to accomodate the
-                                                    // background image, since
-                                                    // it is a UIImageView
+            if (layerBack instanceof ImageViewAdapter && layerFront != null) { 
+                // The back object *is* able to accomodate the background image, since
+                // it is a UIImageView. If there is no front object the view is actually
+                // an ImageView. In this case a second UIImageView has to be created in
+                // order to display foreground and background image. Since an image
+                // might contain transparency both foreground and background can be
+                // visible.
+                
                 ((ImageViewAdapter) layerBack).setImage(img);
-            } else if (layerBack instanceof ButtonAdapter 
-                        && !(layerBack instanceof ToggleButtonAdapter)) { // The back object *is*
-                                                                          // able to accomodate
-                                                                          // the background image,
-                                                                          // since it is a
-                                                                          // UIButton
+            } else if (layerBack instanceof ButtonAdapter
+                    && !(layerBack instanceof ToggleButtonAdapter)) { // The
+                                                                      // back
+                                                                      // object
+                                                                      // *is*
+                                                                      // able to
+                                                                      // accomodate
+                                                                      // the
+                                                                      // background
+                                                                      // image,
+                                                                      // since
+                                                                      // it is a
+                                                                      // UIButton
                 ((ButtonAdapter) layerBack).setImage(img, CommonView.CONTROL_STATE_NORMAL);
             } else { // The back button is NOT able to accomodate the background
                      // image, needs to be put higher in hierarchy
@@ -255,10 +267,11 @@ public class ViewHandler {
                 }
                 int zorder = 0; // somewhere to store the Z-order of the widget
                 Rect frame = layerBack.getFrame(); // First remember the
-                                                     // actual location of the
-                                                     // widget
-                CommonView superview = layerBack.getSuperview(); // get the parent
-                                                             // of the widget
+                                                   // actual location of the
+                                                   // widget
+                CommonView superview = layerBack.getSuperview(); // get the
+                                                                 // parent
+                // of the widget
                 if (superview != null)
                     zorder = superview.getSubviews().indexOf(layerBack); // Get
                                                                          // the
@@ -273,12 +286,23 @@ public class ViewHandler {
                 layerBack.removeFromSuperview(); // remove the widget from the
                                                  // parent
                 layerFront = layerBack; // the back layer will be put in front
-                layerBack = CommonDeviceAPIFinder.instance().getWidgetFactory().createImageView(
-                                new ImageView(Application.getApplication())); // create a new UIImageView which
-                                                                              // will be the container of the
-                                                                              // old widget
-                ((ImageViewAdapter) layerBack).setImage(img); // set the image of
-                                                         // uiimageview
+                layerBack = CommonDeviceAPIFinder.instance().getWidgetFactory()
+                        .createImageView(new ImageView(Application.getApplication())); // create
+                                                                                       // a
+                                                                                       // new
+                                                                                       // UIImageView
+                                                                                       // which
+                                                                                       // will
+                                                                                       // be
+                                                                                       // the
+                                                                                       // container
+                                                                                       // of
+                                                                                       // the
+                                                                                       // old
+                                                                                       // widget
+                ((ImageViewAdapter) layerBack).setImage(img); // set the image
+                                                              // of
+                // uiimageview
                 layerBack.setUserInteractionEnabled(layerFront.isUserInteractionEnabled()); // Synchronize
                                                                                             // user
                                                                                             // interaction
@@ -296,13 +320,17 @@ public class ViewHandler {
             if (layerFront == null) { // No layer front is present; no need to
                                       // remove anything
                 if (layerBack instanceof ImageViewAdapter) { // The image can be
-                                                        // deleted from a
-                                                        // UIImageView object
+                    // deleted from a
+                    // UIImageView object
                     ((ImageViewAdapter) layerBack).setImage(img);
                 } else if (layerBack instanceof ButtonAdapter
-                        && !(layerBack instanceof ToggleButtonAdapter)) { // The image
-                                                                          // can be
-                                                                          // deleted from a
+                        && !(layerBack instanceof ToggleButtonAdapter)) { // The
+                                                                          // image
+                                                                          // can
+                                                                          // be
+                                                                          // deleted
+                                                                          // from
+                                                                          // a
                                                                           // UIImageView
                                                                           // object
                     ((ButtonAdapter) layerBack).setImage(img, CommonView.CONTROL_STATE_NORMAL);
@@ -311,9 +339,9 @@ public class ViewHandler {
                      // UIImageView (the current layer back)
                 int zorder = 0; // somewhere to store the Z-order of the widget
                 Rect frame = layerBack.getFrame(); // Get the location of the
-                                                     // widget
+                                                   // widget
                 CommonView parent = layerBack.getSuperview(); // get the parent
-                                                          // UIView
+                // UIView
                 if (parent != null)
                     zorder = parent.getSubviews().indexOf(layerBack); // Get the
                                                                       // Z-order
@@ -347,6 +375,7 @@ public class ViewHandler {
     public BitmapDrawableAdapter getBackgroundImage() {
         if (layerBack instanceof ButtonAdapter)
             return ((ButtonAdapter) layerBack).getCurrentBackgroundImage();
-        return (layerBack instanceof ImageViewAdapter) ? ((ImageViewAdapter) layerBack).getImage() : null;
+        return (layerBack instanceof ImageViewAdapter) ? ((ImageViewAdapter) layerBack).getImage()
+                : null;
     }
 }

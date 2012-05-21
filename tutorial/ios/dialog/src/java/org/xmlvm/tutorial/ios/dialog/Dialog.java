@@ -20,26 +20,21 @@
 
 package org.xmlvm.tutorial.ios.dialog;
 
-import org.xmlvm.iphone.CGRect;
-import org.xmlvm.iphone.UIApplication;
-import org.xmlvm.iphone.UIApplicationDelegate;
-import org.xmlvm.iphone.UIButton;
-import org.xmlvm.iphone.UIButtonType;
-import org.xmlvm.iphone.UIColor;
-import org.xmlvm.iphone.UIControl;
-import org.xmlvm.iphone.UIControlDelegate;
-import org.xmlvm.iphone.UIControlEvent;
-import org.xmlvm.iphone.UIControlState;
-import org.xmlvm.iphone.UILabel;
-import org.xmlvm.iphone.UIModalTransitionStyle;
-import org.xmlvm.iphone.UIReturnKeyType;
-import org.xmlvm.iphone.UIScreen;
-import org.xmlvm.iphone.UITextBorderStyle;
-import org.xmlvm.iphone.UITextField;
-import org.xmlvm.iphone.UIView;
-import org.xmlvm.iphone.UIViewAutoresizing;
-import org.xmlvm.iphone.UIViewController;
-import org.xmlvm.iphone.UIWindow;
+import java.util.Map;
+
+import org.xmlvm.ios.CGRect;
+import org.xmlvm.ios.UIApplication;
+import org.xmlvm.ios.adapter.UIApplicationDelegate;
+import org.xmlvm.ios.UIColor;
+import org.xmlvm.ios.UILabel;
+import org.xmlvm.ios.UIScreen;
+import org.xmlvm.ios.UIWindow;
+import org.xmlvm.ios.UIButton;
+import org.xmlvm.ios.UIControl;
+import org.xmlvm.ios.UITextField;
+import org.xmlvm.ios.UIView;
+import org.xmlvm.ios.UIViewController;
+import org.xmlvm.ios.UIControlDelegate;
 
 /**
  * This application demonstrates the use of modal dialogs. A modal dialog is
@@ -59,10 +54,10 @@ public class Dialog extends UIApplicationDelegate {
 
 
     @Override
-    public void applicationDidFinishLaunching(UIApplication app) {
+    public boolean didFinishLaunchingWithOptions(UIApplication app, Map<String,Object> launchOptions) {
         CGRect rect = UIScreen.mainScreen().getBounds();
         UIWindow window = new UIWindow(rect);
-        window.setBackgroundColor(UIColor.whiteColor);
+        window.setBackgroundColor(UIColor.whiteColor());
 
         /*
          * Variable 'name' represents the model of the application. Its value
@@ -93,17 +88,17 @@ public class Dialog extends UIApplicationDelegate {
                  * name, and the button.
                  */
                 UIView root = new UIView(UIScreen.mainScreen().getApplicationFrame());
-                root.setBackgroundColor(UIColor.whiteColor);
+                root.setBackgroundColor(UIColor.whiteColor());
                 UILabel label = new UILabel(new CGRect(10, 40, 100, 20));
                 label.setText("Name:");
                 root.addSubview(label);
                 nameLabel = new UILabel(new CGRect(70, 40, 230, 20));
-                nameLabel.setAutoresizingMask(UIViewAutoresizing.FlexibleWidth);
+                nameLabel.setAutoresizingMask(1<<1); //UIViewAutoresizing.FlexibleWidth
                 root.addSubview(nameLabel);
-                UIButton button = UIButton.buttonWithType(UIButtonType.RoundedRect);
+                UIButton button = UIButton.buttonWithType(1); //UIButtonType.RoundedRect
                 button.setFrame(new CGRect(90, 100, 140, 30));
-                button.setAutoresizingMask(UIViewAutoresizing.FlexibleWidth);
-                button.setTitle("Edit", UIControlState.Normal);
+                button.setAutoresizingMask(1<<1); //UIViewAutoresizing.FlexibleWidth
+                button.setTitle("Edit", 0); //UIControlState.Normal
                 button.addTarget(new UIControlDelegate() {
 
                     @Override
@@ -117,7 +112,7 @@ public class Dialog extends UIApplicationDelegate {
                         mainViewController.presentModalViewController(editViewController, true);
                     }
 
-                }, UIControlEvent.TouchUpInside);
+                }, 1<<6); //UIControlEvent.TouchUpInside
                 root.addSubview(button);
                 setView(root);
             }
@@ -152,18 +147,18 @@ public class Dialog extends UIApplicationDelegate {
                  * dismiss the dialog.
                  */
                 UIView root = new UIView(UIScreen.mainScreen().getApplicationFrame());
-                root.setBackgroundColor(UIColor.whiteColor);
+                root.setBackgroundColor(UIColor.whiteColor());
                 final UITextField editName = new UITextField(new CGRect(10, 40, 300, 30));
-                editName.setAutoresizingMask(UIViewAutoresizing.FlexibleWidth);
-                editName.setBorderStyle(UITextBorderStyle.Bezel);
+                editName.setAutoresizingMask(1<<1); //UIViewAutoresizing.FlexibleWidth
+                editName.setBorderStyle(2); //UITextBorderStyle.Bezel
                 editName.setPlaceholder("Name");
                 editName.setText(name);
-                editName.setReturnKeyType(UIReturnKeyType.Done);
+                editName.setReturnKeyType(9); //UIReturnKeyType.Done
                 root.addSubview(editName);
-                UIButton button = UIButton.buttonWithType(UIButtonType.RoundedRect);
+                UIButton button = UIButton.buttonWithType(1); //UIButtonType.RoundedRect
                 button.setFrame(new CGRect(90, 100, 140, 30));
-                button.setAutoresizingMask(UIViewAutoresizing.FlexibleWidth);
-                button.setTitle("Done", UIControlState.Normal);
+                button.setAutoresizingMask(1<<1); //UIViewAutoresizing.FlexibleWidth
+                button.setTitle("Done", 0); //UIControlState.Normal
                 button.addTarget(new UIControlDelegate() {
 
                     @Override
@@ -180,7 +175,7 @@ public class Dialog extends UIApplicationDelegate {
                         editViewController.dismissModalViewControllerAnimated(true);
                     }
 
-                }, UIControlEvent.TouchUpInside);
+                }, 1<<6); //UIControlEvent.TouchUpInside
                 root.addSubview(button);
                 setView(root);
             }
@@ -191,10 +186,11 @@ public class Dialog extends UIApplicationDelegate {
          * during the transition to and from the modal dialog. Try different
          * values of UIModalTransitionStyle to observe the different animations.
          */
-        editViewController.setModalTransitionStyle(UIModalTransitionStyle.FlipHorizontal);
+        editViewController.setModalTransitionStyle(1); //UIModalTransitionStyle.FlipHorizontal
 
         window.setRootViewController(mainViewController);
         window.makeKeyAndVisible();
+        return true;
     }
 
     public static void main(String[] args) {

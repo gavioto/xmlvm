@@ -20,21 +20,20 @@
 
 package org.xmlvm.tutorial.ios.navigation.stack;
 
-import org.xmlvm.iphone.CGRect;
-import org.xmlvm.iphone.UIApplication;
-import org.xmlvm.iphone.UIApplicationDelegate;
-import org.xmlvm.iphone.UIButton;
-import org.xmlvm.iphone.UIButtonType;
-import org.xmlvm.iphone.UIColor;
-import org.xmlvm.iphone.UIControl;
-import org.xmlvm.iphone.UIControlDelegate;
-import org.xmlvm.iphone.UIControlEvent;
-import org.xmlvm.iphone.UIControlState;
-import org.xmlvm.iphone.UINavigationController;
-import org.xmlvm.iphone.UIScreen;
-import org.xmlvm.iphone.UIView;
-import org.xmlvm.iphone.UIViewController;
-import org.xmlvm.iphone.UIWindow;
+import java.util.Map;
+
+import org.xmlvm.ios.CGRect;
+import org.xmlvm.ios.UIApplication;
+import org.xmlvm.ios.adapter.UIApplicationDelegate;
+import org.xmlvm.ios.UIButton;
+import org.xmlvm.ios.UIColor;
+import org.xmlvm.ios.UIControl;
+import org.xmlvm.ios.UINavigationController;
+import org.xmlvm.ios.UIScreen;
+import org.xmlvm.ios.UIView;
+import org.xmlvm.ios.UIViewController;
+import org.xmlvm.ios.UIWindow;
+import org.xmlvm.ios.UIControlDelegate;
 
 /**
  * This application demonstrates the use of <code>UINavigationController</code>
@@ -67,15 +66,15 @@ public class Stack extends UIApplicationDelegate {
         public void loadView() {
             super.loadView();
             UIView root = getView();
-            root.setBackgroundColor(UIColor.whiteColor);
+            root.setBackgroundColor(UIColor.whiteColor());
 
             /*
              * Create a button that will trigger the pushing of the first
              * ChildView onto the view stack.
              */
-            UIButton button = UIButton.buttonWithType(UIButtonType.RoundedRect);
+            UIButton button = UIButton.buttonWithType(1); //UIButtonType.RoundedRect
             button.setFrame(new CGRect(40, 40, 240, 30));
-            button.setTitle("Start diving...", UIControlState.Normal);
+            button.setTitle("Start diving...", 0); //UIControlState.Normal
             button.addTarget(new UIControlDelegate() {
 
                 @Override
@@ -86,7 +85,7 @@ public class Stack extends UIApplicationDelegate {
                      */
                     getNavigationController().pushViewController(new ChildPage(1), true);
                 }
-            }, UIControlEvent.TouchUpInside);
+            }, 1<<6); //TouchUpInside
 
             root.addSubview(button);
         }
@@ -123,15 +122,15 @@ public class Stack extends UIApplicationDelegate {
         public void loadView() {
             super.loadView();
             UIView root = getView();
-            root.setBackgroundColor(UIColor.whiteColor);
+            root.setBackgroundColor(UIColor.whiteColor());
 
             /*
              * Create a button that will trigger the pushing of another
              * ChildView onto the view stack.
              */
-            UIButton button = UIButton.buttonWithType(UIButtonType.RoundedRect);
+            UIButton button = UIButton.buttonWithType(1); //UIButtonType.RoundedRect
             button.setFrame(new CGRect(40, 40, 240, 30));
-            button.setTitle("Go even deeper", UIControlState.Normal);
+            button.setTitle("Go even deeper", 0); // UIControlState.Normal
             button.addTarget(new UIControlDelegate() {
 
                 @Override
@@ -143,7 +142,7 @@ public class Stack extends UIApplicationDelegate {
                      */
                     getNavigationController().pushViewController(new ChildPage(level + 1), true);
                 }
-            }, UIControlEvent.TouchUpInside);
+            }, 1<<6); //TouchUpInside
 
             root.addSubview(button);
         }
@@ -151,7 +150,7 @@ public class Stack extends UIApplicationDelegate {
 
 
     @Override
-    public void applicationDidFinishLaunching(UIApplication app) {
+    public boolean didFinishLaunchingWithOptions(UIApplication app, Map<String, Object> launchOptions) {
         UIWindow window = new UIWindow(UIScreen.mainScreen().getBounds());
 
         /*
@@ -163,6 +162,7 @@ public class Stack extends UIApplicationDelegate {
 
         window.setRootViewController(navigationController);
         window.makeKeyAndVisible();
+        return true;
     }
 
     public static void main(String[] args) {

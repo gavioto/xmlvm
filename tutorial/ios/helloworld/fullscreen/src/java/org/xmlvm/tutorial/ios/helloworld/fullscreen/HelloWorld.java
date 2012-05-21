@@ -20,14 +20,15 @@
 
 package org.xmlvm.tutorial.ios.helloworld.fullscreen;
 
-import org.xmlvm.iphone.CGRect;
-import org.xmlvm.iphone.UIApplication;
-import org.xmlvm.iphone.UIApplicationDelegate;
-import org.xmlvm.iphone.UIColor;
-import org.xmlvm.iphone.UILabel;
-import org.xmlvm.iphone.UIScreen;
-import org.xmlvm.iphone.UITextAlignment;
-import org.xmlvm.iphone.UIWindow;
+import java.util.Map;
+
+import org.xmlvm.ios.CGRect;
+import org.xmlvm.ios.UIApplication;
+import org.xmlvm.ios.adapter.UIApplicationDelegate;
+import org.xmlvm.ios.UIColor;
+import org.xmlvm.ios.UILabel;
+import org.xmlvm.ios.UIScreen;
+import org.xmlvm.ios.UIWindow;
 
 /**
  * This variation of the "Hello World" application will run in fullscreen mode
@@ -36,8 +37,7 @@ import org.xmlvm.iphone.UIWindow;
  */
 public class HelloWorld extends UIApplicationDelegate {
 
-    @Override
-    public void applicationDidFinishLaunching(UIApplication app) {
+    public boolean didFinishLaunchingWithOptions(UIApplication app, Map<String,Object> launchOptions) {
         /*
          * The application first hides the status bar. As a consequence, the
          * bounding box of the application frame will cover the complete screen
@@ -46,13 +46,14 @@ public class HelloWorld extends UIApplicationDelegate {
         app.setStatusBarHidden(true);
         CGRect rect = UIScreen.mainScreen().getApplicationFrame();
         UIWindow window = new UIWindow(rect);
-        window.setBackgroundColor(UIColor.whiteColor);
+        window.setBackgroundColor(UIColor.whiteColor());
         rect.origin.x = rect.origin.y = 0;
         UILabel label = new UILabel(rect);
         label.setText("Hello World");
-        label.setTextAlignment(UITextAlignment.Center);
+        label.setTextAlignment(1);
         window.addSubview(label);
         window.makeKeyAndVisible();
+        return true;
     }
 
     public static void main(String[] args) {

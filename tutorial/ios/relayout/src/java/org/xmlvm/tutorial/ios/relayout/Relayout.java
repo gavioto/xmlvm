@@ -20,17 +20,16 @@
 
 package org.xmlvm.tutorial.ios.relayout;
 
-import org.xmlvm.iphone.CGRect;
-import org.xmlvm.iphone.UIApplication;
-import org.xmlvm.iphone.UIApplicationDelegate;
-import org.xmlvm.iphone.UIButton;
-import org.xmlvm.iphone.UIButtonType;
-import org.xmlvm.iphone.UIControlState;
-import org.xmlvm.iphone.UIInterfaceOrientation;
-import org.xmlvm.iphone.UIScreen;
-import org.xmlvm.iphone.UIView;
-import org.xmlvm.iphone.UIViewController;
-import org.xmlvm.iphone.UIWindow;
+import java.util.Map;
+
+import org.xmlvm.ios.CGRect;
+import org.xmlvm.ios.UIApplication;
+import org.xmlvm.ios.adapter.UIApplicationDelegate;
+import org.xmlvm.ios.UIScreen;
+import org.xmlvm.ios.UIWindow;
+import org.xmlvm.ios.UIView;
+import org.xmlvm.ios.UIViewController;
+import org.xmlvm.ios.UIButton;
 
 /**
  * In some cases it is not possible to auto-resize widgets in response to a
@@ -77,21 +76,21 @@ public class Relayout extends UIApplicationDelegate {
     }
 
     @Override
-    public void applicationDidFinishLaunching(UIApplication app) {
+    public boolean didFinishLaunchingWithOptions(UIApplication app, Map<String, Object> launchOptions) {
         UIWindow window = new UIWindow(UIScreen.mainScreen().getBounds());
-        button1 = UIButton.buttonWithType(UIButtonType.RoundedRect);
-        button2 = UIButton.buttonWithType(UIButtonType.RoundedRect);
-        button3 = UIButton.buttonWithType(UIButtonType.RoundedRect);
-        button4 = UIButton.buttonWithType(UIButtonType.RoundedRect);
-        button5 = UIButton.buttonWithType(UIButtonType.RoundedRect);
-        button6 = UIButton.buttonWithType(UIButtonType.RoundedRect);
+        button1 = UIButton.buttonWithType(1); // UIButtonType.RoundedRect
+        button2 = UIButton.buttonWithType(1);
+        button3 = UIButton.buttonWithType(1);
+        button4 = UIButton.buttonWithType(1);
+        button5 = UIButton.buttonWithType(1);
+        button6 = UIButton.buttonWithType(1);
 
-        button1.setTitle("1", UIControlState.Normal);
-        button2.setTitle("2", UIControlState.Normal);
-        button3.setTitle("3", UIControlState.Normal);
-        button4.setTitle("4", UIControlState.Normal);
-        button5.setTitle("5", UIControlState.Normal);
-        button6.setTitle("6", UIControlState.Normal);
+        button1.setTitle("1", 0); //UIControlState.Normal
+        button2.setTitle("2", 0);
+        button3.setTitle("3", 0);
+        button4.setTitle("4", 0);
+        button5.setTitle("5", 0);
+        button6.setTitle("6", 0);
 
         setFramesForPortrait();
 
@@ -126,8 +125,8 @@ public class Relayout extends UIApplicationDelegate {
                  * code below to observe the change in behavior of the
                  * application.
                  */
-                if (interfaceOrientation == UIInterfaceOrientation.Portrait
-                        || interfaceOrientation == UIInterfaceOrientation.PortraitUpsideDown) {
+                if (interfaceOrientation == 1 //UIInterfaceOrientation.Portrait
+                        || interfaceOrientation == 2 ){ //UIInterfaceOrientation.PortraitUpsideDown
                     setFramesForPortrait();
                 } else {
                     setFramesForLandscape();
@@ -137,6 +136,7 @@ public class Relayout extends UIApplicationDelegate {
         window.setRootViewController(vc);
         window.addSubview(vc.getView());
         window.makeKeyAndVisible();
+        return true;
     }
 
     public static void main(String[] args) {

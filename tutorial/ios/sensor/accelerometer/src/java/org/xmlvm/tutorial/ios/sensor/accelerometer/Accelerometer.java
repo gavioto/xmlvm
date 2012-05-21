@@ -20,16 +20,18 @@
 
 package org.xmlvm.tutorial.ios.sensor.accelerometer;
 
-import org.xmlvm.iphone.CGRect;
-import org.xmlvm.iphone.UIAcceleration;
-import org.xmlvm.iphone.UIAccelerometer;
-import org.xmlvm.iphone.UIAccelerometerDelegate;
-import org.xmlvm.iphone.UIApplication;
-import org.xmlvm.iphone.UIApplicationDelegate;
-import org.xmlvm.iphone.UIColor;
-import org.xmlvm.iphone.UILabel;
-import org.xmlvm.iphone.UIScreen;
-import org.xmlvm.iphone.UIWindow;
+import java.util.Map;
+
+import org.xmlvm.ios.CGRect;
+import org.xmlvm.ios.UIAcceleration;
+import org.xmlvm.ios.UIAccelerometer;
+import org.xmlvm.ios.adapter.UIAccelerometerDelegate;
+import org.xmlvm.ios.UIApplication;
+import org.xmlvm.ios.adapter.UIApplicationDelegate;
+import org.xmlvm.ios.UIColor;
+import org.xmlvm.ios.UILabel;
+import org.xmlvm.ios.UIScreen;
+import org.xmlvm.ios.UIWindow;
 
 /**
  * This application demonstrates the reading of raw accelerometer values. The
@@ -46,10 +48,10 @@ public class Accelerometer extends UIApplicationDelegate {
 
 
     @Override
-    public void applicationDidFinishLaunching(UIApplication app) {
+    public boolean didFinishLaunchingWithOptions(UIApplication app, Map<String, Object> launchOptions) {
         CGRect rect = UIScreen.mainScreen().getApplicationFrame();
         UIWindow window = new UIWindow(rect);
-        window.setBackgroundColor(UIColor.whiteColor);
+        window.setBackgroundColor(UIColor.whiteColor());
         UILabel label = new UILabel(new CGRect(20, 20, 30, 30));
         label.setText("x:");
         window.addSubview(label);
@@ -100,19 +102,20 @@ public class Accelerometer extends UIApplicationDelegate {
              * encapsulates the current (x, y, z) value.
              */
             @Override
-            public void accelerometerDidAccelerate(UIAccelerometer accelerometer,
+            public void accelerometer(UIAccelerometer accelerometer,
                     UIAcceleration acceleration) {
                 /*
                  * Retrieve the current accelerometer value, convert the double
                  * to a string and set the respective UILabel.
                  */
-                labelX.setText("" + acceleration.x());
-                labelY.setText("" + acceleration.y());
-                labelZ.setText("" + acceleration.z());
+                labelX.setText("" + acceleration.getX());
+                labelY.setText("" + acceleration.getY());
+                labelZ.setText("" + acceleration.getZ());
             }
 
         });
         window.makeKeyAndVisible();
+        return true;
     }
 
     public static void main(String[] args) {

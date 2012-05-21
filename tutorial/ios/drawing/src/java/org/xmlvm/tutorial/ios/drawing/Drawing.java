@@ -20,17 +20,19 @@
 
 package org.xmlvm.tutorial.ios.drawing;
 
-import org.xmlvm.iphone.CGContext;
-import org.xmlvm.iphone.CGRect;
-import org.xmlvm.iphone.UIApplication;
-import org.xmlvm.iphone.UIApplicationDelegate;
-import org.xmlvm.iphone.UIColor;
-import org.xmlvm.iphone.UIGraphics;
-import org.xmlvm.iphone.UIImage;
-import org.xmlvm.iphone.UIScreen;
-import org.xmlvm.iphone.UIView;
-import org.xmlvm.iphone.UIViewController;
-import org.xmlvm.iphone.UIWindow;
+import java.util.Map;
+
+import org.xmlvm.ios.CGRect;
+import org.xmlvm.ios.UIApplication;
+import org.xmlvm.ios.adapter.UIApplicationDelegate;
+import org.xmlvm.ios.UIScreen;
+import org.xmlvm.ios.UIWindow;
+import org.xmlvm.ios.UIView;
+import org.xmlvm.ios.UIViewController;
+import org.xmlvm.ios.CGContext;
+import org.xmlvm.ios.UIColor;
+import org.xmlvm.ios.UIImage;
+import org.xmlvm.ios.UIKit;
 
 /**
  * This application demonstrates some custom drawing. It subsclasses
@@ -43,7 +45,7 @@ public class Drawing extends UIApplicationDelegate {
 
 
     @Override
-    public void applicationDidFinishLaunching(UIApplication app) {
+    public boolean didFinishLaunchingWithOptions(UIApplication app, Map<String,Object> launchOptions) {
         UIWindow window = new UIWindow(UIScreen.mainScreen().getBounds());
         logo = UIImage.imageNamed("logo.png");
         UIViewController vc = new UIViewController() {
@@ -70,7 +72,7 @@ public class Drawing extends UIApplicationDelegate {
                          * current CGContext that can be used to draw directly
                          * to the UIView's view.
                          */
-                        CGContext ctx = UIGraphics.getCurrentContext();
+                        CGContext ctx = UIKit.UIGraphicsGetCurrentContext();
                         /*
                          * The color is defined as an array of float values in
                          * the interval 0-1 representing an RGBA (Red, Green,
@@ -95,13 +97,14 @@ public class Drawing extends UIApplicationDelegate {
                         logo.drawInRect(new CGRect(150, 50, 100, 79));
                     }
                 };
-                root.setBackgroundColor(UIColor.whiteColor);
+                root.setBackgroundColor(UIColor.whiteColor());
                 setView(root);
             }
         };
         window.setRootViewController(vc);
         window.addSubview(vc.getView());
         window.makeKeyAndVisible();
+        return true;
     }
 
     public static void main(String[] args) {

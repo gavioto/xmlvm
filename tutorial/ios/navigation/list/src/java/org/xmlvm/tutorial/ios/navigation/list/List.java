@@ -20,20 +20,21 @@
 
 package org.xmlvm.tutorial.ios.navigation.list;
 
-import org.xmlvm.iphone.NSIndexPath;
-import org.xmlvm.iphone.UIAlertView;
-import org.xmlvm.iphone.UIApplication;
-import org.xmlvm.iphone.UIApplicationDelegate;
-import org.xmlvm.iphone.UIColor;
-import org.xmlvm.iphone.UILabel;
-import org.xmlvm.iphone.UIScreen;
-import org.xmlvm.iphone.UITableView;
-import org.xmlvm.iphone.UITableViewCell;
-import org.xmlvm.iphone.UITableViewController;
-import org.xmlvm.iphone.UITableViewDataSource;
-import org.xmlvm.iphone.UITableViewDelegate;
-import org.xmlvm.iphone.UITableViewStyle;
-import org.xmlvm.iphone.UIWindow;
+import java.util.Map;
+
+import org.xmlvm.ios.NSIndexPath;
+import org.xmlvm.ios.UIAlertView;
+import org.xmlvm.ios.UIApplication;
+import org.xmlvm.ios.adapter.UIApplicationDelegate;
+import org.xmlvm.ios.UIColor;
+import org.xmlvm.ios.UILabel;
+import org.xmlvm.ios.UIScreen;
+import org.xmlvm.ios.UITableView;
+import org.xmlvm.ios.UITableViewCell;
+import org.xmlvm.ios.UITableViewController;
+import org.xmlvm.ios.adapter.UITableViewDataSource;
+import org.xmlvm.ios.adapter.UITableViewDelegate;
+import org.xmlvm.ios.UIWindow;
 
 /**
  * This application shows the use of a <code>UITableViewController</code> that
@@ -78,7 +79,7 @@ public class List extends UIApplicationDelegate {
         }
 
         @Override
-        public String titleForHeaderInSection(UITableView table, int section) {
+        public String tableViewTitleForHeaderInSection(UITableView table, int section) {
             /*
              * Section 0 has the heading "Colors" and section 1 has the heading
              * "Fruits".
@@ -87,7 +88,7 @@ public class List extends UIApplicationDelegate {
         }
 
         @Override
-        public int numberOfRowsInSection(UITableView table, int section) {
+        public int tableViewNumberOfRowsInSection(UITableView table, int section) {
             /*
              * Section 0 has three items (colors.length) while section 1 has
              * five items (fruits.length).
@@ -96,7 +97,7 @@ public class List extends UIApplicationDelegate {
         }
 
         @Override
-        public UITableViewCell cellForRowAtIndexPath(UITableView table, NSIndexPath idx) {
+        public UITableViewCell tableViewCellForRowAtIndexPath(UITableView table, NSIndexPath idx) {
             /*
              * This method will be invoked whenever the UITableView requests
              * data for a particular cell. The cell is specified via (section,
@@ -138,23 +139,26 @@ public class List extends UIApplicationDelegate {
              * Show an UIAlertView that displays the fruit/color that the user
              * selected.
              */
-            UIAlertView alert = new UIAlertView("Selection", item, null, "OK");
+            UIAlertView alert = new UIAlertView();
+            alert.setTitle("Selection");
+            alert.setMessage(item);
+            alert.setCancelButtonIndex(alert.addButtonWithTitle("OK"));
             alert.show();
         }
     }
 
 
     @Override
-    public void applicationDidFinishLaunching(UIApplication app) {
+    public boolean didFinishLaunchingWithOptions(UIApplication app, Map<String, Object> launchOptions) {
         UIWindow window = new UIWindow(UIScreen.mainScreen().getBounds());
-        window.setBackgroundColor(UIColor.whiteColor);
+        window.setBackgroundColor(UIColor.whiteColor());
         /*
          * Create a UITableViewController that manages the UITableView. It is
          * instructional to change the parameter to the constructor to
          * UITableViewStyle.Plain to observe the different look-and-feel of the
          * UITableView.
          */
-        UITableViewController tc = new UITableViewController(UITableViewStyle.Grouped);
+        UITableViewController tc = new UITableViewController(1); //UITableViewStyle.Grouped
         /*
          * Retrieve the UITableView managed by the UITableViewController.
          */
@@ -166,6 +170,7 @@ public class List extends UIApplicationDelegate {
         table.setDelegate(new Delegate());
         window.setRootViewController(tc);
         window.makeKeyAndVisible();
+        return true;
     }
 
     public static void main(String[] args) {

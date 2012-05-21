@@ -21,18 +21,19 @@
 package org.xmlvm.tutorial.ios.navigation.tabbar;
 
 import java.util.ArrayList;
+import java.util.Map;
 
-import org.xmlvm.iphone.CGRect;
-import org.xmlvm.iphone.UIApplication;
-import org.xmlvm.iphone.UIApplicationDelegate;
-import org.xmlvm.iphone.UIColor;
-import org.xmlvm.iphone.UIImage;
-import org.xmlvm.iphone.UILabel;
-import org.xmlvm.iphone.UIScreen;
-import org.xmlvm.iphone.UITabBarController;
-import org.xmlvm.iphone.UIView;
-import org.xmlvm.iphone.UIViewController;
-import org.xmlvm.iphone.UIWindow;
+import org.xmlvm.ios.CGRect;
+import org.xmlvm.ios.UIApplication;
+import org.xmlvm.ios.adapter.UIApplicationDelegate;
+import org.xmlvm.ios.UIColor;
+import org.xmlvm.ios.UIImage;
+import org.xmlvm.ios.UILabel;
+import org.xmlvm.ios.UIScreen;
+import org.xmlvm.ios.UITabBarController;
+import org.xmlvm.ios.UIView;
+import org.xmlvm.ios.UIViewController;
+import org.xmlvm.ios.UIWindow;
 
 /**
  * This example shows the use of the <code>UITabBarController</code> that
@@ -80,7 +81,7 @@ public class TabBar extends UIApplicationDelegate {
              * The view simply displays a label with the number of this page.
              */
             UIView root = new UIView(UIScreen.mainScreen().getApplicationFrame());
-            root.setBackgroundColor(UIColor.whiteColor);
+            root.setBackgroundColor(UIColor.whiteColor());
             UILabel label = new UILabel(new CGRect(50, 100, 150, 20));
             label.setText("Page: " + pageNumber);
             root.addSubview(label);
@@ -90,7 +91,7 @@ public class TabBar extends UIApplicationDelegate {
 
 
     @Override
-    public void applicationDidFinishLaunching(UIApplication app) {
+    public boolean didFinishLaunchingWithOptions(UIApplication app, Map<String, Object> launchOptions) {
         UIWindow window = new UIWindow(UIScreen.mainScreen().getBounds());
 
         /*
@@ -126,6 +127,7 @@ public class TabBar extends UIApplicationDelegate {
 
         window.setRootViewController(tabController);
         window.makeKeyAndVisible();
+        return true;
     }
 
     public static void main(String[] args) {

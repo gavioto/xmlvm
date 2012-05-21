@@ -10,7 +10,9 @@ public class MKShape extends NSObject {
 	 */
 
 	/** Default constructor */
-	MKShape() {}
+	public MKShape() {
+		super();
+	}
 
 	/*
 	 * Properties

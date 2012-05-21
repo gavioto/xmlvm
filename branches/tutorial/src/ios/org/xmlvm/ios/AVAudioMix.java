@@ -10,7 +10,9 @@ public class AVAudioMix extends NSObject {
 	 */
 
 	/** Default constructor */
-	AVAudioMix() {}
+	public AVAudioMix() {
+		super();
+	}
 
 	/*
 	 * Properties

@@ -10,7 +10,9 @@ public class MPMovieErrorLogEvent extends NSObject {
 	 */
 
 	/** Default constructor */
-	MPMovieErrorLogEvent() {}
+	public MPMovieErrorLogEvent() {
+		super();
+	}
 
 	/*
 	 * Properties

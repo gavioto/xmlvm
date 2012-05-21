@@ -10,7 +10,9 @@ public class UIPrintFormatter extends NSObject {
 	 */
 
 	/** Default constructor */
-	UIPrintFormatter() {}
+	public UIPrintFormatter() {
+		super();
+	}
 
 	/*
 	 * Properties

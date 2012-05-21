@@ -3,6 +3,7 @@ import java.util.*;
 
 import org.xmlvm.XMLVMSkeletonOnly;
 @XMLVMSkeletonOnly
+(references={NSString.class})
 public class NSData extends NSObject {
 
 	/*
@@ -133,7 +134,9 @@ public class NSData extends NSObject {
 	public NSData(NSData data) {}
 
 	/** Default constructor */
-	NSData() {}
+	public NSData() {
+		super();
+	}
 
 	/*
 	 * Instance methods

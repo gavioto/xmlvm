@@ -3,6 +3,7 @@ import java.util.*;
 
 import org.xmlvm.XMLVMSkeletonOnly;
 @XMLVMSkeletonOnly
+(references={NSArray.class})
 public class CALayer extends NSObject {
 
 	/*
@@ -33,7 +34,7 @@ public class CALayer extends NSObject {
 	/**
 	 * + (id<CAAction>)defaultActionForKey:(NSString *)event;
 	 */
-	public static CAAction defaultActionForKey(String event){
+	public static org.xmlvm.ios.CAAction defaultActionForKey(String event){
 		throw new RuntimeException("Stub");
 	}
 
@@ -916,7 +917,7 @@ public class CALayer extends NSObject {
 	/**
 	 * - (id<CAAction>)actionForKey:(NSString *)event;
 	 */
-	public CAAction actionForKey(String event){
+	public org.xmlvm.ios.CAAction actionForKey(String event){
 		throw new RuntimeException("Stub");
 	}
 

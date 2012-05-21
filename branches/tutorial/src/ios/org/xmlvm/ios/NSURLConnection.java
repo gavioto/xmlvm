@@ -45,7 +45,9 @@ public class NSURLConnection extends NSObject {
 	public NSURLConnection(NSURLRequest request, Object delegate, boolean startImmediately) {}
 
 	/** Default constructor */
-	NSURLConnection() {}
+	public NSURLConnection() {
+		super();
+	}
 
 	/*
 	 * Instance methods

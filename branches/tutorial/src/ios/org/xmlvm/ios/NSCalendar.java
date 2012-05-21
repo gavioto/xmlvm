@@ -33,7 +33,9 @@ public class NSCalendar extends NSObject {
 	public NSCalendar(String ident) {}
 
 	/** Default constructor */
-	NSCalendar() {}
+	public NSCalendar() {
+		super();
+	}
 
 	/*
 	 * Instance methods

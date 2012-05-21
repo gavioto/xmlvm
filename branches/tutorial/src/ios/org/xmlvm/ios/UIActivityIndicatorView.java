@@ -8,6 +8,9 @@ public class UIActivityIndicatorView extends UIView {
 	/*
 	 * Constructors
 	 */
+	public UIActivityIndicatorView(CGRect frame) {
+		super(frame);
+	}
 
 	/**
 	 * - (id)initWithActivityIndicatorStyle:(UIActivityIndicatorViewStyle)style;
@@ -15,7 +18,9 @@ public class UIActivityIndicatorView extends UIView {
 	public UIActivityIndicatorView(int style) {}
 
 	/** Default constructor */
-	UIActivityIndicatorView() {}
+	public UIActivityIndicatorView() {
+		super();
+	}
 
 	/*
 	 * Properties

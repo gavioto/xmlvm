@@ -8,6 +8,9 @@ public class UISegmentedControl extends UIControl {
 	/*
 	 * Constructors
 	 */
+	public UISegmentedControl(CGRect frame) {
+		super(frame);
+	}
 
 	/**
 	 * - (id)initWithItems:(NSArray *)items;
@@ -15,7 +18,9 @@ public class UISegmentedControl extends UIControl {
 	public UISegmentedControl(List items) {}
 
 	/** Default constructor */
-	UISegmentedControl() {}
+	public UISegmentedControl() {
+		super();
+	}
 
 	/*
 	 * Properties

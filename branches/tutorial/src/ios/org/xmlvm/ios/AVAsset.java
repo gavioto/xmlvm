@@ -10,7 +10,9 @@ public class AVAsset extends NSObject {
 	 */
 
 	/** Default constructor */
-	AVAsset() {}
+	public AVAsset() {
+		super();
+	}
 
 	/*
 	 * Properties

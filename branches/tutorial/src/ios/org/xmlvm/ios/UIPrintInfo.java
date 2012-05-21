@@ -28,7 +28,9 @@ public class UIPrintInfo extends NSObject {
 	 */
 
 	/** Default constructor */
-	UIPrintInfo() {}
+	public UIPrintInfo() {
+		super();
+	}
 
 	/*
 	 * Properties

@@ -25,7 +25,9 @@ public class NSAttributedString extends NSObject {
 	public NSAttributedString(NSAttributedString attrStr) {}
 
 	/** Default constructor */
-	NSAttributedString() {}
+	public NSAttributedString() {
+		super();
+	}
 
 	/*
 	 * Instance methods

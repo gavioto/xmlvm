@@ -3,7 +3,7 @@ import java.util.*;
 
 import org.xmlvm.XMLVMSkeletonOnly;
 @XMLVMSkeletonOnly
-public class CGDataProvider {
+public class CGDataProvider extends CFType {
 
 	/*
 	 * Static methods
@@ -75,7 +75,7 @@ public class CGDataProvider {
 	public CGDataProvider(byte[] info, Reference<CGDataProviderCallbacks> callbacks) {}
 
 	/** Default constructor */
-	CGDataProvider() {}
+	public CGDataProvider() {}
 
 	/*
 	 * Instance methods

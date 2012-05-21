@@ -45,7 +45,9 @@ public class NSIndexPath extends NSObject {
 	public NSIndexPath(int[] indexes, int length) {}
 
 	/** Default constructor */
-	NSIndexPath() {}
+	public NSIndexPath() {
+		super();
+	}
 
 	/*
 	 * Properties

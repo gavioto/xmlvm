@@ -21,7 +21,9 @@ public class MPMediaEntity extends NSObject {
 	 */
 
 	/** Default constructor */
-	MPMediaEntity() {}
+	public MPMediaEntity() {
+		super();
+	}
 
 	/*
 	 * Instance methods

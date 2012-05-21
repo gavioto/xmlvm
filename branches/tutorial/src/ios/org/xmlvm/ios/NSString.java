@@ -1110,4 +1110,11 @@ public class NSString extends NSObject {
 	public CGSize drawAtPoint(CGPoint point, float width, UIFont font, float minFontSize, float[] actualFontSize, int lineBreakMode, int baselineAdjustment){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Injected methods
+	 */
+	public String toString(){
+		throw new RuntimeException("Stub");
+	}
 }

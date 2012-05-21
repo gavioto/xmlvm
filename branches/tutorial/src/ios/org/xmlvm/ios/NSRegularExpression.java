@@ -40,7 +40,9 @@ public class NSRegularExpression extends NSObject {
 	public NSRegularExpression(String pattern, int options, Reference<NSError> error) {}
 
 	/** Default constructor */
-	NSRegularExpression() {}
+	public NSRegularExpression() {
+		super();
+	}
 
 	/*
 	 * Properties

@@ -8,9 +8,14 @@ public class UIDatePicker extends UIControl {
 	/*
 	 * Constructors
 	 */
+	public UIDatePicker(CGRect frame) {
+		super(frame);
+	}
 
 	/** Default constructor */
-	UIDatePicker() {}
+	public UIDatePicker() {
+		super();
+	}
 
 	/*
 	 * Properties

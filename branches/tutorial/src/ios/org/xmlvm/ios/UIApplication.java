@@ -28,7 +28,9 @@ public class UIApplication extends UIResponder {
 	 */
 
 	/** Default constructor */
-	UIApplication() {}
+	public UIApplication() {
+		super();
+	}
 
 	/*
 	 * Properties
@@ -37,14 +39,14 @@ public class UIApplication extends UIResponder {
 	/**
 	 * @property(nonatomic,assign) id<UIApplicationDelegate> delegate;
 	 */
-	public UIApplicationDelegate getDelegate(){
+	public org.xmlvm.ios.UIApplicationDelegate getDelegate(){
 		throw new RuntimeException("Stub");
 	}
 
 	/**
 	 * @property(nonatomic,assign) id<UIApplicationDelegate> delegate;
 	 */
-	public void setDelegate(UIApplicationDelegate delegate){
+	public void setDelegate(org.xmlvm.ios.UIApplicationDelegate delegate){
 		throw new RuntimeException("Stub");
 	}
 
@@ -392,6 +394,13 @@ public class UIApplication extends UIResponder {
 	 * - (void)setStatusBarHidden:(BOOL)hidden animated:(BOOL)animated ;
 	 */
 	public void setStatusBarHidden(boolean hidden, boolean animated){
+		throw new RuntimeException("Stub");
+	}
+
+	/*
+	 * Injected methods
+	 */
+	public static void main(String[] arg0, Class<? extends UIApplication> arg1, Class<? extends UIApplicationDelegate> arg2){
 		throw new RuntimeException("Stub");
 	}
 }

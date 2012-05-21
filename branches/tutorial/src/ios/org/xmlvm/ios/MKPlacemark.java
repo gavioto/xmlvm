@@ -15,7 +15,9 @@ public class MKPlacemark extends NSObject {
 	public MKPlacemark(CLLocationCoordinate2D coordinate, Map addressDictionary) {}
 
 	/** Default constructor */
-	MKPlacemark() {}
+	public MKPlacemark() {
+		super();
+	}
 
 	/*
 	 * Properties

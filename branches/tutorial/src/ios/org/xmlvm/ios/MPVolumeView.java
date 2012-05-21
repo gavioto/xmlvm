@@ -8,9 +8,14 @@ public class MPVolumeView extends UIView {
 	/*
 	 * Constructors
 	 */
+	public MPVolumeView(CGRect frame) {
+		super(frame);
+	}
 
 	/** Default constructor */
-	MPVolumeView() {}
+	public MPVolumeView() {
+		super();
+	}
 
 	/*
 	 * Properties

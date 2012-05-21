@@ -10,7 +10,9 @@ public class AVAssetTrack extends NSObject {
 	 */
 
 	/** Default constructor */
-	AVAssetTrack() {}
+	public AVAssetTrack() {
+		super();
+	}
 
 	/*
 	 * Properties

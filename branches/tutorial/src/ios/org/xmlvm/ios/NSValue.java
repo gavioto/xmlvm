@@ -117,7 +117,9 @@ public class NSValue extends NSObject {
 	public NSValue(byte[] value, byte[] type) {}
 
 	/** Default constructor */
-	NSValue() {}
+	public NSValue() {
+		super();
+	}
 
 	/*
 	 * Instance methods

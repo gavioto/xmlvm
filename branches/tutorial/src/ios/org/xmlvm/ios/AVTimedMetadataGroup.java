@@ -15,7 +15,9 @@ public class AVTimedMetadataGroup extends NSObject {
 	public AVTimedMetadataGroup(List items, CMTimeRange timeRange) {}
 
 	/** Default constructor */
-	AVTimedMetadataGroup() {}
+	public AVTimedMetadataGroup() {
+		super();
+	}
 
 	/*
 	 * Properties

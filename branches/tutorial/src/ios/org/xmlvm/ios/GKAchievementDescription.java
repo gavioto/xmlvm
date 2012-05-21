@@ -35,7 +35,9 @@ public class GKAchievementDescription extends NSObject {
 	 */
 
 	/** Default constructor */
-	GKAchievementDescription() {}
+	public GKAchievementDescription() {
+		super();
+	}
 
 	/*
 	 * Properties

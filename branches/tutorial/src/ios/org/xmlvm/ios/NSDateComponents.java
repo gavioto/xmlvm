@@ -10,7 +10,9 @@ public class NSDateComponents extends NSObject {
 	 */
 
 	/** Default constructor */
-	NSDateComponents() {}
+	public NSDateComponents() {
+		super();
+	}
 
 	/*
 	 * Instance methods

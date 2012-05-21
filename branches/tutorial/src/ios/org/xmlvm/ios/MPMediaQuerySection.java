@@ -10,7 +10,9 @@ public class MPMediaQuerySection extends NSObject {
 	 */
 
 	/** Default constructor */
-	MPMediaQuerySection() {}
+	public MPMediaQuerySection() {
+		super();
+	}
 
 	/*
 	 * Properties

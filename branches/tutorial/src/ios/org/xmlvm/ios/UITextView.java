@@ -8,9 +8,14 @@ public class UITextView extends UIScrollView {
 	/*
 	 * Constructors
 	 */
+	public UITextView(CGRect frame) {
+		super(frame);
+	}
 
 	/** Default constructor */
-	UITextView() {}
+	public UITextView() {
+		super();
+	}
 
 	/*
 	 * Properties
@@ -19,14 +24,14 @@ public class UITextView extends UIScrollView {
 	/**
 	 * @property(nonatomic,assign) id<UITextViewDelegate> delegate;
 	 */
-	public UITextViewDelegate getTextDelegate(){
+	public org.xmlvm.ios.UITextViewDelegate getTextDelegate(){
 		throw new RuntimeException("Stub");
 	}
 
 	/**
 	 * @property(nonatomic,assign) id<UITextViewDelegate> delegate;
 	 */
-	public void setDelegate(UITextViewDelegate delegate){
+	public void setDelegate(org.xmlvm.ios.UITextViewDelegate delegate){
 		throw new RuntimeException("Stub");
 	}
 

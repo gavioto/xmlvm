@@ -50,7 +50,9 @@ public class NSURLCredential extends NSObject {
 	public NSURLCredential(SecTrust trust) {}
 
 	/** Default constructor */
-	NSURLCredential() {}
+	public NSURLCredential() {
+		super();
+	}
 
 	/*
 	 * Instance methods

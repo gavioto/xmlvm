@@ -115,7 +115,9 @@ public class NSTimeZone extends NSObject {
 	public NSTimeZone(String tzName, NSData aData) {}
 
 	/** Default constructor */
-	NSTimeZone() {}
+	public NSTimeZone() {
+		super();
+	}
 
 	/*
 	 * Instance methods

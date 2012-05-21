@@ -10,7 +10,9 @@ public class NSMutableCharacterSet extends NSCharacterSet {
 	 */
 
 	/** Default constructor */
-	NSMutableCharacterSet() {}
+	public NSMutableCharacterSet() {
+		super();
+	}
 
 	/*
 	 * Instance methods

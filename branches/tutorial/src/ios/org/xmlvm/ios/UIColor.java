@@ -218,7 +218,9 @@ public class UIColor extends NSObject {
 	public UIColor(UIImage image) {}
 
 	/** Default constructor */
-	UIColor() {}
+	public UIColor() {
+		super();
+	}
 
 	/*
 	 * Properties

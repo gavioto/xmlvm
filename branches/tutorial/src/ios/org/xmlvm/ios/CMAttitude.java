@@ -10,7 +10,9 @@ public class CMAttitude extends NSObject {
 	 */
 
 	/** Default constructor */
-	CMAttitude() {}
+	public CMAttitude() {
+		super();
+	}
 
 	/*
 	 * Properties

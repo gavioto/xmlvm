@@ -10,7 +10,9 @@ public class UILocalNotification extends NSObject {
 	 */
 
 	/** Default constructor */
-	UILocalNotification() {}
+	public UILocalNotification() {
+		super();
+	}
 
 	/*
 	 * Properties

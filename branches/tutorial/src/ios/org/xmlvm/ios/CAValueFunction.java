@@ -21,7 +21,9 @@ public class CAValueFunction extends NSObject {
 	 */
 
 	/** Default constructor */
-	CAValueFunction() {}
+	public CAValueFunction() {
+		super();
+	}
 
 	/*
 	 * Properties

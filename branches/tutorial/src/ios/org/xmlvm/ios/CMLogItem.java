@@ -10,7 +10,9 @@ public class CMLogItem extends NSObject {
 	 */
 
 	/** Default constructor */
-	CMLogItem() {}
+	public CMLogItem() {
+		super();
+	}
 
 	/*
 	 * Properties

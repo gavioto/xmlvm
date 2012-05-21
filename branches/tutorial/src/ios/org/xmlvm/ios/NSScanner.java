@@ -33,7 +33,9 @@ public class NSScanner extends NSObject {
 	public NSScanner(String string) {}
 
 	/** Default constructor */
-	NSScanner() {}
+	public NSScanner() {
+		super();
+	}
 
 	/*
 	 * Instance methods

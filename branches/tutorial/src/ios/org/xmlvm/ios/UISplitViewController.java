@@ -8,9 +8,14 @@ public class UISplitViewController extends UIViewController {
 	/*
 	 * Constructors
 	 */
+	public UISplitViewController(String nibNameOrNil, NSBundle nibBundleOrNil) {
+		super(nibNameOrNil, nibBundleOrNil);
+	}
 
 	/** Default constructor */
-	UISplitViewController() {}
+	public UISplitViewController() {
+		super();
+	}
 
 	/*
 	 * Properties
@@ -33,14 +38,14 @@ public class UISplitViewController extends UIViewController {
 	/**
 	 * @property(nonatomic, assign) id <UISplitViewControllerDelegate> delegate;
 	 */
-	public UISplitViewControllerDelegate getDelegate(){
+	public org.xmlvm.ios.UISplitViewControllerDelegate getDelegate(){
 		throw new RuntimeException("Stub");
 	}
 
 	/**
 	 * @property(nonatomic, assign) id <UISplitViewControllerDelegate> delegate;
 	 */
-	public void setDelegate(UISplitViewControllerDelegate delegate){
+	public void setDelegate(org.xmlvm.ios.UISplitViewControllerDelegate delegate){
 		throw new RuntimeException("Stub");
 	}
 }

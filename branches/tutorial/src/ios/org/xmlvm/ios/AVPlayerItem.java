@@ -38,7 +38,9 @@ public class AVPlayerItem extends NSObject {
 	public AVPlayerItem(AVAsset asset) {}
 
 	/** Default constructor */
-	AVPlayerItem() {}
+	public AVPlayerItem() {
+		super();
+	}
 
 	/*
 	 * Properties

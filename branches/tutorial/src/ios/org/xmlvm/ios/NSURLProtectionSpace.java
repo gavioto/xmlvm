@@ -24,7 +24,9 @@ public class NSURLProtectionSpace extends NSObject {
 	public NSURLProtectionSpace(String host, int port, String protocol, String realm, String authenticationMethod, NSURLProtectionSpace.ServerType servertype) {}
 
 	/** Default constructor */
-	NSURLProtectionSpace() {}
+	public NSURLProtectionSpace() {
+		super();
+	}
 
 	/*
 	 * Instance methods

@@ -147,7 +147,9 @@ public class NSCharacterSet extends NSObject {
 	 */
 
 	/** Default constructor */
-	NSCharacterSet() {}
+	public NSCharacterSet() {
+		super();
+	}
 
 	/*
 	 * Instance methods

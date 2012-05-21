@@ -28,7 +28,9 @@ public class EKAlarm extends NSObject {
 	 */
 
 	/** Default constructor */
-	EKAlarm() {}
+	public EKAlarm() {
+		super();
+	}
 
 	/*
 	 * Properties

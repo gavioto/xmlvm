@@ -28,7 +28,9 @@ public class AVMetadataItem extends NSObject {
 	 */
 
 	/** Default constructor */
-	AVMetadataItem() {}
+	public AVMetadataItem() {
+		super();
+	}
 
 	/*
 	 * Properties

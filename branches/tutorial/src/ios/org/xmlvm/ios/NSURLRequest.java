@@ -38,7 +38,9 @@ public class NSURLRequest extends NSObject {
 	public NSURLRequest(NSURL URL, int cachePolicy, double timeoutInterval) {}
 
 	/** Default constructor */
-	NSURLRequest() {}
+	public NSURLRequest() {
+		super();
+	}
 
 	/*
 	 * Instance methods

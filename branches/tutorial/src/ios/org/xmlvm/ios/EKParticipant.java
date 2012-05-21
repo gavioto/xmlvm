@@ -10,7 +10,9 @@ public class EKParticipant extends NSObject {
 	 */
 
 	/** Default constructor */
-	EKParticipant() {}
+	public EKParticipant() {
+		super();
+	}
 
 	/*
 	 * Properties

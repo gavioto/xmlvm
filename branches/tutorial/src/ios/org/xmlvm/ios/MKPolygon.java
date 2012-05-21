@@ -42,7 +42,9 @@ public class MKPolygon extends MKMultiPoint {
 	 */
 
 	/** Default constructor */
-	MKPolygon() {}
+	public MKPolygon() {
+		super();
+	}
 
 	/*
 	 * Properties

@@ -10,5 +10,7 @@ public class MPMediaPredicate extends NSObject {
 	 */
 
 	/** Default constructor */
-	MPMediaPredicate() {}
+	public MPMediaPredicate() {
+		super();
+	}
 }

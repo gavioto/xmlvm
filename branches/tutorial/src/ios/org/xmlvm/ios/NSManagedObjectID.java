@@ -10,7 +10,9 @@ public class NSManagedObjectID extends NSObject {
 	 */
 
 	/** Default constructor */
-	NSManagedObjectID() {}
+	public NSManagedObjectID() {
+		super();
+	}
 
 	/*
 	 * Instance methods

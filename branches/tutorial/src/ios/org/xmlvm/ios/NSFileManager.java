@@ -21,7 +21,9 @@ public class NSFileManager extends NSObject {
 	 */
 
 	/** Default constructor */
-	NSFileManager() {}
+	public NSFileManager() {
+		super();
+	}
 
 	/*
 	 * Instance methods

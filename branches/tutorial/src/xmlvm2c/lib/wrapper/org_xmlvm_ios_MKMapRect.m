@@ -1,44 +1,200 @@
 
 //XMLVM_BEGIN_IMPLEMENTATION
-#include "xmlvm-ios.h"
-
 MKMapRect toMKMapRect(void *obj)
 {
-	org_xmlvm_ios_MKMapRect* cObj = obj;
-	MKMapRect toRet;
-	org_xmlvm_ios_MKMapPoint* obj0 = cObj->fields.org_xmlvm_ios_MKMapRect.origin_;
-	toRet.origin.x = obj0->fields.org_xmlvm_ios_MKMapPoint.x_;
-	toRet.origin.y = obj0->fields.org_xmlvm_ios_MKMapPoint.y_;
-	org_xmlvm_ios_MKMapSize* obj1 = cObj->fields.org_xmlvm_ios_MKMapRect.size_;
-	toRet.size.width = obj1->fields.org_xmlvm_ios_MKMapSize.width_;
-	toRet.size.height = obj1->fields.org_xmlvm_ios_MKMapSize.height_;
-	return toRet;
+    org_xmlvm_ios_MKMapRect* objCObj = obj;
+    MKMapRect toRet;
+    toRet.origin = toMKMapPoint(objCObj->fields.org_xmlvm_ios_MKMapRect.origin_);
+    toRet.size = toMKMapSize(objCObj->fields.org_xmlvm_ios_MKMapRect.size_);
+    return toRet;
 }
 JAVA_OBJECT fromMKMapRect(MKMapRect obj)
 {
-	org_xmlvm_ios_MKMapRect* jObj = __NEW_org_xmlvm_ios_MKMapRect();
-	org_xmlvm_ios_MKMapRect___INIT___(jObj);
-	org_xmlvm_ios_MKMapPoint* obj0 = jObj->fields.org_xmlvm_ios_MKMapRect.origin_;
-	obj0->fields.org_xmlvm_ios_MKMapPoint.x_ = obj.origin.x;
-	obj0->fields.org_xmlvm_ios_MKMapPoint.y_ = obj.origin.y;
-	org_xmlvm_ios_MKMapSize* obj1 = jObj->fields.org_xmlvm_ios_MKMapRect.size_;
-	obj1->fields.org_xmlvm_ios_MKMapSize.width_ = obj.size.width;
-	obj1->fields.org_xmlvm_ios_MKMapSize.height_ = obj.size.height;
-	return jObj;
+    org_xmlvm_ios_MKMapRect* jObj = __NEW_org_xmlvm_ios_MKMapRect();
+    org_xmlvm_ios_MKMapRect___INIT___(jObj);
+    jObj->fields.org_xmlvm_ios_MKMapRect.origin_ = fromMKMapPoint(obj.origin);
+    jObj->fields.org_xmlvm_ios_MKMapRect.size_ = fromMKMapSize(obj.size);
+    return jObj;
 }
 //XMLVM_END_IMPLEMENTATION
 
 //XMLVM_BEGIN_WRAPPER[__NEW_org_xmlvm_ios_MKMapRect]
-	me->fields.org_xmlvm_ios_MKMapRect.origin_ = __NEW_org_xmlvm_ios_MKMapPoint();
-	me->fields.org_xmlvm_ios_MKMapRect.size_ = __NEW_org_xmlvm_ios_MKMapSize();
+    me->fields.org_xmlvm_ios_MKMapRect.origin_ = __NEW_org_xmlvm_ios_MKMapPoint();
+    me->fields.org_xmlvm_ios_MKMapRect.size_ = __NEW_org_xmlvm_ios_MKMapSize();
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MKMapRect___INIT____double_double_double_double]
-	org_xmlvm_ios_MKMapRect* thiz = me;
-	org_xmlvm_ios_MKMapPoint* obj0 = thiz->fields.org_xmlvm_ios_MKMapRect.origin_;
-	obj0->fields.org_xmlvm_ios_MKMapPoint.x_ = n1;
-	obj0->fields.org_xmlvm_ios_MKMapPoint.y_ = n2;
-	org_xmlvm_ios_MKMapSize* obj1 = thiz->fields.org_xmlvm_ios_MKMapRect.size_;
-	obj1->fields.org_xmlvm_ios_MKMapSize.width_ = n3;
-	obj1->fields.org_xmlvm_ios_MKMapSize.height_ = n4;
+
+    MKMapRect objCObj = MKMapRectMake(n1,n2,n3,n4);
+    org_xmlvm_ios_MKMapRect* jObj = me;
+    jObj->fields.org_xmlvm_ios_MKMapRect.origin_ = fromMKMapPoint(objCObj.origin);
+    jObj->fields.org_xmlvm_ios_MKMapRect.size_ = fromMKMapSize(objCObj.size);
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MKMapRect___INIT___]
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MKMapRect_getMinX__]
+
+    
+    double objCObj = MKMapRectGetMinX(toMKMapRect(me));
+    
+    return objCObj;
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MKMapRect_getMinY__]
+
+    
+    double objCObj = MKMapRectGetMinY(toMKMapRect(me));
+    
+    return objCObj;
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MKMapRect_getMidX__]
+
+    
+    double objCObj = MKMapRectGetMidX(toMKMapRect(me));
+    
+    return objCObj;
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MKMapRect_getMidY__]
+
+    
+    double objCObj = MKMapRectGetMidY(toMKMapRect(me));
+    
+    return objCObj;
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MKMapRect_getMaxX__]
+
+    
+    double objCObj = MKMapRectGetMaxX(toMKMapRect(me));
+    
+    return objCObj;
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MKMapRect_getMaxY__]
+
+    
+    double objCObj = MKMapRectGetMaxY(toMKMapRect(me));
+    
+    return objCObj;
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MKMapRect_getWidth__]
+
+    
+    double objCObj = MKMapRectGetWidth(toMKMapRect(me));
+    
+    return objCObj;
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MKMapRect_getHeight__]
+
+    
+    double objCObj = MKMapRectGetHeight(toMKMapRect(me));
+    
+    return objCObj;
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MKMapRect_equalToRect___org_xmlvm_ios_MKMapRect]
+
+    
+    BOOL objCObj = MKMapRectEqualToRect(toMKMapRect(me),toMKMapRect(n1));
+    
+    return objCObj;
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MKMapRect_isNull__]
+
+    
+    BOOL objCObj = MKMapRectIsNull(toMKMapRect(me));
+    
+    return objCObj;
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MKMapRect_isEmpty__]
+
+    
+    BOOL objCObj = MKMapRectIsEmpty(toMKMapRect(me));
+    
+    return objCObj;
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MKMapRect_union___org_xmlvm_ios_MKMapRect]
+
+    
+    MKMapRect objCObj = MKMapRectUnion(toMKMapRect(me),toMKMapRect(n1));
+    
+    return fromMKMapRect(objCObj);
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MKMapRect_intersection___org_xmlvm_ios_MKMapRect]
+
+    
+    MKMapRect objCObj = MKMapRectIntersection(toMKMapRect(me),toMKMapRect(n1));
+    
+    return fromMKMapRect(objCObj);
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MKMapRect_inset___double_double]
+
+    
+    MKMapRect objCObj = MKMapRectInset(toMKMapRect(me),n1,n2);
+    
+    return fromMKMapRect(objCObj);
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MKMapRect_offset___double_double]
+
+    
+    MKMapRect objCObj = MKMapRectOffset(toMKMapRect(me),n1,n2);
+    
+    return fromMKMapRect(objCObj);
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MKMapRect_divide___org_xmlvm_ios_Reference<MKMapRect>_org_xmlvm_ios_Reference<MKMapRect>_double_int]
+
+XMLVM_NOT_IMPLEMENTED();
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MKMapRect_containsPoint___org_xmlvm_ios_MKMapPoint]
+
+    
+    BOOL objCObj = MKMapRectContainsPoint(toMKMapRect(me),toMKMapPoint(n1));
+    
+    return objCObj;
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MKMapRect_containsRect___org_xmlvm_ios_MKMapRect]
+
+    
+    BOOL objCObj = MKMapRectContainsRect(toMKMapRect(me),toMKMapRect(n1));
+    
+    return objCObj;
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MKMapRect_intersectsRect___org_xmlvm_ios_MKMapRect]
+
+    
+    BOOL objCObj = MKMapRectIntersectsRect(toMKMapRect(me),toMKMapRect(n1));
+    
+    return objCObj;
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MKMapRect_spans180thMeridian__]
+
+    
+    BOOL objCObj = MKMapRectSpans180thMeridian(toMKMapRect(me));
+    
+    return objCObj;
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MKMapRect_remainder__]
+
+    
+    MKMapRect objCObj = MKMapRectRemainder(toMKMapRect(me));
+    
+    return fromMKMapRect(objCObj);
 //XMLVM_END_WRAPPER

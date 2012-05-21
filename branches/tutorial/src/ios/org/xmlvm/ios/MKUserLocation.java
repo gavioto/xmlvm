@@ -10,7 +10,9 @@ public class MKUserLocation extends NSObject {
 	 */
 
 	/** Default constructor */
-	MKUserLocation() {}
+	public MKUserLocation() {
+		super();
+	}
 
 	/*
 	 * Properties

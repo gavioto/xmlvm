@@ -138,7 +138,9 @@ public class NSLocale extends NSObject {
 	public NSLocale(String string) {}
 
 	/** Default constructor */
-	NSLocale() {}
+	public NSLocale() {
+		super();
+	}
 
 	/*
 	 * Instance methods

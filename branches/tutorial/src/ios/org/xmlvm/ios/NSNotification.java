@@ -28,7 +28,9 @@ public class NSNotification extends NSObject {
 	 */
 
 	/** Default constructor */
-	NSNotification() {}
+	public NSNotification() {
+		super();
+	}
 
 	/*
 	 * Instance methods

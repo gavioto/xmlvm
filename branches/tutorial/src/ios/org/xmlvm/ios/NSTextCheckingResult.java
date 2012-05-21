@@ -112,7 +112,9 @@ public class NSTextCheckingResult extends NSObject {
 	 */
 
 	/** Default constructor */
-	NSTextCheckingResult() {}
+	public NSTextCheckingResult() {
+		super();
+	}
 
 	/*
 	 * Properties

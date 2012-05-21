@@ -115,7 +115,9 @@ public class NSBundle extends NSObject {
 	public NSBundle(NSURL url) {}
 
 	/** Default constructor */
-	NSBundle() {}
+	public NSBundle() {
+		super();
+	}
 
 	/*
 	 * Instance methods

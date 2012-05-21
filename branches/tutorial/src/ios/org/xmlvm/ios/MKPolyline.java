@@ -28,5 +28,7 @@ public class MKPolyline extends MKMultiPoint {
 	 */
 
 	/** Default constructor */
-	MKPolyline() {}
+	public MKPolyline() {
+		super();
+	}
 }

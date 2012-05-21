@@ -10,7 +10,9 @@ public class MPMovieAccessLog extends NSObject {
 	 */
 
 	/** Default constructor */
-	MPMovieAccessLog() {}
+	public MPMovieAccessLog() {
+		super();
+	}
 
 	/*
 	 * Properties

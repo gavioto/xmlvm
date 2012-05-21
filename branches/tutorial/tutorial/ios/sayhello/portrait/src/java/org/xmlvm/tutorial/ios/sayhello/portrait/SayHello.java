@@ -20,24 +20,20 @@
 
 package org.xmlvm.tutorial.ios.sayhello.portrait;
 
-import org.xmlvm.iphone.CGRect;
-import org.xmlvm.iphone.UIApplication;
-import org.xmlvm.iphone.UIApplicationDelegate;
-import org.xmlvm.iphone.UIButton;
-import org.xmlvm.iphone.UIButtonType;
-import org.xmlvm.iphone.UIColor;
-import org.xmlvm.iphone.UIControl;
-import org.xmlvm.iphone.UIControlDelegate;
-import org.xmlvm.iphone.UIControlEvent;
-import org.xmlvm.iphone.UIControlState;
-import org.xmlvm.iphone.UILabel;
-import org.xmlvm.iphone.UIReturnKeyType;
-import org.xmlvm.iphone.UIScreen;
-import org.xmlvm.iphone.UITextAlignment;
-import org.xmlvm.iphone.UITextBorderStyle;
-import org.xmlvm.iphone.UITextField;
-import org.xmlvm.iphone.UITextFieldDelegate;
-import org.xmlvm.iphone.UIWindow;
+import java.util.Map;
+
+import org.xmlvm.ios.CGRect;
+import org.xmlvm.ios.UIApplication;
+import org.xmlvm.ios.adapter.UIApplicationDelegate;
+import org.xmlvm.ios.UIScreen;
+import org.xmlvm.ios.UIWindow;
+import org.xmlvm.ios.UIButton;
+import org.xmlvm.ios.UIColor;
+import org.xmlvm.ios.UIControl;
+import org.xmlvm.ios.UILabel;
+import org.xmlvm.ios.UITextField;
+import org.xmlvm.ios.adapter.UITextFieldDelegate;
+import org.xmlvm.ios.UIControlDelegate;
 
 /**
  * SayHello is a simple application that prompts the user for a name and repeats
@@ -53,10 +49,10 @@ import org.xmlvm.iphone.UIWindow;
 public class SayHello extends UIApplicationDelegate {
 
     @Override
-    public void applicationDidFinishLaunching(UIApplication app) {
+    public boolean didFinishLaunchingWithOptions(UIApplication app, Map<String, Object> launchOptions) {
         CGRect rect = UIScreen.mainScreen().getApplicationFrame();
         UIWindow window = new UIWindow(rect);
-        window.setBackgroundColor(UIColor.whiteColor);
+        window.setBackgroundColor(UIColor.whiteColor());
         rect.origin.x = rect.origin.y = 20;
         rect.size.width = 280;
         rect.size.height = 30;
@@ -69,7 +65,7 @@ public class SayHello extends UIApplicationDelegate {
          * border style is empty, which would render the UITextField invisible
          * against the white background.
          */
-        editName.setBorderStyle(UITextBorderStyle.Bezel);
+        editName.setBorderStyle(2); //UITextBorderStyle.Bezel
         /*
          * A placeholder is displayed whenever no text is entered into the
          * UITextField. It is displayed slightly graying and is used to give the
@@ -81,7 +77,7 @@ public class SayHello extends UIApplicationDelegate {
          * right corner of the keyboard. Since this does not make sense for
          * SayHello it is changed to a "Done" key.
          */
-        editName.setReturnKeyType(UIReturnKeyType.Done);
+        editName.setReturnKeyType(9); //UIReturnKeyType.Done)
         /*
          * Setting a delegate for a UITextField allows to intercept certain
          * events.
@@ -107,12 +103,12 @@ public class SayHello extends UIApplicationDelegate {
         window.addSubview(editName);
         rect.origin.y += 50;
         final UILabel helloLabel = new UILabel(rect);
-        helloLabel.setTextAlignment(UITextAlignment.Center);
+        helloLabel.setTextAlignment(1); //UITextAlignment.Center)
         window.addSubview(helloLabel);
         rect.origin.y += 50;
-        UIButton button = UIButton.buttonWithType(UIButtonType.RoundedRect);
+        UIButton button = UIButton.buttonWithType(1); //UIButtonType.RoundedRect
         button.setFrame(rect);
-        button.setTitle("Say Hello", UIControlState.Normal);
+        button.setTitle("Say Hello", 0); //UIControlState.Normal
         /*
          * Add a UIControlDelegate to the button. It is possible to register for
          * different events pertaining to the button. The
@@ -141,9 +137,10 @@ public class SayHello extends UIApplicationDelegate {
                 }
             }
 
-        }, UIControlEvent.TouchUpInside);
+        }, 1<<6); //UIControlEvent.TouchUpInside
         window.addSubview(button);
         window.makeKeyAndVisible();
+        return true;
     }
 
     public static void main(String[] args) {

@@ -33,6 +33,9 @@
 #import <QuartzCore/QuartzCore.h>
 #import <AVFoundation/AVFoundation.h>
 #import <MediaPlayer/MediaPlayer.h>
+#import <CoreLocation/CoreLocation.h>
+#import <CoreMotion/CoreMotion.h>
+#import <MapKit/MapKit.h>
 
 #import <objc/runtime.h>
 #include "xmlvm-util.h"
@@ -73,9 +76,16 @@ clazz* var = (arg == JAVA_NULL) ? nil : (clazz*) (j##var->fields.org_xmlvm_ios_N
     XMLVM_CURRENT_PKG_CLASS_NAME* jthiz = me; \
     XMLVM_CURRENT_CLASS_NAME_REF thiz = \
         (XMLVM_CURRENT_CLASS_NAME_REF) (jthiz->fields.org_xmlvm_ios_CFType.wrappedObj);
-        
-#define EVALUATOR(x,y)  x ## y
+
+#define PASTER(x,y) x ## y        
+#define EVALUATOR(x,y)  PASTER(x,y)
 #define XMLVM_CURRENT_CLASS_NAME_REF EVALUATOR(XMLVM_CURRENT_CLASS_NAME,Ref)
+
+#define IOS_VAR_NIL_INITIALIZE(class, var) \
+class* var = nil; 
+
+#define XMLVM_SET_REFERENCE(jObj, var) \
+org_xmlvm_ios_Reference_set___java_lang_Object(jObj, xmlvm_get_associated_c_object(var));
 
 #define XMLVM_VAR_IOS_REF(clazz, var, arg) \
 org_xmlvm_ios_##clazz* j##var = arg; \

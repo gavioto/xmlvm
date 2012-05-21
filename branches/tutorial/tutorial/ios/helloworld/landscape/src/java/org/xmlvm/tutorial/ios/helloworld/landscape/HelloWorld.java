@@ -20,16 +20,17 @@
 
 package org.xmlvm.tutorial.ios.helloworld.landscape;
 
-import org.xmlvm.iphone.CGRect;
-import org.xmlvm.iphone.UIApplication;
-import org.xmlvm.iphone.UIApplicationDelegate;
-import org.xmlvm.iphone.UIColor;
-import org.xmlvm.iphone.UIInterfaceOrientation;
-import org.xmlvm.iphone.UILabel;
-import org.xmlvm.iphone.UIScreen;
-import org.xmlvm.iphone.UIView;
-import org.xmlvm.iphone.UIViewController;
-import org.xmlvm.iphone.UIWindow;
+import java.util.Map;
+
+import org.xmlvm.ios.CGRect;
+import org.xmlvm.ios.UIApplication;
+import org.xmlvm.ios.adapter.UIApplicationDelegate;
+import org.xmlvm.ios.UIColor;
+import org.xmlvm.ios.UILabel;
+import org.xmlvm.ios.UIScreen;
+import org.xmlvm.ios.UIWindow;
+import org.xmlvm.ios.UIView;
+import org.xmlvm.ios.UIViewController;
 
 /**
  * Running an application in landscape mode is a variation of the autorotate
@@ -42,28 +43,30 @@ import org.xmlvm.iphone.UIWindow;
 public class HelloWorld extends UIApplicationDelegate {
 
     @Override
-    public void applicationDidFinishLaunching(UIApplication app) {
-        UIWindow window = new UIWindow(UIScreen.mainScreen().getBounds());
-        UIViewController vc = new UIViewController() {
-            @Override
-            public boolean shouldAutorotateToInterfaceOrientation(int orientation) {
-                return (orientation == UIInterfaceOrientation.LandscapeLeft)
-                        || (orientation == UIInterfaceOrientation.LandscapeRight);
-            }
+    public boolean didFinishLaunchingWithOptions(UIApplication app, Map<String,Object> launchOptions) {
+      UIWindow window = new UIWindow(UIScreen.mainScreen().getBounds());
+      UIViewController vc = new UIViewController() {
+          @Override
+          public boolean shouldAutorotateToInterfaceOrientation(int orientation) {
+              return (orientation == 3)
+                      || (orientation == 4);
+          }
 
-            @Override
-            public void loadView() {
-                UIView root = new UIView(UIScreen.mainScreen().getApplicationFrame());
-                root.setBackgroundColor(UIColor.whiteColor);
-                UILabel label = new UILabel(new CGRect(10, 100, 150, 20));
-                label.setText("Hello World");
-                root.addSubview(label);
-                setView(root);
-            }
-        };
-        window.setRootViewController(vc);
-        window.addSubview(vc.getView());
-        window.makeKeyAndVisible();
+          @Override
+          public void loadView() {
+              UIView root = new UIView(UIScreen.mainScreen().getApplicationFrame());
+              root.setBackgroundColor(UIColor.whiteColor());
+              UILabel label = new UILabel(new CGRect(10, 100, 150, 20));
+              label.setText("Hello World");
+              root.addSubview(label);
+              setView(root);
+          }
+      };
+      window.setRootViewController(vc);
+      window.addSubview(vc.getView());
+      window.makeKeyAndVisible();
+        return true;
+       
     }
 
     public static void main(String[] args) {

@@ -189,8 +189,8 @@ NSArray* toNSArray(JAVA_OBJECT jobj)
     NSMutableArray* ObjCVar = [[NSMutableArray alloc] init];
     int size  = XMLVMUtil_ArrayList_size(jobj);
     for (int i = 0; i < size; i++) {
-        org_xmlvm_ios_NSObject* jobj = XMLVMUtil_ArrayList_get(jobj, i);
-        NSObject* ObjCObj = jobj->fields. org_xmlvm_ios_NSObject.wrappedObj;
+        org_xmlvm_ios_NSObject* obj = XMLVMUtil_ArrayList_get(jobj, i);
+        NSObject* ObjCObj = obj->fields. org_xmlvm_ios_NSObject.wrappedObj;
         [ObjCVar addObject: ObjCObj];
     }
     return ObjCVar;
@@ -216,8 +216,8 @@ NSSet* toNSSet(JAVA_OBJECT jobj)
     NSSet* ObjCVar = [[NSSet alloc] init];
     JAVA_OBJECT iterator = XMLVMUtil_HashSet_iterator(jobj);
     while(XMLVMUtil_Iterator_hasNext(iterator)) {
-        org_xmlvm_ios_NSObject* jObj = XMLVMUtil_Iterator_next(iterator);
-        NSObject* ObjCObj = jObj->fields.org_xmlvm_ios_NSObject.wrappedObj;
+        org_xmlvm_ios_NSObject* obj = XMLVMUtil_Iterator_next(iterator);
+        NSObject* ObjCObj = obj->fields.org_xmlvm_ios_NSObject.wrappedObj;
         [ObjCVar addObject: ObjCObj];
     }
     return ObjCVar;
@@ -229,6 +229,7 @@ JAVA_OBJECT fromNSSet(NSSet* objCObj)
     NSEnumerator* enumerator = [objCObj objectEnumerator];
     id obj = nil;
     while ((obj = [enumerator nextObject]) != nil) {
+		[[obj class] initialize_class];
         JAVA_OBJECT jc = xmlvm_get_associated_c_object((NSObject*)obj);
         if (jc == JAVA_NULL) {
             XMLVM_INTERNAL_ERROR();

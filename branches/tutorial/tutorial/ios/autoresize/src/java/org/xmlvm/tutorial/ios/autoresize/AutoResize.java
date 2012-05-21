@@ -20,17 +20,16 @@
 
 package org.xmlvm.tutorial.ios.autoresize;
 
-import org.xmlvm.iphone.CGRect;
-import org.xmlvm.iphone.UIApplication;
-import org.xmlvm.iphone.UIApplicationDelegate;
-import org.xmlvm.iphone.UIButton;
-import org.xmlvm.iphone.UIButtonType;
-import org.xmlvm.iphone.UIControlState;
-import org.xmlvm.iphone.UIScreen;
-import org.xmlvm.iphone.UIView;
-import org.xmlvm.iphone.UIViewAutoresizing;
-import org.xmlvm.iphone.UIViewController;
-import org.xmlvm.iphone.UIWindow;
+import java.util.Map;
+
+import org.xmlvm.ios.CGRect;
+import org.xmlvm.ios.UIApplication;
+import org.xmlvm.ios.adapter.UIApplicationDelegate;
+import org.xmlvm.ios.UIScreen;
+import org.xmlvm.ios.UIWindow;
+import org.xmlvm.ios.UIView;
+import org.xmlvm.ios.UIViewController;
+import org.xmlvm.ios.UIButton;
 
 /**
  * This application shows how the auto-resizing attribute can be used to adapt a
@@ -50,19 +49,19 @@ public class AutoResize extends UIApplicationDelegate {
 
 
     @Override
-    public void applicationDidFinishLaunching(UIApplication app) {
+    public boolean didFinishLaunchingWithOptions(UIApplication app, Map<String, Object> launchOptions) {
         UIWindow window = new UIWindow(UIScreen.mainScreen().getBounds());
-        button1 = UIButton.buttonWithType(UIButtonType.RoundedRect);
-        button2 = UIButton.buttonWithType(UIButtonType.RoundedRect);
-        button3 = UIButton.buttonWithType(UIButtonType.RoundedRect);
-        button4 = UIButton.buttonWithType(UIButtonType.RoundedRect);
-        button5 = UIButton.buttonWithType(UIButtonType.RoundedRect);
+        button1 = UIButton.buttonWithType(1);
+        button2 = UIButton.buttonWithType(1);
+        button3 = UIButton.buttonWithType(1);
+        button4 = UIButton.buttonWithType(1);
+        button5 = UIButton.buttonWithType(1);
 
-        button1.setTitle("1", UIControlState.Normal);
-        button2.setTitle("2", UIControlState.Normal);
-        button3.setTitle("3", UIControlState.Normal);
-        button4.setTitle("4", UIControlState.Normal);
-        button5.setTitle("5", UIControlState.Normal);
+        button1.setTitle("1", 0);
+        button2.setTitle("2", 0);
+        button3.setTitle("3", 0);
+        button4.setTitle("4", 0);
+        button5.setTitle("5", 0);
 
         button1.setFrame(new CGRect(20, 20, 125, 50));
         button2.setFrame(new CGRect(175, 20, 125, 50));
@@ -77,12 +76,12 @@ public class AutoResize extends UIApplicationDelegate {
          * to observe the behavior of the application in the absence of any
          * flexible resizing.
          */
-        button2.setAutoresizingMask(UIViewAutoresizing.FlexibleLeftMargin);
-        button3.setAutoresizingMask(UIViewAutoresizing.FlexibleTopMargin
-                | UIViewAutoresizing.FlexibleBottomMargin | UIViewAutoresizing.FlexibleWidth);
-        button4.setAutoresizingMask(UIViewAutoresizing.FlexibleTopMargin);
-        button5.setAutoresizingMask(UIViewAutoresizing.FlexibleTopMargin
-                | UIViewAutoresizing.FlexibleLeftMargin);
+        button2.setAutoresizingMask(1<<0);
+        button3.setAutoresizingMask(1 << 3
+                | 1 << 5 | 1 << 1);
+        button4.setAutoresizingMask(1<<3);
+        button5.setAutoresizingMask(1<<3
+                | 1<<0);
 
         UIViewController vc = new UIViewController() {
             @Override
@@ -104,6 +103,8 @@ public class AutoResize extends UIApplicationDelegate {
         window.setRootViewController(vc);
         window.addSubview(vc.getView());
         window.makeKeyAndVisible();
+        return true;
+       
     }
 
     public static void main(String[] args) {

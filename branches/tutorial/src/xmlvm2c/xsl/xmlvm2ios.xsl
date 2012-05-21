@@ -154,7 +154,7 @@
             <xsl:text>n</xsl:text>
             <xsl:value-of select="position()" />
           </xsl:when>
-          <xsl:when test="@isStruct eq 'true' or @type = 'NSString'">
+          <xsl:when test="@isStruct eq 'true' or @convert eq 'true'">
             <xsl:value-of select="$paramInitialization" />
             <xsl:text>from</xsl:text>
             <xsl:value-of select="@type" />

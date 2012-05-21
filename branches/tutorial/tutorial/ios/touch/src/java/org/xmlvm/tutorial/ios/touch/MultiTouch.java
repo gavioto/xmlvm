@@ -22,20 +22,20 @@ package org.xmlvm.tutorial.ios.touch;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
-import org.xmlvm.iphone.CGContext;
-import org.xmlvm.iphone.CGPoint;
-import org.xmlvm.iphone.CGRect;
-import org.xmlvm.iphone.UIApplication;
-import org.xmlvm.iphone.UIApplicationDelegate;
-import org.xmlvm.iphone.UIEvent;
-import org.xmlvm.iphone.UIGraphics;
-import org.xmlvm.iphone.UIScreen;
-import org.xmlvm.iphone.UITouch;
-import org.xmlvm.iphone.UITouchPhase;
-import org.xmlvm.iphone.UIView;
-import org.xmlvm.iphone.UIWindow;
+import org.xmlvm.ios.CGContext;
+import org.xmlvm.ios.CGPoint;
+import org.xmlvm.ios.CGRect;
+import org.xmlvm.ios.UIApplication;
+import org.xmlvm.ios.adapter.UIApplicationDelegate;
+import org.xmlvm.ios.UIEvent;
+import org.xmlvm.ios.UIKit;
+import org.xmlvm.ios.UIScreen;
+import org.xmlvm.ios.UITouch;
+import org.xmlvm.ios.UIView;
+import org.xmlvm.ios.UIWindow;
 
 /**
  * A simple multi-touch demo for iOS. A circle is drawn wherever the user
@@ -45,7 +45,7 @@ import org.xmlvm.iphone.UIWindow;
 public class MultiTouch extends UIApplicationDelegate {
 
     @Override
-    public void applicationDidFinishLaunching(UIApplication app) {
+    public boolean didFinishLaunchingWithOptions(UIApplication app, Map<String, Object> launchOptions) {
         UIWindow window = new UIWindow(UIScreen.mainScreen().getBounds());
         /*
          * A custom UIView that covers the complete screen. Various methods are
@@ -73,12 +73,12 @@ public class MultiTouch extends UIApplicationDelegate {
                  * Iterate over all UITouches that are associated with this
                  * UIEvent
                  */
-                for (UITouch touch : event.allTouches()) {
+                for (UITouch touch : (Set<UITouch>)event.allTouches()) {
                     /*
                      * If a UITouch has the phase UITouchPhaseEnded (finger
                      * lifted from screen) it is not included.
                      */
-                    if (touch.getPhase() != UITouchPhase.Ended) {
+                    if (touch.getPhase() != 3) { //UITouchPhase.Ended
                         /*
                          * The locationInView() method retrieves the coordinates
                          * of the UITouch relative to a specific view (which is
@@ -97,7 +97,7 @@ public class MultiTouch extends UIApplicationDelegate {
              * Called whenever a finger touches the screen.
              */
             @Override
-            public void touchesBegan(Set<UITouch> touches, UIEvent event) {
+            public void touchesBegan(Set touches, UIEvent event) {
                 getTouches(event);
             }
 
@@ -105,7 +105,7 @@ public class MultiTouch extends UIApplicationDelegate {
              * Called whenever a finger is lifted from the screen.
              */
             @Override
-            public void touchesEnded(Set<UITouch> touches, UIEvent event) {
+            public void touchesEnded(Set touches, UIEvent event) {
                 getTouches(event);
             }
 
@@ -114,13 +114,13 @@ public class MultiTouch extends UIApplicationDelegate {
              * moved across the screen.
              */
             @Override
-            public void touchesMoved(Set<UITouch> touches, UIEvent event) {
+            public void touchesMoved(Set touches, UIEvent event) {
                 getTouches(event);
             }
 
             @Override
             public void drawRect(CGRect rect) {
-                CGContext ctx = UIGraphics.getCurrentContext();
+                CGContext ctx = UIKit.UIGraphicsGetCurrentContext();
                 /*
                  * Fill background with black. This will remove all previously
                  * drawn circles.
@@ -146,6 +146,7 @@ public class MultiTouch extends UIApplicationDelegate {
         view.setMultipleTouchEnabled(true);
         window.addSubview(view);
         window.makeKeyAndVisible();
+        return true;
     }
 
     public static void main(String[] args) {

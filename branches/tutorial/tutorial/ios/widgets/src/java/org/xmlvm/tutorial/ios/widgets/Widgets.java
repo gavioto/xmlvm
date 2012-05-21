@@ -20,39 +20,30 @@
 
 package org.xmlvm.tutorial.ios.widgets;
 
-import org.xmlvm.iphone.CGSize;
-import org.xmlvm.iphone.CGRect;
-import org.xmlvm.iphone.UIActivityIndicatorView;
-import org.xmlvm.iphone.UIActivityIndicatorViewStyle;
-import org.xmlvm.iphone.UIAlertView;
-import org.xmlvm.iphone.UIApplication;
-import org.xmlvm.iphone.UIApplicationDelegate;
-import org.xmlvm.iphone.UIButton;
-import org.xmlvm.iphone.UIButtonType;
-import org.xmlvm.iphone.UIColor;
-import org.xmlvm.iphone.UIControl;
-import org.xmlvm.iphone.UIControlDelegate;
-import org.xmlvm.iphone.UIControlEvent;
-import org.xmlvm.iphone.UIControlState;
-import org.xmlvm.iphone.UILabel;
-import org.xmlvm.iphone.UIPickerViewDataSource;
-import org.xmlvm.iphone.UIPickerViewDelegate;
-import org.xmlvm.iphone.UIProgressView;
-import org.xmlvm.iphone.UIProgressViewStyle;
-import org.xmlvm.iphone.UIReturnKeyType;
-import org.xmlvm.iphone.UIScreen;
-import org.xmlvm.iphone.UIScrollView;
-import org.xmlvm.iphone.UISegmentedControl;
-import org.xmlvm.iphone.UISlider;
-import org.xmlvm.iphone.UISwitch;
-import org.xmlvm.iphone.UITextAlignment;
-import org.xmlvm.iphone.UITextBorderStyle;
-import org.xmlvm.iphone.UITextField;
-import org.xmlvm.iphone.UIView;
-import org.xmlvm.iphone.UIWindow;
-import org.xmlvm.iphone.UIDatePicker;
-import org.xmlvm.iphone.UIPickerView;
-import org.xmlvm.iphone.UISearchBar;
+import java.util.Map;
+
+import org.xmlvm.ios.CGSize;
+import org.xmlvm.ios.CGRect;
+import org.xmlvm.ios.UIActivityIndicatorView;
+import org.xmlvm.ios.UIAlertView;
+import org.xmlvm.ios.UIApplication;
+import org.xmlvm.ios.adapter.UIApplicationDelegate;
+import org.xmlvm.ios.UIButton;
+import org.xmlvm.ios.UIColor;
+import org.xmlvm.ios.UIControl;
+import org.xmlvm.ios.UIControlDelegate;
+import org.xmlvm.ios.UILabel;
+import org.xmlvm.ios.UIProgressView;
+import org.xmlvm.ios.UIScreen;
+import org.xmlvm.ios.UIScrollView;
+import org.xmlvm.ios.UISegmentedControl;
+import org.xmlvm.ios.UISlider;
+import org.xmlvm.ios.UISwitch;
+import org.xmlvm.ios.UITextField;
+import org.xmlvm.ios.UIView;
+import org.xmlvm.ios.UIWindow;
+import org.xmlvm.ios.UIDatePicker;
+import org.xmlvm.ios.UISearchBar;
 
 /**
  * A Simple application to demonstrate some of UI elements that are available in
@@ -63,16 +54,16 @@ import org.xmlvm.iphone.UISearchBar;
 public class Widgets extends UIApplicationDelegate {
 
     @Override
-    public void applicationDidFinishLaunching(UIApplication app) {
+    public boolean didFinishLaunchingWithOptions(UIApplication app, Map<String, Object> launchOptions) {
 
         UIScreen screen = UIScreen.mainScreen();
         CGRect rect = screen.getApplicationFrame();
         UIWindow window = new UIWindow(rect);
-        window.setBackgroundColor(UIColor.whiteColor);
+        window.setBackgroundColor(UIColor.whiteColor());
 
         rect.origin.x = rect.origin.y = 0;
         UIView mainView = new UIView(rect);
-        mainView.setBackgroundColor(UIColor.whiteColor);
+        mainView.setBackgroundColor(UIColor.whiteColor());
         window.addSubview(mainView);
 
         /*
@@ -99,7 +90,7 @@ public class Widgets extends UIApplicationDelegate {
         /*
          * Sets alignment of the text within the label
          */
-        labelClass.setTextAlignment(UITextAlignment.Left);
+        labelClass.setTextAlignment(0); // UITextAlignment.Left
         /*
          * Add the label as subview to the scrollview to enable scrolling of the
          * components
@@ -109,7 +100,7 @@ public class Widgets extends UIApplicationDelegate {
         rect.origin.y += 30;
         rect.origin.x += 30;
         UILabel label = new UILabel(rect);
-        label.setTextAlignment(UITextAlignment.Center);
+        label.setTextAlignment(1); // UITextAlignment.Center
         window.addSubview(label);
         label.setText("Widget Demo");
 
@@ -117,7 +108,7 @@ public class Widgets extends UIApplicationDelegate {
         rect.origin.x -= 30;
         UILabel textClass = new UILabel(rect);
         textClass.setText("Class: UITextField");
-        textClass.setTextAlignment(UITextAlignment.Left);
+        textClass.setTextAlignment(0); // UITextAlignment.Left
         scrollview.addSubview(textClass);
 
         /*
@@ -129,14 +120,14 @@ public class Widgets extends UIApplicationDelegate {
         rect.origin.y += 30;
         rect.origin.x += 30;
         UITextField textField = new UITextField(rect);
-        textField.setBorderStyle(UITextBorderStyle.Bezel);
+        textField.setBorderStyle(2); //UITextBorderStyle.Bezel
         textField.setPlaceholder("Type here");
 
         rect.origin.y += 50;
         rect.origin.x -= 30;
         UILabel buttonClass = new UILabel(rect);
         buttonClass.setText("Class: UIButton");
-        buttonClass.setTextAlignment(UITextAlignment.Left);
+        buttonClass.setTextAlignment(0); //UITextAlignment.Left
         scrollview.addSubview(buttonClass);
 
         /*
@@ -146,9 +137,9 @@ public class Widgets extends UIApplicationDelegate {
          */
         rect.origin.y += 30;
         rect.origin.x += 30;
-        UIButton button = UIButton.buttonWithType(UIButtonType.RoundedRect);
+        UIButton button = UIButton.buttonWithType(1); //UIButtonType.RoundedRect
         button.setFrame(rect);
-        button.setTitle("Click", UIControlState.Normal);
+        button.setTitle("Click", 0); //UIControlState.Normal
 
         /*
          * Add a UIControlDelegate to the button. It is possible to register for
@@ -169,13 +160,13 @@ public class Widgets extends UIApplicationDelegate {
                 alert.show();
             }
 
-        }, UIControlEvent.TouchUpInside);
+        }, 1<<6); //UIControlEvent.TouchUpInside
 
         rect.origin.y += 50;
         rect.origin.x -= 30;
         UILabel switchClass = new UILabel(rect);
         switchClass.setText("Class: UISwitch");
-        switchClass.setTextAlignment(UITextAlignment.Left);
+        switchClass.setTextAlignment(0); // UITextAlignment.Left
         scrollview.addSubview(switchClass);
 
         rect.origin.y += 30;
@@ -186,7 +177,7 @@ public class Widgets extends UIApplicationDelegate {
         rect.origin.x -= 30;
         UILabel segCtlClass = new UILabel(rect);
         segCtlClass.setText("Class: UISegmentedControl");
-        segCtlClass.setTextAlignment(UITextAlignment.Left);
+        segCtlClass.setTextAlignment(0); //UITextAlignment.Left
         scrollview.addSubview(segCtlClass);
 
         /*
@@ -206,7 +197,7 @@ public class Widgets extends UIApplicationDelegate {
         rect.origin.x -= 30;
         UILabel sliderClass = new UILabel(rect);
         sliderClass.setText("Class: UISlider");
-        sliderClass.setTextAlignment(UITextAlignment.Left);
+        sliderClass.setTextAlignment(0); //UITextAlignment.Left
         scrollview.addSubview(sliderClass);
 
         /*
@@ -223,7 +214,7 @@ public class Widgets extends UIApplicationDelegate {
         rect.origin.x -= 30;
         UILabel progView2Class = new UILabel(rect);
         progView2Class.setText("Class: UIProgressView");
-        progView2Class.setTextAlignment(UITextAlignment.Left);
+        progView2Class.setTextAlignment(0); //UITextAlignment.Left
         scrollview.addSubview(progView2Class);
 
         /*
@@ -235,7 +226,7 @@ public class Widgets extends UIApplicationDelegate {
          */
         rect.origin.y += 30;
         rect.origin.x += 30;
-        UIProgressView progressViewBar = new UIProgressView(UIProgressViewStyle.Bar);
+        UIProgressView progressViewBar = new UIProgressView(1); //UIProgressViewStyle.Bar
         progressViewBar.setProgress((float) 0.80);
         progressViewBar.setFrame(rect);
 
@@ -243,7 +234,7 @@ public class Widgets extends UIApplicationDelegate {
         rect.origin.x -= 30;
         UILabel datePickClass = new UILabel(rect);
         datePickClass.setText("Class: UIDatePicker");
-        datePickClass.setTextAlignment(UITextAlignment.Left);
+        datePickClass.setTextAlignment(0); //UITextAlignment.Left
         scrollview.addSubview(datePickClass);
 
         /*
@@ -254,75 +245,14 @@ public class Widgets extends UIApplicationDelegate {
          */
         rect.origin.x += 30;
         rect.origin.y += 30;
-        UIDatePicker datePicker = new UIDatePicker(rect);
-
-        rect.origin.y += 180;
-        rect.origin.x -= 30;
-        UILabel pickerClass = new UILabel(rect);
-        pickerClass.setText("Class: UIPickerView");
-        pickerClass.setTextAlignment(UITextAlignment.Left);
-        scrollview.addSubview(pickerClass);
-
-        /*
-         * UIPickerView is used to display a set of values in form of rotating
-         * wheel just like slot machines. The user can pick from the set of
-         * values. Each of the rotating wheel is a component and a UIPickerView
-         * can have multiple such components. Each of this component can
-         * comprise of multiple rows.
-         */
-        rect.origin.x += 30;
-        rect.origin.y += 30;
-        UIPickerView pickerView = new UIPickerView(rect);
-
-        /*
-         * The data for the picker is provided using the UIPickerViewDataSource
-         * and UIPickerViewDelegate. By implementing the interface
-         * UIPickerViewDataSource the number of components and the number of
-         * rows in each of the components can be specified by overriding the
-         * required methods.
-         */
-        UIPickerViewDataSource pickerSource = new UIPickerViewDataSource() {
-
-            @Override
-            public int numberOfComponentsInPickerView(UIPickerView arg0) {
-                /*
-                 * Number of components in the picker view is set to 1
-                 */
-                return 1;
-            }
-
-            @Override
-            public int numberOfRowsInComponent(UIPickerView arg0, int arg1) {
-                /*
-                 * Number of rows in the components in set to 4
-                 */
-                return 4;
-            }
-
-        };
-
-        /*
-         * The values for individual rows of the component can be specified by
-         * implementing the delegate and overriding the method titleForRow
-         */
-        UIPickerViewDelegate pickerDel = new UIPickerViewDelegate() {
-            String[] pickerArray = new String[] { "Red", "Blue", "Black", "White" };
-
-
-            @Override
-            public String titleForRow(UIPickerView view, int row, int component) {
-                return pickerArray[row];
-            }
-        };
-
-        pickerView.setDelegate(pickerDel);
-        pickerView.setDataSource(pickerSource);
+        UIDatePicker datePicker = new UIDatePicker();
+        datePicker.setFrame(rect);
 
         rect.origin.y += 180;
         rect.origin.x -= 30;
         UILabel searchBarClass = new UILabel(rect);
         searchBarClass.setText("Class: UISearchBar");
-        searchBarClass.setTextAlignment(UITextAlignment.Left);
+        searchBarClass.setTextAlignment(0); //UITextAlignment.Left
         scrollview.addSubview(searchBarClass);
 
         /*
@@ -341,7 +271,7 @@ public class Widgets extends UIApplicationDelegate {
         rect.origin.x -= 30;
         UILabel activityClass = new UILabel(rect);
         activityClass.setText("Class: UIActivityIndicator");
-        activityClass.setTextAlignment(UITextAlignment.Left);
+        activityClass.setTextAlignment(0); //UITextAlignment.Left
         scrollview.addSubview(activityClass);
 
         /*
@@ -353,7 +283,7 @@ public class Widgets extends UIApplicationDelegate {
         rect.size.height = 50;
         rect.size.width = 50;
         UIActivityIndicatorView activityIndicator = new UIActivityIndicatorView(
-                UIActivityIndicatorViewStyle.Gray);
+                2); //UIActivityIndicatorViewStyle.Gray
         activityIndicator.setFrame(rect);
         activityIndicator.startAnimating();
 
@@ -367,12 +297,12 @@ public class Widgets extends UIApplicationDelegate {
         scrollview.addSubview(switchView);
         scrollview.addSubview(segmentedControl);
         scrollview.addSubview(datePicker);
-        scrollview.addSubview(pickerView);
         scrollview.addSubview(searchBar);
         scrollview.setContentSize(new CGSize(scrollview.getFrame().size.width, rect.origin.y
                 + rect.size.height + 20));
 
         window.makeKeyAndVisible();
+        return true;
     }
 
     public static void main(String[] args) {

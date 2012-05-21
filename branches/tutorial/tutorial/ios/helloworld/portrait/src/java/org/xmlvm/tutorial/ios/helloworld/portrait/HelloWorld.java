@@ -20,14 +20,15 @@
 
 package org.xmlvm.tutorial.ios.helloworld.portrait;
 
-import org.xmlvm.iphone.CGRect;
-import org.xmlvm.iphone.UIApplication;
-import org.xmlvm.iphone.UIApplicationDelegate;
-import org.xmlvm.iphone.UIColor;
-import org.xmlvm.iphone.UILabel;
-import org.xmlvm.iphone.UIScreen;
-import org.xmlvm.iphone.UITextAlignment;
-import org.xmlvm.iphone.UIWindow;
+import java.util.Map;
+
+import org.xmlvm.ios.CGRect;
+import org.xmlvm.ios.UIApplication;
+import org.xmlvm.ios.adapter.UIApplicationDelegate;
+import org.xmlvm.ios.UIColor;
+import org.xmlvm.ios.UILabel;
+import org.xmlvm.ios.UIScreen;
+import org.xmlvm.ios.UIWindow;
 
 /**
  * This is the classic "Hello World" application for iOS. The entry point is the
@@ -46,7 +47,7 @@ import org.xmlvm.iphone.UIWindow;
 public class HelloWorld extends UIApplicationDelegate {
 
     @Override
-    public void applicationDidFinishLaunching(UIApplication app) {
+    public boolean didFinishLaunchingWithOptions(UIApplication app, Map<String, Object> launchOptions) {
         /*
          * Determine the bounding box of the main screen. This will depend on
          * the resolution of the screen. The bounding box will exclude the
@@ -64,7 +65,7 @@ public class HelloWorld extends UIApplicationDelegate {
          * By default the background color of the window is black which is why
          * it is changed to white.
          */
-        window.setBackgroundColor(UIColor.whiteColor);
+        window.setBackgroundColor(UIColor.whiteColor());
         /*
          * The origin of the bounding box is reset to (0,0) because the child
          * widget (the UILabel in this case) should be aligned in the top-left
@@ -78,13 +79,14 @@ public class HelloWorld extends UIApplicationDelegate {
          */
         UILabel label = new UILabel(rect);
         label.setText("Hello World");
-        label.setTextAlignment(UITextAlignment.Center);
+        label.setTextAlignment(1);
         window.addSubview(label);
         /*
          * Finally the UIWindow is told to become the main (key) window and
          * become visible.
          */
         window.makeKeyAndVisible();
+        return true;
     }
 
     public static void main(String[] args) {

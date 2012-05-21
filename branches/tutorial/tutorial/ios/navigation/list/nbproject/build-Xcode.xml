@@ -63,6 +63,7 @@
 			<arg value="--app-name=${bundle.displayname}"/>
 			<arg value="--lib=${xmlvm.lib}"/>
 			<arg value="--resource=${xmlvm.resouce.all}"/>
+			<arg value="--xmlvm-new-ios-api"/>
 			<arg value="${xmlvm.reference.counting}"/>
 			<arg value="-DXcodeProject=${xmlvm.project}"/>
 			<arg value="-DBundleIdentifier=${bundle.identifier}"/>

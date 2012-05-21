@@ -3,7 +3,7 @@ import java.util.*;
 
 import org.xmlvm.XMLVMSkeletonOnly;
 @XMLVMSkeletonOnly
-public class CGPath {
+public class CGPath extends CFType {
 
 	/*
 	 * Static methods
@@ -112,7 +112,7 @@ public class CGPath {
 	 */
 
 	/** Default constructor */
-	CGPath() {}
+	public CGPath() {}
 
 	/*
 	 * Instance methods

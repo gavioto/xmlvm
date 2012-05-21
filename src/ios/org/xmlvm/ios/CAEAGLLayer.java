@@ -8,7 +8,12 @@ public class CAEAGLLayer extends CALayer {
 	/*
 	 * Constructors
 	 */
+	public CAEAGLLayer(Object layer) {
+		super(layer);
+	}
 
 	/** Default constructor */
-	CAEAGLLayer() {}
+	public CAEAGLLayer() {
+		super();
+	}
 }

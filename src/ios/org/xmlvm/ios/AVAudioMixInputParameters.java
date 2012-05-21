@@ -10,7 +10,9 @@ public class AVAudioMixInputParameters extends NSObject {
 	 */
 
 	/** Default constructor */
-	AVAudioMixInputParameters() {}
+	public AVAudioMixInputParameters() {
+		super();
+	}
 
 	/*
 	 * Properties

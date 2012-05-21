@@ -8,9 +8,14 @@ public class UIScrollView extends UIView {
 	/*
 	 * Constructors
 	 */
+	public UIScrollView(CGRect frame) {
+		super(frame);
+	}
 
 	/** Default constructor */
-	UIScrollView() {}
+	public UIScrollView() {
+		super();
+	}
 
 	/*
 	 * Properties
@@ -61,14 +66,14 @@ public class UIScrollView extends UIView {
 	/**
 	 * @property(nonatomic,assign) id<UIScrollViewDelegate> delegate;
 	 */
-	public UIScrollViewDelegate getDelegate(){
+	public org.xmlvm.ios.UIScrollViewDelegate getDelegate(){
 		throw new RuntimeException("Stub");
 	}
 
 	/**
 	 * @property(nonatomic,assign) id<UIScrollViewDelegate> delegate;
 	 */
-	public void setDelegate(UIScrollViewDelegate delegate){
+	public void setDelegate(org.xmlvm.ios.UIScrollViewDelegate delegate){
 		throw new RuntimeException("Stub");
 	}
 

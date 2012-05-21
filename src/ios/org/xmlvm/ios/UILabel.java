@@ -8,9 +8,14 @@ public class UILabel extends UIView {
 	/*
 	 * Constructors
 	 */
+	public UILabel(CGRect frame) {
+		super(frame);
+	}
 
 	/** Default constructor */
-	UILabel() {}
+	public UILabel() {
+		super();
+	}
 
 	/*
 	 * Properties

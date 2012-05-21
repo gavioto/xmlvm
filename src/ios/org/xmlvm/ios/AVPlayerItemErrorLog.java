@@ -10,7 +10,9 @@ public class AVPlayerItemErrorLog extends NSObject {
 	 */
 
 	/** Default constructor */
-	AVPlayerItemErrorLog() {}
+	public AVPlayerItemErrorLog() {
+		super();
+	}
 
 	/*
 	 * Properties

@@ -15,7 +15,9 @@ public class MPMoviePlayerController extends NSObject {
 	public MPMoviePlayerController(NSURL url) {}
 
 	/** Default constructor */
-	MPMoviePlayerController() {}
+	public MPMoviePlayerController() {
+		super();
+	}
 
 	/*
 	 * Properties

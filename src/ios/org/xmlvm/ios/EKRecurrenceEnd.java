@@ -28,7 +28,9 @@ public class EKRecurrenceEnd extends NSObject {
 	 */
 
 	/** Default constructor */
-	EKRecurrenceEnd() {}
+	public EKRecurrenceEnd() {
+		super();
+	}
 
 	/*
 	 * Properties

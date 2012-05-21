@@ -19,9 +19,14 @@ public class UIButton extends UIControl {
 	/*
 	 * Constructors
 	 */
+	public UIButton(CGRect frame) {
+		super(frame);
+	}
 
 	/** Default constructor */
-	UIButton() {}
+	public UIButton() {
+		super();
+	}
 
 	/*
 	 * Properties

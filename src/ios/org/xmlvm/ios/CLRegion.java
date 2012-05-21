@@ -15,7 +15,9 @@ public class CLRegion extends NSObject {
 	public CLRegion(CLLocationCoordinate2D center, double radius, String identifier) {}
 
 	/** Default constructor */
-	CLRegion() {}
+	public CLRegion() {
+		super();
+	}
 
 	/*
 	 * Properties

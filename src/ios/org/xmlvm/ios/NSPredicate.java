@@ -49,7 +49,9 @@ public class NSPredicate extends NSObject {
 	 */
 
 	/** Default constructor */
-	NSPredicate() {}
+	public NSPredicate() {
+		super();
+	}
 
 	/*
 	 * Instance methods

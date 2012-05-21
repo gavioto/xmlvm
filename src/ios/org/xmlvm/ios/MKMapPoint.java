@@ -39,7 +39,7 @@ public class MKMapPoint {
 	public MKMapPoint(double x, double y) {}
 
 	/** Default constructor */
-	MKMapPoint() {}
+	public MKMapPoint() {}
 
 	/*
 	 * Instance methods

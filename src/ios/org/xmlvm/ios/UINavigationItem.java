@@ -15,7 +15,9 @@ public class UINavigationItem extends NSObject {
 	public UINavigationItem(String title) {}
 
 	/** Default constructor */
-	UINavigationItem() {}
+	public UINavigationItem() {
+		super();
+	}
 
 	/*
 	 * Properties

@@ -93,7 +93,9 @@ public class NSArray extends NSObject {
 	public NSArray(NSURL url) {}
 
 	/** Default constructor */
-	NSArray() {}
+	public NSArray() {
+		super();
+	}
 
 	/*
 	 * Instance methods

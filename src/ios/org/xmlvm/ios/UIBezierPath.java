@@ -63,7 +63,9 @@ public class UIBezierPath extends NSObject {
 	 */
 
 	/** Default constructor */
-	UIBezierPath() {}
+	public UIBezierPath() {
+		super();
+	}
 
 	/*
 	 * Properties

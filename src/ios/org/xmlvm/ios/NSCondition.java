@@ -10,7 +10,9 @@ public class NSCondition extends NSObject {
 	 */
 
 	/** Default constructor */
-	NSCondition() {}
+	public NSCondition() {
+		super();
+	}
 
 	/*
 	 * Instance methods

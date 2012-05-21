@@ -15,7 +15,9 @@ public class UISwitch extends UIControl {
 	public UISwitch(CGRect frame) {}
 
 	/** Default constructor */
-	UISwitch() {}
+	public UISwitch() {
+		super();
+	}
 
 	/*
 	 * Properties

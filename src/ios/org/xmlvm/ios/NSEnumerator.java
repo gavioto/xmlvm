@@ -10,7 +10,9 @@ public class NSEnumerator extends NSObject {
 	 */
 
 	/** Default constructor */
-	NSEnumerator() {}
+	public NSEnumerator() {
+		super();
+	}
 
 	/*
 	 * Instance methods

@@ -10,7 +10,9 @@ public class NSPropertyDescription extends NSObject {
 	 */
 
 	/** Default constructor */
-	NSPropertyDescription() {}
+	public NSPropertyDescription() {
+		super();
+	}
 
 	/*
 	 * Instance methods

@@ -10,7 +10,9 @@ public class AVVideoComposition extends NSObject {
 	 */
 
 	/** Default constructor */
-	AVVideoComposition() {}
+	public AVVideoComposition() {
+		super();
+	}
 
 	/*
 	 * Properties

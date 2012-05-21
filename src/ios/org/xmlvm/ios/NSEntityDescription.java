@@ -28,7 +28,9 @@ public class NSEntityDescription extends NSObject {
 	 */
 
 	/** Default constructor */
-	NSEntityDescription() {}
+	public NSEntityDescription() {
+		super();
+	}
 
 	/*
 	 * Instance methods

@@ -28,7 +28,9 @@ public class CAAnimation extends NSObject {
 	 */
 
 	/** Default constructor */
-	CAAnimation() {}
+	public CAAnimation() {
+		super();
+	}
 
 	/*
 	 * Properties

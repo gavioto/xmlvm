@@ -10,7 +10,9 @@ public class AVComposition extends AVAsset {
 	 */
 
 	/** Default constructor */
-	AVComposition() {}
+	public AVComposition() {
+		super();
+	}
 
 	/*
 	 * Properties

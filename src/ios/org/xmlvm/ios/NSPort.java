@@ -28,7 +28,9 @@ public class NSPort extends NSObject {
 	 */
 
 	/** Default constructor */
-	NSPort() {}
+	public NSPort() {
+		super();
+	}
 
 	/*
 	 * Instance methods
@@ -51,14 +53,14 @@ public class NSPort extends NSObject {
 	/**
 	 * - (void)setDelegate:(id <NSPortDelegate>)anObject;
 	 */
-	public void setDelegate(NSPortDelegate anObject){
+	public void setDelegate(org.xmlvm.ios.NSPortDelegate anObject){
 		throw new RuntimeException("Stub");
 	}
 
 	/**
 	 * - (id <NSPortDelegate>)delegate;
 	 */
-	public NSPortDelegate delegate(){
+	public org.xmlvm.ios.NSPortDelegate delegate(){
 		throw new RuntimeException("Stub");
 	}
 

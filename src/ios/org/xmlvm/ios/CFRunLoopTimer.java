@@ -3,7 +3,7 @@ import java.util.*;
 
 import org.xmlvm.XMLVMSkeletonOnly;
 @XMLVMSkeletonOnly
-public class CFRunLoopTimer {
+public class CFRunLoopTimer extends CFType {
 
 	/*
 	 * Static methods
@@ -26,7 +26,7 @@ public class CFRunLoopTimer {
 	public CFRunLoopTimer(CFAllocator allocator, double fireDate, double interval, long flags, long order, Object callout, Reference<CFRunLoopTimerContext> context) {}
 
 	/** Default constructor */
-	CFRunLoopTimer() {}
+	public CFRunLoopTimer() {}
 
 	/*
 	 * Instance methods

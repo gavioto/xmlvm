@@ -25,7 +25,9 @@ public class CLLocation extends NSObject {
 	public CLLocation(CLLocationCoordinate2D coordinate, double altitude, double hAccuracy, double vAccuracy, double course, double speed, NSDate timestamp) {}
 
 	/** Default constructor */
-	CLLocation() {}
+	public CLLocation() {
+		super();
+	}
 
 	/*
 	 * Properties

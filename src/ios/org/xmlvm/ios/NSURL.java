@@ -3,6 +3,7 @@ import java.util.*;
 
 import org.xmlvm.XMLVMSkeletonOnly;
 @XMLVMSkeletonOnly
+(references={NSString.class})
 public class NSURL extends NSObject {
 
 	/*
@@ -111,7 +112,9 @@ public class NSURL extends NSObject {
 	public NSURL(NSData bookmarkData, int options, NSURL relativeURL, boolean[] isStale, Reference<NSError> error) {}
 
 	/** Default constructor */
-	NSURL() {}
+	public NSURL() {
+		super();
+	}
 
 	/*
 	 * Instance methods

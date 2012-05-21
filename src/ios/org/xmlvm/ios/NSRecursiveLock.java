@@ -10,7 +10,9 @@ public class NSRecursiveLock extends NSObject {
 	 */
 
 	/** Default constructor */
-	NSRecursiveLock() {}
+	public NSRecursiveLock() {
+		super();
+	}
 
 	/*
 	 * Instance methods

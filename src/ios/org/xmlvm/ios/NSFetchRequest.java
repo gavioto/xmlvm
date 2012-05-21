@@ -10,7 +10,9 @@ public class NSFetchRequest extends NSObject {
 	 */
 
 	/** Default constructor */
-	NSFetchRequest() {}
+	public NSFetchRequest() {
+		super();
+	}
 
 	/*
 	 * Instance methods

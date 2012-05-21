@@ -10,7 +10,9 @@ public class NSManagedObjectContext extends NSObject {
 	 */
 
 	/** Default constructor */
-	NSManagedObjectContext() {}
+	public NSManagedObjectContext() {
+		super();
+	}
 
 	/*
 	 * Instance methods

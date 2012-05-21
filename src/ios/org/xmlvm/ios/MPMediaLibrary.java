@@ -21,7 +21,9 @@ public class MPMediaLibrary extends NSObject {
 	 */
 
 	/** Default constructor */
-	MPMediaLibrary() {}
+	public MPMediaLibrary() {
+		super();
+	}
 
 	/*
 	 * Properties

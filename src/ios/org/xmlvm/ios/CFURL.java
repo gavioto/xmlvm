@@ -3,7 +3,7 @@ import java.util.*;
 
 import org.xmlvm.XMLVMSkeletonOnly;
 @XMLVMSkeletonOnly
-public class CFURL {
+public class CFURL extends CFType {
 
 	/*
 	 * Static methods
@@ -210,7 +210,7 @@ public class CFURL {
 	 */
 
 	/** Default constructor */
-	CFURL() {}
+	public CFURL() {}
 
 	/*
 	 * Instance methods

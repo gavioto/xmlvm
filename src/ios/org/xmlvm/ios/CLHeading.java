@@ -10,7 +10,9 @@ public class CLHeading extends NSObject {
 	 */
 
 	/** Default constructor */
-	CLHeading() {}
+	public CLHeading() {
+		super();
+	}
 
 	/*
 	 * Properties

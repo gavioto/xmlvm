@@ -15,7 +15,9 @@ public class NSConditionLock extends NSObject {
 	public NSConditionLock(int condition) {}
 
 	/** Default constructor */
-	NSConditionLock() {}
+	public NSConditionLock() {
+		super();
+	}
 
 	/*
 	 * Instance methods

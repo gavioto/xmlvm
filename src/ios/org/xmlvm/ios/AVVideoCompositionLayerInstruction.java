@@ -10,7 +10,9 @@ public class AVVideoCompositionLayerInstruction extends NSObject {
 	 */
 
 	/** Default constructor */
-	AVVideoCompositionLayerInstruction() {}
+	public AVVideoCompositionLayerInstruction() {
+		super();
+	}
 
 	/*
 	 * Properties

@@ -8,9 +8,14 @@ public class UIWebView extends UIView {
 	/*
 	 * Constructors
 	 */
+	public UIWebView(CGRect frame) {
+		super(frame);
+	}
 
 	/** Default constructor */
-	UIWebView() {}
+	public UIWebView() {
+		super();
+	}
 
 	/*
 	 * Properties
@@ -19,14 +24,14 @@ public class UIWebView extends UIView {
 	/**
 	 * @property(nonatomic,assign) id<UIWebViewDelegate> delegate;
 	 */
-	public UIWebViewDelegate getDelegate(){
+	public org.xmlvm.ios.UIWebViewDelegate getDelegate(){
 		throw new RuntimeException("Stub");
 	}
 
 	/**
 	 * @property(nonatomic,assign) id<UIWebViewDelegate> delegate;
 	 */
-	public void setDelegate(UIWebViewDelegate delegate){
+	public void setDelegate(org.xmlvm.ios.UIWebViewDelegate delegate){
 		throw new RuntimeException("Stub");
 	}
 

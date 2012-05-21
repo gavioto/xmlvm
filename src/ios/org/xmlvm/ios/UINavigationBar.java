@@ -8,9 +8,14 @@ public class UINavigationBar extends UIView {
 	/*
 	 * Constructors
 	 */
+	public UINavigationBar(CGRect frame) {
+		super(frame);
+	}
 
 	/** Default constructor */
-	UINavigationBar() {}
+	public UINavigationBar() {
+		super();
+	}
 
 	/*
 	 * Properties

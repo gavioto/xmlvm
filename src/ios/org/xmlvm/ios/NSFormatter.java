@@ -10,7 +10,9 @@ public class NSFormatter extends NSObject {
 	 */
 
 	/** Default constructor */
-	NSFormatter() {}
+	public NSFormatter() {
+		super();
+	}
 
 	/*
 	 * Instance methods

@@ -28,7 +28,9 @@ public class EKRecurrenceDayOfWeek extends NSObject {
 	 */
 
 	/** Default constructor */
-	EKRecurrenceDayOfWeek() {}
+	public EKRecurrenceDayOfWeek() {
+		super();
+	}
 
 	/*
 	 * Properties

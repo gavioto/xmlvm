@@ -95,7 +95,9 @@ public class NSSet extends NSObject {
 	public NSSet(List array) {}
 
 	/** Default constructor */
-	NSSet() {}
+	public NSSet() {
+		super();
+	}
 
 	/*
 	 * Instance methods

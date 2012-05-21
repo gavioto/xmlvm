@@ -33,7 +33,7 @@ public class CFError {
 	public CFError(CFAllocator allocator, String domain, long code, CFDictionary userInfo) {}
 
 	/** Default constructor */
-	CFError() {}
+	public CFError() {}
 
 	/*
 	 * Instance methods

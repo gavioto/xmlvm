@@ -26,7 +26,9 @@ public class NSOrthography extends NSObject {
 	public NSOrthography(String script, Map map) {}
 
 	/** Default constructor */
-	NSOrthography() {}
+	public NSOrthography() {
+		super();
+	}
 
 	/*
 	 * Properties

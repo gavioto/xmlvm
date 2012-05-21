@@ -103,7 +103,9 @@ public class NSExpression extends NSObject {
 	public NSExpression(int type) {}
 
 	/** Default constructor */
-	NSExpression() {}
+	public NSExpression() {
+		super();
+	}
 
 	/*
 	 * Instance methods

@@ -8,9 +8,14 @@ public class UITextField extends UIControl {
 	/*
 	 * Constructors
 	 */
+	public UITextField(CGRect frame) {
+		super(frame);
+	}
 
 	/** Default constructor */
-	UITextField() {}
+	public UITextField() {
+		super();
+	}
 
 	/*
 	 * Properties
@@ -152,7 +157,7 @@ public class UITextField extends UIControl {
 	/**
 	 * @property(nonatomic,assign) id<UITextFieldDelegate> delegate;
 	 */
-	public void setDelegate(UITextFieldDelegate delegate){
+	public void setDelegate(UITextFieldDelegate arg0){
 		throw new RuntimeException("Stub");
 	}
 
@@ -353,6 +358,13 @@ public class UITextField extends UIControl {
 	 * - (void)drawPlaceholderInRect:(CGRect)rect;
 	 */
 	public void drawPlaceholderInRect(CGRect rect){
+		throw new RuntimeException("Stub");
+	}
+
+	/*
+	 * Injected methods
+	 */
+	public void setReturnKeyType(int arg0){
 		throw new RuntimeException("Stub");
 	}
 }

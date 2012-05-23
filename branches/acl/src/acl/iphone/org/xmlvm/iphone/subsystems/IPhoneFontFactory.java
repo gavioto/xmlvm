@@ -28,7 +28,7 @@ import org.xmlvm.iphone.UITextAlignment;
 import org.xmlvm.iphone.objects.IPhoneFont;
 import org.xmlvm.iphone.objects.IPhoneView;
 
-import android.graphics.Rect;
+import android.graphics.RectF;
 import android.internal.Assert;
 import android.view.Gravity;
 
@@ -53,12 +53,12 @@ public class IPhoneFontFactory implements CommonFontFactory {
     }
 
     @Override
-    public Rect sizeWithFont(String text, CommonFont font) {
+    public RectF sizeWithFont(String text, CommonFont font) {
         return IPhoneView.toRectangle(NSString.sizeWithFont(text, ((IPhoneFont)font).getFont()));
     }
 
     @Override
-    public Rect sizeWithFont(String text, CommonFont font, Rect constraints, int lineBreakMode) {
+    public RectF sizeWithFont(String text, CommonFont font, RectF constraints, int lineBreakMode) {
         switch(lineBreakMode) {
         case CommonFontFactory.LINEBREAK_WORD_WRAP:
             return IPhoneView.toRectangle(NSString.sizeWithFont(text, ((IPhoneFont)font).getFont(), IPhoneView.toCGSize(constraints), UILineBreakMode.WordWrap));
@@ -85,10 +85,10 @@ public class IPhoneFontFactory implements CommonFontFactory {
     }
 
     /* (non-Javadoc)
-     * @see org.xmlvm.common.subsystems.CommonDeviceFontFactory#drawAtPoint(java.lang.String, android.graphics.Rect, org.xmlvm.common.objects.CommonDeviceFont)
+     * @see org.xmlvm.common.subsystems.CommonDeviceFontFactory#drawAtPoint(java.lang.String, android.graphics.RectF, org.xmlvm.common.objects.CommonDeviceFont)
      */
     @Override
-    public void drawAtPoint(String text, Rect rect, CommonFont font) {
+    public void drawAtPoint(String text, RectF rect, CommonFont font) {
         NSString.drawAtPoint(text, IPhoneView.toCGPoint(rect), ((IPhoneFont)font).getFont());
     }
     

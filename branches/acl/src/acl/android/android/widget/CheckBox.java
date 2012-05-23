@@ -24,13 +24,12 @@ import org.xmlvm.common.adapter.CheckBoxAdapter;
 import org.xmlvm.common.objects.CommonView;
 
 import android.content.Context;
-import android.graphics.Rect;
+import android.graphics.RectF;
 import android.internal.Assert;
 import android.internal.CommonDeviceAPIFinder;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.ViewGroup;
-import android.widget.CompoundButton.OnCheckedChangeListener;
 
 public class CheckBox extends CompoundButton {
     
@@ -53,7 +52,7 @@ public class CheckBox extends CompoundButton {
             AbsoluteLayout.LayoutParams a = (AbsoluteLayout.LayoutParams) l;
             xmlvmGetViewHandler().getMetricsView()
                     .setFrame(
-                            new Rect(a.x, a.y, (int) (a.x + kSwitchButtonWidth),
+                            new RectF(a.x, a.y, (int) (a.x + kSwitchButtonWidth),
                                     (int) (a.y + kSwitchButtonHeight)));
         }
     }

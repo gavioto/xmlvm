@@ -22,7 +22,7 @@ package org.xmlvm.common.subsystems;
 
 import org.xmlvm.common.objects.CommonView;
 
-import android.graphics.Rect;
+import android.graphics.RectF;
 
 /**
  *
@@ -37,7 +37,7 @@ public interface CommonWindow {
     /**
      * @param rect
      */
-    void setFrame(Rect rect);
+    void setFrame(RectF rect);
 
     /**
      * 

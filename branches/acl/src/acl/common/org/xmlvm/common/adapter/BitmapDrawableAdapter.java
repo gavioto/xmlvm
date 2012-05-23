@@ -21,6 +21,7 @@
 package org.xmlvm.common.adapter;
 
 import android.graphics.Rect;
+import android.graphics.RectF;
 
 /**
  *
@@ -31,6 +32,6 @@ public interface BitmapDrawableAdapter {
     int getHeight();
     BitmapDrawableAdapter cropImage(int x, int y, int width, int height);
     void drawInRect(Rect r);
-    Rect getSize();
+    RectF getSize();
     
 }

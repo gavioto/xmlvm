@@ -22,7 +22,7 @@ package org.xmlvm.common.adapter;
 
 import org.xmlvm.common.objects.CommonView;
 
-import android.graphics.Rect;
+import android.graphics.RectF;
 
 /**
  *
@@ -31,6 +31,6 @@ public interface ScrollViewAdapter extends CommonView {
 
     void setScrollEnabled(boolean b);
 
-    void setContentOffset(Rect rect, boolean b);
+    void setContentOffset(RectF rect, boolean b);
 
 }

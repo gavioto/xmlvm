@@ -32,6 +32,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Rect;
+import android.graphics.RectF;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
@@ -873,7 +874,7 @@ public class View {
             this.top = top;
             this.width = right - left;
             this.height = bottom - top;
-            viewHandler.setFrame(new Rect(left, top, left+width, top+height));
+            viewHandler.setFrame(new RectF(left, top, left+width, top+height));
 
             // mPrivateFlags |= HAS_BOUNDS;
 

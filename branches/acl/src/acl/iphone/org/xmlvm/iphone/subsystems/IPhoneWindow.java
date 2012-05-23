@@ -27,7 +27,7 @@ import org.xmlvm.iphone.UIApplication;
 import org.xmlvm.iphone.UIWindow;
 import org.xmlvm.iphone.objects.IPhoneView;
 
-import android.graphics.Rect;
+import android.graphics.RectF;
 
 /**
  *
@@ -49,7 +49,7 @@ public class IPhoneWindow implements CommonWindow {
     }
 
     @Override
-    public void setFrame(Rect rect) {
+    public void setFrame(RectF rect) {
         window.setFrame(IPhoneView.toCGRect(rect));
     }
 

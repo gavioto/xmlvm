@@ -25,6 +25,7 @@ import org.xmlvm.iphone.UIImage;
 import org.xmlvm.iphone.objects.IPhoneView;
 
 import android.graphics.Rect;
+import android.graphics.RectF;
 
 /**
  *
@@ -70,7 +71,7 @@ public class IPhoneBitmapDrawableAdapter implements BitmapDrawableAdapter {
     }
 
     @Override
-    public Rect getSize() {
+    public RectF getSize() {
         return IPhoneView.toRectangle(image.getSize());
     }
 

@@ -25,7 +25,7 @@ import org.xmlvm.common.subsystems.CommonWindow;
 import org.xmlvm.wp7.objects.WP7View;
 
 import Compatlib.System.Windows.Application;
-import android.graphics.Rect;
+import android.graphics.RectF;
 import android.internal.Assert;
 
 /**
@@ -39,10 +39,10 @@ public class WP7Window implements CommonWindow {
     }
 
     /* (non-Javadoc)
-     * @see org.xmlvm.common.subsystems.CommonDeviceWindow#setFrame(android.graphics.Rect)
+     * @see org.xmlvm.common.subsystems.CommonDeviceWindow#setFrame(android.graphics.RectF)
      */
     @Override
-    public void setFrame(Rect rect) {
+    public void setFrame(RectF rect) {
         Assert.NOT_IMPLEMENTED();
     }
 

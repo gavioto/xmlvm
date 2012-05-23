@@ -22,7 +22,7 @@ package org.xmlvm.common.objects;
 
 import org.xmlvm.common.adapter.BitmapDrawableAdapter;
 
-import android.graphics.Rect;
+import android.graphics.RectF;
 
 /**
  *
@@ -61,15 +61,15 @@ public interface CommonContext {
 
     void setFontSize(float textSize);
 
-    void drawImage(Rect rect, BitmapDrawableAdapter image);
+    void drawImage(RectF rect, BitmapDrawableAdapter image);
 
-    void fillRect(Rect rect);
+    void fillRect(RectF rect);
 
-    void strokeRect(Rect rect);
+    void strokeRect(RectF rect);
 
-    void fillEllipseInRect(Rect rect);
+    void fillEllipseInRect(RectF rect);
 
-    void strokeEllipseInRect(Rect rect);
+    void strokeEllipseInRect(RectF rect);
 
     void setShadowWithColor(float mShadowDX, float mShadowDY, float mShadowRadius,
             float[] mShadowColor);

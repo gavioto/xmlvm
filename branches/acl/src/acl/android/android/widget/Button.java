@@ -26,6 +26,7 @@ import org.xmlvm.common.objects.CommonView;
 
 import android.content.Context;
 import android.graphics.Rect;
+import android.graphics.RectF;
 import android.internal.CommonDeviceAPIFinder;
 import android.internal.XMLVMTheme;
 import android.util.AttributeSet;
@@ -63,14 +64,14 @@ public class Button extends TextView {
         int height;
 
         if (l instanceof AbsoluteLayout.LayoutParams) {
-            Rect size = xmlvmGetTextSize();
+            RectF size = xmlvmGetTextSize();
             width = l.width == LayoutParams.WRAP_CONTENT ? (int) size.width() + 2 * INSETS_X
                     : l.width;
             height = l.height == LayoutParams.WRAP_CONTENT ? (int) size.height() + 2 * INSETS_Y
                     : l.height;
 
             xmlvmGetViewHandler().setFrame(
-                    new Rect(((AbsoluteLayout.LayoutParams) l).x,
+                    new RectF(((AbsoluteLayout.LayoutParams) l).x,
                             ((AbsoluteLayout.LayoutParams) l).y,
                             ((AbsoluteLayout.LayoutParams) l).x + width,
                             ((AbsoluteLayout.LayoutParams) l).y + height));

@@ -29,6 +29,7 @@ import org.xmlvm.common.subsystems.CommonProperties;
 import android.app.Application;
 import android.content.Context;
 import android.graphics.Rect;
+import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.internal.Assert;
 import android.internal.CommonDeviceAPIFinder;
@@ -79,14 +80,14 @@ public class TextView extends View {
         int height;
 
         if (l instanceof AbsoluteLayout.LayoutParams) {
-            Rect size = xmlvmGetTextSize();
+            RectF size = xmlvmGetTextSize();
             width = l.width == LayoutParams.WRAP_CONTENT ? (int) size.width() + 2 * INSETS_X
                     : l.width;
             height = l.height == LayoutParams.WRAP_CONTENT ? (int) size.height() + 2 * INSETS_Y
                     : l.height;
 
             xmlvmGetViewHandler().setFrame(
-                    new Rect(((AbsoluteLayout.LayoutParams) l).x,
+                    new RectF(((AbsoluteLayout.LayoutParams) l).x,
                             ((AbsoluteLayout.LayoutParams) l).y,
                             ((AbsoluteLayout.LayoutParams) l).x + width,
                             ((AbsoluteLayout.LayoutParams) l).y + height));
@@ -255,7 +256,7 @@ public class TextView extends View {
         int minWidth = getSuggestedMinimumWidth();
         int minHeight = getSuggestedMinimumHeight();
 
-        Rect size = xmlvmGetTextSize();
+        RectF size = xmlvmGetTextSize();
         int width = MeasureSpec.getMode(widthMeasureSpec) == MeasureSpec.EXACTLY ? MeasureSpec
                 .getSize(widthMeasureSpec) : Math.max(2 * xmlvmGetInsetsX(), paddingLeft
                 + paddingRight)
@@ -267,8 +268,8 @@ public class TextView extends View {
         setMeasuredDimension(Math.max(width, minWidth), Math.max(height, minHeight));
     }
 
-    protected Rect xmlvmGetTextSize() {
-        Rect rect = CommonDeviceAPIFinder.instance().getProperties().getApplicationFrame();
+    protected RectF xmlvmGetTextSize() {
+        RectF rect = CommonDeviceAPIFinder.instance().getProperties().getApplicationFrame();
         int orientation = Application.getApplication().xmlvmGetCurrentInterfaceOrientation();
         if (orientation == CommonProperties.ORIENTATION_LANDSCAPE_LEFT
                 || orientation == CommonProperties.ORIENTATION_LANDSCAPE_RIGHT) {
@@ -278,7 +279,7 @@ public class TextView extends View {
         }
         
         Rect totalPaddings = computeTotalPadding();
-        Rect constraints = new Rect(0, 0, rect.width() - totalPaddings.width(), rect.height()
+        RectF constraints = new RectF(0, 0, rect.width() - totalPaddings.width(), rect.height()
                 - totalPaddings.height());
 
         CommonFont font = xmlvmGetCommonDeviceFont();
@@ -290,8 +291,8 @@ public class TextView extends View {
                             CommonDeviceAPIFinder.instance().getFontFactory().labelFontSize());
         }
 
-        Rect mSize = CommonDeviceAPIFinder.instance().getFontFactory().sizeWithFont("M", font);
-        Rect textSize = CommonDeviceAPIFinder.instance().getFontFactory()
+        RectF mSize = CommonDeviceAPIFinder.instance().getFontFactory().sizeWithFont("M", font);
+        RectF textSize = CommonDeviceAPIFinder.instance().getFontFactory()
                 .sizeWithFont(text, font, constraints, CommonFontFactory.LINEBREAK_WORD_WRAP);
         if (text.length() == 0) {
             textSize.bottom = mSize.bottom;

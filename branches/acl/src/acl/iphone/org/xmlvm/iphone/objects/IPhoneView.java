@@ -40,6 +40,7 @@ import android.app.Application;
 import android.content.pm.ActivityInfo;
 import android.graphics.Canvas;
 import android.graphics.Rect;
+import android.graphics.RectF;
 import android.internal.Assert;
 import android.internal.TopActivity;
 import android.view.MotionEvent;
@@ -110,7 +111,7 @@ public class IPhoneView implements CommonView {
     }
 
     @Override
-    public void setFrame(Rect frame) {
+    public void setFrame(RectF frame) {
         this.view.setFrame(IPhoneView.toCGRect(frame));
     }
 
@@ -188,8 +189,8 @@ public class IPhoneView implements CommonView {
     }
 
     @Override
-    public Rect getFrame() {
-        return IPhoneView.toRectangle(this.view.getFrame());
+    public RectF getFrame() {
+        return IPhoneView.toRectFangle(this.view.getFrame());
     }
     
     public boolean xmlvmTouchesEvent(int action, Set<UITouch> touches, UIEvent event) {
@@ -225,23 +226,27 @@ public class IPhoneView implements CommonView {
         this.view.setUserInteractionEnabled(status);
     }
 
-    public static Rect toRectangle(CGRect frame) {
-        return new Rect((int)frame.origin.x, (int)frame.origin.y, (int)frame.origin.x+(int)frame.size.width, (int)frame.origin.y+(int)frame.size.height);
+    public static RectF toRectFangle(CGRect frame) {
+        return new RectF((int)frame.origin.x, (int)frame.origin.y, (int)frame.origin.x+(int)frame.size.width, (int)frame.origin.y+(int)frame.size.height);
     }
     
-    public static Rect toRectangle(CGSize frame) {
-        return new Rect (0, 0, (int)frame.width, (int)frame.height);
+    public static RectF toRectangle(CGSize frame) {
+        return new RectF (0, 0, (int)frame.width, (int)frame.height);
     }
 
+    public static CGRect toCGRect(RectF frame) {
+        return new CGRect(frame.left, frame.top, frame.width(), frame.height());
+    }
+    
     public static CGRect toCGRect(Rect frame) {
-        return new CGRect(frame.left, frame.top, frame.right - frame.left, frame.bottom - frame.top);
+        return new CGRect(frame.left, frame.top, frame.width(), frame.height());
     }
 
-    public static CGSize toCGSize(Rect frame) {
-        return new CGSize(frame.right - frame.left, frame.bottom - frame.top);
+    public static CGSize toCGSize(RectF frame) {
+        return new CGSize(frame.width(), frame.height());
     }
     
-    public static CGPoint toCGPoint(Rect frame) {
+    public static CGPoint toCGPoint(RectF frame) {
         return new CGPoint(frame.left, frame.top);
     }
     

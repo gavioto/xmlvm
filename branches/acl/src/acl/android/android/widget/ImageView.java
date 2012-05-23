@@ -22,6 +22,7 @@ package android.widget;
 
 import android.content.Context;
 import android.graphics.Rect;
+import android.graphics.RectF;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.StateListDrawable;
@@ -29,14 +30,12 @@ import android.internal.CommonDeviceAPIFinder;
 import android.internal.ViewHandler;
 import android.internal.Assert;
 import android.util.AttributeSet;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsoluteLayout.LayoutParams;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 
 import org.xmlvm.common.adapter.BitmapDrawableAdapter;
 import org.xmlvm.common.adapter.ImageViewAdapter;
@@ -194,7 +193,7 @@ public class ImageView extends View {
         int x = l instanceof AbsoluteLayout.LayoutParams ? ((AbsoluteLayout.LayoutParams) l).x : 0;
         int y = l instanceof AbsoluteLayout.LayoutParams ? ((AbsoluteLayout.LayoutParams) l).y : 0;
 
-        xmlvmGetViewHandler().getMetricsView().setFrame(new Rect(x, y, x + width, y + height));
+        xmlvmGetViewHandler().getMetricsView().setFrame(new RectF(x, y, x + width, y + height));
     }
 
     public void setScaleType(ScaleType type) {

@@ -31,6 +31,7 @@ import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.content.ContextWrapper;
 import android.graphics.Rect;
+import android.graphics.RectF;
 import android.internal.CommonDeviceAPIFinder;
 import android.internal.TopActivity;
 import android.view.View;
@@ -64,7 +65,7 @@ public class Application extends ContextWrapper {
         xmlvmFreezeInterfaceOrientation(false);
         xmlvmSetCurrentInterfaceOrientation(CommonProperties.ORIENTATION_PORTRAIT);
         topLevelWindow = CommonDeviceAPIFinder.instance().getWindow();
-        Rect rect = CommonDeviceAPIFinder.instance().getProperties().getScreenBounds();
+        RectF rect = CommonDeviceAPIFinder.instance().getProperties().getScreenBounds();
         topLevelWindow.setFrame(rect);
         topLevelView = CommonDeviceAPIFinder.instance().getWidgetFactory().createView(new View(this));
         topLevelView.setFrame(rect);

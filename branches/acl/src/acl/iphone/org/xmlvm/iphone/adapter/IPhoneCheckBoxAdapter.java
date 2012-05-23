@@ -31,7 +31,7 @@ import org.xmlvm.iphone.UISwitch;
 import org.xmlvm.iphone.UITouch;
 import org.xmlvm.iphone.objects.IPhoneView;
 
-import android.graphics.Rect;
+import android.graphics.RectF;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.CheckBox;
@@ -75,8 +75,8 @@ public class IPhoneCheckBoxAdapter extends IPhoneView implements CheckBoxAdapter
     }
     
     @Override
-    public Rect getFrame() {
-        return new Rect(0, 0, (int) UISwitch.kSwitchButtonWidth, (int) UISwitch.kSwitchButtonHeight);
+    public RectF getFrame() {
+        return new RectF(0, 0, (int) UISwitch.kSwitchButtonWidth, (int) UISwitch.kSwitchButtonHeight);
     }
 
     @Override

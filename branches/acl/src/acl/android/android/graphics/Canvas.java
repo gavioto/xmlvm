@@ -85,8 +85,8 @@ public class Canvas {
     public void drawBitmap(Bitmap bitmap, float left, float top, Paint paint) {
         createContext();
         BitmapDrawableAdapter image = ((BitmapDrawable) (bitmap.getDrawable())).xmlvmGetImage();
-        Rect size = image.getSize();
-        Rect rect = new Rect((int) left, (int) top, (int) left + size.width(), (int) top + size.height());
+        RectF size = image.getSize();
+        RectF rect = new RectF(left, top, left + size.width(), top + size.height());
         context.storeState();
         context.scale(1, -1);
         context.translate(0, -(rect.height() + 2 * rect.top));
@@ -126,7 +126,7 @@ public class Canvas {
         top += 0.5;
         float width = right - left;
         float height = bottom - top;
-        Rect rect = new Rect((int) left, (int) top, (int) (left + width), (int) (top + height));
+        RectF rect = new RectF(left, top, left + width, top + height);
         // xmlvmSetCGContextPaintParameters(paint);
         float[] color = paint.xmlvmGetColor();
         context.setStrokeColor(color);
@@ -155,7 +155,7 @@ public class Canvas {
         left += 0.5;
         top += 0.5;
         float size = 2 * radius;
-        Rect rect = new Rect((int) left, (int) top, (int) (left + size), (int) (top + size));
+        RectF rect = new RectF(left, top, left + size, top + size);
         // xmlvmSetCGContextPaintParameters(paint);
         float[] color = paint.xmlvmGetColor();
         context.setStrokeColor(color);
@@ -210,7 +210,7 @@ public class Canvas {
         Paint.Align align = paint.getTextAlign();
         CommonFont font = paint.xmlvmGetUIFont();
         if (align == Paint.Align.RIGHT || align == Paint.Align.CENTER) {
-            Rect textSize = CommonDeviceAPIFinder.instance().getFontFactory().sizeWithFont(text, font);
+            RectF textSize = CommonDeviceAPIFinder.instance().getFontFactory().sizeWithFont(text, font);
             switch (align) {
             case RIGHT:
                 left -= textSize.width();
@@ -220,7 +220,7 @@ public class Canvas {
                 break;
             }
         }
-        CommonDeviceAPIFinder.instance().getFontFactory().drawAtPoint(text, new Rect((int) left, (int) top, 0, 0), font);
+        CommonDeviceAPIFinder.instance().getFontFactory().drawAtPoint(text, new RectF(left, top, 0, 0), font);
         releaseContext();
     }
 

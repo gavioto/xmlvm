@@ -27,7 +27,7 @@ import org.xmlvm.common.adapter.ToggleButtonAdapter;
 import org.xmlvm.common.objects.CommonView;
 
 import android.app.Application;
-import android.graphics.Rect;
+import android.graphics.RectF;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -106,10 +106,10 @@ public class ViewHandler {
      * @param frame
      *            the CGRect defining the size and location
      */
-    public final void setFrame(Rect frame) {
+    public final void setFrame(RectF frame) {
         layerBack.setFrame(frame);
         if (layerFront != null) {
-            Rect bounds = new Rect(0, 0, frame.width(), frame.height());
+            RectF bounds = new RectF(0, 0, frame.width(), frame.height());
             layerFront.setFrame(bounds);
         }
     }
@@ -266,9 +266,9 @@ public class ViewHandler {
                     throw new RuntimeException("Double initialization of background image object");
                 }
                 int zorder = 0; // somewhere to store the Z-order of the widget
-                Rect frame = layerBack.getFrame(); // First remember the
-                                                   // actual location of the
-                                                   // widget
+                RectF frame = layerBack.getFrame(); // First remember the
+                                                    // actual location of the
+                                                    // widget
                 CommonView superview = layerBack.getSuperview(); // get the
                                                                  // parent
                 // of the widget
@@ -338,8 +338,8 @@ public class ViewHandler {
             } else { // A layer "front" is present, so we have to remove the
                      // UIImageView (the current layer back)
                 int zorder = 0; // somewhere to store the Z-order of the widget
-                Rect frame = layerBack.getFrame(); // Get the location of the
-                                                   // widget
+                RectF frame = layerBack.getFrame(); // Get the location of the
+                                                    // widget
                 CommonView parent = layerBack.getSuperview(); // get the parent
                 // UIView
                 if (parent != null)

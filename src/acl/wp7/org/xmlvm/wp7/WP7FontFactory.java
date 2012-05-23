@@ -24,7 +24,7 @@ import org.xmlvm.common.objects.CommonFont;
 import org.xmlvm.common.subsystems.CommonFontFactory;
 import org.xmlvm.wp7.objects.WP7Font;
 
-import android.graphics.Rect;
+import android.graphics.RectF;
 
 /**
  *
@@ -47,16 +47,16 @@ public class WP7FontFactory implements CommonFontFactory {
     }
 
     @Override
-    public Rect sizeWithFont(String string, CommonFont font) {
+    public RectF sizeWithFont(String string, CommonFont font) {
         //TODO HACK!!!
-        return new Rect(0, 0, 72, 50);
+        return new RectF(0, 0, 72, 50);
     }
 
     @Override
-    public Rect sizeWithFont(String string, CommonFont font, Rect constraints,
+    public RectF sizeWithFont(String string, CommonFont font, RectF constraints,
             int lineBreakMode) {
         //TODO HACK!!!
-        return new Rect(0, 0, 72, 50);
+        return new RectF(0, 0, 72, 50);
     }
 
     @Override
@@ -65,10 +65,10 @@ public class WP7FontFactory implements CommonFontFactory {
     }
 
     /* (non-Javadoc)
-     * @see org.xmlvm.common.subsystems.CommonDeviceFontFactory#drawAtPoint(java.lang.String, android.graphics.Rect, org.xmlvm.common.objects.CommonDeviceFont)
+     * @see org.xmlvm.common.subsystems.CommonDeviceFontFactory#drawAtPoint(java.lang.String, android.graphics.RectF, org.xmlvm.common.objects.CommonDeviceFont)
      */
     @Override
-    public void drawAtPoint(String text, Rect rect, CommonFont font) {
+    public void drawAtPoint(String text, RectF rect, CommonFont font) {
         // TODO Auto-generated method stub
         
     }

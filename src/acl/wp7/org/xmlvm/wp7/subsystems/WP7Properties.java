@@ -23,7 +23,7 @@ package org.xmlvm.wp7.subsystems;
 import org.xmlvm.common.subsystems.CommonProperties;
 
 import Compatlib.System.Windows.Application;
-import android.graphics.Rect;
+import android.graphics.RectF;
 
 /**
  *
@@ -36,13 +36,13 @@ public class WP7Properties implements CommonProperties {
     }
 
     @Override
-    public Rect getScreenBounds() {
-        return new Rect(0, 0, 480, 800);
+    public RectF getScreenBounds() {
+        return new RectF(0, 0, 480, 800);
     }
 
     @Override
-    public Rect getApplicationFrame() {
-        return new Rect(0, 0, 480, 800);
+    public RectF getApplicationFrame() {
+        return new RectF(0, 0, 480, 800);
     }
 
     @Override

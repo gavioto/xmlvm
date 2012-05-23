@@ -29,6 +29,7 @@ import android.app.Application;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.graphics.Rect;
+import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import android.internal.CommonDeviceAPIFinder;
 import android.internal.DecorView;
@@ -188,7 +189,7 @@ public class Window {
         if (iContainerView == null) {
             return;
         }
-        Rect rect = xmlvmGetRect();
+        RectF rect = xmlvmGetRect();
         // AndroidAppLauncher.getApplication().xmlvmGetTopLevelWindow().setFrame(rect);
         // iContainerView.setTransform(null);
         iContainerView.setFrame(rect);
@@ -219,7 +220,7 @@ public class Window {
         }
         int widthMeasureSpec;
         int heightMeasureSpec;
-        Rect rect = xmlvmGetRect();
+        RectF rect = xmlvmGetRect();
         LayoutParams lp = view.getLayoutParams();
 
         if (lp == null || lp.width == LayoutParams.FILL_PARENT) {
@@ -244,10 +245,10 @@ public class Window {
         view.requestLayout();
     }
 
-    public Rect xmlvmGetRect() {
-        Rect rect = CommonDeviceAPIFinder.instance().getProperties().getApplicationFrame();
+    public RectF xmlvmGetRect() {
+        RectF rect = CommonDeviceAPIFinder.instance().getProperties().getApplicationFrame();
         if (activity.getRequestedOrientation() == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE) {
-            int t = rect.height();
+            float t = rect.height();
             rect.bottom = rect.top + rect.width();
             rect.right = rect.left + t;
         }

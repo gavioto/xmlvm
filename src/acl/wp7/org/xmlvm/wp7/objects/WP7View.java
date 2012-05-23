@@ -36,7 +36,7 @@ import Compatlib.System.Windows.Input.ManipulationCompletedEventArgs;
 import Compatlib.System.Windows.Input.ManipulationDeltaEventArgs;
 import Compatlib.System.Windows.Input.ManipulationStartedEventArgs;
 import Compatlib.System.Windows.Media.Stretch;
-import android.graphics.Rect;
+import android.graphics.RectF;
 import android.internal.Assert;
 import android.view.MotionEvent;
 import android.view.View;
@@ -66,14 +66,14 @@ public class WP7View extends Object implements CommonView {
     }
 
     @Override
-    public Rect getFrame() {
-        return WP7View.toRectangle(element.getDesiredSize());
+    public RectF getFrame() {
+        return WP7View.toRectFangle(element.getDesiredSize());
     }
 
     @Override
-    public void setFrame(Rect frame) {
+    public void setFrame(RectF frame) {
         element.Measure(WP7View.toSize(frame));
-        element.xmlvmSetXY(frame.top, frame.left);
+        element.xmlvmSetXY((int) frame.top, (int) frame.left);
     }
 
     @Override
@@ -171,11 +171,11 @@ public class WP7View extends Object implements CommonView {
         return false;
     }    
     
-    public static Rect toRectangle(Size desiredSize) {
-        return new Rect(0, 0, (int) desiredSize.getWidth(), (int) desiredSize.getHeight());
+    public static RectF toRectFangle(Size desiredSize) {
+        return new RectF(0, 0, (int) desiredSize.getWidth(), (int) desiredSize.getHeight());
     }
     
-    public static Size toSize(Rect frame) {
+    public static Size toSize(RectF frame) {
         return new Size(frame.right - frame.left, frame.bottom - frame.top);
     }
 

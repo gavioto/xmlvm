@@ -31,7 +31,7 @@ import org.xmlvm.iphone.UITouch;
 import org.xmlvm.iphone.UIEvent;
 import org.xmlvm.iphone.objects.IPhoneView;
 
-import android.graphics.Rect;
+import android.graphics.RectF;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ProgressBar;

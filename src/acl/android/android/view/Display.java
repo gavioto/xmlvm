@@ -25,7 +25,7 @@ import org.xmlvm.common.subsystems.CommonProperties;
 import android.app.Activity;
 import android.app.Application;
 import android.content.pm.ActivityInfo;
-import android.graphics.Rect;
+import android.graphics.RectF;
 import android.internal.Assert;
 import android.internal.CommonDeviceAPIFinder;
 import android.internal.ConfigurationFactory;
@@ -40,7 +40,7 @@ public class Display {
      */
     public int getWidth() {
         Activity activity = TopActivity.get();
-        Rect s = CommonDeviceAPIFinder.instance().getProperties().getScreenBounds();
+        RectF s = CommonDeviceAPIFinder.instance().getProperties().getScreenBounds();
         return (int) (activity.getRequestedOrientation() == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE ? s.bottom
                 : s.right);
     }
@@ -51,13 +51,13 @@ public class Display {
      */
     public int getHeight() {
         Activity activity = TopActivity.get();
-        Rect s = CommonDeviceAPIFinder.instance().getProperties().getScreenBounds();
+        RectF s = CommonDeviceAPIFinder.instance().getProperties().getScreenBounds();
         return (int) (activity.getRequestedOrientation() == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE ? s.right
                 : s.bottom);
     }
 
     public void getMetrics(DisplayMetrics metrics) {
-        Rect size = CommonDeviceAPIFinder.instance().getProperties().getScreenBounds();
+        RectF size = CommonDeviceAPIFinder.instance().getProperties().getScreenBounds();
         metrics.heightPixels = (int) size.height();
         metrics.widthPixels = (int) size.width();
 

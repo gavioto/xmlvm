@@ -28,7 +28,7 @@ import org.xmlvm.common.objects.CommonFont;
 import org.xmlvm.common.objects.CommonView;
 
 import android.content.Context;
-import android.graphics.Rect;
+import android.graphics.RectF;
 import android.internal.Assert;
 import android.internal.CommonDeviceAPIFinder;
 import android.util.AttributeSet;
@@ -245,7 +245,7 @@ public class RadioGroup extends LinearLayout {
         float maxWidth = 0.0f;
         float maxHeight = 0.0f;
         for (RadioButton rb : radioButtons) {
-            Rect s = getTextSize(rb.getText());
+            RectF s = getTextSize(rb.getText());
             if (s.width() > maxWidth) {
                 maxWidth = s.width();
             }
@@ -274,11 +274,11 @@ public class RadioGroup extends LinearLayout {
      * 
      */
 
-    private Rect getTextSize(String text) {
+    private RectF getTextSize(String text) {
         CommonFont font = CommonDeviceAPIFinder.instance().getFontFactory().systemFontOfSize(CommonDeviceAPIFinder.instance().getFontFactory().labelFontSize());
 
-        Rect mSize = CommonDeviceAPIFinder.instance().getFontFactory().sizeWithFont("M", font);
-        Rect textSize = CommonDeviceAPIFinder.instance().getFontFactory().sizeWithFont(text, font);
+        RectF mSize = CommonDeviceAPIFinder.instance().getFontFactory().sizeWithFont("M", font);
+        RectF textSize = CommonDeviceAPIFinder.instance().getFontFactory().sizeWithFont(text, font);
         if (text.length() == 0) {
             textSize.bottom = textSize.top + mSize.height();
         }

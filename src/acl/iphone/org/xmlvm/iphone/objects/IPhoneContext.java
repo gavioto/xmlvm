@@ -31,7 +31,7 @@ import org.xmlvm.iphone.UIImage;
 import org.xmlvm.iphone.adapter.IPhoneBitmapDrawableAdapter;
 
 import android.graphics.Bitmap;
-import android.graphics.Rect;
+import android.graphics.RectF;
 import android.graphics.drawable.BitmapDrawable;
 
 /**
@@ -142,28 +142,28 @@ public class IPhoneContext implements CommonContext {
     }
 
     @Override
-    public void drawImage(Rect rect, BitmapDrawableAdapter image) {
+    public void drawImage(RectF rect, BitmapDrawableAdapter image) {
         context.drawImage(IPhoneView.toCGRect(rect), ((IPhoneBitmapDrawableAdapter) image)
                 .getImage().getCGImage());
     }
 
     @Override
-    public void fillRect(Rect rect) {
+    public void fillRect(RectF rect) {
         context.fillRect(IPhoneView.toCGRect(rect));
     }
 
     @Override
-    public void strokeRect(Rect rect) {
+    public void strokeRect(RectF rect) {
         context.strokeRect(IPhoneView.toCGRect(rect));
     }
 
     @Override
-    public void fillEllipseInRect(Rect rect) {
+    public void fillEllipseInRect(RectF rect) {
         context.fillEllipseInRect(IPhoneView.toCGRect(rect));
     }
 
     @Override
-    public void strokeEllipseInRect(Rect rect) {
+    public void strokeEllipseInRect(RectF rect) {
         context.strokeEllipseInRect(IPhoneView.toCGRect(rect));
     }
 

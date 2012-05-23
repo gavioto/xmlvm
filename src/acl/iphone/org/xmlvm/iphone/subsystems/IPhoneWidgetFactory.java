@@ -59,7 +59,7 @@ import org.xmlvm.iphone.objects.IPhoneView;
 import android.app.AlertDialog;
 import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
-import android.graphics.Rect;
+import android.graphics.RectF;
 import android.internal.TopActivity;
 import android.media.MediaPlayer;
 import android.view.View;

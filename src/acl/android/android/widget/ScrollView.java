@@ -22,6 +22,7 @@ package android.widget;
 
 import android.content.Context;
 import android.graphics.Rect;
+import android.graphics.RectF;
 import android.internal.CommonDeviceAPIFinder;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -64,7 +65,7 @@ public class ScrollView extends FrameLayout {
         viewOriginLeft = Math.max(0, viewOriginLeft);
         viewOriginTop = Math.min((int) rect.height() - getHeight(), viewOriginTop);
         viewOriginTop = Math.max(0, viewOriginTop);
-        ((ScrollViewAdapter) xmlvmGetViewHandler().getContentView()).setContentOffset(new Rect(viewOriginLeft, viewOriginTop, 0, 0), true);
+        ((ScrollViewAdapter) xmlvmGetViewHandler().getContentView()).setContentOffset(new RectF(viewOriginLeft, viewOriginTop, 0, 0), true);
     }
 
     @Override

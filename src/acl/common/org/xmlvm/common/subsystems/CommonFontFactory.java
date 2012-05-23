@@ -22,7 +22,7 @@ package org.xmlvm.common.subsystems;
 
 import org.xmlvm.common.objects.CommonFont;
 
-import android.graphics.Rect;
+import android.graphics.RectF;
 
 /**
  *
@@ -42,12 +42,12 @@ public interface CommonFontFactory {
 
     CommonFont fontWithNameSize(String string, float pointSize);
 
-    Rect sizeWithFont(String string, CommonFont font);
+    RectF sizeWithFont(String string, CommonFont font);
     
-    Rect sizeWithFont(String string, CommonFont font, Rect constraints, int lineBreakMode);
+    RectF sizeWithFont(String string, CommonFont font, RectF constraints, int lineBreakMode);
 
     int getAlignmentFromGravity(int gravity);
 
-    void drawAtPoint(String text, Rect rect, CommonFont font);
+    void drawAtPoint(String text, RectF rect, CommonFont font);
     
 }

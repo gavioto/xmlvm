@@ -22,7 +22,7 @@ package org.xmlvm.common.objects;
 
 import java.util.List;
 
-import android.graphics.Rect;
+import android.graphics.RectF;
 
 
 /**
@@ -52,8 +52,8 @@ public interface CommonView {
     public static final int BOTTOM_RIGHT = 12;
     
 
-    Rect getFrame();
-    void setFrame(Rect frame);
+    RectF getFrame();
+    void setFrame(RectF frame);
     
     void setHidden(boolean b);
     void setNeedsDisplay();

@@ -98,11 +98,11 @@ public class IPhoneWebViewAdapter extends IPhoneView implements WebViewAdapter {
         public void webViewDidStartLoad(UIWebView webView) {
             spinner = new UIActivityIndicatorView();
             spinner.setActivityIndicatorViewStyle(UIActivityIndicatorViewStyle.Gray);
-            CGRect webViewRect = webView.getBounds();
-            CGRect spinnerRect = spinner.getBounds();
-            spinnerRect.origin.x = (webViewRect.size.width - spinnerRect.size.width) / 2;
-            spinnerRect.origin.y = (webViewRect.size.height - spinnerRect.size.height) / 2;
-            spinner.setFrame(spinnerRect);
+            CGRect webViewRectF = webView.getBounds();
+            CGRect spinnerRectF = spinner.getBounds();
+            spinnerRectF.origin.x = (webViewRectF.size.width - spinnerRectF.size.width) / 2;
+            spinnerRectF.origin.y = (webViewRectF.size.height - spinnerRectF.size.height) / 2;
+            spinner.setFrame(spinnerRectF);
             webView.addSubview(spinner);
             spinner.startAnimating();
         }

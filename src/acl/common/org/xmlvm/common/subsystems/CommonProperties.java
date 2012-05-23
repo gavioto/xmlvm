@@ -20,7 +20,7 @@
 
 package org.xmlvm.common.subsystems;
 
-import android.graphics.Rect;
+import android.graphics.RectF;
 
 /**
  *
@@ -52,8 +52,8 @@ public interface CommonProperties {
     public static final int DEVICE_WP7 = 4;
 
     public int detectDevice();
-    public Rect getScreenBounds();
-    public Rect getApplicationFrame();
+    public RectF getScreenBounds();
+    public RectF getApplicationFrame();
     public int getOrientation();
     public void setOrientation(int orientation);
     public void setStatusBarHidden(boolean b);

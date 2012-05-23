@@ -38,7 +38,7 @@ import org.xmlvm.common.objects.CommonView;
 
 import android.app.AlertDialog;
 import android.graphics.Bitmap;
-import android.graphics.Rect;
+import android.graphics.RectF;
 import android.media.MediaPlayer;
 import android.view.View;
 import android.webkit.WebView;

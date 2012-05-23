@@ -29,7 +29,7 @@ import org.xmlvm.iphone.UITouch;
 import org.xmlvm.iphone.UIEvent;
 import org.xmlvm.iphone.objects.IPhoneView;
 
-import android.graphics.Rect;
+import android.graphics.RectF;
 import android.view.MotionEvent;
 import android.widget.ScrollView;
 
@@ -89,7 +89,7 @@ public class IPhoneScrollViewAdapter extends IPhoneView implements ScrollViewAda
      * @see org.xmlvm.common.adapter.ScrollViewAdapter#setContentOffset(int, int, boolean)
      */
     @Override
-    public void setContentOffset(Rect rect, boolean b) {
+    public void setContentOffset(RectF rect, boolean b) {
         ((UIScrollView)this.getView()).setContentOffset(IPhoneView.toCGPoint(rect), b);
     }
 

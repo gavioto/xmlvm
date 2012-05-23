@@ -29,7 +29,7 @@ import org.xmlvm.iphone.UIDeviceOrientation;
 import org.xmlvm.iphone.UIInterfaceOrientation;
 import org.xmlvm.iphone.UIScreen;
 
-import android.graphics.Rect;
+import android.graphics.RectF;
 import android.internal.CommonDeviceAPIFinder;
 
 /**
@@ -38,25 +38,25 @@ import android.internal.CommonDeviceAPIFinder;
 public class IPhoneProperties implements CommonProperties {
 
     @Override
-    public Rect getScreenBounds() {
+    public RectF getScreenBounds() {
         CGSize size = UIScreen.mainScreen().getBounds().size;
-        return new Rect(0, 0, (int) size.width, (int) size.height);
+        return new RectF(0, 0, (int) size.width, (int) size.height);
     }
 
     @Override
-    public Rect getApplicationFrame() {
+    public RectF getApplicationFrame() {
         CGRect rect = UIScreen.mainScreen().getApplicationFrame();
-        return new Rect((int) rect.origin.x, (int) rect.origin.y,
+        return new RectF((int) rect.origin.x, (int) rect.origin.y,
                 (int) (rect.origin.x + rect.size.width), (int) (rect.origin.y + rect.size.height));
     }
 
     @Override
     public int detectDevice() {
-        Rect rect = CommonDeviceAPIFinder.instance().getProperties().getScreenBounds();
+        RectF rect = CommonDeviceAPIFinder.instance().getProperties().getScreenBounds();
 
         // Determine configuration based on the sum of width and height, which
         // is unique for all iPhone and iPad devices
-        int totalPixels = (int) rect.right + (int) rect.bottom;
+        int totalPixels = (int) rect.width() + (int) rect.height();
 
         switch (totalPixels) {
         // All iPhone before iPhone4

@@ -26,6 +26,7 @@ import Compatlib.System.Uri;
 import Compatlib.System.UriKind;
 import Compatlib.System.Windows.Media.Imaging.BitmapImage;
 import android.graphics.Rect;
+import android.graphics.RectF;
 
 /**
  *
@@ -76,7 +77,7 @@ public class WP7BitmapDrawableAdapter implements BitmapDrawableAdapter {
     }
 
     /* (non-Javadoc)
-     * @see org.xmlvm.common.adapter.BitmapDrawableAdapter#drawInRect(android.graphics.Rect)
+     * @see org.xmlvm.common.adapter.BitmapDrawableAdapter#drawInRectF(android.graphics.RectF)
      */
     @Override
     public void drawInRect(Rect r) {
@@ -88,7 +89,7 @@ public class WP7BitmapDrawableAdapter implements BitmapDrawableAdapter {
      * @see org.xmlvm.common.adapter.BitmapDrawableAdapter#getSize()
      */
     @Override
-    public Rect getSize() {
+    public RectF getSize() {
         // TODO Auto-generated method stub
         return null;
     }

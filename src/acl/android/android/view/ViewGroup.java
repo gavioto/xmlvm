@@ -27,6 +27,7 @@ import java.util.Map;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Rect;
+import android.graphics.RectF;
 import android.internal.Assert;
 import android.internal.Dimension;
 import android.util.AttributeSet;
@@ -168,7 +169,7 @@ public class ViewGroup extends View implements ViewParent {
         this.subViews = new ArrayList<View>();
 
         if (c instanceof Activity) {
-            Rect rect = ((Activity) c).getWindow().xmlvmGetRect();
+            RectF rect = ((Activity) c).getWindow().xmlvmGetRect();
             this.xmlvmGetViewHandler().setFrame(rect);
         }
 

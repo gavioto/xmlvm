@@ -127,7 +127,7 @@
 		<javac destdir="${xmlvm.android-ios-compat-lib.java}" debug="${debug}">
 			<src path="./src/acl/android" />
 			<src path="./src/acl/common" />
-			<src path="./src/acl/iphone" />
+			<src path="./src/acl/ios" />
 			<classpath>
 				<pathelement location="${xmlvm.libjars}/objc-compat.jar" />
 				<pathelement location="${xmlvm.bin}" />
@@ -332,7 +332,7 @@
 		<javac destdir="${xmlvm.iphone-android-java}" debug="${debug}">
 			<src path="./src/acl/android" />
 			<src path="./src/acl/common" />
-			<src path="./src/acl/iphone" />
+			<src path="./src/acl/ios" />
 			<classpath>
 				<pathelement location="${xmlvm.libjars}/objc-compat.jar" />
 				<pathelement location="${xmlvm.bin}" />

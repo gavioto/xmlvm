@@ -298,7 +298,6 @@ public class ViewHandler {
                                                 // the
                                                 // old
                                                 // widget
-                layerBack.setContentMode(CommonView.SCALE_ASPECT_FIT);
                 ((ImageViewAdapter) layerBack).setImage(img); // set the image
                                                               // of
                 // uiimageview
@@ -377,4 +376,5 @@ public class ViewHandler {
         return (layerBack instanceof ImageViewAdapter) ? ((ImageViewAdapter) layerBack).getImage()
                 : null;
     }
+
 }

@@ -26,10 +26,8 @@ import org.xmlvm.common.adapter.ImageViewAdapter;
 import org.xmlvm.common.adapter.ToggleButtonAdapter;
 import org.xmlvm.common.objects.CommonView;
 
-import android.app.Application;
 import android.graphics.RectF;
 import android.view.View;
-import android.widget.ImageView;
 
 /**
  * This object is the link between the native UI objects of iPhone and the View
@@ -287,19 +285,20 @@ public class ViewHandler {
                                                  // parent
                 layerFront = layerBack; // the back layer will be put in front
                 layerBack = CommonDeviceAPIFinder.instance().getWidgetFactory()
-                        .createImageView(new ImageView(Application.getApplication())); // create
-                                                                                       // a
-                                                                                       // new
-                                                                                       // UIImageView
-                                                                                       // which
-                                                                                       // will
-                                                                                       // be
-                                                                                       // the
-                                                                                       // container
-                                                                                       // of
-                                                                                       // the
-                                                                                       // old
-                                                                                       // widget
+                        .createImageView(null); // create
+                                                // a
+                                                // new
+                                                // UIImageView
+                                                // which
+                                                // will
+                                                // be
+                                                // the
+                                                // container
+                                                // of
+                                                // the
+                                                // old
+                                                // widget
+                layerBack.setContentMode(CommonView.SCALE_ASPECT_FIT);
                 ((ImageViewAdapter) layerBack).setImage(img); // set the image
                                                               // of
                 // uiimageview

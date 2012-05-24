@@ -25,8 +25,8 @@ import android.content.Context;
 import android.internal.CommonDeviceAPIFinder;
 import android.util.AttributeSet;
 
-import org.xmlvm.common.adapter.ToggleButtonAdapter;
-import org.xmlvm.common.objects.CommonView;
+import org.xmlvm.acl.common.adapter.ToggleButtonAdapter;
+import org.xmlvm.acl.common.objects.CommonView;
 
 public class ToggleButton extends CompoundButton {
 

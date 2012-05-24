@@ -18,7 +18,7 @@ package android.util;
 
 //import android.content.res.CompatibilityInfo;
 
-import org.xmlvm.common.subsystems.CommonProperties;
+import org.xmlvm.acl.common.subsystems.CommonProperties;
 
 import android.content.res.Configuration;
 import android.internal.ConfigurationFactory;

@@ -23,7 +23,7 @@ package android.hardware;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.xmlvm.common.subsystems.CommonAccelerometer;
+import org.xmlvm.acl.common.subsystems.CommonAccelerometer;
 
 import android.app.Application;
 import android.internal.CommonDeviceAPIFinder;

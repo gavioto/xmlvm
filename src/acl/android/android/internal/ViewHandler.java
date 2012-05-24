@@ -20,11 +20,11 @@
 
 package android.internal;
 
-import org.xmlvm.common.adapter.BitmapDrawableAdapter;
-import org.xmlvm.common.adapter.ButtonAdapter;
-import org.xmlvm.common.adapter.ImageViewAdapter;
-import org.xmlvm.common.adapter.ToggleButtonAdapter;
-import org.xmlvm.common.objects.CommonView;
+import org.xmlvm.acl.common.adapter.BitmapDrawableAdapter;
+import org.xmlvm.acl.common.adapter.ButtonAdapter;
+import org.xmlvm.acl.common.adapter.ImageViewAdapter;
+import org.xmlvm.acl.common.adapter.ToggleButtonAdapter;
+import org.xmlvm.acl.common.objects.CommonView;
 
 import android.graphics.RectF;
 import android.view.View;

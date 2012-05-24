@@ -20,8 +20,8 @@
 
 package android.app;
 
-import org.xmlvm.common.adapter.AlertDialogAdapter;
-import org.xmlvm.common.subsystems.CommonWidgetFactory;
+import org.xmlvm.acl.common.adapter.AlertDialogAdapter;
+import org.xmlvm.acl.common.subsystems.CommonWidgetFactory;
 
 import android.content.Context;
 import android.content.DialogInterface;

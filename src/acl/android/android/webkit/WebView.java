@@ -20,8 +20,8 @@
 
 package android.webkit;
 
-import org.xmlvm.common.adapter.WebViewAdapter;
-import org.xmlvm.common.objects.CommonView;
+import org.xmlvm.acl.common.adapter.WebViewAdapter;
+import org.xmlvm.acl.common.objects.CommonView;
 
 import android.content.Context;
 import android.internal.CommonDeviceAPIFinder;

@@ -20,9 +20,9 @@
 
 package android.graphics;
 
-import org.xmlvm.common.adapter.BitmapDrawableAdapter;
-import org.xmlvm.common.objects.CommonContext;
-import org.xmlvm.common.objects.CommonFont;
+import org.xmlvm.acl.common.adapter.BitmapDrawableAdapter;
+import org.xmlvm.acl.common.objects.CommonContext;
+import org.xmlvm.acl.common.objects.CommonFont;
 
 import android.graphics.Paint.Style;
 import android.graphics.drawable.BitmapDrawable;

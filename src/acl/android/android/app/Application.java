@@ -22,9 +22,9 @@ package android.app;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.xmlvm.common.objects.CommonView;
-import org.xmlvm.common.subsystems.CommonProperties;
-import org.xmlvm.common.subsystems.CommonWindow;
+import org.xmlvm.acl.common.objects.CommonView;
+import org.xmlvm.acl.common.subsystems.CommonProperties;
+import org.xmlvm.acl.common.subsystems.CommonWindow;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;

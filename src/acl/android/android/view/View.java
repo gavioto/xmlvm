@@ -25,8 +25,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Set;
 
-import org.xmlvm.common.adapter.BitmapDrawableAdapter;
-import org.xmlvm.common.objects.CommonView;
+import org.xmlvm.acl.common.adapter.BitmapDrawableAdapter;
+import org.xmlvm.acl.common.objects.CommonView;
 
 import android.content.Context;
 import android.content.res.Resources;

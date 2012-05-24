@@ -20,7 +20,7 @@
 
 package android.os;
 
-import org.xmlvm.common.subsystems.CommonDispatcher;
+import org.xmlvm.acl.common.subsystems.CommonDispatcher;
 
 import android.internal.Assert;
 import android.internal.CommonDeviceAPIFinder;

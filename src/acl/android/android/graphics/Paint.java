@@ -23,8 +23,8 @@ package android.graphics;
  import android.text.GraphicsOperations;
  */
 
-import org.xmlvm.common.objects.CommonContext;
-import org.xmlvm.common.objects.CommonFont;
+import org.xmlvm.acl.common.objects.CommonContext;
+import org.xmlvm.acl.common.objects.CommonFont;
 
 import android.internal.Assert;
 import android.internal.CommonDeviceAPIFinder;

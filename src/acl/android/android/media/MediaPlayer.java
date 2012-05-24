@@ -26,7 +26,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.lang.ref.WeakReference;
 
-import org.xmlvm.common.subsystems.CommonMediaPlayer;
+import org.xmlvm.acl.common.subsystems.CommonMediaPlayer;
 
 import android.content.Context;
 import android.internal.CommonDeviceAPIFinder;

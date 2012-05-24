@@ -38,9 +38,9 @@ import android.widget.ImageView.ScaleType;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.xmlvm.common.adapter.BitmapDrawableAdapter;
-import org.xmlvm.common.adapter.ImageViewAdapter;
-import org.xmlvm.common.objects.CommonView;
+import org.xmlvm.acl.common.adapter.BitmapDrawableAdapter;
+import org.xmlvm.acl.common.adapter.ImageViewAdapter;
+import org.xmlvm.acl.common.objects.CommonView;
 
 public class ImageView extends View {
 

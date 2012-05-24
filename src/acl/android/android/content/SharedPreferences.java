@@ -20,7 +20,7 @@
 
 package android.content;
 
-import org.xmlvm.common.subsystems.CommonPreferences;
+import org.xmlvm.acl.common.subsystems.CommonPreferences;
 
 import android.internal.Assert;
 import android.internal.CommonDeviceAPIFinder;

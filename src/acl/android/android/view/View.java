@@ -1081,8 +1081,10 @@ public class View {
     
     public void refreshBackground() {
         Drawable drawable = this.backgroundDrawable;
-        setBackgroundDrawable(null);
-        setBackgroundDrawable(drawable);
+        if(this.backgroundDrawable != null) {
+            setBackgroundDrawable(null);
+            setBackgroundDrawable(drawable);
+        }
     }
 
 }

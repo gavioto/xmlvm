@@ -33,6 +33,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsoluteLayout.LayoutParams;
+import android.widget.ImageView.ScaleType;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -123,6 +124,7 @@ public class ImageView extends View {
 
 
     protected Drawable drawable;
+    private int type;
 
 
     public ImageView(Context c) {
@@ -146,6 +148,10 @@ public class ImageView extends View {
         if (attrs != null && attrs.getAttributeCount() > 0) {
             parseImageViewAttributes(attrs);
         }
+        
+        if(this.drawable == null) {
+            setImageDrawable(null);
+        }
     }
 
     public void setImageResource(int resId) {
@@ -158,6 +164,9 @@ public class ImageView extends View {
         if (drawable instanceof BitmapDrawable) {
             ((ImageViewAdapter) xmlvmGetViewHandler().getContentView())
                     .setImage(((BitmapDrawable) drawable).xmlvmGetImage());
+            xmlvmGetViewHandler().getContentView().setContentMode(this.type);
+            
+            refreshBackground();
         } else if (drawable instanceof StateListDrawable) {
             refreshImageStateDrawable();
         } else if (drawable == null) {
@@ -201,15 +210,19 @@ public class ImageView extends View {
         switch (type) {
         case CENTER:
             view.setContentMode(CommonView.CENTER);
+            this.type = CommonView.CENTER;
             break;
         case CENTER_CROP:
             view.setContentMode(CommonView.SCALE_ASPECT_FILL);
+            this.type = CommonView.SCALE_ASPECT_FILL;
             break;
         case CENTER_INSIDE:
             view.setContentMode(CommonView.SCALE_ASPECT_FIT);
+            this.type = CommonView.SCALE_ASPECT_FIT;
             break;
         case FIT_CENTER:
             view.setContentMode(CommonView.SCALE_ASPECT_FIT);
+            this.type = CommonView.SCALE_ASPECT_FIT;
             break;
         case FIT_END:
             Assert.NOT_IMPLEMENTED();
@@ -219,6 +232,7 @@ public class ImageView extends View {
             break;
         case FIT_XY:
             view.setContentMode(CommonView.SCALE_TO_FILL);
+            this.type = CommonView.SCALE_TO_FILL;
             break;
         case MATRIX:
             Assert.NOT_IMPLEMENTED();

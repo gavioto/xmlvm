@@ -513,6 +513,7 @@ public class View {
 
         requestLayout();
     }
+    
 
     public void setBackgroundColor(int color) {
         viewHandler.setBackgroundColor(color);
@@ -1076,6 +1077,12 @@ public class View {
             viewTreeObserver = new ViewTreeObserver();
         }
         return viewTreeObserver;
+    }
+    
+    public void refreshBackground() {
+        Drawable drawable = this.backgroundDrawable;
+        setBackgroundDrawable(null);
+        setBackgroundDrawable(drawable);
     }
 
 }

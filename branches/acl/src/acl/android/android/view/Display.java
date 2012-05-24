@@ -20,7 +20,7 @@
 
 package android.view;
 
-import org.xmlvm.common.subsystems.CommonProperties;
+import org.xmlvm.acl.common.subsystems.CommonProperties;
 
 import android.app.Activity;
 import android.app.Application;

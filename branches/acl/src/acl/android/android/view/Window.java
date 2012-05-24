@@ -20,9 +20,9 @@
 
 package android.view;
 
-import org.xmlvm.common.adapter.ScrollViewAdapter;
-import org.xmlvm.common.objects.CommonView;
-import org.xmlvm.common.subsystems.CommonTextFieldDelegate;
+import org.xmlvm.acl.common.adapter.ScrollViewAdapter;
+import org.xmlvm.acl.common.objects.CommonView;
+import org.xmlvm.acl.common.subsystems.CommonTextFieldDelegate;
 
 import android.app.Activity;
 import android.app.Application;

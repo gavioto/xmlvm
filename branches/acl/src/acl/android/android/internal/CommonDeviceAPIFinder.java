@@ -20,7 +20,7 @@
 
 package android.internal;
 
-import org.xmlvm.common.CommonDeviceAPI;
+import org.xmlvm.acl.common.CommonDeviceAPI;
 
 /**
  *

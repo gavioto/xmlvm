@@ -20,7 +20,7 @@
 
 package android.graphics.drawable;
 
-import org.xmlvm.common.adapter.BitmapDrawableAdapter;
+import org.xmlvm.acl.common.adapter.BitmapDrawableAdapter;
 
 import android.graphics.Canvas;
 import android.graphics.Rect;

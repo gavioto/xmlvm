@@ -28,7 +28,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import java.util.Set;
 
-import org.xmlvm.common.objects.CommonView;
+import org.xmlvm.acl.common.objects.CommonView;
 
 /* TODO: This implementation of ProgressBar is currently hard coded
  * for indeterminate mode.

@@ -20,11 +20,11 @@
 
 package android.widget;
 
-import org.xmlvm.common.adapter.TextViewAdapter;
-import org.xmlvm.common.objects.CommonFont;
-import org.xmlvm.common.objects.CommonView;
-import org.xmlvm.common.subsystems.CommonFontFactory;
-import org.xmlvm.common.subsystems.CommonProperties;
+import org.xmlvm.acl.common.adapter.TextViewAdapter;
+import org.xmlvm.acl.common.objects.CommonFont;
+import org.xmlvm.acl.common.objects.CommonView;
+import org.xmlvm.acl.common.subsystems.CommonFontFactory;
+import org.xmlvm.acl.common.subsystems.CommonProperties;
 
 import android.app.Application;
 import android.content.Context;

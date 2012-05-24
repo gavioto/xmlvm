@@ -20,8 +20,8 @@
 
 package android.widget;
 
-import org.xmlvm.common.adapter.CheckBoxAdapter;
-import org.xmlvm.common.objects.CommonView;
+import org.xmlvm.acl.common.adapter.CheckBoxAdapter;
+import org.xmlvm.acl.common.objects.CommonView;
 
 import android.content.Context;
 import android.graphics.RectF;

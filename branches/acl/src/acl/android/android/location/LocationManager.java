@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
-import org.xmlvm.common.subsystems.CommonLocationManager;
+import org.xmlvm.acl.common.subsystems.CommonLocationManager;
 
 import android.internal.CommonDeviceAPIFinder;
 

@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_CAShapeLayer();
 }
 @end
+
 void org_xmlvm_ios_CAShapeLayer_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_CALayer_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -61,8 +62,8 @@ __DELETE_org_xmlvm_ios_CALayer(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CAShapeLayer_getPath__]
 
     XMLVM_VAR_THIZ;
-    CGPathRef objCObj = [thiz path];XMLVM_VAR_INIT_REF(CGPath, objCObj);
-    return jvar;
+    CGPathRef objCObj = [thiz path];XMLVM_VAR_INIT_REF(CGPath, refVar, objCObj);
+    return refVar;
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CAShapeLayer_setPath___org_xmlvm_ios_CGPath]
@@ -77,8 +78,8 @@ __DELETE_org_xmlvm_ios_CALayer(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CAShapeLayer_getFillColor__]
 
     XMLVM_VAR_THIZ;
-    CGColorRef objCObj = [thiz fillColor];XMLVM_VAR_INIT_REF(CGColor, objCObj);
-    return jvar;
+    CGColorRef objCObj = [thiz fillColor];XMLVM_VAR_INIT_REF(CGColor, refVar, objCObj);
+    return refVar;
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CAShapeLayer_setFillColor___org_xmlvm_ios_CGColor]
@@ -111,8 +112,8 @@ __DELETE_org_xmlvm_ios_CALayer(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CAShapeLayer_getStrokeColor__]
 
     XMLVM_VAR_THIZ;
-    CGColorRef objCObj = [thiz strokeColor];XMLVM_VAR_INIT_REF(CGColor, objCObj);
-    return jvar;
+    CGColorRef objCObj = [thiz strokeColor];XMLVM_VAR_INIT_REF(CGColor, refVar, objCObj);
+    return refVar;
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CAShapeLayer_setStrokeColor___org_xmlvm_ios_CGColor]

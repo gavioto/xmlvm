@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_MIDIThruConnection();
 }
 @end
+
 void org_xmlvm_ios_MIDIThruConnection_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_MIDIObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -59,7 +60,7 @@ NSString * ObjCVar1 = toNSString(n1);
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MIDIThruConnection_getParams___org_xmlvm_ios_Reference<CFData>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MIDIThruConnection_getParams___org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
@@ -69,7 +70,15 @@ XMLVM_NOT_IMPLEMENTED();
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MIDIThruConnection_find___java_lang_String_org_xmlvm_ios_Reference<CFData>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MIDIThruConnection_find___java_lang_String_org_xmlvm_ios_Reference]
+NSString * ObjCVar1 = toNSString(n1);
+    JAVA_OBJECT jObject2 = org_xmlvm_ios_Reference_get__(n2);
+    XMLVM_VAR_IOS(CFData, var2, jObject2);
+    
+    int objCObj = CFDataFind(ObjCVar1,&var2);
+    org_xmlvm_ios_Reference_set___java_lang_Object(n2, xmlvm_get_associated_c_object (var2));
+    
+    [ObjCVar1 release];
 
-XMLVM_NOT_IMPLEMENTED();
+    return objCObj;
 //XMLVM_END_WRAPPER

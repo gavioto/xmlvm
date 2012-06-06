@@ -3,6 +3,7 @@ import java.util.*;
 
 import org.xmlvm.XMLVMSkeletonOnly;
 @XMLVMSkeletonOnly
+(references={CGAffineTransform.class})
 public class CGPath extends CFType {
 
 	/*

@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_CGDataConsumer();
 }
 @end
+
 void org_xmlvm_ios_CGDataConsumer_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -35,8 +36,10 @@ xmlvm_register_wrapper_creator(__WRAPPER_CREATOR);
 __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CGDataConsumer___INIT____byte_1ARRAY_org_xmlvm_ios_Reference<CGDataConsumerCallbacks>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CGDataConsumer___INIT____byte_1ARRAY_org_xmlvm_ios_Reference]
 XMLVM_VAR_BYTE_ARRAY(a1, n1); 
+    JAVA_OBJECT jObject2 = org_xmlvm_ios_Reference_get__(n2);
+    CGDataConsumerCallbacks var2= toCGDataConsumerCallbacks(jObject2);
     
     CGDataConsumer* objCObj = [[CGDataConsumer alloc] create:a1->fields.org_xmlvm_runtime_XMLVMArray.array_];
     org_xmlvm_ios_CGDataConsumer_INTERNAL_CONSTRUCTOR(me, objCObj);
@@ -49,7 +52,6 @@ XMLVM_VAR_BYTE_ARRAY(a1, n1);
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CGDataConsumer_getTypeID__]
 
-    
     long objCObj = CFHostGetTypeID();
     
     return objCObj;
@@ -58,10 +60,8 @@ XMLVM_VAR_BYTE_ARRAY(a1, n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CGDataConsumer_createWithURL___org_xmlvm_ios_CFURL]
 XMLVM_VAR_IOS_REF(CFURL, var1, n1);
     
-    
     CGDataConsumer* objCObj = AudioFileCreateWithURL(var1);
-        if (!__TIB_org_xmlvm_ios_CGDataConsumer.classInitialized) __INIT_org_xmlvm_ios_CGDataConsumer();
-
+    
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 

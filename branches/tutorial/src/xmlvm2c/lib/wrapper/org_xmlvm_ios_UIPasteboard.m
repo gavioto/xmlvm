@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_UIPasteboard();
 }
 @end
+
 void org_xmlvm_ios_UIPasteboard_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -50,7 +51,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIPasteboard_generalPasteboard__]
 
     UIPasteboard* objCObj =  [UIPasteboard generalPasteboard];
-    if (!__TIB_org_xmlvm_ios_UIPasteboard.classInitialized) __INIT_org_xmlvm_ios_UIPasteboard();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -61,7 +61,6 @@ NSString * ObjCVar1 = toNSString(n1);
     UIPasteboard* objCObj =  [UIPasteboard  pasteboardWithName:ObjCVar1 create:n2];
     [ObjCVar1 release];
 
-    if (!__TIB_org_xmlvm_ios_UIPasteboard.classInitialized) __INIT_org_xmlvm_ios_UIPasteboard();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -69,7 +68,6 @@ NSString * ObjCVar1 = toNSString(n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIPasteboard_pasteboardWithUniqueName__]
 
     UIPasteboard* objCObj =  [UIPasteboard pasteboardWithUniqueName];
-    if (!__TIB_org_xmlvm_ios_UIPasteboard.classInitialized) __INIT_org_xmlvm_ios_UIPasteboard();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -141,7 +139,6 @@ NSString * ObjCVar1 = toNSString(n1);
     NSData* objCObj = [thiz  dataForPasteboardType:ObjCVar1];
     [ObjCVar1 release];
 
-    if (!__TIB_org_xmlvm_ios_NSData.classInitialized) __INIT_org_xmlvm_ios_NSData();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -216,7 +213,6 @@ NSString * ObjCVar1 = toNSString(n1);
     NSIndexSet* objCObj = [thiz  itemSetWithPasteboardTypes:ObjCVar1];
     [ObjCVar1 release];
 
-    if (!__TIB_org_xmlvm_ios_NSIndexSet.classInitialized) __INIT_org_xmlvm_ios_NSIndexSet();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -313,8 +309,7 @@ NSString * ObjCVar1 = toNSString(n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIPasteboard_getURL__]
 
     XMLVM_VAR_THIZ;
-    NSURL* objCObj = [thiz URL];    if (!__TIB_org_xmlvm_ios_NSURL.classInitialized) __INIT_org_xmlvm_ios_NSURL();
-
+    NSURL* objCObj = [thiz URL];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -347,8 +342,7 @@ NSString * ObjCVar1 = toNSString(n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIPasteboard_getImage__]
 
     XMLVM_VAR_THIZ;
-    UIImage* objCObj = [thiz image];    if (!__TIB_org_xmlvm_ios_UIImage.classInitialized) __INIT_org_xmlvm_ios_UIImage();
-
+    UIImage* objCObj = [thiz image];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -381,8 +375,7 @@ NSString * ObjCVar1 = toNSString(n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIPasteboard_getColor__]
 
     XMLVM_VAR_THIZ;
-    UIColor* objCObj = [thiz color];    if (!__TIB_org_xmlvm_ios_UIColor.classInitialized) __INIT_org_xmlvm_ios_UIColor();
-
+    UIColor* objCObj = [thiz color];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 

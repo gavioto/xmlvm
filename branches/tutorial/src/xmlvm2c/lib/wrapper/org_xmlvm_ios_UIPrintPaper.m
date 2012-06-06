@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_UIPrintPaper();
 }
 @end
+
 void org_xmlvm_ios_UIPrintPaper_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -53,7 +54,6 @@ NSArray * ObjCVar2 = toNSArray(n2);
     UIPrintPaper* objCObj =  [UIPrintPaper  bestPaperForPageSize:toCGSize(n1) withPapersFromArray:ObjCVar2];
     [ObjCVar2 release];
 
-    if (!__TIB_org_xmlvm_ios_UIPrintPaper.classInitialized) __INIT_org_xmlvm_ios_UIPrintPaper();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

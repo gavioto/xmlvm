@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_NSMutableAttributedString();
 }
 @end
+
 void org_xmlvm_ios_NSMutableAttributedString_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSAttributedString_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -92,7 +93,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSMutableString* objCObj = [thiz mutableString];
-    if (!__TIB_org_xmlvm_ios_NSMutableString.classInitialized) __INIT_org_xmlvm_ios_NSMutableString();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

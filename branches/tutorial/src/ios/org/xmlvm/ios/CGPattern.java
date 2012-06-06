@@ -3,6 +3,7 @@ import java.util.*;
 
 import org.xmlvm.XMLVMSkeletonOnly;
 @XMLVMSkeletonOnly
+(references={CGPatternCallbacks.class})
 public class CGPattern extends CFType {
 
 	/*

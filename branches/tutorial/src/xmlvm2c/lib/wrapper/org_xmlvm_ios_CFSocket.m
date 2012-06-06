@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_CFSocket();
 }
 @end
+
 void org_xmlvm_ios_CFSocket_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -35,8 +36,10 @@ xmlvm_register_wrapper_creator(__WRAPPER_CREATOR);
 __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFSocket___INIT____org_xmlvm_ios_CFAllocator_int_int_int_long_java_lang_Object_org_xmlvm_ios_Reference<CFSocketContext>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFSocket___INIT____org_xmlvm_ios_CFAllocator_int_int_int_long_java_lang_Object_org_xmlvm_ios_Reference]
 XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
+    JAVA_OBJECT jObject7 = org_xmlvm_ios_Reference_get__(n7);
+    CFSocketContext var7= toCFSocketContext(jObject7);
     
     CFSocket* objCObj = [[CFSocket alloc] create:var1];
     org_xmlvm_ios_CFSocket_INTERNAL_CONSTRUCTOR(me, objCObj);
@@ -47,19 +50,28 @@ XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
     org_xmlvm_ios_CFSocket_INTERNAL_CONSTRUCTOR(me, objCObj);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFSocket_streamSOCKSGetErrorSubdomain___org_xmlvm_ios_Reference<CFStreamError>]
-
-XMLVM_NOT_IMPLEMENTED();
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFSocket_streamSOCKSGetErrorSubdomain___org_xmlvm_ios_Reference]
+JAVA_OBJECT jObject1 = org_xmlvm_ios_Reference_get__(n1);
+    CFStreamError var1= toCFStreamError(jObject1);
+    
+    int objCObj = CFSocketStreamSOCKSGetErrorSubdomain(&var1);
+    org_xmlvm_ios_Reference_set___java_lang_Object(n1, fromCFStreamError(var1));
+    
+    return objCObj;
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFSocket_streamSOCKSGetError___org_xmlvm_ios_Reference<CFStreamError>]
-
-XMLVM_NOT_IMPLEMENTED();
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFSocket_streamSOCKSGetError___org_xmlvm_ios_Reference]
+JAVA_OBJECT jObject1 = org_xmlvm_ios_Reference_get__(n1);
+    CFStreamError var1= toCFStreamError(jObject1);
+    
+    int objCObj = CFSocketStreamSOCKSGetError(&var1);
+    org_xmlvm_ios_Reference_set___java_lang_Object(n1, fromCFStreamError(var1));
+    
+    return objCObj;
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFSocket_streamPairSetSecurityProtocol___org_xmlvm_ios_CFReadStream_org_xmlvm_ios_CFWriteStream_int]
 
-    
     Byte objCObj = CFSocketStreamPairSetSecurityProtocol((CFReadStream*) (((org_xmlvm_ios_CFReadStream*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj),(CFWriteStream*) (((org_xmlvm_ios_CFWriteStream*) n2)->fields.org_xmlvm_ios_NSObject.wrappedObj),n3);
     
     return objCObj;
@@ -67,25 +79,46 @@ XMLVM_NOT_IMPLEMENTED();
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFSocket_getTypeID__]
 
-    
     long objCObj = CFHostGetTypeID();
     
     return objCObj;
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFSocket_createWithNative___org_xmlvm_ios_CFAllocator_int_long_java_lang_Object_org_xmlvm_ios_Reference<CFSocketContext>]
-
-XMLVM_NOT_IMPLEMENTED();
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFSocket_createWithNative___org_xmlvm_ios_CFAllocator_int_long_java_lang_Object_org_xmlvm_ios_Reference]
+XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
+    JAVA_OBJECT jObject5 = org_xmlvm_ios_Reference_get__(n5);
+    CFSocketContext var5= toCFSocketContext(jObject5);
+    
+    CFSocket* objCObj = CFSocketCreateWithNative(var1,n2,n3,((org_xmlvm_ios_NSObject*) n4)->fields.org_xmlvm_ios_NSObject.wrappedObj,&var5);
+    org_xmlvm_ios_Reference_set___java_lang_Object(n5, fromCFSocketContext(var5));
+    
+    return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFSocket_createWithSocketSignature___org_xmlvm_ios_CFAllocator_org_xmlvm_ios_Reference<CFSocketSignature>_long_java_lang_Object_org_xmlvm_ios_Reference<CFSocketContext>]
-
-XMLVM_NOT_IMPLEMENTED();
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFSocket_createWithSocketSignature___org_xmlvm_ios_CFAllocator_org_xmlvm_ios_Reference_long_java_lang_Object_org_xmlvm_ios_Reference]
+XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
+    JAVA_OBJECT jObject2 = org_xmlvm_ios_Reference_get__(n2);
+    CFSocketSignature var2= toCFSocketSignature(jObject2);
+    JAVA_OBJECT jObject5 = org_xmlvm_ios_Reference_get__(n5);
+    CFSocketContext var5= toCFSocketContext(jObject5);
+    
+    CFSocket* objCObj = CFSocketCreateWithSocketSignature(var1,&var2,n3,((org_xmlvm_ios_NSObject*) n4)->fields.org_xmlvm_ios_NSObject.wrappedObj,&var5);
+    org_xmlvm_ios_Reference_set___java_lang_Object(n5, fromCFSocketContext(var5));
+    
+    return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFSocket_createConnectedToSocketSignature___org_xmlvm_ios_CFAllocator_org_xmlvm_ios_Reference<CFSocketSignature>_long_java_lang_Object_org_xmlvm_ios_Reference<CFSocketContext>_double]
-
-XMLVM_NOT_IMPLEMENTED();
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFSocket_createConnectedToSocketSignature___org_xmlvm_ios_CFAllocator_org_xmlvm_ios_Reference_long_java_lang_Object_org_xmlvm_ios_Reference_double]
+XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
+    JAVA_OBJECT jObject2 = org_xmlvm_ios_Reference_get__(n2);
+    CFSocketSignature var2= toCFSocketSignature(jObject2);
+    JAVA_OBJECT jObject5 = org_xmlvm_ios_Reference_get__(n5);
+    CFSocketContext var5= toCFSocketContext(jObject5);
+    
+    CFSocket* objCObj = CFSocketCreateConnectedToSocketSignature(var1,&var2,n3,((org_xmlvm_ios_NSObject*) n4)->fields.org_xmlvm_ios_NSObject.wrappedObj,&var5,n6);
+    org_xmlvm_ios_Reference_set___java_lang_Object(n5, fromCFSocketContext(var5));
+    
+    return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFSocket_setAddress___org_xmlvm_ios_CFData]
@@ -118,7 +151,7 @@ XMLVM_NOT_IMPLEMENTED();
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFSocket_getContext___org_xmlvm_ios_Reference<CFSocketContext>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFSocket_getContext___org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
@@ -131,11 +164,10 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFSocket_createRunLoopSource___org_xmlvm_ios_CFAllocator_org_xmlvm_ios_CFSocket_long]
 XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
     
-    
     CFRunLoopSourceRef objCObj = CFFileDescriptorCreateRunLoopSource(var1,(CFSocket*) (((org_xmlvm_ios_CFSocket*) n2)->fields.org_xmlvm_ios_NSObject.wrappedObj),n3);
-        XMLVM_VAR_INIT_REF(CFRunLoopSource, objCObj);
+        XMLVM_VAR_INIT_REF(CFRunLoopSource, refVar, objCObj);
 
-    return jvar;
+    return refVar;
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFSocket_getSocketFlags__]
@@ -163,41 +195,87 @@ XMLVM_NOT_IMPLEMENTED();
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFSocket_registerValue___org_xmlvm_ios_Reference<CFSocketSignature>_double_java_lang_String_org_xmlvm_ios_CFPropertyList]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFSocket_registerValue___org_xmlvm_ios_Reference_double_java_lang_String_org_xmlvm_ios_CFPropertyList]
+JAVA_OBJECT jObject1 = org_xmlvm_ios_Reference_get__(n1);
+    CFSocketSignature var1= toCFSocketSignature(jObject1);
+    NSString * ObjCVar3 = toNSString(n3);
+    
+    long objCObj = CFSocketRegisterValue(&var1,n2,ObjCVar3,(CFPropertyList*) (((org_xmlvm_ios_CFPropertyList*) n4)->fields.org_xmlvm_ios_NSObject.wrappedObj));
+    org_xmlvm_ios_Reference_set___java_lang_Object(n1, fromCFSocketSignature(var1));
+    
+    [ObjCVar3 release];
 
-XMLVM_NOT_IMPLEMENTED();
+    return objCObj;
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFSocket_copyRegisteredValue___org_xmlvm_ios_Reference<CFSocketSignature>_double_java_lang_String_org_xmlvm_ios_CFPropertyList_org_xmlvm_ios_Reference<CFData>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFSocket_copyRegisteredValue___org_xmlvm_ios_Reference_double_java_lang_String_org_xmlvm_ios_CFPropertyList_org_xmlvm_ios_Reference]
+JAVA_OBJECT jObject1 = org_xmlvm_ios_Reference_get__(n1);
+    CFSocketSignature var1= toCFSocketSignature(jObject1);
+    NSString * ObjCVar3 = toNSString(n3);
+    JAVA_OBJECT jObject5 = org_xmlvm_ios_Reference_get__(n5);
+    XMLVM_VAR_IOS(CFData, var5, jObject5);
+    
+    long objCObj = CFSocketCopyRegisteredValue(&var1,n2,ObjCVar3,(CFPropertyList*) (((org_xmlvm_ios_CFPropertyList*) n4)->fields.org_xmlvm_ios_NSObject.wrappedObj),&var5);
+    org_xmlvm_ios_Reference_set___java_lang_Object(n5, xmlvm_get_associated_c_object (var5));
+    
+    [ObjCVar3 release];
 
-XMLVM_NOT_IMPLEMENTED();
+    return objCObj;
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFSocket_registerSocketSignature___org_xmlvm_ios_Reference<CFSocketSignature>_double_java_lang_String_org_xmlvm_ios_Reference<CFSocketSignature>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFSocket_registerSocketSignature___org_xmlvm_ios_Reference_double_java_lang_String_org_xmlvm_ios_Reference]
+JAVA_OBJECT jObject1 = org_xmlvm_ios_Reference_get__(n1);
+    CFSocketSignature var1= toCFSocketSignature(jObject1);
+    NSString * ObjCVar3 = toNSString(n3);
+    JAVA_OBJECT jObject4 = org_xmlvm_ios_Reference_get__(n4);
+    CFSocketSignature var4= toCFSocketSignature(jObject4);
+    
+    long objCObj = CFSocketRegisterSocketSignature(&var1,n2,ObjCVar3,&var4);
+    org_xmlvm_ios_Reference_set___java_lang_Object(n4, fromCFSocketSignature(var4));
+    
+    [ObjCVar3 release];
 
-XMLVM_NOT_IMPLEMENTED();
+    return objCObj;
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFSocket_copyRegisteredSocketSignature___org_xmlvm_ios_Reference<CFSocketSignature>_double_java_lang_String_org_xmlvm_ios_Reference<CFSocketSignature>_org_xmlvm_ios_Reference<CFData>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFSocket_copyRegisteredSocketSignature___org_xmlvm_ios_Reference_double_java_lang_String_org_xmlvm_ios_Reference_org_xmlvm_ios_Reference]
+JAVA_OBJECT jObject1 = org_xmlvm_ios_Reference_get__(n1);
+    CFSocketSignature var1= toCFSocketSignature(jObject1);
+    NSString * ObjCVar3 = toNSString(n3);
+    JAVA_OBJECT jObject4 = org_xmlvm_ios_Reference_get__(n4);
+    CFSocketSignature var4= toCFSocketSignature(jObject4);
+    JAVA_OBJECT jObject5 = org_xmlvm_ios_Reference_get__(n5);
+    XMLVM_VAR_IOS(CFData, var5, jObject5);
+    
+    long objCObj = CFSocketCopyRegisteredSocketSignature(&var1,n2,ObjCVar3,&var4,&var5);
+    org_xmlvm_ios_Reference_set___java_lang_Object(n5, xmlvm_get_associated_c_object (var5));
+    
+    [ObjCVar3 release];
 
-XMLVM_NOT_IMPLEMENTED();
+    return objCObj;
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFSocket_unregister___org_xmlvm_ios_Reference<CFSocketSignature>_double_java_lang_String]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFSocket_unregister___org_xmlvm_ios_Reference_double_java_lang_String]
+JAVA_OBJECT jObject1 = org_xmlvm_ios_Reference_get__(n1);
+    CFSocketSignature var1= toCFSocketSignature(jObject1);
+    NSString * ObjCVar3 = toNSString(n3);
+    
+    long objCObj = CFSocketUnregister(&var1,n2,ObjCVar3);
+    org_xmlvm_ios_Reference_set___java_lang_Object(n1, fromCFSocketSignature(var1));
+    
+    [ObjCVar3 release];
 
-XMLVM_NOT_IMPLEMENTED();
+    return objCObj;
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFSocket_setDefaultNameRegistryPortNumber___short]
-
-    CFSocketSetDefaultNameRegistryPortNumber(n1);
+CFSocketSetDefaultNameRegistryPortNumber(n1);
     
     
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFSocket_getDefaultNameRegistryPortNumber__]
 
-    
     short objCObj = CFSocketGetDefaultNameRegistryPortNumber();
     
     return objCObj;

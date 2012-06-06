@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_UISegmentedControl();
 }
 @end
+
 void org_xmlvm_ios_UISegmentedControl_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_UIControl_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -110,8 +111,7 @@ NSArray * ObjCVar1 = toNSArray(n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UISegmentedControl_getTintColor__]
 
     XMLVM_VAR_THIZ;
-    UIColor* objCObj = [thiz tintColor];    if (!__TIB_org_xmlvm_ios_UIColor.classInitialized) __INIT_org_xmlvm_ios_UIColor();
-
+    UIColor* objCObj = [thiz tintColor];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -198,7 +198,6 @@ NSArray * ObjCVar1 = toNSArray(n1);
     XMLVM_VAR_THIZ;
     
     UIImage* objCObj = [thiz  imageForSegmentAtIndex:n1];
-    if (!__TIB_org_xmlvm_ios_UIImage.classInitialized) __INIT_org_xmlvm_ios_UIImage();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

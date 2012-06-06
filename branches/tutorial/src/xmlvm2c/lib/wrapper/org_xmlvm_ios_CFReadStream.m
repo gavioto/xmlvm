@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_CFReadStream();
 }
 @end
+
 void org_xmlvm_ios_CFReadStream_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -44,36 +45,29 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
     XMLVM_VAR_IOS_REF(CFURL, var2, n2);
     
-    
     CFReadStream* objCObj = CFReadStreamCreateWithFTPURL(var1,var2);
-        if (!__TIB_org_xmlvm_ios_CFReadStream.classInitialized) __INIT_org_xmlvm_ios_CFReadStream();
-
+    
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFReadStream_createForHTTPRequest___org_xmlvm_ios_CFAllocator_org_xmlvm_ios_CFHTTPMessage]
 XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
     
-    
     CFReadStream* objCObj = CFReadStreamCreateForHTTPRequest(var1,(CFHTTPMessage*) (((org_xmlvm_ios_CFHTTPMessage*) n2)->fields.org_xmlvm_ios_NSObject.wrappedObj));
-        if (!__TIB_org_xmlvm_ios_CFReadStream.classInitialized) __INIT_org_xmlvm_ios_CFReadStream();
-
+    
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFReadStream_createForStreamedHTTPRequest___org_xmlvm_ios_CFAllocator_org_xmlvm_ios_CFHTTPMessage_org_xmlvm_ios_CFReadStream]
 XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
     
-    
     CFReadStream* objCObj = CFReadStreamCreateForStreamedHTTPRequest(var1,(CFHTTPMessage*) (((org_xmlvm_ios_CFHTTPMessage*) n2)->fields.org_xmlvm_ios_NSObject.wrappedObj),(CFReadStream*) (((org_xmlvm_ios_CFReadStream*) n3)->fields.org_xmlvm_ios_NSObject.wrappedObj));
-        if (!__TIB_org_xmlvm_ios_CFReadStream.classInitialized) __INIT_org_xmlvm_ios_CFReadStream();
-
+    
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFReadStream_getTypeID__]
 
-    
     long objCObj = CFHostGetTypeID();
     
     return objCObj;
@@ -84,10 +78,8 @@ XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
     XMLVM_VAR_BYTE_ARRAY(a2, n2); 
     XMLVM_VAR_IOS_REF(CFAllocator, var4, n4);
     
-    
     CFReadStream* objCObj = CFDataCreateWithBytesNoCopy(var1,a2->fields.org_xmlvm_runtime_XMLVMArray.array_,n3,var4);
-        if (!__TIB_org_xmlvm_ios_CFReadStream.classInitialized) __INIT_org_xmlvm_ios_CFReadStream();
-
+    
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -95,10 +87,8 @@ XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
 XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
     XMLVM_VAR_IOS_REF(CFURL, var2, n2);
     
-    
     CFReadStream* objCObj = CFReadStreamCreateWithFile(var1,var2);
-        if (!__TIB_org_xmlvm_ios_CFReadStream.classInitialized) __INIT_org_xmlvm_ios_CFReadStream();
-
+    
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -147,7 +137,7 @@ XMLVM_NOT_IMPLEMENTED();
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFReadStream_setClient___long_java_lang_Object_org_xmlvm_ios_Reference<CFStreamClientContext>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFReadStream_setClient___long_java_lang_Object_org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER

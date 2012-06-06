@@ -182,4 +182,8 @@ public class AVAsset extends NSObject {
 	public int unusedTrackID(){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

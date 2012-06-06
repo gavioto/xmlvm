@@ -84,4 +84,8 @@ public class NSPredicate extends NSObject {
 	public boolean evaluateWithObject(Object object, Map bindings){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

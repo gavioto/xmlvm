@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_NSStream();
 }
 @end
+
 void org_xmlvm_ios_NSStream_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -133,12 +134,11 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSError* objCObj = [thiz streamError];
-    if (!__TIB_org_xmlvm_ios_NSError.classInitialized) __INIT_org_xmlvm_ios_NSError();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSStream_getStreamsToHost___org_xmlvm_ios_NSHost_int_org_xmlvm_ios_Reference<NSInputStream>_org_xmlvm_ios_Reference<NSOutputStream>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSStream_getStreamsToHost___org_xmlvm_ios_NSHost_int_org_xmlvm_ios_Reference_org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER

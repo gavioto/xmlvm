@@ -2,7 +2,7 @@
 //XMLVM_BEGIN_IMPLEMENTATION
 void org_xmlvm_ios_CGLayer_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,CFTypeRef wrappedObj){
     org_xmlvm_ios_CFType_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 //XMLVM_END_IMPLEMENTATION
 
 //XMLVM_BEGIN_WRAPPER[__DELETE_org_xmlvm_ios_CGLayer]
@@ -23,17 +23,15 @@ XMLVM_NOT_IMPLEMENTED();
 
     XMLVM_VAR_CFTHIZ;
     
-    
     CGLayerRef objCObj = CGLayerRetain(thiz);
-        XMLVM_VAR_INIT_REF(CGLayer, objCObj);
+        XMLVM_VAR_INIT_REF(CGLayer, refVar, objCObj);
 
-    return jvar;
+    return refVar;
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CGLayer_release__]
 
     XMLVM_VAR_CFTHIZ;
-    
     CGLayerRelease(thiz);
     
     
@@ -42,7 +40,6 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CGLayer_getSize__]
 
     XMLVM_VAR_CFTHIZ;
-    
     
     CGSize objCObj = CGLayerGetSize(thiz);
     
@@ -53,16 +50,14 @@ XMLVM_NOT_IMPLEMENTED();
 
     XMLVM_VAR_CFTHIZ;
     
-    
     CGContextRef objCObj = CGLayerGetContext(thiz);
-        XMLVM_VAR_INIT_REF(CGContext, objCObj);
+        XMLVM_VAR_INIT_REF(CGContext, refVar, objCObj);
 
-    return jvar;
+    return refVar;
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CGLayer_getTypeID__]
 
-    
     long objCObj = CGLayerGetTypeID();
     
     return objCObj;

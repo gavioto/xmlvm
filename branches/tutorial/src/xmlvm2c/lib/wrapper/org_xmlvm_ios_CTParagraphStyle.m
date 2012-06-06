@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_CTParagraphStyle();
 }
 @end
+
 void org_xmlvm_ios_CTParagraphStyle_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -35,8 +36,12 @@ xmlvm_register_wrapper_creator(__WRAPPER_CREATOR);
 __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTParagraphStyle___INIT____org_xmlvm_ios_Reference<CTParagraphStyleSetting>_long]
-XMLVM_NOT_IMPLEMENTED();
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTParagraphStyle___INIT____org_xmlvm_ios_Reference_long]
+JAVA_OBJECT jObject1 = org_xmlvm_ios_Reference_get__(n1);
+    CTParagraphStyleSetting var1= toCTParagraphStyleSetting(jObject1);
+    
+    CTParagraphStyle* objCObj = [[CTParagraphStyle alloc] create:&var1];
+    org_xmlvm_ios_CTParagraphStyle_INTERNAL_CONSTRUCTOR(me, objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTParagraphStyle___INIT___]
@@ -46,7 +51,6 @@ XMLVM_NOT_IMPLEMENTED();
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTParagraphStyle_getTypeID__]
 
-    
     long objCObj = CFHostGetTypeID();
     
     return objCObj;

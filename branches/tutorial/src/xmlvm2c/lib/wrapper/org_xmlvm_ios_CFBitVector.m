@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_CFBitVector();
 }
 @end
+
 void org_xmlvm_ios_CFBitVector_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -50,7 +51,6 @@ XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFBitVector_getTypeID__]
 
-    
     long objCObj = CFHostGetTypeID();
     
     return objCObj;
@@ -59,30 +59,24 @@ XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFBitVector_createCopy___org_xmlvm_ios_CFAllocator_org_xmlvm_ios_CFBitVector]
 XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
     
-    
     CFBitVector* objCObj = CFHostCreateCopy(var1,(CFBitVector*) (((org_xmlvm_ios_CFBitVector*) n2)->fields.org_xmlvm_ios_NSObject.wrappedObj));
-        if (!__TIB_org_xmlvm_ios_CFBitVector.classInitialized) __INIT_org_xmlvm_ios_CFBitVector();
-
+    
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFBitVector_createMutable___org_xmlvm_ios_CFAllocator_long]
 XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
     
-    
     CFBitVector* objCObj = ABMultiValueCreateMutable(var1,n2);
-        if (!__TIB_org_xmlvm_ios_CFBitVector.classInitialized) __INIT_org_xmlvm_ios_CFBitVector();
-
+    
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFBitVector_createMutableCopy___org_xmlvm_ios_CFAllocator_long_org_xmlvm_ios_CFBitVector]
 XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
     
-    
     CFBitVector* objCObj = ABMultiValueCreateMutableCopy(var1,n2,(CFBitVector*) (((org_xmlvm_ios_CFBitVector*) n3)->fields.org_xmlvm_ios_NSObject.wrappedObj));
-        if (!__TIB_org_xmlvm_ios_CFBitVector.classInitialized) __INIT_org_xmlvm_ios_CFBitVector();
-
+    
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -122,43 +116,37 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFBitVector_setCount___org_xmlvm_ios_CFBitVector_long]
-
-    CFBitVectorSetCount((CFBitVector*) (((org_xmlvm_ios_CFBitVector*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj),n2);
+CFBitVectorSetCount((CFBitVector*) (((org_xmlvm_ios_CFBitVector*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj),n2);
     
     
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFBitVector_flipBitAtIndex___org_xmlvm_ios_CFBitVector_long]
-
-    CFBitVectorFlipBitAtIndex((CFBitVector*) (((org_xmlvm_ios_CFBitVector*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj),n2);
+CFBitVectorFlipBitAtIndex((CFBitVector*) (((org_xmlvm_ios_CFBitVector*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj),n2);
     
     
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFBitVector_flipBits___org_xmlvm_ios_CFBitVector_org_xmlvm_ios_CFRange]
-
-    CFBitVectorFlipBits((CFBitVector*) (((org_xmlvm_ios_CFBitVector*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj),toCFRange(n2));
+CFBitVectorFlipBits((CFBitVector*) (((org_xmlvm_ios_CFBitVector*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj),toCFRange(n2));
     
     
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFBitVector_setBitAtIndex___org_xmlvm_ios_CFBitVector_long_int]
-
-    CFBitVectorSetBitAtIndex((CFBitVector*) (((org_xmlvm_ios_CFBitVector*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj),n2,n3);
+CFBitVectorSetBitAtIndex((CFBitVector*) (((org_xmlvm_ios_CFBitVector*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj),n2,n3);
     
     
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFBitVector_setBits___org_xmlvm_ios_CFBitVector_org_xmlvm_ios_CFRange_int]
-
-    CFBitVectorSetBits((CFBitVector*) (((org_xmlvm_ios_CFBitVector*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj),toCFRange(n2),n3);
+CFBitVectorSetBits((CFBitVector*) (((org_xmlvm_ios_CFBitVector*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj),toCFRange(n2),n3);
     
     
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFBitVector_setAllBits___org_xmlvm_ios_CFBitVector_int]
-
-    CFBitVectorSetAllBits((CFBitVector*) (((org_xmlvm_ios_CFBitVector*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj),n2);
+CFBitVectorSetAllBits((CFBitVector*) (((org_xmlvm_ios_CFBitVector*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj),n2);
     
     
 //XMLVM_END_WRAPPER

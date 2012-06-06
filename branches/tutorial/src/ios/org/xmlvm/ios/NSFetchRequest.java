@@ -227,4 +227,8 @@ public class NSFetchRequest extends NSObject {
 	public void setFetchBatchSize(int bsize){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

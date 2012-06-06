@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_NSFetchRequest();
 }
 @end
+
 void org_xmlvm_ios_NSFetchRequest_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -52,7 +53,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
     XMLVM_VAR_THIZ;
     
     NSEntityDescription* objCObj = [thiz entity];
-    if (!__TIB_org_xmlvm_ios_NSEntityDescription.classInitialized) __INIT_org_xmlvm_ios_NSEntityDescription();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -70,7 +70,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
     XMLVM_VAR_THIZ;
     
     NSPredicate* objCObj = [thiz predicate];
-    if (!__TIB_org_xmlvm_ios_NSPredicate.classInitialized) __INIT_org_xmlvm_ios_NSPredicate();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

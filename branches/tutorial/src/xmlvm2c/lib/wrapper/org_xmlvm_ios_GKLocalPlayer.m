@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_GKLocalPlayer();
 }
 @end
+
 void org_xmlvm_ios_GKLocalPlayer_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_GKPlayer_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -55,7 +56,6 @@ __DELETE_org_xmlvm_ios_GKPlayer(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_GKLocalPlayer_localPlayer__]
 
     GKLocalPlayer* objCObj =  [GKLocalPlayer localPlayer];
-    if (!__TIB_org_xmlvm_ios_GKLocalPlayer.classInitialized) __INIT_org_xmlvm_ios_GKLocalPlayer();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

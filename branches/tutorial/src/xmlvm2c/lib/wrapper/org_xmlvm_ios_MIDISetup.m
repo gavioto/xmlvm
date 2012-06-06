@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_MIDISetup();
 }
 @end
+
 void org_xmlvm_ios_MIDISetup_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_MIDIObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -66,7 +67,7 @@ XMLVM_NOT_IMPLEMENTED();
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MIDISetup_toData___org_xmlvm_ios_Reference<CFData>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MIDISetup_toData___org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
@@ -78,7 +79,6 @@ XMLVM_NOT_IMPLEMENTED();
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MIDISetup_addDevice___org_xmlvm_ios_MIDIDevice]
 
-    
     int objCObj = MIDIDeviceListAddDevice((MIDIDevice*) (((org_xmlvm_ios_MIDIDevice*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj));
     
     return objCObj;
@@ -86,7 +86,6 @@ XMLVM_NOT_IMPLEMENTED();
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MIDISetup_removeDevice___org_xmlvm_ios_MIDIDevice]
 
-    
     int objCObj = MIDISetupRemoveDevice((MIDIDevice*) (((org_xmlvm_ios_MIDIDevice*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj));
     
     return objCObj;
@@ -94,7 +93,6 @@ XMLVM_NOT_IMPLEMENTED();
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MIDISetup_addExternalDevice___org_xmlvm_ios_MIDIDevice]
 
-    
     int objCObj = MIDISetupAddExternalDevice((MIDIDevice*) (((org_xmlvm_ios_MIDIDevice*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj));
     
     return objCObj;
@@ -102,7 +100,6 @@ XMLVM_NOT_IMPLEMENTED();
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MIDISetup_removeExternalDevice___org_xmlvm_ios_MIDIDevice]
 
-    
     int objCObj = MIDISetupRemoveExternalDevice((MIDIDevice*) (((org_xmlvm_ios_MIDIDevice*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj));
     
     return objCObj;

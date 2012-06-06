@@ -27,4 +27,8 @@ public interface UIPickerViewAccessibilityDelegate {
 		@org.xmlvm.XMLVMDelegateMethod.Param(type = "int", isStruct = true, name = "accessibilityHintForComponent")
 	})
 	public abstract String accessibilityHintForComponent(UIPickerView pickerView, int component);
+
+	/*
+	 * Interface Properties
+	 */
 }

@@ -45,4 +45,8 @@ public class NSLock extends NSObject {
 	public String name(){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

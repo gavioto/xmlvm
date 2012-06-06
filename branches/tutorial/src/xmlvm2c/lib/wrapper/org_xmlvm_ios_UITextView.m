@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_UITextView();
 }
 @end
+
 void org_xmlvm_ios_UITextView_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_UIScrollView_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -76,8 +77,11 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UITextView_setDelegate___org_xmlvm_ios_UITextViewDelegate]
 
     XMLVM_VAR_THIZ;
+    if(thiz.delegate != nil) [[thiz getDelegate] release];
     org_xmlvm_ios_UITextViewDelegate_Wrapper* jwrapper = __ALLOC_INIT_DELEGATE_WRAPPER_org_xmlvm_ios_UITextViewDelegate(n1);
     [jwrapper->nativeDelegateWrapper_ addSource: jthiz: thiz];
+    objc_setAssociatedObject(thiz, &key, jwrapper->nativeDelegateWrapper_, OBJC_ASSOCIATION_RETAIN);
+    [jwrapper->nativeDelegateWrapper_ release];
     [thiz setDelegate:jwrapper->nativeDelegateWrapper_];
 
     
@@ -104,8 +108,7 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UITextView_getFont__]
 
     XMLVM_VAR_THIZ;
-    UIFont* objCObj = [thiz font];    if (!__TIB_org_xmlvm_ios_UIFont.classInitialized) __INIT_org_xmlvm_ios_UIFont();
-
+    UIFont* objCObj = [thiz font];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -120,8 +123,7 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UITextView_getTextColor__]
 
     XMLVM_VAR_THIZ;
-    UIColor* objCObj = [thiz textColor];    if (!__TIB_org_xmlvm_ios_UIColor.classInitialized) __INIT_org_xmlvm_ios_UIColor();
-
+    UIColor* objCObj = [thiz textColor];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -213,8 +215,7 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UITextView_getInputView__]
 
     XMLVM_VAR_THIZ;
-    UIView* objCObj = [thiz inputView];    if (!__TIB_org_xmlvm_ios_UIView.classInitialized) __INIT_org_xmlvm_ios_UIView();
-
+    UIView* objCObj = [thiz inputView];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -229,8 +230,7 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UITextView_getInputAccessoryView__]
 
     XMLVM_VAR_THIZ;
-    UIView* objCObj = [thiz inputAccessoryView];    if (!__TIB_org_xmlvm_ios_UIView.classInitialized) __INIT_org_xmlvm_ios_UIView();
-
+    UIView* objCObj = [thiz inputAccessoryView];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -238,6 +238,111 @@ XMLVM_NOT_IMPLEMENTED();
 
     XMLVM_VAR_THIZ;
     [thiz setInputAccessoryView:(UIView*) (((org_xmlvm_ios_UIView*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj)];
+
+    
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UITextView_getAutocapitalizationType__]
+
+    XMLVM_VAR_THIZ;
+    int objCObj = [thiz autocapitalizationType];
+    return objCObj;
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UITextView_setAutocapitalizationType___int]
+
+    XMLVM_VAR_THIZ;
+    [thiz setAutocapitalizationType:n1];
+
+    
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UITextView_getAutocorrectionType__]
+
+    XMLVM_VAR_THIZ;
+    int objCObj = [thiz autocorrectionType];
+    return objCObj;
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UITextView_setAutocorrectionType___int]
+
+    XMLVM_VAR_THIZ;
+    [thiz setAutocorrectionType:n1];
+
+    
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UITextView_getKeyboardType__]
+
+    XMLVM_VAR_THIZ;
+    int objCObj = [thiz keyboardType];
+    return objCObj;
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UITextView_setKeyboardType___int]
+
+    XMLVM_VAR_THIZ;
+    [thiz setKeyboardType:n1];
+
+    
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UITextView_getKeyboardAppearance__]
+
+    XMLVM_VAR_THIZ;
+    int objCObj = [thiz keyboardAppearance];
+    return objCObj;
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UITextView_setKeyboardAppearance___int]
+
+    XMLVM_VAR_THIZ;
+    [thiz setKeyboardAppearance:n1];
+
+    
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UITextView_getReturnKeyType__]
+
+    XMLVM_VAR_THIZ;
+    int objCObj = [thiz returnKeyType];
+    return objCObj;
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UITextView_setReturnKeyType___int]
+
+    XMLVM_VAR_THIZ;
+    [thiz setReturnKeyType:n1];
+
+    
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UITextView_getEnablesReturnKeyAutomatically__]
+
+    XMLVM_VAR_THIZ;
+    BOOL objCObj = [thiz enablesReturnKeyAutomatically];
+    return objCObj;
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UITextView_setEnablesReturnKeyAutomatically___boolean]
+
+    XMLVM_VAR_THIZ;
+    [thiz setEnablesReturnKeyAutomatically:n1];
+
+    
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UITextView_isSecureTextEntry__]
+
+    XMLVM_VAR_THIZ;
+    BOOL objCObj = [thiz isSecureTextEntry];
+    return objCObj;
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UITextView_setSecureTextEntry___boolean]
+
+    XMLVM_VAR_THIZ;
+    [thiz setSecureTextEntry:n1];
 
     
 //XMLVM_END_WRAPPER

@@ -182,4 +182,8 @@ public interface UITableViewDelegate {
 		@org.xmlvm.XMLVMDelegateMethod.Param(type = "NSIndexPath", name = "indentationLevelForRowAtIndexPath")
 	})
 	public abstract int indentationLevelForRowAtIndexPath(UITableView tableView, NSIndexPath indexPath);
+
+	/*
+	 * Interface Properties
+	 */
 }

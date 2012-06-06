@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_AVAssetWriter();
 }
 @end
+
 void org_xmlvm_ios_AVAssetWriter_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -35,8 +36,15 @@ xmlvm_register_wrapper_creator(__WRAPPER_CREATOR);
 __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVAssetWriter___INIT____org_xmlvm_ios_NSURL_java_lang_String_org_xmlvm_ios_Reference<NSError>]
-XMLVM_NOT_IMPLEMENTED();
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVAssetWriter___INIT____org_xmlvm_ios_NSURL_java_lang_String_org_xmlvm_ios_Reference]
+NSString * ObjCVar2 = toNSString(n2);
+    JAVA_OBJECT jObject3 = org_xmlvm_ios_Reference_get__(n3);
+    XMLVM_VAR_IOS(NSError, var3, jObject3);
+    
+    AVAssetWriter* objCObj = [[AVAssetWriter alloc] initWithURL:(NSURL*) (((org_xmlvm_ios_NSURL*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj) fileType:ObjCVar2 error:&var3];
+    [ObjCVar2 release];
+
+    org_xmlvm_ios_AVAssetWriter_INTERNAL_CONSTRUCTOR(me, objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVAssetWriter___INIT___]
@@ -51,16 +59,22 @@ XMLVM_NOT_IMPLEMENTED();
     org_xmlvm_ios_AVAssetWriter_INTERNAL_CONSTRUCTOR(me, objCObj);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVAssetWriter_assetWriterWithURL___org_xmlvm_ios_NSURL_java_lang_String_org_xmlvm_ios_Reference<NSError>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVAssetWriter_assetWriterWithURL___org_xmlvm_ios_NSURL_java_lang_String_org_xmlvm_ios_Reference]
+NSString * ObjCVar2 = toNSString(n2);
+    JAVA_OBJECT jObject3 = org_xmlvm_ios_Reference_get__(n3);
+    XMLVM_VAR_IOS(NSError, var3, jObject3);
+    
+    AVAssetWriter* objCObj =  [AVAssetWriter  assetWriterWithURL:(NSURL*) (((org_xmlvm_ios_NSURL*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj) fileType:ObjCVar2 error:&var3];
+    [ObjCVar2 release];
 
-XMLVM_NOT_IMPLEMENTED();
+
+    return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVAssetWriter_getOutputURL__]
 
     XMLVM_VAR_THIZ;
-    NSURL* objCObj = [thiz outputURL];    if (!__TIB_org_xmlvm_ios_NSURL.classInitialized) __INIT_org_xmlvm_ios_NSURL();
-
+    NSURL* objCObj = [thiz outputURL];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -88,8 +102,7 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVAssetWriter_getError__]
 
     XMLVM_VAR_THIZ;
-    NSError* objCObj = [thiz error];    if (!__TIB_org_xmlvm_ios_NSError.classInitialized) __INIT_org_xmlvm_ios_NSError();
-
+    NSError* objCObj = [thiz error];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 

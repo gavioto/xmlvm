@@ -27,7 +27,7 @@ JAVA_OBJECT fromCFRange(CFRange obj)
     org_xmlvm_ios_CFRange* jObj = me;
     jObj->fields.org_xmlvm_ios_CFRange.location_ = objCObj.location;
     jObj->fields.org_xmlvm_ios_CFRange.length_ = objCObj.length;
-//XMLVM_END_WRAPPER
+null//XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFRange___INIT___]
 //XMLVM_END_WRAPPER

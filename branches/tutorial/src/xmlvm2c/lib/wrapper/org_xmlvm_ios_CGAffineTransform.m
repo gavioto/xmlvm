@@ -39,14 +39,13 @@ JAVA_OBJECT fromCGAffineTransform(CGAffineTransform obj)
     jObj->fields.org_xmlvm_ios_CGAffineTransform.a_ = objCObj.a;
     jObj->fields.org_xmlvm_ios_CGAffineTransform.ty_ = objCObj.ty;
     jObj->fields.org_xmlvm_ios_CGAffineTransform.tx_ = objCObj.tx;
-//XMLVM_END_WRAPPER
+null//XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CGAffineTransform___INIT___]
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CGAffineTransform_makeTranslation___float_float]
 
-    
     CGAffineTransform objCObj = CGAffineTransformMakeTranslation(n1,n2);
     
     return fromCGAffineTransform(objCObj);
@@ -54,7 +53,6 @@ JAVA_OBJECT fromCGAffineTransform(CGAffineTransform obj)
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CGAffineTransform_makeScale___float_float]
 
-    
     CGAffineTransform objCObj = CGAffineTransformMakeScale(n1,n2);
     
     return fromCGAffineTransform(objCObj);
@@ -62,7 +60,6 @@ JAVA_OBJECT fromCGAffineTransform(CGAffineTransform obj)
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CGAffineTransform_makeRotation___float]
 
-    
     CGAffineTransform objCObj = CGAffineTransformMakeRotation(n1);
     
     return fromCGAffineTransform(objCObj);
@@ -70,7 +67,6 @@ JAVA_OBJECT fromCGAffineTransform(CGAffineTransform obj)
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CGAffineTransform_isIdentity__]
 
-    
     BOOL objCObj = CGAffineTransformIsIdentity(toCGAffineTransform(me));
     
     return objCObj;
@@ -78,7 +74,6 @@ JAVA_OBJECT fromCGAffineTransform(CGAffineTransform obj)
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CGAffineTransform_translate___float_float]
 
-    
     CGAffineTransform objCObj = CGAffineTransformTranslate(toCGAffineTransform(me),n1,n2);
     
     return fromCGAffineTransform(objCObj);
@@ -86,7 +81,6 @@ JAVA_OBJECT fromCGAffineTransform(CGAffineTransform obj)
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CGAffineTransform_scale___float_float]
 
-    
     CGAffineTransform objCObj = CGAffineTransformScale(toCGAffineTransform(me),n1,n2);
     
     return fromCGAffineTransform(objCObj);
@@ -94,7 +88,6 @@ JAVA_OBJECT fromCGAffineTransform(CGAffineTransform obj)
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CGAffineTransform_rotate___float]
 
-    
     CGAffineTransform objCObj = CGAffineTransformRotate(toCGAffineTransform(me),n1);
     
     return fromCGAffineTransform(objCObj);
@@ -102,7 +95,6 @@ JAVA_OBJECT fromCGAffineTransform(CGAffineTransform obj)
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CGAffineTransform_invert__]
 
-    
     CGAffineTransform objCObj = CGAffineTransformInvert(toCGAffineTransform(me));
     
     return fromCGAffineTransform(objCObj);
@@ -110,7 +102,6 @@ JAVA_OBJECT fromCGAffineTransform(CGAffineTransform obj)
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CGAffineTransform_concat___org_xmlvm_ios_CGAffineTransform]
 
-    
     CGAffineTransform objCObj = CGAffineTransformConcat(toCGAffineTransform(me),toCGAffineTransform(n1));
     
     return fromCGAffineTransform(objCObj);
@@ -118,7 +109,6 @@ JAVA_OBJECT fromCGAffineTransform(CGAffineTransform obj)
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CGAffineTransform_equalToTransform___org_xmlvm_ios_CGAffineTransform]
 
-    
     BOOL objCObj = CGAffineTransformEqualToTransform(toCGAffineTransform(me),toCGAffineTransform(n1));
     
     return objCObj;
@@ -126,7 +116,6 @@ JAVA_OBJECT fromCGAffineTransform(CGAffineTransform obj)
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CGAffineTransform_fromString___java_lang_String]
 NSString * ObjCVar1 = toNSString(n1);
-    
     
     CGAffineTransform objCObj = CGAffineTransformFromString(ObjCVar1);
     

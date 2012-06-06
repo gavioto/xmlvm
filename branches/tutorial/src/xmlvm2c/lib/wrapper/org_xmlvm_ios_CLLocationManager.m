@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_CLLocationManager();
 }
 @end
+
 void org_xmlvm_ios_CLLocationManager_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -97,10 +98,13 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CLLocationManager_setDelegate___org_xmlvm_ios_CLLocationManagerDelegate]
 
     XMLVM_VAR_THIZ;
+    if(thiz.delegate != nil) [[thiz getDelegate] release];
     org_xmlvm_ios_CLLocationManagerDelegate_Wrapper* jwrapper = __ALLOC_INIT_DELEGATE_WRAPPER_org_xmlvm_ios_CLLocationManagerDelegate(n1);
     [jwrapper->nativeDelegateWrapper_ addSource: jthiz: thiz];
+    objc_setAssociatedObject(thiz, &key, jwrapper->nativeDelegateWrapper_, OBJC_ASSOCIATION_RETAIN);
+    [jwrapper->nativeDelegateWrapper_ release];
     [thiz setDelegate:jwrapper->nativeDelegateWrapper_];
-    jthiz->fields.org_xmlvm_ios_CLLocationManager.delegate = n1;
+    XMLVMUtil_ArrayList_add(reference_array, n1);
 
     
 //XMLVM_END_WRAPPER
@@ -163,8 +167,7 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CLLocationManager_getLocation__]
 
     XMLVM_VAR_THIZ;
-    CLLocation* objCObj = [thiz location];    if (!__TIB_org_xmlvm_ios_CLLocation.classInitialized) __INIT_org_xmlvm_ios_CLLocation();
-
+    CLLocation* objCObj = [thiz location];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -208,8 +211,7 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CLLocationManager_getHeading__]
 
     XMLVM_VAR_THIZ;
-    CLHeading* objCObj = [thiz heading];    if (!__TIB_org_xmlvm_ios_CLHeading.classInitialized) __INIT_org_xmlvm_ios_CLHeading();
-
+    CLHeading* objCObj = [thiz heading];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 

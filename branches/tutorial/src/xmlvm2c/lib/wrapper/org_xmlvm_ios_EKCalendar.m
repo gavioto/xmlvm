@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_EKCalendar();
 }
 @end
+
 void org_xmlvm_ios_EKCalendar_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -71,8 +72,8 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_EKCalendar_getCGColor__]
 
     XMLVM_VAR_THIZ;
-    CGColorRef objCObj = [thiz CGColor];XMLVM_VAR_INIT_REF(CGColor, objCObj);
-    return jvar;
+    CGColorRef objCObj = [thiz CGColor];XMLVM_VAR_INIT_REF(CGColor, refVar, objCObj);
+    return refVar;
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_EKCalendar_getSupportedEventAvailabilities__]

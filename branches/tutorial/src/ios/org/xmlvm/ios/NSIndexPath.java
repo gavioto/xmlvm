@@ -112,4 +112,8 @@ public class NSIndexPath extends NSObject {
 	public int compare(NSIndexPath otherObject){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

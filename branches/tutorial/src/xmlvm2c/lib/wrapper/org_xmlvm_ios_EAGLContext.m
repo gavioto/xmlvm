@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_EAGLContext();
 }
 @end
+
 void org_xmlvm_ios_EAGLContext_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -69,7 +70,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_EAGLContext_ currentContext__]
 
     EAGLContext* objCObj =  [EAGLContext  currentContext];
-    if (!__TIB_org_xmlvm_ios_EAGLContext.classInitialized) __INIT_org_xmlvm_ios_EAGLContext();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -84,8 +84,7 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_EAGLContext_getSharegroup__]
 
     XMLVM_VAR_THIZ;
-    EAGLSharegroup* objCObj = [thiz sharegroup];    if (!__TIB_org_xmlvm_ios_EAGLSharegroup.classInitialized) __INIT_org_xmlvm_ios_EAGLSharegroup();
-
+    EAGLSharegroup* objCObj = [thiz sharegroup];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 

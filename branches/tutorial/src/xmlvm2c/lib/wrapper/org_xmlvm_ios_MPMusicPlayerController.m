@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_MPMusicPlayerController();
 }
 @end
+
 void org_xmlvm_ios_MPMusicPlayerController_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -50,7 +51,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MPMusicPlayerController_applicationMusicPlayer__]
 
     MPMusicPlayerController* objCObj =  [MPMusicPlayerController applicationMusicPlayer];
-    if (!__TIB_org_xmlvm_ios_MPMusicPlayerController.classInitialized) __INIT_org_xmlvm_ios_MPMusicPlayerController();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -58,7 +58,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MPMusicPlayerController_iPodMusicPlayer__]
 
     MPMusicPlayerController* objCObj =  [MPMusicPlayerController iPodMusicPlayer];
-    if (!__TIB_org_xmlvm_ios_MPMusicPlayerController.classInitialized) __INIT_org_xmlvm_ios_MPMusicPlayerController();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -118,8 +117,7 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MPMusicPlayerController_getNowPlayingItem__]
 
     XMLVM_VAR_THIZ;
-    MPMediaItem* objCObj = [thiz nowPlayingItem];    if (!__TIB_org_xmlvm_ios_MPMediaItem.classInitialized) __INIT_org_xmlvm_ios_MPMediaItem();
-
+    MPMediaItem* objCObj = [thiz nowPlayingItem];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 

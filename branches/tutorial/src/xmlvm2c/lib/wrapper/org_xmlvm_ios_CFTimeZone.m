@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_CFTimeZone();
 }
 @end
+
 void org_xmlvm_ios_CFTimeZone_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -37,6 +38,7 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFTimeZone___INIT____org_xmlvm_ios_CFAllocator_java_lang_String_org_xmlvm_ios_CFData]
 XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
+    NSString * ObjCVar2 = toNSString(n2);
     
     CFTimeZone* objCObj = [[CFTimeZone alloc] create:var1];
     org_xmlvm_ios_CFTimeZone_INTERNAL_CONSTRUCTOR(me, objCObj);
@@ -49,7 +51,6 @@ XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFTimeZone_getTypeID__]
 
-    
     long objCObj = CFHostGetTypeID();
     
     return objCObj;
@@ -57,26 +58,21 @@ XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFTimeZone_copySystem__]
 
-    
     NSTimeZone* objCObj = CFTimeZoneCopySystem();
-        if (!__TIB_org_xmlvm_ios_NSTimeZone.classInitialized) __INIT_org_xmlvm_ios_NSTimeZone();
-
+    
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFTimeZone_resetSystem__]
-
-    CFTimeZoneResetSystem();
+CFTimeZoneResetSystem();
     
     
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFTimeZone_copyDefault__]
 
-    
     NSTimeZone* objCObj = CFTimeZoneCopyDefault();
-        if (!__TIB_org_xmlvm_ios_NSTimeZone.classInitialized) __INIT_org_xmlvm_ios_NSTimeZone();
-
+    
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -103,10 +99,8 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFTimeZone_createWithTimeIntervalFromGMT___org_xmlvm_ios_CFAllocator_double]
 XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
     
-    
     NSTimeZone* objCObj = CFTimeZoneCreateWithTimeIntervalFromGMT(var1,n2);
-        if (!__TIB_org_xmlvm_ios_NSTimeZone.classInitialized) __INIT_org_xmlvm_ios_NSTimeZone();
-
+    
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -114,11 +108,9 @@ XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
 XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
     NSString * ObjCVar2 = toNSString(n2);
     
-    
     NSTimeZone* objCObj = CFHostCreateWithName(var1,ObjCVar2,n3);
     
     [ObjCVar2 release];
-    if (!__TIB_org_xmlvm_ios_NSTimeZone.classInitialized) __INIT_org_xmlvm_ios_NSTimeZone();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

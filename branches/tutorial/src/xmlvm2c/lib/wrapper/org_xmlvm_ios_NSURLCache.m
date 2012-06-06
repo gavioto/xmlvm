@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_NSURLCache();
 }
 @end
+
 void org_xmlvm_ios_NSURLCache_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -59,7 +60,6 @@ NSString * ObjCVar3 = toNSString(n3);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSURLCache_sharedURLCache__]
 
     NSURLCache* objCObj =  [NSURLCache sharedURLCache];
-    if (!__TIB_org_xmlvm_ios_NSURLCache.classInitialized) __INIT_org_xmlvm_ios_NSURLCache();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -75,7 +75,6 @@ NSString * ObjCVar3 = toNSString(n3);
     XMLVM_VAR_THIZ;
     
     NSCachedURLResponse* objCObj = [thiz  cachedResponseForRequest:(NSURLRequest*) (((org_xmlvm_ios_NSURLRequest*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj)];
-    if (!__TIB_org_xmlvm_ios_NSCachedURLResponse.classInitialized) __INIT_org_xmlvm_ios_NSCachedURLResponse();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

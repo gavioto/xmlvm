@@ -56,4 +56,8 @@ public class SKPayment extends NSObject {
 	public int getQuantity(){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

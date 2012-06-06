@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_UIWebView();
 }
 @end
+
 void org_xmlvm_ios_UIWebView_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_UIView_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -71,8 +72,11 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIWebView_setDelegate___org_xmlvm_ios_UIWebViewDelegate]
 
     XMLVM_VAR_THIZ;
+    if(thiz.delegate != nil) [[thiz getDelegate] release];
     org_xmlvm_ios_UIWebViewDelegate_Wrapper* jwrapper = __ALLOC_INIT_DELEGATE_WRAPPER_org_xmlvm_ios_UIWebViewDelegate(n1);
     [jwrapper->nativeDelegateWrapper_ addSource: jthiz: thiz];
+    objc_setAssociatedObject(thiz, &key, jwrapper->nativeDelegateWrapper_, OBJC_ASSOCIATION_RETAIN);
+    [jwrapper->nativeDelegateWrapper_ release];
     [thiz setDelegate:jwrapper->nativeDelegateWrapper_];
 
     
@@ -114,8 +118,7 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIWebView_getRequest__]
 
     XMLVM_VAR_THIZ;
-    NSURLRequest* objCObj = [thiz request];    if (!__TIB_org_xmlvm_ios_NSURLRequest.classInitialized) __INIT_org_xmlvm_ios_NSURLRequest();
-
+    NSURLRequest* objCObj = [thiz request];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 

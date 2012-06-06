@@ -66,4 +66,8 @@ public class MPMovieErrorLogEvent extends NSObject {
 	public String getErrorComment(){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

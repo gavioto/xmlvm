@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_NSNetService();
 }
 @end
+
 void org_xmlvm_ios_NSNetService_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -213,9 +214,17 @@ XMLVM_NOT_IMPLEMENTED();
     
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSNetService_getInputStream___org_xmlvm_ios_Reference<NSInputStream>_org_xmlvm_ios_Reference<NSOutputStream>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSNetService_getInputStream___org_xmlvm_ios_Reference_org_xmlvm_ios_Reference]
 
-XMLVM_NOT_IMPLEMENTED();
+    XMLVM_VAR_THIZ;
+    JAVA_OBJECT jObject1 = org_xmlvm_ios_Reference_get__(n1);
+    XMLVM_VAR_IOS(NSInputStream, var1, jObject1);
+    JAVA_OBJECT jObject2 = org_xmlvm_ios_Reference_get__(n2);
+    XMLVM_VAR_IOS(NSOutputStream, var2, jObject2);
+    
+    BOOL objCObj = [thiz  getInputStream:&var1 outputStream:&var2];
+
+    return objCObj;
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSNetService_setTXTRecordData___org_xmlvm_ios_NSData]
@@ -232,7 +241,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSData* objCObj = [thiz TXTRecordData];
-    if (!__TIB_org_xmlvm_ios_NSData.classInitialized) __INIT_org_xmlvm_ios_NSData();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

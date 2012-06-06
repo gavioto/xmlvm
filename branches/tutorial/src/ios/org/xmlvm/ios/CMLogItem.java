@@ -24,4 +24,8 @@ public class CMLogItem extends NSObject {
 	public double getTimestamp(){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

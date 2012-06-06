@@ -35,4 +35,8 @@ public class CAValueFunction extends NSObject {
 	public String getName(){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

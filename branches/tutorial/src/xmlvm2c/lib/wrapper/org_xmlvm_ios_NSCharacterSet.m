@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_NSCharacterSet();
 }
 @end
+
 void org_xmlvm_ios_NSCharacterSet_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -155,7 +156,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSCharacterSet_characterSetWithRange___org_xmlvm_ios_NSRange]
 
     NSCharacterSet* objCObj =  [NSCharacterSet  characterSetWithRange:toNSRange(n1)];
-    if (!__TIB_org_xmlvm_ios_NSCharacterSet.classInitialized) __INIT_org_xmlvm_ios_NSCharacterSet();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -166,7 +166,6 @@ NSString * ObjCVar1 = toNSString(n1);
     NSCharacterSet* objCObj =  [NSCharacterSet  characterSetWithCharactersInString:ObjCVar1];
     [ObjCVar1 release];
 
-    if (!__TIB_org_xmlvm_ios_NSCharacterSet.classInitialized) __INIT_org_xmlvm_ios_NSCharacterSet();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -174,7 +173,6 @@ NSString * ObjCVar1 = toNSString(n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSCharacterSet_characterSetWithBitmapRepresentation___org_xmlvm_ios_NSData]
 
     NSCharacterSet* objCObj =  [NSCharacterSet  characterSetWithBitmapRepresentation:(NSData*) (((org_xmlvm_ios_NSData*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj)];
-    if (!__TIB_org_xmlvm_ios_NSCharacterSet.classInitialized) __INIT_org_xmlvm_ios_NSCharacterSet();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -185,7 +183,6 @@ NSString * ObjCVar1 = toNSString(n1);
     NSCharacterSet* objCObj =  [NSCharacterSet  characterSetWithContentsOfFile:ObjCVar1];
     [ObjCVar1 release];
 
-    if (!__TIB_org_xmlvm_ios_NSCharacterSet.classInitialized) __INIT_org_xmlvm_ios_NSCharacterSet();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -204,7 +201,6 @@ NSString * ObjCVar1 = toNSString(n1);
     XMLVM_VAR_THIZ;
     
     NSData* objCObj = [thiz bitmapRepresentation];
-    if (!__TIB_org_xmlvm_ios_NSData.classInitialized) __INIT_org_xmlvm_ios_NSData();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -214,7 +210,6 @@ NSString * ObjCVar1 = toNSString(n1);
     XMLVM_VAR_THIZ;
     
     NSCharacterSet* objCObj = [thiz invertedSet];
-    if (!__TIB_org_xmlvm_ios_NSCharacterSet.classInitialized) __INIT_org_xmlvm_ios_NSCharacterSet();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

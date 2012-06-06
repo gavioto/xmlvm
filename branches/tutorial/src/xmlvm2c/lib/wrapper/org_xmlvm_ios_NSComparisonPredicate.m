@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_NSComparisonPredicate();
 }
 @end
+
 void org_xmlvm_ios_NSComparisonPredicate_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSPredicate_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -65,7 +66,6 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSComparisonPredicate_predicateWithLeftExpression___org_xmlvm_ios_NSExpression_org_xmlvm_ios_NSExpression_int_int_int]
 
     NSPredicate* objCObj =  [NSComparisonPredicate  predicateWithLeftExpression:(NSExpression*) (((org_xmlvm_ios_NSExpression*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj) rightExpression:(NSExpression*) (((org_xmlvm_ios_NSExpression*) n2)->fields.org_xmlvm_ios_NSObject.wrappedObj) modifier:n3 type:n4 options:n5];
-    if (!__TIB_org_xmlvm_ios_NSPredicate.classInitialized) __INIT_org_xmlvm_ios_NSPredicate();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -98,7 +98,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSExpression* objCObj = [thiz leftExpression];
-    if (!__TIB_org_xmlvm_ios_NSExpression.classInitialized) __INIT_org_xmlvm_ios_NSExpression();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -108,7 +107,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSExpression* objCObj = [thiz rightExpression];
-    if (!__TIB_org_xmlvm_ios_NSExpression.classInitialized) __INIT_org_xmlvm_ios_NSExpression();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

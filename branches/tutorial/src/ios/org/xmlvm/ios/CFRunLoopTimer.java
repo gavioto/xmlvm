@@ -3,6 +3,7 @@ import java.util.*;
 
 import org.xmlvm.XMLVMSkeletonOnly;
 @XMLVMSkeletonOnly
+(references={CFRunLoopTimerContext.class})
 public class CFRunLoopTimer extends CFType {
 
 	/*

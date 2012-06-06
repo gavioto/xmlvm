@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_AVAssetExportSession();
 }
 @end
+
 void org_xmlvm_ios_AVAssetExportSession_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -115,8 +116,7 @@ NSString * ObjCVar2 = toNSString(n2);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVAssetExportSession_getOutputURL__]
 
     XMLVM_VAR_THIZ;
-    NSURL* objCObj = [thiz outputURL];    if (!__TIB_org_xmlvm_ios_NSURL.classInitialized) __INIT_org_xmlvm_ios_NSURL();
-
+    NSURL* objCObj = [thiz outputURL];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -138,8 +138,7 @@ NSString * ObjCVar2 = toNSString(n2);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVAssetExportSession_getError__]
 
     XMLVM_VAR_THIZ;
-    NSError* objCObj = [thiz error];    if (!__TIB_org_xmlvm_ios_NSError.classInitialized) __INIT_org_xmlvm_ios_NSError();
-
+    NSError* objCObj = [thiz error];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -208,8 +207,7 @@ NSString * ObjCVar2 = toNSString(n2);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVAssetExportSession_getAudioMix__]
 
     XMLVM_VAR_THIZ;
-    AVAudioMix* objCObj = [thiz audioMix];    if (!__TIB_org_xmlvm_ios_AVAudioMix.classInitialized) __INIT_org_xmlvm_ios_AVAudioMix();
-
+    AVAudioMix* objCObj = [thiz audioMix];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -224,8 +222,7 @@ NSString * ObjCVar2 = toNSString(n2);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVAssetExportSession_getVideoComposition__]
 
     XMLVM_VAR_THIZ;
-    AVVideoComposition* objCObj = [thiz videoComposition];    if (!__TIB_org_xmlvm_ios_AVVideoComposition.classInitialized) __INIT_org_xmlvm_ios_AVVideoComposition();
-
+    AVVideoComposition* objCObj = [thiz videoComposition];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 

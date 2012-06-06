@@ -24,4 +24,8 @@ public class NSNull extends NSObject {
 	public NSNull() {
 		super();
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

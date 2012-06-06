@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_CMSampleBuffer();
 }
 @end
+
 void org_xmlvm_ios_CMSampleBuffer_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -35,9 +36,11 @@ xmlvm_register_wrapper_creator(__WRAPPER_CREATOR);
 __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CMSampleBuffer___INIT____org_xmlvm_ios_CFAllocator_org_xmlvm_ios_CMBlockBuffer_byte_java_lang_Object_byte_1ARRAY_org_xmlvm_ios_CMFormatDescription_long_long_org_xmlvm_ios_Reference<CMSampleTimingInfo>_long_int_1ARRAY_org_xmlvm_ios_CMSampleBuffer]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CMSampleBuffer___INIT____org_xmlvm_ios_CFAllocator_org_xmlvm_ios_CMBlockBuffer_byte_java_lang_Object_byte_1ARRAY_org_xmlvm_ios_CMFormatDescription_long_long_org_xmlvm_ios_Reference_long_int_1ARRAY_org_xmlvm_ios_CMSampleBuffer]
 XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
     XMLVM_VAR_BYTE_ARRAY(a5, n5); 
+    JAVA_OBJECT jObject9 = org_xmlvm_ios_Reference_get__(n9);
+    CMSampleTimingInfo var9= toCMSampleTimingInfo(jObject9);
     XMLVM_VAR_INT_ARRAY(a11, n11); 
     
     CMSampleBuffer* objCObj = [[CMSampleBuffer alloc] create:var1];
@@ -49,28 +52,39 @@ XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
     org_xmlvm_ios_CMSampleBuffer_INTERNAL_CONSTRUCTOR(me, objCObj);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CMSampleBuffer_createForImageBuffer___org_xmlvm_ios_CFAllocator_org_xmlvm_ios_CVImageBuffer_byte_java_lang_Object_byte_1ARRAY_org_xmlvm_ios_CMVideoFormatDescription_org_xmlvm_ios_Reference<CMSampleTimingInfo>_org_xmlvm_ios_CMSampleBuffer]
-
-XMLVM_NOT_IMPLEMENTED();
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CMSampleBuffer_createForImageBuffer___org_xmlvm_ios_CFAllocator_org_xmlvm_ios_CVImageBuffer_byte_java_lang_Object_byte_1ARRAY_org_xmlvm_ios_CMVideoFormatDescription_org_xmlvm_ios_Reference_org_xmlvm_ios_CMSampleBuffer]
+XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
+    XMLVM_VAR_BYTE_ARRAY(a5, n5); 
+    JAVA_OBJECT jObject7 = org_xmlvm_ios_Reference_get__(n7);
+    CMSampleTimingInfo var7= toCMSampleTimingInfo(jObject7);
+    
+    int objCObj = CMVideoFormatDescriptionCreateForImageBuffer(var1,(CVImageBuffer*) (((org_xmlvm_ios_CVImageBuffer*) n2)->fields.org_xmlvm_ios_NSObject.wrappedObj),n3,((org_xmlvm_ios_NSObject*) n4)->fields.org_xmlvm_ios_NSObject.wrappedObj,a5->fields.org_xmlvm_runtime_XMLVMArray.array_,(CMVideoFormatDescription*) (((org_xmlvm_ios_CMVideoFormatDescription*) n6)->fields.org_xmlvm_ios_NSObject.wrappedObj),&var7,(CMSampleBuffer*) (((org_xmlvm_ios_CMSampleBuffer*) n8)->fields.org_xmlvm_ios_NSObject.wrappedObj));
+    org_xmlvm_ios_Reference_set___java_lang_Object(n7, fromCMSampleTimingInfo(var7));
+    
+    return objCObj;
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CMSampleBuffer_createCopy___org_xmlvm_ios_CFAllocator_org_xmlvm_ios_CMSampleBuffer_org_xmlvm_ios_CMSampleBuffer]
 XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
-    
     
     int objCObj = CFHostCreateCopy(var1,(CMSampleBuffer*) (((org_xmlvm_ios_CMSampleBuffer*) n2)->fields.org_xmlvm_ios_NSObject.wrappedObj),(CMSampleBuffer*) (((org_xmlvm_ios_CMSampleBuffer*) n3)->fields.org_xmlvm_ios_NSObject.wrappedObj));
     
     return objCObj;
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CMSampleBuffer_createCopyWithNewTiming___org_xmlvm_ios_CFAllocator_org_xmlvm_ios_CMSampleBuffer_long_org_xmlvm_ios_Reference<CMSampleTimingInfo>_org_xmlvm_ios_CMSampleBuffer]
-
-XMLVM_NOT_IMPLEMENTED();
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CMSampleBuffer_createCopyWithNewTiming___org_xmlvm_ios_CFAllocator_org_xmlvm_ios_CMSampleBuffer_long_org_xmlvm_ios_Reference_org_xmlvm_ios_CMSampleBuffer]
+XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
+    JAVA_OBJECT jObject4 = org_xmlvm_ios_Reference_get__(n4);
+    CMSampleTimingInfo var4= toCMSampleTimingInfo(jObject4);
+    
+    int objCObj = CMSampleBufferCreateCopyWithNewTiming(var1,(CMSampleBuffer*) (((org_xmlvm_ios_CMSampleBuffer*) n2)->fields.org_xmlvm_ios_NSObject.wrappedObj),n3,&var4,(CMSampleBuffer*) (((org_xmlvm_ios_CMSampleBuffer*) n5)->fields.org_xmlvm_ios_NSObject.wrappedObj));
+    org_xmlvm_ios_Reference_set___java_lang_Object(n4, fromCMSampleTimingInfo(var4));
+    
+    return objCObj;
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CMSampleBuffer_copySampleBufferForRange___org_xmlvm_ios_CFAllocator_org_xmlvm_ios_CMSampleBuffer_org_xmlvm_ios_CFRange_org_xmlvm_ios_CMSampleBuffer]
 XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
-    
     
     int objCObj = CMSampleBufferCopySampleBufferForRange(var1,(CMSampleBuffer*) (((org_xmlvm_ios_CMSampleBuffer*) n2)->fields.org_xmlvm_ios_NSObject.wrappedObj),toCFRange(n3),(CMSampleBuffer*) (((org_xmlvm_ios_CMSampleBuffer*) n4)->fields.org_xmlvm_ios_NSObject.wrappedObj));
     
@@ -79,7 +93,6 @@ XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CMSampleBuffer_getTypeID__]
 
-    
     long objCObj = CFHostGetTypeID();
     
     return objCObj;
@@ -100,17 +113,17 @@ XMLVM_NOT_IMPLEMENTED();
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CMSampleBuffer_setDataBufferFromAudioBufferList___org_xmlvm_ios_CFAllocator_org_xmlvm_ios_CFAllocator_int_org_xmlvm_ios_Reference<AudioBufferList>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CMSampleBuffer_setDataBufferFromAudioBufferList___org_xmlvm_ios_CFAllocator_org_xmlvm_ios_CFAllocator_int_org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CMSampleBuffer_getAudioBufferListWithRetainedBlockBuffer___int_1ARRAY_org_xmlvm_ios_Reference<AudioBufferList>_int_org_xmlvm_ios_CFAllocator_org_xmlvm_ios_CFAllocator_int_org_xmlvm_ios_CMBlockBuffer]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CMSampleBuffer_getAudioBufferListWithRetainedBlockBuffer___int_1ARRAY_org_xmlvm_ios_Reference_int_org_xmlvm_ios_CFAllocator_org_xmlvm_ios_CFAllocator_int_org_xmlvm_ios_CMBlockBuffer]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CMSampleBuffer_getAudioStreamPacketDescriptions___int_org_xmlvm_ios_Reference<AudioStreamPacketDescription>_int_1ARRAY]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CMSampleBuffer_getAudioStreamPacketDescriptions___int_org_xmlvm_ios_Reference_int_1ARRAY]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
@@ -195,17 +208,17 @@ XMLVM_NOT_IMPLEMENTED();
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CMSampleBuffer_getSampleTimingInfoArray___long_org_xmlvm_ios_Reference<CMSampleTimingInfo>_long_1ARRAY]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CMSampleBuffer_getSampleTimingInfoArray___long_org_xmlvm_ios_Reference_long_1ARRAY]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CMSampleBuffer_getOutputSampleTimingInfoArray___long_org_xmlvm_ios_Reference<CMSampleTimingInfo>_long_1ARRAY]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CMSampleBuffer_getOutputSampleTimingInfoArray___long_org_xmlvm_ios_Reference_long_1ARRAY]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CMSampleBuffer_getSampleTimingInfo___long_org_xmlvm_ios_Reference<CMSampleTimingInfo>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CMSampleBuffer_getSampleTimingInfo___long_org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER

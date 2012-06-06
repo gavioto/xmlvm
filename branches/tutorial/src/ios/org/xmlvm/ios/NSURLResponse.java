@@ -57,4 +57,8 @@ public class NSURLResponse extends NSObject {
 	public String suggestedFilename(){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

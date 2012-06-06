@@ -67,8 +67,7 @@ JAVA_OBJECT fromMIDIThruConnectionParams(MIDIThruConnectionParams obj)
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MIDIThruConnectionParams_initialize__]
-
-    MIDIThruConnectionParamsInitialize(toMIDIThruConnectionParams(me));
+MIDIThruConnectionParamsInitialize(toMIDIThruConnectionParams(me));
     
     
 //XMLVM_END_WRAPPER

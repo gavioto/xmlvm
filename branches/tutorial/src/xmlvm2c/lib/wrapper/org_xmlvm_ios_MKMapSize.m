@@ -27,14 +27,13 @@ JAVA_OBJECT fromMKMapSize(MKMapSize obj)
     org_xmlvm_ios_MKMapSize* jObj = me;
     jObj->fields.org_xmlvm_ios_MKMapSize.width_ = objCObj.width;
     jObj->fields.org_xmlvm_ios_MKMapSize.height_ = objCObj.height;
-//XMLVM_END_WRAPPER
+null//XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MKMapSize___INIT___]
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MKMapSize_equalToSize___org_xmlvm_ios_MKMapSize]
 
-    
     BOOL objCObj = MKMapSizeEqualToSize(toMKMapSize(me),toMKMapSize(n1));
     
     return objCObj;

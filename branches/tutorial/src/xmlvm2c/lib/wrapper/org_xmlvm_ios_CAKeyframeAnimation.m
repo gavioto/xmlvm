@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_CAKeyframeAnimation();
 }
 @end
+
 void org_xmlvm_ios_CAKeyframeAnimation_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_CAPropertyAnimation_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -78,8 +79,8 @@ __DELETE_org_xmlvm_ios_CAPropertyAnimation(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CAKeyframeAnimation_getPath__]
 
     XMLVM_VAR_THIZ;
-    CGPathRef objCObj = [thiz path];XMLVM_VAR_INIT_REF(CGPath, objCObj);
-    return jvar;
+    CGPathRef objCObj = [thiz path];XMLVM_VAR_INIT_REF(CGPath, refVar, objCObj);
+    return refVar;
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CAKeyframeAnimation_setPath___org_xmlvm_ios_CGPath]

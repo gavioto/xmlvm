@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_CFBag();
 }
 @end
+
 void org_xmlvm_ios_CFBag_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -35,9 +36,11 @@ xmlvm_register_wrapper_creator(__WRAPPER_CREATOR);
 __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFBag___INIT____org_xmlvm_ios_CFAllocator_byte_2ARRAY_long_org_xmlvm_ios_Reference<CFBagCallBacks>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFBag___INIT____org_xmlvm_ios_CFAllocator_byte_2ARRAY_long_org_xmlvm_ios_Reference]
 XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
     XMLVM_VAR_BYTE_ARRAY(a2, n2); 
+    JAVA_OBJECT jObject4 = org_xmlvm_ios_Reference_get__(n4);
+    CFBagCallBacks var4= toCFBagCallBacks(jObject4);
     
     CFBag* objCObj = [[CFBag alloc] create:var1];
     org_xmlvm_ios_CFBag_INTERNAL_CONSTRUCTOR(me, objCObj);
@@ -50,7 +53,6 @@ XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFBag_getTypeID__]
 
-    
     long objCObj = CFHostGetTypeID();
     
     return objCObj;
@@ -59,25 +61,27 @@ XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFBag_createCopy___org_xmlvm_ios_CFAllocator_org_xmlvm_ios_CFBag]
 XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
     
-    
     CFBag* objCObj = CFHostCreateCopy(var1,(CFBag*) (((org_xmlvm_ios_CFBag*) n2)->fields.org_xmlvm_ios_NSObject.wrappedObj));
-        if (!__TIB_org_xmlvm_ios_CFBag.classInitialized) __INIT_org_xmlvm_ios_CFBag();
-
+    
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFBag_createMutable___org_xmlvm_ios_CFAllocator_long_org_xmlvm_ios_Reference<CFBagCallBacks>]
-
-XMLVM_NOT_IMPLEMENTED();
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFBag_createMutable___org_xmlvm_ios_CFAllocator_long_org_xmlvm_ios_Reference]
+XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
+    JAVA_OBJECT jObject3 = org_xmlvm_ios_Reference_get__(n3);
+    CFBagCallBacks var3= toCFBagCallBacks(jObject3);
+    
+    CFBag* objCObj = ABMultiValueCreateMutable(var1,n2,&var3);
+    org_xmlvm_ios_Reference_set___java_lang_Object(n3, fromCFBagCallBacks(var3));
+    
+    return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFBag_createMutableCopy___org_xmlvm_ios_CFAllocator_long_org_xmlvm_ios_CFBag]
 XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
     
-    
     CFBag* objCObj = ABMultiValueCreateMutableCopy(var1,n2,(CFBag*) (((org_xmlvm_ios_CFBag*) n3)->fields.org_xmlvm_ios_NSObject.wrappedObj));
-        if (!__TIB_org_xmlvm_ios_CFBag.classInitialized) __INIT_org_xmlvm_ios_CFBag();
-
+    
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -118,7 +122,6 @@ XMLVM_NOT_IMPLEMENTED();
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFBag_addValue___org_xmlvm_ios_CFBag_byte_1ARRAY]
 XMLVM_VAR_BYTE_ARRAY(a2, n2); 
-    
     CFBagAddValue((CFBag*) (((org_xmlvm_ios_CFBag*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj),a2->fields.org_xmlvm_runtime_XMLVMArray.array_);
     
     
@@ -126,7 +129,6 @@ XMLVM_VAR_BYTE_ARRAY(a2, n2);
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFBag_replaceValue___org_xmlvm_ios_CFBag_byte_1ARRAY]
 XMLVM_VAR_BYTE_ARRAY(a2, n2); 
-    
     CFBagReplaceValue((CFBag*) (((org_xmlvm_ios_CFBag*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj),a2->fields.org_xmlvm_runtime_XMLVMArray.array_);
     
     
@@ -134,7 +136,6 @@ XMLVM_VAR_BYTE_ARRAY(a2, n2);
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFBag_setValue___org_xmlvm_ios_CFBag_byte_1ARRAY]
 XMLVM_VAR_BYTE_ARRAY(a2, n2); 
-    
     ABRecordSetValue((CFBag*) (((org_xmlvm_ios_CFBag*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj),a2->fields.org_xmlvm_runtime_XMLVMArray.array_);
     
     
@@ -142,15 +143,13 @@ XMLVM_VAR_BYTE_ARRAY(a2, n2);
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFBag_removeValue___org_xmlvm_ios_CFBag_byte_1ARRAY]
 XMLVM_VAR_BYTE_ARRAY(a2, n2); 
-    
     ABRecordRemoveValue((CFBag*) (((org_xmlvm_ios_CFBag*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj),a2->fields.org_xmlvm_runtime_XMLVMArray.array_);
     
     
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFBag_removeAllValues___org_xmlvm_ios_CFBag]
-
-    CFArrayRemoveAllValues((CFBag*) (((org_xmlvm_ios_CFBag*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj));
+CFArrayRemoveAllValues((CFBag*) (((org_xmlvm_ios_CFBag*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj));
     
     
 //XMLVM_END_WRAPPER

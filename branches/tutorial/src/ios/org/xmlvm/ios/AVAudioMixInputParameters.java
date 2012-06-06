@@ -35,4 +35,8 @@ public class AVAudioMixInputParameters extends NSObject {
 	public boolean getVolumeRampForTime(CMTime time, float[] startVolume, float[] endVolume, Reference<CMTimeRange> timeRange){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_EKRecurrenceRule();
 }
 @end
+
 void org_xmlvm_ios_EKRecurrenceRule_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -87,8 +88,7 @@ NSArray * ObjCVar3 = toNSArray(n3);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_EKRecurrenceRule_getRecurrenceEnd__]
 
     XMLVM_VAR_THIZ;
-    EKRecurrenceEnd* objCObj = [thiz recurrenceEnd];    if (!__TIB_org_xmlvm_ios_EKRecurrenceEnd.classInitialized) __INIT_org_xmlvm_ios_EKRecurrenceEnd();
-
+    EKRecurrenceEnd* objCObj = [thiz recurrenceEnd];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 

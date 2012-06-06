@@ -45,4 +45,8 @@ public class NSRecursiveLock extends NSObject {
 	public String name(){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

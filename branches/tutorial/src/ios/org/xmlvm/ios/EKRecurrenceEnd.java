@@ -49,4 +49,8 @@ public class EKRecurrenceEnd extends NSObject {
 	public int getOccurrenceCount(){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

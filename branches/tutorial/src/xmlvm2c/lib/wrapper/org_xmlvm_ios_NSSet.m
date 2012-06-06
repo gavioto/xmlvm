@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_NSSet();
 }
 @end
+
 void org_xmlvm_ios_NSSet_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -111,8 +112,8 @@ NSArray * ObjCVar1 = toNSArray(n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSSet_addObserver___org_xmlvm_ios_NSObject_java_lang_String_int_byte_1ARRAY]
 
     XMLVM_VAR_THIZ;
-    XMLVM_VAR_BYTE_ARRAY(a4, n4); 
     NSString * ObjCVar2 = toNSString(n2);
+    XMLVM_VAR_BYTE_ARRAY(a4, n4); 
     [thiz  addObserver:(NSObject*) (((org_xmlvm_ios_NSObject*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj) forKeyPath:ObjCVar2 options:n3 context:a4->fields.org_xmlvm_runtime_XMLVMArray.array_];
     [ObjCVar2 release];
 
@@ -163,7 +164,6 @@ NSArray * ObjCVar1 = toNSArray(n1);
     XMLVM_VAR_THIZ;
     
     NSEnumerator* objCObj = [thiz objectEnumerator];
-    if (!__TIB_org_xmlvm_ios_NSEnumerator.classInitialized) __INIT_org_xmlvm_ios_NSEnumerator();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -387,7 +387,6 @@ NSArray * ObjCVar1 = toNSArray(n1);
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSSet_uncaughtExceptionHandler___Object_1ARRAY]
 XMLVM_VAR_OBJECT_ARRAY(a1, n1); 
-    
     NSUncaughtExceptionHandler(a1->fields.org_xmlvm_runtime_XMLVMArray.array_);
     
     

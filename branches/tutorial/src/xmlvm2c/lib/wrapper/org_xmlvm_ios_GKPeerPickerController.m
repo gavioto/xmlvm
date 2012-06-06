@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_GKPeerPickerController();
 }
 @end
+
 void org_xmlvm_ios_GKPeerPickerController_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -70,8 +71,11 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_GKPeerPickerController_setDelegate___org_xmlvm_ios_GKPeerPickerControllerDelegate]
 
     XMLVM_VAR_THIZ;
+    if(thiz.delegate != nil) [[thiz getDelegate] release];
     org_xmlvm_ios_GKPeerPickerControllerDelegate_Wrapper* jwrapper = __ALLOC_INIT_DELEGATE_WRAPPER_org_xmlvm_ios_GKPeerPickerControllerDelegate(n1);
     [jwrapper->nativeDelegateWrapper_ addSource: jthiz: thiz];
+    objc_setAssociatedObject(thiz, &key, jwrapper->nativeDelegateWrapper_, OBJC_ASSOCIATION_RETAIN);
+    [jwrapper->nativeDelegateWrapper_ release];
     [thiz setDelegate:jwrapper->nativeDelegateWrapper_];
 
     

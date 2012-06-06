@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_NSHTTPCookieStorage();
 }
 @end
+
 void org_xmlvm_ios_NSHTTPCookieStorage_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -56,7 +57,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSHTTPCookieStorage_sharedHTTPCookieStorage__]
 
     NSHTTPCookieStorage* objCObj =  [NSHTTPCookieStorage sharedHTTPCookieStorage];
-    if (!__TIB_org_xmlvm_ios_NSHTTPCookieStorage.classInitialized) __INIT_org_xmlvm_ios_NSHTTPCookieStorage();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

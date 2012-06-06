@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_CAAnimation();
 }
 @end
+
 void org_xmlvm_ios_CAAnimation_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -50,7 +51,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CAAnimation_animation__]
 
     CAAnimation* objCObj =  [CAAnimation animation];
-    if (!__TIB_org_xmlvm_ios_CAAnimation.classInitialized) __INIT_org_xmlvm_ios_CAAnimation();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -80,8 +80,7 @@ NSString * ObjCVar1 = toNSString(n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CAAnimation_getTimingFunction__]
 
     XMLVM_VAR_THIZ;
-    CAMediaTimingFunction* objCObj = [thiz timingFunction];    if (!__TIB_org_xmlvm_ios_CAMediaTimingFunction.classInitialized) __INIT_org_xmlvm_ios_CAMediaTimingFunction();
-
+    CAMediaTimingFunction* objCObj = [thiz timingFunction];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -119,6 +118,129 @@ NSString * ObjCVar1 = toNSString(n1);
 
     XMLVM_VAR_THIZ;
     [thiz setRemovedOnCompletion:n1];
+
+    
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CAAnimation_getBeginTime__]
+
+    XMLVM_VAR_THIZ;
+    double objCObj = [thiz beginTime];
+    return objCObj;
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CAAnimation_setBeginTime___double]
+
+    XMLVM_VAR_THIZ;
+    [thiz setBeginTime:n1];
+
+    
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CAAnimation_getDuration__]
+
+    XMLVM_VAR_THIZ;
+    double objCObj = [thiz duration];
+    return objCObj;
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CAAnimation_setDuration___double]
+
+    XMLVM_VAR_THIZ;
+    [thiz setDuration:n1];
+
+    
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CAAnimation_getSpeed__]
+
+    XMLVM_VAR_THIZ;
+    float objCObj = [thiz speed];
+    return objCObj;
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CAAnimation_setSpeed___float]
+
+    XMLVM_VAR_THIZ;
+    [thiz setSpeed:n1];
+
+    
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CAAnimation_getTimeOffset__]
+
+    XMLVM_VAR_THIZ;
+    double objCObj = [thiz timeOffset];
+    return objCObj;
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CAAnimation_setTimeOffset___double]
+
+    XMLVM_VAR_THIZ;
+    [thiz setTimeOffset:n1];
+
+    
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CAAnimation_getRepeatCount__]
+
+    XMLVM_VAR_THIZ;
+    float objCObj = [thiz repeatCount];
+    return objCObj;
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CAAnimation_setRepeatCount___float]
+
+    XMLVM_VAR_THIZ;
+    [thiz setRepeatCount:n1];
+
+    
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CAAnimation_getRepeatDuration__]
+
+    XMLVM_VAR_THIZ;
+    double objCObj = [thiz repeatDuration];
+    return objCObj;
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CAAnimation_setRepeatDuration___double]
+
+    XMLVM_VAR_THIZ;
+    [thiz setRepeatDuration:n1];
+
+    
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CAAnimation_getAutoreverses__]
+
+    XMLVM_VAR_THIZ;
+    BOOL objCObj = [thiz autoreverses];
+    return objCObj;
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CAAnimation_setAutoreverses___boolean]
+
+    XMLVM_VAR_THIZ;
+    [thiz setAutoreverses:n1];
+
+    
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CAAnimation_getFillMode__]
+
+    XMLVM_VAR_THIZ;
+    NSString* objCObj = [thiz fillMode];
+    return fromNSString(objCObj);
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CAAnimation_setFillMode___java_lang_String]
+
+    XMLVM_VAR_THIZ;
+    NSString * ObjCVar1 = toNSString(n1);
+    [thiz setFillMode:ObjCVar1];
+    [ObjCVar1 release];
+
 
     
 //XMLVM_END_WRAPPER

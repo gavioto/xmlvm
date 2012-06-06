@@ -190,4 +190,8 @@ public class UISegmentedControl extends UIControl {
 	public boolean isEnabledForSegmentAtIndex(int segment){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

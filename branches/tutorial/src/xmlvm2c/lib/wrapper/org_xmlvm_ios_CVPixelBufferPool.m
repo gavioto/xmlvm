@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_CVPixelBufferPool();
 }
 @end
+
 void org_xmlvm_ios_CVPixelBufferPool_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -35,8 +36,10 @@ xmlvm_register_wrapper_creator(__WRAPPER_CREATOR);
 __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CVPixelBufferPool___INIT____org_xmlvm_ios_CFAllocator_org_xmlvm_ios_CFDictionary_org_xmlvm_ios_CFDictionary_org_xmlvm_ios_Reference<CVPixelBufferPool>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CVPixelBufferPool___INIT____org_xmlvm_ios_CFAllocator_org_xmlvm_ios_CFDictionary_org_xmlvm_ios_CFDictionary_org_xmlvm_ios_Reference]
 XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
+    JAVA_OBJECT jObject4 = org_xmlvm_ios_Reference_get__(n4);
+    XMLVM_VAR_IOS(CVPixelBufferPool, var4, jObject4);
     
     CVPixelBufferPool* objCObj = [[CVPixelBufferPool alloc] create:var1];
     org_xmlvm_ios_CVPixelBufferPool_INTERNAL_CONSTRUCTOR(me, objCObj);
@@ -49,7 +52,6 @@ XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CVPixelBufferPool_getTypeID__]
 
-    
     long objCObj = CFHostGetTypeID();
     
     return objCObj;
@@ -77,7 +79,6 @@ XMLVM_NOT_IMPLEMENTED();
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CVPixelBufferPool_createPixelBuffer___org_xmlvm_ios_CFAllocator_org_xmlvm_ios_CVPixelBufferPool_org_xmlvm_ios_CVPixelBuffer]
 XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
-    
     
     int objCObj = CVPixelBufferPoolCreatePixelBuffer(var1,(CVPixelBufferPool*) (((org_xmlvm_ios_CVPixelBufferPool*) n2)->fields.org_xmlvm_ios_NSObject.wrappedObj),(CVPixelBuffer*) (((org_xmlvm_ios_CVPixelBuffer*) n3)->fields.org_xmlvm_ios_NSObject.wrappedObj));
     

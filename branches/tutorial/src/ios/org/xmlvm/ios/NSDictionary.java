@@ -392,4 +392,8 @@ public class NSDictionary extends NSObject {
 	public Object valueForKey(String key){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

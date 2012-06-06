@@ -152,4 +152,8 @@ public class NSPersistentStoreCoordinator extends NSObject {
 	public boolean tryLock(){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

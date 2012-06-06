@@ -12,10 +12,12 @@ public abstract class UIPickerViewDataSource implements org.xmlvm.ios.UIPickerVi
 	/**
 	 * - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView;
 	 */
-	public abstract int numberOfComponentsInPickerView(UIPickerView pickerView);
-
+	public int numberOfComponentsInPickerView(UIPickerView pickerView){
+		return 0;
+	}
 	/**
 	 * - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component;
 	 */
-	public abstract int pickerView(UIPickerView pickerView, int component);
-}
+	public int pickerView(UIPickerView pickerView, int component){
+		return 0;
+	}}

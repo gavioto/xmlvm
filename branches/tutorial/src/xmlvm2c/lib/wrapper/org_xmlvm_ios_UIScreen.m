@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_UIScreen();
 }
 @end
+
 void org_xmlvm_ios_UIScreen_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -57,7 +58,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIScreen_mainScreen__]
 
     UIScreen* objCObj =  [UIScreen mainScreen];
-    if (!__TIB_org_xmlvm_ios_UIScreen.classInitialized) __INIT_org_xmlvm_ios_UIScreen();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -93,16 +93,14 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIScreen_getPreferredMode__]
 
     XMLVM_VAR_THIZ;
-    UIScreenMode* objCObj = [thiz preferredMode];    if (!__TIB_org_xmlvm_ios_UIScreenMode.classInitialized) __INIT_org_xmlvm_ios_UIScreenMode();
-
+    UIScreenMode* objCObj = [thiz preferredMode];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIScreen_getCurrentMode__]
 
     XMLVM_VAR_THIZ;
-    UIScreenMode* objCObj = [thiz currentMode];    if (!__TIB_org_xmlvm_ios_UIScreenMode.classInitialized) __INIT_org_xmlvm_ios_UIScreenMode();
-
+    UIScreenMode* objCObj = [thiz currentMode];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -117,8 +115,7 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIScreen_getMirroredScreen__]
 
     XMLVM_VAR_THIZ;
-    UIScreen* objCObj = [thiz mirroredScreen];    if (!__TIB_org_xmlvm_ios_UIScreen.classInitialized) __INIT_org_xmlvm_ios_UIScreen();
-
+    UIScreen* objCObj = [thiz mirroredScreen];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 

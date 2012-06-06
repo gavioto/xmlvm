@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_CFNetServiceBrowser();
 }
 @end
+
 void org_xmlvm_ios_CFNetServiceBrowser_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -35,8 +36,10 @@ xmlvm_register_wrapper_creator(__WRAPPER_CREATOR);
 __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFNetServiceBrowser___INIT____org_xmlvm_ios_CFAllocator_java_lang_Object_org_xmlvm_ios_Reference<CFNetServiceClientContext>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFNetServiceBrowser___INIT____org_xmlvm_ios_CFAllocator_java_lang_Object_org_xmlvm_ios_Reference]
 XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
+    JAVA_OBJECT jObject3 = org_xmlvm_ios_Reference_get__(n3);
+    CFNetServiceClientContext var3= toCFNetServiceClientContext(jObject3);
     
     CFNetServiceBrowser* objCObj = [[CFNetServiceBrowser alloc] create:var1];
     org_xmlvm_ios_CFNetServiceBrowser_INTERNAL_CONSTRUCTOR(me, objCObj);
@@ -49,7 +52,6 @@ XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFNetServiceBrowser_getTypeID__]
 
-    
     long objCObj = CFHostGetTypeID();
     
     return objCObj;
@@ -60,17 +62,17 @@ XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFNetServiceBrowser_searchForDomains___byte_org_xmlvm_ios_Reference<CFStreamError>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFNetServiceBrowser_searchForDomains___byte_org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFNetServiceBrowser_searchForServices___java_lang_String_java_lang_String_org_xmlvm_ios_Reference<CFStreamError>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFNetServiceBrowser_searchForServices___java_lang_String_java_lang_String_org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFNetServiceBrowser_stopSearch___org_xmlvm_ios_Reference<CFStreamError>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFNetServiceBrowser_stopSearch___org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER

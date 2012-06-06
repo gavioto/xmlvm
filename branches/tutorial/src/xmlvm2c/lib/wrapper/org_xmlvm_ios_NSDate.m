@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_NSDate();
 }
 @end
+
 void org_xmlvm_ios_NSDate_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -133,7 +134,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
     XMLVM_VAR_THIZ;
     
     NSDate* objCObj = [thiz  earlierDate:(NSDate*) (((org_xmlvm_ios_NSDate*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj)];
-    if (!__TIB_org_xmlvm_ios_NSDate.classInitialized) __INIT_org_xmlvm_ios_NSDate();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -143,7 +143,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
     XMLVM_VAR_THIZ;
     
     NSDate* objCObj = [thiz  laterDate:(NSDate*) (((org_xmlvm_ios_NSDate*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj)];
-    if (!__TIB_org_xmlvm_ios_NSDate.classInitialized) __INIT_org_xmlvm_ios_NSDate();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -194,7 +193,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSDate_date__]
 
     NSDate* objCObj =  [NSDate date];
-    if (!__TIB_org_xmlvm_ios_NSDate.classInitialized) __INIT_org_xmlvm_ios_NSDate();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -202,7 +200,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSDate_dateWithTimeIntervalSinceNow___double]
 
     NSDate* objCObj =  [NSDate  dateWithTimeIntervalSinceNow:n1];
-    if (!__TIB_org_xmlvm_ios_NSDate.classInitialized) __INIT_org_xmlvm_ios_NSDate();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -210,7 +207,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSDate_dateWithTimeIntervalSinceReferenceDate___double]
 
     NSDate* objCObj =  [NSDate  dateWithTimeIntervalSinceReferenceDate:n1];
-    if (!__TIB_org_xmlvm_ios_NSDate.classInitialized) __INIT_org_xmlvm_ios_NSDate();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -218,7 +214,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSDate_dateWithTimeIntervalSince1970___double]
 
     NSDate* objCObj =  [NSDate  dateWithTimeIntervalSince1970:n1];
-    if (!__TIB_org_xmlvm_ios_NSDate.classInitialized) __INIT_org_xmlvm_ios_NSDate();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -226,7 +221,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSDate_dateWithTimeInterval___double_org_xmlvm_ios_NSDate]
 
     NSDate* objCObj =  [NSDate  dateWithTimeInterval:n1 sinceDate:(NSDate*) (((org_xmlvm_ios_NSDate*) n2)->fields.org_xmlvm_ios_NSObject.wrappedObj)];
-    if (!__TIB_org_xmlvm_ios_NSDate.classInitialized) __INIT_org_xmlvm_ios_NSDate();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

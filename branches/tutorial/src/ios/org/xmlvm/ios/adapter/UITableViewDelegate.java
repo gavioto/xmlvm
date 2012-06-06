@@ -63,7 +63,7 @@ public class UITableViewDelegate implements org.xmlvm.ios.UITableViewDelegate {
 	 * - (NSIndexPath *)tableView:(UITableView *)tableView willDeselectRowAtIndexPath:(NSIndexPath *)indexPath ;
 	 */
 	public NSIndexPath willDeselectRowAtIndexPath(UITableView tableView, NSIndexPath indexPath){
-		return indexPath;
+		return null;
 	}
 	/**
 	 * - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
@@ -110,4 +110,8 @@ public class UITableViewDelegate implements org.xmlvm.ios.UITableViewDelegate {
 	 */
 	public int indentationLevelForRowAtIndexPath(UITableView tableView, NSIndexPath indexPath){
 		return 0;
-	}}
+	}
+	/*
+	 * Interface Properties
+	 */
+}

@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_AVMutableAudioMixInputParameters();
 }
 @end
+
 void org_xmlvm_ios_AVMutableAudioMixInputParameters_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_AVAudioMixInputParameters_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -55,7 +56,6 @@ __DELETE_org_xmlvm_ios_AVAudioMixInputParameters(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVMutableAudioMixInputParameters_audioMixInputParametersWithTrack___org_xmlvm_ios_AVAssetTrack]
 
     AVMutableAudioMixInputParameters* objCObj =  [AVMutableAudioMixInputParameters  audioMixInputParametersWithTrack:(AVAssetTrack*) (((org_xmlvm_ios_AVAssetTrack*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj)];
-    if (!__TIB_org_xmlvm_ios_AVMutableAudioMixInputParameters.classInitialized) __INIT_org_xmlvm_ios_AVMutableAudioMixInputParameters();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -63,7 +63,6 @@ __DELETE_org_xmlvm_ios_AVAudioMixInputParameters(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVMutableAudioMixInputParameters_audioMixInputParameters__]
 
     AVMutableAudioMixInputParameters* objCObj =  [AVMutableAudioMixInputParameters audioMixInputParameters];
-    if (!__TIB_org_xmlvm_ios_AVMutableAudioMixInputParameters.classInitialized) __INIT_org_xmlvm_ios_AVMutableAudioMixInputParameters();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

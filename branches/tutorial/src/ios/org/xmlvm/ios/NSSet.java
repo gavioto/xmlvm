@@ -284,4 +284,8 @@ public class NSSet extends NSObject {
 	public List sortedArrayUsingDescriptors(List sortDescriptors){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

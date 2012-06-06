@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_CTTypesetter();
 }
 @end
+
 void org_xmlvm_ios_CTTypesetter_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -42,7 +43,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTTypesetter_getTypeID__]
 
-    
     long objCObj = CFHostGetTypeID();
     
     return objCObj;
@@ -50,10 +50,8 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTTypesetter_createWithAttributedString___org_xmlvm_ios_CFAttributedString]
 
-    
     CTTypesetter* objCObj = CTFramesetterCreateWithAttributedString((CFAttributedString*) (((org_xmlvm_ios_CFAttributedString*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj));
-        if (!__TIB_org_xmlvm_ios_CTTypesetter.classInitialized) __INIT_org_xmlvm_ios_CTTypesetter();
-
+    
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 

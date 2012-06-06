@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_NSURLConnection();
 }
 @end
+
 void org_xmlvm_ios_NSURLConnection_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -69,7 +70,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSURLConnection_connectionWithRequest___org_xmlvm_ios_NSURLRequest_java_lang_Object]
 
     NSURLConnection* objCObj =  [NSURLConnection  connectionWithRequest:(NSURLRequest*) (((org_xmlvm_ios_NSURLRequest*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj) delegate:((org_xmlvm_ios_NSObject*) n2)->fields.org_xmlvm_ios_NSObject.wrappedObj];
-    if (!__TIB_org_xmlvm_ios_NSURLConnection.classInitialized) __INIT_org_xmlvm_ios_NSURLConnection();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -112,7 +112,13 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
     
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSURLConnection_sendSynchronousRequest___org_xmlvm_ios_NSURLRequest_org_xmlvm_ios_Reference<NSURLResponse>_org_xmlvm_ios_Reference<NSError>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSURLConnection_sendSynchronousRequest___org_xmlvm_ios_NSURLRequest_org_xmlvm_ios_Reference_org_xmlvm_ios_Reference]
+JAVA_OBJECT jObject2 = org_xmlvm_ios_Reference_get__(n2);
+    XMLVM_VAR_IOS(NSURLResponse, var2, jObject2);
+    JAVA_OBJECT jObject3 = org_xmlvm_ios_Reference_get__(n3);
+    XMLVM_VAR_IOS(NSError, var3, jObject3);
+    
+    NSData* objCObj =  [NSURLConnection  sendSynchronousRequest:(NSURLRequest*) (((org_xmlvm_ios_NSURLRequest*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj) returningResponse:&var2 error:&var3];
 
-XMLVM_NOT_IMPLEMENTED();
+    return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

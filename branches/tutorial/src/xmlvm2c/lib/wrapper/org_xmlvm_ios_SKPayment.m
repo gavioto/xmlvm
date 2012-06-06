@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_SKPayment();
 }
 @end
+
 void org_xmlvm_ios_SKPayment_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -50,7 +51,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_SKPayment_paymentWithProduct___org_xmlvm_ios_SKProduct]
 
     SKPayment* objCObj =  [SKPayment  paymentWithProduct:(SKProduct*) (((org_xmlvm_ios_SKProduct*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj)];
-    if (!__TIB_org_xmlvm_ios_SKPayment.classInitialized) __INIT_org_xmlvm_ios_SKPayment();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -61,7 +61,6 @@ NSString * ObjCVar1 = toNSString(n1);
     SKPayment* objCObj =  [SKPayment  paymentWithProductIdentifier:ObjCVar1];
     [ObjCVar1 release];
 
-    if (!__TIB_org_xmlvm_ios_SKPayment.classInitialized) __INIT_org_xmlvm_ios_SKPayment();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -76,8 +75,7 @@ NSString * ObjCVar1 = toNSString(n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_SKPayment_getRequestData__]
 
     XMLVM_VAR_THIZ;
-    NSData* objCObj = [thiz requestData];    if (!__TIB_org_xmlvm_ios_NSData.classInitialized) __INIT_org_xmlvm_ios_NSData();
-
+    NSData* objCObj = [thiz requestData];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 

@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_CGPDFContentStream();
 }
 @end
+
 void org_xmlvm_ios_CGPDFContentStream_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -43,10 +44,8 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CGPDFContentStream_createWithPage___org_xmlvm_ios_CGPDFPage]
 XMLVM_VAR_IOS_REF(CGPDFPage, var1, n1);
     
-    
     CGPDFContentStream* objCObj = CGPDFContentStreamCreateWithPage(var1);
-        if (!__TIB_org_xmlvm_ios_CGPDFContentStream.classInitialized) __INIT_org_xmlvm_ios_CGPDFContentStream();
-
+    
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 

@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_SCPreferences();
 }
 @end
+
 void org_xmlvm_ios_SCPreferences_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -37,6 +38,8 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_SCPreferences___INIT____org_xmlvm_ios_CFAllocator_java_lang_String_java_lang_String]
 XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
+    NSString * ObjCVar2 = toNSString(n2);
+    NSString * ObjCVar3 = toNSString(n3);
     
     SCPreferences* objCObj = [[SCPreferences alloc] create:var1];
     org_xmlvm_ios_SCPreferences_INTERNAL_CONSTRUCTOR(me, objCObj);
@@ -49,7 +52,6 @@ XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_SCPreferences_getTypeID__]
 
-    
     long objCObj = CFHostGetTypeID();
     
     return objCObj;
@@ -60,13 +62,11 @@ XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
     NSString * ObjCVar2 = toNSString(n2);
     NSString * ObjCVar3 = toNSString(n3);
     
-    
     SCPreferences* objCObj = SCPreferencesCreateWithAuthorization(var1,ObjCVar2,ObjCVar3,(AuthorizationOpaque*) (((org_xmlvm_ios_AuthorizationOpaque*) n4)->fields.org_xmlvm_ios_NSObject.wrappedObj));
     
     [ObjCVar2 release];
 
     [ObjCVar3 release];
-    if (!__TIB_org_xmlvm_ios_SCPreferences.classInitialized) __INIT_org_xmlvm_ios_SCPreferences();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -121,7 +121,7 @@ XMLVM_NOT_IMPLEMENTED();
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_SCPreferences_setCallback___java_lang_Object_org_xmlvm_ios_Reference<SCPreferencesContext>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_SCPreferences_setCallback___java_lang_Object_org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER

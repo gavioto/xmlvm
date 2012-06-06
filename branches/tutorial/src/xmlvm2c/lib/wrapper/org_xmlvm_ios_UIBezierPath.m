@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_UIBezierPath();
 }
 @end
+
 void org_xmlvm_ios_UIBezierPath_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -50,7 +51,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIBezierPath_bezierPath__]
 
     UIBezierPath* objCObj =  [UIBezierPath bezierPath];
-    if (!__TIB_org_xmlvm_ios_UIBezierPath.classInitialized) __INIT_org_xmlvm_ios_UIBezierPath();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -58,7 +58,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIBezierPath_bezierPathWithRect___org_xmlvm_ios_CGRect]
 
     UIBezierPath* objCObj =  [UIBezierPath  bezierPathWithRect:toCGRect(n1)];
-    if (!__TIB_org_xmlvm_ios_UIBezierPath.classInitialized) __INIT_org_xmlvm_ios_UIBezierPath();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -66,7 +65,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIBezierPath_bezierPathWithOvalInRect___org_xmlvm_ios_CGRect]
 
     UIBezierPath* objCObj =  [UIBezierPath  bezierPathWithOvalInRect:toCGRect(n1)];
-    if (!__TIB_org_xmlvm_ios_UIBezierPath.classInitialized) __INIT_org_xmlvm_ios_UIBezierPath();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -74,7 +72,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIBezierPath_bezierPathWithRoundedRect___org_xmlvm_ios_CGRect_float]
 
     UIBezierPath* objCObj =  [UIBezierPath  bezierPathWithRoundedRect:toCGRect(n1) cornerRadius:n2];
-    if (!__TIB_org_xmlvm_ios_UIBezierPath.classInitialized) __INIT_org_xmlvm_ios_UIBezierPath();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -82,7 +79,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIBezierPath_bezierPathWithRoundedRect___org_xmlvm_ios_CGRect_int_org_xmlvm_ios_CGSize]
 
     UIBezierPath* objCObj =  [UIBezierPath  bezierPathWithRoundedRect:toCGRect(n1) byRoundingCorners:n2 cornerRadii:toCGSize(n3)];
-    if (!__TIB_org_xmlvm_ios_UIBezierPath.classInitialized) __INIT_org_xmlvm_ios_UIBezierPath();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -90,7 +86,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIBezierPath_bezierPathWithArcCenter___org_xmlvm_ios_CGPoint_float_float_float_boolean]
 
     UIBezierPath* objCObj =  [UIBezierPath  bezierPathWithArcCenter:toCGPoint(n1) radius:n2 startAngle:n3 endAngle:n4 clockwise:n5];
-    if (!__TIB_org_xmlvm_ios_UIBezierPath.classInitialized) __INIT_org_xmlvm_ios_UIBezierPath();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -99,7 +94,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 XMLVM_VAR_IOS_REF(CGPath, var1, n1);
     
     UIBezierPath* objCObj =  [UIBezierPath  bezierPathWithCGPath:var1];
-    if (!__TIB_org_xmlvm_ios_UIBezierPath.classInitialized) __INIT_org_xmlvm_ios_UIBezierPath();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -107,8 +101,8 @@ XMLVM_VAR_IOS_REF(CGPath, var1, n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIBezierPath_getCGPath__]
 
     XMLVM_VAR_THIZ;
-    CGPathRef objCObj = [thiz CGPath];XMLVM_VAR_INIT_REF(CGPath, objCObj);
-    return jvar;
+    CGPathRef objCObj = [thiz CGPath];XMLVM_VAR_INIT_REF(CGPath, refVar, objCObj);
+    return refVar;
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIBezierPath_setCGPath___org_xmlvm_ios_CGPath]

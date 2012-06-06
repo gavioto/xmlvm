@@ -2,7 +2,7 @@
 //XMLVM_BEGIN_IMPLEMENTATION
 void org_xmlvm_ios_CTFontDescriptor_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -32,7 +32,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTFontDescriptor_getTypeID__]
 
-    
     long objCObj = CFHostGetTypeID();
     
     return objCObj;
@@ -41,11 +40,9 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTFontDescriptor_createWithNameAndSize___java_lang_String_float]
 NSString * ObjCVar1 = toNSString(n1);
     
-    
     CTFontDescriptor* objCObj = CTFontDescriptorCreateWithNameAndSize(ObjCVar1,n2);
     
     [ObjCVar1 release];
-    if (!__TIB_org_xmlvm_ios_CTFontDescriptor.classInitialized) __INIT_org_xmlvm_ios_CTFontDescriptor();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

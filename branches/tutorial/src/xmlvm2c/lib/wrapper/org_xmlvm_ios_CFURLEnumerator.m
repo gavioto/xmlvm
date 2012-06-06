@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_CFURLEnumerator();
 }
 @end
+
 void org_xmlvm_ios_CFURLEnumerator_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -42,7 +43,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFURLEnumerator_getTypeID__]
 
-    
     long objCObj = CFHostGetTypeID();
     
     return objCObj;
@@ -58,7 +58,7 @@ XMLVM_NOT_IMPLEMENTED();
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFURLEnumerator_getNextURL___org_xmlvm_ios_Reference<CFURL>_org_xmlvm_ios_Reference<CFError>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFURLEnumerator_getNextURL___org_xmlvm_ios_Reference_org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER

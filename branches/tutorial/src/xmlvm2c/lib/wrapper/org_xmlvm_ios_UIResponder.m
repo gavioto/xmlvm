@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_UIResponder();
 }
 @end
+
 void org_xmlvm_ios_UIResponder_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -52,7 +53,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
     XMLVM_VAR_THIZ;
     
     UIResponder* objCObj = [thiz nextResponder];
-    if (!__TIB_org_xmlvm_ios_UIResponder.classInitialized) __INIT_org_xmlvm_ios_UIResponder();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -186,24 +186,21 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIResponder_getUndoManager__]
 
     XMLVM_VAR_THIZ;
-    NSUndoManager* objCObj = [thiz undoManager];    if (!__TIB_org_xmlvm_ios_NSUndoManager.classInitialized) __INIT_org_xmlvm_ios_NSUndoManager();
-
+    NSUndoManager* objCObj = [thiz undoManager];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIResponder_getInputView__]
 
     XMLVM_VAR_THIZ;
-    UIView* objCObj = [thiz inputView];    if (!__TIB_org_xmlvm_ios_UIView.classInitialized) __INIT_org_xmlvm_ios_UIView();
-
+    UIView* objCObj = [thiz inputView];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIResponder_getInputAccessoryView__]
 
     XMLVM_VAR_THIZ;
-    UIView* objCObj = [thiz inputAccessoryView];    if (!__TIB_org_xmlvm_ios_UIView.classInitialized) __INIT_org_xmlvm_ios_UIView();
-
+    UIView* objCObj = [thiz inputAccessoryView];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 

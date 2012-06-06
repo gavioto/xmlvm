@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_NSHTTPCookie();
 }
 @end
+
 void org_xmlvm_ios_NSHTTPCookie_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -103,7 +104,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSDate* objCObj = [thiz expiresDate];
-    if (!__TIB_org_xmlvm_ios_NSDate.classInitialized) __INIT_org_xmlvm_ios_NSDate();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -167,7 +167,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSURL* objCObj = [thiz commentURL];
-    if (!__TIB_org_xmlvm_ios_NSURL.classInitialized) __INIT_org_xmlvm_ios_NSURL();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

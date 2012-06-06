@@ -20,4 +20,8 @@ public class UIPickerViewAccessibilityDelegate implements org.xmlvm.ios.UIPicker
 	 */
 	public String accessibilityHintForComponent(UIPickerView pickerView, int component){
 		return null;
-	}}
+	}
+	/*
+	 * Interface Properties
+	 */
+}

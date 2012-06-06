@@ -1,21 +1,18 @@
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MediaPlayer_MPVolumeSettingsAlertShow__]
-
-    MPVolumeSettingsAlertShow();
+MPVolumeSettingsAlertShow();
     
     
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MediaPlayer_MPVolumeSettingsAlertHide__]
-
-    MPVolumeSettingsAlertHide();
+MPVolumeSettingsAlertHide();
     
     
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MediaPlayer_MPVolumeSettingsAlertIsVisible__]
 
-    
     BOOL objCObj = MPVolumeSettingsAlertIsVisible();
     
     return objCObj;

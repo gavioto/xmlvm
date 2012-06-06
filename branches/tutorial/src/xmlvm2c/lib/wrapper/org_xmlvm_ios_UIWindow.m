@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_UIWindow();
 }
 @end
+
 void org_xmlvm_ios_UIWindow_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_UIView_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -25,7 +26,9 @@ static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
     }
     return JAVA_NULL;
 }
-//XMLVM_END_IMPLEMENTATION
+
+                JAVA_OBJECT window;
+        //XMLVM_END_IMPLEMENTATION
 
 //XMLVM_BEGIN_WRAPPER[__INIT_org_xmlvm_ios_UIWindow]
 xmlvm_register_wrapper_creator(__WRAPPER_CREATOR);
@@ -44,7 +47,9 @@ __DELETE_org_xmlvm_ios_UIView(me, client_data);
 
     UIWindow* objCObj = [[UIWindow alloc] initWithFrame:toCGRect(n1)];
     org_xmlvm_ios_UIWindow_INTERNAL_CONSTRUCTOR(me, objCObj);
-//XMLVM_END_WRAPPER
+
+                window = me;
+            //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIWindow___INIT___]
     UIWindow* objCObj = [[UIWindow alloc ] init];
@@ -66,8 +71,7 @@ __DELETE_org_xmlvm_ios_UIView(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIWindow_getScreen__]
 
     XMLVM_VAR_THIZ;
-    UIScreen* objCObj = [thiz screen];    if (!__TIB_org_xmlvm_ios_UIScreen.classInitialized) __INIT_org_xmlvm_ios_UIScreen();
-
+    UIScreen* objCObj = [thiz screen];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -136,8 +140,7 @@ __DELETE_org_xmlvm_ios_UIView(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIWindow_getRootViewController__]
 
     XMLVM_VAR_THIZ;
-    UIViewController* objCObj = [thiz rootViewController];    if (!__TIB_org_xmlvm_ios_UIViewController.classInitialized) __INIT_org_xmlvm_ios_UIViewController();
-
+    UIViewController* objCObj = [thiz rootViewController];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 

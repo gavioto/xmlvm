@@ -3,6 +3,7 @@ import java.util.*;
 
 import org.xmlvm.XMLVMSkeletonOnly;
 @XMLVMSkeletonOnly
+(references={NSOutputStream.class,NSInputStream.class})
 public class NSStream extends NSObject {
 
 	/*

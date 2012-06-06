@@ -36,4 +36,8 @@ public class AVTimedMetadataGroup extends NSObject {
 	public List getItems(){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

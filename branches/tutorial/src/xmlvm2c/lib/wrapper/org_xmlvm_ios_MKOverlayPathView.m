@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_MKOverlayPathView();
 }
 @end
+
 void org_xmlvm_ios_MKOverlayPathView_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_MKOverlayView_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -75,8 +76,7 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MKOverlayPathView_getFillColor__]
 
     XMLVM_VAR_THIZ;
-    UIColor* objCObj = [thiz fillColor];    if (!__TIB_org_xmlvm_ios_UIColor.classInitialized) __INIT_org_xmlvm_ios_UIColor();
-
+    UIColor* objCObj = [thiz fillColor];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -91,8 +91,7 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MKOverlayPathView_getStrokeColor__]
 
     XMLVM_VAR_THIZ;
-    UIColor* objCObj = [thiz strokeColor];    if (!__TIB_org_xmlvm_ios_UIColor.classInitialized) __INIT_org_xmlvm_ios_UIColor();
-
+    UIColor* objCObj = [thiz strokeColor];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -208,8 +207,8 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MKOverlayPathView_getPath__]
 
     XMLVM_VAR_THIZ;
-    CGPathRef objCObj = [thiz path];XMLVM_VAR_INIT_REF(CGPath, objCObj);
-    return jvar;
+    CGPathRef objCObj = [thiz path];XMLVM_VAR_INIT_REF(CGPath, refVar, objCObj);
+    return refVar;
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MKOverlayPathView_setPath___org_xmlvm_ios_CGPath]

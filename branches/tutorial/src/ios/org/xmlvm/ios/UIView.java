@@ -734,4 +734,8 @@ public class UIView extends UIResponder {
 	public void removeGestureRecognizer(UIGestureRecognizer gestureRecognizer){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

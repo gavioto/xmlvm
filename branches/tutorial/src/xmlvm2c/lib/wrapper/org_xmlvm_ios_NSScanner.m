@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_NSScanner();
 }
 @end
+
 void org_xmlvm_ios_NSScanner_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -56,9 +57,15 @@ NSString * ObjCVar1 = toNSString(n1);
     org_xmlvm_ios_NSScanner_INTERNAL_CONSTRUCTOR(me, objCObj);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSScanner_scanDecimal___org_xmlvm_ios_Reference<NSDecimal>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSScanner_scanDecimal___org_xmlvm_ios_Reference]
 
-XMLVM_NOT_IMPLEMENTED();
+    XMLVM_VAR_THIZ;
+    JAVA_OBJECT jObject1 = org_xmlvm_ios_Reference_get__(n1);
+    NSDecimal var1= toNSDecimal(jObject1);
+    
+    BOOL objCObj = [thiz  scanDecimal:&var1];
+
+    return objCObj;
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSScanner_string__]
@@ -116,7 +123,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSCharacterSet* objCObj = [thiz charactersToBeSkipped];
-    if (!__TIB_org_xmlvm_ios_NSCharacterSet.classInitialized) __INIT_org_xmlvm_ios_NSCharacterSet();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -229,24 +235,54 @@ XMLVM_NOT_IMPLEMENTED();
     return objCObj;
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSScanner_scanString___java_lang_String_org_xmlvm_ios_Reference<String>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSScanner_scanString___java_lang_String_org_xmlvm_ios_Reference]
 
-XMLVM_NOT_IMPLEMENTED();
+    XMLVM_VAR_THIZ;
+    NSString * ObjCVar1 = toNSString(n1);
+    JAVA_OBJECT jObject2 = org_xmlvm_ios_Reference_get__(n2);
+    NSString* var2= toNSString(jObject2);
+    
+    BOOL objCObj = [thiz  scanString:ObjCVar1 intoString:&var2];
+    [ObjCVar1 release];
+
+
+    return objCObj;
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSScanner_scanCharactersFromSet___org_xmlvm_ios_NSCharacterSet_org_xmlvm_ios_Reference<String>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSScanner_scanCharactersFromSet___org_xmlvm_ios_NSCharacterSet_org_xmlvm_ios_Reference]
 
-XMLVM_NOT_IMPLEMENTED();
+    XMLVM_VAR_THIZ;
+    JAVA_OBJECT jObject2 = org_xmlvm_ios_Reference_get__(n2);
+    NSString* var2= toNSString(jObject2);
+    
+    BOOL objCObj = [thiz  scanCharactersFromSet:(NSCharacterSet*) (((org_xmlvm_ios_NSCharacterSet*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj) intoString:&var2];
+
+    return objCObj;
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSScanner_scanUpToString___java_lang_String_org_xmlvm_ios_Reference<String>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSScanner_scanUpToString___java_lang_String_org_xmlvm_ios_Reference]
 
-XMLVM_NOT_IMPLEMENTED();
+    XMLVM_VAR_THIZ;
+    NSString * ObjCVar1 = toNSString(n1);
+    JAVA_OBJECT jObject2 = org_xmlvm_ios_Reference_get__(n2);
+    NSString* var2= toNSString(jObject2);
+    
+    BOOL objCObj = [thiz  scanUpToString:ObjCVar1 intoString:&var2];
+    [ObjCVar1 release];
+
+
+    return objCObj;
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSScanner_scanUpToCharactersFromSet___org_xmlvm_ios_NSCharacterSet_org_xmlvm_ios_Reference<String>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSScanner_scanUpToCharactersFromSet___org_xmlvm_ios_NSCharacterSet_org_xmlvm_ios_Reference]
 
-XMLVM_NOT_IMPLEMENTED();
+    XMLVM_VAR_THIZ;
+    JAVA_OBJECT jObject2 = org_xmlvm_ios_Reference_get__(n2);
+    NSString* var2= toNSString(jObject2);
+    
+    BOOL objCObj = [thiz  scanUpToCharactersFromSet:(NSCharacterSet*) (((org_xmlvm_ios_NSCharacterSet*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj) intoString:&var2];
+
+    return objCObj;
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSScanner_isAtEnd__]
@@ -264,7 +300,6 @@ NSString * ObjCVar1 = toNSString(n1);
     NSScanner* objCObj =  [NSScanner  scannerWithString:ObjCVar1];
     [ObjCVar1 release];
 
-    if (!__TIB_org_xmlvm_ios_NSScanner.classInitialized) __INIT_org_xmlvm_ios_NSScanner();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

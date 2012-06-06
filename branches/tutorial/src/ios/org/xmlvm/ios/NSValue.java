@@ -229,4 +229,8 @@ public class NSValue extends NSObject {
 	public UIEdgeInsets UIEdgeInsetsValue(){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

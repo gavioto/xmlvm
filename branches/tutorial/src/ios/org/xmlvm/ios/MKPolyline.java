@@ -31,4 +31,22 @@ public class MKPolyline extends MKMultiPoint {
 	public MKPolyline() {
 		super();
 	}
+
+	/*
+	 * Interface Properties
+	 */
+
+	/**
+	 * @property(nonatomic, readonly) CLLocationCoordinate2D coordinate;
+	 */
+	public CLLocationCoordinate2D getCoordinate(){
+		throw new RuntimeException("Stub");
+	}
+
+	/**
+	 * @property(nonatomic, readonly) MKMapRect boundingMapRect;
+	 */
+	public MKMapRect getBoundingMapRect(){
+		throw new RuntimeException("Stub");
+	}
 }

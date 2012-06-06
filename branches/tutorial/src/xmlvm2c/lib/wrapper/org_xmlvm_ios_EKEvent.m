@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_EKEvent();
 }
 @end
+
 void org_xmlvm_ios_EKEvent_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -50,7 +51,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_EKEvent_eventWithEventStore___org_xmlvm_ios_EKEventStore]
 
     EKEvent* objCObj =  [EKEvent  eventWithEventStore:(EKEventStore*) (((org_xmlvm_ios_EKEventStore*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj)];
-    if (!__TIB_org_xmlvm_ios_EKEvent.classInitialized) __INIT_org_xmlvm_ios_EKEvent();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -101,8 +101,7 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_EKEvent_getCalendar__]
 
     XMLVM_VAR_THIZ;
-    EKCalendar* objCObj = [thiz calendar];    if (!__TIB_org_xmlvm_ios_EKCalendar.classInitialized) __INIT_org_xmlvm_ios_EKCalendar();
-
+    EKCalendar* objCObj = [thiz calendar];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -135,8 +134,7 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_EKEvent_getLastModifiedDate__]
 
     XMLVM_VAR_THIZ;
-    NSDate* objCObj = [thiz lastModifiedDate];    if (!__TIB_org_xmlvm_ios_NSDate.classInitialized) __INIT_org_xmlvm_ios_NSDate();
-
+    NSDate* objCObj = [thiz lastModifiedDate];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -192,8 +190,7 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_EKEvent_getStartDate__]
 
     XMLVM_VAR_THIZ;
-    NSDate* objCObj = [thiz startDate];    if (!__TIB_org_xmlvm_ios_NSDate.classInitialized) __INIT_org_xmlvm_ios_NSDate();
-
+    NSDate* objCObj = [thiz startDate];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -208,8 +205,7 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_EKEvent_getEndDate__]
 
     XMLVM_VAR_THIZ;
-    NSDate* objCObj = [thiz endDate];    if (!__TIB_org_xmlvm_ios_NSDate.classInitialized) __INIT_org_xmlvm_ios_NSDate();
-
+    NSDate* objCObj = [thiz endDate];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -240,16 +236,14 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_EKEvent_getOrganizer__]
 
     XMLVM_VAR_THIZ;
-    EKParticipant* objCObj = [thiz organizer];    if (!__TIB_org_xmlvm_ios_EKParticipant.classInitialized) __INIT_org_xmlvm_ios_EKParticipant();
-
+    EKParticipant* objCObj = [thiz organizer];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_EKEvent_getRecurrenceRule__]
 
     XMLVM_VAR_THIZ;
-    EKRecurrenceRule* objCObj = [thiz recurrenceRule];    if (!__TIB_org_xmlvm_ios_EKRecurrenceRule.classInitialized) __INIT_org_xmlvm_ios_EKRecurrenceRule();
-
+    EKRecurrenceRule* objCObj = [thiz recurrenceRule];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 

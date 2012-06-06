@@ -27,14 +27,13 @@ JAVA_OBJECT fromCGPoint(CGPoint obj)
     org_xmlvm_ios_CGPoint* jObj = me;
     jObj->fields.org_xmlvm_ios_CGPoint.x_ = objCObj.x;
     jObj->fields.org_xmlvm_ios_CGPoint.y_ = objCObj.y;
-//XMLVM_END_WRAPPER
+null//XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CGPoint___INIT___]
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CGPoint_applyAffineTransform___org_xmlvm_ios_CGAffineTransform]
 
-    
     CGPoint objCObj = CGPointApplyAffineTransform(toCGPoint(me),toCGAffineTransform(n1));
     
     return fromCGPoint(objCObj);
@@ -42,7 +41,6 @@ JAVA_OBJECT fromCGPoint(CGPoint obj)
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CGPoint_equalToPoint___org_xmlvm_ios_CGPoint]
 
-    
     BOOL objCObj = CGPointEqualToPoint(toCGPoint(me),toCGPoint(n1));
     
     return objCObj;
@@ -53,14 +51,13 @@ JAVA_OBJECT fromCGPoint(CGPoint obj)
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CGPoint_makeWithDictionaryRepresentation___org_xmlvm_ios_CFDictionary_org_xmlvm_ios_Reference<CGPoint>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CGPoint_makeWithDictionaryRepresentation___org_xmlvm_ios_CFDictionary_org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CGPoint_fromString___java_lang_String]
 NSString * ObjCVar1 = toNSString(n1);
-    
     
     CGPoint objCObj = CGPointFromString(ObjCVar1);
     

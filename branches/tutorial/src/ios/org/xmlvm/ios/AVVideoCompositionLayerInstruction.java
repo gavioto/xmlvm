@@ -42,4 +42,8 @@ public class AVVideoCompositionLayerInstruction extends NSObject {
 	public boolean getOpacityRampForTime(CMTime time, float[] startOpacity, float[] endOpacity, Reference<CMTimeRange> timeRange){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_AVAudioMixInputParameters();
 }
 @end
+
 void org_xmlvm_ios_AVAudioMixInputParameters_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -54,7 +55,15 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
     return objCObj;
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVAudioMixInputParameters_getVolumeRampForTime___org_xmlvm_ios_CMTime_float_1ARRAY_float_1ARRAY_org_xmlvm_ios_Reference<CMTimeRange>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVAudioMixInputParameters_getVolumeRampForTime___org_xmlvm_ios_CMTime_float_1ARRAY_float_1ARRAY_org_xmlvm_ios_Reference]
 
-XMLVM_NOT_IMPLEMENTED();
+    XMLVM_VAR_THIZ;
+    XMLVM_VAR_FLOAT_ARRAY(a2, n2); 
+    XMLVM_VAR_FLOAT_ARRAY(a3, n3); 
+    JAVA_OBJECT jObject4 = org_xmlvm_ios_Reference_get__(n4);
+    CMTimeRange var4= toCMTimeRange(jObject4);
+    
+    BOOL objCObj = [thiz  getVolumeRampForTime:toCMTime(n1) startVolume:a2->fields.org_xmlvm_runtime_XMLVMArray.array_ endVolume:a3->fields.org_xmlvm_runtime_XMLVMArray.array_ timeRange:&var4];
+
+    return objCObj;
 //XMLVM_END_WRAPPER

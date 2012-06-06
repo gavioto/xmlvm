@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_UIPageControl();
 }
 @end
+
 void org_xmlvm_ios_UIPageControl_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_UIControl_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {

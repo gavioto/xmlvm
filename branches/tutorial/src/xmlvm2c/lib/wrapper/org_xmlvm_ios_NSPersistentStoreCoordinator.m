@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_NSPersistentStoreCoordinator();
 }
 @end
+
 void org_xmlvm_ios_NSPersistentStoreCoordinator_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -67,12 +68,12 @@ NSString * ObjCVar2 = toNSString(n2);
     
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSPersistentStoreCoordinator_metadataForPersistentStoreOfType___java_lang_String_org_xmlvm_ios_NSURL_org_xmlvm_ios_Reference<NSError>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSPersistentStoreCoordinator_metadataForPersistentStoreOfType___java_lang_String_org_xmlvm_ios_NSURL_org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSPersistentStoreCoordinator_setMetadata___java_util_Map_java_lang_String_org_xmlvm_ios_NSURL_org_xmlvm_ios_Reference<NSError>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSPersistentStoreCoordinator_setMetadata___java_util_Map_java_lang_String_org_xmlvm_ios_NSURL_org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
@@ -92,7 +93,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSManagedObjectModel* objCObj = [thiz managedObjectModel];
-    if (!__TIB_org_xmlvm_ios_NSManagedObjectModel.classInitialized) __INIT_org_xmlvm_ios_NSManagedObjectModel();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -111,7 +111,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSPersistentStore* objCObj = [thiz  persistentStoreForURL:(NSURL*) (((org_xmlvm_ios_NSURL*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj)];
-    if (!__TIB_org_xmlvm_ios_NSPersistentStore.classInitialized) __INIT_org_xmlvm_ios_NSPersistentStore();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -121,7 +120,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSURL* objCObj = [thiz  URLForPersistentStore:(NSPersistentStore*) (((org_xmlvm_ios_NSPersistentStore*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj)];
-    if (!__TIB_org_xmlvm_ios_NSURL.classInitialized) __INIT_org_xmlvm_ios_NSURL();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -135,17 +133,23 @@ XMLVM_NOT_IMPLEMENTED();
     return objCObj;
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSPersistentStoreCoordinator_addPersistentStoreWithType___java_lang_String_java_lang_String_org_xmlvm_ios_NSURL_java_util_Map_org_xmlvm_ios_Reference<NSError>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSPersistentStoreCoordinator_addPersistentStoreWithType___java_lang_String_java_lang_String_org_xmlvm_ios_NSURL_java_util_Map_org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSPersistentStoreCoordinator_removePersistentStore___org_xmlvm_ios_NSPersistentStore_org_xmlvm_ios_Reference<NSError>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSPersistentStoreCoordinator_removePersistentStore___org_xmlvm_ios_NSPersistentStore_org_xmlvm_ios_Reference]
 
-XMLVM_NOT_IMPLEMENTED();
+    XMLVM_VAR_THIZ;
+    JAVA_OBJECT jObject2 = org_xmlvm_ios_Reference_get__(n2);
+    XMLVM_VAR_IOS(NSError, var2, jObject2);
+    
+    BOOL objCObj = [thiz  removePersistentStore:(NSPersistentStore*) (((org_xmlvm_ios_NSPersistentStore*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj) error:&var2];
+
+    return objCObj;
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSPersistentStoreCoordinator_migratePersistentStore___org_xmlvm_ios_NSPersistentStore_org_xmlvm_ios_NSURL_java_util_Map_java_lang_String_org_xmlvm_ios_Reference<NSError>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSPersistentStoreCoordinator_migratePersistentStore___org_xmlvm_ios_NSPersistentStore_org_xmlvm_ios_NSURL_java_util_Map_java_lang_String_org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
@@ -155,7 +159,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSManagedObjectID* objCObj = [thiz  managedObjectIDForURIRepresentation:(NSURL*) (((org_xmlvm_ios_NSURL*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj)];
-    if (!__TIB_org_xmlvm_ios_NSManagedObjectID.classInitialized) __INIT_org_xmlvm_ios_NSManagedObjectID();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

@@ -454,4 +454,8 @@ public class UIViewController extends UIResponder {
 	public UIBarButtonItem editButtonItem(){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

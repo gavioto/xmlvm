@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_NSFetchRequestExpression();
 }
 @end
+
 void org_xmlvm_ios_NSFetchRequestExpression_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSExpression_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -61,7 +62,6 @@ __DELETE_org_xmlvm_ios_NSExpression(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSFetchRequestExpression_expressionForFetch___org_xmlvm_ios_NSExpression_org_xmlvm_ios_NSExpression_boolean]
 
     NSExpression* objCObj =  [NSFetchRequestExpression  expressionForFetch:(NSExpression*) (((org_xmlvm_ios_NSExpression*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj) context:(NSExpression*) (((org_xmlvm_ios_NSExpression*) n2)->fields.org_xmlvm_ios_NSObject.wrappedObj) countOnly:n3];
-    if (!__TIB_org_xmlvm_ios_NSExpression.classInitialized) __INIT_org_xmlvm_ios_NSExpression();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -71,7 +71,6 @@ __DELETE_org_xmlvm_ios_NSExpression(me, client_data);
     XMLVM_VAR_THIZ;
     
     NSExpression* objCObj = [thiz requestExpression];
-    if (!__TIB_org_xmlvm_ios_NSExpression.classInitialized) __INIT_org_xmlvm_ios_NSExpression();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -81,7 +80,6 @@ __DELETE_org_xmlvm_ios_NSExpression(me, client_data);
     XMLVM_VAR_THIZ;
     
     NSExpression* objCObj = [thiz contextExpression];
-    if (!__TIB_org_xmlvm_ios_NSExpression.classInitialized) __INIT_org_xmlvm_ios_NSExpression();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

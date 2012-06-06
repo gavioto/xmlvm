@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_UINavigationItem();
 }
 @end
+
 void org_xmlvm_ios_UINavigationItem_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -77,8 +78,7 @@ NSString * ObjCVar1 = toNSString(n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UINavigationItem_getBackBarButtonItem__]
 
     XMLVM_VAR_THIZ;
-    UIBarButtonItem* objCObj = [thiz backBarButtonItem];    if (!__TIB_org_xmlvm_ios_UIBarButtonItem.classInitialized) __INIT_org_xmlvm_ios_UIBarButtonItem();
-
+    UIBarButtonItem* objCObj = [thiz backBarButtonItem];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -93,8 +93,7 @@ NSString * ObjCVar1 = toNSString(n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UINavigationItem_getTitleView__]
 
     XMLVM_VAR_THIZ;
-    UIView* objCObj = [thiz titleView];    if (!__TIB_org_xmlvm_ios_UIView.classInitialized) __INIT_org_xmlvm_ios_UIView();
-
+    UIView* objCObj = [thiz titleView];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -150,8 +149,7 @@ NSString * ObjCVar1 = toNSString(n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UINavigationItem_getLeftBarButtonItem__]
 
     XMLVM_VAR_THIZ;
-    UIBarButtonItem* objCObj = [thiz leftBarButtonItem];    if (!__TIB_org_xmlvm_ios_UIBarButtonItem.classInitialized) __INIT_org_xmlvm_ios_UIBarButtonItem();
-
+    UIBarButtonItem* objCObj = [thiz leftBarButtonItem];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -166,8 +164,7 @@ NSString * ObjCVar1 = toNSString(n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UINavigationItem_getRightBarButtonItem__]
 
     XMLVM_VAR_THIZ;
-    UIBarButtonItem* objCObj = [thiz rightBarButtonItem];    if (!__TIB_org_xmlvm_ios_UIBarButtonItem.classInitialized) __INIT_org_xmlvm_ios_UIBarButtonItem();
-
+    UIBarButtonItem* objCObj = [thiz rightBarButtonItem];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 

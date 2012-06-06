@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_NSMachPort();
 }
 @end
+
 void org_xmlvm_ios_NSMachPort_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSPort_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -67,7 +68,6 @@ __DELETE_org_xmlvm_ios_NSPort(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSMachPort_portWithMachPort___int]
 
     NSPort* objCObj =  [NSMachPort  portWithMachPort:n1];
-    if (!__TIB_org_xmlvm_ios_NSPort.classInitialized) __INIT_org_xmlvm_ios_NSPort();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -85,7 +85,6 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSMachPort_portWithMachPort___int_int]
 
     NSPort* objCObj =  [NSMachPort  portWithMachPort:n1 options:n2];
-    if (!__TIB_org_xmlvm_ios_NSPort.classInitialized) __INIT_org_xmlvm_ios_NSPort();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

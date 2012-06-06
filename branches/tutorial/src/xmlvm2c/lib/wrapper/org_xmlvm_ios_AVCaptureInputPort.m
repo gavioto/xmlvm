@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_AVCaptureInputPort();
 }
 @end
+
 void org_xmlvm_ios_AVCaptureInputPort_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -50,8 +51,7 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVCaptureInputPort_getInput__]
 
     XMLVM_VAR_THIZ;
-    AVCaptureInput* objCObj = [thiz input];    if (!__TIB_org_xmlvm_ios_AVCaptureInput.classInitialized) __INIT_org_xmlvm_ios_AVCaptureInput();
-
+    AVCaptureInput* objCObj = [thiz input];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -65,8 +65,7 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVCaptureInputPort_getFormatDescription__]
 
     XMLVM_VAR_THIZ;
-    CMFormatDescription* objCObj = [thiz formatDescription];    if (!__TIB_org_xmlvm_ios_CMFormatDescription.classInitialized) __INIT_org_xmlvm_ios_CMFormatDescription();
-
+    CMFormatDescription* objCObj = [thiz formatDescription];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 

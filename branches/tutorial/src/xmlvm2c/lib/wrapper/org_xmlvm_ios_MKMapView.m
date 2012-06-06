@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_MKMapView();
 }
 @end
+
 void org_xmlvm_ios_MKMapView_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_UIView_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -71,8 +72,11 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MKMapView_setDelegate___org_xmlvm_ios_MKMapViewDelegate]
 
     XMLVM_VAR_THIZ;
+    if(thiz.delegate != nil) [[thiz getDelegate] release];
     org_xmlvm_ios_MKMapViewDelegate_Wrapper* jwrapper = __ALLOC_INIT_DELEGATE_WRAPPER_org_xmlvm_ios_MKMapViewDelegate(n1);
     [jwrapper->nativeDelegateWrapper_ addSource: jthiz: thiz];
+    objc_setAssociatedObject(thiz, &key, jwrapper->nativeDelegateWrapper_, OBJC_ASSOCIATION_RETAIN);
+    [jwrapper->nativeDelegateWrapper_ release];
     [thiz setDelegate:jwrapper->nativeDelegateWrapper_];
 
     
@@ -281,8 +285,7 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MKMapView_getUserLocation__]
 
     XMLVM_VAR_THIZ;
-    MKUserLocation* objCObj = [thiz userLocation];    if (!__TIB_org_xmlvm_ios_MKUserLocation.classInitialized) __INIT_org_xmlvm_ios_MKUserLocation();
-
+    MKUserLocation* objCObj = [thiz userLocation];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -354,7 +357,6 @@ XMLVM_NOT_IMPLEMENTED();
     MKAnnotationView* objCObj = [thiz  dequeueReusableAnnotationViewWithIdentifier:ObjCVar1];
     [ObjCVar1 release];
 
-    if (!__TIB_org_xmlvm_ios_MKAnnotationView.classInitialized) __INIT_org_xmlvm_ios_MKAnnotationView();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_NSTimer();
 }
 @end
+
 void org_xmlvm_ios_NSTimer_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -54,7 +55,6 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSTimer_timerWithTimeInterval___double_org_xmlvm_ios_NSInvocation_boolean]
 
     NSTimer* objCObj =  [NSTimer  timerWithTimeInterval:n1 invocation:(NSInvocation*) (((org_xmlvm_ios_NSInvocation*) n2)->fields.org_xmlvm_ios_NSObject.wrappedObj) repeats:n3];
-    if (!__TIB_org_xmlvm_ios_NSTimer.classInitialized) __INIT_org_xmlvm_ios_NSTimer();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -62,7 +62,6 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSTimer_scheduledTimerWithTimeInterval___double_org_xmlvm_ios_NSInvocation_boolean]
 
     NSTimer* objCObj =  [NSTimer  scheduledTimerWithTimeInterval:n1 invocation:(NSInvocation*) (((org_xmlvm_ios_NSInvocation*) n2)->fields.org_xmlvm_ios_NSObject.wrappedObj) repeats:n3];
-    if (!__TIB_org_xmlvm_ios_NSTimer.classInitialized) __INIT_org_xmlvm_ios_NSTimer();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -90,7 +89,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSDate* objCObj = [thiz fireDate];
-    if (!__TIB_org_xmlvm_ios_NSDate.classInitialized) __INIT_org_xmlvm_ios_NSDate();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

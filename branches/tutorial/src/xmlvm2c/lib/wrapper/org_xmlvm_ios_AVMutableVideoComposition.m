@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_AVMutableVideoComposition();
 }
 @end
+
 void org_xmlvm_ios_AVMutableVideoComposition_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_AVVideoComposition_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -55,7 +56,6 @@ __DELETE_org_xmlvm_ios_AVVideoComposition(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVMutableVideoComposition_videoComposition__]
 
     AVMutableVideoComposition* objCObj =  [AVMutableVideoComposition videoComposition];
-    if (!__TIB_org_xmlvm_ios_AVMutableVideoComposition.classInitialized) __INIT_org_xmlvm_ios_AVMutableVideoComposition();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -126,8 +126,7 @@ __DELETE_org_xmlvm_ios_AVVideoComposition(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVMutableVideoComposition_getAnimationTool__]
 
     XMLVM_VAR_THIZ;
-    AVVideoCompositionCoreAnimationTool* objCObj = [thiz animationTool];    if (!__TIB_org_xmlvm_ios_AVVideoCompositionCoreAnimationTool.classInitialized) __INIT_org_xmlvm_ios_AVVideoCompositionCoreAnimationTool();
-
+    AVVideoCompositionCoreAnimationTool* objCObj = [thiz animationTool];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 

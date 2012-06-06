@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_UIApplication();
 }
 @end
+
 void org_xmlvm_ios_UIApplication_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_UIResponder_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -55,7 +56,6 @@ __DELETE_org_xmlvm_ios_UIResponder(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIApplication_sharedApplication__]
 
     UIApplication* objCObj =  [UIApplication sharedApplication];
-    if (!__TIB_org_xmlvm_ios_UIApplication.classInitialized) __INIT_org_xmlvm_ios_UIApplication();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -68,9 +68,13 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIApplication_setDelegate___org_xmlvm_ios_UIApplicationDelegate]
 
     XMLVM_VAR_THIZ;
+    if(thiz.delegate != nil) [[thiz getDelegate] release];
     org_xmlvm_ios_UIApplicationDelegate_Wrapper* jwrapper = __ALLOC_INIT_DELEGATE_WRAPPER_org_xmlvm_ios_UIApplicationDelegate(n1);
     [jwrapper->nativeDelegateWrapper_ addSource: jthiz: thiz];
+    objc_setAssociatedObject(thiz, &key, jwrapper->nativeDelegateWrapper_, OBJC_ASSOCIATION_RETAIN);
+    [jwrapper->nativeDelegateWrapper_ release];
     [thiz setDelegate:jwrapper->nativeDelegateWrapper_];
+    XMLVMUtil_ArrayList_add(reference_array, n1);
 
     
 //XMLVM_END_WRAPPER
@@ -144,8 +148,7 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIApplication_getKeyWindow__]
 
     XMLVM_VAR_THIZ;
-    UIWindow* objCObj = [thiz keyWindow];    if (!__TIB_org_xmlvm_ios_UIWindow.classInitialized) __INIT_org_xmlvm_ios_UIWindow();
-
+    UIWindow* objCObj = [thiz keyWindow];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -464,6 +467,7 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIApplication_main___java_lang_String_1ARRAY_java_lang_Class_java_lang_Class]
+
                 setAppToRun((*(JAVA_OBJECT (*)(JAVA_OBJECT)) ((java_lang_Class*) n3)->tib->vtable[XMLVM_VTABLE_IDX_java_lang_Class_newInstance__])(n3));
                 NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
                 UIApplicationMain(0 /*argc*/, nil /*argv*/, @"UIApplication", @"UIApplicationDelegateWrapper");

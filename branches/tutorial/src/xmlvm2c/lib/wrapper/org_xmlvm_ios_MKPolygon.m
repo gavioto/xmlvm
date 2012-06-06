@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_MKPolygon();
 }
 @end
+
 void org_xmlvm_ios_MKPolygon_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_MKMultiPoint_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -57,24 +58,46 @@ __DELETE_org_xmlvm_ios_MKMultiPoint(me, client_data);
     org_xmlvm_ios_MKPolygon_INTERNAL_CONSTRUCTOR(me, objCObj);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MKPolygon_polygonWithPoints___org_xmlvm_ios_Reference<MKMapPoint>_int]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MKPolygon_polygonWithPoints___org_xmlvm_ios_Reference_int]
+JAVA_OBJECT jObject1 = org_xmlvm_ios_Reference_get__(n1);
+    MKMapPoint var1= toMKMapPoint(jObject1);
+    
+    MKPolygon* objCObj =  [MKPolygon  polygonWithPoints:&var1 count:n2];
 
-XMLVM_NOT_IMPLEMENTED();
+    return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MKPolygon_polygonWithPoints___org_xmlvm_ios_Reference<MKMapPoint>_int_java_util_List]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MKPolygon_polygonWithPoints___org_xmlvm_ios_Reference_int_java_util_List]
+JAVA_OBJECT jObject1 = org_xmlvm_ios_Reference_get__(n1);
+    MKMapPoint var1= toMKMapPoint(jObject1);
+    NSArray * ObjCVar3 = toNSArray(n3);
+    
+    MKPolygon* objCObj =  [MKPolygon  polygonWithPoints:&var1 count:n2 interiorPolygons:ObjCVar3];
+    [ObjCVar3 release];
 
-XMLVM_NOT_IMPLEMENTED();
+
+    return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MKPolygon_polygonWithCoordinates___org_xmlvm_ios_Reference<CLLocationCoordinate2D>_int]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MKPolygon_polygonWithCoordinates___org_xmlvm_ios_Reference_int]
+JAVA_OBJECT jObject1 = org_xmlvm_ios_Reference_get__(n1);
+    CLLocationCoordinate2D var1= toCLLocationCoordinate2D(jObject1);
+    
+    MKPolygon* objCObj =  [MKPolygon  polygonWithCoordinates:&var1 count:n2];
 
-XMLVM_NOT_IMPLEMENTED();
+    return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MKPolygon_polygonWithCoordinates___org_xmlvm_ios_Reference<CLLocationCoordinate2D>_int_java_util_List]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MKPolygon_polygonWithCoordinates___org_xmlvm_ios_Reference_int_java_util_List]
+JAVA_OBJECT jObject1 = org_xmlvm_ios_Reference_get__(n1);
+    CLLocationCoordinate2D var1= toCLLocationCoordinate2D(jObject1);
+    NSArray * ObjCVar3 = toNSArray(n3);
+    
+    MKPolygon* objCObj =  [MKPolygon  polygonWithCoordinates:&var1 count:n2 interiorPolygons:ObjCVar3];
+    [ObjCVar3 release];
 
-XMLVM_NOT_IMPLEMENTED();
+
+    return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MKPolygon_getInteriorPolygons__]
@@ -82,4 +105,18 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     NSArray* objCObj = [thiz interiorPolygons];
     return fromNSArray(objCObj);
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MKPolygon_getCoordinate__]
+
+    XMLVM_VAR_THIZ;
+    CLLocationCoordinate2D objCObj = [thiz coordinate];
+    return fromCLLocationCoordinate2D(objCObj);
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MKPolygon_getBoundingMapRect__]
+
+    XMLVM_VAR_THIZ;
+    MKMapRect objCObj = [thiz boundingMapRect];
+    return fromMKMapRect(objCObj);
 //XMLVM_END_WRAPPER

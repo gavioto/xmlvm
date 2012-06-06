@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_NSValue();
 }
 @end
+
 void org_xmlvm_ios_NSValue_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -58,7 +59,6 @@ XMLVM_VAR_BYTE_ARRAY(a1, n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSValue_valueWithCMTime___org_xmlvm_ios_CMTime]
 
     NSValue* objCObj =  [NSValue  valueWithCMTime:toCMTime(n1)];
-    if (!__TIB_org_xmlvm_ios_NSValue.classInitialized) __INIT_org_xmlvm_ios_NSValue();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -75,7 +75,6 @@ XMLVM_VAR_BYTE_ARRAY(a1, n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSValue_valueWithCMTimeRange___org_xmlvm_ios_CMTimeRange]
 
     NSValue* objCObj =  [NSValue  valueWithCMTimeRange:toCMTimeRange(n1)];
-    if (!__TIB_org_xmlvm_ios_NSValue.classInitialized) __INIT_org_xmlvm_ios_NSValue();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -92,7 +91,6 @@ XMLVM_VAR_BYTE_ARRAY(a1, n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSValue_valueWithCMTimeMapping___org_xmlvm_ios_CMTimeMapping]
 
     NSValue* objCObj =  [NSValue  valueWithCMTimeMapping:toCMTimeMapping(n1)];
-    if (!__TIB_org_xmlvm_ios_NSValue.classInitialized) __INIT_org_xmlvm_ios_NSValue();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -109,7 +107,6 @@ XMLVM_VAR_BYTE_ARRAY(a1, n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSValue_valueWithRange___org_xmlvm_ios_NSRange]
 
     NSValue* objCObj =  [NSValue  valueWithRange:toNSRange(n1)];
-    if (!__TIB_org_xmlvm_ios_NSValue.classInitialized) __INIT_org_xmlvm_ios_NSValue();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -142,7 +139,6 @@ XMLVM_VAR_BYTE_ARRAY(a1, n1);
     XMLVM_VAR_BYTE_ARRAY(a2, n2); 
     
     NSValue* objCObj =  [NSValue  valueWithBytes:a1->fields.org_xmlvm_runtime_XMLVMArray.array_ objCType:a2->fields.org_xmlvm_runtime_XMLVMArray.array_];
-    if (!__TIB_org_xmlvm_ios_NSValue.classInitialized) __INIT_org_xmlvm_ios_NSValue();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -152,7 +148,6 @@ XMLVM_VAR_BYTE_ARRAY(a1, n1);
     XMLVM_VAR_BYTE_ARRAY(a2, n2); 
     
     NSValue* objCObj =  [NSValue  value:a1->fields.org_xmlvm_runtime_XMLVMArray.array_ withObjCType:a2->fields.org_xmlvm_runtime_XMLVMArray.array_];
-    if (!__TIB_org_xmlvm_ios_NSValue.classInitialized) __INIT_org_xmlvm_ios_NSValue();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -160,7 +155,6 @@ XMLVM_VAR_BYTE_ARRAY(a1, n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSValue_valueWithNonretainedObject___java_lang_Object]
 
     NSValue* objCObj =  [NSValue  valueWithNonretainedObject:((org_xmlvm_ios_NSObject*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj];
-    if (!__TIB_org_xmlvm_ios_NSValue.classInitialized) __INIT_org_xmlvm_ios_NSValue();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -178,7 +172,6 @@ XMLVM_VAR_BYTE_ARRAY(a1, n1);
 XMLVM_VAR_BYTE_ARRAY(a1, n1); 
     
     NSValue* objCObj =  [NSValue  valueWithPointer:a1->fields.org_xmlvm_runtime_XMLVMArray.array_];
-    if (!__TIB_org_xmlvm_ios_NSValue.classInitialized) __INIT_org_xmlvm_ios_NSValue();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -200,7 +193,6 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSValue_valueWithCATransform3D___org_xmlvm_ios_CATransform3D]
 
     NSValue* objCObj =  [NSValue  valueWithCATransform3D:toCATransform3D(n1)];
-    if (!__TIB_org_xmlvm_ios_NSValue.classInitialized) __INIT_org_xmlvm_ios_NSValue();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -217,7 +209,6 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSValue_valueWithCGPoint___org_xmlvm_ios_CGPoint]
 
     NSValue* objCObj =  [NSValue  valueWithCGPoint:toCGPoint(n1)];
-    if (!__TIB_org_xmlvm_ios_NSValue.classInitialized) __INIT_org_xmlvm_ios_NSValue();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -225,7 +216,6 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSValue_valueWithCGSize___org_xmlvm_ios_CGSize]
 
     NSValue* objCObj =  [NSValue  valueWithCGSize:toCGSize(n1)];
-    if (!__TIB_org_xmlvm_ios_NSValue.classInitialized) __INIT_org_xmlvm_ios_NSValue();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -233,7 +223,6 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSValue_valueWithCGRect___org_xmlvm_ios_CGRect]
 
     NSValue* objCObj =  [NSValue  valueWithCGRect:toCGRect(n1)];
-    if (!__TIB_org_xmlvm_ios_NSValue.classInitialized) __INIT_org_xmlvm_ios_NSValue();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -241,7 +230,6 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSValue_valueWithCGAffineTransform___org_xmlvm_ios_CGAffineTransform]
 
     NSValue* objCObj =  [NSValue  valueWithCGAffineTransform:toCGAffineTransform(n1)];
-    if (!__TIB_org_xmlvm_ios_NSValue.classInitialized) __INIT_org_xmlvm_ios_NSValue();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -249,7 +237,6 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSValue_valueWithUIEdgeInsets___org_xmlvm_ios_UIEdgeInsets]
 
     NSValue* objCObj =  [NSValue  valueWithUIEdgeInsets:toUIEdgeInsets(n1)];
-    if (!__TIB_org_xmlvm_ios_NSValue.classInitialized) __INIT_org_xmlvm_ios_NSValue();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

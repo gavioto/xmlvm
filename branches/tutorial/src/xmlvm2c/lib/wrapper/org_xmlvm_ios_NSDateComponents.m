@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_NSDateComponents();
 }
 @end
+
 void org_xmlvm_ios_NSDateComponents_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -52,7 +53,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
     XMLVM_VAR_THIZ;
     
     NSCalendar* objCObj = [thiz calendar];
-    if (!__TIB_org_xmlvm_ios_NSCalendar.classInitialized) __INIT_org_xmlvm_ios_NSCalendar();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -62,7 +62,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
     XMLVM_VAR_THIZ;
     
     NSTimeZone* objCObj = [thiz timeZone];
-    if (!__TIB_org_xmlvm_ios_NSTimeZone.classInitialized) __INIT_org_xmlvm_ios_NSTimeZone();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -275,7 +274,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
     XMLVM_VAR_THIZ;
     
     NSDate* objCObj = [thiz date];
-    if (!__TIB_org_xmlvm_ios_NSDate.classInitialized) __INIT_org_xmlvm_ios_NSDate();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

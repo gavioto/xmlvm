@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_MPMediaQuery();
 }
 @end
+
 void org_xmlvm_ios_MPMediaQuery_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -136,7 +137,6 @@ NSSet * ObjCVar1 = toNSSet(n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MPMediaQuery_albumsQuery__]
 
     MPMediaQuery* objCObj =  [MPMediaQuery albumsQuery];
-    if (!__TIB_org_xmlvm_ios_MPMediaQuery.classInitialized) __INIT_org_xmlvm_ios_MPMediaQuery();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -144,7 +144,6 @@ NSSet * ObjCVar1 = toNSSet(n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MPMediaQuery_artistsQuery__]
 
     MPMediaQuery* objCObj =  [MPMediaQuery artistsQuery];
-    if (!__TIB_org_xmlvm_ios_MPMediaQuery.classInitialized) __INIT_org_xmlvm_ios_MPMediaQuery();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -152,7 +151,6 @@ NSSet * ObjCVar1 = toNSSet(n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MPMediaQuery_songsQuery__]
 
     MPMediaQuery* objCObj =  [MPMediaQuery songsQuery];
-    if (!__TIB_org_xmlvm_ios_MPMediaQuery.classInitialized) __INIT_org_xmlvm_ios_MPMediaQuery();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -160,7 +158,6 @@ NSSet * ObjCVar1 = toNSSet(n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MPMediaQuery_playlistsQuery__]
 
     MPMediaQuery* objCObj =  [MPMediaQuery playlistsQuery];
-    if (!__TIB_org_xmlvm_ios_MPMediaQuery.classInitialized) __INIT_org_xmlvm_ios_MPMediaQuery();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -168,7 +165,6 @@ NSSet * ObjCVar1 = toNSSet(n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MPMediaQuery_podcastsQuery__]
 
     MPMediaQuery* objCObj =  [MPMediaQuery podcastsQuery];
-    if (!__TIB_org_xmlvm_ios_MPMediaQuery.classInitialized) __INIT_org_xmlvm_ios_MPMediaQuery();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -176,7 +172,6 @@ NSSet * ObjCVar1 = toNSSet(n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MPMediaQuery_audiobooksQuery__]
 
     MPMediaQuery* objCObj =  [MPMediaQuery audiobooksQuery];
-    if (!__TIB_org_xmlvm_ios_MPMediaQuery.classInitialized) __INIT_org_xmlvm_ios_MPMediaQuery();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -184,7 +179,6 @@ NSSet * ObjCVar1 = toNSSet(n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MPMediaQuery_compilationsQuery__]
 
     MPMediaQuery* objCObj =  [MPMediaQuery compilationsQuery];
-    if (!__TIB_org_xmlvm_ios_MPMediaQuery.classInitialized) __INIT_org_xmlvm_ios_MPMediaQuery();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -192,7 +186,6 @@ NSSet * ObjCVar1 = toNSSet(n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MPMediaQuery_composersQuery__]
 
     MPMediaQuery* objCObj =  [MPMediaQuery composersQuery];
-    if (!__TIB_org_xmlvm_ios_MPMediaQuery.classInitialized) __INIT_org_xmlvm_ios_MPMediaQuery();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -200,7 +193,6 @@ NSSet * ObjCVar1 = toNSSet(n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MPMediaQuery_genresQuery__]
 
     MPMediaQuery* objCObj =  [MPMediaQuery genresQuery];
-    if (!__TIB_org_xmlvm_ios_MPMediaQuery.classInitialized) __INIT_org_xmlvm_ios_MPMediaQuery();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_CFHTTPMessage();
 }
 @end
+
 void org_xmlvm_ios_CFHTTPMessage_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -40,19 +41,18 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
     org_xmlvm_ios_CFHTTPMessage_INTERNAL_CONSTRUCTOR(me, objCObj);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFHTTPMessage_applyCredentials___org_xmlvm_ios_CFHTTPAuthentication_java_lang_String_java_lang_String_org_xmlvm_ios_Reference<CFStreamError>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFHTTPMessage_applyCredentials___org_xmlvm_ios_CFHTTPAuthentication_java_lang_String_java_lang_String_org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFHTTPMessage_applyCredentialDictionary___org_xmlvm_ios_CFHTTPAuthentication_org_xmlvm_ios_CFDictionary_org_xmlvm_ios_Reference<CFStreamError>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFHTTPMessage_applyCredentialDictionary___org_xmlvm_ios_CFHTTPAuthentication_org_xmlvm_ios_CFDictionary_org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFHTTPMessage_getTypeID__]
 
-    
     long objCObj = CFHostGetTypeID();
     
     return objCObj;
@@ -60,17 +60,15 @@ XMLVM_NOT_IMPLEMENTED();
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFHTTPMessage_createRequest___org_xmlvm_ios_CFAllocator_java_lang_String_org_xmlvm_ios_CFURL_java_lang_String]
 XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
-    XMLVM_VAR_IOS_REF(CFURL, var3, n3);
     NSString * ObjCVar2 = toNSString(n2);
+    XMLVM_VAR_IOS_REF(CFURL, var3, n3);
     NSString * ObjCVar4 = toNSString(n4);
-    
     
     CFHTTPMessage* objCObj = CFHTTPMessageCreateRequest(var1,ObjCVar2,var3,ObjCVar4);
     
     [ObjCVar2 release];
 
     [ObjCVar4 release];
-    if (!__TIB_org_xmlvm_ios_CFHTTPMessage.classInitialized) __INIT_org_xmlvm_ios_CFHTTPMessage();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -80,13 +78,11 @@ XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
     NSString * ObjCVar3 = toNSString(n3);
     NSString * ObjCVar4 = toNSString(n4);
     
-    
     CFHTTPMessage* objCObj = CFHTTPMessageCreateResponse(var1,n2,ObjCVar3,ObjCVar4);
     
     [ObjCVar3 release];
 
     [ObjCVar4 release];
-    if (!__TIB_org_xmlvm_ios_CFHTTPMessage.classInitialized) __INIT_org_xmlvm_ios_CFHTTPMessage();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -94,20 +90,16 @@ XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFHTTPMessage_createEmpty___org_xmlvm_ios_CFAllocator_byte]
 XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
     
-    
     CFHTTPMessage* objCObj = CFHTTPMessageCreateEmpty(var1,n2);
-        if (!__TIB_org_xmlvm_ios_CFHTTPMessage.classInitialized) __INIT_org_xmlvm_ios_CFHTTPMessage();
-
+    
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFHTTPMessage_createCopy___org_xmlvm_ios_CFAllocator_org_xmlvm_ios_CFHTTPMessage]
 XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
     
-    
     CFHTTPMessage* objCObj = CFHostCreateCopy(var1,(CFHTTPMessage*) (((org_xmlvm_ios_CFHTTPMessage*) n2)->fields.org_xmlvm_ios_NSObject.wrappedObj));
-        if (!__TIB_org_xmlvm_ios_CFHTTPMessage.classInitialized) __INIT_org_xmlvm_ios_CFHTTPMessage();
-
+    
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 

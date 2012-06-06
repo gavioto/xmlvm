@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_CAEAGLLayer();
 }
 @end
+
 void org_xmlvm_ios_CAEAGLLayer_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_CALayer_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -56,4 +57,14 @@ __DELETE_org_xmlvm_ios_CALayer(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CAEAGLLayer___INIT___]
     CAEAGLLayer* objCObj = [[CAEAGLLayer alloc ] init];
     org_xmlvm_ios_CAEAGLLayer_INTERNAL_CONSTRUCTOR(me, objCObj);
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CAEAGLLayer_getDrawableProperties__]
+
+XMLVM_NOT_IMPLEMENTED();
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CAEAGLLayer_setDrawableProperties___java_util_Map]
+
+XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER

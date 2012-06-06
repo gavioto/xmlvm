@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_CFNetService();
 }
 @end
+
 void org_xmlvm_ios_CFNetService_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -37,6 +38,9 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFNetService___INIT____org_xmlvm_ios_CFAllocator_java_lang_String_java_lang_String_java_lang_String_int]
 XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
+    NSString * ObjCVar2 = toNSString(n2);
+    NSString * ObjCVar3 = toNSString(n3);
+    NSString * ObjCVar4 = toNSString(n4);
     
     CFNetService* objCObj = [[CFNetService alloc] create:var1];
     org_xmlvm_ios_CFNetService_INTERNAL_CONSTRUCTOR(me, objCObj);
@@ -49,7 +53,6 @@ XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFNetService_getTypeID__]
 
-    
     long objCObj = CFHostGetTypeID();
     
     return objCObj;
@@ -58,10 +61,8 @@ XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFNetService_createCopy___org_xmlvm_ios_CFAllocator_org_xmlvm_ios_CFNetService]
 XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
     
-    
     CFNetService* objCObj = CFHostCreateCopy(var1,(CFNetService*) (((org_xmlvm_ios_CFNetService*) n2)->fields.org_xmlvm_ios_NSObject.wrappedObj));
-        if (!__TIB_org_xmlvm_ios_CFNetService.classInitialized) __INIT_org_xmlvm_ios_CFNetService();
-
+    
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -80,12 +81,12 @@ XMLVM_NOT_IMPLEMENTED();
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFNetService_registerWithOptions___long_org_xmlvm_ios_Reference<CFStreamError>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFNetService_registerWithOptions___long_org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFNetService_resolveWithTimeout___double_org_xmlvm_ios_Reference<CFStreamError>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFNetService_resolveWithTimeout___double_org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
@@ -130,7 +131,7 @@ XMLVM_NOT_IMPLEMENTED();
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFNetService_setClient___java_lang_Object_org_xmlvm_ios_Reference<CFNetServiceClientContext>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFNetService_setClient___java_lang_Object_org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
@@ -145,12 +146,12 @@ XMLVM_NOT_IMPLEMENTED();
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFNetService_register___org_xmlvm_ios_Reference<CFStreamError>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFNetService_register___org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFNetService_resolve___org_xmlvm_ios_Reference<CFStreamError>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFNetService_resolve___org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER

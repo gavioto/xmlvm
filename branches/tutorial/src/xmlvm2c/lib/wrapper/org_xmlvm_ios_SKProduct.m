@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_SKProduct();
 }
 @end
+
 void org_xmlvm_ios_SKProduct_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -64,16 +65,14 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_SKProduct_getPrice__]
 
     XMLVM_VAR_THIZ;
-    NSDecimalNumber* objCObj = [thiz price];    if (!__TIB_org_xmlvm_ios_NSDecimalNumber.classInitialized) __INIT_org_xmlvm_ios_NSDecimalNumber();
-
+    NSDecimalNumber* objCObj = [thiz price];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_SKProduct_getPriceLocale__]
 
     XMLVM_VAR_THIZ;
-    NSLocale* objCObj = [thiz priceLocale];    if (!__TIB_org_xmlvm_ios_NSLocale.classInitialized) __INIT_org_xmlvm_ios_NSLocale();
-
+    NSLocale* objCObj = [thiz priceLocale];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 

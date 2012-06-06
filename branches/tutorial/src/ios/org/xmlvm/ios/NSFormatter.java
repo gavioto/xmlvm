@@ -59,4 +59,8 @@ public class NSFormatter extends NSObject {
 	public boolean isPartialStringValid(Reference<String> partialStringPtr, Reference<NSRange> proposedSelRangePtr, String origString, NSRange origSelRange, Reference<String> error){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

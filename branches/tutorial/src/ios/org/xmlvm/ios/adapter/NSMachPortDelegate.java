@@ -12,4 +12,8 @@ public class NSMachPortDelegate implements org.xmlvm.ios.NSMachPortDelegate {
 	/**
 	 * - (void)handleMachMessage:(void *)msg;
 	 */
-	public void handleMachMessage(byte[] msg){};}
+	public void handleMachMessage(byte[] msg){};
+	/*
+	 * Interface Properties
+	 */
+}

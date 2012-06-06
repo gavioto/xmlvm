@@ -227,4 +227,8 @@ public class NSTimeZone extends NSObject {
 	public String localizedName(int style, NSLocale locale){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

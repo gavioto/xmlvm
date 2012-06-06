@@ -29,14 +29,13 @@ JAVA_OBJECT fromCMTimeRange(CMTimeRange obj)
     org_xmlvm_ios_CMTimeRange* jObj = me;
     jObj->fields.org_xmlvm_ios_CMTimeRange.start_ = fromCMTime(objCObj.start);
     jObj->fields.org_xmlvm_ios_CMTimeRange.duration_ = fromCMTime(objCObj.duration);
-//XMLVM_END_WRAPPER
+null//XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CMTimeRange___INIT___]
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CMTimeRange_getUnion___org_xmlvm_ios_CMTimeRange]
 
-    
     CMTimeRange objCObj = CMTimeRangeGetUnion(toCMTimeRange(me),toCMTimeRange(n1));
     
     return fromCMTimeRange(objCObj);
@@ -44,7 +43,6 @@ JAVA_OBJECT fromCMTimeRange(CMTimeRange obj)
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CMTimeRange_getIntersection___org_xmlvm_ios_CMTimeRange]
 
-    
     CMTimeRange objCObj = CMTimeRangeGetIntersection(toCMTimeRange(me),toCMTimeRange(n1));
     
     return fromCMTimeRange(objCObj);
@@ -52,7 +50,6 @@ JAVA_OBJECT fromCMTimeRange(CMTimeRange obj)
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CMTimeRange_equal___org_xmlvm_ios_CMTimeRange]
 
-    
     Byte objCObj = CMTimeRangeEqual(toCMTimeRange(me),toCMTimeRange(n1));
     
     return objCObj;
@@ -60,7 +57,6 @@ JAVA_OBJECT fromCMTimeRange(CMTimeRange obj)
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CMTimeRange_containsTime___org_xmlvm_ios_CMTime]
 
-    
     Byte objCObj = CMTimeRangeContainsTime(toCMTimeRange(me),toCMTime(n1));
     
     return objCObj;
@@ -68,7 +64,6 @@ JAVA_OBJECT fromCMTimeRange(CMTimeRange obj)
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CMTimeRange_containsTimeRange___org_xmlvm_ios_CMTimeRange]
 
-    
     Byte objCObj = CMTimeRangeContainsTimeRange(toCMTimeRange(me),toCMTimeRange(n1));
     
     return objCObj;
@@ -76,7 +71,6 @@ JAVA_OBJECT fromCMTimeRange(CMTimeRange obj)
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CMTimeRange_getEnd__]
 
-    
     CMTime objCObj = CMTimeRangeGetEnd(toCMTimeRange(me));
     
     return fromCMTime(objCObj);
@@ -84,7 +78,6 @@ JAVA_OBJECT fromCMTimeRange(CMTimeRange obj)
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CMTimeRange_fromTimeToTime___org_xmlvm_ios_CMTime_org_xmlvm_ios_CMTime]
 
-    
     CMTimeRange objCObj = CMTimeRangeFromTimeToTime(toCMTime(n1),toCMTime(n2));
     
     return fromCMTimeRange(objCObj);
@@ -103,15 +96,13 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CMTimeRange_copyDescription___org_xmlvm_ios_CFAllocator_org_xmlvm_ios_CMTimeRange]
 XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
     
-    
     NSString* objCObj = CMTimeRangeCopyDescription(var1,toCMTimeRange(n2));
     
     return fromNSString(objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CMTimeRange_show__]
-
-    CMTimeRangeShow(toCMTimeRange(me));
+CMTimeRangeShow(toCMTimeRange(me));
     
     
 //XMLVM_END_WRAPPER

@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_NSSortDescriptor();
 }
 @end
+
 void org_xmlvm_ios_NSSortDescriptor_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -75,7 +76,6 @@ NSString * ObjCVar1 = toNSString(n1);
     NSSortDescriptor* objCObj =  [NSSortDescriptor  sortDescriptorWithKey:ObjCVar1 ascending:n2];
     [ObjCVar1 release];
 
-    if (!__TIB_org_xmlvm_ios_NSSortDescriptor.classInitialized) __INIT_org_xmlvm_ios_NSSortDescriptor();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -114,7 +114,6 @@ NSString * ObjCVar1 = toNSString(n1);
     NSSortDescriptor* objCObj =  [NSSortDescriptor  sortDescriptorWithKey:ObjCVar1 ascending:n2 comparator:((org_xmlvm_ios_NSObject*) n3)->fields.org_xmlvm_ios_NSObject.wrappedObj];
     [ObjCVar1 release];
 
-    if (!__TIB_org_xmlvm_ios_NSSortDescriptor.classInitialized) __INIT_org_xmlvm_ios_NSSortDescriptor();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

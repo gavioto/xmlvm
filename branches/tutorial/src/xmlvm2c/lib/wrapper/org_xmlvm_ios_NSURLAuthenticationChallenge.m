@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_NSURLAuthenticationChallenge();
 }
 @end
+
 void org_xmlvm_ios_NSURLAuthenticationChallenge_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -60,7 +61,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSURLProtectionSpace* objCObj = [thiz protectionSpace];
-    if (!__TIB_org_xmlvm_ios_NSURLProtectionSpace.classInitialized) __INIT_org_xmlvm_ios_NSURLProtectionSpace();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -70,7 +70,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSURLCredential* objCObj = [thiz proposedCredential];
-    if (!__TIB_org_xmlvm_ios_NSURLCredential.classInitialized) __INIT_org_xmlvm_ios_NSURLCredential();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -89,7 +88,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSURLResponse* objCObj = [thiz failureResponse];
-    if (!__TIB_org_xmlvm_ios_NSURLResponse.classInitialized) __INIT_org_xmlvm_ios_NSURLResponse();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -99,7 +97,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSError* objCObj = [thiz error];
-    if (!__TIB_org_xmlvm_ios_NSError.classInitialized) __INIT_org_xmlvm_ios_NSError();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

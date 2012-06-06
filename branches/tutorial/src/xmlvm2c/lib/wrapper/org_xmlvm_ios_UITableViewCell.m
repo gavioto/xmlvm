@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_UITableViewCell();
 }
 @end
+
 void org_xmlvm_ios_UITableViewCell_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_UIView_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -84,40 +85,35 @@ NSString * ObjCVar2 = toNSString(n2);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UITableViewCell_getImageView__]
 
     XMLVM_VAR_THIZ;
-    UIImageView* objCObj = [thiz imageView];    if (!__TIB_org_xmlvm_ios_UIImageView.classInitialized) __INIT_org_xmlvm_ios_UIImageView();
-
+    UIImageView* objCObj = [thiz imageView];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UITableViewCell_getTextLabel__]
 
     XMLVM_VAR_THIZ;
-    UILabel* objCObj = [thiz textLabel];    if (!__TIB_org_xmlvm_ios_UILabel.classInitialized) __INIT_org_xmlvm_ios_UILabel();
-
+    UILabel* objCObj = [thiz textLabel];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UITableViewCell_getDetailTextLabel__]
 
     XMLVM_VAR_THIZ;
-    UILabel* objCObj = [thiz detailTextLabel];    if (!__TIB_org_xmlvm_ios_UILabel.classInitialized) __INIT_org_xmlvm_ios_UILabel();
-
+    UILabel* objCObj = [thiz detailTextLabel];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UITableViewCell_getContentView__]
 
     XMLVM_VAR_THIZ;
-    UIView* objCObj = [thiz contentView];    if (!__TIB_org_xmlvm_ios_UIView.classInitialized) __INIT_org_xmlvm_ios_UIView();
-
+    UIView* objCObj = [thiz contentView];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UITableViewCell_getBackgroundView__]
 
     XMLVM_VAR_THIZ;
-    UIView* objCObj = [thiz backgroundView];    if (!__TIB_org_xmlvm_ios_UIView.classInitialized) __INIT_org_xmlvm_ios_UIView();
-
+    UIView* objCObj = [thiz backgroundView];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -132,8 +128,7 @@ NSString * ObjCVar2 = toNSString(n2);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UITableViewCell_getSelectedBackgroundView__]
 
     XMLVM_VAR_THIZ;
-    UIView* objCObj = [thiz selectedBackgroundView];    if (!__TIB_org_xmlvm_ios_UIView.classInitialized) __INIT_org_xmlvm_ios_UIView();
-
+    UIView* objCObj = [thiz selectedBackgroundView];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -276,8 +271,7 @@ NSString * ObjCVar2 = toNSString(n2);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UITableViewCell_getAccessoryView__]
 
     XMLVM_VAR_THIZ;
-    UIView* objCObj = [thiz accessoryView];    if (!__TIB_org_xmlvm_ios_UIView.classInitialized) __INIT_org_xmlvm_ios_UIView();
-
+    UIView* objCObj = [thiz accessoryView];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -307,8 +301,7 @@ NSString * ObjCVar2 = toNSString(n2);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UITableViewCell_getEditingAccessoryView__]
 
     XMLVM_VAR_THIZ;
-    UIView* objCObj = [thiz editingAccessoryView];    if (!__TIB_org_xmlvm_ios_UIView.classInitialized) __INIT_org_xmlvm_ios_UIView();
-
+    UIView* objCObj = [thiz editingAccessoryView];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -417,8 +410,7 @@ NSString * ObjCVar2 = toNSString(n2);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UITableViewCell_getFont__]
 
     XMLVM_VAR_THIZ;
-    UIFont* objCObj = [thiz font];    if (!__TIB_org_xmlvm_ios_UIFont.classInitialized) __INIT_org_xmlvm_ios_UIFont();
-
+    UIFont* objCObj = [thiz font];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -463,8 +455,7 @@ NSString * ObjCVar2 = toNSString(n2);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UITableViewCell_getTextColor__]
 
     XMLVM_VAR_THIZ;
-    UIColor* objCObj = [thiz textColor];    if (!__TIB_org_xmlvm_ios_UIColor.classInitialized) __INIT_org_xmlvm_ios_UIColor();
-
+    UIColor* objCObj = [thiz textColor];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -479,8 +470,7 @@ NSString * ObjCVar2 = toNSString(n2);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UITableViewCell_getSelectedTextColor__]
 
     XMLVM_VAR_THIZ;
-    UIColor* objCObj = [thiz selectedTextColor];    if (!__TIB_org_xmlvm_ios_UIColor.classInitialized) __INIT_org_xmlvm_ios_UIColor();
-
+    UIColor* objCObj = [thiz selectedTextColor];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -495,8 +485,7 @@ NSString * ObjCVar2 = toNSString(n2);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UITableViewCell_getImage__]
 
     XMLVM_VAR_THIZ;
-    UIImage* objCObj = [thiz image];    if (!__TIB_org_xmlvm_ios_UIImage.classInitialized) __INIT_org_xmlvm_ios_UIImage();
-
+    UIImage* objCObj = [thiz image];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -511,8 +500,7 @@ NSString * ObjCVar2 = toNSString(n2);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UITableViewCell_getSelectedImage__]
 
     XMLVM_VAR_THIZ;
-    UIImage* objCObj = [thiz selectedImage];    if (!__TIB_org_xmlvm_ios_UIImage.classInitialized) __INIT_org_xmlvm_ios_UIImage();
-
+    UIImage* objCObj = [thiz selectedImage];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 

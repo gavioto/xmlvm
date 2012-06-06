@@ -52,4 +52,8 @@ public class AVVideoCompositionInstruction extends NSObject {
 	public boolean getEnablePostProcessing(){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

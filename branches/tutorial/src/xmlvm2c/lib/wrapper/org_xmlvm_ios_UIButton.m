@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_UIButton();
 }
 @end
+
 void org_xmlvm_ios_UIButton_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_UIControl_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -71,7 +72,6 @@ __DELETE_org_xmlvm_ios_UIControl(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIButton_buttonWithType___int]
 
     UIButton* objCObj =  [UIButton  buttonWithType:n1];
-    if (!__TIB_org_xmlvm_ios_UIButton.classInitialized) __INIT_org_xmlvm_ios_UIButton();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -245,7 +245,6 @@ __DELETE_org_xmlvm_ios_UIControl(me, client_data);
     XMLVM_VAR_THIZ;
     
     UIColor* objCObj = [thiz  titleColorForState:n1];
-    if (!__TIB_org_xmlvm_ios_UIColor.classInitialized) __INIT_org_xmlvm_ios_UIColor();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -255,7 +254,6 @@ __DELETE_org_xmlvm_ios_UIControl(me, client_data);
     XMLVM_VAR_THIZ;
     
     UIColor* objCObj = [thiz  titleShadowColorForState:n1];
-    if (!__TIB_org_xmlvm_ios_UIColor.classInitialized) __INIT_org_xmlvm_ios_UIColor();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -265,7 +263,6 @@ __DELETE_org_xmlvm_ios_UIControl(me, client_data);
     XMLVM_VAR_THIZ;
     
     UIImage* objCObj = [thiz  imageForState:n1];
-    if (!__TIB_org_xmlvm_ios_UIImage.classInitialized) __INIT_org_xmlvm_ios_UIImage();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -275,7 +272,6 @@ __DELETE_org_xmlvm_ios_UIControl(me, client_data);
     XMLVM_VAR_THIZ;
     
     UIImage* objCObj = [thiz  backgroundImageForState:n1];
-    if (!__TIB_org_xmlvm_ios_UIImage.classInitialized) __INIT_org_xmlvm_ios_UIImage();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -290,48 +286,42 @@ __DELETE_org_xmlvm_ios_UIControl(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIButton_getCurrentTitleColor__]
 
     XMLVM_VAR_THIZ;
-    UIColor* objCObj = [thiz currentTitleColor];    if (!__TIB_org_xmlvm_ios_UIColor.classInitialized) __INIT_org_xmlvm_ios_UIColor();
-
+    UIColor* objCObj = [thiz currentTitleColor];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIButton_getCurrentTitleShadowColor__]
 
     XMLVM_VAR_THIZ;
-    UIColor* objCObj = [thiz currentTitleShadowColor];    if (!__TIB_org_xmlvm_ios_UIColor.classInitialized) __INIT_org_xmlvm_ios_UIColor();
-
+    UIColor* objCObj = [thiz currentTitleShadowColor];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIButton_getCurrentImage__]
 
     XMLVM_VAR_THIZ;
-    UIImage* objCObj = [thiz currentImage];    if (!__TIB_org_xmlvm_ios_UIImage.classInitialized) __INIT_org_xmlvm_ios_UIImage();
-
+    UIImage* objCObj = [thiz currentImage];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIButton_getCurrentBackgroundImage__]
 
     XMLVM_VAR_THIZ;
-    UIImage* objCObj = [thiz currentBackgroundImage];    if (!__TIB_org_xmlvm_ios_UIImage.classInitialized) __INIT_org_xmlvm_ios_UIImage();
-
+    UIImage* objCObj = [thiz currentBackgroundImage];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIButton_getTitleLabel__]
 
     XMLVM_VAR_THIZ;
-    UILabel* objCObj = [thiz titleLabel];    if (!__TIB_org_xmlvm_ios_UILabel.classInitialized) __INIT_org_xmlvm_ios_UILabel();
-
+    UILabel* objCObj = [thiz titleLabel];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIButton_getImageView__]
 
     XMLVM_VAR_THIZ;
-    UIImageView* objCObj = [thiz imageView];    if (!__TIB_org_xmlvm_ios_UIImageView.classInitialized) __INIT_org_xmlvm_ios_UIImageView();
-
+    UIImageView* objCObj = [thiz imageView];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -374,8 +364,7 @@ __DELETE_org_xmlvm_ios_UIControl(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIButton_getFont__]
 
     XMLVM_VAR_THIZ;
-    UIFont* objCObj = [thiz font];    if (!__TIB_org_xmlvm_ios_UIFont.classInitialized) __INIT_org_xmlvm_ios_UIFont();
-
+    UIFont* objCObj = [thiz font];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 

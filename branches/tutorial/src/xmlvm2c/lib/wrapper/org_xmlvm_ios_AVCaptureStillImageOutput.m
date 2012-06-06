@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_AVCaptureStillImageOutput();
 }
 @end
+
 void org_xmlvm_ios_AVCaptureStillImageOutput_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_AVCaptureOutput_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -87,7 +88,6 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVCaptureStillImageOutput_jpegStillImageNSDataRepresentation___org_xmlvm_ios_CMSampleBuffer]
 
     NSData* objCObj =  [AVCaptureStillImageOutput  jpegStillImageNSDataRepresentation:(CMSampleBuffer*) (((org_xmlvm_ios_CMSampleBuffer*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj)];
-    if (!__TIB_org_xmlvm_ios_NSData.classInitialized) __INIT_org_xmlvm_ios_NSData();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

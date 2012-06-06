@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_SCNetworkConnection();
 }
 @end
+
 void org_xmlvm_ios_SCNetworkConnection_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -42,20 +43,28 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_SCNetworkConnection_getTypeID__]
 
-    
     long objCObj = CFHostGetTypeID();
     
     return objCObj;
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_SCNetworkConnection_copyUserPreferences___org_xmlvm_ios_CFDictionary_java_lang_String_org_xmlvm_ios_Reference<CFDictionary>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_SCNetworkConnection_copyUserPreferences___org_xmlvm_ios_CFDictionary_java_lang_String_org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_SCNetworkConnection_createWithServiceID___org_xmlvm_ios_CFAllocator_java_lang_String_java_lang_Object_org_xmlvm_ios_Reference<SCNetworkConnectionContext>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_SCNetworkConnection_createWithServiceID___org_xmlvm_ios_CFAllocator_java_lang_String_java_lang_Object_org_xmlvm_ios_Reference]
+XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
+    NSString * ObjCVar2 = toNSString(n2);
+    JAVA_OBJECT jObject4 = org_xmlvm_ios_Reference_get__(n4);
+    SCNetworkConnectionContext var4= toSCNetworkConnectionContext(jObject4);
+    
+    SCNetworkConnection* objCObj = SCNetworkConnectionCreateWithServiceID(var1,ObjCVar2,((org_xmlvm_ios_NSObject*) n3)->fields.org_xmlvm_ios_NSObject.wrappedObj,&var4);
+    org_xmlvm_ios_Reference_set___java_lang_Object(n4, fromSCNetworkConnectionContext(var4));
+    
+    [ObjCVar2 release];
 
-XMLVM_NOT_IMPLEMENTED();
+    return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_SCNetworkConnection_copyServiceID__]

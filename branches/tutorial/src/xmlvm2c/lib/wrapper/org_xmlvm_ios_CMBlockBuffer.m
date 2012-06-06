@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_CMBlockBuffer();
 }
 @end
+
 void org_xmlvm_ios_CMBlockBuffer_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -43,40 +44,52 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CMBlockBuffer_createEmpty___org_xmlvm_ios_CFAllocator_int_int_org_xmlvm_ios_CMBlockBuffer]
 XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
     
-    
     int objCObj = CFHTTPMessageCreateEmpty(var1,n2,n3,(CMBlockBuffer*) (((org_xmlvm_ios_CMBlockBuffer*) n4)->fields.org_xmlvm_ios_NSObject.wrappedObj));
     
     return objCObj;
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CMBlockBuffer_createWithMemoryBlock___org_xmlvm_ios_CFAllocator_byte_1ARRAY_int_org_xmlvm_ios_CFAllocator_org_xmlvm_ios_Reference<CMBlockBufferCustomBlockSource>_int_int_int_org_xmlvm_ios_CMBlockBuffer]
-
-XMLVM_NOT_IMPLEMENTED();
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CMBlockBuffer_createWithMemoryBlock___org_xmlvm_ios_CFAllocator_byte_1ARRAY_int_org_xmlvm_ios_CFAllocator_org_xmlvm_ios_Reference_int_int_int_org_xmlvm_ios_CMBlockBuffer]
+XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
+    XMLVM_VAR_BYTE_ARRAY(a2, n2); 
+    XMLVM_VAR_IOS_REF(CFAllocator, var4, n4);
+    JAVA_OBJECT jObject5 = org_xmlvm_ios_Reference_get__(n5);
+    CMBlockBufferCustomBlockSource var5= toCMBlockBufferCustomBlockSource(jObject5);
+    
+    int objCObj = CMBlockBufferCreateWithMemoryBlock(var1,a2->fields.org_xmlvm_runtime_XMLVMArray.array_,n3,var4,&var5,n6,n7,n8,(CMBlockBuffer*) (((org_xmlvm_ios_CMBlockBuffer*) n9)->fields.org_xmlvm_ios_NSObject.wrappedObj));
+    org_xmlvm_ios_Reference_set___java_lang_Object(n5, fromCMBlockBufferCustomBlockSource(var5));
+    
+    return objCObj;
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CMBlockBuffer_createWithBufferReference___org_xmlvm_ios_CFAllocator_org_xmlvm_ios_CMBlockBuffer_int_int_int_org_xmlvm_ios_CMBlockBuffer]
 XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
-    
     
     int objCObj = CMBlockBufferCreateWithBufferReference(var1,(CMBlockBuffer*) (((org_xmlvm_ios_CMBlockBuffer*) n2)->fields.org_xmlvm_ios_NSObject.wrappedObj),n3,n4,n5,(CMBlockBuffer*) (((org_xmlvm_ios_CMBlockBuffer*) n6)->fields.org_xmlvm_ios_NSObject.wrappedObj));
     
     return objCObj;
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CMBlockBuffer_createContiguous___org_xmlvm_ios_CFAllocator_org_xmlvm_ios_CMBlockBuffer_org_xmlvm_ios_CFAllocator_org_xmlvm_ios_Reference<CMBlockBufferCustomBlockSource>_int_int_int_org_xmlvm_ios_CMBlockBuffer]
-
-XMLVM_NOT_IMPLEMENTED();
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CMBlockBuffer_createContiguous___org_xmlvm_ios_CFAllocator_org_xmlvm_ios_CMBlockBuffer_org_xmlvm_ios_CFAllocator_org_xmlvm_ios_Reference_int_int_int_org_xmlvm_ios_CMBlockBuffer]
+XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
+    XMLVM_VAR_IOS_REF(CFAllocator, var3, n3);
+    JAVA_OBJECT jObject4 = org_xmlvm_ios_Reference_get__(n4);
+    CMBlockBufferCustomBlockSource var4= toCMBlockBufferCustomBlockSource(jObject4);
+    
+    int objCObj = CMBlockBufferCreateContiguous(var1,(CMBlockBuffer*) (((org_xmlvm_ios_CMBlockBuffer*) n2)->fields.org_xmlvm_ios_NSObject.wrappedObj),var3,&var4,n5,n6,n7,(CMBlockBuffer*) (((org_xmlvm_ios_CMBlockBuffer*) n8)->fields.org_xmlvm_ios_NSObject.wrappedObj));
+    org_xmlvm_ios_Reference_set___java_lang_Object(n4, fromCMBlockBufferCustomBlockSource(var4));
+    
+    return objCObj;
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CMBlockBuffer_getTypeID__]
 
-    
     long objCObj = CFHostGetTypeID();
     
     return objCObj;
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CMBlockBuffer_appendMemoryBlock___byte_1ARRAY_int_org_xmlvm_ios_CFAllocator_org_xmlvm_ios_Reference<CMBlockBufferCustomBlockSource>_int_int_int]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CMBlockBuffer_appendMemoryBlock___byte_1ARRAY_int_org_xmlvm_ios_CFAllocator_org_xmlvm_ios_Reference_int_int_int]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
@@ -104,7 +117,6 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CMBlockBuffer_replaceDataBytes___byte_1ARRAY_org_xmlvm_ios_CMBlockBuffer_int_int]
 XMLVM_VAR_BYTE_ARRAY(a1, n1); 
     
-    
     int objCObj = CMBlockBufferReplaceDataBytes(a1->fields.org_xmlvm_runtime_XMLVMArray.array_,(CMBlockBuffer*) (((org_xmlvm_ios_CMBlockBuffer*) n2)->fields.org_xmlvm_ios_NSObject.wrappedObj),n3,n4);
     
     return objCObj;
@@ -112,7 +124,6 @@ XMLVM_VAR_BYTE_ARRAY(a1, n1);
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CMBlockBuffer_fillDataBytes___byte_org_xmlvm_ios_CMBlockBuffer_int_int]
 
-    
     int objCObj = CMBlockBufferFillDataBytes(n1,(CMBlockBuffer*) (((org_xmlvm_ios_CMBlockBuffer*) n2)->fields.org_xmlvm_ios_NSObject.wrappedObj),n3,n4);
     
     return objCObj;

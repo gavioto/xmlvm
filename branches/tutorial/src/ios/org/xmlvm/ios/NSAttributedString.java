@@ -102,4 +102,8 @@ public class NSAttributedString extends NSObject {
 	public void enumerateAttribute(String attrName, NSRange enumerationRange, int opts, Object block){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

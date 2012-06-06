@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_SKMutablePayment();
 }
 @end
+
 void org_xmlvm_ios_SKMutablePayment_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_SKPayment_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -88,8 +89,7 @@ __DELETE_org_xmlvm_ios_SKPayment(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_SKMutablePayment_getRequestData__]
 
     XMLVM_VAR_THIZ;
-    NSData* objCObj = [thiz requestData];    if (!__TIB_org_xmlvm_ios_NSData.classInitialized) __INIT_org_xmlvm_ios_NSData();
-
+    NSData* objCObj = [thiz requestData];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 

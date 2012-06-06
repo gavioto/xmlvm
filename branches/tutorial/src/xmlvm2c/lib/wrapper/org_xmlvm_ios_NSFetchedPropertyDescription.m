@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_NSFetchedPropertyDescription();
 }
 @end
+
 void org_xmlvm_ios_NSFetchedPropertyDescription_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSPropertyDescription_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -57,7 +58,6 @@ __DELETE_org_xmlvm_ios_NSPropertyDescription(me, client_data);
     XMLVM_VAR_THIZ;
     
     NSFetchRequest* objCObj = [thiz fetchRequest];
-    if (!__TIB_org_xmlvm_ios_NSFetchRequest.classInitialized) __INIT_org_xmlvm_ios_NSFetchRequest();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

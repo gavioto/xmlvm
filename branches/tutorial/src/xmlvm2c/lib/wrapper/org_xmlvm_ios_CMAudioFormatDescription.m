@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_CMAudioFormatDescription();
 }
 @end
+
 void org_xmlvm_ios_CMAudioFormatDescription_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_CMFormatDescription_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -35,8 +36,12 @@ xmlvm_register_wrapper_creator(__WRAPPER_CREATOR);
 __DELETE_org_xmlvm_ios_CMFormatDescription(me, client_data);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CMAudioFormatDescription___INIT____org_xmlvm_ios_CFAllocator_org_xmlvm_ios_Reference<AudioStreamBasicDescription>_int_org_xmlvm_ios_Reference<AudioChannelLayout>_int_byte_1ARRAY_org_xmlvm_ios_CFDictionary_org_xmlvm_ios_CMAudioFormatDescription]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CMAudioFormatDescription___INIT____org_xmlvm_ios_CFAllocator_org_xmlvm_ios_Reference_int_org_xmlvm_ios_Reference_int_byte_1ARRAY_org_xmlvm_ios_CFDictionary_org_xmlvm_ios_CMAudioFormatDescription]
 XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
+    JAVA_OBJECT jObject2 = org_xmlvm_ios_Reference_get__(n2);
+    AudioStreamBasicDescription var2= toAudioStreamBasicDescription(jObject2);
+    JAVA_OBJECT jObject4 = org_xmlvm_ios_Reference_get__(n4);
+    AudioChannelLayout var4= toAudioChannelLayout(jObject4);
     XMLVM_VAR_BYTE_ARRAY(a6, n6); 
     
     CMAudioFormatDescription* objCObj = [[CMAudioFormatDescription alloc] create:var1];
@@ -48,8 +53,10 @@ XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
     org_xmlvm_ios_CMAudioFormatDescription_INTERNAL_CONSTRUCTOR(me, objCObj);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CMAudioFormatDescription___INIT____org_xmlvm_ios_CFAllocator_int_int_org_xmlvm_ios_CFDictionary_org_xmlvm_ios_Reference<CMFormatDescription>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CMAudioFormatDescription___INIT____org_xmlvm_ios_CFAllocator_int_int_org_xmlvm_ios_CFDictionary_org_xmlvm_ios_Reference]
 XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
+    JAVA_OBJECT jObject5 = org_xmlvm_ios_Reference_get__(n5);
+    XMLVM_VAR_IOS(CMFormatDescription, var5, jObject5);
     
     CMAudioFormatDescription* objCObj = [[CMAudioFormatDescription alloc] create:var1];
     org_xmlvm_ios_CMAudioFormatDescription_INTERNAL_CONSTRUCTOR(me, objCObj);

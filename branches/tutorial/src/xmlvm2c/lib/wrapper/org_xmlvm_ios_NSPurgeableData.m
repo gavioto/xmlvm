@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_NSPurgeableData();
 }
 @end
+
 void org_xmlvm_ios_NSPurgeableData_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSMutableData_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -84,12 +85,23 @@ XMLVM_VAR_BYTE_ARRAY(a1, n1);
     org_xmlvm_ios_NSPurgeableData_INTERNAL_CONSTRUCTOR(me, objCObj);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSPurgeableData___INIT____java_lang_String_int_org_xmlvm_ios_Reference<NSError>]
-XMLVM_NOT_IMPLEMENTED();
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSPurgeableData___INIT____java_lang_String_int_org_xmlvm_ios_Reference]
+NSString * ObjCVar1 = toNSString(n1);
+    JAVA_OBJECT jObject3 = org_xmlvm_ios_Reference_get__(n3);
+    XMLVM_VAR_IOS(NSError, var3, jObject3);
+    
+    NSPurgeableData* objCObj = [[NSPurgeableData alloc] initWithContentsOfFile:ObjCVar1 options:n2 error:&var3];
+    [ObjCVar1 release];
+
+    org_xmlvm_ios_NSPurgeableData_INTERNAL_CONSTRUCTOR(me, objCObj);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSPurgeableData___INIT____org_xmlvm_ios_NSURL_int_org_xmlvm_ios_Reference<NSError>]
-XMLVM_NOT_IMPLEMENTED();
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSPurgeableData___INIT____org_xmlvm_ios_NSURL_int_org_xmlvm_ios_Reference]
+JAVA_OBJECT jObject3 = org_xmlvm_ios_Reference_get__(n3);
+    XMLVM_VAR_IOS(NSError, var3, jObject3);
+    
+    NSPurgeableData* objCObj = [[NSPurgeableData alloc] initWithContentsOfURL:(NSURL*) (((org_xmlvm_ios_NSURL*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj) options:n2 error:&var3];
+    org_xmlvm_ios_NSPurgeableData_INTERNAL_CONSTRUCTOR(me, objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSPurgeableData___INIT____java_lang_String_org_xmlvm_ios_NSPurgeableData_File]

@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_UINavigationController();
 }
 @end
+
 void org_xmlvm_ios_UINavigationController_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_UIViewController_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -85,7 +86,6 @@ NSString * ObjCVar1 = toNSString(n1);
     XMLVM_VAR_THIZ;
     
     UIViewController* objCObj = [thiz  popViewControllerAnimated:n1];
-    if (!__TIB_org_xmlvm_ios_UIViewController.classInitialized) __INIT_org_xmlvm_ios_UIViewController();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -111,16 +111,14 @@ NSString * ObjCVar1 = toNSString(n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UINavigationController_getTopViewController__]
 
     XMLVM_VAR_THIZ;
-    UIViewController* objCObj = [thiz topViewController];    if (!__TIB_org_xmlvm_ios_UIViewController.classInitialized) __INIT_org_xmlvm_ios_UIViewController();
-
+    UIViewController* objCObj = [thiz topViewController];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UINavigationController_getVisibleViewController__]
 
     XMLVM_VAR_THIZ;
-    UIViewController* objCObj = [thiz visibleViewController];    if (!__TIB_org_xmlvm_ios_UIViewController.classInitialized) __INIT_org_xmlvm_ios_UIViewController();
-
+    UIViewController* objCObj = [thiz visibleViewController];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -179,8 +177,7 @@ NSString * ObjCVar1 = toNSString(n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UINavigationController_getNavigationBar__]
 
     XMLVM_VAR_THIZ;
-    UINavigationBar* objCObj = [thiz navigationBar];    if (!__TIB_org_xmlvm_ios_UINavigationBar.classInitialized) __INIT_org_xmlvm_ios_UINavigationBar();
-
+    UINavigationBar* objCObj = [thiz navigationBar];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -210,8 +207,7 @@ NSString * ObjCVar1 = toNSString(n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UINavigationController_getToolbar__]
 
     XMLVM_VAR_THIZ;
-    UIToolbar* objCObj = [thiz toolbar];    if (!__TIB_org_xmlvm_ios_UIToolbar.classInitialized) __INIT_org_xmlvm_ios_UIToolbar();
-
+    UIToolbar* objCObj = [thiz toolbar];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -223,9 +219,13 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UINavigationController_setDelegate___org_xmlvm_ios_UINavigationControllerDelegate]
 
     XMLVM_VAR_THIZ;
+    if(thiz.delegate != nil) [[thiz getDelegate] release];
     org_xmlvm_ios_UINavigationControllerDelegate_Wrapper* jwrapper = __ALLOC_INIT_DELEGATE_WRAPPER_org_xmlvm_ios_UINavigationControllerDelegate(n1);
     [jwrapper->nativeDelegateWrapper_ addSource: jthiz: thiz];
+    objc_setAssociatedObject(thiz, &key, jwrapper->nativeDelegateWrapper_, OBJC_ASSOCIATION_RETAIN);
+    [jwrapper->nativeDelegateWrapper_ release];
     [thiz setDelegate:jwrapper->nativeDelegateWrapper_];
+    XMLVMUtil_ArrayList_add(reference_array, n1);
 
     
 //XMLVM_END_WRAPPER

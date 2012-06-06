@@ -18,4 +18,8 @@ public class UITextInputStringTokenizer extends NSObject {
 	public UITextInputStringTokenizer() {
 		super();
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_NSEntityDescription();
 }
 @end
+
 void org_xmlvm_ios_NSEntityDescription_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -53,7 +54,6 @@ NSString * ObjCVar1 = toNSString(n1);
     NSEntityDescription* objCObj =  [NSEntityDescription  entityForName:ObjCVar1 inManagedObjectContext:(NSManagedObjectContext*) (((org_xmlvm_ios_NSManagedObjectContext*) n2)->fields.org_xmlvm_ios_NSObject.wrappedObj)];
     [ObjCVar1 release];
 
-    if (!__TIB_org_xmlvm_ios_NSEntityDescription.classInitialized) __INIT_org_xmlvm_ios_NSEntityDescription();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -73,7 +73,6 @@ NSString * ObjCVar1 = toNSString(n1);
     XMLVM_VAR_THIZ;
     
     NSManagedObjectModel* objCObj = [thiz managedObjectModel];
-    if (!__TIB_org_xmlvm_ios_NSManagedObjectModel.classInitialized) __INIT_org_xmlvm_ios_NSManagedObjectModel();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -165,7 +164,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSEntityDescription* objCObj = [thiz superentity];
-    if (!__TIB_org_xmlvm_ios_NSEntityDescription.classInitialized) __INIT_org_xmlvm_ios_NSEntityDescription();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -238,7 +236,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSData* objCObj = [thiz versionHash];
-    if (!__TIB_org_xmlvm_ios_NSData.classInitialized) __INIT_org_xmlvm_ios_NSData();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

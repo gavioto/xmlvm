@@ -245,4 +245,8 @@ public class AVPlayerItem extends NSObject {
 	public AVPlayerItemErrorLog errorLog(){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

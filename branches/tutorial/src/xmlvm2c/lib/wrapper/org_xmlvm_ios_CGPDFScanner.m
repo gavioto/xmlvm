@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_CGPDFScanner();
 }
 @end
+
 void org_xmlvm_ios_CGPDFScanner_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -92,22 +93,22 @@ XMLVM_NOT_IMPLEMENTED();
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CGPDFScanner_popString___org_xmlvm_ios_Reference<CGPDFString>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CGPDFScanner_popString___org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CGPDFScanner_popArray___org_xmlvm_ios_Reference<CGPDFArray>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CGPDFScanner_popArray___org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CGPDFScanner_popDictionary___org_xmlvm_ios_Reference<CGPDFDictionary>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CGPDFScanner_popDictionary___org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CGPDFScanner_popStream___org_xmlvm_ios_Reference<CGPDFStream>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CGPDFScanner_popStream___org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER

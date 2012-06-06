@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_AudioComponentInstance();
 }
 @end
+
 void org_xmlvm_ios_AudioComponentInstance_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -35,8 +36,10 @@ xmlvm_register_wrapper_creator(__WRAPPER_CREATOR);
 __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AudioComponentInstance___INIT____org_xmlvm_ios_AudioComponent_org_xmlvm_ios_Reference<ComponentInstanceRecord>]
-
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AudioComponentInstance___INIT____org_xmlvm_ios_AudioComponent_org_xmlvm_ios_Reference]
+JAVA_OBJECT jObject2 = org_xmlvm_ios_Reference_get__(n2);
+    XMLVM_VAR_IOS(ComponentInstanceRecord, var2, jObject2);
+    
     AudioComponentInstance* objCObj = [[AudioComponentInstance alloc] new:(AudioComponent*) (((org_xmlvm_ios_AudioComponent*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj)];
     org_xmlvm_ios_AudioComponentInstance_INTERNAL_CONSTRUCTOR(me, objCObj);
 //XMLVM_END_WRAPPER

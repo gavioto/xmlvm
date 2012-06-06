@@ -6,7 +6,6 @@ XMLVM_NOT_IMPLEMENTED();
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MobileCoreServices_UTCreateStringForOSType___int]
 
-    
     NSString* objCObj = UTCreateStringForOSType(n1);
     
     return fromNSString(objCObj);
@@ -21,7 +20,6 @@ XMLVM_NOT_IMPLEMENTED();
 NSString * ObjCVar1 = toNSString(n1);
     NSString * ObjCVar2 = toNSString(n2);
     
-    
     Byte objCObj = UTTypeEqual(ObjCVar1,ObjCVar2);
     
     [ObjCVar1 release];
@@ -35,7 +33,6 @@ NSString * ObjCVar1 = toNSString(n1);
 NSString * ObjCVar1 = toNSString(n1);
     NSString * ObjCVar2 = toNSString(n2);
     NSString * ObjCVar3 = toNSString(n3);
-    
     
     NSString* objCObj = UTTypeCreatePreferredIdentifierForTag(ObjCVar1,ObjCVar2,ObjCVar3);
     
@@ -52,7 +49,6 @@ NSString * ObjCVar1 = toNSString(n1);
 NSString * ObjCVar1 = toNSString(n1);
     NSString * ObjCVar2 = toNSString(n2);
     
-    
     NSString* objCObj = UTTypeCopyPreferredTagWithClass(ObjCVar1,ObjCVar2);
     
     [ObjCVar1 release];
@@ -65,7 +61,6 @@ NSString * ObjCVar1 = toNSString(n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MobileCoreServices_UTTypeCopyDescription___java_lang_String]
 NSString * ObjCVar1 = toNSString(n1);
     
-    
     NSString* objCObj = UTTypeCopyDescription(ObjCVar1);
     
     [ObjCVar1 release];
@@ -75,7 +70,6 @@ NSString * ObjCVar1 = toNSString(n1);
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MobileCoreServices_UTGetOSTypeFromString___java_lang_String]
 NSString * ObjCVar1 = toNSString(n1);
-    
     
     int objCObj = UTGetOSTypeFromString(ObjCVar1);
     
@@ -87,7 +81,6 @@ NSString * ObjCVar1 = toNSString(n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MobileCoreServices_UTTypeConformsTo___java_lang_String_java_lang_String]
 NSString * ObjCVar1 = toNSString(n1);
     NSString * ObjCVar2 = toNSString(n2);
-    
     
     Byte objCObj = UTTypeConformsTo(ObjCVar1,ObjCVar2);
     
@@ -101,11 +94,10 @@ NSString * ObjCVar1 = toNSString(n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MobileCoreServices_UTTypeCopyDeclaringBundleURL___java_lang_String]
 NSString * ObjCVar1 = toNSString(n1);
     
-    
     CFURLRef objCObj = UTTypeCopyDeclaringBundleURL(ObjCVar1);
     
     [ObjCVar1 release];
-    XMLVM_VAR_INIT_REF(CFURL, objCObj);
+    XMLVM_VAR_INIT_REF(CFURL, refVar, objCObj);
 
-    return jvar;
+    return refVar;
 //XMLVM_END_WRAPPER

@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_UIView();
 }
 @end
+
 void org_xmlvm_ios_UIView_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_UIResponder_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -66,7 +67,6 @@ __DELETE_org_xmlvm_ios_UIResponder(me, client_data);
     XMLVM_VAR_THIZ;
     
     UIViewPrintFormatter* objCObj = [thiz viewPrintFormatter];
-    if (!__TIB_org_xmlvm_ios_UIViewPrintFormatter.classInitialized) __INIT_org_xmlvm_ios_UIViewPrintFormatter();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -128,8 +128,7 @@ __DELETE_org_xmlvm_ios_UIResponder(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIView_getLayer__]
 
     XMLVM_VAR_THIZ;
-    CALayer* objCObj = [thiz layer];    if (!__TIB_org_xmlvm_ios_CALayer.classInitialized) __INIT_org_xmlvm_ios_CALayer();
-
+    CALayer* objCObj = [thiz layer];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -243,7 +242,6 @@ __DELETE_org_xmlvm_ios_UIResponder(me, client_data);
     XMLVM_VAR_THIZ;
     
     UIView* objCObj = [thiz  hitTest:toCGPoint(n1) withEvent:(UIEvent*) (((org_xmlvm_ios_UIEvent*) n2)->fields.org_xmlvm_ios_NSObject.wrappedObj)];
-    if (!__TIB_org_xmlvm_ios_UIView.classInitialized) __INIT_org_xmlvm_ios_UIView();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -343,8 +341,7 @@ __DELETE_org_xmlvm_ios_UIResponder(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIView_getSuperview__]
 
     XMLVM_VAR_THIZ;
-    UIView* objCObj = [thiz superview];    if (!__TIB_org_xmlvm_ios_UIView.classInitialized) __INIT_org_xmlvm_ios_UIView();
-
+    UIView* objCObj = [thiz superview];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -358,8 +355,7 @@ __DELETE_org_xmlvm_ios_UIResponder(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIView_getWindow__]
 
     XMLVM_VAR_THIZ;
-    UIWindow* objCObj = [thiz window];    if (!__TIB_org_xmlvm_ios_UIWindow.classInitialized) __INIT_org_xmlvm_ios_UIWindow();
-
+    UIWindow* objCObj = [thiz window];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -489,7 +485,6 @@ __DELETE_org_xmlvm_ios_UIResponder(me, client_data);
     XMLVM_VAR_THIZ;
     
     UIView* objCObj = [thiz  viewWithTag:n1];
-    if (!__TIB_org_xmlvm_ios_UIView.classInitialized) __INIT_org_xmlvm_ios_UIView();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -560,8 +555,7 @@ __DELETE_org_xmlvm_ios_UIResponder(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIView_getBackgroundColor__]
 
     XMLVM_VAR_THIZ;
-    UIColor* objCObj = [thiz backgroundColor];    if (!__TIB_org_xmlvm_ios_UIColor.classInitialized) __INIT_org_xmlvm_ios_UIColor();
-
+    UIColor* objCObj = [thiz backgroundColor];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -664,8 +658,8 @@ __DELETE_org_xmlvm_ios_UIResponder(me, client_data);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIView_beginAnimations___java_lang_String_byte_1ARRAY]
-XMLVM_VAR_BYTE_ARRAY(a2, n2); 
-    NSString * ObjCVar1 = toNSString(n1);
+NSString * ObjCVar1 = toNSString(n1);
+    XMLVM_VAR_BYTE_ARRAY(a2, n2); 
      [UIView  beginAnimations:ObjCVar1 context:a2->fields.org_xmlvm_runtime_XMLVMArray.array_];
     [ObjCVar1 release];
 

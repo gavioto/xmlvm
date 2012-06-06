@@ -67,4 +67,8 @@ public interface UITextViewDelegate {
 		@org.xmlvm.XMLVMDelegateMethod.Param(type = "UITextView")
 	})
 	public abstract void textViewDidChangeSelection(UITextView textView);
+
+	/*
+	 * Interface Properties
+	 */
 }

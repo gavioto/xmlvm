@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_NSCountedSet();
 }
 @end
+
 void org_xmlvm_ios_NSCountedSet_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSMutableSet_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -115,7 +116,6 @@ NSSet * ObjCVar1 = toNSSet(n1);
     XMLVM_VAR_THIZ;
     
     NSEnumerator* objCObj = [thiz objectEnumerator];
-    if (!__TIB_org_xmlvm_ios_NSEnumerator.classInitialized) __INIT_org_xmlvm_ios_NSEnumerator();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

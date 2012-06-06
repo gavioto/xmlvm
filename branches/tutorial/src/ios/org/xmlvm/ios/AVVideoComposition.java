@@ -52,4 +52,8 @@ public class AVVideoComposition extends NSObject {
 	public AVVideoCompositionCoreAnimationTool getAnimationTool(){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

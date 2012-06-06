@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_NSBundle();
 }
 @end
+
 void org_xmlvm_ios_NSBundle_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -65,7 +66,6 @@ NSString * ObjCVar1 = toNSString(n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSBundle_mainBundle__]
 
     NSBundle* objCObj =  [NSBundle mainBundle];
-    if (!__TIB_org_xmlvm_ios_NSBundle.classInitialized) __INIT_org_xmlvm_ios_NSBundle();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -76,7 +76,6 @@ NSString * ObjCVar1 = toNSString(n1);
     NSBundle* objCObj =  [NSBundle  bundleWithPath:ObjCVar1];
     [ObjCVar1 release];
 
-    if (!__TIB_org_xmlvm_ios_NSBundle.classInitialized) __INIT_org_xmlvm_ios_NSBundle();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -84,7 +83,6 @@ NSString * ObjCVar1 = toNSString(n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSBundle_bundleWithURL___org_xmlvm_ios_NSURL]
 
     NSBundle* objCObj =  [NSBundle  bundleWithURL:(NSURL*) (((org_xmlvm_ios_NSURL*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj)];
-    if (!__TIB_org_xmlvm_ios_NSBundle.classInitialized) __INIT_org_xmlvm_ios_NSBundle();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -92,7 +90,6 @@ NSString * ObjCVar1 = toNSString(n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSBundle_bundleForClass___org_xmlvm_ios_Class]
 
     NSBundle* objCObj =  [NSBundle  bundleForClass:(Class*) (((org_xmlvm_ios_Class*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj)];
-    if (!__TIB_org_xmlvm_ios_NSBundle.classInitialized) __INIT_org_xmlvm_ios_NSBundle();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -103,7 +100,6 @@ NSString * ObjCVar1 = toNSString(n1);
     NSBundle* objCObj =  [NSBundle  bundleWithIdentifier:ObjCVar1];
     [ObjCVar1 release];
 
-    if (!__TIB_org_xmlvm_ios_NSBundle.classInitialized) __INIT_org_xmlvm_ios_NSBundle();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -149,14 +145,26 @@ NSString * ObjCVar1 = toNSString(n1);
     return objCObj;
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSBundle_preflightAndReturnError___org_xmlvm_ios_Reference<NSError>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSBundle_preflightAndReturnError___org_xmlvm_ios_Reference]
 
-XMLVM_NOT_IMPLEMENTED();
+    XMLVM_VAR_THIZ;
+    JAVA_OBJECT jObject1 = org_xmlvm_ios_Reference_get__(n1);
+    XMLVM_VAR_IOS(NSError, var1, jObject1);
+    
+    BOOL objCObj = [thiz  preflightAndReturnError:&var1];
+
+    return objCObj;
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSBundle_loadAndReturnError___org_xmlvm_ios_Reference<NSError>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSBundle_loadAndReturnError___org_xmlvm_ios_Reference]
 
-XMLVM_NOT_IMPLEMENTED();
+    XMLVM_VAR_THIZ;
+    JAVA_OBJECT jObject1 = org_xmlvm_ios_Reference_get__(n1);
+    XMLVM_VAR_IOS(NSError, var1, jObject1);
+    
+    BOOL objCObj = [thiz  loadAndReturnError:&var1];
+
+    return objCObj;
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSBundle_bundleURL__]
@@ -164,7 +172,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSURL* objCObj = [thiz bundleURL];
-    if (!__TIB_org_xmlvm_ios_NSURL.classInitialized) __INIT_org_xmlvm_ios_NSURL();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -174,7 +181,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSURL* objCObj = [thiz resourceURL];
-    if (!__TIB_org_xmlvm_ios_NSURL.classInitialized) __INIT_org_xmlvm_ios_NSURL();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -184,7 +190,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSURL* objCObj = [thiz executableURL];
-    if (!__TIB_org_xmlvm_ios_NSURL.classInitialized) __INIT_org_xmlvm_ios_NSURL();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -197,7 +202,6 @@ XMLVM_NOT_IMPLEMENTED();
     NSURL* objCObj = [thiz  URLForAuxiliaryExecutable:ObjCVar1];
     [ObjCVar1 release];
 
-    if (!__TIB_org_xmlvm_ios_NSURL.classInitialized) __INIT_org_xmlvm_ios_NSURL();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -207,7 +211,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSURL* objCObj = [thiz privateFrameworksURL];
-    if (!__TIB_org_xmlvm_ios_NSURL.classInitialized) __INIT_org_xmlvm_ios_NSURL();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -217,7 +220,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSURL* objCObj = [thiz sharedFrameworksURL];
-    if (!__TIB_org_xmlvm_ios_NSURL.classInitialized) __INIT_org_xmlvm_ios_NSURL();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -227,7 +229,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSURL* objCObj = [thiz sharedSupportURL];
-    if (!__TIB_org_xmlvm_ios_NSURL.classInitialized) __INIT_org_xmlvm_ios_NSURL();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -237,7 +238,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSURL* objCObj = [thiz builtInPlugInsURL];
-    if (!__TIB_org_xmlvm_ios_NSURL.classInitialized) __INIT_org_xmlvm_ios_NSURL();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -329,7 +329,6 @@ NSString * ObjCVar1 = toNSString(n1);
 
     [ObjCVar3 release];
 
-    if (!__TIB_org_xmlvm_ios_NSURL.classInitialized) __INIT_org_xmlvm_ios_NSURL();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -358,7 +357,6 @@ NSString * ObjCVar1 = toNSString(n1);
 
     [ObjCVar2 release];
 
-    if (!__TIB_org_xmlvm_ios_NSURL.classInitialized) __INIT_org_xmlvm_ios_NSURL();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -377,7 +375,6 @@ NSString * ObjCVar1 = toNSString(n1);
 
     [ObjCVar3 release];
 
-    if (!__TIB_org_xmlvm_ios_NSURL.classInitialized) __INIT_org_xmlvm_ios_NSURL();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -399,7 +396,6 @@ NSString * ObjCVar1 = toNSString(n1);
 
     [ObjCVar4 release];
 
-    if (!__TIB_org_xmlvm_ios_NSURL.classInitialized) __INIT_org_xmlvm_ios_NSURL();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

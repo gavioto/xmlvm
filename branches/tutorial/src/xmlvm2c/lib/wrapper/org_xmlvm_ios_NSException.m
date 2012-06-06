@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_NSException();
 }
 @end
+
 void org_xmlvm_ios_NSException_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -111,9 +112,9 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSException_raise___java_lang_String_java_lang_String_byte_1ARRAY]
-XMLVM_VAR_BYTE_ARRAY(a3, n3); 
-    NSString * ObjCVar1 = toNSString(n1);
+NSString * ObjCVar1 = toNSString(n1);
     NSString * ObjCVar2 = toNSString(n2);
+    XMLVM_VAR_BYTE_ARRAY(a3, n3); 
      [NSException  raise:ObjCVar1 format:ObjCVar2 arguments:a3->fields.org_xmlvm_runtime_XMLVMArray.array_];
     [ObjCVar1 release];
 

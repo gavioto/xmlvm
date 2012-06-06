@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_NSXMLParser();
 }
 @end
+
 void org_xmlvm_ios_NSXMLParser_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -142,7 +143,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSError* objCObj = [thiz parserError];
-    if (!__TIB_org_xmlvm_ios_NSError.classInitialized) __INIT_org_xmlvm_ios_NSError();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

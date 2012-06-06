@@ -3,6 +3,7 @@ import java.util.*;
 
 import org.xmlvm.XMLVMSkeletonOnly;
 @XMLVMSkeletonOnly
+(references={CGFunctionCallbacks.class})
 public class CGFunction extends CFType {
 
 	/*

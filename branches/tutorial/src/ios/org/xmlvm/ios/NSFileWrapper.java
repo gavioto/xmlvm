@@ -238,4 +238,8 @@ public class NSFileWrapper extends NSObject {
 	public String symbolicLinkDestination(){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

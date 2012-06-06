@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_NSPort();
 }
 @end
+
 void org_xmlvm_ios_NSPort_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -55,7 +56,6 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSPort_port__]
 
     NSPort* objCObj =  [NSPort port];
-    if (!__TIB_org_xmlvm_ios_NSPort.classInitialized) __INIT_org_xmlvm_ios_NSPort();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

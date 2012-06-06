@@ -192,4 +192,8 @@ public class UIWebView extends UIView {
 	public String stringByEvaluatingJavaScriptFromString(String script){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

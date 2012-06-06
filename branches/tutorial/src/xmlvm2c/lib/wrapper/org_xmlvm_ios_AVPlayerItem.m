@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_AVPlayerItem();
 }
 @end
+
 void org_xmlvm_ios_AVPlayerItem_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -62,7 +63,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVPlayerItem_playerItemWithURL___org_xmlvm_ios_NSURL]
 
     AVPlayerItem* objCObj =  [AVPlayerItem  playerItemWithURL:(NSURL*) (((org_xmlvm_ios_NSURL*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj)];
-    if (!__TIB_org_xmlvm_ios_AVPlayerItem.classInitialized) __INIT_org_xmlvm_ios_AVPlayerItem();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -70,7 +70,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVPlayerItem_playerItemWithAsset___org_xmlvm_ios_AVAsset]
 
     AVPlayerItem* objCObj =  [AVPlayerItem  playerItemWithAsset:(AVAsset*) (((org_xmlvm_ios_AVAsset*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj)];
-    if (!__TIB_org_xmlvm_ios_AVPlayerItem.classInitialized) __INIT_org_xmlvm_ios_AVPlayerItem();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -85,8 +84,7 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVPlayerItem_getError__]
 
     XMLVM_VAR_THIZ;
-    NSError* objCObj = [thiz error];    if (!__TIB_org_xmlvm_ios_NSError.classInitialized) __INIT_org_xmlvm_ios_NSError();
-
+    NSError* objCObj = [thiz error];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -118,8 +116,7 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVPlayerItem_getAsset__]
 
     XMLVM_VAR_THIZ;
-    AVAsset* objCObj = [thiz asset];    if (!__TIB_org_xmlvm_ios_AVAsset.classInitialized) __INIT_org_xmlvm_ios_AVAsset();
-
+    AVAsset* objCObj = [thiz asset];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -177,8 +174,7 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVPlayerItem_getAudioMix__]
 
     XMLVM_VAR_THIZ;
-    AVAudioMix* objCObj = [thiz audioMix];    if (!__TIB_org_xmlvm_ios_AVAudioMix.classInitialized) __INIT_org_xmlvm_ios_AVAudioMix();
-
+    AVAudioMix* objCObj = [thiz audioMix];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -193,8 +189,7 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVPlayerItem_getVideoComposition__]
 
     XMLVM_VAR_THIZ;
-    AVVideoComposition* objCObj = [thiz videoComposition];    if (!__TIB_org_xmlvm_ios_AVVideoComposition.classInitialized) __INIT_org_xmlvm_ios_AVVideoComposition();
-
+    AVVideoComposition* objCObj = [thiz videoComposition];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -219,7 +214,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
     XMLVM_VAR_THIZ;
     
     NSDate* objCObj = [thiz currentDate];
-    if (!__TIB_org_xmlvm_ios_NSDate.classInitialized) __INIT_org_xmlvm_ios_NSDate();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -280,7 +274,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
     XMLVM_VAR_THIZ;
     
     AVPlayerItemAccessLog* objCObj = [thiz accessLog];
-    if (!__TIB_org_xmlvm_ios_AVPlayerItemAccessLog.classInitialized) __INIT_org_xmlvm_ios_AVPlayerItemAccessLog();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -290,7 +283,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
     XMLVM_VAR_THIZ;
     
     AVPlayerItemErrorLog* objCObj = [thiz errorLog];
-    if (!__TIB_org_xmlvm_ios_AVPlayerItemErrorLog.classInitialized) __INIT_org_xmlvm_ios_AVPlayerItemErrorLog();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

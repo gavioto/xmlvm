@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_NSDateFormatter();
 }
 @end
+
 void org_xmlvm_ios_NSDateFormatter_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSFormatter_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -61,9 +62,21 @@ NSString * ObjCVar1 = toNSString(n1);
     org_xmlvm_ios_NSDateFormatter_INTERNAL_CONSTRUCTOR(me, objCObj);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSDateFormatter_getObjectValue___Object_1ARRAY_java_lang_String_org_xmlvm_ios_Reference<NSRange>_org_xmlvm_ios_Reference<NSError>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSDateFormatter_getObjectValue___Object_1ARRAY_java_lang_String_org_xmlvm_ios_Reference_org_xmlvm_ios_Reference]
 
-XMLVM_NOT_IMPLEMENTED();
+    XMLVM_VAR_THIZ;
+    XMLVM_VAR_OBJECT_ARRAY(a1, n1); 
+    NSString * ObjCVar2 = toNSString(n2);
+    JAVA_OBJECT jObject3 = org_xmlvm_ios_Reference_get__(n3);
+    NSRange var3= toNSRange(jObject3);
+    JAVA_OBJECT jObject4 = org_xmlvm_ios_Reference_get__(n4);
+    XMLVM_VAR_IOS(NSError, var4, jObject4);
+    
+    BOOL objCObj = [thiz  getObjectValue:a1->fields.org_xmlvm_runtime_XMLVMArray.array_ forString:ObjCVar2 range:&var3 error:&var4];
+    [ObjCVar2 release];
+
+
+    return objCObj;
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSDateFormatter_stringFromDate___org_xmlvm_ios_NSDate]
@@ -83,7 +96,6 @@ XMLVM_NOT_IMPLEMENTED();
     NSDate* objCObj = [thiz  dateFromString:ObjCVar1];
     [ObjCVar1 release];
 
-    if (!__TIB_org_xmlvm_ios_NSDate.classInitialized) __INIT_org_xmlvm_ios_NSDate();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -153,7 +165,6 @@ NSString * ObjCVar1 = toNSString(n1);
     XMLVM_VAR_THIZ;
     
     NSLocale* objCObj = [thiz locale];
-    if (!__TIB_org_xmlvm_ios_NSLocale.classInitialized) __INIT_org_xmlvm_ios_NSLocale();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -229,7 +240,6 @@ NSString * ObjCVar1 = toNSString(n1);
     XMLVM_VAR_THIZ;
     
     NSTimeZone* objCObj = [thiz timeZone];
-    if (!__TIB_org_xmlvm_ios_NSTimeZone.classInitialized) __INIT_org_xmlvm_ios_NSTimeZone();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -247,7 +257,6 @@ NSString * ObjCVar1 = toNSString(n1);
     XMLVM_VAR_THIZ;
     
     NSCalendar* objCObj = [thiz calendar];
-    if (!__TIB_org_xmlvm_ios_NSCalendar.classInitialized) __INIT_org_xmlvm_ios_NSCalendar();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -282,7 +291,6 @@ NSString * ObjCVar1 = toNSString(n1);
     XMLVM_VAR_THIZ;
     
     NSDate* objCObj = [thiz twoDigitStartDate];
-    if (!__TIB_org_xmlvm_ios_NSDate.classInitialized) __INIT_org_xmlvm_ios_NSDate();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -300,7 +308,6 @@ NSString * ObjCVar1 = toNSString(n1);
     XMLVM_VAR_THIZ;
     
     NSDate* objCObj = [thiz defaultDate];
-    if (!__TIB_org_xmlvm_ios_NSDate.classInitialized) __INIT_org_xmlvm_ios_NSDate();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -718,7 +725,6 @@ NSString * ObjCVar1 = toNSString(n1);
     XMLVM_VAR_THIZ;
     
     NSDate* objCObj = [thiz gregorianStartDate];
-    if (!__TIB_org_xmlvm_ios_NSDate.classInitialized) __INIT_org_xmlvm_ios_NSDate();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

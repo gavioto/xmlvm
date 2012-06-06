@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_CFHTTPAuthentication();
 }
 @end
+
 void org_xmlvm_ios_CFHTTPAuthentication_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -42,7 +43,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFHTTPAuthentication_getTypeID__]
 
-    
     long objCObj = CFHostGetTypeID();
     
     return objCObj;
@@ -51,14 +51,12 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFHTTPAuthentication_createFromResponse___org_xmlvm_ios_CFAllocator_org_xmlvm_ios_CFHTTPMessage]
 XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
     
-    
     CFHTTPAuthentication* objCObj = CFHTTPAuthenticationCreateFromResponse(var1,(CFHTTPMessage*) (((org_xmlvm_ios_CFHTTPMessage*) n2)->fields.org_xmlvm_ios_NSObject.wrappedObj));
-        if (!__TIB_org_xmlvm_ios_CFHTTPAuthentication.classInitialized) __INIT_org_xmlvm_ios_CFHTTPAuthentication();
-
+    
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFHTTPAuthentication_isValid___org_xmlvm_ios_Reference<CFStreamError>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFHTTPAuthentication_isValid___org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER

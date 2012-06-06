@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_CFNumber();
 }
 @end
+
 void org_xmlvm_ios_CFNumber_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -50,7 +51,6 @@ XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFNumber_getTypeID__]
 
-    
     long objCObj = CFHostGetTypeID();
     
     return objCObj;

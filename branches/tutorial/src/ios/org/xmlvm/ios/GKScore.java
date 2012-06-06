@@ -89,4 +89,8 @@ public class GKScore extends NSObject {
 	public void reportScoreWithCompletionHandler(Object completionHandler){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

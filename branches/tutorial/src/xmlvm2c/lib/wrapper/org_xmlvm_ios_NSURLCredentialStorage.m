@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_NSURLCredentialStorage();
 }
 @end
+
 void org_xmlvm_ios_NSURLCredentialStorage_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -50,7 +51,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSURLCredentialStorage_sharedCredentialStorage__]
 
     NSURLCredentialStorage* objCObj =  [NSURLCredentialStorage sharedCredentialStorage];
-    if (!__TIB_org_xmlvm_ios_NSURLCredentialStorage.classInitialized) __INIT_org_xmlvm_ios_NSURLCredentialStorage();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -86,7 +86,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSURLCredential* objCObj = [thiz  defaultCredentialForProtectionSpace:(NSURLProtectionSpace*) (((org_xmlvm_ios_NSURLProtectionSpace*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj)];
-    if (!__TIB_org_xmlvm_ios_NSURLCredential.classInitialized) __INIT_org_xmlvm_ios_NSURLCredential();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_NSAttributedString();
 }
 @end
+
 void org_xmlvm_ios_NSAttributedString_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -75,7 +76,7 @@ XMLVM_NOT_IMPLEMENTED();
     return fromNSString(objCObj);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSAttributedString_attributesAtIndex___int_org_xmlvm_ios_Reference<NSRange>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSAttributedString_attributesAtIndex___int_org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
@@ -89,9 +90,18 @@ XMLVM_NOT_IMPLEMENTED();
     return objCObj;
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSAttributedString_attribute___java_lang_String_int_org_xmlvm_ios_Reference<NSRange>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSAttributedString_attribute___java_lang_String_int_org_xmlvm_ios_Reference]
 
-XMLVM_NOT_IMPLEMENTED();
+    XMLVM_VAR_THIZ;
+    NSString * ObjCVar1 = toNSString(n1);
+    JAVA_OBJECT jObject3 = org_xmlvm_ios_Reference_get__(n3);
+    NSRange var3= toNSRange(jObject3);
+    
+    NSObject* objCObj = [thiz  attribute:ObjCVar1 atIndex:n2 effectiveRange:&var3];
+    [ObjCVar1 release];
+
+
+    return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSAttributedString_attributedSubstringFromRange___org_xmlvm_ios_NSRange]
@@ -99,19 +109,27 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSAttributedString* objCObj = [thiz  attributedSubstringFromRange:toNSRange(n1)];
-    if (!__TIB_org_xmlvm_ios_NSAttributedString.classInitialized) __INIT_org_xmlvm_ios_NSAttributedString();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSAttributedString_attributesAtIndex___int_org_xmlvm_ios_Reference<NSRange>_org_xmlvm_ios_NSRange]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSAttributedString_attributesAtIndex___int_org_xmlvm_ios_Reference_org_xmlvm_ios_NSRange]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSAttributedString_attribute___java_lang_String_int_org_xmlvm_ios_Reference<NSRange>_org_xmlvm_ios_NSRange]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSAttributedString_attribute___java_lang_String_int_org_xmlvm_ios_Reference_org_xmlvm_ios_NSRange]
 
-XMLVM_NOT_IMPLEMENTED();
+    XMLVM_VAR_THIZ;
+    NSString * ObjCVar1 = toNSString(n1);
+    JAVA_OBJECT jObject3 = org_xmlvm_ios_Reference_get__(n3);
+    NSRange var3= toNSRange(jObject3);
+    
+    NSObject* objCObj = [thiz  attribute:ObjCVar1 atIndex:n2 longestEffectiveRange:&var3 inRange:toNSRange(n4)];
+    [ObjCVar1 release];
+
+
+    return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSAttributedString_isEqualToAttributedString___org_xmlvm_ios_NSAttributedString]

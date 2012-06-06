@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_ABMultiValue();
 }
 @end
+
 void org_xmlvm_ios_ABMultiValue_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_CFType_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -87,10 +88,8 @@ XMLVM_NOT_IMPLEMENTED();
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_ABMultiValue_createMutable___int]
 
-    
     ABMutableMultiValue* objCObj = ABMultiValueCreateMutable(n1);
-        if (!__TIB_org_xmlvm_ios_ABMutableMultiValue.classInitialized) __INIT_org_xmlvm_ios_ABMutableMultiValue();
-
+    
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -101,9 +100,8 @@ XMLVM_NOT_IMPLEMENTED();
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_ABMultiValue_addValueAndLabel___org_xmlvm_ios_ABMutableMultiValue_byte_1ARRAY_java_lang_String_int_1ARRAY]
 XMLVM_VAR_BYTE_ARRAY(a2, n2); 
-    XMLVM_VAR_INT_ARRAY(a4, n4); 
     NSString * ObjCVar3 = toNSString(n3);
-    
+    XMLVM_VAR_INT_ARRAY(a4, n4); 
     
     BOOL objCObj = ABMultiValueAddValueAndLabel((ABMutableMultiValue*) (((org_xmlvm_ios_ABMutableMultiValue*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj),a2->fields.org_xmlvm_runtime_XMLVMArray.array_,ObjCVar3,a4->fields.org_xmlvm_runtime_XMLVMArray.array_);
     
@@ -114,9 +112,8 @@ XMLVM_VAR_BYTE_ARRAY(a2, n2);
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_ABMultiValue_insertValueAndLabelAtIndex___org_xmlvm_ios_ABMutableMultiValue_byte_1ARRAY_java_lang_String_long_int_1ARRAY]
 XMLVM_VAR_BYTE_ARRAY(a2, n2); 
-    XMLVM_VAR_INT_ARRAY(a5, n5); 
     NSString * ObjCVar3 = toNSString(n3);
-    
+    XMLVM_VAR_INT_ARRAY(a5, n5); 
     
     BOOL objCObj = ABMultiValueInsertValueAndLabelAtIndex((ABMutableMultiValue*) (((org_xmlvm_ios_ABMutableMultiValue*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj),a2->fields.org_xmlvm_runtime_XMLVMArray.array_,ObjCVar3,n4,a5->fields.org_xmlvm_runtime_XMLVMArray.array_);
     
@@ -127,7 +124,6 @@ XMLVM_VAR_BYTE_ARRAY(a2, n2);
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_ABMultiValue_removeValueAndLabelAtIndex___org_xmlvm_ios_ABMutableMultiValue_long]
 
-    
     BOOL objCObj = ABMultiValueRemoveValueAndLabelAtIndex((ABMutableMultiValue*) (((org_xmlvm_ios_ABMutableMultiValue*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj),n2);
     
     return objCObj;
@@ -136,7 +132,6 @@ XMLVM_VAR_BYTE_ARRAY(a2, n2);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_ABMultiValue_replaceValueAtIndex___org_xmlvm_ios_ABMutableMultiValue_byte_1ARRAY_long]
 XMLVM_VAR_BYTE_ARRAY(a2, n2); 
     
-    
     BOOL objCObj = ABMultiValueReplaceValueAtIndex((ABMutableMultiValue*) (((org_xmlvm_ios_ABMutableMultiValue*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj),a2->fields.org_xmlvm_runtime_XMLVMArray.array_,n3);
     
     return objCObj;
@@ -144,7 +139,6 @@ XMLVM_VAR_BYTE_ARRAY(a2, n2);
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_ABMultiValue_replaceLabelAtIndex___org_xmlvm_ios_ABMutableMultiValue_java_lang_String_long]
 NSString * ObjCVar2 = toNSString(n2);
-    
     
     BOOL objCObj = ABMultiValueReplaceLabelAtIndex((ABMutableMultiValue*) (((org_xmlvm_ios_ABMutableMultiValue*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj),ObjCVar2,n3);
     

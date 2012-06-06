@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_NSFetchedResultsController();
 }
 @end
+
 void org_xmlvm_ios_NSFetchedResultsController_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -59,24 +60,28 @@ NSString * ObjCVar3 = toNSString(n3);
     org_xmlvm_ios_NSFetchedResultsController_INTERNAL_CONSTRUCTOR(me, objCObj);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSFetchedResultsController_performFetch___org_xmlvm_ios_Reference<NSError>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSFetchedResultsController_performFetch___org_xmlvm_ios_Reference]
 
-XMLVM_NOT_IMPLEMENTED();
+    XMLVM_VAR_THIZ;
+    JAVA_OBJECT jObject1 = org_xmlvm_ios_Reference_get__(n1);
+    XMLVM_VAR_IOS(NSError, var1, jObject1);
+    
+    BOOL objCObj = [thiz  performFetch:&var1];
+
+    return objCObj;
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSFetchedResultsController_getFetchRequest__]
 
     XMLVM_VAR_THIZ;
-    NSFetchRequest* objCObj = [thiz fetchRequest];    if (!__TIB_org_xmlvm_ios_NSFetchRequest.classInitialized) __INIT_org_xmlvm_ios_NSFetchRequest();
-
+    NSFetchRequest* objCObj = [thiz fetchRequest];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSFetchedResultsController_getManagedObjectContext__]
 
     XMLVM_VAR_THIZ;
-    NSManagedObjectContext* objCObj = [thiz managedObjectContext];    if (!__TIB_org_xmlvm_ios_NSManagedObjectContext.classInitialized) __INIT_org_xmlvm_ios_NSManagedObjectContext();
-
+    NSManagedObjectContext* objCObj = [thiz managedObjectContext];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -102,8 +107,11 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSFetchedResultsController_setDelegate___org_xmlvm_ios_NSFetchedResultsControllerDelegate]
 
     XMLVM_VAR_THIZ;
+    if(thiz.delegate != nil) [[thiz getDelegate] release];
     org_xmlvm_ios_NSFetchedResultsControllerDelegate_Wrapper* jwrapper = __ALLOC_INIT_DELEGATE_WRAPPER_org_xmlvm_ios_NSFetchedResultsControllerDelegate(n1);
     [jwrapper->nativeDelegateWrapper_ addSource: jthiz: thiz];
+    objc_setAssociatedObject(thiz, &key, jwrapper->nativeDelegateWrapper_, OBJC_ASSOCIATION_RETAIN);
+    [jwrapper->nativeDelegateWrapper_ release];
     [thiz setDelegate:jwrapper->nativeDelegateWrapper_];
 
     
@@ -139,7 +147,6 @@ NSString * ObjCVar1 = toNSString(n1);
     XMLVM_VAR_THIZ;
     
     NSIndexPath* objCObj = [thiz  indexPathForObject:((org_xmlvm_ios_NSObject*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj];
-    if (!__TIB_org_xmlvm_ios_NSIndexPath.classInitialized) __INIT_org_xmlvm_ios_NSIndexPath();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

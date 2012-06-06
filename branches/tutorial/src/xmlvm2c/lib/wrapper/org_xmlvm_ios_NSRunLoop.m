@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_NSRunLoop();
 }
 @end
+
 void org_xmlvm_ios_NSRunLoop_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -50,7 +51,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSRunLoop_currentRunLoop__]
 
     NSRunLoop* objCObj =  [NSRunLoop currentRunLoop];
-    if (!__TIB_org_xmlvm_ios_NSRunLoop.classInitialized) __INIT_org_xmlvm_ios_NSRunLoop();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -58,7 +58,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSRunLoop_mainRunLoop__]
 
     NSRunLoop* objCObj =  [NSRunLoop mainRunLoop];
-    if (!__TIB_org_xmlvm_ios_NSRunLoop.classInitialized) __INIT_org_xmlvm_ios_NSRunLoop();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -76,10 +75,10 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 
     XMLVM_VAR_THIZ;
     
-    CFRunLoopRef objCObj = [thiz getCFRunLoop];    XMLVM_VAR_INIT_REF(CFRunLoop, objCObj);
+    CFRunLoopRef objCObj = [thiz getCFRunLoop];    XMLVM_VAR_INIT_REF(CFRunLoop, refVar, objCObj);
 
 
-    return jvar;
+    return refVar;
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSRunLoop_addTimer___org_xmlvm_ios_NSTimer_java_lang_String]
@@ -123,7 +122,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
     NSDate* objCObj = [thiz  limitDateForMode:ObjCVar1];
     [ObjCVar1 release];
 
-    if (!__TIB_org_xmlvm_ios_NSDate.classInitialized) __INIT_org_xmlvm_ios_NSDate();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

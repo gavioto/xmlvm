@@ -24,4 +24,8 @@ public class AVAudioMix extends NSObject {
 	public List getInputParameters(){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

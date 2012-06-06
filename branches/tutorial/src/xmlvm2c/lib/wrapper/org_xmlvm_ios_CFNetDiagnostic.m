@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_CFNetDiagnostic();
 }
 @end
+
 void org_xmlvm_ios_CFNetDiagnostic_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -43,10 +44,8 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFNetDiagnostic_createWithStreams___org_xmlvm_ios_CFAllocator_org_xmlvm_ios_CFReadStream_org_xmlvm_ios_CFWriteStream]
 XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
     
-    
     CFNetDiagnostic* objCObj = CFNetDiagnosticCreateWithStreams(var1,(CFReadStream*) (((org_xmlvm_ios_CFReadStream*) n2)->fields.org_xmlvm_ios_NSObject.wrappedObj),(CFWriteStream*) (((org_xmlvm_ios_CFWriteStream*) n3)->fields.org_xmlvm_ios_NSObject.wrappedObj));
-        if (!__TIB_org_xmlvm_ios_CFNetDiagnostic.classInitialized) __INIT_org_xmlvm_ios_CFNetDiagnostic();
-
+    
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -54,10 +53,8 @@ XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
 XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
     XMLVM_VAR_IOS_REF(CFURL, var2, n2);
     
-    
     CFNetDiagnostic* objCObj = AudioFileCreateWithURL(var1,var2);
-        if (!__TIB_org_xmlvm_ios_CFNetDiagnostic.classInitialized) __INIT_org_xmlvm_ios_CFNetDiagnostic();
-
+    
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 

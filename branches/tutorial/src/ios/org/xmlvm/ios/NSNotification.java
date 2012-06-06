@@ -56,4 +56,8 @@ public class NSNotification extends NSObject {
 	public Map userInfo(){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

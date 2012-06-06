@@ -206,4 +206,8 @@ public class UISlider extends UIControl {
 	public CGRect thumbRectForBounds(CGRect bounds, CGRect rect, float value){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

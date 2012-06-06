@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_UIPrintInteractionController();
 }
 @end
+
 void org_xmlvm_ios_UIPrintInteractionController_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -78,7 +79,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIPrintInteractionController_sharedPrintController__]
 
     UIPrintInteractionController* objCObj =  [UIPrintInteractionController sharedPrintController];
-    if (!__TIB_org_xmlvm_ios_UIPrintInteractionController.classInitialized) __INIT_org_xmlvm_ios_UIPrintInteractionController();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -86,8 +86,7 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIPrintInteractionController_getPrintInfo__]
 
     XMLVM_VAR_THIZ;
-    UIPrintInfo* objCObj = [thiz printInfo];    if (!__TIB_org_xmlvm_ios_UIPrintInfo.classInitialized) __INIT_org_xmlvm_ios_UIPrintInfo();
-
+    UIPrintInfo* objCObj = [thiz printInfo];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -107,8 +106,11 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIPrintInteractionController_setDelegate___org_xmlvm_ios_UIPrintInteractionControllerDelegate]
 
     XMLVM_VAR_THIZ;
+    if(thiz.delegate != nil) [[thiz getDelegate] release];
     org_xmlvm_ios_UIPrintInteractionControllerDelegate_Wrapper* jwrapper = __ALLOC_INIT_DELEGATE_WRAPPER_org_xmlvm_ios_UIPrintInteractionControllerDelegate(n1);
     [jwrapper->nativeDelegateWrapper_ addSource: jthiz: thiz];
+    objc_setAssociatedObject(thiz, &key, jwrapper->nativeDelegateWrapper_, OBJC_ASSOCIATION_RETAIN);
+    [jwrapper->nativeDelegateWrapper_ release];
     [thiz setDelegate:jwrapper->nativeDelegateWrapper_];
 
     
@@ -132,16 +134,14 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIPrintInteractionController_getPrintPaper__]
 
     XMLVM_VAR_THIZ;
-    UIPrintPaper* objCObj = [thiz printPaper];    if (!__TIB_org_xmlvm_ios_UIPrintPaper.classInitialized) __INIT_org_xmlvm_ios_UIPrintPaper();
-
+    UIPrintPaper* objCObj = [thiz printPaper];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIPrintInteractionController_getPrintPageRenderer__]
 
     XMLVM_VAR_THIZ;
-    UIPrintPageRenderer* objCObj = [thiz printPageRenderer];    if (!__TIB_org_xmlvm_ios_UIPrintPageRenderer.classInitialized) __INIT_org_xmlvm_ios_UIPrintPageRenderer();
-
+    UIPrintPageRenderer* objCObj = [thiz printPageRenderer];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -156,8 +156,7 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIPrintInteractionController_getPrintFormatter__]
 
     XMLVM_VAR_THIZ;
-    UIPrintFormatter* objCObj = [thiz printFormatter];    if (!__TIB_org_xmlvm_ios_UIPrintFormatter.classInitialized) __INIT_org_xmlvm_ios_UIPrintFormatter();
-
+    UIPrintFormatter* objCObj = [thiz printFormatter];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 

@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_AVCaptureDeviceInput();
 }
 @end
+
 void org_xmlvm_ios_AVCaptureDeviceInput_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_AVCaptureInput_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -35,8 +36,12 @@ xmlvm_register_wrapper_creator(__WRAPPER_CREATOR);
 __DELETE_org_xmlvm_ios_AVCaptureInput(me, client_data);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVCaptureDeviceInput___INIT____org_xmlvm_ios_AVCaptureDevice_org_xmlvm_ios_Reference<NSError>]
-XMLVM_NOT_IMPLEMENTED();
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVCaptureDeviceInput___INIT____org_xmlvm_ios_AVCaptureDevice_org_xmlvm_ios_Reference]
+JAVA_OBJECT jObject2 = org_xmlvm_ios_Reference_get__(n2);
+    XMLVM_VAR_IOS(NSError, var2, jObject2);
+    
+    AVCaptureDeviceInput* objCObj = [[AVCaptureDeviceInput alloc] initWithDevice:(AVCaptureDevice*) (((org_xmlvm_ios_AVCaptureDevice*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj) error:&var2];
+    org_xmlvm_ios_AVCaptureDeviceInput_INTERNAL_CONSTRUCTOR(me, objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVCaptureDeviceInput___INIT___]
@@ -56,15 +61,18 @@ XMLVM_NOT_IMPLEMENTED();
     org_xmlvm_ios_AVCaptureDeviceInput_INTERNAL_CONSTRUCTOR(me, objCObj);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVCaptureDeviceInput_deviceInputWithDevice___org_xmlvm_ios_AVCaptureDevice_org_xmlvm_ios_Reference<NSError>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVCaptureDeviceInput_deviceInputWithDevice___org_xmlvm_ios_AVCaptureDevice_org_xmlvm_ios_Reference]
+JAVA_OBJECT jObject2 = org_xmlvm_ios_Reference_get__(n2);
+    XMLVM_VAR_IOS(NSError, var2, jObject2);
+    
+    NSObject* objCObj =  [AVCaptureDeviceInput  deviceInputWithDevice:(AVCaptureDevice*) (((org_xmlvm_ios_AVCaptureDevice*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj) error:&var2];
 
-XMLVM_NOT_IMPLEMENTED();
+    return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVCaptureDeviceInput_getDevice__]
 
     XMLVM_VAR_THIZ;
-    AVCaptureDevice* objCObj = [thiz device];    if (!__TIB_org_xmlvm_ios_AVCaptureDevice.classInitialized) __INIT_org_xmlvm_ios_AVCaptureDevice();
-
+    AVCaptureDevice* objCObj = [thiz device];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

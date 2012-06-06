@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_SKPaymentTransaction();
 }
 @end
+
 void org_xmlvm_ios_SKPaymentTransaction_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -50,32 +51,28 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_SKPaymentTransaction_getError__]
 
     XMLVM_VAR_THIZ;
-    NSError* objCObj = [thiz error];    if (!__TIB_org_xmlvm_ios_NSError.classInitialized) __INIT_org_xmlvm_ios_NSError();
-
+    NSError* objCObj = [thiz error];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_SKPaymentTransaction_getOriginalTransaction__]
 
     XMLVM_VAR_THIZ;
-    SKPaymentTransaction* objCObj = [thiz originalTransaction];    if (!__TIB_org_xmlvm_ios_SKPaymentTransaction.classInitialized) __INIT_org_xmlvm_ios_SKPaymentTransaction();
-
+    SKPaymentTransaction* objCObj = [thiz originalTransaction];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_SKPaymentTransaction_getPayment__]
 
     XMLVM_VAR_THIZ;
-    SKPayment* objCObj = [thiz payment];    if (!__TIB_org_xmlvm_ios_SKPayment.classInitialized) __INIT_org_xmlvm_ios_SKPayment();
-
+    SKPayment* objCObj = [thiz payment];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_SKPaymentTransaction_getTransactionDate__]
 
     XMLVM_VAR_THIZ;
-    NSDate* objCObj = [thiz transactionDate];    if (!__TIB_org_xmlvm_ios_NSDate.classInitialized) __INIT_org_xmlvm_ios_NSDate();
-
+    NSDate* objCObj = [thiz transactionDate];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -89,8 +86,7 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_SKPaymentTransaction_getTransactionReceipt__]
 
     XMLVM_VAR_THIZ;
-    NSData* objCObj = [thiz transactionReceipt];    if (!__TIB_org_xmlvm_ios_NSData.classInitialized) __INIT_org_xmlvm_ios_NSData();
-
+    NSData* objCObj = [thiz transactionReceipt];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 

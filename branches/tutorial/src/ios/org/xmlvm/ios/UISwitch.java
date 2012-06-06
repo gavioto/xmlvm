@@ -47,4 +47,8 @@ public class UISwitch extends UIControl {
 	public void setOn(boolean on, boolean animated){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

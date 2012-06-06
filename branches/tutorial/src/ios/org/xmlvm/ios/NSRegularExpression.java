@@ -128,4 +128,8 @@ public class NSRegularExpression extends NSObject {
 	public String replacementStringForResult(NSTextCheckingResult result, String string, int offset, String templ){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

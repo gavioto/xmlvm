@@ -196,4 +196,8 @@ public class NSCharacterSet extends NSObject {
 	public boolean hasMemberInPlane(byte thePlane){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

@@ -18,4 +18,8 @@ public interface SKProductsRequestDelegate {
 		@org.xmlvm.XMLVMDelegateMethod.Param(type = "SKProductsResponse", name = "didReceiveResponse")
 	})
 	public abstract void productsRequest(SKProductsRequest request, SKProductsResponse response);
+
+	/*
+	 * Interface Properties
+	 */
 }

@@ -53,4 +53,8 @@ public class UITableViewController extends UIViewController {
 	public void setClearsSelectionOnViewWillAppear(boolean clearsSelectionOnViewWillAppear){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

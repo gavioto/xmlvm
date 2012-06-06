@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_CFBundle();
 }
 @end
+
 void org_xmlvm_ios_CFBundle_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -50,21 +51,17 @@ XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFBundle_getMainBundle__]
 
-    
     CFBundle* objCObj = CFBundleGetMainBundle();
-        if (!__TIB_org_xmlvm_ios_CFBundle.classInitialized) __INIT_org_xmlvm_ios_CFBundle();
-
+    
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFBundle_getBundleWithIdentifier___java_lang_String]
 NSString * ObjCVar1 = toNSString(n1);
     
-    
     CFBundle* objCObj = CFBundleGetBundleWithIdentifier(ObjCVar1);
     
     [ObjCVar1 release];
-    if (!__TIB_org_xmlvm_ios_CFBundle.classInitialized) __INIT_org_xmlvm_ios_CFBundle();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -76,7 +73,6 @@ XMLVM_NOT_IMPLEMENTED();
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFBundle_getTypeID__]
 
-    
     long objCObj = CFHostGetTypeID();
     
     return objCObj;
@@ -167,7 +163,6 @@ XMLVM_VAR_IOS_REF(CFURL, var1, n1);
     XMLVM_VAR_INT_ARRAY(a2, n2); 
     XMLVM_VAR_INT_ARRAY(a3, n3); 
     
-    
     Byte objCObj = CFBundleGetPackageInfoInDirectory(var1,a2->fields.org_xmlvm_runtime_XMLVMArray.array_,a3->fields.org_xmlvm_runtime_XMLVMArray.array_);
     
     return objCObj;
@@ -194,7 +189,6 @@ XMLVM_VAR_IOS_REF(CFURL, var1, n1);
     NSString * ObjCVar3 = toNSString(n3);
     NSString * ObjCVar4 = toNSString(n4);
     
-    
     CFURLRef objCObj = CFBundleCopyResourceURLInDirectory(var1,ObjCVar2,ObjCVar3,ObjCVar4);
     
     [ObjCVar2 release];
@@ -202,9 +196,9 @@ XMLVM_VAR_IOS_REF(CFURL, var1, n1);
     [ObjCVar3 release];
 
     [ObjCVar4 release];
-    XMLVM_VAR_INIT_REF(CFURL, objCObj);
+    XMLVM_VAR_INIT_REF(CFURL, refVar, objCObj);
 
-    return jvar;
+    return refVar;
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFBundle_copyResourceURLsOfTypeInDirectory___org_xmlvm_ios_CFURL_java_lang_String_java_lang_String]
@@ -262,12 +256,12 @@ XMLVM_NOT_IMPLEMENTED();
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFBundle_preflightExecutable___org_xmlvm_ios_Reference<CFError>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFBundle_preflightExecutable___org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFBundle_loadExecutableAndReturnError___org_xmlvm_ios_Reference<CFError>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFBundle_loadExecutableAndReturnError___org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER

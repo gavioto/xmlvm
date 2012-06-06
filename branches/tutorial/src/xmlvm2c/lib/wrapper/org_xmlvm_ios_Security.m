@@ -1,5 +1,5 @@
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_Security_SecPKCS12Import___org_xmlvm_ios_CFData_org_xmlvm_ios_CFDictionary_org_xmlvm_ios_Reference<CFArray>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_Security_SecPKCS12Import___org_xmlvm_ios_CFData_org_xmlvm_ios_CFDictionary_org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER

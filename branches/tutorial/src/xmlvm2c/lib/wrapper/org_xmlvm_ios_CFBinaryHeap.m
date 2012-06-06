@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_CFBinaryHeap();
 }
 @end
+
 void org_xmlvm_ios_CFBinaryHeap_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -35,8 +36,12 @@ xmlvm_register_wrapper_creator(__WRAPPER_CREATOR);
 __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFBinaryHeap___INIT____org_xmlvm_ios_CFAllocator_long_org_xmlvm_ios_Reference<CFBinaryHeapCallBacks>_org_xmlvm_ios_Reference<CFBinaryHeapCompareContext>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFBinaryHeap___INIT____org_xmlvm_ios_CFAllocator_long_org_xmlvm_ios_Reference_org_xmlvm_ios_Reference]
 XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
+    JAVA_OBJECT jObject3 = org_xmlvm_ios_Reference_get__(n3);
+    CFBinaryHeapCallBacks var3= toCFBinaryHeapCallBacks(jObject3);
+    JAVA_OBJECT jObject4 = org_xmlvm_ios_Reference_get__(n4);
+    CFBinaryHeapCompareContext var4= toCFBinaryHeapCompareContext(jObject4);
     
     CFBinaryHeap* objCObj = [[CFBinaryHeap alloc] create:var1];
     org_xmlvm_ios_CFBinaryHeap_INTERNAL_CONSTRUCTOR(me, objCObj);
@@ -49,7 +54,6 @@ XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFBinaryHeap_getTypeID__]
 
-    
     long objCObj = CFHostGetTypeID();
     
     return objCObj;
@@ -58,10 +62,8 @@ XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFBinaryHeap_createCopy___org_xmlvm_ios_CFAllocator_long_org_xmlvm_ios_CFBinaryHeap]
 XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
     
-    
     CFBinaryHeap* objCObj = CFHostCreateCopy(var1,n2,(CFBinaryHeap*) (((org_xmlvm_ios_CFBinaryHeap*) n3)->fields.org_xmlvm_ios_NSObject.wrappedObj));
-        if (!__TIB_org_xmlvm_ios_CFBinaryHeap.classInitialized) __INIT_org_xmlvm_ios_CFBinaryHeap();
-
+    
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 

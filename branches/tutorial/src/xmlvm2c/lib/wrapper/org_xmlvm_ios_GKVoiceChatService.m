@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_GKVoiceChatService();
 }
 @end
+
 void org_xmlvm_ios_GKVoiceChatService_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -50,7 +51,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_GKVoiceChatService_defaultVoiceChatService__]
 
     GKVoiceChatService* objCObj =  [GKVoiceChatService defaultVoiceChatService];
-    if (!__TIB_org_xmlvm_ios_GKVoiceChatService.classInitialized) __INIT_org_xmlvm_ios_GKVoiceChatService();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -70,16 +70,28 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_GKVoiceChatService_setClient___org_xmlvm_ios_GKVoiceChatClient]
 
     XMLVM_VAR_THIZ;
+    if(thiz.delegate != nil) [[thiz getDelegate] release];
     org_xmlvm_ios_GKVoiceChatClient_Wrapper* jwrapper = __ALLOC_INIT_DELEGATE_WRAPPER_org_xmlvm_ios_GKVoiceChatClient(n1);
     [jwrapper->nativeDelegateWrapper_ addSource: jthiz: thiz];
+    objc_setAssociatedObject(thiz, &key, jwrapper->nativeDelegateWrapper_, OBJC_ASSOCIATION_RETAIN);
+    [jwrapper->nativeDelegateWrapper_ release];
     [thiz setClient:jwrapper->nativeDelegateWrapper_];
 
     
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_GKVoiceChatService_startVoiceChatWithParticipantID___java_lang_String_org_xmlvm_ios_Reference<NSError>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_GKVoiceChatService_startVoiceChatWithParticipantID___java_lang_String_org_xmlvm_ios_Reference]
 
-XMLVM_NOT_IMPLEMENTED();
+    XMLVM_VAR_THIZ;
+    NSString * ObjCVar1 = toNSString(n1);
+    JAVA_OBJECT jObject2 = org_xmlvm_ios_Reference_get__(n2);
+    XMLVM_VAR_IOS(NSError, var2, jObject2);
+    
+    BOOL objCObj = [thiz  startVoiceChatWithParticipantID:ObjCVar1 error:&var2];
+    [ObjCVar1 release];
+
+
+    return objCObj;
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_GKVoiceChatService_stopVoiceChatWithParticipantID___java_lang_String]
@@ -93,9 +105,15 @@ XMLVM_NOT_IMPLEMENTED();
     
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_GKVoiceChatService_acceptCallID___int_org_xmlvm_ios_Reference<NSError>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_GKVoiceChatService_acceptCallID___int_org_xmlvm_ios_Reference]
 
-XMLVM_NOT_IMPLEMENTED();
+    XMLVM_VAR_THIZ;
+    JAVA_OBJECT jObject2 = org_xmlvm_ios_Reference_get__(n2);
+    XMLVM_VAR_IOS(NSError, var2, jObject2);
+    
+    BOOL objCObj = [thiz  acceptCallID:n1 error:&var2];
+
+    return objCObj;
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_GKVoiceChatService_denyCallID___int]

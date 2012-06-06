@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_AVMutableVideoCompositionInstruction();
 }
 @end
+
 void org_xmlvm_ios_AVMutableVideoCompositionInstruction_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_AVVideoCompositionInstruction_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -55,7 +56,6 @@ __DELETE_org_xmlvm_ios_AVVideoCompositionInstruction(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVMutableVideoCompositionInstruction_videoCompositionInstruction__]
 
     AVMutableVideoCompositionInstruction* objCObj =  [AVMutableVideoCompositionInstruction videoCompositionInstruction];
-    if (!__TIB_org_xmlvm_ios_AVMutableVideoCompositionInstruction.classInitialized) __INIT_org_xmlvm_ios_AVMutableVideoCompositionInstruction();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -78,8 +78,8 @@ __DELETE_org_xmlvm_ios_AVVideoCompositionInstruction(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVMutableVideoCompositionInstruction_getBackgroundColor__]
 
     XMLVM_VAR_THIZ;
-    CGColorRef objCObj = [thiz backgroundColor];XMLVM_VAR_INIT_REF(CGColor, objCObj);
-    return jvar;
+    CGColorRef objCObj = [thiz backgroundColor];XMLVM_VAR_INIT_REF(CGColor, refVar, objCObj);
+    return refVar;
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVMutableVideoCompositionInstruction_setBackgroundColor___org_xmlvm_ios_CGColor]

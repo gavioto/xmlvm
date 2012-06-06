@@ -27,7 +27,7 @@ JAVA_OBJECT fromMKCoordinateSpan(MKCoordinateSpan obj)
     org_xmlvm_ios_MKCoordinateSpan* jObj = me;
     jObj->fields.org_xmlvm_ios_MKCoordinateSpan.latitudeDelta_ = objCObj.latitudeDelta;
     jObj->fields.org_xmlvm_ios_MKCoordinateSpan.longitudeDelta_ = objCObj.longitudeDelta;
-//XMLVM_END_WRAPPER
+null//XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MKCoordinateSpan___INIT___]
 //XMLVM_END_WRAPPER

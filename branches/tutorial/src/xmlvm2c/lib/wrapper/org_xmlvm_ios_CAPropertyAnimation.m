@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_CAPropertyAnimation();
 }
 @end
+
 void org_xmlvm_ios_CAPropertyAnimation_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_CAAnimation_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -113,8 +114,7 @@ NSString * ObjCVar1 = toNSString(n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CAPropertyAnimation_getValueFunction__]
 
     XMLVM_VAR_THIZ;
-    CAValueFunction* objCObj = [thiz valueFunction];    if (!__TIB_org_xmlvm_ios_CAValueFunction.classInitialized) __INIT_org_xmlvm_ios_CAValueFunction();
-
+    CAValueFunction* objCObj = [thiz valueFunction];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 

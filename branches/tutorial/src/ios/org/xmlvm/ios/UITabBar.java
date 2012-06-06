@@ -24,14 +24,14 @@ public class UITabBar extends UIView {
 	/**
 	 * @property(nonatomic,assign) id<UITabBarDelegate> delegate;
 	 */
-	public org.xmlvm.ios.UITabBarDelegate getDelegate(){
+	public UITabBarDelegate getDelegate(){
 		throw new RuntimeException("Stub");
 	}
 
 	/**
 	 * @property(nonatomic,assign) id<UITabBarDelegate> delegate;
 	 */
-	public void setDelegate(org.xmlvm.ios.UITabBarDelegate delegate){
+	public void setDelegate(UITabBarDelegate arg0){
 		throw new RuntimeException("Stub");
 	}
 

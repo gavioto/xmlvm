@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_MKPlacemark();
 }
 @end
+
 void org_xmlvm_ios_MKPlacemark_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -117,4 +118,11 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     NSString* objCObj = [thiz countryCode];
     return fromNSString(objCObj);
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MKPlacemark_getCoordinate__]
+
+    XMLVM_VAR_THIZ;
+    CLLocationCoordinate2D objCObj = [thiz coordinate];
+    return fromCLLocationCoordinate2D(objCObj);
 //XMLVM_END_WRAPPER

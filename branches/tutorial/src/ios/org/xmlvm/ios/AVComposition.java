@@ -24,4 +24,8 @@ public class AVComposition extends AVAsset {
 	public List getTracks(){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

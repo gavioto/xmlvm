@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_CTGlyphInfo();
 }
 @end
+
 void org_xmlvm_ios_CTGlyphInfo_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -42,7 +43,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTGlyphInfo_getTypeID__]
 
-    
     long objCObj = CFHostGetTypeID();
     
     return objCObj;
@@ -52,13 +52,11 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 NSString * ObjCVar1 = toNSString(n1);
     NSString * ObjCVar3 = toNSString(n3);
     
-    
     CTGlyphInfo* objCObj = CTGlyphInfoCreateWithGlyphName(ObjCVar1,(CTFont*) (((org_xmlvm_ios_CTFont*) n2)->fields.org_xmlvm_ios_NSObject.wrappedObj),ObjCVar3);
     
     [ObjCVar1 release];
 
     [ObjCVar3 release];
-    if (!__TIB_org_xmlvm_ios_CTGlyphInfo.classInitialized) __INIT_org_xmlvm_ios_CTGlyphInfo();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -66,11 +64,9 @@ NSString * ObjCVar1 = toNSString(n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTGlyphInfo_createWithGlyph___short_org_xmlvm_ios_CTFont_java_lang_String]
 NSString * ObjCVar3 = toNSString(n3);
     
-    
     CTGlyphInfo* objCObj = CTGlyphInfoCreateWithGlyph(n1,(CTFont*) (((org_xmlvm_ios_CTFont*) n2)->fields.org_xmlvm_ios_NSObject.wrappedObj),ObjCVar3);
     
     [ObjCVar3 release];
-    if (!__TIB_org_xmlvm_ios_CTGlyphInfo.classInitialized) __INIT_org_xmlvm_ios_CTGlyphInfo();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -78,11 +74,9 @@ NSString * ObjCVar3 = toNSString(n3);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTGlyphInfo_createWithCharacterIdentifier___short_short_java_lang_String]
 NSString * ObjCVar3 = toNSString(n3);
     
-    
     CTGlyphInfo* objCObj = CTGlyphInfoCreateWithCharacterIdentifier(n1,n2,ObjCVar3);
     
     [ObjCVar3 release];
-    if (!__TIB_org_xmlvm_ios_CTGlyphInfo.classInitialized) __INIT_org_xmlvm_ios_CTGlyphInfo();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

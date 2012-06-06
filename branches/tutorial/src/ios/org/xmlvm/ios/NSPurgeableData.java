@@ -37,4 +37,8 @@ public class NSPurgeableData extends NSMutableData {
 	public NSPurgeableData() {
 		super();
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_CFDateFormatter();
 }
 @end
+
 void org_xmlvm_ios_CFDateFormatter_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -51,7 +52,6 @@ XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
 XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
     NSString * ObjCVar2 = toNSString(n2);
     
-    
     NSString* objCObj = CFDateFormatterCreateDateFormatFromTemplate(var1,ObjCVar2,n3,(CFLocale*) (((org_xmlvm_ios_CFLocale*) n4)->fields.org_xmlvm_ios_NSObject.wrappedObj));
     
     [ObjCVar2 release];
@@ -61,7 +61,6 @@ XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFDateFormatter_getTypeID__]
 
-    
     long objCObj = CFHostGetTypeID();
     
     return objCObj;
@@ -95,7 +94,6 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFDateFormatter_createStringWithDate___org_xmlvm_ios_CFAllocator_org_xmlvm_ios_CFDateFormatter_org_xmlvm_ios_NSDate]
 XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
     
-    
     NSString* objCObj = CFDateFormatterCreateStringWithDate(var1,(CFDateFormatter*) (((org_xmlvm_ios_CFDateFormatter*) n2)->fields.org_xmlvm_ios_NSObject.wrappedObj),(NSDate*) (((org_xmlvm_ios_NSDate*) n3)->fields.org_xmlvm_ios_NSObject.wrappedObj));
     
     return fromNSString(objCObj);
@@ -104,18 +102,26 @@ XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFDateFormatter_createStringWithAbsoluteTime___org_xmlvm_ios_CFAllocator_org_xmlvm_ios_CFDateFormatter_double]
 XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
     
-    
     NSString* objCObj = CFDateFormatterCreateStringWithAbsoluteTime(var1,(CFDateFormatter*) (((org_xmlvm_ios_CFDateFormatter*) n2)->fields.org_xmlvm_ios_NSObject.wrappedObj),n3);
     
     return fromNSString(objCObj);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFDateFormatter_createDateFromString___org_xmlvm_ios_CFAllocator_org_xmlvm_ios_CFDateFormatter_java_lang_String_org_xmlvm_ios_Reference<CFRange>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFDateFormatter_createDateFromString___org_xmlvm_ios_CFAllocator_org_xmlvm_ios_CFDateFormatter_java_lang_String_org_xmlvm_ios_Reference]
+XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
+    NSString * ObjCVar3 = toNSString(n3);
+    JAVA_OBJECT jObject4 = org_xmlvm_ios_Reference_get__(n4);
+    CFRange var4= toCFRange(jObject4);
+    
+    NSDate* objCObj = CFDateFormatterCreateDateFromString(var1,(CFDateFormatter*) (((org_xmlvm_ios_CFDateFormatter*) n2)->fields.org_xmlvm_ios_NSObject.wrappedObj),ObjCVar3,&var4);
+    org_xmlvm_ios_Reference_set___java_lang_Object(n4, fromCFRange(var4));
+    
+    [ObjCVar3 release];
 
-XMLVM_NOT_IMPLEMENTED();
+    return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFDateFormatter_getAbsoluteTimeFromString___java_lang_String_org_xmlvm_ios_Reference<CFRange>_double_1ARRAY]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFDateFormatter_getAbsoluteTimeFromString___java_lang_String_org_xmlvm_ios_Reference_double_1ARRAY]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER

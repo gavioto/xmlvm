@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_AVVideoCompositionCoreAnimationTool();
 }
 @end
+
 void org_xmlvm_ios_AVVideoCompositionCoreAnimationTool_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -50,7 +51,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVVideoCompositionCoreAnimationTool_videoCompositionCoreAnimationToolWithAdditionalLayer___org_xmlvm_ios_CALayer_int]
 
     AVVideoCompositionCoreAnimationTool* objCObj =  [AVVideoCompositionCoreAnimationTool  videoCompositionCoreAnimationToolWithAdditionalLayer:(CALayer*) (((org_xmlvm_ios_CALayer*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj) asTrackID:n2];
-    if (!__TIB_org_xmlvm_ios_AVVideoCompositionCoreAnimationTool.classInitialized) __INIT_org_xmlvm_ios_AVVideoCompositionCoreAnimationTool();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -58,7 +58,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVVideoCompositionCoreAnimationTool_videoCompositionCoreAnimationToolWithPostProcessingAsVideoLayer___org_xmlvm_ios_CALayer_org_xmlvm_ios_CALayer]
 
     AVVideoCompositionCoreAnimationTool* objCObj =  [AVVideoCompositionCoreAnimationTool  videoCompositionCoreAnimationToolWithPostProcessingAsVideoLayer:(CALayer*) (((org_xmlvm_ios_CALayer*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj) inLayer:(CALayer*) (((org_xmlvm_ios_CALayer*) n2)->fields.org_xmlvm_ios_NSObject.wrappedObj)];
-    if (!__TIB_org_xmlvm_ios_AVVideoCompositionCoreAnimationTool.classInitialized) __INIT_org_xmlvm_ios_AVVideoCompositionCoreAnimationTool();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

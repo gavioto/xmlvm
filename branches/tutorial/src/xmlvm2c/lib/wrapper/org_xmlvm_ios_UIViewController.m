@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_UIViewController();
 }
 @end
+
 void org_xmlvm_ios_UIViewController_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_UIResponder_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -98,8 +99,7 @@ NSString * ObjCVar1 = toNSString(n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIViewController_getNavigationItem__]
 
     XMLVM_VAR_THIZ;
-    UINavigationItem* objCObj = [thiz navigationItem];    if (!__TIB_org_xmlvm_ios_UINavigationItem.classInitialized) __INIT_org_xmlvm_ios_UINavigationItem();
-
+    UINavigationItem* objCObj = [thiz navigationItem];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -121,8 +121,7 @@ NSString * ObjCVar1 = toNSString(n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIViewController_getNavigationController__]
 
     XMLVM_VAR_THIZ;
-    UINavigationController* objCObj = [thiz navigationController];    if (!__TIB_org_xmlvm_ios_UINavigationController.classInitialized) __INIT_org_xmlvm_ios_UINavigationController();
-
+    UINavigationController* objCObj = [thiz navigationController];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -188,16 +187,14 @@ NSString * ObjCVar1 = toNSString(n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIViewController_getSplitViewController__]
 
     XMLVM_VAR_THIZ;
-    UISplitViewController* objCObj = [thiz splitViewController];    if (!__TIB_org_xmlvm_ios_UISplitViewController.classInitialized) __INIT_org_xmlvm_ios_UISplitViewController();
-
+    UISplitViewController* objCObj = [thiz splitViewController];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIViewController_getTabBarItem__]
 
     XMLVM_VAR_THIZ;
-    UITabBarItem* objCObj = [thiz tabBarItem];    if (!__TIB_org_xmlvm_ios_UITabBarItem.classInitialized) __INIT_org_xmlvm_ios_UITabBarItem();
-
+    UITabBarItem* objCObj = [thiz tabBarItem];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -212,16 +209,14 @@ NSString * ObjCVar1 = toNSString(n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIViewController_getTabBarController__]
 
     XMLVM_VAR_THIZ;
-    UITabBarController* objCObj = [thiz tabBarController];    if (!__TIB_org_xmlvm_ios_UITabBarController.classInitialized) __INIT_org_xmlvm_ios_UITabBarController();
-
+    UITabBarController* objCObj = [thiz tabBarController];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIViewController_getView__]
 
     XMLVM_VAR_THIZ;
-    UIView* objCObj = [thiz view];    if (!__TIB_org_xmlvm_ios_UIView.classInitialized) __INIT_org_xmlvm_ios_UIView();
-
+    UIView* objCObj = [thiz view];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -274,8 +269,7 @@ NSString * ObjCVar1 = toNSString(n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIViewController_getNibBundle__]
 
     XMLVM_VAR_THIZ;
-    NSBundle* objCObj = [thiz nibBundle];    if (!__TIB_org_xmlvm_ios_NSBundle.classInitialized) __INIT_org_xmlvm_ios_NSBundle();
-
+    NSBundle* objCObj = [thiz nibBundle];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -355,8 +349,7 @@ NSString * ObjCVar1 = toNSString(n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIViewController_getModalViewController__]
 
     XMLVM_VAR_THIZ;
-    UIViewController* objCObj = [thiz modalViewController];    if (!__TIB_org_xmlvm_ios_UIViewController.classInitialized) __INIT_org_xmlvm_ios_UIViewController();
-
+    UIViewController* objCObj = [thiz modalViewController];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -417,8 +410,7 @@ NSString * ObjCVar1 = toNSString(n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIViewController_getParentViewController__]
 
     XMLVM_VAR_THIZ;
-    UIViewController* objCObj = [thiz parentViewController];    if (!__TIB_org_xmlvm_ios_UIViewController.classInitialized) __INIT_org_xmlvm_ios_UIViewController();
-
+    UIViewController* objCObj = [thiz parentViewController];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -436,7 +428,6 @@ NSString * ObjCVar1 = toNSString(n1);
     XMLVM_VAR_THIZ;
     
     UIView* objCObj = [thiz rotatingHeaderView];
-    if (!__TIB_org_xmlvm_ios_UIView.classInitialized) __INIT_org_xmlvm_ios_UIView();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -446,7 +437,6 @@ NSString * ObjCVar1 = toNSString(n1);
     XMLVM_VAR_THIZ;
     
     UIView* objCObj = [thiz rotatingFooterView];
-    if (!__TIB_org_xmlvm_ios_UIView.classInitialized) __INIT_org_xmlvm_ios_UIView();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -534,7 +524,6 @@ NSString * ObjCVar1 = toNSString(n1);
     XMLVM_VAR_THIZ;
     
     UIBarButtonItem* objCObj = [thiz editButtonItem];
-    if (!__TIB_org_xmlvm_ios_UIBarButtonItem.classInitialized) __INIT_org_xmlvm_ios_UIBarButtonItem();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -542,7 +531,6 @@ NSString * ObjCVar1 = toNSString(n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIViewController_getSearchDisplayController__]
 
     XMLVM_VAR_THIZ;
-    UISearchDisplayController* objCObj = [thiz searchDisplayController];    if (!__TIB_org_xmlvm_ios_UISearchDisplayController.classInitialized) __INIT_org_xmlvm_ios_UISearchDisplayController();
-
+    UISearchDisplayController* objCObj = [thiz searchDisplayController];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

@@ -59,4 +59,15 @@ public class MKUserLocation extends NSObject {
 	public void setSubtitle(String subtitle){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
+
+	/**
+	 * @property(nonatomic, readonly) CLLocationCoordinate2D coordinate;
+	 */
+	public CLLocationCoordinate2D getCoordinate(){
+		throw new RuntimeException("Stub");
+	}
 }

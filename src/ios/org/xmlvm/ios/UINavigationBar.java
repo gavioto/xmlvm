@@ -129,4 +129,8 @@ public class UINavigationBar extends UIView {
 	public void setItems(List items, boolean animated){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

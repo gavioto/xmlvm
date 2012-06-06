@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_CFCalendar();
 }
 @end
+
 void org_xmlvm_ios_CFCalendar_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -42,7 +43,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFCalendar_getTypeID__]
 
-    
     long objCObj = CFHostGetTypeID();
     
     return objCObj;
@@ -50,10 +50,8 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFCalendar_copyCurrent__]
 
-    
     CFCalendar* objCObj = CFCalendarCopyCurrent();
-        if (!__TIB_org_xmlvm_ios_CFCalendar.classInitialized) __INIT_org_xmlvm_ios_CFCalendar();
-
+    
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -61,11 +59,9 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
     NSString * ObjCVar2 = toNSString(n2);
     
-    
     CFCalendar* objCObj = CFCalendarCreateWithIdentifier(var1,ObjCVar2);
     
     [ObjCVar2 release];
-    if (!__TIB_org_xmlvm_ios_CFCalendar.classInitialized) __INIT_org_xmlvm_ios_CFCalendar();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -140,22 +136,22 @@ XMLVM_NOT_IMPLEMENTED();
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFCalendar_composeAbsoluteTime___double_1ARRAY_org_xmlvm_ios_byte[]...]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFCalendar_composeAbsoluteTime___double_1ARRAYnull]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFCalendar_decomposeAbsoluteTime___double_org_xmlvm_ios_byte[]...]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFCalendar_decomposeAbsoluteTime___doublenull]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFCalendar_addComponents___double_1ARRAY_long_org_xmlvm_ios_byte[]...]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFCalendar_addComponents___double_1ARRAY_longnull]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFCalendar_getComponentDifference___double_double_long_org_xmlvm_ios_byte[]...]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFCalendar_getComponentDifference___double_double_longnull]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER

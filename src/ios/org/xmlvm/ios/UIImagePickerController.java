@@ -269,4 +269,8 @@ public class UIImagePickerController extends UINavigationController {
 	public void stopVideoCapture(){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

@@ -47,4 +47,8 @@ public class CAMediaTimingFunction extends NSObject {
 	public void getControlPointAtIndex(int idx, float[] ptr){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

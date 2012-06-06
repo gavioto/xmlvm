@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_AVMutableComposition();
 }
 @end
+
 void org_xmlvm_ios_AVMutableComposition_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_AVComposition_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -82,14 +83,19 @@ __DELETE_org_xmlvm_ios_AVComposition(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVMutableComposition_composition__]
 
     AVMutableComposition* objCObj =  [AVMutableComposition composition];
-    if (!__TIB_org_xmlvm_ios_AVMutableComposition.classInitialized) __INIT_org_xmlvm_ios_AVMutableComposition();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVMutableComposition_insertTimeRange___org_xmlvm_ios_CMTimeRange_org_xmlvm_ios_AVAsset_org_xmlvm_ios_CMTime_org_xmlvm_ios_Reference<NSError>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVMutableComposition_insertTimeRange___org_xmlvm_ios_CMTimeRange_org_xmlvm_ios_AVAsset_org_xmlvm_ios_CMTime_org_xmlvm_ios_Reference]
 
-XMLVM_NOT_IMPLEMENTED();
+    XMLVM_VAR_THIZ;
+    JAVA_OBJECT jObject4 = org_xmlvm_ios_Reference_get__(n4);
+    XMLVM_VAR_IOS(NSError, var4, jObject4);
+    
+    BOOL objCObj = [thiz  insertTimeRange:toCMTimeRange(n1) ofAsset:(AVAsset*) (((org_xmlvm_ios_AVAsset*) n2)->fields.org_xmlvm_ios_NSObject.wrappedObj) atTime:toCMTime(n3) error:&var4];
+
+    return objCObj;
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVMutableComposition_insertEmptyTimeRange___org_xmlvm_ios_CMTimeRange]
@@ -124,7 +130,6 @@ XMLVM_NOT_IMPLEMENTED();
     AVMutableCompositionTrack* objCObj = [thiz  addMutableTrackWithMediaType:ObjCVar1 preferredTrackID:n2];
     [ObjCVar1 release];
 
-    if (!__TIB_org_xmlvm_ios_AVMutableCompositionTrack.classInitialized) __INIT_org_xmlvm_ios_AVMutableCompositionTrack();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -142,7 +147,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     AVMutableCompositionTrack* objCObj = [thiz  mutableTrackCompatibleWithTrack:(AVAssetTrack*) (((org_xmlvm_ios_AVAssetTrack*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj)];
-    if (!__TIB_org_xmlvm_ios_AVMutableCompositionTrack.classInitialized) __INIT_org_xmlvm_ios_AVMutableCompositionTrack();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

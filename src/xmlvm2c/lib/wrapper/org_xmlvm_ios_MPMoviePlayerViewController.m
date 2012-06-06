@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_MPMoviePlayerViewController();
 }
 @end
+
 void org_xmlvm_ios_MPMoviePlayerViewController_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_UIViewController_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -75,8 +76,7 @@ NSString * ObjCVar1 = toNSString(n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MPMoviePlayerViewController_getMoviePlayer__]
 
     XMLVM_VAR_THIZ;
-    MPMoviePlayerController* objCObj = [thiz moviePlayer];    if (!__TIB_org_xmlvm_ios_MPMoviePlayerController.classInitialized) __INIT_org_xmlvm_ios_MPMoviePlayerController();
-
+    MPMoviePlayerController* objCObj = [thiz moviePlayer];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 

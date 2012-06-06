@@ -31,4 +31,8 @@ public interface MKOverlay {
 		@org.xmlvm.XMLVMDelegateMethod.Param(type = "MKMapRect", isStruct = true)
 	})
 	public abstract boolean intersectsMapRect(MKMapRect mapRect);
+
+	/*
+	 * Interface Properties
+	 */
 }

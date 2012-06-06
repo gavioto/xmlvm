@@ -53,4 +53,8 @@ public class UIProgressView extends UIView {
 	public void setProgress(float progress){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

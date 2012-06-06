@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_NSRelationshipDescription();
 }
 @end
+
 void org_xmlvm_ios_NSRelationshipDescription_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSPropertyDescription_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -57,7 +58,6 @@ __DELETE_org_xmlvm_ios_NSPropertyDescription(me, client_data);
     XMLVM_VAR_THIZ;
     
     NSEntityDescription* objCObj = [thiz destinationEntity];
-    if (!__TIB_org_xmlvm_ios_NSEntityDescription.classInitialized) __INIT_org_xmlvm_ios_NSEntityDescription();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -75,7 +75,6 @@ __DELETE_org_xmlvm_ios_NSPropertyDescription(me, client_data);
     XMLVM_VAR_THIZ;
     
     NSRelationshipDescription* objCObj = [thiz inverseRelationship];
-    if (!__TIB_org_xmlvm_ios_NSRelationshipDescription.classInitialized) __INIT_org_xmlvm_ios_NSRelationshipDescription();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -153,7 +152,6 @@ __DELETE_org_xmlvm_ios_NSPropertyDescription(me, client_data);
     XMLVM_VAR_THIZ;
     
     NSData* objCObj = [thiz versionHash];
-    if (!__TIB_org_xmlvm_ios_NSData.classInitialized) __INIT_org_xmlvm_ios_NSData();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

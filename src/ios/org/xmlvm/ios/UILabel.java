@@ -248,4 +248,8 @@ public class UILabel extends UIView {
 	public void drawTextInRect(CGRect rect){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

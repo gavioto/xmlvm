@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_NSExpression();
 }
 @end
+
 void org_xmlvm_ios_NSExpression_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -56,7 +57,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSExpression_expressionForConstantValue___java_lang_Object]
 
     NSExpression* objCObj =  [NSExpression  expressionForConstantValue:((org_xmlvm_ios_NSObject*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj];
-    if (!__TIB_org_xmlvm_ios_NSExpression.classInitialized) __INIT_org_xmlvm_ios_NSExpression();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -64,7 +64,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSExpression_expressionForEvaluatedObject__]
 
     NSExpression* objCObj =  [NSExpression expressionForEvaluatedObject];
-    if (!__TIB_org_xmlvm_ios_NSExpression.classInitialized) __INIT_org_xmlvm_ios_NSExpression();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -75,7 +74,6 @@ NSString * ObjCVar1 = toNSString(n1);
     NSExpression* objCObj =  [NSExpression  expressionForVariable:ObjCVar1];
     [ObjCVar1 release];
 
-    if (!__TIB_org_xmlvm_ios_NSExpression.classInitialized) __INIT_org_xmlvm_ios_NSExpression();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -86,7 +84,6 @@ NSString * ObjCVar1 = toNSString(n1);
     NSExpression* objCObj =  [NSExpression  expressionForKeyPath:ObjCVar1];
     [ObjCVar1 release];
 
-    if (!__TIB_org_xmlvm_ios_NSExpression.classInitialized) __INIT_org_xmlvm_ios_NSExpression();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -100,7 +97,6 @@ NSString * ObjCVar1 = toNSString(n1);
 
     [ObjCVar2 release];
 
-    if (!__TIB_org_xmlvm_ios_NSExpression.classInitialized) __INIT_org_xmlvm_ios_NSExpression();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -111,7 +107,6 @@ NSArray * ObjCVar1 = toNSArray(n1);
     NSExpression* objCObj =  [NSExpression  expressionForAggregate:ObjCVar1];
     [ObjCVar1 release];
 
-    if (!__TIB_org_xmlvm_ios_NSExpression.classInitialized) __INIT_org_xmlvm_ios_NSExpression();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -119,7 +114,6 @@ NSArray * ObjCVar1 = toNSArray(n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSExpression_expressionForUnionSet___org_xmlvm_ios_NSExpression_org_xmlvm_ios_NSExpression]
 
     NSExpression* objCObj =  [NSExpression  expressionForUnionSet:(NSExpression*) (((org_xmlvm_ios_NSExpression*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj) with:(NSExpression*) (((org_xmlvm_ios_NSExpression*) n2)->fields.org_xmlvm_ios_NSObject.wrappedObj)];
-    if (!__TIB_org_xmlvm_ios_NSExpression.classInitialized) __INIT_org_xmlvm_ios_NSExpression();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -127,7 +121,6 @@ NSArray * ObjCVar1 = toNSArray(n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSExpression_expressionForIntersectSet___org_xmlvm_ios_NSExpression_org_xmlvm_ios_NSExpression]
 
     NSExpression* objCObj =  [NSExpression  expressionForIntersectSet:(NSExpression*) (((org_xmlvm_ios_NSExpression*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj) with:(NSExpression*) (((org_xmlvm_ios_NSExpression*) n2)->fields.org_xmlvm_ios_NSObject.wrappedObj)];
-    if (!__TIB_org_xmlvm_ios_NSExpression.classInitialized) __INIT_org_xmlvm_ios_NSExpression();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -135,7 +128,6 @@ NSArray * ObjCVar1 = toNSArray(n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSExpression_expressionForMinusSet___org_xmlvm_ios_NSExpression_org_xmlvm_ios_NSExpression]
 
     NSExpression* objCObj =  [NSExpression  expressionForMinusSet:(NSExpression*) (((org_xmlvm_ios_NSExpression*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj) with:(NSExpression*) (((org_xmlvm_ios_NSExpression*) n2)->fields.org_xmlvm_ios_NSObject.wrappedObj)];
-    if (!__TIB_org_xmlvm_ios_NSExpression.classInitialized) __INIT_org_xmlvm_ios_NSExpression();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -146,7 +138,6 @@ NSString * ObjCVar2 = toNSString(n2);
     NSExpression* objCObj =  [NSExpression  expressionForSubquery:(NSExpression*) (((org_xmlvm_ios_NSExpression*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj) usingIteratorVariable:ObjCVar2 predicate:((org_xmlvm_ios_NSObject*) n3)->fields.org_xmlvm_ios_NSObject.wrappedObj];
     [ObjCVar2 release];
 
-    if (!__TIB_org_xmlvm_ios_NSExpression.classInitialized) __INIT_org_xmlvm_ios_NSExpression();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -160,7 +151,6 @@ NSString * ObjCVar2 = toNSString(n2);
 
     [ObjCVar3 release];
 
-    if (!__TIB_org_xmlvm_ios_NSExpression.classInitialized) __INIT_org_xmlvm_ios_NSExpression();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -171,7 +161,6 @@ NSArray * ObjCVar2 = toNSArray(n2);
     NSExpression* objCObj =  [NSExpression  expressionForBlock:((org_xmlvm_ios_NSObject*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj arguments:ObjCVar2];
     [ObjCVar2 release];
 
-    if (!__TIB_org_xmlvm_ios_NSExpression.classInitialized) __INIT_org_xmlvm_ios_NSExpression();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -226,7 +215,6 @@ NSArray * ObjCVar2 = toNSArray(n2);
     XMLVM_VAR_THIZ;
     
     NSExpression* objCObj = [thiz operand];
-    if (!__TIB_org_xmlvm_ios_NSExpression.classInitialized) __INIT_org_xmlvm_ios_NSExpression();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -254,7 +242,6 @@ NSArray * ObjCVar2 = toNSArray(n2);
     XMLVM_VAR_THIZ;
     
     NSPredicate* objCObj = [thiz predicate];
-    if (!__TIB_org_xmlvm_ios_NSPredicate.classInitialized) __INIT_org_xmlvm_ios_NSPredicate();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -264,7 +251,6 @@ NSArray * ObjCVar2 = toNSArray(n2);
     XMLVM_VAR_THIZ;
     
     NSExpression* objCObj = [thiz leftExpression];
-    if (!__TIB_org_xmlvm_ios_NSExpression.classInitialized) __INIT_org_xmlvm_ios_NSExpression();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -274,7 +260,6 @@ NSArray * ObjCVar2 = toNSArray(n2);
     XMLVM_VAR_THIZ;
     
     NSExpression* objCObj = [thiz rightExpression];
-    if (!__TIB_org_xmlvm_ios_NSExpression.classInitialized) __INIT_org_xmlvm_ios_NSExpression();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

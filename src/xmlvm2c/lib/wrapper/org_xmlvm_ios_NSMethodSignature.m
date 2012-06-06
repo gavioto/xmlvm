@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_NSMethodSignature();
 }
 @end
+
 void org_xmlvm_ios_NSMethodSignature_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -51,7 +52,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 XMLVM_VAR_BYTE_ARRAY(a1, n1); 
     
     NSMethodSignature* objCObj =  [NSMethodSignature  signatureWithObjCTypes:a1->fields.org_xmlvm_runtime_XMLVMArray.array_];
-    if (!__TIB_org_xmlvm_ios_NSMethodSignature.classInitialized) __INIT_org_xmlvm_ios_NSMethodSignature();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

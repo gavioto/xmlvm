@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_GKAchievementDescription();
 }
 @end
+
 void org_xmlvm_ios_GKAchievementDescription_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -56,7 +57,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_GKAchievementDescription_incompleteAchievementImage__]
 
     UIImage* objCObj =  [GKAchievementDescription incompleteAchievementImage];
-    if (!__TIB_org_xmlvm_ios_UIImage.classInitialized) __INIT_org_xmlvm_ios_UIImage();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -64,7 +64,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_GKAchievementDescription_placeholderCompletedAchievementImage__]
 
     UIImage* objCObj =  [GKAchievementDescription placeholderCompletedAchievementImage];
-    if (!__TIB_org_xmlvm_ios_UIImage.classInitialized) __INIT_org_xmlvm_ios_UIImage();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -114,8 +113,7 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_GKAchievementDescription_getImage__]
 
     XMLVM_VAR_THIZ;
-    UIImage* objCObj = [thiz image];    if (!__TIB_org_xmlvm_ios_UIImage.classInitialized) __INIT_org_xmlvm_ios_UIImage();
-
+    UIImage* objCObj = [thiz image];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 

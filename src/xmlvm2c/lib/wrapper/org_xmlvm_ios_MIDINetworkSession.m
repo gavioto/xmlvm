@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_MIDINetworkSession();
 }
 @end
+
 void org_xmlvm_ios_MIDINetworkSession_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -50,7 +51,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MIDINetworkSession_defaultSession__]
 
     MIDINetworkSession* objCObj =  [MIDINetworkSession defaultSession];
-    if (!__TIB_org_xmlvm_ios_MIDINetworkSession.classInitialized) __INIT_org_xmlvm_ios_MIDINetworkSession();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -165,7 +165,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
     XMLVM_VAR_THIZ;
     
     MIDIEndpoint* objCObj = [thiz sourceEndpoint];
-    if (!__TIB_org_xmlvm_ios_MIDIEndpoint.classInitialized) __INIT_org_xmlvm_ios_MIDIEndpoint();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -175,7 +174,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
     XMLVM_VAR_THIZ;
     
     MIDIEndpoint* objCObj = [thiz destinationEndpoint];
-    if (!__TIB_org_xmlvm_ios_MIDIEndpoint.classInitialized) __INIT_org_xmlvm_ios_MIDIEndpoint();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

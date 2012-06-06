@@ -6,7 +6,6 @@ XMLVM_NOT_IMPLEMENTED();
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CoreVideo_CVGetCurrentHostTime__]
 
-    
     long objCObj = CVGetCurrentHostTime();
     
     return objCObj;
@@ -14,7 +13,6 @@ XMLVM_NOT_IMPLEMENTED();
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CoreVideo_CVGetHostClockMinimumTimeDelta__]
 
-    
     int objCObj = CVGetHostClockMinimumTimeDelta();
     
     return objCObj;
@@ -22,7 +20,6 @@ XMLVM_NOT_IMPLEMENTED();
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CoreVideo_CVGetHostClockFrequency__]
 
-    
     double objCObj = CVGetHostClockFrequency();
     
     return objCObj;

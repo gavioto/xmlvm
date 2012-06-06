@@ -178,4 +178,8 @@ public class NSPropertyDescription extends NSObject {
 	public void setRenamingIdentifier(String value){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

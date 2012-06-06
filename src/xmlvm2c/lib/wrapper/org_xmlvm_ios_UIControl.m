@@ -10,11 +10,10 @@
         __INIT_org_xmlvm_ios_UIControl();
 }
 @end
+
 void org_xmlvm_ios_UIControl_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_UIView_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-org_xmlvm_ios_UIControl* thiz = (org_xmlvm_ios_UIControl*)me;
-thiz->fields.org_xmlvm_ios_UIControl.acc_array_UIControl = XMLVMUtil_NEW_ArrayList();
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -199,9 +198,11 @@ __DELETE_org_xmlvm_ios_UIView(me, client_data);
 
                 XMLVM_VAR_THIZ;
                 org_xmlvm_ios_UIControlDelegate_Wrapper* jwrapper = __ALLOC_INIT_DELEGATE_WRAPPER_org_xmlvm_ios_UIControlDelegate(n1);
-	            XMLVMUtil_ArrayList_add(jthiz->fields.org_xmlvm_ios_UIControl.acc_array_UIControl, n1);
                 [jwrapper->nativeDelegateWrapper_ addSource: jthiz: thiz];
                 [thiz addTarget:jwrapper->nativeDelegateWrapper_ action:@selector(raiseEvent:control:) forControlEvents:n2];
+    			objc_setAssociatedObject(thiz, &key, jwrapper->nativeDelegateWrapper_, OBJC_ASSOCIATION_RETAIN);
+    			[jwrapper->nativeDelegateWrapper_ release];
+    			XMLVMUtil_ArrayList_add(reference_array,n1);
             
 //XMLVM_END_WRAPPER
 

@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_NSArray();
 }
 @end
+
 void org_xmlvm_ios_NSArray_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -261,7 +262,6 @@ NSString * ObjCVar1 = toNSString(n1);
     XMLVM_VAR_THIZ;
     
     NSEnumerator* objCObj = [thiz objectEnumerator];
-    if (!__TIB_org_xmlvm_ios_NSEnumerator.classInitialized) __INIT_org_xmlvm_ios_NSEnumerator();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -271,7 +271,6 @@ NSString * ObjCVar1 = toNSString(n1);
     XMLVM_VAR_THIZ;
     
     NSEnumerator* objCObj = [thiz reverseObjectEnumerator];
-    if (!__TIB_org_xmlvm_ios_NSEnumerator.classInitialized) __INIT_org_xmlvm_ios_NSEnumerator();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -281,7 +280,6 @@ NSString * ObjCVar1 = toNSString(n1);
     XMLVM_VAR_THIZ;
     
     NSData* objCObj = [thiz sortedArrayHint];
-    if (!__TIB_org_xmlvm_ios_NSData.classInitialized) __INIT_org_xmlvm_ios_NSData();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -416,7 +414,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSIndexSet* objCObj = [thiz  indexesOfObjectsPassingTest:((org_xmlvm_ios_NSObject*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj];
-    if (!__TIB_org_xmlvm_ios_NSIndexSet.classInitialized) __INIT_org_xmlvm_ios_NSIndexSet();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -426,7 +423,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSIndexSet* objCObj = [thiz  indexesOfObjectsWithOptions:n1 passingTest:((org_xmlvm_ios_NSObject*) n2)->fields.org_xmlvm_ios_NSObject.wrappedObj];
-    if (!__TIB_org_xmlvm_ios_NSIndexSet.classInitialized) __INIT_org_xmlvm_ios_NSIndexSet();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -436,7 +432,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSIndexSet* objCObj = [thiz  indexesOfObjectsAtIndexes:(NSIndexSet*) (((org_xmlvm_ios_NSIndexSet*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj) options:n2 passingTest:((org_xmlvm_ios_NSObject*) n3)->fields.org_xmlvm_ios_NSObject.wrappedObj];
-    if (!__TIB_org_xmlvm_ios_NSIndexSet.classInitialized) __INIT_org_xmlvm_ios_NSIndexSet();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -557,8 +552,8 @@ NSString * ObjCVar1 = toNSString(n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSArray_addObserver___org_xmlvm_ios_NSObject_org_xmlvm_ios_NSIndexSet_java_lang_String_int_byte_1ARRAY]
 
     XMLVM_VAR_THIZ;
-    XMLVM_VAR_BYTE_ARRAY(a5, n5); 
     NSString * ObjCVar3 = toNSString(n3);
+    XMLVM_VAR_BYTE_ARRAY(a5, n5); 
     [thiz  addObserver:(NSObject*) (((org_xmlvm_ios_NSObject*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj) toObjectsAtIndexes:(NSIndexSet*) (((org_xmlvm_ios_NSIndexSet*) n2)->fields.org_xmlvm_ios_NSObject.wrappedObj) forKeyPath:ObjCVar3 options:n4 context:a5->fields.org_xmlvm_runtime_XMLVMArray.array_];
     [ObjCVar3 release];
 
@@ -580,8 +575,8 @@ NSString * ObjCVar1 = toNSString(n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSArray_addObserver___org_xmlvm_ios_NSObject_java_lang_String_int_byte_1ARRAY]
 
     XMLVM_VAR_THIZ;
-    XMLVM_VAR_BYTE_ARRAY(a4, n4); 
     NSString * ObjCVar2 = toNSString(n2);
+    XMLVM_VAR_BYTE_ARRAY(a4, n4); 
     [thiz  addObserver:(NSObject*) (((org_xmlvm_ios_NSObject*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj) forKeyPath:ObjCVar2 options:n3 context:a4->fields.org_xmlvm_runtime_XMLVMArray.array_];
     [ObjCVar2 release];
 

@@ -284,9 +284,19 @@ XMLVM_NOT_IMPLEMENTED();
     
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSObject_validateValue___Object_1ARRAY_java_lang_String_org_xmlvm_ios_Reference<NSError>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSObject_validateValue___Object_1ARRAY_java_lang_String_org_xmlvm_ios_Reference]
 
-XMLVM_NOT_IMPLEMENTED();
+    XMLVM_VAR_THIZ;
+    XMLVM_VAR_OBJECT_ARRAY(a1, n1); 
+    NSString * ObjCVar2 = toNSString(n2);
+    JAVA_OBJECT jObject3 = org_xmlvm_ios_Reference_get__(n3);
+    XMLVM_VAR_IOS(NSError, var3, jObject3);
+    
+    BOOL objCObj = [thiz  validateValue:a1->fields.org_xmlvm_runtime_XMLVMArray.array_ forKey:ObjCVar2 error:&var3];
+    [ObjCVar2 release];
+
+
+    return objCObj;
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSObject_mutableArrayValueForKey___java_lang_String]
@@ -336,9 +346,19 @@ XMLVM_NOT_IMPLEMENTED();
     
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSObject_validateValue___Object_1ARRAY_java_lang_String_org_xmlvm_ios_Reference<NSError>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSObject_validateValue___Object_1ARRAY_java_lang_String_org_xmlvm_ios_Reference]
 
-XMLVM_NOT_IMPLEMENTED();
+    XMLVM_VAR_THIZ;
+    XMLVM_VAR_OBJECT_ARRAY(a1, n1); 
+    NSString * ObjCVar2 = toNSString(n2);
+    JAVA_OBJECT jObject3 = org_xmlvm_ios_Reference_get__(n3);
+    XMLVM_VAR_IOS(NSError, var3, jObject3);
+    
+    BOOL objCObj = [thiz  validateValue:a1->fields.org_xmlvm_runtime_XMLVMArray.array_ forKeyPath:ObjCVar2 error:&var3];
+    [ObjCVar2 release];
+
+
+    return objCObj;
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSObject_mutableArrayValueForKeyPath___java_lang_String]
@@ -513,8 +533,8 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSObject_addObserver___org_xmlvm_ios_NSObject_java_lang_String_int_byte_1ARRAY]
 
     XMLVM_VAR_THIZ;
-    XMLVM_VAR_BYTE_ARRAY(a4, n4); 
     NSString * ObjCVar2 = toNSString(n2);
+    XMLVM_VAR_BYTE_ARRAY(a4, n4); 
     [thiz  addObserver:(NSObject*) (((org_xmlvm_ios_NSObject*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj) forKeyPath:ObjCVar2 options:n3 context:a4->fields.org_xmlvm_runtime_XMLVMArray.array_];
     [ObjCVar2 release];
 
@@ -831,10 +851,10 @@ XMLVM_NOT_IMPLEMENTED();
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSObject_finalize_org_xmlvm_ios_NSObject__]
 
-				XMLVM_VAR_THIZ;
-				[thiz removeExtraMembers];
-				[thiz release];
-
+                XMLVM_VAR_THIZ;
+                [thiz removeExtraMembers];
+                [thiz release];
+            
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSObject_copy__]
@@ -1092,7 +1112,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSURLRequest* objCObj = [thiz  connection:(NSURLConnection*) (((org_xmlvm_ios_NSURLConnection*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj) willSendRequest:(NSURLRequest*) (((org_xmlvm_ios_NSURLRequest*) n2)->fields.org_xmlvm_ios_NSObject.wrappedObj) redirectResponse:(NSURLResponse*) (((org_xmlvm_ios_NSURLResponse*) n3)->fields.org_xmlvm_ios_NSObject.wrappedObj)];
-    if (!__TIB_org_xmlvm_ios_NSURLRequest.classInitialized) __INIT_org_xmlvm_ios_NSURLRequest();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -1102,7 +1121,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSInputStream* objCObj = [thiz  connection:(NSURLConnection*) (((org_xmlvm_ios_NSURLConnection*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj) needNewBodyStream:(NSURLRequest*) (((org_xmlvm_ios_NSURLRequest*) n2)->fields.org_xmlvm_ios_NSObject.wrappedObj)];
-    if (!__TIB_org_xmlvm_ios_NSInputStream.classInitialized) __INIT_org_xmlvm_ios_NSInputStream();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -1186,7 +1204,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSCachedURLResponse* objCObj = [thiz  connection:(NSURLConnection*) (((org_xmlvm_ios_NSURLConnection*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj) willCacheResponse:(NSCachedURLResponse*) (((org_xmlvm_ios_NSCachedURLResponse*) n2)->fields.org_xmlvm_ios_NSObject.wrappedObj)];
-    if (!__TIB_org_xmlvm_ios_NSCachedURLResponse.classInitialized) __INIT_org_xmlvm_ios_NSCachedURLResponse();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

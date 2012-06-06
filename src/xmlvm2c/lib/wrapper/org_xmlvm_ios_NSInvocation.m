@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_NSInvocation();
 }
 @end
+
 void org_xmlvm_ios_NSInvocation_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -50,7 +51,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSInvocation_invocationWithMethodSignature___org_xmlvm_ios_NSMethodSignature]
 
     NSInvocation* objCObj =  [NSInvocation  invocationWithMethodSignature:(NSMethodSignature*) (((org_xmlvm_ios_NSMethodSignature*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj)];
-    if (!__TIB_org_xmlvm_ios_NSInvocation.classInitialized) __INIT_org_xmlvm_ios_NSInvocation();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -60,7 +60,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
     XMLVM_VAR_THIZ;
     
     NSMethodSignature* objCObj = [thiz methodSignature];
-    if (!__TIB_org_xmlvm_ios_NSMethodSignature.classInitialized) __INIT_org_xmlvm_ios_NSMethodSignature();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

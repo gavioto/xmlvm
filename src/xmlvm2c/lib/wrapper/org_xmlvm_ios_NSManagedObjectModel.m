@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_NSManagedObjectModel();
 }
 @end
+
 void org_xmlvm_ios_NSManagedObjectModel_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -59,7 +60,6 @@ NSArray * ObjCVar1 = toNSArray(n1);
     NSManagedObjectModel* objCObj =  [NSManagedObjectModel  mergedModelFromBundles:ObjCVar1];
     [ObjCVar1 release];
 
-    if (!__TIB_org_xmlvm_ios_NSManagedObjectModel.classInitialized) __INIT_org_xmlvm_ios_NSManagedObjectModel();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -70,7 +70,6 @@ NSArray * ObjCVar1 = toNSArray(n1);
     NSManagedObjectModel* objCObj =  [NSManagedObjectModel  modelByMergingModels:ObjCVar1];
     [ObjCVar1 release];
 
-    if (!__TIB_org_xmlvm_ios_NSManagedObjectModel.classInitialized) __INIT_org_xmlvm_ios_NSManagedObjectModel();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -154,7 +153,6 @@ XMLVM_NOT_IMPLEMENTED();
     NSFetchRequest* objCObj = [thiz  fetchRequestTemplateForName:ObjCVar1];
     [ObjCVar1 release];
 
-    if (!__TIB_org_xmlvm_ios_NSFetchRequest.classInitialized) __INIT_org_xmlvm_ios_NSFetchRequest();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

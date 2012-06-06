@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_CMBufferQueue();
 }
 @end
+
 void org_xmlvm_ios_CMBufferQueue_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -35,8 +36,10 @@ xmlvm_register_wrapper_creator(__WRAPPER_CREATOR);
 __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CMBufferQueue___INIT____org_xmlvm_ios_CFAllocator_long_org_xmlvm_ios_Reference<CMBufferCallbacks>_org_xmlvm_ios_CMBufferQueue]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CMBufferQueue___INIT____org_xmlvm_ios_CFAllocator_long_org_xmlvm_ios_Reference_org_xmlvm_ios_CMBufferQueue]
 XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
+    JAVA_OBJECT jObject3 = org_xmlvm_ios_Reference_get__(n3);
+    CMBufferCallbacks var3= toCMBufferCallbacks(jObject3);
     
     CMBufferQueue* objCObj = [[CMBufferQueue alloc] create:var1];
     org_xmlvm_ios_CMBufferQueue_INTERNAL_CONSTRUCTOR(me, objCObj);
@@ -49,17 +52,20 @@ XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CMBufferQueue_getCallbacksForUnsortedSampleBuffers__]
 
-XMLVM_NOT_IMPLEMENTED();
+    Reference<CMBufferCallbacks>* objCObj = CMBufferQueueGetCallbacksForUnsortedSampleBuffers();
+    
+    return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CMBufferQueue_getCallbacksForSampleBuffersSortedByOutputPTS__]
 
-XMLVM_NOT_IMPLEMENTED();
+    Reference<CMBufferCallbacks>* objCObj = CMBufferQueueGetCallbacksForSampleBuffersSortedByOutputPTS();
+    
+    return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CMBufferQueue_getTypeID__]
 
-    
     long objCObj = CFHostGetTypeID();
     
     return objCObj;

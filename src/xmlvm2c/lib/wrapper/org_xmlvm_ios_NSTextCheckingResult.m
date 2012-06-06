@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_NSTextCheckingResult();
 }
 @end
+
 void org_xmlvm_ios_NSTextCheckingResult_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -64,8 +65,7 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSTextCheckingResult_getOrthography__]
 
     XMLVM_VAR_THIZ;
-    NSOrthography* objCObj = [thiz orthography];    if (!__TIB_org_xmlvm_ios_NSOrthography.classInitialized) __INIT_org_xmlvm_ios_NSOrthography();
-
+    NSOrthography* objCObj = [thiz orthography];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -79,16 +79,14 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSTextCheckingResult_getDate__]
 
     XMLVM_VAR_THIZ;
-    NSDate* objCObj = [thiz date];    if (!__TIB_org_xmlvm_ios_NSDate.classInitialized) __INIT_org_xmlvm_ios_NSDate();
-
+    NSDate* objCObj = [thiz date];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSTextCheckingResult_getTimeZone__]
 
     XMLVM_VAR_THIZ;
-    NSTimeZone* objCObj = [thiz timeZone];    if (!__TIB_org_xmlvm_ios_NSTimeZone.classInitialized) __INIT_org_xmlvm_ios_NSTimeZone();
-
+    NSTimeZone* objCObj = [thiz timeZone];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -102,8 +100,7 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSTextCheckingResult_getURL__]
 
     XMLVM_VAR_THIZ;
-    NSURL* objCObj = [thiz URL];    if (!__TIB_org_xmlvm_ios_NSURL.classInitialized) __INIT_org_xmlvm_ios_NSURL();
-
+    NSURL* objCObj = [thiz URL];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -122,8 +119,7 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSTextCheckingResult_getRegularExpression__]
 
     XMLVM_VAR_THIZ;
-    NSRegularExpression* objCObj = [thiz regularExpression];    if (!__TIB_org_xmlvm_ios_NSRegularExpression.classInitialized) __INIT_org_xmlvm_ios_NSRegularExpression();
-
+    NSRegularExpression* objCObj = [thiz regularExpression];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -158,7 +154,6 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSTextCheckingResult_orthographyCheckingResultWithRange___org_xmlvm_ios_NSRange_org_xmlvm_ios_NSOrthography]
 
     NSTextCheckingResult* objCObj =  [NSTextCheckingResult  orthographyCheckingResultWithRange:toNSRange(n1) orthography:(NSOrthography*) (((org_xmlvm_ios_NSOrthography*) n2)->fields.org_xmlvm_ios_NSObject.wrappedObj)];
-    if (!__TIB_org_xmlvm_ios_NSTextCheckingResult.classInitialized) __INIT_org_xmlvm_ios_NSTextCheckingResult();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -166,7 +161,6 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSTextCheckingResult_spellCheckingResultWithRange___org_xmlvm_ios_NSRange]
 
     NSTextCheckingResult* objCObj =  [NSTextCheckingResult  spellCheckingResultWithRange:toNSRange(n1)];
-    if (!__TIB_org_xmlvm_ios_NSTextCheckingResult.classInitialized) __INIT_org_xmlvm_ios_NSTextCheckingResult();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -177,7 +171,6 @@ NSArray * ObjCVar2 = toNSArray(n2);
     NSTextCheckingResult* objCObj =  [NSTextCheckingResult  grammarCheckingResultWithRange:toNSRange(n1) details:ObjCVar2];
     [ObjCVar2 release];
 
-    if (!__TIB_org_xmlvm_ios_NSTextCheckingResult.classInitialized) __INIT_org_xmlvm_ios_NSTextCheckingResult();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -185,7 +178,6 @@ NSArray * ObjCVar2 = toNSArray(n2);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSTextCheckingResult_dateCheckingResultWithRange___org_xmlvm_ios_NSRange_org_xmlvm_ios_NSDate]
 
     NSTextCheckingResult* objCObj =  [NSTextCheckingResult  dateCheckingResultWithRange:toNSRange(n1) date:(NSDate*) (((org_xmlvm_ios_NSDate*) n2)->fields.org_xmlvm_ios_NSObject.wrappedObj)];
-    if (!__TIB_org_xmlvm_ios_NSTextCheckingResult.classInitialized) __INIT_org_xmlvm_ios_NSTextCheckingResult();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -193,7 +185,6 @@ NSArray * ObjCVar2 = toNSArray(n2);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSTextCheckingResult_dateCheckingResultWithRange___org_xmlvm_ios_NSRange_org_xmlvm_ios_NSDate_org_xmlvm_ios_NSTimeZone_double]
 
     NSTextCheckingResult* objCObj =  [NSTextCheckingResult  dateCheckingResultWithRange:toNSRange(n1) date:(NSDate*) (((org_xmlvm_ios_NSDate*) n2)->fields.org_xmlvm_ios_NSObject.wrappedObj) timeZone:(NSTimeZone*) (((org_xmlvm_ios_NSTimeZone*) n3)->fields.org_xmlvm_ios_NSObject.wrappedObj) duration:n4];
-    if (!__TIB_org_xmlvm_ios_NSTextCheckingResult.classInitialized) __INIT_org_xmlvm_ios_NSTextCheckingResult();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -206,7 +197,6 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSTextCheckingResult_linkCheckingResultWithRange___org_xmlvm_ios_NSRange_org_xmlvm_ios_NSURL]
 
     NSTextCheckingResult* objCObj =  [NSTextCheckingResult  linkCheckingResultWithRange:toNSRange(n1) URL:(NSURL*) (((org_xmlvm_ios_NSURL*) n2)->fields.org_xmlvm_ios_NSObject.wrappedObj)];
-    if (!__TIB_org_xmlvm_ios_NSTextCheckingResult.classInitialized) __INIT_org_xmlvm_ios_NSTextCheckingResult();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -217,7 +207,6 @@ NSString * ObjCVar2 = toNSString(n2);
     NSTextCheckingResult* objCObj =  [NSTextCheckingResult  quoteCheckingResultWithRange:toNSRange(n1) replacementString:ObjCVar2];
     [ObjCVar2 release];
 
-    if (!__TIB_org_xmlvm_ios_NSTextCheckingResult.classInitialized) __INIT_org_xmlvm_ios_NSTextCheckingResult();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -228,7 +217,6 @@ NSString * ObjCVar2 = toNSString(n2);
     NSTextCheckingResult* objCObj =  [NSTextCheckingResult  dashCheckingResultWithRange:toNSRange(n1) replacementString:ObjCVar2];
     [ObjCVar2 release];
 
-    if (!__TIB_org_xmlvm_ios_NSTextCheckingResult.classInitialized) __INIT_org_xmlvm_ios_NSTextCheckingResult();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -239,7 +227,6 @@ NSString * ObjCVar2 = toNSString(n2);
     NSTextCheckingResult* objCObj =  [NSTextCheckingResult  replacementCheckingResultWithRange:toNSRange(n1) replacementString:ObjCVar2];
     [ObjCVar2 release];
 
-    if (!__TIB_org_xmlvm_ios_NSTextCheckingResult.classInitialized) __INIT_org_xmlvm_ios_NSTextCheckingResult();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -250,14 +237,17 @@ NSString * ObjCVar2 = toNSString(n2);
     NSTextCheckingResult* objCObj =  [NSTextCheckingResult  correctionCheckingResultWithRange:toNSRange(n1) replacementString:ObjCVar2];
     [ObjCVar2 release];
 
-    if (!__TIB_org_xmlvm_ios_NSTextCheckingResult.classInitialized) __INIT_org_xmlvm_ios_NSTextCheckingResult();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSTextCheckingResult_regularExpressionCheckingResultWithRanges___org_xmlvm_ios_Reference<NSRange>_int_org_xmlvm_ios_NSRegularExpression]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSTextCheckingResult_regularExpressionCheckingResultWithRanges___org_xmlvm_ios_Reference_int_org_xmlvm_ios_NSRegularExpression]
+JAVA_OBJECT jObject1 = org_xmlvm_ios_Reference_get__(n1);
+    NSRange var1= toNSRange(jObject1);
+    
+    NSTextCheckingResult* objCObj =  [NSTextCheckingResult  regularExpressionCheckingResultWithRanges:&var1 count:n2 regularExpression:(NSRegularExpression*) (((org_xmlvm_ios_NSRegularExpression*) n3)->fields.org_xmlvm_ios_NSObject.wrappedObj)];
 
-XMLVM_NOT_IMPLEMENTED();
+    return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSTextCheckingResult_phoneNumberCheckingResultWithRange___org_xmlvm_ios_NSRange_java_lang_String]
@@ -266,7 +256,6 @@ NSString * ObjCVar2 = toNSString(n2);
     NSTextCheckingResult* objCObj =  [NSTextCheckingResult  phoneNumberCheckingResultWithRange:toNSRange(n1) phoneNumber:ObjCVar2];
     [ObjCVar2 release];
 
-    if (!__TIB_org_xmlvm_ios_NSTextCheckingResult.classInitialized) __INIT_org_xmlvm_ios_NSTextCheckingResult();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

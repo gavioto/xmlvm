@@ -99,4 +99,8 @@ public class NSSortDescriptor extends NSObject {
 	public Object reversedSortDescriptor(){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

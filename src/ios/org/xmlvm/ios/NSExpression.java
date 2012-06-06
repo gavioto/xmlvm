@@ -201,4 +201,8 @@ public class NSExpression extends NSObject {
 	public Object expressionValueWithObject(Object object, Map context){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

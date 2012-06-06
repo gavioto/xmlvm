@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_AVURLAsset();
 }
 @end
+
 void org_xmlvm_ios_AVURLAsset_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_AVAsset_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -64,8 +65,7 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVURLAsset_getURL__]
 
     XMLVM_VAR_THIZ;
-    NSURL* objCObj = [thiz URL];    if (!__TIB_org_xmlvm_ios_NSURL.classInitialized) __INIT_org_xmlvm_ios_NSURL();
-
+    NSURL* objCObj = [thiz URL];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -74,7 +74,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     AVAssetTrack* objCObj = [thiz  compatibleTrackForCompositionTrack:(AVCompositionTrack*) (((org_xmlvm_ios_AVCompositionTrack*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj)];
-    if (!__TIB_org_xmlvm_ios_AVAssetTrack.classInitialized) __INIT_org_xmlvm_ios_AVAssetTrack();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

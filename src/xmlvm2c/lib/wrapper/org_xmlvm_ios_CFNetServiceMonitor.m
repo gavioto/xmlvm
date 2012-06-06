@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_CFNetServiceMonitor();
 }
 @end
+
 void org_xmlvm_ios_CFNetServiceMonitor_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -35,8 +36,10 @@ xmlvm_register_wrapper_creator(__WRAPPER_CREATOR);
 __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFNetServiceMonitor___INIT____org_xmlvm_ios_CFAllocator_org_xmlvm_ios_CFNetService_java_lang_Object_org_xmlvm_ios_Reference<CFNetServiceClientContext>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFNetServiceMonitor___INIT____org_xmlvm_ios_CFAllocator_org_xmlvm_ios_CFNetService_java_lang_Object_org_xmlvm_ios_Reference]
 XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
+    JAVA_OBJECT jObject4 = org_xmlvm_ios_Reference_get__(n4);
+    CFNetServiceClientContext var4= toCFNetServiceClientContext(jObject4);
     
     CFNetServiceMonitor* objCObj = [[CFNetServiceMonitor alloc] create:var1];
     org_xmlvm_ios_CFNetServiceMonitor_INTERNAL_CONSTRUCTOR(me, objCObj);
@@ -49,7 +52,6 @@ XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFNetServiceMonitor_getTypeID__]
 
-    
     long objCObj = CFHostGetTypeID();
     
     return objCObj;
@@ -60,12 +62,12 @@ XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFNetServiceMonitor_start___int_org_xmlvm_ios_Reference<CFStreamError>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFNetServiceMonitor_start___int_org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFNetServiceMonitor_stop___org_xmlvm_ios_Reference<CFStreamError>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFNetServiceMonitor_stop___org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER

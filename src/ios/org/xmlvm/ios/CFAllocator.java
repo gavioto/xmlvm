@@ -3,6 +3,7 @@ import java.util.*;
 
 import org.xmlvm.XMLVMSkeletonOnly;
 @XMLVMSkeletonOnly
+(references={CFAllocatorContext.class})
 public class CFAllocator extends CFType {
 
 	/*

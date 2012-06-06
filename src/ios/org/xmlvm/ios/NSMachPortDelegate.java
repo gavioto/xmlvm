@@ -17,4 +17,8 @@ public interface NSMachPortDelegate {
 		@org.xmlvm.XMLVMDelegateMethod.Param(type = "void")
 	})
 	public abstract void handleMachMessage(byte[] msg);
+
+	/*
+	 * Interface Properties
+	 */
 }

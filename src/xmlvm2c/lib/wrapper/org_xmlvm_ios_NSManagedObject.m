@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_NSManagedObject();
 }
 @end
+
 void org_xmlvm_ios_NSManagedObject_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -65,7 +66,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
     XMLVM_VAR_THIZ;
     
     NSManagedObjectContext* objCObj = [thiz managedObjectContext];
-    if (!__TIB_org_xmlvm_ios_NSManagedObjectContext.classInitialized) __INIT_org_xmlvm_ios_NSManagedObjectContext();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -75,7 +75,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
     XMLVM_VAR_THIZ;
     
     NSEntityDescription* objCObj = [thiz entity];
-    if (!__TIB_org_xmlvm_ios_NSEntityDescription.classInitialized) __INIT_org_xmlvm_ios_NSEntityDescription();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -85,7 +84,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
     XMLVM_VAR_THIZ;
     
     NSManagedObjectID* objCObj = [thiz objectID];
-    if (!__TIB_org_xmlvm_ios_NSManagedObjectID.classInitialized) __INIT_org_xmlvm_ios_NSManagedObjectID();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -356,22 +354,50 @@ XMLVM_NOT_IMPLEMENTED();
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSManagedObject_validateValue___Object_1ARRAY_java_lang_String_org_xmlvm_ios_Reference<NSError>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSManagedObject_validateValue___Object_1ARRAY_java_lang_String_org_xmlvm_ios_Reference]
 
-XMLVM_NOT_IMPLEMENTED();
+    XMLVM_VAR_THIZ;
+    XMLVM_VAR_OBJECT_ARRAY(a1, n1); 
+    NSString * ObjCVar2 = toNSString(n2);
+    JAVA_OBJECT jObject3 = org_xmlvm_ios_Reference_get__(n3);
+    XMLVM_VAR_IOS(NSError, var3, jObject3);
+    
+    BOOL objCObj = [thiz  validateValue:a1->fields.org_xmlvm_runtime_XMLVMArray.array_ forKey:ObjCVar2 error:&var3];
+    [ObjCVar2 release];
+
+
+    return objCObj;
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSManagedObject_validateForDelete___org_xmlvm_ios_Reference<NSError>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSManagedObject_validateForDelete___org_xmlvm_ios_Reference]
 
-XMLVM_NOT_IMPLEMENTED();
+    XMLVM_VAR_THIZ;
+    JAVA_OBJECT jObject1 = org_xmlvm_ios_Reference_get__(n1);
+    XMLVM_VAR_IOS(NSError, var1, jObject1);
+    
+    BOOL objCObj = [thiz  validateForDelete:&var1];
+
+    return objCObj;
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSManagedObject_validateForInsert___org_xmlvm_ios_Reference<NSError>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSManagedObject_validateForInsert___org_xmlvm_ios_Reference]
 
-XMLVM_NOT_IMPLEMENTED();
+    XMLVM_VAR_THIZ;
+    JAVA_OBJECT jObject1 = org_xmlvm_ios_Reference_get__(n1);
+    XMLVM_VAR_IOS(NSError, var1, jObject1);
+    
+    BOOL objCObj = [thiz  validateForInsert:&var1];
+
+    return objCObj;
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSManagedObject_validateForUpdate___org_xmlvm_ios_Reference<NSError>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSManagedObject_validateForUpdate___org_xmlvm_ios_Reference]
 
-XMLVM_NOT_IMPLEMENTED();
+    XMLVM_VAR_THIZ;
+    JAVA_OBJECT jObject1 = org_xmlvm_ios_Reference_get__(n1);
+    XMLVM_VAR_IOS(NSError, var1, jObject1);
+    
+    BOOL objCObj = [thiz  validateForUpdate:&var1];
+
+    return objCObj;
 //XMLVM_END_WRAPPER

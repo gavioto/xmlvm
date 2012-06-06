@@ -102,4 +102,8 @@ public class GKAchievementDescription extends NSObject {
 	public void loadImageWithCompletionHandler(Object completionHandler){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

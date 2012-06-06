@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_UITableView();
 }
 @end
+
 void org_xmlvm_ios_UITableView_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_UIScrollView_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -89,10 +90,13 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UITableView_setDataSource___org_xmlvm_ios_UITableViewDataSource]
 
     XMLVM_VAR_THIZ;
+    if(thiz.delegate != nil) [[thiz getDelegate] release];
     org_xmlvm_ios_UITableViewDataSource_Wrapper* jwrapper = __ALLOC_INIT_DELEGATE_WRAPPER_org_xmlvm_ios_UITableViewDataSource(n1);
     [jwrapper->nativeDelegateWrapper_ addSource: jthiz: thiz];
+    objc_setAssociatedObject(thiz, &key, jwrapper->nativeDelegateWrapper_, OBJC_ASSOCIATION_RETAIN);
+    [jwrapper->nativeDelegateWrapper_ release];
     [thiz setDataSource:jwrapper->nativeDelegateWrapper_];
-    jthiz->fields.org_xmlvm_ios_UITableView.dataSource = n1;
+    XMLVMUtil_ArrayList_add(reference_array, n1);
 
     
 //XMLVM_END_WRAPPER
@@ -105,10 +109,13 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UITableView_setDelegate___org_xmlvm_ios_UITableViewDelegate]
 
     XMLVM_VAR_THIZ;
+    if(thiz.delegate != nil) [[thiz getDelegate] release];
     org_xmlvm_ios_UITableViewDelegate_Wrapper* jwrapper = __ALLOC_INIT_DELEGATE_WRAPPER_org_xmlvm_ios_UITableViewDelegate(n1);
     [jwrapper->nativeDelegateWrapper_ addSource: jthiz: thiz];
+    objc_setAssociatedObject(thiz, &key, jwrapper->nativeDelegateWrapper_, OBJC_ASSOCIATION_RETAIN);
+    [jwrapper->nativeDelegateWrapper_ release];
     [thiz setDelegate:jwrapper->nativeDelegateWrapper_];
-    jthiz->fields.org_xmlvm_ios_UITableView.delegate = n1;
+    XMLVMUtil_ArrayList_add(reference_array, n1);
 
     
 //XMLVM_END_WRAPPER
@@ -161,8 +168,7 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UITableView_getBackgroundView__]
 
     XMLVM_VAR_THIZ;
-    UIView* objCObj = [thiz backgroundView];    if (!__TIB_org_xmlvm_ios_UIView.classInitialized) __INIT_org_xmlvm_ios_UIView();
-
+    UIView* objCObj = [thiz backgroundView];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -249,7 +255,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSIndexPath* objCObj = [thiz  indexPathForRowAtPoint:toCGPoint(n1)];
-    if (!__TIB_org_xmlvm_ios_NSIndexPath.classInitialized) __INIT_org_xmlvm_ios_NSIndexPath();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -259,7 +264,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSIndexPath* objCObj = [thiz  indexPathForCell:(UITableViewCell*) (((org_xmlvm_ios_UITableViewCell*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj)];
-    if (!__TIB_org_xmlvm_ios_NSIndexPath.classInitialized) __INIT_org_xmlvm_ios_NSIndexPath();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -278,7 +282,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     UITableViewCell* objCObj = [thiz  cellForRowAtIndexPath:(NSIndexPath*) (((org_xmlvm_ios_NSIndexPath*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj)];
-    if (!__TIB_org_xmlvm_ios_UITableViewCell.classInitialized) __INIT_org_xmlvm_ios_UITableViewCell();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -448,7 +451,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSIndexPath* objCObj = [thiz indexPathForSelectedRow];
-    if (!__TIB_org_xmlvm_ios_NSIndexPath.classInitialized) __INIT_org_xmlvm_ios_NSIndexPath();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -502,8 +504,7 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UITableView_getSeparatorColor__]
 
     XMLVM_VAR_THIZ;
-    UIColor* objCObj = [thiz separatorColor];    if (!__TIB_org_xmlvm_ios_UIColor.classInitialized) __INIT_org_xmlvm_ios_UIColor();
-
+    UIColor* objCObj = [thiz separatorColor];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -518,8 +519,7 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UITableView_getTableHeaderView__]
 
     XMLVM_VAR_THIZ;
-    UIView* objCObj = [thiz tableHeaderView];    if (!__TIB_org_xmlvm_ios_UIView.classInitialized) __INIT_org_xmlvm_ios_UIView();
-
+    UIView* objCObj = [thiz tableHeaderView];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -534,8 +534,7 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UITableView_getTableFooterView__]
 
     XMLVM_VAR_THIZ;
-    UIView* objCObj = [thiz tableFooterView];    if (!__TIB_org_xmlvm_ios_UIView.classInitialized) __INIT_org_xmlvm_ios_UIView();
-
+    UIView* objCObj = [thiz tableFooterView];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -555,7 +554,6 @@ XMLVM_NOT_IMPLEMENTED();
     UITableViewCell* objCObj = [thiz  dequeueReusableCellWithIdentifier:ObjCVar1];
     [ObjCVar1 release];
 
-    if (!__TIB_org_xmlvm_ios_UITableViewCell.classInitialized) __INIT_org_xmlvm_ios_UITableViewCell();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

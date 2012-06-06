@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_AVAssetReaderTrackOutput();
 }
 @end
+
 void org_xmlvm_ios_AVAssetReaderTrackOutput_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_AVAssetReaderOutput_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -64,8 +65,7 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVAssetReaderTrackOutput_getTrack__]
 
     XMLVM_VAR_THIZ;
-    AVAssetTrack* objCObj = [thiz track];    if (!__TIB_org_xmlvm_ios_AVAssetTrack.classInitialized) __INIT_org_xmlvm_ios_AVAssetTrack();
-
+    AVAssetTrack* objCObj = [thiz track];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 

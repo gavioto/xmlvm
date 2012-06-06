@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_AVAssetImageGenerator();
 }
 @end
+
 void org_xmlvm_ios_AVAssetImageGenerator_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -104,8 +105,7 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVAssetImageGenerator_getVideoComposition__]
 
     XMLVM_VAR_THIZ;
-    AVVideoComposition* objCObj = [thiz videoComposition];    if (!__TIB_org_xmlvm_ios_AVVideoComposition.classInitialized) __INIT_org_xmlvm_ios_AVVideoComposition();
-
+    AVVideoComposition* objCObj = [thiz videoComposition];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -120,14 +120,22 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVAssetImageGenerator_assetImageGeneratorWithAsset___org_xmlvm_ios_AVAsset]
 
     AVAssetImageGenerator* objCObj =  [AVAssetImageGenerator  assetImageGeneratorWithAsset:(AVAsset*) (((org_xmlvm_ios_AVAsset*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj)];
-    if (!__TIB_org_xmlvm_ios_AVAssetImageGenerator.classInitialized) __INIT_org_xmlvm_ios_AVAssetImageGenerator();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVAssetImageGenerator_copyCGImageAtTime___org_xmlvm_ios_CMTime_org_xmlvm_ios_Reference<CMTime>_org_xmlvm_ios_Reference<NSError>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVAssetImageGenerator_copyCGImageAtTime___org_xmlvm_ios_CMTime_org_xmlvm_ios_Reference_org_xmlvm_ios_Reference]
 
-XMLVM_NOT_IMPLEMENTED();
+    XMLVM_VAR_THIZ;
+    JAVA_OBJECT jObject2 = org_xmlvm_ios_Reference_get__(n2);
+    CMTime var2= toCMTime(jObject2);
+    JAVA_OBJECT jObject3 = org_xmlvm_ios_Reference_get__(n3);
+    XMLVM_VAR_IOS(NSError, var3, jObject3);
+    
+    CGImageRef objCObj = [thiz  copyCGImageAtTime:toCMTime(n1) actualTime:&var2 error:&var3];    XMLVM_VAR_INIT_REF(CGImage, refVar, objCObj);
+
+
+    return refVar;
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVAssetImageGenerator_generateCGImagesAsynchronouslyForTimes___java_util_List_java_lang_Object]

@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_UIImage();
 }
 @end
+
 void org_xmlvm_ios_UIImage_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -82,7 +83,6 @@ NSString * ObjCVar1 = toNSString(n1);
     UIImage* objCObj =  [UIImage  imageNamed:ObjCVar1];
     [ObjCVar1 release];
 
-    if (!__TIB_org_xmlvm_ios_UIImage.classInitialized) __INIT_org_xmlvm_ios_UIImage();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -93,7 +93,6 @@ NSString * ObjCVar1 = toNSString(n1);
     UIImage* objCObj =  [UIImage  imageWithContentsOfFile:ObjCVar1];
     [ObjCVar1 release];
 
-    if (!__TIB_org_xmlvm_ios_UIImage.classInitialized) __INIT_org_xmlvm_ios_UIImage();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -101,7 +100,6 @@ NSString * ObjCVar1 = toNSString(n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIImage_imageWithData___org_xmlvm_ios_NSData]
 
     UIImage* objCObj =  [UIImage  imageWithData:(NSData*) (((org_xmlvm_ios_NSData*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj)];
-    if (!__TIB_org_xmlvm_ios_UIImage.classInitialized) __INIT_org_xmlvm_ios_UIImage();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -110,7 +108,6 @@ NSString * ObjCVar1 = toNSString(n1);
 XMLVM_VAR_IOS_REF(CGImage, var1, n1);
     
     UIImage* objCObj =  [UIImage  imageWithCGImage:var1];
-    if (!__TIB_org_xmlvm_ios_UIImage.classInitialized) __INIT_org_xmlvm_ios_UIImage();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -119,7 +116,6 @@ XMLVM_VAR_IOS_REF(CGImage, var1, n1);
 XMLVM_VAR_IOS_REF(CGImage, var1, n1);
     
     UIImage* objCObj =  [UIImage  imageWithCGImage:var1 scale:n2 orientation:n3];
-    if (!__TIB_org_xmlvm_ios_UIImage.classInitialized) __INIT_org_xmlvm_ios_UIImage();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -134,8 +130,8 @@ XMLVM_VAR_IOS_REF(CGImage, var1, n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIImage_getCGImage__]
 
     XMLVM_VAR_THIZ;
-    CGImageRef objCObj = [thiz CGImage];XMLVM_VAR_INIT_REF(CGImage, objCObj);
-    return jvar;
+    CGImageRef objCObj = [thiz CGImage];XMLVM_VAR_INIT_REF(CGImage, refVar, objCObj);
+    return refVar;
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIImage_getImageOrientation__]
@@ -197,7 +193,6 @@ XMLVM_VAR_IOS_REF(CGImage, var1, n1);
     XMLVM_VAR_THIZ;
     
     UIImage* objCObj = [thiz  stretchableImageWithLeftCapWidth:n1 topCapHeight:n2];
-    if (!__TIB_org_xmlvm_ios_UIImage.classInitialized) __INIT_org_xmlvm_ios_UIImage();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

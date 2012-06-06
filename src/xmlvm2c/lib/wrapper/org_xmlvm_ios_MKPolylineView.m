@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_MKPolylineView();
 }
 @end
+
 void org_xmlvm_ios_MKPolylineView_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_MKOverlayPathView_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -86,7 +87,6 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MKPolylineView_getPolyline__]
 
     XMLVM_VAR_THIZ;
-    MKPolyline* objCObj = [thiz polyline];    if (!__TIB_org_xmlvm_ios_MKPolyline.classInitialized) __INIT_org_xmlvm_ios_MKPolyline();
-
+    MKPolyline* objCObj = [thiz polyline];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

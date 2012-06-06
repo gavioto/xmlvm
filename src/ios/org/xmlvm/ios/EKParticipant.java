@@ -63,4 +63,8 @@ public class EKParticipant extends NSObject {
 	public ABRecord ABRecordWithAddressBook(ABAddressBook addressBook){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

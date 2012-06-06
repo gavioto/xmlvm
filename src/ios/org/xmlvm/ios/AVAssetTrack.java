@@ -182,4 +182,8 @@ public class AVAssetTrack extends NSObject {
 	public List metadataForFormat(String format){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

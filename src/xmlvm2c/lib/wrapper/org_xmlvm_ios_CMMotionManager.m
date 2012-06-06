@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_CMMotionManager();
 }
 @end
+
 void org_xmlvm_ios_CMMotionManager_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -79,8 +80,7 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CMMotionManager_getAccelerometerData__]
 
     XMLVM_VAR_THIZ;
-    CMAccelerometerData* objCObj = [thiz accelerometerData];    if (!__TIB_org_xmlvm_ios_CMAccelerometerData.classInitialized) __INIT_org_xmlvm_ios_CMAccelerometerData();
-
+    CMAccelerometerData* objCObj = [thiz accelerometerData];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -140,8 +140,7 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CMMotionManager_getGyroData__]
 
     XMLVM_VAR_THIZ;
-    CMGyroData* objCObj = [thiz gyroData];    if (!__TIB_org_xmlvm_ios_CMGyroData.classInitialized) __INIT_org_xmlvm_ios_CMGyroData();
-
+    CMGyroData* objCObj = [thiz gyroData];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -201,8 +200,7 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CMMotionManager_getDeviceMotion__]
 
     XMLVM_VAR_THIZ;
-    CMDeviceMotion* objCObj = [thiz deviceMotion];    if (!__TIB_org_xmlvm_ios_CMDeviceMotion.classInitialized) __INIT_org_xmlvm_ios_CMDeviceMotion();
-
+    CMDeviceMotion* objCObj = [thiz deviceMotion];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 

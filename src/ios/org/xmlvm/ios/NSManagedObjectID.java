@@ -45,4 +45,8 @@ public class NSManagedObjectID extends NSObject {
 	public NSURL URIRepresentation(){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

@@ -99,14 +99,14 @@ public class UINavigationController extends UIViewController {
 	/**
 	 * @property(nonatomic, assign) id<UINavigationControllerDelegate> delegate;
 	 */
-	public org.xmlvm.ios.UINavigationControllerDelegate getDelegate(){
+	public UINavigationControllerDelegate getDelegate(){
 		throw new RuntimeException("Stub");
 	}
 
 	/**
 	 * @property(nonatomic, assign) id<UINavigationControllerDelegate> delegate;
 	 */
-	public void setDelegate(org.xmlvm.ios.UINavigationControllerDelegate delegate){
+	public void setDelegate(UINavigationControllerDelegate arg0){
 		throw new RuntimeException("Stub");
 	}
 

@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_UITabBarController();
 }
 @end
+
 void org_xmlvm_ios_UITabBarController_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_UIViewController_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -98,8 +99,7 @@ NSString * ObjCVar1 = toNSString(n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UITabBarController_getSelectedViewController__]
 
     XMLVM_VAR_THIZ;
-    UIViewController* objCObj = [thiz selectedViewController];    if (!__TIB_org_xmlvm_ios_UIViewController.classInitialized) __INIT_org_xmlvm_ios_UIViewController();
-
+    UIViewController* objCObj = [thiz selectedViewController];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -129,8 +129,7 @@ NSString * ObjCVar1 = toNSString(n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UITabBarController_getMoreNavigationController__]
 
     XMLVM_VAR_THIZ;
-    UINavigationController* objCObj = [thiz moreNavigationController];    if (!__TIB_org_xmlvm_ios_UINavigationController.classInitialized) __INIT_org_xmlvm_ios_UINavigationController();
-
+    UINavigationController* objCObj = [thiz moreNavigationController];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -155,8 +154,7 @@ NSString * ObjCVar1 = toNSString(n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UITabBarController_getTabBar__]
 
     XMLVM_VAR_THIZ;
-    UITabBar* objCObj = [thiz tabBar];    if (!__TIB_org_xmlvm_ios_UITabBar.classInitialized) __INIT_org_xmlvm_ios_UITabBar();
-
+    UITabBar* objCObj = [thiz tabBar];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -168,10 +166,13 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UITabBarController_setDelegate___org_xmlvm_ios_UITabBarControllerDelegate]
 
     XMLVM_VAR_THIZ;
+    if(thiz.delegate != nil) [[thiz getDelegate] release];
     org_xmlvm_ios_UITabBarControllerDelegate_Wrapper* jwrapper = __ALLOC_INIT_DELEGATE_WRAPPER_org_xmlvm_ios_UITabBarControllerDelegate(n1);
     [jwrapper->nativeDelegateWrapper_ addSource: jthiz: thiz];
+    objc_setAssociatedObject(thiz, &key, jwrapper->nativeDelegateWrapper_, OBJC_ASSOCIATION_RETAIN);
+    [jwrapper->nativeDelegateWrapper_ release];
     [thiz setDelegate:jwrapper->nativeDelegateWrapper_];
-    jthiz->fields.org_xmlvm_ios_UITabBarController.delegate = n1;
+    XMLVMUtil_ArrayList_add(reference_array, n1);
 
     
 //XMLVM_END_WRAPPER

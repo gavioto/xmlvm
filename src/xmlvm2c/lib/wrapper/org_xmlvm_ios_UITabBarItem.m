@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_UITabBarItem();
 }
 @end
+
 void org_xmlvm_ios_UITabBarItem_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_UIBarItem_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {

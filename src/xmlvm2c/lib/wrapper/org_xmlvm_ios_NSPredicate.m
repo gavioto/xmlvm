@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_NSPredicate();
 }
 @end
+
 void org_xmlvm_ios_NSPredicate_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -56,7 +57,6 @@ NSString * ObjCVar1 = toNSString(n1);
 
     [ObjCVar2 release];
 
-    if (!__TIB_org_xmlvm_ios_NSPredicate.classInitialized) __INIT_org_xmlvm_ios_NSPredicate();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -67,13 +67,12 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSPredicate_predicateWithFormat___java_lang_String_byte_1ARRAY]
-XMLVM_VAR_BYTE_ARRAY(a2, n2); 
-    NSString * ObjCVar1 = toNSString(n1);
+NSString * ObjCVar1 = toNSString(n1);
+    XMLVM_VAR_BYTE_ARRAY(a2, n2); 
     
     NSPredicate* objCObj =  [NSPredicate  predicateWithFormat:ObjCVar1 arguments:a2->fields.org_xmlvm_runtime_XMLVMArray.array_];
     [ObjCVar1 release];
 
-    if (!__TIB_org_xmlvm_ios_NSPredicate.classInitialized) __INIT_org_xmlvm_ios_NSPredicate();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -81,7 +80,6 @@ XMLVM_VAR_BYTE_ARRAY(a2, n2);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSPredicate_predicateWithValue___boolean]
 
     NSPredicate* objCObj =  [NSPredicate  predicateWithValue:n1];
-    if (!__TIB_org_xmlvm_ios_NSPredicate.classInitialized) __INIT_org_xmlvm_ios_NSPredicate();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -89,7 +87,6 @@ XMLVM_VAR_BYTE_ARRAY(a2, n2);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSPredicate_predicateWithBlock___java_lang_Object]
 
     NSPredicate* objCObj =  [NSPredicate  predicateWithBlock:((org_xmlvm_ios_NSObject*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj];
-    if (!__TIB_org_xmlvm_ios_NSPredicate.classInitialized) __INIT_org_xmlvm_ios_NSPredicate();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

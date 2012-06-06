@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_ALAssetRepresentation();
 }
 @end
+
 void org_xmlvm_ios_ALAssetRepresentation_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -65,19 +66,26 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
     return objCObj;
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_ALAssetRepresentation_getBytes___byte_1ARRAY_long_int_org_xmlvm_ios_Reference<NSError>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_ALAssetRepresentation_getBytes___byte_1ARRAY_long_int_org_xmlvm_ios_Reference]
 
-XMLVM_NOT_IMPLEMENTED();
+    XMLVM_VAR_THIZ;
+    XMLVM_VAR_BYTE_ARRAY(a1, n1); 
+    JAVA_OBJECT jObject4 = org_xmlvm_ios_Reference_get__(n4);
+    XMLVM_VAR_IOS(NSError, var4, jObject4);
+    
+    int objCObj = [thiz  getBytes:a1->fields.org_xmlvm_runtime_XMLVMArray.array_ fromOffset:n2 length:n3 error:&var4];
+
+    return objCObj;
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_ALAssetRepresentation_fullResolutionImage__]
 
     XMLVM_VAR_THIZ;
     
-    CGImageRef objCObj = [thiz fullResolutionImage];    XMLVM_VAR_INIT_REF(CGImage, objCObj);
+    CGImageRef objCObj = [thiz fullResolutionImage];    XMLVM_VAR_INIT_REF(CGImage, refVar, objCObj);
 
 
-    return jvar;
+    return refVar;
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_ALAssetRepresentation_CGImageWithOptions___java_util_Map]
@@ -89,10 +97,10 @@ XMLVM_NOT_IMPLEMENTED();
 
     XMLVM_VAR_THIZ;
     
-    CGImageRef objCObj = [thiz fullScreenImage];    XMLVM_VAR_INIT_REF(CGImage, objCObj);
+    CGImageRef objCObj = [thiz fullScreenImage];    XMLVM_VAR_INIT_REF(CGImage, refVar, objCObj);
 
 
-    return jvar;
+    return refVar;
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_ALAssetRepresentation_url__]
@@ -100,7 +108,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSURL* objCObj = [thiz url];
-    if (!__TIB_org_xmlvm_ios_NSURL.classInitialized) __INIT_org_xmlvm_ios_NSURL();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

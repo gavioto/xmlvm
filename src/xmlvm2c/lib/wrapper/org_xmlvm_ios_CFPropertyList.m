@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_CFPropertyList();
 }
 @end
+
 void org_xmlvm_ios_CFPropertyList_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_CFType_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -58,10 +59,8 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFPropertyList_createDeepCopy___org_xmlvm_ios_CFAllocator_org_xmlvm_ios_CFPropertyList_long]
 XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
     
-    
     CFPropertyList* objCObj = CFPropertyListCreateDeepCopy(var1,(CFPropertyList*) (((org_xmlvm_ios_CFPropertyList*) n2)->fields.org_xmlvm_ios_NSObject.wrappedObj),n3);
-        if (!__TIB_org_xmlvm_ios_CFPropertyList.classInitialized) __INIT_org_xmlvm_ios_CFPropertyList();
-
+    
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -80,31 +79,37 @@ XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
     XMLVM_VAR_LONG_ARRAY(a5, n5); 
     NSString * ObjCVar6 = toNSString(n6);
     
-    
     CFPropertyList* objCObj = CFPropertyListCreateFromStream(var1,(CFReadStream*) (((org_xmlvm_ios_CFReadStream*) n2)->fields.org_xmlvm_ios_NSObject.wrappedObj),n3,n4,a5->fields.org_xmlvm_runtime_XMLVMArray.array_,ObjCVar6);
     
     [ObjCVar6 release];
-    if (!__TIB_org_xmlvm_ios_CFPropertyList.classInitialized) __INIT_org_xmlvm_ios_CFPropertyList();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFPropertyList_createWithData___org_xmlvm_ios_CFAllocator_org_xmlvm_ios_CFData_long_long_1ARRAY_org_xmlvm_ios_Reference<CFError>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFPropertyList_createWithData___org_xmlvm_ios_CFAllocator_org_xmlvm_ios_CFData_long_long_1ARRAY_org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFPropertyList_createWithStream___org_xmlvm_ios_CFAllocator_org_xmlvm_ios_CFReadStream_long_long_long_1ARRAY_org_xmlvm_ios_Reference<CFError>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFPropertyList_createWithStream___org_xmlvm_ios_CFAllocator_org_xmlvm_ios_CFReadStream_long_long_long_1ARRAY_org_xmlvm_ios_Reference]
+XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
+    XMLVM_VAR_LONG_ARRAY(a5, n5); 
+    JAVA_OBJECT jObject6 = org_xmlvm_ios_Reference_get__(n6);
+    XMLVM_VAR_IOS_REF(CFError, var6, jObject6);
+    
+    CFPropertyList* objCObj = CFPropertyListCreateWithStream(var1,(CFReadStream*) (((org_xmlvm_ios_CFReadStream*) n2)->fields.org_xmlvm_ios_NSObject.wrappedObj),n3,n4,a5->fields.org_xmlvm_runtime_XMLVMArray.array_,&var6);
+    XMLVM_VAR_INIT_REF(CFError,refVar6, var6);
+    org_xmlvm_ios_Reference_set___java_lang_Object(n6, refVar6);
+    
+    return xmlvm_get_associated_c_object (objCObj);
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFPropertyList_write___org_xmlvm_ios_CFWriteStream_long_long_org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFPropertyList_write___org_xmlvm_ios_CFWriteStream_long_long_org_xmlvm_ios_Reference<CFError>]
-
-XMLVM_NOT_IMPLEMENTED();
-//XMLVM_END_WRAPPER
-
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFPropertyList_createData___org_xmlvm_ios_CFAllocator_org_xmlvm_ios_CFPropertyList_long_long_org_xmlvm_ios_Reference<CFError>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFPropertyList_createData___org_xmlvm_ios_CFAllocator_org_xmlvm_ios_CFPropertyList_long_long_org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER

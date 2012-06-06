@@ -101,4 +101,8 @@ public class NSURLProtectionSpace extends NSObject {
 	public SecTrust serverTrust(){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

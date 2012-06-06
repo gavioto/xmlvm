@@ -86,4 +86,8 @@ public class NSOrthography extends NSObject {
 	public String dominantLanguageForScript(String script){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

@@ -145,4 +145,8 @@ public class UINavigationItem extends NSObject {
 	public void setRightBarButtonItem(UIBarButtonItem item, boolean animated){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

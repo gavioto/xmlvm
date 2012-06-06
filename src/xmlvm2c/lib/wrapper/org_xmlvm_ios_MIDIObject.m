@@ -2,7 +2,7 @@
 //XMLVM_BEGIN_IMPLEMENTATION
 void org_xmlvm_ios_MIDIObject_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -50,7 +50,7 @@ XMLVM_NOT_IMPLEMENTED();
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MIDIObject_getDataProperty___java_lang_String_org_xmlvm_ios_Reference<CFData>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MIDIObject_getDataProperty___java_lang_String_org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
@@ -60,7 +60,7 @@ XMLVM_NOT_IMPLEMENTED();
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MIDIObject_getDictionaryProperty___java_lang_String_org_xmlvm_ios_Reference<CFDictionary>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MIDIObject_getDictionaryProperty___java_lang_String_org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER

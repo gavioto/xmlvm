@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_NSMappingModel();
 }
 @end
+
 void org_xmlvm_ios_NSMappingModel_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -59,14 +60,17 @@ NSArray * ObjCVar1 = toNSArray(n1);
     NSMappingModel* objCObj =  [NSMappingModel  mappingModelFromBundles:ObjCVar1 forSourceModel:(NSManagedObjectModel*) (((org_xmlvm_ios_NSManagedObjectModel*) n2)->fields.org_xmlvm_ios_NSObject.wrappedObj) destinationModel:(NSManagedObjectModel*) (((org_xmlvm_ios_NSManagedObjectModel*) n3)->fields.org_xmlvm_ios_NSObject.wrappedObj)];
     [ObjCVar1 release];
 
-    if (!__TIB_org_xmlvm_ios_NSMappingModel.classInitialized) __INIT_org_xmlvm_ios_NSMappingModel();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSMappingModel_inferredMappingModelForSourceModel___org_xmlvm_ios_NSManagedObjectModel_org_xmlvm_ios_NSManagedObjectModel_org_xmlvm_ios_Reference<NSError>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSMappingModel_inferredMappingModelForSourceModel___org_xmlvm_ios_NSManagedObjectModel_org_xmlvm_ios_NSManagedObjectModel_org_xmlvm_ios_Reference]
+JAVA_OBJECT jObject3 = org_xmlvm_ios_Reference_get__(n3);
+    XMLVM_VAR_IOS(NSError, var3, jObject3);
+    
+    NSMappingModel* objCObj =  [NSMappingModel  inferredMappingModelForSourceModel:(NSManagedObjectModel*) (((org_xmlvm_ios_NSManagedObjectModel*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj) destinationModel:(NSManagedObjectModel*) (((org_xmlvm_ios_NSManagedObjectModel*) n2)->fields.org_xmlvm_ios_NSObject.wrappedObj) error:&var3];
 
-XMLVM_NOT_IMPLEMENTED();
+    return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSMappingModel_entityMappings__]

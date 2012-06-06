@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_NSURL();
 }
 @end
+
 void org_xmlvm_ios_NSURL_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -89,8 +90,13 @@ NSString * ObjCVar1 = toNSString(n1);
     org_xmlvm_ios_NSURL_INTERNAL_CONSTRUCTOR(me, objCObj);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSURL___INIT____org_xmlvm_ios_NSData_int_org_xmlvm_ios_NSURL_boolean_1ARRAY_org_xmlvm_ios_Reference<NSError>]
-XMLVM_NOT_IMPLEMENTED();
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSURL___INIT____org_xmlvm_ios_NSData_int_org_xmlvm_ios_NSURL_boolean_1ARRAY_org_xmlvm_ios_Reference]
+XMLVM_VAR_BOOLEAN_ARRAY(a4, n4); 
+    JAVA_OBJECT jObject5 = org_xmlvm_ios_Reference_get__(n5);
+    XMLVM_VAR_IOS(NSError, var5, jObject5);
+    
+    NSURL* objCObj = [[NSURL alloc] initByResolvingBookmarkData:(NSData*) (((org_xmlvm_ios_NSData*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj) options:n2 relativeToURL:(NSURL*) (((org_xmlvm_ios_NSURL*) n3)->fields.org_xmlvm_ios_NSObject.wrappedObj) bookmarkDataIsStale:a4->fields.org_xmlvm_runtime_XMLVMArray.array_ error:&var5];
+    org_xmlvm_ios_NSURL_INTERNAL_CONSTRUCTOR(me, objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSURL___INIT___]
@@ -131,7 +137,6 @@ NSString * ObjCVar1 = toNSString(n1);
     NSURL* objCObj =  [NSURL  URLWithString:ObjCVar1];
     [ObjCVar1 release];
 
-    if (!__TIB_org_xmlvm_ios_NSURL.classInitialized) __INIT_org_xmlvm_ios_NSURL();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -142,7 +147,6 @@ NSString * ObjCVar1 = toNSString(n1);
     NSURL* objCObj =  [NSURL  URLWithString:ObjCVar1 relativeToURL:(NSURL*) (((org_xmlvm_ios_NSURL*) n2)->fields.org_xmlvm_ios_NSObject.wrappedObj)];
     [ObjCVar1 release];
 
-    if (!__TIB_org_xmlvm_ios_NSURL.classInitialized) __INIT_org_xmlvm_ios_NSURL();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -170,7 +174,6 @@ NSString * ObjCVar1 = toNSString(n1);
     XMLVM_VAR_THIZ;
     
     NSURL* objCObj = [thiz baseURL];
-    if (!__TIB_org_xmlvm_ios_NSURL.classInitialized) __INIT_org_xmlvm_ios_NSURL();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -180,7 +183,6 @@ NSString * ObjCVar1 = toNSString(n1);
     XMLVM_VAR_THIZ;
     
     NSURL* objCObj = [thiz absoluteURL];
-    if (!__TIB_org_xmlvm_ios_NSURL.classInitialized) __INIT_org_xmlvm_ios_NSURL();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -217,7 +219,6 @@ NSString * ObjCVar1 = toNSString(n1);
     XMLVM_VAR_THIZ;
     
     NSNumber* objCObj = [thiz port];
-    if (!__TIB_org_xmlvm_ios_NSNumber.classInitialized) __INIT_org_xmlvm_ios_NSNumber();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -299,34 +300,58 @@ NSString * ObjCVar1 = toNSString(n1);
     XMLVM_VAR_THIZ;
     
     NSURL* objCObj = [thiz standardizedURL];
-    if (!__TIB_org_xmlvm_ios_NSURL.classInitialized) __INIT_org_xmlvm_ios_NSURL();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSURL_getResourceValue___Object_1ARRAY_java_lang_String_org_xmlvm_ios_Reference<NSError>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSURL_getResourceValue___Object_1ARRAY_java_lang_String_org_xmlvm_ios_Reference]
+
+    XMLVM_VAR_THIZ;
+    XMLVM_VAR_OBJECT_ARRAY(a1, n1); 
+    NSString * ObjCVar2 = toNSString(n2);
+    JAVA_OBJECT jObject3 = org_xmlvm_ios_Reference_get__(n3);
+    XMLVM_VAR_IOS(NSError, var3, jObject3);
+    
+    BOOL objCObj = [thiz  getResourceValue:a1->fields.org_xmlvm_runtime_XMLVMArray.array_ forKey:ObjCVar2 error:&var3];
+    [ObjCVar2 release];
+
+
+    return objCObj;
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSURL_resourceValuesForKeys___java_util_List_org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSURL_resourceValuesForKeys___java_util_List_org_xmlvm_ios_Reference<NSError>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSURL_setResourceValue___java_lang_Object_java_lang_String_org_xmlvm_ios_Reference]
+
+    XMLVM_VAR_THIZ;
+    NSString * ObjCVar2 = toNSString(n2);
+    JAVA_OBJECT jObject3 = org_xmlvm_ios_Reference_get__(n3);
+    XMLVM_VAR_IOS(NSError, var3, jObject3);
+    
+    BOOL objCObj = [thiz  setResourceValue:((org_xmlvm_ios_NSObject*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj forKey:ObjCVar2 error:&var3];
+    [ObjCVar2 release];
+
+
+    return objCObj;
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSURL_setResourceValues___java_util_Map_org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSURL_setResourceValue___java_lang_Object_java_lang_String_org_xmlvm_ios_Reference<NSError>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSURL_checkResourceIsReachableAndReturnError___org_xmlvm_ios_Reference]
 
-XMLVM_NOT_IMPLEMENTED();
-//XMLVM_END_WRAPPER
+    XMLVM_VAR_THIZ;
+    JAVA_OBJECT jObject1 = org_xmlvm_ios_Reference_get__(n1);
+    XMLVM_VAR_IOS(NSError, var1, jObject1);
+    
+    BOOL objCObj = [thiz  checkResourceIsReachableAndReturnError:&var1];
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSURL_setResourceValues___java_util_Map_org_xmlvm_ios_Reference<NSError>]
-
-XMLVM_NOT_IMPLEMENTED();
-//XMLVM_END_WRAPPER
-
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSURL_checkResourceIsReachableAndReturnError___org_xmlvm_ios_Reference<NSError>]
-
-XMLVM_NOT_IMPLEMENTED();
+    return objCObj;
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSURL_isFileReferenceURL__]
@@ -343,7 +368,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSURL* objCObj = [thiz fileReferenceURL];
-    if (!__TIB_org_xmlvm_ios_NSURL.classInitialized) __INIT_org_xmlvm_ios_NSURL();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -353,19 +377,32 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSURL* objCObj = [thiz filePathURL];
-    if (!__TIB_org_xmlvm_ios_NSURL.classInitialized) __INIT_org_xmlvm_ios_NSURL();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSURL_bookmarkDataWithOptions___int_java_util_List_org_xmlvm_ios_NSURL_org_xmlvm_ios_Reference<NSError>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSURL_bookmarkDataWithOptions___int_java_util_List_org_xmlvm_ios_NSURL_org_xmlvm_ios_Reference]
 
-XMLVM_NOT_IMPLEMENTED();
+    XMLVM_VAR_THIZ;
+    NSArray * ObjCVar2 = toNSArray(n2);
+    JAVA_OBJECT jObject4 = org_xmlvm_ios_Reference_get__(n4);
+    XMLVM_VAR_IOS(NSError, var4, jObject4);
+    
+    NSData* objCObj = [thiz  bookmarkDataWithOptions:n1 includingResourceValuesForKeys:ObjCVar2 relativeToURL:(NSURL*) (((org_xmlvm_ios_NSURL*) n3)->fields.org_xmlvm_ios_NSObject.wrappedObj) error:&var4];
+    [ObjCVar2 release];
+
+
+    return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSURL_URLByResolvingBookmarkData___org_xmlvm_ios_NSData_int_org_xmlvm_ios_NSURL_boolean_1ARRAY_org_xmlvm_ios_Reference<NSError>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSURL_URLByResolvingBookmarkData___org_xmlvm_ios_NSData_int_org_xmlvm_ios_NSURL_boolean_1ARRAY_org_xmlvm_ios_Reference]
+XMLVM_VAR_BOOLEAN_ARRAY(a4, n4); 
+    JAVA_OBJECT jObject5 = org_xmlvm_ios_Reference_get__(n5);
+    XMLVM_VAR_IOS(NSError, var5, jObject5);
+    
+    NSURL* objCObj =  [NSURL  URLByResolvingBookmarkData:(NSData*) (((org_xmlvm_ios_NSData*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj) options:n2 relativeToURL:(NSURL*) (((org_xmlvm_ios_NSURL*) n3)->fields.org_xmlvm_ios_NSObject.wrappedObj) bookmarkDataIsStale:a4->fields.org_xmlvm_runtime_XMLVMArray.array_ error:&var5];
 
-XMLVM_NOT_IMPLEMENTED();
+    return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSURL_resourceValuesForKeys___java_util_List_org_xmlvm_ios_NSData]
@@ -373,14 +410,22 @@ XMLVM_NOT_IMPLEMENTED();
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSURL_writeBookmarkData___org_xmlvm_ios_NSData_org_xmlvm_ios_NSURL_int_org_xmlvm_ios_Reference<NSError>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSURL_writeBookmarkData___org_xmlvm_ios_NSData_org_xmlvm_ios_NSURL_int_org_xmlvm_ios_Reference]
+JAVA_OBJECT jObject4 = org_xmlvm_ios_Reference_get__(n4);
+    XMLVM_VAR_IOS(NSError, var4, jObject4);
+    
+    BOOL objCObj =  [NSURL  writeBookmarkData:(NSData*) (((org_xmlvm_ios_NSData*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj) toURL:(NSURL*) (((org_xmlvm_ios_NSURL*) n2)->fields.org_xmlvm_ios_NSObject.wrappedObj) options:n3 error:&var4];
 
-XMLVM_NOT_IMPLEMENTED();
+    return objCObj;
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSURL_bookmarkDataWithContentsOfURL___org_xmlvm_ios_NSURL_org_xmlvm_ios_Reference<NSError>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSURL_bookmarkDataWithContentsOfURL___org_xmlvm_ios_NSURL_org_xmlvm_ios_Reference]
+JAVA_OBJECT jObject2 = org_xmlvm_ios_Reference_get__(n2);
+    XMLVM_VAR_IOS(NSError, var2, jObject2);
+    
+    NSData* objCObj =  [NSURL  bookmarkDataWithContentsOfURL:(NSURL*) (((org_xmlvm_ios_NSURL*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj) error:&var2];
 
-XMLVM_NOT_IMPLEMENTED();
+    return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSURL_resourceDataUsingCache___boolean]
@@ -388,7 +433,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSData* objCObj = [thiz  resourceDataUsingCache:n1];
-    if (!__TIB_org_xmlvm_ios_NSData.classInitialized) __INIT_org_xmlvm_ios_NSData();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -445,7 +489,6 @@ NSArray * ObjCVar1 = toNSArray(n1);
     NSURL* objCObj =  [NSURL  fileURLWithPathComponents:ObjCVar1];
     [ObjCVar1 release];
 
-    if (!__TIB_org_xmlvm_ios_NSURL.classInitialized) __INIT_org_xmlvm_ios_NSURL();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -485,7 +528,6 @@ NSArray * ObjCVar1 = toNSArray(n1);
     NSURL* objCObj = [thiz  URLByAppendingPathComponent:ObjCVar1];
     [ObjCVar1 release];
 
-    if (!__TIB_org_xmlvm_ios_NSURL.classInitialized) __INIT_org_xmlvm_ios_NSURL();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -495,7 +537,6 @@ NSArray * ObjCVar1 = toNSArray(n1);
     XMLVM_VAR_THIZ;
     
     NSURL* objCObj = [thiz URLByDeletingLastPathComponent];
-    if (!__TIB_org_xmlvm_ios_NSURL.classInitialized) __INIT_org_xmlvm_ios_NSURL();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -508,7 +549,6 @@ NSArray * ObjCVar1 = toNSArray(n1);
     NSURL* objCObj = [thiz  URLByAppendingPathExtension:ObjCVar1];
     [ObjCVar1 release];
 
-    if (!__TIB_org_xmlvm_ios_NSURL.classInitialized) __INIT_org_xmlvm_ios_NSURL();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -518,7 +558,6 @@ NSArray * ObjCVar1 = toNSArray(n1);
     XMLVM_VAR_THIZ;
     
     NSURL* objCObj = [thiz URLByDeletingPathExtension];
-    if (!__TIB_org_xmlvm_ios_NSURL.classInitialized) __INIT_org_xmlvm_ios_NSURL();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -528,7 +567,6 @@ NSArray * ObjCVar1 = toNSArray(n1);
     XMLVM_VAR_THIZ;
     
     NSURL* objCObj = [thiz URLByStandardizingPath];
-    if (!__TIB_org_xmlvm_ios_NSURL.classInitialized) __INIT_org_xmlvm_ios_NSURL();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -538,7 +576,20 @@ NSArray * ObjCVar1 = toNSArray(n1);
     XMLVM_VAR_THIZ;
     
     NSURL* objCObj = [thiz URLByResolvingSymlinksInPath];
-    if (!__TIB_org_xmlvm_ios_NSURL.classInitialized) __INIT_org_xmlvm_ios_NSURL();
 
     return xmlvm_get_associated_c_object (objCObj);
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSURL_getPreviewItemURL__]
+
+    XMLVM_VAR_THIZ;
+    NSURL* objCObj = [thiz previewItemURL];
+    return xmlvm_get_associated_c_object (objCObj);
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSURL_getPreviewItemTitle__]
+
+    XMLVM_VAR_THIZ;
+    NSString* objCObj = [thiz previewItemTitle];
+    return fromNSString(objCObj);
 //XMLVM_END_WRAPPER

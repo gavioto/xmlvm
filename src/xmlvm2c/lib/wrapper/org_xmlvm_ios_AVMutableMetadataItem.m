@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_AVMutableMetadataItem();
 }
 @end
+
 void org_xmlvm_ios_AVMutableMetadataItem_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_AVMetadataItem_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -55,8 +56,7 @@ __DELETE_org_xmlvm_ios_AVMetadataItem(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVMutableMetadataItem_getKey__]
 
     XMLVM_VAR_THIZ;
-    NSObject* objCObj = [thiz key];    if (!__TIB_org_xmlvm_ios_NSObject.classInitialized) __INIT_org_xmlvm_ios_NSObject();
-
+    NSObject* objCObj = [thiz key];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -89,8 +89,7 @@ __DELETE_org_xmlvm_ios_AVMetadataItem(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVMutableMetadataItem_getLocale__]
 
     XMLVM_VAR_THIZ;
-    NSLocale* objCObj = [thiz locale];    if (!__TIB_org_xmlvm_ios_NSLocale.classInitialized) __INIT_org_xmlvm_ios_NSLocale();
-
+    NSLocale* objCObj = [thiz locale];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -135,8 +134,7 @@ __DELETE_org_xmlvm_ios_AVMetadataItem(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVMutableMetadataItem_getValue__]
 
     XMLVM_VAR_THIZ;
-    NSObject* objCObj = [thiz value];    if (!__TIB_org_xmlvm_ios_NSObject.classInitialized) __INIT_org_xmlvm_ios_NSObject();
-
+    NSObject* objCObj = [thiz value];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -161,7 +159,6 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVMutableMetadataItem_metadataItem__]
 
     AVMutableMetadataItem* objCObj =  [AVMutableMetadataItem metadataItem];
-    if (!__TIB_org_xmlvm_ios_AVMutableMetadataItem.classInitialized) __INIT_org_xmlvm_ios_AVMutableMetadataItem();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

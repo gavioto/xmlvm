@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_MIDINetworkConnection();
 }
 @end
+
 void org_xmlvm_ios_MIDINetworkConnection_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -57,7 +58,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MIDINetworkConnection_getHost__]
 
     XMLVM_VAR_THIZ;
-    MIDINetworkHost* objCObj = [thiz host];    if (!__TIB_org_xmlvm_ios_MIDINetworkHost.classInitialized) __INIT_org_xmlvm_ios_MIDINetworkHost();
-
+    MIDINetworkHost* objCObj = [thiz host];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

@@ -115,4 +115,8 @@ public class UITabBarController extends UIViewController {
 	public void setViewControllers(List viewControllers, boolean animated){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

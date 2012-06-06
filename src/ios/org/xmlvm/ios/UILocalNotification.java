@@ -171,4 +171,8 @@ public class UILocalNotification extends NSObject {
 	public void setUserInfo(Map userInfo){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

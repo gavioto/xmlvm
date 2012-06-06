@@ -33,14 +33,14 @@ public class UIGestureRecognizer extends NSObject {
 	/**
 	 * @property(nonatomic,assign) id <UIGestureRecognizerDelegate> delegate;
 	 */
-	public org.xmlvm.ios.UIGestureRecognizerDelegate getDelegate(){
+	public UIGestureRecognizerDelegate getDelegate(){
 		throw new RuntimeException("Stub");
 	}
 
 	/**
 	 * @property(nonatomic,assign) id <UIGestureRecognizerDelegate> delegate;
 	 */
-	public void setDelegate(org.xmlvm.ios.UIGestureRecognizerDelegate delegate){
+	public void setDelegate(UIGestureRecognizerDelegate arg0){
 		throw new RuntimeException("Stub");
 	}
 

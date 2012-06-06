@@ -115,4 +115,8 @@ public class MPMovieAccessLogEvent extends NSObject {
 	public int getNumberOfDroppedVideoFrames(){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

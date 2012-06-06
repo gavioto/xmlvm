@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_AVPlayerItemTrack();
 }
 @end
+
 void org_xmlvm_ios_AVPlayerItemTrack_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -50,8 +51,7 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVPlayerItemTrack_getAssetTrack__]
 
     XMLVM_VAR_THIZ;
-    AVAssetTrack* objCObj = [thiz assetTrack];    if (!__TIB_org_xmlvm_ios_AVAssetTrack.classInitialized) __INIT_org_xmlvm_ios_AVAssetTrack();
-
+    AVAssetTrack* objCObj = [thiz assetTrack];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 

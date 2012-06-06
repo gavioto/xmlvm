@@ -178,4 +178,106 @@ public class UITextView extends UIScrollView {
 	public void scrollRangeToVisible(NSRange range){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
+
+	/**
+	 * @property(nonatomic) UITextAutocapitalizationType autocapitalizationType;
+	 */
+	public int getAutocapitalizationType(){
+		throw new RuntimeException("Stub");
+	}
+
+	/**
+	 * @property(nonatomic) UITextAutocapitalizationType autocapitalizationType;
+	 */
+	public void setAutocapitalizationType(int autocapitalizationType){
+		throw new RuntimeException("Stub");
+	}
+
+	/**
+	 * @property(nonatomic) UITextAutocorrectionType autocorrectionType;
+	 */
+	public int getAutocorrectionType(){
+		throw new RuntimeException("Stub");
+	}
+
+	/**
+	 * @property(nonatomic) UITextAutocorrectionType autocorrectionType;
+	 */
+	public void setAutocorrectionType(int autocorrectionType){
+		throw new RuntimeException("Stub");
+	}
+
+	/**
+	 * @property(nonatomic) UIKeyboardType keyboardType;
+	 */
+	public int getKeyboardType(){
+		throw new RuntimeException("Stub");
+	}
+
+	/**
+	 * @property(nonatomic) UIKeyboardType keyboardType;
+	 */
+	public void setKeyboardType(int keyboardType){
+		throw new RuntimeException("Stub");
+	}
+
+	/**
+	 * @property(nonatomic) UIKeyboardAppearance keyboardAppearance;
+	 */
+	public int getKeyboardAppearance(){
+		throw new RuntimeException("Stub");
+	}
+
+	/**
+	 * @property(nonatomic) UIKeyboardAppearance keyboardAppearance;
+	 */
+	public void setKeyboardAppearance(int keyboardAppearance){
+		throw new RuntimeException("Stub");
+	}
+
+	/**
+	 * @property(nonatomic) UIReturnKeyType returnKeyType;
+	 */
+	public int getReturnKeyType(){
+		throw new RuntimeException("Stub");
+	}
+
+	/**
+	 * @property(nonatomic) UIReturnKeyType returnKeyType;
+	 */
+	public void setReturnKeyType(int returnKeyType){
+		throw new RuntimeException("Stub");
+	}
+
+	/**
+	 * @property(nonatomic) BOOL enablesReturnKeyAutomatically;
+	 */
+	public boolean getEnablesReturnKeyAutomatically(){
+		throw new RuntimeException("Stub");
+	}
+
+	/**
+	 * @property(nonatomic) BOOL enablesReturnKeyAutomatically;
+	 */
+	public void setEnablesReturnKeyAutomatically(boolean enablesReturnKeyAutomatically){
+		throw new RuntimeException("Stub");
+	}
+
+	/**
+	 * @property(nonatomic,getter=isSecureTextEntry) BOOL secureTextEntry;
+	 */
+	public boolean isSecureTextEntry(){
+		throw new RuntimeException("Stub");
+	}
+
+	/**
+	 * @property(nonatomic,getter=isSecureTextEntry) BOOL secureTextEntry;
+	 */
+	public void setSecureTextEntry(boolean secureTextEntry){
+		throw new RuntimeException("Stub");
+	}
 }

@@ -388,4 +388,8 @@ public class MKMapView extends UIView {
 	public MKOverlayView viewForOverlay(org.xmlvm.ios.MKOverlay overlay){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

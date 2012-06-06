@@ -129,4 +129,8 @@ public class NSURLRequest extends NSObject {
 	public boolean HTTPShouldUsePipelining(){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

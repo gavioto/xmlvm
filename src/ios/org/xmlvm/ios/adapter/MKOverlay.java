@@ -30,4 +30,8 @@ public class MKOverlay implements org.xmlvm.ios.MKOverlay {
 	 */
 	public boolean intersectsMapRect(MKMapRect mapRect){
 		return false;
-	}}
+	}
+	/*
+	 * Interface Properties
+	 */
+}

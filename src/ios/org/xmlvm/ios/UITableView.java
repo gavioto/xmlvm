@@ -435,4 +435,8 @@ public class UITableView extends UIScrollView {
 	public UITableViewCell dequeueReusableCellWithIdentifier(String identifier){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

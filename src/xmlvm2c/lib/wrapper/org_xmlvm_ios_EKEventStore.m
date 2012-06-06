@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_EKEventStore();
 }
 @end
+
 void org_xmlvm_ios_EKEventStore_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -64,19 +65,30 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_EKEventStore_getDefaultCalendarForNewEvents__]
 
     XMLVM_VAR_THIZ;
-    EKCalendar* objCObj = [thiz defaultCalendarForNewEvents];    if (!__TIB_org_xmlvm_ios_EKCalendar.classInitialized) __INIT_org_xmlvm_ios_EKCalendar();
-
+    EKCalendar* objCObj = [thiz defaultCalendarForNewEvents];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_EKEventStore_saveEvent___org_xmlvm_ios_EKEvent_int_org_xmlvm_ios_Reference<NSError>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_EKEventStore_saveEvent___org_xmlvm_ios_EKEvent_int_org_xmlvm_ios_Reference]
 
-XMLVM_NOT_IMPLEMENTED();
+    XMLVM_VAR_THIZ;
+    JAVA_OBJECT jObject3 = org_xmlvm_ios_Reference_get__(n3);
+    XMLVM_VAR_IOS(NSError, var3, jObject3);
+    
+    BOOL objCObj = [thiz  saveEvent:(EKEvent*) (((org_xmlvm_ios_EKEvent*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj) span:n2 error:&var3];
+
+    return objCObj;
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_EKEventStore_removeEvent___org_xmlvm_ios_EKEvent_int_org_xmlvm_ios_Reference<NSError>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_EKEventStore_removeEvent___org_xmlvm_ios_EKEvent_int_org_xmlvm_ios_Reference]
 
-XMLVM_NOT_IMPLEMENTED();
+    XMLVM_VAR_THIZ;
+    JAVA_OBJECT jObject3 = org_xmlvm_ios_Reference_get__(n3);
+    XMLVM_VAR_IOS(NSError, var3, jObject3);
+    
+    BOOL objCObj = [thiz  removeEvent:(EKEvent*) (((org_xmlvm_ios_EKEvent*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj) span:n2 error:&var3];
+
+    return objCObj;
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_EKEventStore_eventWithIdentifier___java_lang_String]
@@ -87,7 +99,6 @@ XMLVM_NOT_IMPLEMENTED();
     EKEvent* objCObj = [thiz  eventWithIdentifier:ObjCVar1];
     [ObjCVar1 release];
 
-    if (!__TIB_org_xmlvm_ios_EKEvent.classInitialized) __INIT_org_xmlvm_ios_EKEvent();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -117,7 +128,6 @@ XMLVM_NOT_IMPLEMENTED();
     NSPredicate* objCObj = [thiz  predicateForEventsWithStartDate:(NSDate*) (((org_xmlvm_ios_NSDate*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj) endDate:(NSDate*) (((org_xmlvm_ios_NSDate*) n2)->fields.org_xmlvm_ios_NSObject.wrappedObj) calendars:ObjCVar3];
     [ObjCVar3 release];
 
-    if (!__TIB_org_xmlvm_ios_NSPredicate.classInitialized) __INIT_org_xmlvm_ios_NSPredicate();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

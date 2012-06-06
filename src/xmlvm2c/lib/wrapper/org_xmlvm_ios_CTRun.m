@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_CTRun();
 }
 @end
+
 void org_xmlvm_ios_CTRun_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -42,7 +43,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTRun_getTypeID__]
 
-    
     long objCObj = CFHostGetTypeID();
     
     return objCObj;
@@ -78,7 +78,7 @@ XMLVM_NOT_IMPLEMENTED();
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTRun_getPositions___org_xmlvm_ios_CFRange_org_xmlvm_ios_Reference<CGPoint>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTRun_getPositions___org_xmlvm_ios_CFRange_org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
@@ -88,7 +88,7 @@ XMLVM_NOT_IMPLEMENTED();
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTRun_getAdvances___org_xmlvm_ios_CFRange_org_xmlvm_ios_Reference<CGSize>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTRun_getAdvances___org_xmlvm_ios_CFRange_org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER

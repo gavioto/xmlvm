@@ -29,14 +29,13 @@ JAVA_OBJECT fromMKCoordinateRegion(MKCoordinateRegion obj)
     org_xmlvm_ios_MKCoordinateRegion* jObj = me;
     jObj->fields.org_xmlvm_ios_MKCoordinateRegion.center_ = fromCLLocationCoordinate2D(objCObj.center);
     jObj->fields.org_xmlvm_ios_MKCoordinateRegion.span_ = fromMKCoordinateSpan(objCObj.span);
-//XMLVM_END_WRAPPER
+null//XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MKCoordinateRegion___INIT___]
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MKCoordinateRegion_makeWithDistance___org_xmlvm_ios_CLLocationCoordinate2D_double_double]
 
-    
     MKCoordinateRegion objCObj = MKCoordinateRegionMakeWithDistance(toCLLocationCoordinate2D(n1),n2,n3);
     
     return fromMKCoordinateRegion(objCObj);
@@ -44,7 +43,6 @@ JAVA_OBJECT fromMKCoordinateRegion(MKCoordinateRegion obj)
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MKCoordinateRegion_forMapRect___org_xmlvm_ios_MKMapRect]
 
-    
     MKCoordinateRegion objCObj = MKCoordinateRegionForMapRect(toMKMapRect(n1));
     
     return fromMKCoordinateRegion(objCObj);

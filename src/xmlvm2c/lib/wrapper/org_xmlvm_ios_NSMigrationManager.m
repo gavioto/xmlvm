@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_NSMigrationManager();
 }
 @end
+
 void org_xmlvm_ios_NSMigrationManager_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -53,7 +54,7 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
     org_xmlvm_ios_NSMigrationManager_INTERNAL_CONSTRUCTOR(me, objCObj);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSMigrationManager_migrateStoreFromURL___org_xmlvm_ios_NSURL_java_lang_String_java_util_Map_org_xmlvm_ios_NSMappingModel_org_xmlvm_ios_NSURL_java_lang_String_java_util_Map_org_xmlvm_ios_Reference<NSError>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSMigrationManager_migrateStoreFromURL___org_xmlvm_ios_NSURL_java_lang_String_java_util_Map_org_xmlvm_ios_NSMappingModel_org_xmlvm_ios_NSURL_java_lang_String_java_util_Map_org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
@@ -71,7 +72,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSMappingModel* objCObj = [thiz mappingModel];
-    if (!__TIB_org_xmlvm_ios_NSMappingModel.classInitialized) __INIT_org_xmlvm_ios_NSMappingModel();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -81,7 +81,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSManagedObjectModel* objCObj = [thiz sourceModel];
-    if (!__TIB_org_xmlvm_ios_NSManagedObjectModel.classInitialized) __INIT_org_xmlvm_ios_NSManagedObjectModel();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -91,7 +90,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSManagedObjectModel* objCObj = [thiz destinationModel];
-    if (!__TIB_org_xmlvm_ios_NSManagedObjectModel.classInitialized) __INIT_org_xmlvm_ios_NSManagedObjectModel();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -101,7 +99,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSManagedObjectContext* objCObj = [thiz sourceContext];
-    if (!__TIB_org_xmlvm_ios_NSManagedObjectContext.classInitialized) __INIT_org_xmlvm_ios_NSManagedObjectContext();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -111,7 +108,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSManagedObjectContext* objCObj = [thiz destinationContext];
-    if (!__TIB_org_xmlvm_ios_NSManagedObjectContext.classInitialized) __INIT_org_xmlvm_ios_NSManagedObjectContext();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -121,7 +117,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSEntityDescription* objCObj = [thiz  sourceEntityForEntityMapping:(NSEntityMapping*) (((org_xmlvm_ios_NSEntityMapping*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj)];
-    if (!__TIB_org_xmlvm_ios_NSEntityDescription.classInitialized) __INIT_org_xmlvm_ios_NSEntityDescription();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -131,7 +126,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSEntityDescription* objCObj = [thiz  destinationEntityForEntityMapping:(NSEntityMapping*) (((org_xmlvm_ios_NSEntityMapping*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj)];
-    if (!__TIB_org_xmlvm_ios_NSEntityDescription.classInitialized) __INIT_org_xmlvm_ios_NSEntityDescription();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -179,7 +173,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSEntityMapping* objCObj = [thiz currentEntityMapping];
-    if (!__TIB_org_xmlvm_ios_NSEntityMapping.classInitialized) __INIT_org_xmlvm_ios_NSEntityMapping();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

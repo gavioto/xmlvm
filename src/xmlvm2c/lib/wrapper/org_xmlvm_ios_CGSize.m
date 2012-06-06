@@ -27,14 +27,13 @@ JAVA_OBJECT fromCGSize(CGSize obj)
     org_xmlvm_ios_CGSize* jObj = me;
     jObj->fields.org_xmlvm_ios_CGSize.width_ = objCObj.width;
     jObj->fields.org_xmlvm_ios_CGSize.height_ = objCObj.height;
-//XMLVM_END_WRAPPER
+null//XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CGSize___INIT___]
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CGSize_applyAffineTransform___org_xmlvm_ios_CGAffineTransform]
 
-    
     CGSize objCObj = CGSizeApplyAffineTransform(toCGSize(me),toCGAffineTransform(n1));
     
     return fromCGSize(objCObj);
@@ -42,7 +41,6 @@ JAVA_OBJECT fromCGSize(CGSize obj)
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CGSize_equalToSize___org_xmlvm_ios_CGSize]
 
-    
     BOOL objCObj = CGSizeEqualToSize(toCGSize(me),toCGSize(n1));
     
     return objCObj;
@@ -53,14 +51,13 @@ JAVA_OBJECT fromCGSize(CGSize obj)
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CGSize_makeWithDictionaryRepresentation___org_xmlvm_ios_CFDictionary_org_xmlvm_ios_Reference<CGSize>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CGSize_makeWithDictionaryRepresentation___org_xmlvm_ios_CFDictionary_org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CGSize_fromString___java_lang_String]
 NSString * ObjCVar1 = toNSString(n1);
-    
     
     CGSize objCObj = CGSizeFromString(ObjCVar1);
     

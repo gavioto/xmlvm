@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_MKCircle();
 }
 @end
+
 void org_xmlvm_ios_MKCircle_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_MKShape_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -55,7 +56,6 @@ __DELETE_org_xmlvm_ios_MKShape(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MKCircle_circleWithCenterCoordinate___org_xmlvm_ios_CLLocationCoordinate2D_double]
 
     MKCircle* objCObj =  [MKCircle  circleWithCenterCoordinate:toCLLocationCoordinate2D(n1) radius:n2];
-    if (!__TIB_org_xmlvm_ios_MKCircle.classInitialized) __INIT_org_xmlvm_ios_MKCircle();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -63,7 +63,6 @@ __DELETE_org_xmlvm_ios_MKShape(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MKCircle_circleWithMapRect___org_xmlvm_ios_MKMapRect]
 
     MKCircle* objCObj =  [MKCircle  circleWithMapRect:toMKMapRect(n1)];
-    if (!__TIB_org_xmlvm_ios_MKCircle.classInitialized) __INIT_org_xmlvm_ios_MKCircle();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

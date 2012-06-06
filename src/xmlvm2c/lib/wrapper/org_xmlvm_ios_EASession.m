@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_EASession();
 }
 @end
+
 void org_xmlvm_ios_EASession_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -59,8 +60,7 @@ NSString * ObjCVar2 = toNSString(n2);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_EASession_getAccessory__]
 
     XMLVM_VAR_THIZ;
-    EAAccessory* objCObj = [thiz accessory];    if (!__TIB_org_xmlvm_ios_EAAccessory.classInitialized) __INIT_org_xmlvm_ios_EAAccessory();
-
+    EAAccessory* objCObj = [thiz accessory];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -74,15 +74,13 @@ NSString * ObjCVar2 = toNSString(n2);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_EASession_getInputStream__]
 
     XMLVM_VAR_THIZ;
-    NSInputStream* objCObj = [thiz inputStream];    if (!__TIB_org_xmlvm_ios_NSInputStream.classInitialized) __INIT_org_xmlvm_ios_NSInputStream();
-
+    NSInputStream* objCObj = [thiz inputStream];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_EASession_getOutputStream__]
 
     XMLVM_VAR_THIZ;
-    NSOutputStream* objCObj = [thiz outputStream];    if (!__TIB_org_xmlvm_ios_NSOutputStream.classInitialized) __INIT_org_xmlvm_ios_NSOutputStream();
-
+    NSOutputStream* objCObj = [thiz outputStream];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

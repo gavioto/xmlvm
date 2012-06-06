@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_NSDictionary();
 }
 @end
+
 void org_xmlvm_ios_NSDictionary_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -117,7 +118,6 @@ NSString * ObjCVar1 = toNSString(n1);
     XMLVM_VAR_THIZ;
     
     NSEnumerator* objCObj = [thiz keyEnumerator];
-    if (!__TIB_org_xmlvm_ios_NSEnumerator.classInitialized) __INIT_org_xmlvm_ios_NSEnumerator();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -198,7 +198,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSEnumerator* objCObj = [thiz objectEnumerator];
-    if (!__TIB_org_xmlvm_ios_NSEnumerator.classInitialized) __INIT_org_xmlvm_ios_NSEnumerator();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -360,7 +359,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSDate* objCObj = [thiz fileModificationDate];
-    if (!__TIB_org_xmlvm_ios_NSDate.classInitialized) __INIT_org_xmlvm_ios_NSDate();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -469,7 +467,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSDate* objCObj = [thiz fileCreationDate];
-    if (!__TIB_org_xmlvm_ios_NSDate.classInitialized) __INIT_org_xmlvm_ios_NSDate();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -479,7 +476,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSNumber* objCObj = [thiz fileOwnerAccountID];
-    if (!__TIB_org_xmlvm_ios_NSNumber.classInitialized) __INIT_org_xmlvm_ios_NSNumber();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -489,7 +485,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSNumber* objCObj = [thiz fileGroupOwnerAccountID];
-    if (!__TIB_org_xmlvm_ios_NSNumber.classInitialized) __INIT_org_xmlvm_ios_NSNumber();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

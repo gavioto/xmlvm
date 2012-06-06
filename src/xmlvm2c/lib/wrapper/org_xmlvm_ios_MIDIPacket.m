@@ -26,5 +26,7 @@ JAVA_OBJECT fromMIDIPacket(MIDIPacket obj)
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MIDIPacket_next__]
 
-XMLVM_NOT_IMPLEMENTED();
+    Reference<MIDIPacket>* objCObj = MIDIPacketNext(toMIDIPacket(me));
+    
+    return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

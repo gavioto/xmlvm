@@ -66,14 +66,14 @@ public class UIScrollView extends UIView {
 	/**
 	 * @property(nonatomic,assign) id<UIScrollViewDelegate> delegate;
 	 */
-	public org.xmlvm.ios.UIScrollViewDelegate getDelegate(){
+	public UIScrollViewDelegate getDelegate(){
 		throw new RuntimeException("Stub");
 	}
 
 	/**
 	 * @property(nonatomic,assign) id<UIScrollViewDelegate> delegate;
 	 */
-	public void setDelegate(org.xmlvm.ios.UIScrollViewDelegate delegate){
+	public void setDelegate(UIScrollViewDelegate arg0){
 		throw new RuntimeException("Stub");
 	}
 
@@ -416,4 +416,8 @@ public class UIScrollView extends UIView {
 	public void zoomToRect(CGRect rect, boolean animated){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

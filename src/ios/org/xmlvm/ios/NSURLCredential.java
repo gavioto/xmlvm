@@ -99,4 +99,8 @@ public class NSURLCredential extends NSObject {
 	public List certificates(){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

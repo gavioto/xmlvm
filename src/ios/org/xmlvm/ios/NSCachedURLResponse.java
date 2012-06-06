@@ -55,4 +55,8 @@ public class NSCachedURLResponse extends NSObject {
 	public int storagePolicy(){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

@@ -3,6 +3,7 @@ import java.util.*;
 
 import org.xmlvm.XMLVMSkeletonOnly;
 @XMLVMSkeletonOnly
+(references={CFRunLoopObserverContext.class})
 public class CFRunLoopObserver extends CFType {
 
 	/*

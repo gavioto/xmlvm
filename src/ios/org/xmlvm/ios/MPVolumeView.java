@@ -59,4 +59,8 @@ public class MPVolumeView extends UIView {
 	public CGSize sizeThatFits(CGSize size){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

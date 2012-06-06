@@ -206,4 +206,8 @@ public class NSDateComponents extends NSObject {
 	public NSDate date(){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

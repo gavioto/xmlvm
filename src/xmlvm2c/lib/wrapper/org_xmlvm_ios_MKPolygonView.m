@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_MKPolygonView();
 }
 @end
+
 void org_xmlvm_ios_MKPolygonView_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_MKOverlayPathView_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -86,7 +87,6 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MKPolygonView_getPolygon__]
 
     XMLVM_VAR_THIZ;
-    MKPolygon* objCObj = [thiz polygon];    if (!__TIB_org_xmlvm_ios_MKPolygon.classInitialized) __INIT_org_xmlvm_ios_MKPolygon();
-
+    MKPolygon* objCObj = [thiz polygon];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

@@ -3,7 +3,7 @@ import java.util.*;
 
 import org.xmlvm.XMLVMSkeletonOnly;
 @XMLVMSkeletonOnly
-public class CFError {
+public class CFError extends CFType {
 
 	/*
 	 * Static methods

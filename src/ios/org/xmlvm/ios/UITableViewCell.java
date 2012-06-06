@@ -489,4 +489,8 @@ public class UITableViewCell extends UIView {
 	public void didTransitionToState(int state){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

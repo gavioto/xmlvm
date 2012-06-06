@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_AVCaptureAudioChannel();
 }
 @end
+
 void org_xmlvm_ios_AVCaptureAudioChannel_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {

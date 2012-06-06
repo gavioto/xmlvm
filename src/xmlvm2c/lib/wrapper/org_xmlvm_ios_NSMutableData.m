@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_NSMutableData();
 }
 @end
+
 void org_xmlvm_ios_NSMutableData_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSData_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -79,12 +80,23 @@ XMLVM_VAR_BYTE_ARRAY(a1, n1);
     org_xmlvm_ios_NSMutableData_INTERNAL_CONSTRUCTOR(me, objCObj);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSMutableData___INIT____java_lang_String_int_org_xmlvm_ios_Reference<NSError>]
-XMLVM_NOT_IMPLEMENTED();
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSMutableData___INIT____java_lang_String_int_org_xmlvm_ios_Reference]
+NSString * ObjCVar1 = toNSString(n1);
+    JAVA_OBJECT jObject3 = org_xmlvm_ios_Reference_get__(n3);
+    XMLVM_VAR_IOS(NSError, var3, jObject3);
+    
+    NSMutableData* objCObj = [[NSMutableData alloc] initWithContentsOfFile:ObjCVar1 options:n2 error:&var3];
+    [ObjCVar1 release];
+
+    org_xmlvm_ios_NSMutableData_INTERNAL_CONSTRUCTOR(me, objCObj);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSMutableData___INIT____org_xmlvm_ios_NSURL_int_org_xmlvm_ios_Reference<NSError>]
-XMLVM_NOT_IMPLEMENTED();
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSMutableData___INIT____org_xmlvm_ios_NSURL_int_org_xmlvm_ios_Reference]
+JAVA_OBJECT jObject3 = org_xmlvm_ios_Reference_get__(n3);
+    XMLVM_VAR_IOS(NSError, var3, jObject3);
+    
+    NSMutableData* objCObj = [[NSMutableData alloc] initWithContentsOfURL:(NSURL*) (((org_xmlvm_ios_NSURL*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj) options:n2 error:&var3];
+    org_xmlvm_ios_NSMutableData_INTERNAL_CONSTRUCTOR(me, objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSMutableData___INIT____java_lang_String_org_xmlvm_ios_NSMutableData_File]
@@ -207,7 +219,6 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSMutableData_dataWithCapacity___int]
 
     NSMutableData* objCObj =  [NSMutableData  dataWithCapacity:n1];
-    if (!__TIB_org_xmlvm_ios_NSMutableData.classInitialized) __INIT_org_xmlvm_ios_NSMutableData();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -215,7 +226,6 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSMutableData_dataWithLength___int]
 
     NSMutableData* objCObj =  [NSMutableData  dataWithLength:n1];
-    if (!__TIB_org_xmlvm_ios_NSMutableData.classInitialized) __INIT_org_xmlvm_ios_NSMutableData();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

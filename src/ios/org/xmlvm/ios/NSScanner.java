@@ -208,4 +208,8 @@ public class NSScanner extends NSObject {
 	public boolean isAtEnd(){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

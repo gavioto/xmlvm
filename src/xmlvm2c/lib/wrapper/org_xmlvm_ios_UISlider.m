@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_UISlider();
 }
 @end
+
 void org_xmlvm_ios_UISlider_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_UIControl_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -116,8 +117,7 @@ __DELETE_org_xmlvm_ios_UIControl(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UISlider_getMinimumValueImage__]
 
     XMLVM_VAR_THIZ;
-    UIImage* objCObj = [thiz minimumValueImage];    if (!__TIB_org_xmlvm_ios_UIImage.classInitialized) __INIT_org_xmlvm_ios_UIImage();
-
+    UIImage* objCObj = [thiz minimumValueImage];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -132,8 +132,7 @@ __DELETE_org_xmlvm_ios_UIControl(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UISlider_getMaximumValueImage__]
 
     XMLVM_VAR_THIZ;
-    UIImage* objCObj = [thiz maximumValueImage];    if (!__TIB_org_xmlvm_ios_UIImage.classInitialized) __INIT_org_xmlvm_ios_UIImage();
-
+    UIImage* objCObj = [thiz maximumValueImage];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -197,7 +196,6 @@ __DELETE_org_xmlvm_ios_UIControl(me, client_data);
     XMLVM_VAR_THIZ;
     
     UIImage* objCObj = [thiz  thumbImageForState:n1];
-    if (!__TIB_org_xmlvm_ios_UIImage.classInitialized) __INIT_org_xmlvm_ios_UIImage();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -207,7 +205,6 @@ __DELETE_org_xmlvm_ios_UIControl(me, client_data);
     XMLVM_VAR_THIZ;
     
     UIImage* objCObj = [thiz  minimumTrackImageForState:n1];
-    if (!__TIB_org_xmlvm_ios_UIImage.classInitialized) __INIT_org_xmlvm_ios_UIImage();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -217,7 +214,6 @@ __DELETE_org_xmlvm_ios_UIControl(me, client_data);
     XMLVM_VAR_THIZ;
     
     UIImage* objCObj = [thiz  maximumTrackImageForState:n1];
-    if (!__TIB_org_xmlvm_ios_UIImage.classInitialized) __INIT_org_xmlvm_ios_UIImage();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -225,24 +221,21 @@ __DELETE_org_xmlvm_ios_UIControl(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UISlider_getCurrentThumbImage__]
 
     XMLVM_VAR_THIZ;
-    UIImage* objCObj = [thiz currentThumbImage];    if (!__TIB_org_xmlvm_ios_UIImage.classInitialized) __INIT_org_xmlvm_ios_UIImage();
-
+    UIImage* objCObj = [thiz currentThumbImage];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UISlider_getCurrentMinimumTrackImage__]
 
     XMLVM_VAR_THIZ;
-    UIImage* objCObj = [thiz currentMinimumTrackImage];    if (!__TIB_org_xmlvm_ios_UIImage.classInitialized) __INIT_org_xmlvm_ios_UIImage();
-
+    UIImage* objCObj = [thiz currentMinimumTrackImage];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UISlider_getCurrentMaximumTrackImage__]
 
     XMLVM_VAR_THIZ;
-    UIImage* objCObj = [thiz currentMaximumTrackImage];    if (!__TIB_org_xmlvm_ios_UIImage.classInitialized) __INIT_org_xmlvm_ios_UIImage();
-
+    UIImage* objCObj = [thiz currentMaximumTrackImage];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 

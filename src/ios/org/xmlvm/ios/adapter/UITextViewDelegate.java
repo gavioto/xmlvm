@@ -42,4 +42,8 @@ public class UITextViewDelegate implements org.xmlvm.ios.UITextViewDelegate {
 	/**
 	 * - (void)textViewDidChangeSelection:(UITextView *)textView;
 	 */
-	public void textViewDidChangeSelection(UITextView textView){};}
+	public void textViewDidChangeSelection(UITextView textView){};
+	/*
+	 * Interface Properties
+	 */
+}

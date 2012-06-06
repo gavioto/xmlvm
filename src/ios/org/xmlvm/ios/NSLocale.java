@@ -166,4 +166,8 @@ public class NSLocale extends NSObject {
 	public String localeIdentifier(){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

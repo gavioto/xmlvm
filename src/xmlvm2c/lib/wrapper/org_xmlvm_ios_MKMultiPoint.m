@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_MKMultiPoint();
 }
 @end
+
 void org_xmlvm_ios_MKMultiPoint_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_MKShape_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -54,7 +55,9 @@ __DELETE_org_xmlvm_ios_MKShape(me, client_data);
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MKMultiPoint_getPoints__]
 
-XMLVM_NOT_IMPLEMENTED();
+    XMLVM_VAR_THIZ;
+    Reference<MKMapPoint>* objCObj = [thiz points];
+    return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MKMultiPoint_getPointCount__]
@@ -64,7 +67,12 @@ XMLVM_NOT_IMPLEMENTED();
     return objCObj;
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MKMultiPoint_getCoordinates___org_xmlvm_ios_Reference<CLLocationCoordinate2D>_org_xmlvm_ios_NSRange]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MKMultiPoint_getCoordinates___org_xmlvm_ios_Reference_org_xmlvm_ios_NSRange]
 
-XMLVM_NOT_IMPLEMENTED();
+    XMLVM_VAR_THIZ;
+    JAVA_OBJECT jObject1 = org_xmlvm_ios_Reference_get__(n1);
+    CLLocationCoordinate2D var1= toCLLocationCoordinate2D(jObject1);
+    [thiz  getCoordinates:&var1 range:toNSRange(n2)];
+
+    
 //XMLVM_END_WRAPPER

@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_SCNetworkReachability();
 }
 @end
+
 void org_xmlvm_ios_SCNetworkReachability_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -44,10 +45,8 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
     XMLVM_VAR_INT_ARRAY(a2, n2); 
     
-    
     SCNetworkReachability* objCObj = CFHostCreateWithAddress(var1,a2->fields.org_xmlvm_runtime_XMLVMArray.array_);
-        if (!__TIB_org_xmlvm_ios_SCNetworkReachability.classInitialized) __INIT_org_xmlvm_ios_SCNetworkReachability();
-
+    
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -56,10 +55,8 @@ XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
     XMLVM_VAR_INT_ARRAY(a2, n2); 
     XMLVM_VAR_INT_ARRAY(a3, n3); 
     
-    
     SCNetworkReachability* objCObj = SCNetworkReachabilityCreateWithAddressPair(var1,a2->fields.org_xmlvm_runtime_XMLVMArray.array_,a3->fields.org_xmlvm_runtime_XMLVMArray.array_);
-        if (!__TIB_org_xmlvm_ios_SCNetworkReachability.classInitialized) __INIT_org_xmlvm_ios_SCNetworkReachability();
-
+    
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -67,16 +64,13 @@ XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
 XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
     XMLVM_VAR_BYTE_ARRAY(a2, n2); 
     
-    
     SCNetworkReachability* objCObj = CFHostCreateWithName(var1,a2->fields.org_xmlvm_runtime_XMLVMArray.array_);
-        if (!__TIB_org_xmlvm_ios_SCNetworkReachability.classInitialized) __INIT_org_xmlvm_ios_SCNetworkReachability();
-
+    
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_SCNetworkReachability_getTypeID__]
 
-    
     long objCObj = CFHostGetTypeID();
     
     return objCObj;
@@ -87,7 +81,7 @@ XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_SCNetworkReachability_setCallback___java_lang_Object_org_xmlvm_ios_Reference<SCNetworkReachabilityContext>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_SCNetworkReachability_setCallback___java_lang_Object_org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER

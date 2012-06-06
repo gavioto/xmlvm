@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_NSURLProtocol();
 }
 @end
+
 void org_xmlvm_ios_NSURLProtocol_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -61,7 +62,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSURLRequest* objCObj = [thiz request];
-    if (!__TIB_org_xmlvm_ios_NSURLRequest.classInitialized) __INIT_org_xmlvm_ios_NSURLRequest();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -71,7 +71,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSCachedURLResponse* objCObj = [thiz cachedResponse];
-    if (!__TIB_org_xmlvm_ios_NSCachedURLResponse.classInitialized) __INIT_org_xmlvm_ios_NSCachedURLResponse();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -86,7 +85,6 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSURLProtocol_canonicalRequestForRequest___org_xmlvm_ios_NSURLRequest]
 
     NSURLRequest* objCObj =  [NSURLProtocol  canonicalRequestForRequest:(NSURLRequest*) (((org_xmlvm_ios_NSURLRequest*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj)];
-    if (!__TIB_org_xmlvm_ios_NSURLRequest.classInitialized) __INIT_org_xmlvm_ios_NSURLRequest();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

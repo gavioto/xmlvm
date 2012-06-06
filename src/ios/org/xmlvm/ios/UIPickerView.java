@@ -122,4 +122,8 @@ public class UIPickerView extends UIView {
 	public int selectedRowInComponent(int component){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

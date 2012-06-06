@@ -54,7 +54,6 @@ JAVA_OBJECT fromCATransform3D(CATransform3D obj)
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CATransform3D_isIdentity__]
 
-    
     BOOL objCObj = CATransform3DIsIdentity(toCATransform3D(me));
     
     return objCObj;
@@ -62,7 +61,6 @@ JAVA_OBJECT fromCATransform3D(CATransform3D obj)
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CATransform3D_equalToTransform___org_xmlvm_ios_CATransform3D]
 
-    
     BOOL objCObj = CATransform3DEqualToTransform(toCATransform3D(me),toCATransform3D(n1));
     
     return objCObj;
@@ -70,7 +68,6 @@ JAVA_OBJECT fromCATransform3D(CATransform3D obj)
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CATransform3D_makeTranslation___float_float_float]
 
-    
     CATransform3D objCObj = CATransform3DMakeTranslation(n1,n2,n3);
     
     return fromCATransform3D(objCObj);
@@ -78,7 +75,6 @@ JAVA_OBJECT fromCATransform3D(CATransform3D obj)
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CATransform3D_makeScale___float_float_float]
 
-    
     CATransform3D objCObj = CATransform3DMakeScale(n1,n2,n3);
     
     return fromCATransform3D(objCObj);
@@ -86,7 +82,6 @@ JAVA_OBJECT fromCATransform3D(CATransform3D obj)
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CATransform3D_makeRotation___float_float_float_float]
 
-    
     CATransform3D objCObj = CATransform3DMakeRotation(n1,n2,n3,n4);
     
     return fromCATransform3D(objCObj);
@@ -94,7 +89,6 @@ JAVA_OBJECT fromCATransform3D(CATransform3D obj)
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CATransform3D_translate___float_float_float]
 
-    
     CATransform3D objCObj = CATransform3DTranslate(toCATransform3D(me),n1,n2,n3);
     
     return fromCATransform3D(objCObj);
@@ -102,7 +96,6 @@ JAVA_OBJECT fromCATransform3D(CATransform3D obj)
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CATransform3D_scale___float_float_float]
 
-    
     CATransform3D objCObj = CATransform3DScale(toCATransform3D(me),n1,n2,n3);
     
     return fromCATransform3D(objCObj);
@@ -110,7 +103,6 @@ JAVA_OBJECT fromCATransform3D(CATransform3D obj)
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CATransform3D_rotate___float_float_float_float]
 
-    
     CATransform3D objCObj = CATransform3DRotate(toCATransform3D(me),n1,n2,n3,n4);
     
     return fromCATransform3D(objCObj);
@@ -118,7 +110,6 @@ JAVA_OBJECT fromCATransform3D(CATransform3D obj)
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CATransform3D_concat___org_xmlvm_ios_CATransform3D]
 
-    
     CATransform3D objCObj = CATransform3DConcat(toCATransform3D(me),toCATransform3D(n1));
     
     return fromCATransform3D(objCObj);
@@ -126,7 +117,6 @@ JAVA_OBJECT fromCATransform3D(CATransform3D obj)
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CATransform3D_invert__]
 
-    
     CATransform3D objCObj = CATransform3DInvert(toCATransform3D(me));
     
     return fromCATransform3D(objCObj);
@@ -134,7 +124,6 @@ JAVA_OBJECT fromCATransform3D(CATransform3D obj)
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CATransform3D_makeAffineTransform___org_xmlvm_ios_CGAffineTransform]
 
-    
     CATransform3D objCObj = CATransform3DMakeAffineTransform(toCGAffineTransform(n1));
     
     return fromCATransform3D(objCObj);
@@ -142,7 +131,6 @@ JAVA_OBJECT fromCATransform3D(CATransform3D obj)
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CATransform3D_isAffine__]
 
-    
     BOOL objCObj = CATransform3DIsAffine(toCATransform3D(me));
     
     return objCObj;
@@ -150,7 +138,6 @@ JAVA_OBJECT fromCATransform3D(CATransform3D obj)
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CATransform3D_getAffineTransform__]
 
-    
     CGAffineTransform objCObj = CATransform3DGetAffineTransform(toCATransform3D(me));
     
     return fromCGAffineTransform(objCObj);

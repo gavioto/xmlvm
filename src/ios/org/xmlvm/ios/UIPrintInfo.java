@@ -116,4 +116,8 @@ public class UIPrintInfo extends NSObject {
 	public Map dictionaryRepresentation(){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

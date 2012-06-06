@@ -290,4 +290,8 @@ public class NSManagedObjectContext extends NSObject {
 	public void mergeChangesFromContextDidSaveNotification(NSNotification notification){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

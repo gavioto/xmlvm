@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_CFTree();
 }
 @end
+
 void org_xmlvm_ios_CFTree_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -35,8 +36,10 @@ xmlvm_register_wrapper_creator(__WRAPPER_CREATOR);
 __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFTree___INIT____org_xmlvm_ios_CFAllocator_org_xmlvm_ios_Reference<CFTreeContext>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFTree___INIT____org_xmlvm_ios_CFAllocator_org_xmlvm_ios_Reference]
 XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
+    JAVA_OBJECT jObject2 = org_xmlvm_ios_Reference_get__(n2);
+    CFTreeContext var2= toCFTreeContext(jObject2);
     
     CFTree* objCObj = [[CFTree alloc] create:var1];
     org_xmlvm_ios_CFTree_INTERNAL_CONSTRUCTOR(me, objCObj);
@@ -49,7 +52,6 @@ XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFTree_getTypeID__]
 
-    
     long objCObj = CFHostGetTypeID();
     
     return objCObj;
@@ -70,7 +72,7 @@ XMLVM_NOT_IMPLEMENTED();
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFTree_getContext___org_xmlvm_ios_Reference<CFTreeContext>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFTree_getContext___org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
@@ -85,7 +87,7 @@ XMLVM_NOT_IMPLEMENTED();
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFTree_getChildren___org_xmlvm_ios_Reference<CFTree>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFTree_getChildren___org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
@@ -100,7 +102,7 @@ XMLVM_NOT_IMPLEMENTED();
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFTree_setContext___org_xmlvm_ios_Reference<CFTreeContext>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFTree_setContext___org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER

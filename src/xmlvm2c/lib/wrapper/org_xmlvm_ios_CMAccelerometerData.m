@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_CMAccelerometerData();
 }
 @end
+
 void org_xmlvm_ios_CMAccelerometerData_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_CMLogItem_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {

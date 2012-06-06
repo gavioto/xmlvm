@@ -89,4 +89,8 @@ public class NSException extends NSObject {
 	public void raise(){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

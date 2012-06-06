@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_NSCoder();
 }
 @end
+
 void org_xmlvm_ios_NSCoder_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -149,7 +150,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
     XMLVM_VAR_THIZ;
     
     NSData* objCObj = [thiz decodeDataObject];
-    if (!__TIB_org_xmlvm_ios_NSData.classInitialized) __INIT_org_xmlvm_ios_NSData();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -206,7 +206,7 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
     
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSCoder_encodeValuesOfObjCTypes___org_xmlvm_ios_byte[]...]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSCoder_encodeValuesOfObjCTypes__null]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
@@ -239,7 +239,7 @@ XMLVM_NOT_IMPLEMENTED();
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSCoder_decodeValuesOfObjCTypes___org_xmlvm_ios_byte[]...]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSCoder_decodeValuesOfObjCTypes__null]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER

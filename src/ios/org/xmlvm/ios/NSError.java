@@ -96,4 +96,8 @@ public class NSError extends NSObject {
 	public String helpAnchor(){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

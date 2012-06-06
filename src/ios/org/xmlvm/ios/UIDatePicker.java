@@ -157,4 +157,8 @@ public class UIDatePicker extends UIControl {
 	public void setDate(NSDate date, boolean animated){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

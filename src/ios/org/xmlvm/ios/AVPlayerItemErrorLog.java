@@ -42,4 +42,8 @@ public class AVPlayerItemErrorLog extends NSObject {
 	public int extendedLogDataStringEncoding(){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

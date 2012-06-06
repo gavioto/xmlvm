@@ -27,7 +27,6 @@ JAVA_OBJECT fromNSRange(NSRange obj)
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSRange_fromString___java_lang_String]
 NSString * ObjCVar1 = toNSString(n1);
     
-    
     NSRange objCObj = NSRangeFromString(ObjCVar1);
     
     [ObjCVar1 release];

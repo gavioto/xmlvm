@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_NSNumberFormatter();
 }
 @end
+
 void org_xmlvm_ios_NSNumberFormatter_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSFormatter_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -52,9 +53,21 @@ __DELETE_org_xmlvm_ios_NSFormatter(me, client_data);
     org_xmlvm_ios_NSNumberFormatter_INTERNAL_CONSTRUCTOR(me, objCObj);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSNumberFormatter_getObjectValue___Object_1ARRAY_java_lang_String_org_xmlvm_ios_Reference<NSRange>_org_xmlvm_ios_Reference<NSError>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSNumberFormatter_getObjectValue___Object_1ARRAY_java_lang_String_org_xmlvm_ios_Reference_org_xmlvm_ios_Reference]
 
-XMLVM_NOT_IMPLEMENTED();
+    XMLVM_VAR_THIZ;
+    XMLVM_VAR_OBJECT_ARRAY(a1, n1); 
+    NSString * ObjCVar2 = toNSString(n2);
+    JAVA_OBJECT jObject3 = org_xmlvm_ios_Reference_get__(n3);
+    NSRange var3= toNSRange(jObject3);
+    JAVA_OBJECT jObject4 = org_xmlvm_ios_Reference_get__(n4);
+    XMLVM_VAR_IOS(NSError, var4, jObject4);
+    
+    BOOL objCObj = [thiz  getObjectValue:a1->fields.org_xmlvm_runtime_XMLVMArray.array_ forString:ObjCVar2 range:&var3 error:&var4];
+    [ObjCVar2 release];
+
+
+    return objCObj;
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSNumberFormatter_stringFromNumber___org_xmlvm_ios_NSNumber]
@@ -74,7 +87,6 @@ XMLVM_NOT_IMPLEMENTED();
     NSNumber* objCObj = [thiz  numberFromString:ObjCVar1];
     [ObjCVar1 release];
 
-    if (!__TIB_org_xmlvm_ios_NSNumber.classInitialized) __INIT_org_xmlvm_ios_NSNumber();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -108,7 +120,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSLocale* objCObj = [thiz locale];
-    if (!__TIB_org_xmlvm_ios_NSLocale.classInitialized) __INIT_org_xmlvm_ios_NSLocale();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -768,7 +779,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSNumber* objCObj = [thiz multiplier];
-    if (!__TIB_org_xmlvm_ios_NSNumber.classInitialized) __INIT_org_xmlvm_ios_NSNumber();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -857,7 +867,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSNumber* objCObj = [thiz roundingIncrement];
-    if (!__TIB_org_xmlvm_ios_NSNumber.classInitialized) __INIT_org_xmlvm_ios_NSNumber();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -943,7 +952,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSNumber* objCObj = [thiz minimum];
-    if (!__TIB_org_xmlvm_ios_NSNumber.classInitialized) __INIT_org_xmlvm_ios_NSNumber();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -961,7 +969,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSNumber* objCObj = [thiz maximum];
-    if (!__TIB_org_xmlvm_ios_NSNumber.classInitialized) __INIT_org_xmlvm_ios_NSNumber();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -1158,7 +1165,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSAttributedString* objCObj = [thiz attributedStringForZero];
-    if (!__TIB_org_xmlvm_ios_NSAttributedString.classInitialized) __INIT_org_xmlvm_ios_NSAttributedString();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -1176,7 +1182,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSAttributedString* objCObj = [thiz attributedStringForNil];
-    if (!__TIB_org_xmlvm_ios_NSAttributedString.classInitialized) __INIT_org_xmlvm_ios_NSAttributedString();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -1194,7 +1199,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSAttributedString* objCObj = [thiz attributedStringForNotANumber];
-    if (!__TIB_org_xmlvm_ios_NSAttributedString.classInitialized) __INIT_org_xmlvm_ios_NSAttributedString();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -1212,7 +1216,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSDecimalNumberHandler* objCObj = [thiz roundingBehavior];
-    if (!__TIB_org_xmlvm_ios_NSDecimalNumberHandler.classInitialized) __INIT_org_xmlvm_ios_NSDecimalNumberHandler();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

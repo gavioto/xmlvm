@@ -36,4 +36,8 @@ public class NSDecimalNumberHandler extends NSObject {
 	public NSDecimalNumberHandler() {
 		super();
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

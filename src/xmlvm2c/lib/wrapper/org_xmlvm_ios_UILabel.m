@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_UILabel();
 }
 @end
+
 void org_xmlvm_ios_UILabel_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_UIView_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -84,8 +85,7 @@ __DELETE_org_xmlvm_ios_UIView(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UILabel_getFont__]
 
     XMLVM_VAR_THIZ;
-    UIFont* objCObj = [thiz font];    if (!__TIB_org_xmlvm_ios_UIFont.classInitialized) __INIT_org_xmlvm_ios_UIFont();
-
+    UIFont* objCObj = [thiz font];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -100,8 +100,7 @@ __DELETE_org_xmlvm_ios_UIView(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UILabel_getTextColor__]
 
     XMLVM_VAR_THIZ;
-    UIColor* objCObj = [thiz textColor];    if (!__TIB_org_xmlvm_ios_UIColor.classInitialized) __INIT_org_xmlvm_ios_UIColor();
-
+    UIColor* objCObj = [thiz textColor];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -116,8 +115,7 @@ __DELETE_org_xmlvm_ios_UIView(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UILabel_getShadowColor__]
 
     XMLVM_VAR_THIZ;
-    UIColor* objCObj = [thiz shadowColor];    if (!__TIB_org_xmlvm_ios_UIColor.classInitialized) __INIT_org_xmlvm_ios_UIColor();
-
+    UIColor* objCObj = [thiz shadowColor];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -177,8 +175,7 @@ __DELETE_org_xmlvm_ios_UIView(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UILabel_getHighlightedTextColor__]
 
     XMLVM_VAR_THIZ;
-    UIColor* objCObj = [thiz highlightedTextColor];    if (!__TIB_org_xmlvm_ios_UIColor.classInitialized) __INIT_org_xmlvm_ios_UIColor();
-
+    UIColor* objCObj = [thiz highlightedTextColor];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 

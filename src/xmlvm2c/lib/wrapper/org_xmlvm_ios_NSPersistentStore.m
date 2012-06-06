@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_NSPersistentStore();
 }
 @end
+
 void org_xmlvm_ios_NSPersistentStore_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -51,12 +52,12 @@ XMLVM_NOT_IMPLEMENTED();
     org_xmlvm_ios_NSPersistentStore_INTERNAL_CONSTRUCTOR(me, objCObj);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSPersistentStore_metadataForPersistentStoreWithURL___org_xmlvm_ios_NSURL_org_xmlvm_ios_Reference<NSError>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSPersistentStore_metadataForPersistentStoreWithURL___org_xmlvm_ios_NSURL_org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSPersistentStore_setMetadata___java_util_Map_org_xmlvm_ios_NSURL_org_xmlvm_ios_Reference<NSError>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSPersistentStore_setMetadata___java_util_Map_org_xmlvm_ios_NSURL_org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
@@ -68,9 +69,15 @@ XMLVM_NOT_IMPLEMENTED();
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSPersistentStore_loadMetadata___org_xmlvm_ios_Reference<NSError>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSPersistentStore_loadMetadata___org_xmlvm_ios_Reference]
 
-XMLVM_NOT_IMPLEMENTED();
+    XMLVM_VAR_THIZ;
+    JAVA_OBJECT jObject1 = org_xmlvm_ios_Reference_get__(n1);
+    XMLVM_VAR_IOS(NSError, var1, jObject1);
+    
+    BOOL objCObj = [thiz  loadMetadata:&var1];
+
+    return objCObj;
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSPersistentStore_ persistentStoreCoordinator__]
@@ -78,7 +85,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSPersistentStoreCoordinator* objCObj = [thiz  persistentStoreCoordinator];
-    if (!__TIB_org_xmlvm_ios_NSPersistentStoreCoordinator.classInitialized) __INIT_org_xmlvm_ios_NSPersistentStoreCoordinator();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -102,7 +108,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSURL* objCObj = [thiz URL];
-    if (!__TIB_org_xmlvm_ios_NSURL.classInitialized) __INIT_org_xmlvm_ios_NSURL();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

@@ -12,4 +12,8 @@ public class SKProductsRequestDelegate implements org.xmlvm.ios.SKProductsReques
 	/**
 	 * - (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response ;
 	 */
-	public void productsRequest(SKProductsRequest request, SKProductsResponse response){};}
+	public void productsRequest(SKProductsRequest request, SKProductsResponse response){};
+	/*
+	 * Interface Properties
+	 */
+}

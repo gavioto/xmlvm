@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_ABRecord();
 }
 @end
+
 void org_xmlvm_ios_ABRecord_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_CFType_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -60,12 +61,12 @@ XMLVM_NOT_IMPLEMENTED();
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_ABRecord_setValue___int_byte_1ARRAY_org_xmlvm_ios_Reference<CFError>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_ABRecord_setValue___int_byte_1ARRAY_org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_ABRecord_removeValue___int_org_xmlvm_ios_Reference<CFError>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_ABRecord_removeValue___int_org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER

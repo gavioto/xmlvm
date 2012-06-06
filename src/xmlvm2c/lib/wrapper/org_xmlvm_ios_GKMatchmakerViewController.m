@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_GKMatchmakerViewController();
 }
 @end
+
 void org_xmlvm_ios_GKMatchmakerViewController_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_UINavigationController_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -97,8 +98,11 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_GKMatchmakerViewController_setMatchmakerDelegate___org_xmlvm_ios_GKMatchmakerViewControllerDelegate]
 
     XMLVM_VAR_THIZ;
+    if(thiz.delegate != nil) [[thiz getDelegate] release];
     org_xmlvm_ios_GKMatchmakerViewControllerDelegate_Wrapper* jwrapper = __ALLOC_INIT_DELEGATE_WRAPPER_org_xmlvm_ios_GKMatchmakerViewControllerDelegate(n1);
     [jwrapper->nativeDelegateWrapper_ addSource: jthiz: thiz];
+    objc_setAssociatedObject(thiz, &key, jwrapper->nativeDelegateWrapper_, OBJC_ASSOCIATION_RETAIN);
+    [jwrapper->nativeDelegateWrapper_ release];
     [thiz setMatchmakerDelegate:jwrapper->nativeDelegateWrapper_];
 
     
@@ -107,8 +111,7 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_GKMatchmakerViewController_getMatchRequest__]
 
     XMLVM_VAR_THIZ;
-    GKMatchRequest* objCObj = [thiz matchRequest];    if (!__TIB_org_xmlvm_ios_GKMatchRequest.classInitialized) __INIT_org_xmlvm_ios_GKMatchRequest();
-
+    GKMatchRequest* objCObj = [thiz matchRequest];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 

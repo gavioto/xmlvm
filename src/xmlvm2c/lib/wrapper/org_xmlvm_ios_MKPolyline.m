@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_MKPolyline();
 }
 @end
+
 void org_xmlvm_ios_MKPolyline_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_MKMultiPoint_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -57,12 +58,34 @@ __DELETE_org_xmlvm_ios_MKMultiPoint(me, client_data);
     org_xmlvm_ios_MKPolyline_INTERNAL_CONSTRUCTOR(me, objCObj);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MKPolyline_polylineWithPoints___org_xmlvm_ios_Reference<MKMapPoint>_int]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MKPolyline_polylineWithPoints___org_xmlvm_ios_Reference_int]
+JAVA_OBJECT jObject1 = org_xmlvm_ios_Reference_get__(n1);
+    MKMapPoint var1= toMKMapPoint(jObject1);
+    
+    MKPolyline* objCObj =  [MKPolyline  polylineWithPoints:&var1 count:n2];
 
-XMLVM_NOT_IMPLEMENTED();
+    return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MKPolyline_polylineWithCoordinates___org_xmlvm_ios_Reference<CLLocationCoordinate2D>_int]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MKPolyline_polylineWithCoordinates___org_xmlvm_ios_Reference_int]
+JAVA_OBJECT jObject1 = org_xmlvm_ios_Reference_get__(n1);
+    CLLocationCoordinate2D var1= toCLLocationCoordinate2D(jObject1);
+    
+    MKPolyline* objCObj =  [MKPolyline  polylineWithCoordinates:&var1 count:n2];
 
-XMLVM_NOT_IMPLEMENTED();
+    return xmlvm_get_associated_c_object (objCObj);
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MKPolyline_getCoordinate__]
+
+    XMLVM_VAR_THIZ;
+    CLLocationCoordinate2D objCObj = [thiz coordinate];
+    return fromCLLocationCoordinate2D(objCObj);
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MKPolyline_getBoundingMapRect__]
+
+    XMLVM_VAR_THIZ;
+    MKMapRect objCObj = [thiz boundingMapRect];
+    return fromMKMapRect(objCObj);
 //XMLVM_END_WRAPPER

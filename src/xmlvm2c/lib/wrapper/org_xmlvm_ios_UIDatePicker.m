@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_UIDatePicker();
 }
 @end
+
 void org_xmlvm_ios_UIDatePicker_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_UIControl_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -86,8 +87,7 @@ __DELETE_org_xmlvm_ios_UIControl(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIDatePicker_getLocale__]
 
     XMLVM_VAR_THIZ;
-    NSLocale* objCObj = [thiz locale];    if (!__TIB_org_xmlvm_ios_NSLocale.classInitialized) __INIT_org_xmlvm_ios_NSLocale();
-
+    NSLocale* objCObj = [thiz locale];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -102,8 +102,7 @@ __DELETE_org_xmlvm_ios_UIControl(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIDatePicker_getTimeZone__]
 
     XMLVM_VAR_THIZ;
-    NSTimeZone* objCObj = [thiz timeZone];    if (!__TIB_org_xmlvm_ios_NSTimeZone.classInitialized) __INIT_org_xmlvm_ios_NSTimeZone();
-
+    NSTimeZone* objCObj = [thiz timeZone];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -118,8 +117,7 @@ __DELETE_org_xmlvm_ios_UIControl(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIDatePicker_getCalendar__]
 
     XMLVM_VAR_THIZ;
-    NSCalendar* objCObj = [thiz calendar];    if (!__TIB_org_xmlvm_ios_NSCalendar.classInitialized) __INIT_org_xmlvm_ios_NSCalendar();
-
+    NSCalendar* objCObj = [thiz calendar];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -134,8 +132,7 @@ __DELETE_org_xmlvm_ios_UIControl(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIDatePicker_getDate__]
 
     XMLVM_VAR_THIZ;
-    NSDate* objCObj = [thiz date];    if (!__TIB_org_xmlvm_ios_NSDate.classInitialized) __INIT_org_xmlvm_ios_NSDate();
-
+    NSDate* objCObj = [thiz date];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -150,8 +147,7 @@ __DELETE_org_xmlvm_ios_UIControl(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIDatePicker_getMinimumDate__]
 
     XMLVM_VAR_THIZ;
-    NSDate* objCObj = [thiz minimumDate];    if (!__TIB_org_xmlvm_ios_NSDate.classInitialized) __INIT_org_xmlvm_ios_NSDate();
-
+    NSDate* objCObj = [thiz minimumDate];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -166,8 +162,7 @@ __DELETE_org_xmlvm_ios_UIControl(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIDatePicker_getMaximumDate__]
 
     XMLVM_VAR_THIZ;
-    NSDate* objCObj = [thiz maximumDate];    if (!__TIB_org_xmlvm_ios_NSDate.classInitialized) __INIT_org_xmlvm_ios_NSDate();
-
+    NSDate* objCObj = [thiz maximumDate];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 

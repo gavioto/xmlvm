@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_CATextLayer();
 }
 @end
+
 void org_xmlvm_ios_CATextLayer_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_CALayer_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -105,8 +106,8 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CATextLayer_getForegroundColor__]
 
     XMLVM_VAR_THIZ;
-    CGColorRef objCObj = [thiz foregroundColor];XMLVM_VAR_INIT_REF(CGColor, objCObj);
-    return jvar;
+    CGColorRef objCObj = [thiz foregroundColor];XMLVM_VAR_INIT_REF(CGColor, refVar, objCObj);
+    return refVar;
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CATextLayer_setForegroundColor___org_xmlvm_ios_CGColor]

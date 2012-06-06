@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_AVSynchronizedLayer();
 }
 @end
+
 void org_xmlvm_ios_AVSynchronizedLayer_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_CALayer_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -61,7 +62,6 @@ __DELETE_org_xmlvm_ios_CALayer(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVSynchronizedLayer_synchronizedLayerWithPlayerItem___org_xmlvm_ios_AVPlayerItem]
 
     AVSynchronizedLayer* objCObj =  [AVSynchronizedLayer  synchronizedLayerWithPlayerItem:(AVPlayerItem*) (((org_xmlvm_ios_AVPlayerItem*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj)];
-    if (!__TIB_org_xmlvm_ios_AVSynchronizedLayer.classInitialized) __INIT_org_xmlvm_ios_AVSynchronizedLayer();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -69,8 +69,7 @@ __DELETE_org_xmlvm_ios_CALayer(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVSynchronizedLayer_getPlayerItem__]
 
     XMLVM_VAR_THIZ;
-    AVPlayerItem* objCObj = [thiz playerItem];    if (!__TIB_org_xmlvm_ios_AVPlayerItem.classInitialized) __INIT_org_xmlvm_ios_AVPlayerItem();
-
+    AVPlayerItem* objCObj = [thiz playerItem];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 

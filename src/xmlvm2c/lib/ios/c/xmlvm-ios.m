@@ -239,6 +239,36 @@ JAVA_OBJECT fromNSSet(NSSet* objCObj)
     return jvar;
 }
 
+JAVA_OBJECT fromNSDictionary(NSDictionary* ObjCDict)
+{
+    JAVA_OBJECT map = XMLVMUtil_NEW_HashMap();
+    NSEnumerator* enumerator = [ObjCDict keyEnumerator];
+    id key;
+    while ((key = [enumerator nextObject])) {
+        id value = [ObjCDict objectForKey:key];
+        JAVA_OBJECT key_ = xmlvm_get_associated_c_object((NSObject*)key);
+        JAVA_OBJECT value_ = xmlvm_get_associated_c_object((NSObject*)value);
+        XMLVMUtil_HashMap_put(map, key_, value_);
+    }
+    return map;
+}
+
+NSDictionary* toNSDictionary(JAVA_OBJECT jobj)
+{
+	NSDictionary* ObjCVar = [[NSDictionary alloc] init];
+    JAVA_OBJECT entrySet = XMLVMUtil_HashMap_entrySet(jobj);
+	JAVA_OBJECT iterator = XMLVMUtil_HashSet_iterator(entrySet);
+    while(XMLVMUtil_Iterator_hasNext(iterator)) {
+        JAVA_OBJECT mapEntry = XMLVMUtil_Iterator_next(iterator);
+	   org_xmlvm_ios_NSObject* key_ = XMLVMUtil_MapEntry_getKey(mapEntry);
+	   org_xmlvm_ios_NSObject* value_ = XMLVMUtil_MapEntry_getValue(mapEntry);
+        NSObject* ObjCKey = key_->fields.org_xmlvm_ios_NSObject.wrappedObj;
+        NSObject* ObjCValue = value_->fields.org_xmlvm_ios_NSObject.wrappedObj;
+        [ObjCVar setObject:ObjCValue forKey:ObjCKey];
+    }
+    return ObjCVar;	
+}
+
 JAVA_OBJECT fromid(id objCObj)
 {
     return xmlvm_get_associated_c_object(objCObj);

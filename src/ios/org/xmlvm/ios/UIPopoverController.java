@@ -26,14 +26,14 @@ public class UIPopoverController extends NSObject {
 	/**
 	 * @property(nonatomic, assign) id <UIPopoverControllerDelegate> delegate;
 	 */
-	public org.xmlvm.ios.UIPopoverControllerDelegate getDelegate(){
+	public UIPopoverControllerDelegate getDelegate(){
 		throw new RuntimeException("Stub");
 	}
 
 	/**
 	 * @property(nonatomic, assign) id <UIPopoverControllerDelegate> delegate;
 	 */
-	public void setDelegate(org.xmlvm.ios.UIPopoverControllerDelegate delegate){
+	public void setDelegate(UIPopoverControllerDelegate arg0){
 		throw new RuntimeException("Stub");
 	}
 

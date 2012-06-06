@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_EKEventViewController();
 }
 @end
+
 void org_xmlvm_ios_EKEventViewController_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_UIViewController_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -74,8 +75,11 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_EKEventViewController_setDelegate___org_xmlvm_ios_EKEventViewDelegate]
 
     XMLVM_VAR_THIZ;
+    if(thiz.delegate != nil) [[thiz getDelegate] release];
     org_xmlvm_ios_EKEventViewDelegate_Wrapper* jwrapper = __ALLOC_INIT_DELEGATE_WRAPPER_org_xmlvm_ios_EKEventViewDelegate(n1);
     [jwrapper->nativeDelegateWrapper_ addSource: jthiz: thiz];
+    objc_setAssociatedObject(thiz, &key, jwrapper->nativeDelegateWrapper_, OBJC_ASSOCIATION_RETAIN);
+    [jwrapper->nativeDelegateWrapper_ release];
     [thiz setDelegate:jwrapper->nativeDelegateWrapper_];
 
     
@@ -84,8 +88,7 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_EKEventViewController_getEvent__]
 
     XMLVM_VAR_THIZ;
-    EKEvent* objCObj = [thiz event];    if (!__TIB_org_xmlvm_ios_EKEvent.classInitialized) __INIT_org_xmlvm_ios_EKEvent();
-
+    EKEvent* objCObj = [thiz event];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 

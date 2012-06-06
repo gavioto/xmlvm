@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_AVCompositionTrackSegment();
 }
 @end
+
 void org_xmlvm_ios_AVCompositionTrackSegment_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_AVAssetTrackSegment_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -67,7 +68,6 @@ __DELETE_org_xmlvm_ios_AVAssetTrackSegment(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVCompositionTrackSegment_compositionTrackSegmentWithURL___org_xmlvm_ios_NSURL_int_org_xmlvm_ios_CMTimeRange_org_xmlvm_ios_CMTimeRange]
 
     AVCompositionTrackSegment* objCObj =  [AVCompositionTrackSegment  compositionTrackSegmentWithURL:(NSURL*) (((org_xmlvm_ios_NSURL*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj) trackID:n2 sourceTimeRange:toCMTimeRange(n3) targetTimeRange:toCMTimeRange(n4)];
-    if (!__TIB_org_xmlvm_ios_AVCompositionTrackSegment.classInitialized) __INIT_org_xmlvm_ios_AVCompositionTrackSegment();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -75,7 +75,6 @@ __DELETE_org_xmlvm_ios_AVAssetTrackSegment(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVCompositionTrackSegment_compositionTrackSegmentWithTimeRange___org_xmlvm_ios_CMTimeRange]
 
     AVCompositionTrackSegment* objCObj =  [AVCompositionTrackSegment  compositionTrackSegmentWithTimeRange:toCMTimeRange(n1)];
-    if (!__TIB_org_xmlvm_ios_AVCompositionTrackSegment.classInitialized) __INIT_org_xmlvm_ios_AVCompositionTrackSegment();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -90,8 +89,7 @@ __DELETE_org_xmlvm_ios_AVAssetTrackSegment(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVCompositionTrackSegment_getSourceURL__]
 
     XMLVM_VAR_THIZ;
-    NSURL* objCObj = [thiz sourceURL];    if (!__TIB_org_xmlvm_ios_NSURL.classInitialized) __INIT_org_xmlvm_ios_NSURL();
-
+    NSURL* objCObj = [thiz sourceURL];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 

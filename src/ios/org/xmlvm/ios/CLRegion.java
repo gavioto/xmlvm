@@ -54,4 +54,8 @@ public class CLRegion extends NSObject {
 	public boolean containsCoordinate(CLLocationCoordinate2D coordinate){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

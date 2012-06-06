@@ -66,4 +66,8 @@ public class NSMutableCharacterSet extends NSCharacterSet {
 	public void invert(){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

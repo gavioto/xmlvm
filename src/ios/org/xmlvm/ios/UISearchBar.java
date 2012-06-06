@@ -38,14 +38,14 @@ public class UISearchBar extends UIView {
 	/**
 	 * @property(nonatomic,assign) id<UISearchBarDelegate> delegate;
 	 */
-	public org.xmlvm.ios.UISearchBarDelegate getDelegate(){
+	public UISearchBarDelegate getDelegate(){
 		throw new RuntimeException("Stub");
 	}
 
 	/**
 	 * @property(nonatomic,assign) id<UISearchBarDelegate> delegate;
 	 */
-	public void setDelegate(org.xmlvm.ios.UISearchBarDelegate delegate){
+	public void setDelegate(UISearchBarDelegate arg0){
 		throw new RuntimeException("Stub");
 	}
 

@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_NSNotification();
 }
 @end
+
 void org_xmlvm_ios_NSNotification_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -76,7 +77,6 @@ NSString * ObjCVar1 = toNSString(n1);
     NSNotification* objCObj =  [NSNotification  notificationWithName:ObjCVar1 object:((org_xmlvm_ios_NSObject*) n2)->fields.org_xmlvm_ios_NSObject.wrappedObj];
     [ObjCVar1 release];
 
-    if (!__TIB_org_xmlvm_ios_NSNotification.classInitialized) __INIT_org_xmlvm_ios_NSNotification();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

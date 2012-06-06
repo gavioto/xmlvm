@@ -34,7 +34,6 @@ JAVA_OBJECT fromCFGregorianDate(CFGregorianDate obj)
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFGregorianDate_isValid___long]
 
-    
     Byte objCObj = CFGregorianDateIsValid(toCFGregorianDate(me),n1);
     
     return objCObj;
@@ -42,7 +41,6 @@ JAVA_OBJECT fromCFGregorianDate(CFGregorianDate obj)
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFGregorianDate_getAbsoluteTime___org_xmlvm_ios_NSTimeZone]
 
-    
     double objCObj = CFGregorianDateGetAbsoluteTime(toCFGregorianDate(me),(NSTimeZone*) (((org_xmlvm_ios_NSTimeZone*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj));
     
     return objCObj;

@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_UITouch();
 }
 @end
+
 void org_xmlvm_ios_UITouch_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -71,16 +72,14 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UITouch_getWindow__]
 
     XMLVM_VAR_THIZ;
-    UIWindow* objCObj = [thiz window];    if (!__TIB_org_xmlvm_ios_UIWindow.classInitialized) __INIT_org_xmlvm_ios_UIWindow();
-
+    UIWindow* objCObj = [thiz window];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UITouch_getView__]
 
     XMLVM_VAR_THIZ;
-    UIView* objCObj = [thiz view];    if (!__TIB_org_xmlvm_ios_UIView.classInitialized) __INIT_org_xmlvm_ios_UIView();
-
+    UIView* objCObj = [thiz view];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 

@@ -38,14 +38,14 @@ public class UISplitViewController extends UIViewController {
 	/**
 	 * @property(nonatomic, assign) id <UISplitViewControllerDelegate> delegate;
 	 */
-	public org.xmlvm.ios.UISplitViewControllerDelegate getDelegate(){
+	public UISplitViewControllerDelegate getDelegate(){
 		throw new RuntimeException("Stub");
 	}
 
 	/**
 	 * @property(nonatomic, assign) id <UISplitViewControllerDelegate> delegate;
 	 */
-	public void setDelegate(org.xmlvm.ios.UISplitViewControllerDelegate delegate){
+	public void setDelegate(UISplitViewControllerDelegate arg0){
 		throw new RuntimeException("Stub");
 	}
 }

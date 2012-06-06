@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_CFNumberFormatter();
 }
 @end
+
 void org_xmlvm_ios_CFNumberFormatter_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -49,7 +50,6 @@ XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFNumberFormatter_getTypeID__]
 
-    
     long objCObj = CFHostGetTypeID();
     
     return objCObj;
@@ -78,7 +78,6 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFNumberFormatter_createStringWithNumber___org_xmlvm_ios_CFAllocator_org_xmlvm_ios_CFNumberFormatter_org_xmlvm_ios_NSNumber]
 XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
     
-    
     NSString* objCObj = CFNumberFormatterCreateStringWithNumber(var1,(CFNumberFormatter*) (((org_xmlvm_ios_CFNumberFormatter*) n2)->fields.org_xmlvm_ios_NSObject.wrappedObj),(NSNumber*) (((org_xmlvm_ios_NSNumber*) n3)->fields.org_xmlvm_ios_NSObject.wrappedObj));
     
     return fromNSString(objCObj);
@@ -88,18 +87,26 @@ XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
 XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
     XMLVM_VAR_BYTE_ARRAY(a4, n4); 
     
-    
     NSString* objCObj = CFNumberFormatterCreateStringWithValue(var1,(CFNumberFormatter*) (((org_xmlvm_ios_CFNumberFormatter*) n2)->fields.org_xmlvm_ios_NSObject.wrappedObj),n3,a4->fields.org_xmlvm_runtime_XMLVMArray.array_);
     
     return fromNSString(objCObj);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFNumberFormatter_createNumberFromString___org_xmlvm_ios_CFAllocator_org_xmlvm_ios_CFNumberFormatter_java_lang_String_org_xmlvm_ios_Reference<CFRange>_long]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFNumberFormatter_createNumberFromString___org_xmlvm_ios_CFAllocator_org_xmlvm_ios_CFNumberFormatter_java_lang_String_org_xmlvm_ios_Reference_long]
+XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
+    NSString * ObjCVar3 = toNSString(n3);
+    JAVA_OBJECT jObject4 = org_xmlvm_ios_Reference_get__(n4);
+    CFRange var4= toCFRange(jObject4);
+    
+    NSNumber* objCObj = CFNumberFormatterCreateNumberFromString(var1,(CFNumberFormatter*) (((org_xmlvm_ios_CFNumberFormatter*) n2)->fields.org_xmlvm_ios_NSObject.wrappedObj),ObjCVar3,&var4,n5);
+    org_xmlvm_ios_Reference_set___java_lang_Object(n4, fromCFRange(var4));
+    
+    [ObjCVar3 release];
 
-XMLVM_NOT_IMPLEMENTED();
+    return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFNumberFormatter_getValueFromString___java_lang_String_org_xmlvm_ios_Reference<CFRange>_long_byte_1ARRAY]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFNumberFormatter_getValueFromString___java_lang_String_org_xmlvm_ios_Reference_long_byte_1ARRAY]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
@@ -115,10 +122,9 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFNumberFormatter_getDecimalInfoForCurrencyCode___java_lang_String_int_1ARRAY_double_1ARRAY]
-XMLVM_VAR_INT_ARRAY(a2, n2); 
+NSString * ObjCVar1 = toNSString(n1);
+    XMLVM_VAR_INT_ARRAY(a2, n2); 
     XMLVM_VAR_DOUBLE_ARRAY(a3, n3); 
-    NSString * ObjCVar1 = toNSString(n1);
-    
     
     Byte objCObj = CFNumberFormatterGetDecimalInfoForCurrencyCode(ObjCVar1,a2->fields.org_xmlvm_runtime_XMLVMArray.array_,a3->fields.org_xmlvm_runtime_XMLVMArray.array_);
     

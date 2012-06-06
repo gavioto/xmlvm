@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_UISearchDisplayController();
 }
 @end
+
 void org_xmlvm_ios_UISearchDisplayController_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -61,8 +62,11 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UISearchDisplayController_setDelegate___org_xmlvm_ios_UISearchDisplayDelegate]
 
     XMLVM_VAR_THIZ;
+    if(thiz.delegate != nil) [[thiz getDelegate] release];
     org_xmlvm_ios_UISearchDisplayDelegate_Wrapper* jwrapper = __ALLOC_INIT_DELEGATE_WRAPPER_org_xmlvm_ios_UISearchDisplayDelegate(n1);
     [jwrapper->nativeDelegateWrapper_ addSource: jthiz: thiz];
+    objc_setAssociatedObject(thiz, &key, jwrapper->nativeDelegateWrapper_, OBJC_ASSOCIATION_RETAIN);
+    [jwrapper->nativeDelegateWrapper_ release];
     [thiz setDelegate:jwrapper->nativeDelegateWrapper_];
 
     
@@ -94,24 +98,21 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UISearchDisplayController_getSearchBar__]
 
     XMLVM_VAR_THIZ;
-    UISearchBar* objCObj = [thiz searchBar];    if (!__TIB_org_xmlvm_ios_UISearchBar.classInitialized) __INIT_org_xmlvm_ios_UISearchBar();
-
+    UISearchBar* objCObj = [thiz searchBar];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UISearchDisplayController_getSearchContentsController__]
 
     XMLVM_VAR_THIZ;
-    UIViewController* objCObj = [thiz searchContentsController];    if (!__TIB_org_xmlvm_ios_UIViewController.classInitialized) __INIT_org_xmlvm_ios_UIViewController();
-
+    UIViewController* objCObj = [thiz searchContentsController];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UISearchDisplayController_getSearchResultsTableView__]
 
     XMLVM_VAR_THIZ;
-    UITableView* objCObj = [thiz searchResultsTableView];    if (!__TIB_org_xmlvm_ios_UITableView.classInitialized) __INIT_org_xmlvm_ios_UITableView();
-
+    UITableView* objCObj = [thiz searchResultsTableView];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -123,8 +124,11 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UISearchDisplayController_setSearchResultsDataSource___org_xmlvm_ios_UITableViewDataSource]
 
     XMLVM_VAR_THIZ;
+    if(thiz.delegate != nil) [[thiz getDelegate] release];
     org_xmlvm_ios_UITableViewDataSource_Wrapper* jwrapper = __ALLOC_INIT_DELEGATE_WRAPPER_org_xmlvm_ios_UITableViewDataSource(n1);
     [jwrapper->nativeDelegateWrapper_ addSource: jthiz: thiz];
+    objc_setAssociatedObject(thiz, &key, jwrapper->nativeDelegateWrapper_, OBJC_ASSOCIATION_RETAIN);
+    [jwrapper->nativeDelegateWrapper_ release];
     [thiz setSearchResultsDataSource:jwrapper->nativeDelegateWrapper_];
 
     
@@ -138,8 +142,11 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UISearchDisplayController_setSearchResultsDelegate___org_xmlvm_ios_UITableViewDelegate]
 
     XMLVM_VAR_THIZ;
+    if(thiz.delegate != nil) [[thiz getDelegate] release];
     org_xmlvm_ios_UITableViewDelegate_Wrapper* jwrapper = __ALLOC_INIT_DELEGATE_WRAPPER_org_xmlvm_ios_UITableViewDelegate(n1);
     [jwrapper->nativeDelegateWrapper_ addSource: jthiz: thiz];
+    objc_setAssociatedObject(thiz, &key, jwrapper->nativeDelegateWrapper_, OBJC_ASSOCIATION_RETAIN);
+    [jwrapper->nativeDelegateWrapper_ release];
     [thiz setSearchResultsDelegate:jwrapper->nativeDelegateWrapper_];
 
     

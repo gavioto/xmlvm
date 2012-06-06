@@ -106,4 +106,8 @@ public class CLLocation extends NSObject {
 	public double distanceFromLocation(CLLocation location){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

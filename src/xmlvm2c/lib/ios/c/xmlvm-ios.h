@@ -91,9 +91,9 @@ org_xmlvm_ios_Reference_set___java_lang_Object(jObj, xmlvm_get_associated_c_obje
 org_xmlvm_ios_##clazz* j##var = arg; \
 clazz##Ref var = (arg == JAVA_NULL) ? nil : (clazz##Ref) (j##var->fields.org_xmlvm_ios_CFType.wrappedObj);
 
-#define XMLVM_VAR_INIT_REF(clazz, arg) \
-org_xmlvm_ios_##clazz* jvar = __NEW_org_xmlvm_ios_##clazz(); \
-org_xmlvm_ios_CFType_INTERNAL_CONSTRUCTOR(jvar, objCObj); \
+#define XMLVM_VAR_INIT_REF(clazz, var, arg) \
+org_xmlvm_ios_##clazz* var = __NEW_org_xmlvm_ios_##clazz(); \
+org_xmlvm_ios_CFType_INTERNAL_CONSTRUCTOR(var, objCObj); \
 //clazz##Retain(jvar->fields.org_xmlvm_ios_CFType.wrappedObj);
         
 typedef JAVA_OBJECT (*Func_ONSObject)(NSObject* obj);
@@ -157,6 +157,11 @@ JAVA_INT var##Length = var->fields.org_xmlvm_runtime_XMLVMArray.length_;
 #define XMLVM_VAR_BOOLEAN_ARRAY(var, arg) \
 org_xmlvm_runtime_XMLVMArray* var = arg; \
 JAVA_ARRAY_BOOLEAN* var##Data = (JAVA_ARRAY_BOOLEAN*) var->fields.org_xmlvm_runtime_XMLVMArray.array_; \
+JAVA_INT var##Length = var->fields.org_xmlvm_runtime_XMLVMArray.length_;
+
+#define XMLVM_VAR_DOUBLE_ARRAY(var, arg) \
+org_xmlvm_runtime_XMLVMArray* var = arg; \
+JAVA_ARRAY_DOUBLE* var##Data = (JAVA_ARRAY_DOUBLE*) var->fields.org_xmlvm_runtime_XMLVMArray.array_; \
 JAVA_INT var##Length = var->fields.org_xmlvm_runtime_XMLVMArray.length_;
 
 @interface DelegateWrapper : NSObject {

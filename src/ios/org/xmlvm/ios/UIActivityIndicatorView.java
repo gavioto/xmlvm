@@ -78,4 +78,8 @@ public class UIActivityIndicatorView extends UIView {
 	public boolean isAnimating(){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

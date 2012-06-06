@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_NSSocketPort();
 }
 @end
+
 void org_xmlvm_ios_NSSocketPort_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSPort_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -120,7 +121,6 @@ NSString * ObjCVar2 = toNSString(n2);
     XMLVM_VAR_THIZ;
     
     NSData* objCObj = [thiz address];
-    if (!__TIB_org_xmlvm_ios_NSData.classInitialized) __INIT_org_xmlvm_ios_NSData();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

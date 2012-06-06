@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_CFHost();
 }
 @end
+
 void org_xmlvm_ios_CFHost_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -42,7 +43,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFHost_getTypeID__]
 
-    
     long objCObj = CFHostGetTypeID();
     
     return objCObj;
@@ -52,11 +52,9 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
     NSString * ObjCVar2 = toNSString(n2);
     
-    
     CFHost* objCObj = CFHostCreateWithName(var1,ObjCVar2);
     
     [ObjCVar2 release];
-    if (!__TIB_org_xmlvm_ios_CFHost.classInitialized) __INIT_org_xmlvm_ios_CFHost();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -69,14 +67,12 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFHost_createCopy___org_xmlvm_ios_CFAllocator_org_xmlvm_ios_CFHost]
 XMLVM_VAR_IOS_REF(CFAllocator, var1, n1);
     
-    
     CFHost* objCObj = CFHostCreateCopy(var1,(CFHost*) (((org_xmlvm_ios_CFHost*) n2)->fields.org_xmlvm_ios_NSObject.wrappedObj));
-        if (!__TIB_org_xmlvm_ios_CFHost.classInitialized) __INIT_org_xmlvm_ios_CFHost();
-
+    
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFHost_startInfoResolution___int_org_xmlvm_ios_Reference<CFStreamError>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFHost_startInfoResolution___int_org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
@@ -101,7 +97,7 @@ XMLVM_NOT_IMPLEMENTED();
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFHost_setClient___java_lang_Object_org_xmlvm_ios_Reference<CFHostClientContext>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFHost_setClient___java_lang_Object_org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER

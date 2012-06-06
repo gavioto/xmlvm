@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_CTFont();
 }
 @end
+
 void org_xmlvm_ios_CTFont_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -42,55 +43,78 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTFont_getTypeID__]
 
-    
     long objCObj = CFHostGetTypeID();
     
     return objCObj;
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTFont_createWithName___java_lang_String_float_org_xmlvm_ios_Reference<CGAffineTransform>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTFont_createWithName___java_lang_String_float_org_xmlvm_ios_Reference]
+NSString * ObjCVar1 = toNSString(n1);
+    JAVA_OBJECT jObject3 = org_xmlvm_ios_Reference_get__(n3);
+    CGAffineTransform var3= toCGAffineTransform(jObject3);
+    
+    CTFont* objCObj = CFHostCreateWithName(ObjCVar1,n2,&var3);
+    org_xmlvm_ios_Reference_set___java_lang_Object(n3, fromCGAffineTransform(var3));
+    
+    [ObjCVar1 release];
 
-XMLVM_NOT_IMPLEMENTED();
+    return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTFont_createWithFontDescriptor___org_xmlvm_ios_CTFontDescriptor_float_org_xmlvm_ios_Reference<CGAffineTransform>]
-
-XMLVM_NOT_IMPLEMENTED();
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTFont_createWithFontDescriptor___org_xmlvm_ios_CTFontDescriptor_float_org_xmlvm_ios_Reference]
+JAVA_OBJECT jObject3 = org_xmlvm_ios_Reference_get__(n3);
+    CGAffineTransform var3= toCGAffineTransform(jObject3);
+    
+    CTFont* objCObj = CTFontCreateWithFontDescriptor((CTFontDescriptor*) (((org_xmlvm_ios_CTFontDescriptor*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj),n2,&var3);
+    org_xmlvm_ios_Reference_set___java_lang_Object(n3, fromCGAffineTransform(var3));
+    
+    return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTFont_createWithNameAndOptions___java_lang_String_float_org_xmlvm_ios_Reference<CGAffineTransform>_long]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTFont_createWithNameAndOptions___java_lang_String_float_org_xmlvm_ios_Reference_long]
+NSString * ObjCVar1 = toNSString(n1);
+    JAVA_OBJECT jObject3 = org_xmlvm_ios_Reference_get__(n3);
+    CGAffineTransform var3= toCGAffineTransform(jObject3);
+    
+    CTFont* objCObj = CTFontCreateWithNameAndOptions(ObjCVar1,n2,&var3,n4);
+    org_xmlvm_ios_Reference_set___java_lang_Object(n3, fromCGAffineTransform(var3));
+    
+    [ObjCVar1 release];
 
-XMLVM_NOT_IMPLEMENTED();
+    return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTFont_createWithFontDescriptorAndOptions___org_xmlvm_ios_CTFontDescriptor_float_org_xmlvm_ios_Reference<CGAffineTransform>_long]
-
-XMLVM_NOT_IMPLEMENTED();
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTFont_createWithFontDescriptorAndOptions___org_xmlvm_ios_CTFontDescriptor_float_org_xmlvm_ios_Reference_long]
+JAVA_OBJECT jObject3 = org_xmlvm_ios_Reference_get__(n3);
+    CGAffineTransform var3= toCGAffineTransform(jObject3);
+    
+    CTFont* objCObj = CTFontCreateWithFontDescriptorAndOptions((CTFontDescriptor*) (((org_xmlvm_ios_CTFontDescriptor*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj),n2,&var3,n4);
+    org_xmlvm_ios_Reference_set___java_lang_Object(n3, fromCGAffineTransform(var3));
+    
+    return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTFont_createUIFontForLanguage___int_float_java_lang_String]
 NSString * ObjCVar3 = toNSString(n3);
     
-    
     CTFont* objCObj = CTFontCreateUIFontForLanguage(n1,n2,ObjCVar3);
     
     [ObjCVar3 release];
-    if (!__TIB_org_xmlvm_ios_CTFont.classInitialized) __INIT_org_xmlvm_ios_CTFont();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTFont_createCopyWithAttributes___float_org_xmlvm_ios_Reference<CGAffineTransform>_org_xmlvm_ios_CTFontDescriptor]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTFont_createCopyWithAttributes___float_org_xmlvm_ios_Reference_org_xmlvm_ios_CTFontDescriptor]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTFont_createCopyWithSymbolicTraits___float_org_xmlvm_ios_Reference<CGAffineTransform>_int_int]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTFont_createCopyWithSymbolicTraits___float_org_xmlvm_ios_Reference_int_int]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTFont_createCopyWithFamily___float_org_xmlvm_ios_Reference<CGAffineTransform>_java_lang_String]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTFont_createCopyWithFamily___float_org_xmlvm_ios_Reference_java_lang_String]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
@@ -240,22 +264,22 @@ XMLVM_NOT_IMPLEMENTED();
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTFont_getBoundingRectsForGlyphs___int_short_1ARRAY_org_xmlvm_ios_Reference<CGRect>_long]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTFont_getBoundingRectsForGlyphs___int_short_1ARRAY_org_xmlvm_ios_Reference_long]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTFont_getAdvancesForGlyphs___int_short_1ARRAY_org_xmlvm_ios_Reference<CGSize>_long]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTFont_getAdvancesForGlyphs___int_short_1ARRAY_org_xmlvm_ios_Reference_long]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTFont_getVerticalTranslationsForGlyphs___short_1ARRAY_org_xmlvm_ios_Reference<CGSize>_long]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTFont_getVerticalTranslationsForGlyphs___short_1ARRAY_org_xmlvm_ios_Reference_long]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTFont_createPathForGlyph___short_org_xmlvm_ios_Reference<CGAffineTransform>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTFont_createPathForGlyph___short_org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
@@ -280,33 +304,42 @@ XMLVM_NOT_IMPLEMENTED();
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTFont_copyGraphicsFont___org_xmlvm_ios_Reference<CTFontDescriptor>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTFont_copyGraphicsFont___org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTFont_createWithGraphicsFont___org_xmlvm_ios_CGFont_float_org_xmlvm_ios_Reference<CGAffineTransform>_org_xmlvm_ios_CTFontDescriptor]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTFont_createWithGraphicsFont___org_xmlvm_ios_CGFont_float_org_xmlvm_ios_Reference_org_xmlvm_ios_CTFontDescriptor]
+XMLVM_VAR_IOS_REF(CGFont, var1, n1);
+    JAVA_OBJECT jObject3 = org_xmlvm_ios_Reference_get__(n3);
+    CGAffineTransform var3= toCGAffineTransform(jObject3);
+    
+    CTFont* objCObj = CTFontCreateWithGraphicsFont(var1,n2,&var3,(CTFontDescriptor*) (((org_xmlvm_ios_CTFontDescriptor*) n4)->fields.org_xmlvm_ios_NSObject.wrappedObj));
+    org_xmlvm_ios_Reference_set___java_lang_Object(n3, fromCGAffineTransform(var3));
+    
+    return xmlvm_get_associated_c_object (objCObj);
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTFont_getPlatformFont___org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTFont_getPlatformFont___org_xmlvm_ios_Reference<CTFontDescriptor>]
-
-XMLVM_NOT_IMPLEMENTED();
-//XMLVM_END_WRAPPER
-
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTFont_createWithPlatformFont___org_xmlvm_ios_ATSFont_float_org_xmlvm_ios_Reference<CGAffineTransform>_org_xmlvm_ios_CTFontDescriptor]
-
-XMLVM_NOT_IMPLEMENTED();
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTFont_createWithPlatformFont___org_xmlvm_ios_ATSFont_float_org_xmlvm_ios_Reference_org_xmlvm_ios_CTFontDescriptor]
+JAVA_OBJECT jObject3 = org_xmlvm_ios_Reference_get__(n3);
+    CGAffineTransform var3= toCGAffineTransform(jObject3);
+    
+    CTFont* objCObj = CGFontCreateWithPlatformFont((ATSFont*) (((org_xmlvm_ios_ATSFont*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj),n2,&var3,(CTFontDescriptor*) (((org_xmlvm_ios_CTFontDescriptor*) n4)->fields.org_xmlvm_ios_NSObject.wrappedObj));
+    org_xmlvm_ios_Reference_set___java_lang_Object(n3, fromCGAffineTransform(var3));
+    
+    return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTFont_createWithQuickdrawInstance___byte_1ARRAY_short_byte_float]
 XMLVM_VAR_BYTE_ARRAY(a1, n1); 
     
-    
     CTFont* objCObj = CTFontCreateWithQuickdrawInstance(a1->fields.org_xmlvm_runtime_XMLVMArray.array_,n2,n3,n4);
-        if (!__TIB_org_xmlvm_ios_CTFont.classInitialized) __INIT_org_xmlvm_ios_CTFont();
-
+    
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -320,7 +353,7 @@ XMLVM_NOT_IMPLEMENTED();
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTFont_drawGlyphs___short_1ARRAY_org_xmlvm_ios_Reference<CGPoint>_int_org_xmlvm_ios_CGContext]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTFont_drawGlyphs___short_1ARRAY_org_xmlvm_ios_Reference_int_org_xmlvm_ios_CGContext]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
@@ -350,7 +383,6 @@ XMLVM_VAR_BYTE_ARRAY(a1, n1);
     XMLVM_VAR_BYTE_ARRAY(a2, n2); 
     XMLVM_VAR_BYTE_ARRAY(a3, n3); 
     
-    
     long objCObj = CTFontManagerCompareFontFamilyNames(a1->fields.org_xmlvm_runtime_XMLVMArray.array_,a2->fields.org_xmlvm_runtime_XMLVMArray.array_,a3->fields.org_xmlvm_runtime_XMLVMArray.array_);
     
     return objCObj;
@@ -361,32 +393,60 @@ XMLVM_VAR_BYTE_ARRAY(a1, n1);
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTFont_managerRegisterFontsForURL___org_xmlvm_ios_CFURL_int_org_xmlvm_ios_Reference<CFError>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTFont_managerRegisterFontsForURL___org_xmlvm_ios_CFURL_int_org_xmlvm_ios_Reference]
+XMLVM_VAR_IOS_REF(CFURL, var1, n1);
+    JAVA_OBJECT jObject3 = org_xmlvm_ios_Reference_get__(n3);
+    XMLVM_VAR_IOS_REF(CFError, var3, jObject3);
+    
+    BOOL objCObj = CTFontManagerRegisterFontsForURL(var1,n2,&var3);
+    XMLVM_VAR_INIT_REF(CFError,refVar3, var3);
+    org_xmlvm_ios_Reference_set___java_lang_Object(n3, refVar3);
+    
+    return objCObj;
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTFont_managerUnregisterFontsForURL___org_xmlvm_ios_CFURL_int_org_xmlvm_ios_Reference]
+XMLVM_VAR_IOS_REF(CFURL, var1, n1);
+    JAVA_OBJECT jObject3 = org_xmlvm_ios_Reference_get__(n3);
+    XMLVM_VAR_IOS_REF(CFError, var3, jObject3);
+    
+    BOOL objCObj = CTFontManagerUnregisterFontsForURL(var1,n2,&var3);
+    XMLVM_VAR_INIT_REF(CFError,refVar3, var3);
+    org_xmlvm_ios_Reference_set___java_lang_Object(n3, refVar3);
+    
+    return objCObj;
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTFont_managerRegisterGraphicsFont___org_xmlvm_ios_CGFont_org_xmlvm_ios_Reference]
+XMLVM_VAR_IOS_REF(CGFont, var1, n1);
+    JAVA_OBJECT jObject2 = org_xmlvm_ios_Reference_get__(n2);
+    XMLVM_VAR_IOS_REF(CFError, var2, jObject2);
+    
+    BOOL objCObj = CTFontManagerRegisterGraphicsFont(var1,&var2);
+    XMLVM_VAR_INIT_REF(CFError,refVar2, var2);
+    org_xmlvm_ios_Reference_set___java_lang_Object(n2, refVar2);
+    
+    return objCObj;
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTFont_managerUnregisterGraphicsFont___org_xmlvm_ios_CGFont_org_xmlvm_ios_Reference]
+XMLVM_VAR_IOS_REF(CGFont, var1, n1);
+    JAVA_OBJECT jObject2 = org_xmlvm_ios_Reference_get__(n2);
+    XMLVM_VAR_IOS_REF(CFError, var2, jObject2);
+    
+    BOOL objCObj = CTFontManagerUnregisterGraphicsFont(var1,&var2);
+    XMLVM_VAR_INIT_REF(CFError,refVar2, var2);
+    org_xmlvm_ios_Reference_set___java_lang_Object(n2, refVar2);
+    
+    return objCObj;
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTFont_managerRegisterFontsForURLs___org_xmlvm_ios_CFArray_int_org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTFont_managerUnregisterFontsForURL___org_xmlvm_ios_CFURL_int_org_xmlvm_ios_Reference<CFError>]
-
-XMLVM_NOT_IMPLEMENTED();
-//XMLVM_END_WRAPPER
-
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTFont_managerRegisterGraphicsFont___org_xmlvm_ios_CGFont_org_xmlvm_ios_Reference<CFError>]
-
-XMLVM_NOT_IMPLEMENTED();
-//XMLVM_END_WRAPPER
-
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTFont_managerUnregisterGraphicsFont___org_xmlvm_ios_CGFont_org_xmlvm_ios_Reference<CFError>]
-
-XMLVM_NOT_IMPLEMENTED();
-//XMLVM_END_WRAPPER
-
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTFont_managerRegisterFontsForURLs___org_xmlvm_ios_CFArray_int_org_xmlvm_ios_Reference<CFArray>]
-
-XMLVM_NOT_IMPLEMENTED();
-//XMLVM_END_WRAPPER
-
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTFont_managerUnregisterFontsForURLs___org_xmlvm_ios_CFArray_int_org_xmlvm_ios_Reference<CFArray>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTFont_managerUnregisterFontsForURLs___org_xmlvm_ios_CFArray_int_org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
@@ -399,7 +459,6 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTFont_managerGetScopeForURL___org_xmlvm_ios_CFURL]
 XMLVM_VAR_IOS_REF(CFURL, var1, n1);
     
-    
     int objCObj = CTFontManagerGetScopeForURL(var1);
     
     return objCObj;
@@ -408,7 +467,6 @@ XMLVM_VAR_IOS_REF(CFURL, var1, n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTFont_managerIsSupportedFont___org_xmlvm_ios_CFURL]
 XMLVM_VAR_IOS_REF(CFURL, var1, n1);
     
-    
     BOOL objCObj = CTFontManagerIsSupportedFont(var1);
     
     return objCObj;
@@ -416,7 +474,6 @@ XMLVM_VAR_IOS_REF(CFURL, var1, n1);
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTFont_managerSetAutoActivationSetting___java_lang_String_int]
 NSString * ObjCVar1 = toNSString(n1);
-    
     CTFontManagerSetAutoActivationSetting(ObjCVar1,n2);
     
     [ObjCVar1 release];
@@ -426,7 +483,6 @@ NSString * ObjCVar1 = toNSString(n1);
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTFont_managerGetAutoActivationSetting___java_lang_String]
 NSString * ObjCVar1 = toNSString(n1);
-    
     
     int objCObj = CTFontManagerGetAutoActivationSetting(ObjCVar1);
     

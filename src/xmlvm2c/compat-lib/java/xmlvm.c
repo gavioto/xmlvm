@@ -65,7 +65,7 @@ struct hash_struct** threadToStackTraceMapPtr;
 
 
 void xmlvm_init()
-{
+{	
 #ifdef XMLVM_ENABLE_STACK_TRACES
     threadToStackTraceMapPtr = malloc(sizeof(struct hash_struct**));
     struct hash_struct* map = NULL; // This must be set to NULL according to the UTHash documentation
@@ -106,6 +106,10 @@ void xmlvm_init()
     GC_java_finalization = 1;
     java_lang_Thread* finalizerThread = (java_lang_Thread*) org_xmlvm_runtime_FinalizerNotifier_startFinalizerThread__();
     GC_finalizer_notifier = org_xmlvm_runtime_FinalizerNotifier_finalizerNotifier__;
+#endif
+	
+#ifdef XMLVM_NEW_IOS_API
+	reference_array = XMLVMUtil_NEW_ArrayList();
 #endif
 }
 

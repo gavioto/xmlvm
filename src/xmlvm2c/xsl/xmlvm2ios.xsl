@@ -440,6 +440,7 @@
       <xsl:text>&nl;</xsl:text>
       <xsl:if test="$isDelegate">
         <xsl:text>- (id) initWithDelegate: (JAVA_OBJECT) d_;&nl;&nl;</xsl:text>
+        <xsl:text>- (void) dealloc;&nl;&nl;</xsl:text>
       </xsl:if>
 
       <xsl:text>// Append the wrapper method declarations defined in the class Macro&nl;</xsl:text>
@@ -504,6 +505,12 @@
         <xsl:text>    self->delegate_ = d_;&nl;</xsl:text>
         <xsl:text>    return self;&nl;</xsl:text>
         <xsl:text>}&nl;&nl;</xsl:text>
+        
+        <xsl:text>- (void) dealloc&nl;</xsl:text>
+        <xsl:text>{&nl;</xsl:text>
+        <xsl:text>        XMLVMUtil_ArrayList_remove(reference_array, self->delegate_);&nl;</xsl:text>
+        <xsl:text>    [super dealloc];&nl;</xsl:text>
+        <xsl:text>}&nl;&nl;</xsl:text>
       </xsl:if>
 
       <xsl:text>// Append the wrapper methods defined in the class Macro&nl;</xsl:text>
@@ -526,7 +533,7 @@
         <xsl:value-of select="$clname" />
         <xsl:text>_Wrapper*) me;&nl;</xsl:text>
 
-        <xsl:text>    [(jthiz-&gt;nativeDelegateWrapper_) release];&nl;</xsl:text>
+ <!--        <xsl:text>    [(jthiz-&gt;nativeDelegateWrapper_) release];&nl;</xsl:text>  -->
 
         <xsl:text>}&nl;&nl;</xsl:text>
 

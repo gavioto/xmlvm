@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_AVPlayer();
 }
 @end
+
 void org_xmlvm_ios_AVPlayer_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -62,7 +63,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVPlayer_playerWithURL___org_xmlvm_ios_NSURL]
 
     AVPlayer* objCObj =  [AVPlayer  playerWithURL:(NSURL*) (((org_xmlvm_ios_NSURL*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj)];
-    if (!__TIB_org_xmlvm_ios_AVPlayer.classInitialized) __INIT_org_xmlvm_ios_AVPlayer();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -70,7 +70,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVPlayer_playerWithPlayerItem___org_xmlvm_ios_AVPlayerItem]
 
     AVPlayer* objCObj =  [AVPlayer  playerWithPlayerItem:(AVPlayerItem*) (((org_xmlvm_ios_AVPlayerItem*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj)];
-    if (!__TIB_org_xmlvm_ios_AVPlayer.classInitialized) __INIT_org_xmlvm_ios_AVPlayer();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -85,8 +84,7 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVPlayer_getError__]
 
     XMLVM_VAR_THIZ;
-    NSError* objCObj = [thiz error];    if (!__TIB_org_xmlvm_ios_NSError.classInitialized) __INIT_org_xmlvm_ios_NSError();
-
+    NSError* objCObj = [thiz error];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -118,8 +116,7 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVPlayer_getCurrentItem__]
 
     XMLVM_VAR_THIZ;
-    AVPlayerItem* objCObj = [thiz currentItem];    if (!__TIB_org_xmlvm_ios_AVPlayerItem.classInitialized) __INIT_org_xmlvm_ios_AVPlayerItem();
-
+    AVPlayerItem* objCObj = [thiz currentItem];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 

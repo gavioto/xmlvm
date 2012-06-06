@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_ALAssetsGroup();
 }
 @end
+
 void org_xmlvm_ios_ALAssetsGroup_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -63,10 +64,10 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 
     XMLVM_VAR_THIZ;
     
-    CGImageRef objCObj = [thiz posterImage];    XMLVM_VAR_INIT_REF(CGImage, objCObj);
+    CGImageRef objCObj = [thiz posterImage];    XMLVM_VAR_INIT_REF(CGImage, refVar, objCObj);
 
 
-    return jvar;
+    return refVar;
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_ALAssetsGroup_setAssetsFilter___org_xmlvm_ios_ALAssetsFilter]

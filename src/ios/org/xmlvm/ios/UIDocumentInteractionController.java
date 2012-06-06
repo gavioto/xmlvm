@@ -165,4 +165,8 @@ public class UIDocumentInteractionController extends NSObject {
 	public void dismissMenuAnimated(boolean animated){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

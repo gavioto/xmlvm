@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_AVAssetReaderAudioMixOutput();
 }
 @end
+
 void org_xmlvm_ios_AVAssetReaderAudioMixOutput_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_AVAssetReaderOutput_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -76,8 +77,7 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVAssetReaderAudioMixOutput_getAudioMix__]
 
     XMLVM_VAR_THIZ;
-    AVAudioMix* objCObj = [thiz audioMix];    if (!__TIB_org_xmlvm_ios_AVAudioMix.classInitialized) __INIT_org_xmlvm_ios_AVAudioMix();
-
+    AVAudioMix* objCObj = [thiz audioMix];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 

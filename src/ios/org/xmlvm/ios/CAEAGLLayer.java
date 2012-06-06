@@ -16,4 +16,22 @@ public class CAEAGLLayer extends CALayer {
 	public CAEAGLLayer() {
 		super();
 	}
+
+	/*
+	 * Interface Properties
+	 */
+
+	/**
+	 * @property(copy) NSDictionary* drawableProperties;
+	 */
+	public Map getDrawableProperties(){
+		throw new RuntimeException("Stub");
+	}
+
+	/**
+	 * @property(copy) NSDictionary* drawableProperties;
+	 */
+	public void setDrawableProperties(Map drawableProperties){
+		throw new RuntimeException("Stub");
+	}
 }

@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_UINavigationBar();
 }
 @end
+
 void org_xmlvm_ios_UINavigationBar_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_UIView_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -96,8 +97,7 @@ __DELETE_org_xmlvm_ios_UIView(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UINavigationBar_getTintColor__]
 
     XMLVM_VAR_THIZ;
-    UIColor* objCObj = [thiz tintColor];    if (!__TIB_org_xmlvm_ios_UIColor.classInitialized) __INIT_org_xmlvm_ios_UIColor();
-
+    UIColor* objCObj = [thiz tintColor];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -137,7 +137,6 @@ __DELETE_org_xmlvm_ios_UIView(me, client_data);
     XMLVM_VAR_THIZ;
     
     UINavigationItem* objCObj = [thiz  popNavigationItemAnimated:n1];
-    if (!__TIB_org_xmlvm_ios_UINavigationItem.classInitialized) __INIT_org_xmlvm_ios_UINavigationItem();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -145,16 +144,14 @@ __DELETE_org_xmlvm_ios_UIView(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UINavigationBar_getTopItem__]
 
     XMLVM_VAR_THIZ;
-    UINavigationItem* objCObj = [thiz topItem];    if (!__TIB_org_xmlvm_ios_UINavigationItem.classInitialized) __INIT_org_xmlvm_ios_UINavigationItem();
-
+    UINavigationItem* objCObj = [thiz topItem];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UINavigationBar_getBackItem__]
 
     XMLVM_VAR_THIZ;
-    UINavigationItem* objCObj = [thiz backItem];    if (!__TIB_org_xmlvm_ios_UINavigationItem.classInitialized) __INIT_org_xmlvm_ios_UINavigationItem();
-
+    UINavigationItem* objCObj = [thiz backItem];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 

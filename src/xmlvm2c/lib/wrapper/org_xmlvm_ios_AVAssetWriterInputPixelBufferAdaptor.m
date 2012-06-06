@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_AVAssetWriterInputPixelBufferAdaptor();
 }
 @end
+
 void org_xmlvm_ios_AVAssetWriterInputPixelBufferAdaptor_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -59,8 +60,7 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVAssetWriterInputPixelBufferAdaptor_getAssetWriterInput__]
 
     XMLVM_VAR_THIZ;
-    AVAssetWriterInput* objCObj = [thiz assetWriterInput];    if (!__TIB_org_xmlvm_ios_AVAssetWriterInput.classInitialized) __INIT_org_xmlvm_ios_AVAssetWriterInput();
-
+    AVAssetWriterInput* objCObj = [thiz assetWriterInput];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -72,8 +72,7 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVAssetWriterInputPixelBufferAdaptor_getPixelBufferPool__]
 
     XMLVM_VAR_THIZ;
-    CVPixelBufferPool* objCObj = [thiz pixelBufferPool];    if (!__TIB_org_xmlvm_ios_CVPixelBufferPool.classInitialized) __INIT_org_xmlvm_ios_CVPixelBufferPool();
-
+    CVPixelBufferPool* objCObj = [thiz pixelBufferPool];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 

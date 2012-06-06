@@ -329,4 +329,8 @@ public class UIButton extends UIControl {
 	public CGRect imageRectForContentRect(CGRect contentRect){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

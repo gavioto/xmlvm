@@ -31,4 +31,8 @@ public class NSEnumerator extends NSObject {
 	public List allObjects(){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

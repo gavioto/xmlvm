@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_AUGraph();
 }
 @end
+
 void org_xmlvm_ios_AUGraph_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -40,7 +41,7 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
     org_xmlvm_ios_AUGraph_INTERNAL_CONSTRUCTOR(me, objCObj);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AUGraph_addNode___org_xmlvm_ios_Reference<AudioComponentDescription>_int_1ARRAY]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AUGraph_addNode___org_xmlvm_ios_Reference_int_1ARRAY]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
@@ -60,7 +61,7 @@ XMLVM_NOT_IMPLEMENTED();
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AUGraph_nodeInfo___int_org_xmlvm_ios_Reference<AudioComponentDescription>_org_xmlvm_ios_Reference<ComponentInstanceRecord>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AUGraph_nodeInfo___int_org_xmlvm_ios_Reference_org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
@@ -85,7 +86,7 @@ XMLVM_NOT_IMPLEMENTED();
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AUGraph_setNodeInputCallback___int_int_org_xmlvm_ios_Reference<AURenderCallbackStruct>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AUGraph_setNodeInputCallback___int_int_org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
@@ -105,7 +106,7 @@ XMLVM_NOT_IMPLEMENTED();
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AUGraph_getInteractionInfo___int_org_xmlvm_ios_Reference<AUNodeInteraction>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AUGraph_getInteractionInfo___int_org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
@@ -115,7 +116,7 @@ XMLVM_NOT_IMPLEMENTED();
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AUGraph_getNodeInteractions___int_int_1ARRAY_org_xmlvm_ios_Reference<AUNodeInteraction>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AUGraph_getNodeInteractions___int_int_1ARRAY_org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
@@ -195,7 +196,7 @@ XMLVM_NOT_IMPLEMENTED();
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AUGraph_getNodeInfo___int_org_xmlvm_ios_ComponentDescription_int_1ARRAY_byte_2ARRAY_org_xmlvm_ios_Reference<ComponentInstanceRecord>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AUGraph_getNodeInfo___int_org_xmlvm_ios_ComponentDescription_int_1ARRAY_byte_2ARRAY_org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
@@ -215,7 +216,7 @@ XMLVM_NOT_IMPLEMENTED();
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AUGraph_getNodeConnections___int_org_xmlvm_ios_Reference<AudioUnitNodeConnection>_int_1ARRAY]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AUGraph_getNodeConnections___int_org_xmlvm_ios_Reference_int_1ARRAY]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER

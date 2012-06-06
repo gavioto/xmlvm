@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_ABAddressBook();
 }
 @end
+
 void org_xmlvm_ios_ABAddressBook_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_CFType_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -47,7 +48,7 @@ __DELETE_org_xmlvm_ios_CFType(me, client_data);
     org_xmlvm_ios_ABAddressBook_INTERNAL_CONSTRUCTOR(me, objCObj);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_ABAddressBook_save___org_xmlvm_ios_Reference<CFError>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_ABAddressBook_save___org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
@@ -57,19 +58,18 @@ XMLVM_NOT_IMPLEMENTED();
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_ABAddressBook_addRecord___org_xmlvm_ios_ABRecord_org_xmlvm_ios_Reference<CFError>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_ABAddressBook_addRecord___org_xmlvm_ios_ABRecord_org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_ABAddressBook_removeRecord___org_xmlvm_ios_ABRecord_org_xmlvm_ios_Reference<CFError>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_ABAddressBook_removeRecord___org_xmlvm_ios_ABRecord_org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_ABAddressBook_copyLocalizedLabel___java_lang_String]
 NSString * ObjCVar1 = toNSString(n1);
-    
     
     NSString* objCObj = ABAddressBookCopyLocalizedLabel(ObjCVar1);
     

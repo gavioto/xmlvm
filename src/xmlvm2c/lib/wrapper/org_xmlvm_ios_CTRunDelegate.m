@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_CTRunDelegate();
 }
 @end
+
 void org_xmlvm_ios_CTRunDelegate_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -35,8 +36,13 @@ xmlvm_register_wrapper_creator(__WRAPPER_CREATOR);
 __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTRunDelegate___INIT____org_xmlvm_ios_Reference<CTRunDelegateCallbacks>_byte_1ARRAY]
-XMLVM_NOT_IMPLEMENTED();
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTRunDelegate___INIT____org_xmlvm_ios_Reference_byte_1ARRAY]
+JAVA_OBJECT jObject1 = org_xmlvm_ios_Reference_get__(n1);
+    CTRunDelegateCallbacks var1= toCTRunDelegateCallbacks(jObject1);
+    XMLVM_VAR_BYTE_ARRAY(a2, n2); 
+    
+    CTRunDelegate* objCObj = [[CTRunDelegate alloc] create:&var1];
+    org_xmlvm_ios_CTRunDelegate_INTERNAL_CONSTRUCTOR(me, objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTRunDelegate___INIT___]
@@ -46,7 +52,6 @@ XMLVM_NOT_IMPLEMENTED();
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CTRunDelegate_getTypeID__]
 
-    
     long objCObj = CFHostGetTypeID();
     
     return objCObj;

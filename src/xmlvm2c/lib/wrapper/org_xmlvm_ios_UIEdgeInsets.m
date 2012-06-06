@@ -33,14 +33,13 @@ JAVA_OBJECT fromUIEdgeInsets(UIEdgeInsets obj)
     jObj->fields.org_xmlvm_ios_UIEdgeInsets.bottom_ = objCObj.bottom;
     jObj->fields.org_xmlvm_ios_UIEdgeInsets.left_ = objCObj.left;
     jObj->fields.org_xmlvm_ios_UIEdgeInsets.top_ = objCObj.top;
-//XMLVM_END_WRAPPER
+null//XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIEdgeInsets___INIT___]
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIEdgeInsets_insetRect___org_xmlvm_ios_CGRect_org_xmlvm_ios_UIEdgeInsets]
 
-    
     CGRect objCObj = UIEdgeInsetsInsetRect(toCGRect(n1),toUIEdgeInsets(n2));
     
     return fromCGRect(objCObj);
@@ -48,7 +47,6 @@ JAVA_OBJECT fromUIEdgeInsets(UIEdgeInsets obj)
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIEdgeInsets_equalToEdgeInsets___org_xmlvm_ios_UIEdgeInsets]
 
-    
     BOOL objCObj = UIEdgeInsetsEqualToEdgeInsets(toUIEdgeInsets(me),toUIEdgeInsets(n1));
     
     return objCObj;
@@ -56,7 +54,6 @@ JAVA_OBJECT fromUIEdgeInsets(UIEdgeInsets obj)
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIEdgeInsets_fromString___java_lang_String]
 NSString * ObjCVar1 = toNSString(n1);
-    
     
     UIEdgeInsets objCObj = UIEdgeInsetsFromString(ObjCVar1);
     

@@ -210,4 +210,8 @@ public class NSEntityDescription extends NSObject {
 	public void setRenamingIdentifier(String value){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

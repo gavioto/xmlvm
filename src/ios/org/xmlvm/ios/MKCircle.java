@@ -56,4 +56,8 @@ public class MKCircle extends MKShape {
 	public MKMapRect getBoundingMapRect(){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

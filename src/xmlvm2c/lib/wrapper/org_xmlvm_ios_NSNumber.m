@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_NSNumber();
 }
 @end
+
 void org_xmlvm_ios_NSNumber_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSValue_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -35,25 +36,25 @@ xmlvm_register_wrapper_creator(__WRAPPER_CREATOR);
 __DELETE_org_xmlvm_ios_NSValue(me, client_data);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSNumber___INIT____byte_org_xmlvm_ios_NSNumber_null]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSNumber___INIT____byte]
 
     NSNumber* objCObj = [[NSNumber alloc] initWithChar:n1];
     org_xmlvm_ios_NSNumber_INTERNAL_CONSTRUCTOR(me, objCObj);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSNumber___INIT____short_org_xmlvm_ios_NSNumber_null]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSNumber___INIT____short]
 
     NSNumber* objCObj = [[NSNumber alloc] initWithShort:n1];
     org_xmlvm_ios_NSNumber_INTERNAL_CONSTRUCTOR(me, objCObj);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSNumber___INIT____int_org_xmlvm_ios_NSNumber_null]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSNumber___INIT____int]
 
     NSNumber* objCObj = [[NSNumber alloc] initWithInt:n1];
     org_xmlvm_ios_NSNumber_INTERNAL_CONSTRUCTOR(me, objCObj);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSNumber___INIT____long_org_xmlvm_ios_NSNumber_null]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSNumber___INIT____long]
 
     NSNumber* objCObj = [[NSNumber alloc] initWithLong:n1];
     org_xmlvm_ios_NSNumber_INTERNAL_CONSTRUCTOR(me, objCObj);
@@ -281,7 +282,6 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSNumber_numberWithChar___byte]
 
     NSNumber* objCObj =  [NSNumber  numberWithChar:n1];
-    if (!__TIB_org_xmlvm_ios_NSNumber.classInitialized) __INIT_org_xmlvm_ios_NSNumber();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -289,7 +289,6 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSNumber_numberWithUnsignedChar___byte]
 
     NSNumber* objCObj =  [NSNumber  numberWithUnsignedChar:n1];
-    if (!__TIB_org_xmlvm_ios_NSNumber.classInitialized) __INIT_org_xmlvm_ios_NSNumber();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -297,7 +296,6 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSNumber_numberWithShort___short]
 
     NSNumber* objCObj =  [NSNumber  numberWithShort:n1];
-    if (!__TIB_org_xmlvm_ios_NSNumber.classInitialized) __INIT_org_xmlvm_ios_NSNumber();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -305,7 +303,6 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSNumber_numberWithUnsignedShort___short]
 
     NSNumber* objCObj =  [NSNumber  numberWithUnsignedShort:n1];
-    if (!__TIB_org_xmlvm_ios_NSNumber.classInitialized) __INIT_org_xmlvm_ios_NSNumber();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -313,7 +310,6 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSNumber_numberWithInt___int]
 
     NSNumber* objCObj =  [NSNumber  numberWithInt:n1];
-    if (!__TIB_org_xmlvm_ios_NSNumber.classInitialized) __INIT_org_xmlvm_ios_NSNumber();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -321,7 +317,6 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSNumber_numberWithUnsignedInt___int]
 
     NSNumber* objCObj =  [NSNumber  numberWithUnsignedInt:n1];
-    if (!__TIB_org_xmlvm_ios_NSNumber.classInitialized) __INIT_org_xmlvm_ios_NSNumber();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -329,7 +324,6 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSNumber_numberWithLong___long]
 
     NSNumber* objCObj =  [NSNumber  numberWithLong:n1];
-    if (!__TIB_org_xmlvm_ios_NSNumber.classInitialized) __INIT_org_xmlvm_ios_NSNumber();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -337,7 +331,6 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSNumber_numberWithUnsignedLong___long]
 
     NSNumber* objCObj =  [NSNumber  numberWithUnsignedLong:n1];
-    if (!__TIB_org_xmlvm_ios_NSNumber.classInitialized) __INIT_org_xmlvm_ios_NSNumber();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -345,7 +338,6 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSNumber_numberWithLongLong___long]
 
     NSNumber* objCObj =  [NSNumber  numberWithLongLong:n1];
-    if (!__TIB_org_xmlvm_ios_NSNumber.classInitialized) __INIT_org_xmlvm_ios_NSNumber();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -353,7 +345,6 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSNumber_numberWithUnsignedLongLong___long]
 
     NSNumber* objCObj =  [NSNumber  numberWithUnsignedLongLong:n1];
-    if (!__TIB_org_xmlvm_ios_NSNumber.classInitialized) __INIT_org_xmlvm_ios_NSNumber();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -361,7 +352,6 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSNumber_numberWithFloat___float]
 
     NSNumber* objCObj =  [NSNumber  numberWithFloat:n1];
-    if (!__TIB_org_xmlvm_ios_NSNumber.classInitialized) __INIT_org_xmlvm_ios_NSNumber();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -369,7 +359,6 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSNumber_numberWithDouble___double]
 
     NSNumber* objCObj =  [NSNumber  numberWithDouble:n1];
-    if (!__TIB_org_xmlvm_ios_NSNumber.classInitialized) __INIT_org_xmlvm_ios_NSNumber();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -377,7 +366,6 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSNumber_numberWithBool___boolean]
 
     NSNumber* objCObj =  [NSNumber  numberWithBool:n1];
-    if (!__TIB_org_xmlvm_ios_NSNumber.classInitialized) __INIT_org_xmlvm_ios_NSNumber();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -385,7 +373,6 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSNumber_numberWithInteger___int]
 
     NSNumber* objCObj =  [NSNumber  numberWithInteger:n1];
-    if (!__TIB_org_xmlvm_ios_NSNumber.classInitialized) __INIT_org_xmlvm_ios_NSNumber();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -393,7 +380,6 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSNumber_numberWithUnsignedInteger___int]
 
     NSNumber* objCObj =  [NSNumber  numberWithUnsignedInteger:n1];
-    if (!__TIB_org_xmlvm_ios_NSNumber.classInitialized) __INIT_org_xmlvm_ios_NSNumber();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

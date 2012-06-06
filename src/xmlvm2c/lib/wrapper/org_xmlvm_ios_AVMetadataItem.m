@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_AVMetadataItem();
 }
 @end
+
 void org_xmlvm_ios_AVMetadataItem_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -50,8 +51,7 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVMetadataItem_getKey__]
 
     XMLVM_VAR_THIZ;
-    NSObject* objCObj = [thiz key];    if (!__TIB_org_xmlvm_ios_NSObject.classInitialized) __INIT_org_xmlvm_ios_NSObject();
-
+    NSObject* objCObj = [thiz key];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -72,8 +72,7 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVMetadataItem_getLocale__]
 
     XMLVM_VAR_THIZ;
-    NSLocale* objCObj = [thiz locale];    if (!__TIB_org_xmlvm_ios_NSLocale.classInitialized) __INIT_org_xmlvm_ios_NSLocale();
-
+    NSLocale* objCObj = [thiz locale];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -94,8 +93,7 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVMetadataItem_getValue__]
 
     XMLVM_VAR_THIZ;
-    NSObject* objCObj = [thiz value];    if (!__TIB_org_xmlvm_ios_NSObject.classInitialized) __INIT_org_xmlvm_ios_NSObject();
-
+    NSObject* objCObj = [thiz value];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -114,30 +112,36 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVMetadataItem_getNumberValue__]
 
     XMLVM_VAR_THIZ;
-    NSNumber* objCObj = [thiz numberValue];    if (!__TIB_org_xmlvm_ios_NSNumber.classInitialized) __INIT_org_xmlvm_ios_NSNumber();
-
+    NSNumber* objCObj = [thiz numberValue];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVMetadataItem_getDateValue__]
 
     XMLVM_VAR_THIZ;
-    NSDate* objCObj = [thiz dateValue];    if (!__TIB_org_xmlvm_ios_NSDate.classInitialized) __INIT_org_xmlvm_ios_NSDate();
-
+    NSDate* objCObj = [thiz dateValue];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVMetadataItem_getDataValue__]
 
     XMLVM_VAR_THIZ;
-    NSData* objCObj = [thiz dataValue];    if (!__TIB_org_xmlvm_ios_NSData.classInitialized) __INIT_org_xmlvm_ios_NSData();
-
+    NSData* objCObj = [thiz dataValue];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVMetadataItem_statusOfValueForKey___java_lang_String_org_xmlvm_ios_Reference<NSError>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVMetadataItem_statusOfValueForKey___java_lang_String_org_xmlvm_ios_Reference]
 
-XMLVM_NOT_IMPLEMENTED();
+    XMLVM_VAR_THIZ;
+    NSString * ObjCVar1 = toNSString(n1);
+    JAVA_OBJECT jObject2 = org_xmlvm_ios_Reference_get__(n2);
+    XMLVM_VAR_IOS(NSError, var2, jObject2);
+    
+    int objCObj = [thiz  statusOfValueForKey:ObjCVar1 error:&var2];
+    [ObjCVar1 release];
+
+
+    return objCObj;
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVMetadataItem_loadValuesAsynchronouslyForKeys___java_util_List_java_lang_Object]

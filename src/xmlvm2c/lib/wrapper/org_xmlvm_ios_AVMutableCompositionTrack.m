@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_AVMutableCompositionTrack();
 }
 @end
+
 void org_xmlvm_ios_AVMutableCompositionTrack_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_AVCompositionTrack_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -156,9 +157,15 @@ __DELETE_org_xmlvm_ios_AVCompositionTrack(me, client_data);
     
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVMutableCompositionTrack_insertTimeRange___org_xmlvm_ios_CMTimeRange_org_xmlvm_ios_AVAssetTrack_org_xmlvm_ios_CMTime_org_xmlvm_ios_Reference<NSError>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVMutableCompositionTrack_insertTimeRange___org_xmlvm_ios_CMTimeRange_org_xmlvm_ios_AVAssetTrack_org_xmlvm_ios_CMTime_org_xmlvm_ios_Reference]
 
-XMLVM_NOT_IMPLEMENTED();
+    XMLVM_VAR_THIZ;
+    JAVA_OBJECT jObject4 = org_xmlvm_ios_Reference_get__(n4);
+    XMLVM_VAR_IOS(NSError, var4, jObject4);
+    
+    BOOL objCObj = [thiz  insertTimeRange:toCMTimeRange(n1) ofTrack:(AVAssetTrack*) (((org_xmlvm_ios_AVAssetTrack*) n2)->fields.org_xmlvm_ios_NSObject.wrappedObj) atTime:toCMTime(n3) error:&var4];
+
+    return objCObj;
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVMutableCompositionTrack_insertEmptyTimeRange___org_xmlvm_ios_CMTimeRange]
@@ -185,7 +192,16 @@ XMLVM_NOT_IMPLEMENTED();
     
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVMutableCompositionTrack_validateTrackSegments___java_util_List_org_xmlvm_ios_Reference<NSError>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AVMutableCompositionTrack_validateTrackSegments___java_util_List_org_xmlvm_ios_Reference]
 
-XMLVM_NOT_IMPLEMENTED();
+    XMLVM_VAR_THIZ;
+    NSArray * ObjCVar1 = toNSArray(n1);
+    JAVA_OBJECT jObject2 = org_xmlvm_ios_Reference_get__(n2);
+    XMLVM_VAR_IOS(NSError, var2, jObject2);
+    
+    BOOL objCObj = [thiz  validateTrackSegments:ObjCVar1 error:&var2];
+    [ObjCVar1 release];
+
+
+    return objCObj;
 //XMLVM_END_WRAPPER

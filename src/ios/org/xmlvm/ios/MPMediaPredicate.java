@@ -13,4 +13,8 @@ public class MPMediaPredicate extends NSObject {
 	public MPMediaPredicate() {
 		super();
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

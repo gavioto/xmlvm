@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_MKUserLocation();
 }
 @end
+
 void org_xmlvm_ios_MKUserLocation_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -57,8 +58,7 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MKUserLocation_getLocation__]
 
     XMLVM_VAR_THIZ;
-    CLLocation* objCObj = [thiz location];    if (!__TIB_org_xmlvm_ios_CLLocation.classInitialized) __INIT_org_xmlvm_ios_CLLocation();
-
+    CLLocation* objCObj = [thiz location];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -96,4 +96,11 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 
 
     
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MKUserLocation_getCoordinate__]
+
+    XMLVM_VAR_THIZ;
+    CLLocationCoordinate2D objCObj = [thiz coordinate];
+    return fromCLLocationCoordinate2D(objCObj);
 //XMLVM_END_WRAPPER

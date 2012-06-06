@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_CMDeviceMotion();
 }
 @end
+
 void org_xmlvm_ios_CMDeviceMotion_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_CMLogItem_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -55,8 +56,7 @@ __DELETE_org_xmlvm_ios_CMLogItem(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CMDeviceMotion_getAttitude__]
 
     XMLVM_VAR_THIZ;
-    CMAttitude* objCObj = [thiz attitude];    if (!__TIB_org_xmlvm_ios_CMAttitude.classInitialized) __INIT_org_xmlvm_ios_CMAttitude();
-
+    CMAttitude* objCObj = [thiz attitude];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 

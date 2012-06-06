@@ -112,4 +112,8 @@ public class NSPort extends NSObject {
 	public void removeConnection(NSConnection conn, NSRunLoop runLoop, String mode){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_AudioQueue();
 }
 @end
+
 void org_xmlvm_ios_AudioQueue_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -40,22 +41,42 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
     org_xmlvm_ios_AudioQueue_INTERNAL_CONSTRUCTOR(me, objCObj);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AudioQueue_newOutput___org_xmlvm_ios_Reference<AudioStreamBasicDescription>_java_lang_Object_byte_1ARRAY_org_xmlvm_ios_CFRunLoop_java_lang_String_int_org_xmlvm_ios_AudioQueue]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AudioQueue_newOutput___org_xmlvm_ios_Reference_java_lang_Object_byte_1ARRAY_org_xmlvm_ios_CFRunLoop_java_lang_String_int_org_xmlvm_ios_AudioQueue]
+JAVA_OBJECT jObject1 = org_xmlvm_ios_Reference_get__(n1);
+    AudioStreamBasicDescription var1= toAudioStreamBasicDescription(jObject1);
+    XMLVM_VAR_BYTE_ARRAY(a3, n3); 
+    XMLVM_VAR_IOS_REF(CFRunLoop, var4, n4);
+    NSString * ObjCVar5 = toNSString(n5);
+    
+    int objCObj = AudioQueueNewOutput(&var1,((org_xmlvm_ios_NSObject*) n2)->fields.org_xmlvm_ios_NSObject.wrappedObj,a3->fields.org_xmlvm_runtime_XMLVMArray.array_,var4,ObjCVar5,n6,(AudioQueue*) (((org_xmlvm_ios_AudioQueue*) n7)->fields.org_xmlvm_ios_NSObject.wrappedObj));
+    org_xmlvm_ios_Reference_set___java_lang_Object(n1, fromAudioStreamBasicDescription(var1));
+    
+    [ObjCVar5 release];
+
+    return objCObj;
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AudioQueue_newInput___org_xmlvm_ios_Reference_java_lang_Object_byte_1ARRAY_org_xmlvm_ios_CFRunLoop_java_lang_String_int_org_xmlvm_ios_AudioQueue]
+JAVA_OBJECT jObject1 = org_xmlvm_ios_Reference_get__(n1);
+    AudioStreamBasicDescription var1= toAudioStreamBasicDescription(jObject1);
+    XMLVM_VAR_BYTE_ARRAY(a3, n3); 
+    XMLVM_VAR_IOS_REF(CFRunLoop, var4, n4);
+    NSString * ObjCVar5 = toNSString(n5);
+    
+    int objCObj = AudioQueueNewInput(&var1,((org_xmlvm_ios_NSObject*) n2)->fields.org_xmlvm_ios_NSObject.wrappedObj,a3->fields.org_xmlvm_runtime_XMLVMArray.array_,var4,ObjCVar5,n6,(AudioQueue*) (((org_xmlvm_ios_AudioQueue*) n7)->fields.org_xmlvm_ios_NSObject.wrappedObj));
+    org_xmlvm_ios_Reference_set___java_lang_Object(n1, fromAudioStreamBasicDescription(var1));
+    
+    [ObjCVar5 release];
+
+    return objCObj;
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AudioQueue_newOutputWithDispatchQueue___org_xmlvm_ios_Reference_int_java_lang_Object_java_lang_Object]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AudioQueue_newInput___org_xmlvm_ios_Reference<AudioStreamBasicDescription>_java_lang_Object_byte_1ARRAY_org_xmlvm_ios_CFRunLoop_java_lang_String_int_org_xmlvm_ios_AudioQueue]
-
-XMLVM_NOT_IMPLEMENTED();
-//XMLVM_END_WRAPPER
-
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AudioQueue_newOutputWithDispatchQueue___org_xmlvm_ios_Reference<AudioStreamBasicDescription>_int_java_lang_Object_java_lang_Object]
-
-XMLVM_NOT_IMPLEMENTED();
-//XMLVM_END_WRAPPER
-
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AudioQueue_newInputWithDispatchQueue___org_xmlvm_ios_Reference<AudioStreamBasicDescription>_int_java_lang_Object_java_lang_Object]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AudioQueue_newInputWithDispatchQueue___org_xmlvm_ios_Reference_int_java_lang_Object_java_lang_Object]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
@@ -75,22 +96,22 @@ XMLVM_NOT_IMPLEMENTED();
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AudioQueue_freeBuffer___org_xmlvm_ios_Reference<AudioQueueBuffer>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AudioQueue_freeBuffer___org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AudioQueue_enqueueBuffer___org_xmlvm_ios_Reference<AudioQueueBuffer>_int_org_xmlvm_ios_Reference<AudioStreamPacketDescription>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AudioQueue_enqueueBuffer___org_xmlvm_ios_Reference_int_org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AudioQueue_enqueueBufferWithParameters___org_xmlvm_ios_Reference<AudioQueueBuffer>_int_org_xmlvm_ios_Reference<AudioStreamPacketDescription>_int_int_int_org_xmlvm_ios_Reference<AudioQueueParameterEvent>_org_xmlvm_ios_Reference<AudioTimeStamp>_org_xmlvm_ios_Reference<AudioTimeStamp>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AudioQueue_enqueueBufferWithParameters___org_xmlvm_ios_Reference_int_org_xmlvm_ios_Reference_int_int_int_org_xmlvm_ios_Reference_org_xmlvm_ios_Reference_org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AudioQueue_start___org_xmlvm_ios_Reference<AudioTimeStamp>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AudioQueue_start___org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
@@ -165,32 +186,32 @@ XMLVM_NOT_IMPLEMENTED();
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AudioQueue_getCurrentTime___org_xmlvm_ios_AudioQueueTimeline_org_xmlvm_ios_Reference<AudioTimeStamp>_byte_1ARRAY]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AudioQueue_getCurrentTime___org_xmlvm_ios_AudioQueueTimeline_org_xmlvm_ios_Reference_byte_1ARRAY]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AudioQueue_deviceGetCurrentTime___org_xmlvm_ios_Reference<AudioTimeStamp>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AudioQueue_deviceGetCurrentTime___org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AudioQueue_deviceTranslateTime___org_xmlvm_ios_Reference<AudioTimeStamp>_org_xmlvm_ios_Reference<AudioTimeStamp>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AudioQueue_deviceTranslateTime___org_xmlvm_ios_Reference_org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AudioQueue_deviceGetNearestStartTime___org_xmlvm_ios_Reference<AudioTimeStamp>_int]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AudioQueue_deviceGetNearestStartTime___org_xmlvm_ios_Reference_int]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AudioQueue_setOfflineRenderFormat___org_xmlvm_ios_Reference<AudioStreamBasicDescription>_org_xmlvm_ios_Reference<AudioChannelLayout>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AudioQueue_setOfflineRenderFormat___org_xmlvm_ios_Reference_org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AudioQueue_offlineRender___org_xmlvm_ios_Reference<AudioTimeStamp>_org_xmlvm_ios_Reference<AudioQueueBuffer>_int]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AudioQueue_offlineRender___org_xmlvm_ios_Reference_org_xmlvm_ios_Reference_int]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER

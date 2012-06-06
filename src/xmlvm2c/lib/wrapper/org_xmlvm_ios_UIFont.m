@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_UIFont();
 }
 @end
+
 void org_xmlvm_ios_UIFont_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -53,7 +54,6 @@ NSString * ObjCVar1 = toNSString(n1);
     UIFont* objCObj =  [UIFont  fontWithName:ObjCVar1 size:n2];
     [ObjCVar1 release];
 
-    if (!__TIB_org_xmlvm_ios_UIFont.classInitialized) __INIT_org_xmlvm_ios_UIFont();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -78,7 +78,6 @@ NSString * ObjCVar1 = toNSString(n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIFont_systemFontOfSize___float]
 
     UIFont* objCObj =  [UIFont  systemFontOfSize:n1];
-    if (!__TIB_org_xmlvm_ios_UIFont.classInitialized) __INIT_org_xmlvm_ios_UIFont();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -86,7 +85,6 @@ NSString * ObjCVar1 = toNSString(n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIFont_boldSystemFontOfSize___float]
 
     UIFont* objCObj =  [UIFont  boldSystemFontOfSize:n1];
-    if (!__TIB_org_xmlvm_ios_UIFont.classInitialized) __INIT_org_xmlvm_ios_UIFont();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -94,7 +92,6 @@ NSString * ObjCVar1 = toNSString(n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UIFont_italicSystemFontOfSize___float]
 
     UIFont* objCObj =  [UIFont  italicSystemFontOfSize:n1];
-    if (!__TIB_org_xmlvm_ios_UIFont.classInitialized) __INIT_org_xmlvm_ios_UIFont();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -160,7 +157,6 @@ NSString * ObjCVar1 = toNSString(n1);
     XMLVM_VAR_THIZ;
     
     UIFont* objCObj = [thiz  fontWithSize:n1];
-    if (!__TIB_org_xmlvm_ios_UIFont.classInitialized) __INIT_org_xmlvm_ios_UIFont();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

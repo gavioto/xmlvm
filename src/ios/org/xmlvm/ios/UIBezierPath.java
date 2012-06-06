@@ -312,4 +312,8 @@ public class UIBezierPath extends NSObject {
 	public void addClip(){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

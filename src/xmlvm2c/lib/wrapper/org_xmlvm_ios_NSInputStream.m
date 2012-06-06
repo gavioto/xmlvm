@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_NSInputStream();
 }
 @end
+
 void org_xmlvm_ios_NSInputStream_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSStream_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -100,7 +101,6 @@ XMLVM_NOT_IMPLEMENTED();
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSInputStream_inputStreamWithData___org_xmlvm_ios_NSData]
 
     NSInputStream* objCObj =  [NSInputStream  inputStreamWithData:(NSData*) (((org_xmlvm_ios_NSData*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj)];
-    if (!__TIB_org_xmlvm_ios_NSInputStream.classInitialized) __INIT_org_xmlvm_ios_NSInputStream();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -111,7 +111,6 @@ NSString * ObjCVar1 = toNSString(n1);
     NSInputStream* objCObj =  [NSInputStream  inputStreamWithFileAtPath:ObjCVar1];
     [ObjCVar1 release];
 
-    if (!__TIB_org_xmlvm_ios_NSInputStream.classInitialized) __INIT_org_xmlvm_ios_NSInputStream();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -119,7 +118,6 @@ NSString * ObjCVar1 = toNSString(n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSInputStream_inputStreamWithURL___org_xmlvm_ios_NSURL]
 
     NSInputStream* objCObj =  [NSInputStream  inputStreamWithURL:(NSURL*) (((org_xmlvm_ios_NSURL*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj)];
-    if (!__TIB_org_xmlvm_ios_NSInputStream.classInitialized) __INIT_org_xmlvm_ios_NSInputStream();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

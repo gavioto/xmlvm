@@ -115,4 +115,8 @@ public class AVPlayerItemAccessLogEvent extends NSObject {
 	public int getNumberOfDroppedVideoFrames(){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_CFNotificationCenter();
 }
 @end
+
 void org_xmlvm_ios_CFNotificationCenter_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -42,7 +43,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFNotificationCenter_getTypeID__]
 
-    
     long objCObj = CFHostGetTypeID();
     
     return objCObj;
@@ -50,28 +50,22 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFNotificationCenter_getLocalCenter__]
 
-    
     CFNotificationCenter* objCObj = CFNotificationCenterGetLocalCenter();
-        if (!__TIB_org_xmlvm_ios_CFNotificationCenter.classInitialized) __INIT_org_xmlvm_ios_CFNotificationCenter();
-
+    
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFNotificationCenter_getDistributedCenter__]
 
-    
     CFNotificationCenter* objCObj = CFNotificationCenterGetDistributedCenter();
-        if (!__TIB_org_xmlvm_ios_CFNotificationCenter.classInitialized) __INIT_org_xmlvm_ios_CFNotificationCenter();
-
+    
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CFNotificationCenter_getDarwinNotifyCenter__]
 
-    
     CFNotificationCenter* objCObj = CFNotificationCenterGetDarwinNotifyCenter();
-        if (!__TIB_org_xmlvm_ios_CFNotificationCenter.classInitialized) __INIT_org_xmlvm_ios_CFNotificationCenter();
-
+    
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 

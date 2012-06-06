@@ -457,4 +457,8 @@ public class NSArray extends NSObject {
 	public List sortedArrayUsingDescriptors(List sortDescriptors){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

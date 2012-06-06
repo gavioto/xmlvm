@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_MPMoviePlayerController();
 }
 @end
+
 void org_xmlvm_ios_MPMoviePlayerController_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -56,8 +57,7 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MPMoviePlayerController_getContentURL__]
 
     XMLVM_VAR_THIZ;
-    NSURL* objCObj = [thiz contentURL];    if (!__TIB_org_xmlvm_ios_NSURL.classInitialized) __INIT_org_xmlvm_ios_NSURL();
-
+    NSURL* objCObj = [thiz contentURL];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -72,16 +72,14 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MPMoviePlayerController_getView__]
 
     XMLVM_VAR_THIZ;
-    UIView* objCObj = [thiz view];    if (!__TIB_org_xmlvm_ios_UIView.classInitialized) __INIT_org_xmlvm_ios_UIView();
-
+    UIView* objCObj = [thiz view];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MPMoviePlayerController_getBackgroundView__]
 
     XMLVM_VAR_THIZ;
-    UIView* objCObj = [thiz backgroundView];    if (!__TIB_org_xmlvm_ios_UIView.classInitialized) __INIT_org_xmlvm_ios_UIView();
-
+    UIView* objCObj = [thiz backgroundView];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -290,7 +288,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
     XMLVM_VAR_THIZ;
     
     UIImage* objCObj = [thiz  thumbnailImageAtTime:n1 timeOption:n2];
-    if (!__TIB_org_xmlvm_ios_UIImage.classInitialized) __INIT_org_xmlvm_ios_UIImage();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -326,16 +323,14 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MPMoviePlayerController_getAccessLog__]
 
     XMLVM_VAR_THIZ;
-    MPMovieAccessLog* objCObj = [thiz accessLog];    if (!__TIB_org_xmlvm_ios_MPMovieAccessLog.classInitialized) __INIT_org_xmlvm_ios_MPMovieAccessLog();
-
+    MPMovieAccessLog* objCObj = [thiz accessLog];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MPMoviePlayerController_getErrorLog__]
 
     XMLVM_VAR_THIZ;
-    MPMovieErrorLog* objCObj = [thiz errorLog];    if (!__TIB_org_xmlvm_ios_MPMovieErrorLog.classInitialized) __INIT_org_xmlvm_ios_MPMovieErrorLog();
-
+    MPMovieErrorLog* objCObj = [thiz errorLog];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -352,7 +347,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
     XMLVM_VAR_THIZ;
     
     UIColor* objCObj = [thiz backgroundColor];
-    if (!__TIB_org_xmlvm_ios_UIColor.classInitialized) __INIT_org_xmlvm_ios_UIColor();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -372,4 +366,41 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
     int objCObj = [thiz movieControlMode];
 
     return objCObj;
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MPMoviePlayerController_getIsPreparedToPlay__]
+
+    XMLVM_VAR_THIZ;
+    BOOL objCObj = [thiz isPreparedToPlay];
+    return objCObj;
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MPMoviePlayerController_getCurrentPlaybackTime__]
+
+    XMLVM_VAR_THIZ;
+    double objCObj = [thiz currentPlaybackTime];
+    return objCObj;
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MPMoviePlayerController_setCurrentPlaybackTime___double]
+
+    XMLVM_VAR_THIZ;
+    [thiz setCurrentPlaybackTime:n1];
+
+    
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MPMoviePlayerController_getCurrentPlaybackRate__]
+
+    XMLVM_VAR_THIZ;
+    float objCObj = [thiz currentPlaybackRate];
+    return objCObj;
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_MPMoviePlayerController_setCurrentPlaybackRate___float]
+
+    XMLVM_VAR_THIZ;
+    [thiz setCurrentPlaybackRate:n1];
+
+    
 //XMLVM_END_WRAPPER

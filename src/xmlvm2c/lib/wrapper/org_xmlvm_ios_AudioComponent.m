@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_AudioComponent();
 }
 @end
+
 void org_xmlvm_ios_AudioComponent_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -40,14 +41,19 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
     org_xmlvm_ios_AudioComponent_INTERNAL_CONSTRUCTOR(me, objCObj);
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AudioComponent_findNext___org_xmlvm_ios_Reference<AudioComponentDescription>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AudioComponent_findNext___org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AudioComponent_count___org_xmlvm_ios_Reference<AudioComponentDescription>]
-
-XMLVM_NOT_IMPLEMENTED();
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AudioComponent_count___org_xmlvm_ios_Reference]
+JAVA_OBJECT jObject1 = org_xmlvm_ios_Reference_get__(n1);
+    AudioComponentDescription var1= toAudioComponentDescription(jObject1);
+    
+    int objCObj = ABAddressBookGetGroupCount(&var1);
+    org_xmlvm_ios_Reference_set___java_lang_Object(n1, fromAudioComponentDescription(var1));
+    
+    return objCObj;
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AudioComponent_copyName___java_lang_String]
@@ -55,7 +61,7 @@ XMLVM_NOT_IMPLEMENTED();
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AudioComponent_getDescription___org_xmlvm_ios_Reference<AudioComponentDescription>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_AudioComponent_getDescription___org_xmlvm_ios_Reference]
 
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER

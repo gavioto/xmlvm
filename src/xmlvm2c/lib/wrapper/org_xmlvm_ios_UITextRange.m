@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_UITextRange();
 }
 @end
+
 void org_xmlvm_ios_UITextRange_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -57,15 +58,13 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UITextRange_getStart__]
 
     XMLVM_VAR_THIZ;
-    UITextPosition* objCObj = [thiz start];    if (!__TIB_org_xmlvm_ios_UITextPosition.classInitialized) __INIT_org_xmlvm_ios_UITextPosition();
-
+    UITextPosition* objCObj = [thiz start];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_UITextRange_getEnd__]
 
     XMLVM_VAR_THIZ;
-    UITextPosition* objCObj = [thiz end];    if (!__TIB_org_xmlvm_ios_UITextPosition.classInitialized) __INIT_org_xmlvm_ios_UITextPosition();
-
+    UITextPosition* objCObj = [thiz end];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

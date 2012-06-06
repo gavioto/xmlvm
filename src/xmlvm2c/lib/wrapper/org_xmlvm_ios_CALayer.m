@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_CALayer();
 }
 @end
+
 void org_xmlvm_ios_CALayer_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -56,7 +57,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CALayer_layer__]
 
     CALayer* objCObj =  [CALayer layer];
-    if (!__TIB_org_xmlvm_ios_CALayer.classInitialized) __INIT_org_xmlvm_ios_CALayer();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -290,8 +290,7 @@ NSString * ObjCVar1 = toNSString(n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CALayer_getSuperlayer__]
 
     XMLVM_VAR_THIZ;
-    CALayer* objCObj = [thiz superlayer];    if (!__TIB_org_xmlvm_ios_CALayer.classInitialized) __INIT_org_xmlvm_ios_CALayer();
-
+    CALayer* objCObj = [thiz superlayer];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -379,8 +378,7 @@ NSString * ObjCVar1 = toNSString(n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CALayer_getMask__]
 
     XMLVM_VAR_THIZ;
-    CALayer* objCObj = [thiz mask];    if (!__TIB_org_xmlvm_ios_CALayer.classInitialized) __INIT_org_xmlvm_ios_CALayer();
-
+    CALayer* objCObj = [thiz mask];
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
 
@@ -466,7 +464,6 @@ NSString * ObjCVar1 = toNSString(n1);
     XMLVM_VAR_THIZ;
     
     CALayer* objCObj = [thiz  hitTest:toCGPoint(n1)];
-    if (!__TIB_org_xmlvm_ios_CALayer.classInitialized) __INIT_org_xmlvm_ios_CALayer();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -716,8 +713,8 @@ NSString * ObjCVar1 = toNSString(n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CALayer_getBackgroundColor__]
 
     XMLVM_VAR_THIZ;
-    CGColorRef objCObj = [thiz backgroundColor];XMLVM_VAR_INIT_REF(CGColor, objCObj);
-    return jvar;
+    CGColorRef objCObj = [thiz backgroundColor];XMLVM_VAR_INIT_REF(CGColor, refVar, objCObj);
+    return refVar;
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CALayer_setBackgroundColor___org_xmlvm_ios_CGColor]
@@ -762,8 +759,8 @@ NSString * ObjCVar1 = toNSString(n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CALayer_getBorderColor__]
 
     XMLVM_VAR_THIZ;
-    CGColorRef objCObj = [thiz borderColor];XMLVM_VAR_INIT_REF(CGColor, objCObj);
-    return jvar;
+    CGColorRef objCObj = [thiz borderColor];XMLVM_VAR_INIT_REF(CGColor, refVar, objCObj);
+    return refVar;
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CALayer_setBorderColor___org_xmlvm_ios_CGColor]
@@ -874,8 +871,8 @@ NSString * ObjCVar1 = toNSString(n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CALayer_getShadowColor__]
 
     XMLVM_VAR_THIZ;
-    CGColorRef objCObj = [thiz shadowColor];XMLVM_VAR_INIT_REF(CGColor, objCObj);
-    return jvar;
+    CGColorRef objCObj = [thiz shadowColor];XMLVM_VAR_INIT_REF(CGColor, refVar, objCObj);
+    return refVar;
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CALayer_setShadowColor___org_xmlvm_ios_CGColor]
@@ -935,8 +932,8 @@ NSString * ObjCVar1 = toNSString(n1);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CALayer_getShadowPath__]
 
     XMLVM_VAR_THIZ;
-    CGPathRef objCObj = [thiz shadowPath];XMLVM_VAR_INIT_REF(CGPath, objCObj);
-    return jvar;
+    CGPathRef objCObj = [thiz shadowPath];XMLVM_VAR_INIT_REF(CGPath, refVar, objCObj);
+    return refVar;
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CALayer_setShadowPath___org_xmlvm_ios_CGPath]
@@ -1057,7 +1054,6 @@ XMLVM_NOT_IMPLEMENTED();
     CAAnimation* objCObj = [thiz  animationForKey:ObjCVar1];
     [ObjCVar1 release];
 
-    if (!__TIB_org_xmlvm_ios_CAAnimation.classInitialized) __INIT_org_xmlvm_ios_CAAnimation();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -1126,4 +1122,127 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     CGRect objCObj = [thiz visibleRect];
     return fromCGRect(objCObj);
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CALayer_getBeginTime__]
+
+    XMLVM_VAR_THIZ;
+    double objCObj = [thiz beginTime];
+    return objCObj;
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CALayer_setBeginTime___double]
+
+    XMLVM_VAR_THIZ;
+    [thiz setBeginTime:n1];
+
+    
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CALayer_getDuration__]
+
+    XMLVM_VAR_THIZ;
+    double objCObj = [thiz duration];
+    return objCObj;
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CALayer_setDuration___double]
+
+    XMLVM_VAR_THIZ;
+    [thiz setDuration:n1];
+
+    
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CALayer_getSpeed__]
+
+    XMLVM_VAR_THIZ;
+    float objCObj = [thiz speed];
+    return objCObj;
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CALayer_setSpeed___float]
+
+    XMLVM_VAR_THIZ;
+    [thiz setSpeed:n1];
+
+    
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CALayer_getTimeOffset__]
+
+    XMLVM_VAR_THIZ;
+    double objCObj = [thiz timeOffset];
+    return objCObj;
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CALayer_setTimeOffset___double]
+
+    XMLVM_VAR_THIZ;
+    [thiz setTimeOffset:n1];
+
+    
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CALayer_getRepeatCount__]
+
+    XMLVM_VAR_THIZ;
+    float objCObj = [thiz repeatCount];
+    return objCObj;
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CALayer_setRepeatCount___float]
+
+    XMLVM_VAR_THIZ;
+    [thiz setRepeatCount:n1];
+
+    
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CALayer_getRepeatDuration__]
+
+    XMLVM_VAR_THIZ;
+    double objCObj = [thiz repeatDuration];
+    return objCObj;
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CALayer_setRepeatDuration___double]
+
+    XMLVM_VAR_THIZ;
+    [thiz setRepeatDuration:n1];
+
+    
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CALayer_getAutoreverses__]
+
+    XMLVM_VAR_THIZ;
+    BOOL objCObj = [thiz autoreverses];
+    return objCObj;
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CALayer_setAutoreverses___boolean]
+
+    XMLVM_VAR_THIZ;
+    [thiz setAutoreverses:n1];
+
+    
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CALayer_getFillMode__]
+
+    XMLVM_VAR_THIZ;
+    NSString* objCObj = [thiz fillMode];
+    return fromNSString(objCObj);
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_CALayer_setFillMode___java_lang_String]
+
+    XMLVM_VAR_THIZ;
+    NSString * ObjCVar1 = toNSString(n1);
+    [thiz setFillMode:ObjCVar1];
+    [ObjCVar1 release];
+
+
+    
 //XMLVM_END_WRAPPER

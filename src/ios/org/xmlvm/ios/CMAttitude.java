@@ -63,4 +63,8 @@ public class CMAttitude extends NSObject {
 	public void multiplyByInverseOfAttitude(CMAttitude attitude){
 		throw new RuntimeException("Stub");
 	}
+
+	/*
+	 * Interface Properties
+	 */
 }

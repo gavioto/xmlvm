@@ -10,9 +10,10 @@
         __INIT_org_xmlvm_ios_NSIndexSet();
 }
 @end
+
 void org_xmlvm_ios_NSIndexSet_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-}
+    }
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
@@ -68,7 +69,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSIndexSet_indexSet__]
 
     NSIndexSet* objCObj =  [NSIndexSet indexSet];
-    if (!__TIB_org_xmlvm_ios_NSIndexSet.classInitialized) __INIT_org_xmlvm_ios_NSIndexSet();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -76,7 +76,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSIndexSet_indexSetWithIndex___int]
 
     NSIndexSet* objCObj =  [NSIndexSet  indexSetWithIndex:n1];
-    if (!__TIB_org_xmlvm_ios_NSIndexSet.classInitialized) __INIT_org_xmlvm_ios_NSIndexSet();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -84,7 +83,6 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSIndexSet_indexSetWithIndexesInRange___org_xmlvm_ios_NSRange]
 
     NSIndexSet* objCObj =  [NSIndexSet  indexSetWithIndexesInRange:toNSRange(n1)];
-    if (!__TIB_org_xmlvm_ios_NSIndexSet.classInitialized) __INIT_org_xmlvm_ios_NSIndexSet();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -161,9 +159,16 @@ __DELETE_org_xmlvm_ios_NSObject(me, client_data);
     return objCObj;
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSIndexSet_getIndexes___int_1ARRAY_int_org_xmlvm_ios_Reference<NSRange>]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSIndexSet_getIndexes___int_1ARRAY_int_org_xmlvm_ios_Reference]
 
-XMLVM_NOT_IMPLEMENTED();
+    XMLVM_VAR_THIZ;
+    XMLVM_VAR_INT_ARRAY(a1, n1); 
+    JAVA_OBJECT jObject3 = org_xmlvm_ios_Reference_get__(n3);
+    NSRange var3= toNSRange(jObject3);
+    
+    int objCObj = [thiz  getIndexes:a1->fields.org_xmlvm_runtime_XMLVMArray.array_ maxCount:n2 inIndexRange:&var3];
+
+    return objCObj;
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSIndexSet_countOfIndexesInRange___org_xmlvm_ios_NSRange]
@@ -267,7 +272,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSIndexSet* objCObj = [thiz  indexesPassingTest:((org_xmlvm_ios_NSObject*) n1)->fields.org_xmlvm_ios_NSObject.wrappedObj];
-    if (!__TIB_org_xmlvm_ios_NSIndexSet.classInitialized) __INIT_org_xmlvm_ios_NSIndexSet();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -277,7 +281,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSIndexSet* objCObj = [thiz  indexesWithOptions:n1 passingTest:((org_xmlvm_ios_NSObject*) n2)->fields.org_xmlvm_ios_NSObject.wrappedObj];
-    if (!__TIB_org_xmlvm_ios_NSIndexSet.classInitialized) __INIT_org_xmlvm_ios_NSIndexSet();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER
@@ -287,7 +290,6 @@ XMLVM_NOT_IMPLEMENTED();
     XMLVM_VAR_THIZ;
     
     NSIndexSet* objCObj = [thiz  indexesInRange:toNSRange(n1) options:n2 passingTest:((org_xmlvm_ios_NSObject*) n3)->fields.org_xmlvm_ios_NSObject.wrappedObj];
-    if (!__TIB_org_xmlvm_ios_NSIndexSet.classInitialized) __INIT_org_xmlvm_ios_NSIndexSet();
 
     return xmlvm_get_associated_c_object (objCObj);
 //XMLVM_END_WRAPPER

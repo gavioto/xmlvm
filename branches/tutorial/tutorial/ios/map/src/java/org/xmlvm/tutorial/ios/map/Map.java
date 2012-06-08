@@ -20,15 +20,15 @@
 
 package org.xmlvm.tutorial.ios.map;
 
-import org.xmlvm.iphone.CGRect;
-import org.xmlvm.iphone.CLLocationCoordinate2D;
-import org.xmlvm.iphone.MKMapView;
-import org.xmlvm.iphone.MKCoordinateRegion;
-import org.xmlvm.iphone.MKCoordinateSpan;
-import org.xmlvm.iphone.UIApplication;
-import org.xmlvm.iphone.UIApplicationDelegate;
-import org.xmlvm.iphone.UIScreen;
-import org.xmlvm.iphone.UIWindow;
+import org.xmlvm.ios.CGRect;
+import org.xmlvm.ios.CLLocationCoordinate2D;
+import org.xmlvm.ios.MKCoordinateRegion;
+import org.xmlvm.ios.MKCoordinateSpan;
+import org.xmlvm.ios.MKMapView;
+import org.xmlvm.ios.UIApplication;
+import org.xmlvm.ios.UIScreen;
+import org.xmlvm.ios.UIWindow;
+import org.xmlvm.ios.adapter.UIApplicationDelegate;
 
 /**
  * This application displays a map of San Francisco (the coolest place to live!)
@@ -36,8 +36,16 @@ import org.xmlvm.iphone.UIWindow;
  */
 public class Map extends UIApplicationDelegate {
 
+    public static void main(String[] args) {
+        UIApplication.main(args, null, Map.class);
+    }
+
+    /* (non-Javadoc)
+     * @see org.xmlvm.ios.adapter.UIApplicationDelegate#didFinishLaunchingWithOptions(org.xmlvm.ios.UIApplication, java.util.Map)
+     */
     @Override
-    public void applicationDidFinishLaunching(UIApplication app) {
+    public boolean didFinishLaunchingWithOptions(UIApplication application,
+            java.util.Map<String, Object> launchOptions) {
         CGRect rect = UIScreen.mainScreen().getApplicationFrame();
         UIWindow window = new UIWindow(rect);
 
@@ -64,10 +72,7 @@ public class Map extends UIApplicationDelegate {
         window.addSubview(mapView);
 
         window.makeKeyAndVisible();
-    }
-
-    public static void main(String[] args) {
-        UIApplication.main(args, null, Map.class);
+        return true;
     }
 
 }

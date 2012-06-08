@@ -20,18 +20,20 @@
 
 package org.xmlvm.tutorial.ios.sensor.gps;
 
-import org.xmlvm.iphone.CGRect;
-import org.xmlvm.iphone.NSError;
-import org.xmlvm.iphone.UIApplication;
-import org.xmlvm.iphone.UIApplicationDelegate;
-import org.xmlvm.iphone.UIColor;
-import org.xmlvm.iphone.UILabel;
-import org.xmlvm.iphone.UIScreen;
-import org.xmlvm.iphone.UIWindow;
-import org.xmlvm.iphone.CLLocation;
-import org.xmlvm.iphone.CLLocationManager;
-import org.xmlvm.iphone.CLLocationManagerDelegate;
-import org.xmlvm.iphone.NSLog;
+import java.util.Map;
+
+import org.xmlvm.ios.CGRect;
+import org.xmlvm.ios.NSError;
+import org.xmlvm.ios.UIApplication;
+import org.xmlvm.ios.adapter.UIApplicationDelegate;
+import org.xmlvm.ios.Foundation;
+import org.xmlvm.ios.UIColor;
+import org.xmlvm.ios.UILabel;
+import org.xmlvm.ios.UIScreen;
+import org.xmlvm.ios.UIWindow;
+import org.xmlvm.ios.CLLocation;
+import org.xmlvm.ios.CLLocationManager;
+import org.xmlvm.ios.adapter.CLLocationManagerDelegate;
 
 /**
  * The GPS application allows the user to see their current location in
@@ -45,10 +47,10 @@ public class GPS extends UIApplicationDelegate {
 
 
     @Override
-    public void applicationDidFinishLaunching(UIApplication app) {
+    public boolean didFinishLaunchingWithOptions(UIApplication app, Map<String, Object> launchOptions) {
         CGRect rect = UIScreen.mainScreen().getApplicationFrame();
         UIWindow window = new UIWindow(rect);
-        window.setBackgroundColor(UIColor.whiteColor);
+        window.setBackgroundColor(UIColor.whiteColor());
 
         UILabel label = new UILabel(new CGRect(20, 20, 80, 30));
         label.setText("Longitude:");
@@ -98,7 +100,7 @@ public class GPS extends UIApplicationDelegate {
             @Override
             public void didFailWithError(CLLocationManager manager, NSError error) {
                 super.didFailWithError(manager, error);
-                NSLog.log(error);
+                Foundation.NSLog(error.description());
             }
 
         });
@@ -116,6 +118,7 @@ public class GPS extends UIApplicationDelegate {
         manager.startUpdatingLocation();
 
         window.makeKeyAndVisible();
+        return true;
     }
 
     public static void main(String[] args) {

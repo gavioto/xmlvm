@@ -21,8 +21,8 @@
 package org.xmlvm.acl.ios.subsystems;
 
 import org.xmlvm.acl.common.subsystems.CommonWebBrowser;
-import org.xmlvm.iphone.NSURL;
-import org.xmlvm.iphone.UIApplication;
+import org.xmlvm.ios.NSURL;
+import org.xmlvm.ios.UIApplication;
 
 import android.net.Uri;
 

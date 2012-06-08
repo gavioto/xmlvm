@@ -21,8 +21,8 @@
 package org.xmlvm.acl.ios.adapter;
 
 import org.xmlvm.acl.common.adapter.AlertDialogAdapter;
-import org.xmlvm.iphone.UIAlertView;
-import org.xmlvm.iphone.UIAlertViewDelegate;
+import org.xmlvm.ios.UIAlertView;
+import org.xmlvm.ios.adapter.UIAlertViewDelegate;
 
 import android.app.AlertDialog;
 

@@ -22,10 +22,10 @@ package org.xmlvm.ios.custom;
 
 import java.util.Set;
 
-import org.xmlvm.iphone.CGRect;
-import org.xmlvm.iphone.UIEvent;
-import org.xmlvm.iphone.UITouch;
-import org.xmlvm.iphone.UIView;
+import org.xmlvm.ios.CGRect;
+import org.xmlvm.ios.UIEvent;
+import org.xmlvm.ios.UITouch;
+import org.xmlvm.ios.UIView;
 
 /**
  * UIToggleButton is a fictitious Cocoa class that mimics Android's ToggleButton

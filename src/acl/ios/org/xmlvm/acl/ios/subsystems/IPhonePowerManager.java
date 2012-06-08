@@ -21,7 +21,7 @@
 package org.xmlvm.acl.ios.subsystems;
 
 import org.xmlvm.acl.common.subsystems.CommonPowerManager;
-import org.xmlvm.iphone.UIApplication;
+import org.xmlvm.ios.UIApplication;
 
 /**
  *

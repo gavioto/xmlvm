@@ -25,16 +25,14 @@ import java.util.List;
 import java.util.Set;
 
 import org.xmlvm.acl.common.objects.CommonView;
-import org.xmlvm.iphone.CGPoint;
-import org.xmlvm.iphone.CGRect;
-import org.xmlvm.iphone.CGSize;
-import org.xmlvm.iphone.UIColor;
-import org.xmlvm.iphone.UIEvent;
-import org.xmlvm.iphone.UIInterfaceOrientation;
-import org.xmlvm.iphone.UITouch;
-import org.xmlvm.iphone.UIView;
-import org.xmlvm.iphone.UIViewContentMode;
-import org.xmlvm.iphone.UIViewController;
+import org.xmlvm.ios.CGPoint;
+import org.xmlvm.ios.CGRect;
+import org.xmlvm.ios.CGSize;
+import org.xmlvm.ios.UIColor;
+import org.xmlvm.ios.UIEvent;
+import org.xmlvm.ios.UITouch;
+import org.xmlvm.ios.UIView;
+import org.xmlvm.ios.UIViewController;
 
 import android.app.Application;
 import android.content.pm.ActivityInfo;
@@ -165,16 +163,16 @@ public class IPhoneView implements CommonView {
     public void setContentMode(int mode) {
         switch (mode) {
         case CommonView.SCALE_TO_FILL:
-            this.view.setContentMode(UIViewContentMode.ScaleToFill);
+            this.view.setContentMode(org.xmlvm.iphone.UIViewContentMode.ScaleToFill);
             break;
         case CommonView.SCALE_ASPECT_FIT:
-            this.view.setContentMode(UIViewContentMode.ScaleAspectFit);
+            this.view.setContentMode(org.xmlvm.iphone.UIViewContentMode.ScaleAspectFit);
             break;
         case CommonView.SCALE_ASPECT_FILL:
-            this.view.setContentMode(UIViewContentMode.ScaleAspectFill);
+            this.view.setContentMode(org.xmlvm.iphone.UIViewContentMode.ScaleAspectFill);
             break;
         case CommonView.CENTER:
-            this.view.setContentMode(UIViewContentMode.Center);
+            this.view.setContentMode(org.xmlvm.iphone.UIViewContentMode.Center);
             break;
         default:
             Assert.NOT_IMPLEMENTED();
@@ -304,12 +302,12 @@ public class IPhoneView implements CommonView {
                 }
                 int requestedOrientation = TopActivity.get().getRequestedOrientation();
                 if (requestedOrientation == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE) {
-                    return (orientation == UIInterfaceOrientation.LandscapeLeft)
-                            || (orientation == UIInterfaceOrientation.LandscapeRight);
+                    return (orientation == org.xmlvm.iphone.UIInterfaceOrientation.LandscapeLeft)
+                            || (orientation == org.xmlvm.iphone.UIInterfaceOrientation.LandscapeRight);
                 }
                 if (requestedOrientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) {
-                    return (orientation == UIInterfaceOrientation.Portrait)
-                            || (orientation == UIInterfaceOrientation.PortraitUpsideDown);
+                    return (orientation == org.xmlvm.iphone.UIInterfaceOrientation.Portrait)
+                            || (orientation == org.xmlvm.iphone.UIInterfaceOrientation.PortraitUpsideDown);
                 }
                 return false;
             }

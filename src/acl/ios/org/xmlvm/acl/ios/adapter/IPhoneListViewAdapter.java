@@ -24,13 +24,13 @@ import java.util.HashMap;
 
 import org.xmlvm.acl.common.adapter.ListViewAdapter;
 import org.xmlvm.acl.ios.objects.IPhoneView;
-import org.xmlvm.iphone.NSIndexPath;
-import org.xmlvm.iphone.UIColor;
-import org.xmlvm.iphone.UITableView;
-import org.xmlvm.iphone.UITableViewCell;
-import org.xmlvm.iphone.UITableViewDataSource;
-import org.xmlvm.iphone.UITableViewDelegate;
-import org.xmlvm.iphone.UIView;
+import org.xmlvm.ios.NSIndexPath;
+import org.xmlvm.ios.UIColor;
+import org.xmlvm.ios.UITableView;
+import org.xmlvm.ios.UITableViewCell;
+import org.xmlvm.ios.adapter.UITableViewDataSource;
+import org.xmlvm.ios.adapter.UITableViewDelegate;
+import org.xmlvm.ios.UIView;
 
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,7 +52,7 @@ public class IPhoneListViewAdapter extends IPhoneView implements ListViewAdapter
         tv.setDataSource(new UITableViewDataSource() {
 
             @Override
-            public UITableViewCell cellForRowAtIndexPath(UITableView table, NSIndexPath idx) {
+            public UITableViewCell tableViewCellForRowAtIndexPath(UITableView table, NSIndexPath idx) {
                 AndroidTableViewCell cell = (AndroidTableViewCell) table.dequeueReusableCellWithIdentifier("android.widget.ListView.AndroidTableViewCell");
                 if (cell == null) {
                     cell = new AndroidTableViewCell();
@@ -62,7 +62,7 @@ public class IPhoneListViewAdapter extends IPhoneView implements ListViewAdapter
             }
 
             @Override
-            public int numberOfRowsInSection(UITableView table, int section) {
+            public int tableViewNumberOfRowsInSection(UITableView table, int section) {
                 if (adapter == null)
                     return 0;
                 return adapter.getCount();
@@ -81,7 +81,7 @@ public class IPhoneListViewAdapter extends IPhoneView implements ListViewAdapter
                 listView.getOnItemClickListener().onItemClick(listView, indexviews.get(row), row, row);
             }
         });
-        tv.setBackgroundColor(UIColor.clearColor);
+        tv.setBackgroundColor(UIColor.clearColor());
         this.setView(tv);
     }
     
@@ -90,7 +90,7 @@ public class IPhoneListViewAdapter extends IPhoneView implements ListViewAdapter
         private int lastindex = -1;
         
         public AndroidTableViewCell() {
-            ((UITableView)IPhoneListViewAdapter.this.getView()).setBackgroundColor(UIColor.clearColor);
+            ((UITableView)IPhoneListViewAdapter.this.getView()).setBackgroundColor(UIColor.clearColor());
         }
 
         private void update(int row) {

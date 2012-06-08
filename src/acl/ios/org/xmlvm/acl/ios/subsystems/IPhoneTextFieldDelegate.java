@@ -23,12 +23,12 @@ package org.xmlvm.acl.ios.subsystems;
 import org.xmlvm.acl.common.adapter.ScrollViewAdapter;
 import org.xmlvm.acl.common.subsystems.CommonTextFieldDelegate;
 import org.xmlvm.acl.ios.objects.IPhoneView;
-import org.xmlvm.iphone.CGPoint;
-import org.xmlvm.iphone.CGRect;
-import org.xmlvm.iphone.UIScreen;
-import org.xmlvm.iphone.UIScrollView;
-import org.xmlvm.iphone.UITextField;
-import org.xmlvm.iphone.UITextFieldDelegate;
+import org.xmlvm.ios.CGPoint;
+import org.xmlvm.ios.CGRect;
+import org.xmlvm.ios.UIScreen;
+import org.xmlvm.ios.UIScrollView;
+import org.xmlvm.ios.UITextField;
+import org.xmlvm.ios.adapter.UITextFieldDelegate;
 
 import android.view.Window;
 

@@ -52,9 +52,9 @@ import org.xmlvm.acl.ios.adapter.IPhoneToggleButtonAdapter;
 import org.xmlvm.acl.ios.adapter.IPhoneWebViewAdapter;
 import org.xmlvm.acl.ios.objects.IPhoneContext;
 import org.xmlvm.acl.ios.objects.IPhoneView;
-import org.xmlvm.iphone.CGSize;
-import org.xmlvm.iphone.UIGraphics;
-import org.xmlvm.iphone.UIImage;
+import org.xmlvm.ios.CGSize;
+import org.xmlvm.ios.UIImage;
+import org.xmlvm.ios.UIKit;
 
 import android.app.AlertDialog;
 import android.content.pm.ActivityInfo;
@@ -93,9 +93,9 @@ public class IPhoneWidgetFactory implements CommonWidgetFactory {
     
     @Override
     public BitmapDrawableAdapter createBitmapDrawable(int width, int height) {
-        UIGraphics.beginImageContext(new CGSize(width, height));
-        UIImage image = UIGraphics.getImageFromCurrentImageContext();
-        UIGraphics.endImageContext();
+        UIKit.UIGraphicsBeginImageContext(new CGSize(width, height));
+        UIImage image = UIKit.UIGraphicsGetImageFromCurrentImageContext();
+        UIKit.UIGraphicsEndImageContext();
         return new IPhoneBitmapDrawableAdapter(image);
     }
 

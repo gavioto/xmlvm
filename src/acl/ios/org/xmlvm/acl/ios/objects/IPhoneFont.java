@@ -21,7 +21,7 @@
 package org.xmlvm.acl.ios.objects;
 
 import org.xmlvm.acl.common.objects.CommonFont;
-import org.xmlvm.iphone.UIFont;
+import org.xmlvm.ios.UIFont;
 
 /**
  *
@@ -49,12 +49,12 @@ public class IPhoneFont implements CommonFont {
 
     @Override
     public float pointSize() {
-        return font.pointSize();
+        return font.getPointSize();
     }
 
     @Override
     public String familyName() {
-        return font.familyName();
+        return font.getFamilyName();
     }
     
     public static CommonFont systemFontOfSize(float size) {
@@ -62,7 +62,7 @@ public class IPhoneFont implements CommonFont {
     }
 
     public static CommonFont fontWithNameSize(String name, float pointSize) {
-        return new IPhoneFont(UIFont.fontWithNameSize(name, pointSize));
+        return new IPhoneFont(UIFont.fontWithName(name, pointSize));
     }
     
     public static float labelFontSize() {

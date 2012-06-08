@@ -25,9 +25,9 @@ import java.util.Set;
 import org.xmlvm.acl.common.adapter.BitmapDrawableAdapter;
 import org.xmlvm.acl.common.adapter.ImageViewAdapter;
 import org.xmlvm.acl.ios.objects.IPhoneView;
-import org.xmlvm.iphone.UIEvent;
-import org.xmlvm.iphone.UIImageView;
-import org.xmlvm.iphone.UITouch;
+import org.xmlvm.ios.UIEvent;
+import org.xmlvm.ios.UIImageView;
+import org.xmlvm.ios.UITouch;
 
 import android.view.MotionEvent;
 import android.widget.ImageButton;

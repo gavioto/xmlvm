@@ -21,13 +21,11 @@
 package org.xmlvm.acl.ios.subsystems;
 
 import org.xmlvm.acl.common.subsystems.CommonProperties;
-import org.xmlvm.iphone.CGRect;
-import org.xmlvm.iphone.CGSize;
-import org.xmlvm.iphone.UIApplication;
-import org.xmlvm.iphone.UIDevice;
-import org.xmlvm.iphone.UIDeviceOrientation;
-import org.xmlvm.iphone.UIInterfaceOrientation;
-import org.xmlvm.iphone.UIScreen;
+import org.xmlvm.ios.CGRect;
+import org.xmlvm.ios.CGSize;
+import org.xmlvm.ios.UIApplication;
+import org.xmlvm.ios.UIDevice;
+import org.xmlvm.ios.UIScreen;
 
 import android.graphics.RectF;
 import android.internal.CommonDeviceAPIFinder;
@@ -86,22 +84,22 @@ public class IPhoneProperties implements CommonProperties {
         int orientation = ORIENTATION_UNKNOWN;
 
         switch (nativeOrientation) {
-        case UIDeviceOrientation.Portrait:
+        case org.xmlvm.iphone.UIDeviceOrientation.Portrait:
             orientation = ORIENTATION_PORTRAIT;
             break;
-        case UIDeviceOrientation.PortraitUpsideDown:
+        case org.xmlvm.iphone.UIDeviceOrientation.PortraitUpsideDown:
             orientation = ORIENTATION_PORTRAIT_UPSIDE_DOWN;
             break;
-        case UIDeviceOrientation.FaceUp:
+        case org.xmlvm.iphone.UIDeviceOrientation.FaceUp:
             orientation = ORIENTATION_FACE_UP;
             break;
-        case UIDeviceOrientation.FaceDown:
+        case org.xmlvm.iphone.UIDeviceOrientation.FaceDown:
             orientation = ORIENTATION_FACE_DOWN;
             break;
-        case UIDeviceOrientation.LandscapeLeft:
+        case org.xmlvm.iphone.UIDeviceOrientation.LandscapeLeft:
             orientation = ORIENTATION_LANDSCAPE_LEFT;
             break;
-        case UIDeviceOrientation.LandscapeRight:
+        case org.xmlvm.iphone.UIDeviceOrientation.LandscapeRight:
             orientation = ORIENTATION_LANDSCAPE_RIGHT;
             break;
         }
@@ -114,11 +112,11 @@ public class IPhoneProperties implements CommonProperties {
         switch (orientation) {
         case CommonProperties.ORIENTATION_LANDSCAPE_LEFT:
             UIApplication.sharedApplication().setStatusBarOrientation(
-                    UIInterfaceOrientation.LandscapeLeft);
+                    org.xmlvm.iphone.UIInterfaceOrientation.LandscapeLeft);
             break;
         case CommonProperties.ORIENTATION_PORTRAIT:
             UIApplication.sharedApplication().setStatusBarOrientation(
-                    UIInterfaceOrientation.Portrait);
+                    org.xmlvm.iphone.UIInterfaceOrientation.Portrait);
             break;
         }
     }

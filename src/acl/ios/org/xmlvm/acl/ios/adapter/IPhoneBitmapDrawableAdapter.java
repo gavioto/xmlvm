@@ -22,7 +22,7 @@ package org.xmlvm.acl.ios.adapter;
 
 import org.xmlvm.acl.common.adapter.BitmapDrawableAdapter;
 import org.xmlvm.acl.ios.objects.IPhoneView;
-import org.xmlvm.iphone.UIImage;
+import org.xmlvm.ios.UIImage;
 
 import android.graphics.Rect;
 import android.graphics.RectF;

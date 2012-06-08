@@ -20,20 +20,15 @@
 
 package org.xmlvm.acl.ios.adapter;
 
-import java.util.List;
 import java.util.Set;
 
 import org.xmlvm.acl.common.adapter.ProgressBarAdapter;
-import org.xmlvm.acl.common.objects.CommonView;
 import org.xmlvm.acl.ios.objects.IPhoneView;
-import org.xmlvm.iphone.UIActivityIndicatorView;
-import org.xmlvm.iphone.UIActivityIndicatorViewStyle;
-import org.xmlvm.iphone.UITouch;
-import org.xmlvm.iphone.UIEvent;
+import org.xmlvm.ios.UIActivityIndicatorView;
+import org.xmlvm.ios.UIEvent;
+import org.xmlvm.ios.UITouch;
 
-import android.graphics.RectF;
 import android.view.MotionEvent;
-import android.view.View;
 import android.widget.ProgressBar;
 
 /**
@@ -44,7 +39,7 @@ public class IPhoneProgressBarAdapter extends IPhoneView implements ProgressBarA
     public IPhoneProgressBarAdapter(ProgressBar progressBar) {
         super(progressBar);
         this.setView(new UIActivityIndicatorView(
-                UIActivityIndicatorViewStyle.WhiteLarge) {
+                org.xmlvm.iphone.UIActivityIndicatorViewStyle.WhiteLarge) {
 
             @Override
             public void touchesBegan(Set<UITouch> touches, UIEvent event) {

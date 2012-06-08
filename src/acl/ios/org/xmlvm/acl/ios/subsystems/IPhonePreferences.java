@@ -21,7 +21,7 @@
 package org.xmlvm.acl.ios.subsystems;
 
 import org.xmlvm.acl.common.subsystems.CommonPreferences;
-import org.xmlvm.iphone.NSUserDefaults;
+import org.xmlvm.ios.NSUserDefaults;
 
 /**
  *
@@ -61,7 +61,7 @@ public class IPhonePreferences implements CommonPreferences {
 
     @Override
     public void remove(String key) {
-        preferences.remove(key);
+        preferences.removeObjectForKey(key);
     }
 
     @Override

@@ -27,12 +27,12 @@ import java.io.InputStream;
 import java.lang.ref.WeakReference;
 
 import org.xmlvm.acl.common.subsystems.CommonMediaPlayer;
-import org.xmlvm.iphone.AVAudioPlayer;
-import org.xmlvm.iphone.AVAudioPlayerDelegate;
-import org.xmlvm.iphone.NSData;
-import org.xmlvm.iphone.NSError;
-import org.xmlvm.iphone.NSErrorHolder;
-import org.xmlvm.iphone.NSMutableData;
+import org.xmlvm.ios.AVAudioPlayer;
+import org.xmlvm.ios.adapter.AVAudioPlayerDelegate;
+import org.xmlvm.ios.NSData;
+import org.xmlvm.ios.NSError;
+import org.xmlvm.ios.NSMutableData;
+import org.xmlvm.ios.Reference;
 
 import android.content.Context;
 import android.media.MediaPlayer;
@@ -40,7 +40,7 @@ import android.media.MediaPlayer;
 /**
  *
  */
-public class IPhoneMediaPlayer implements CommonMediaPlayer, AVAudioPlayerDelegate {
+public class IPhoneMediaPlayer extends AVAudioPlayerDelegate implements CommonMediaPlayer {
     
     private static final int     BUF_SIZE             = 32767;
     private boolean              looping              = false;
@@ -231,12 +231,11 @@ public class IPhoneMediaPlayer implements CommonMediaPlayer, AVAudioPlayerDelega
     }
 
     private void createPlayer() throws IOException {
-        NSErrorHolder error = new NSErrorHolder();
-        player = AVAudioPlayer.audioPlayerWithData(data, error);
-        if (player == null) {
-            throw new IOException(error.description());
-        }
+        Reference<NSError> error = new Reference<NSError>();
+        player = new AVAudioPlayer(data, error); 
 
+        // TODO: Check error parameter
+        
         player.setNumberOfLoops(looping ? -1 : 0);
         player.setDelegate(this);
     }

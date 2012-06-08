@@ -23,12 +23,13 @@ package org.xmlvm.acl.ios.objects;
 import org.xmlvm.acl.common.adapter.BitmapDrawableAdapter;
 import org.xmlvm.acl.common.objects.CommonContext;
 import org.xmlvm.acl.ios.adapter.IPhoneBitmapDrawableAdapter;
-import org.xmlvm.iphone.CGContext;
-import org.xmlvm.iphone.CGLineCap;
-import org.xmlvm.iphone.CGRect;
-import org.xmlvm.iphone.CGSize;
-import org.xmlvm.iphone.UIGraphics;
-import org.xmlvm.iphone.UIImage;
+import org.xmlvm.ios.CGContext;
+import org.xmlvm.ios.CGLineCap;
+import org.xmlvm.ios.CGRect;
+import org.xmlvm.ios.CGSize;
+import org.xmlvm.ios.UIGraphics;
+import org.xmlvm.ios.UIImage;
+import org.xmlvm.ios.UIKit;
 
 import android.graphics.Bitmap;
 import android.graphics.RectF;
@@ -42,31 +43,31 @@ public class IPhoneContext implements CommonContext {
     private CGContext context;
 
     public IPhoneContext(Bitmap bitmap, float width, float height) {
-        UIGraphics.beginImageContext(new CGSize(width, height));
-        context = UIGraphics.getCurrentContext();
+        UIKit.UIGraphicsBeginImageContext(new CGSize(width, height));
+        context = UIKit.UIGraphicsGetCurrentContext();
         UIImage image = ((IPhoneBitmapDrawableAdapter)((BitmapDrawable) (bitmap.getDrawable())).xmlvmGetImage()).getImage();
-        context.storeState();
-        context.scale(1, -1);
-        context.translate(0, -height);
+        context.saveGState();
+        context.scaleCTM(1, -1);
+        context.translateCTM(0, -height);
         context.drawImage(new CGRect(0, 0, width, height), image.getCGImage());
-        context.restoreState();
+        context.restoreGState();
     }
 
     /**
      * 
      */
     public IPhoneContext() {
-        this.context = UIGraphics.getCurrentContext();
+        this.context = UIKit.UIGraphicsGetCurrentContext();
     }
 
     @Override
     public void storeState() {
-        context.storeState();
+        context.saveGState();
     }
 
     @Override
     public void restoreState() {
-        context.restoreState();
+        context.restoreGState();
     }
 
     @Override
@@ -103,13 +104,13 @@ public class IPhoneContext implements CommonContext {
     public void setLineCap(int linecap) {
         switch (linecap) {
         case CommonContext.LineCapButt:
-            context.setLineCap(CGLineCap.kCGLineCapButt);
+            context.setLineCap(org.xmlvm.iphone.CGLineCap.kCGLineCapButt);
             break;
         case CommonContext.LineCapRound:
-            context.setLineCap(CGLineCap.kCGLineCapRound);
+            context.setLineCap(org.xmlvm.iphone.CGLineCap.kCGLineCapRound);
             break;
         case CommonContext.LineCapSquare:
-            context.setLineCap(CGLineCap.kCGLineCapSquare);
+            context.setLineCap(org.xmlvm.iphone.CGLineCap.kCGLineCapSquare);
             break;
         default:
             throw new RuntimeException("Undefined line cap");
@@ -118,7 +119,7 @@ public class IPhoneContext implements CommonContext {
 
     @Override
     public void scale(int i, int j) {
-        context.scale(i, j);
+        context.scaleCTM(i, j);
     }
 
     @Override
@@ -128,12 +129,12 @@ public class IPhoneContext implements CommonContext {
 
     @Override
     public void translate(float dx, float dy) {
-        context.translate(dx, dy);
+        context.translateCTM(dx, dy);
     }
 
     @Override
     public void scale(float scaleX, float scaleY) {
-        context.scale(scaleX, scaleY);
+        context.scaleCTM(scaleX, scaleY);
     }
 
     @Override
@@ -175,12 +176,12 @@ public class IPhoneContext implements CommonContext {
 
     @Override
     public void endImageContext() {
-        UIGraphics.endImageContext();
+        UIKit.UIGraphicsEndImageContext();
     }
 
     @Override
     public BitmapDrawableAdapter getImageFromCurrentImageContext() {
-        return new IPhoneBitmapDrawableAdapter(UIGraphics.getImageFromCurrentImageContext());
+        return new IPhoneBitmapDrawableAdapter(UIKit.UIGraphicsGetImageFromCurrentImageContext());
     }
 
 }

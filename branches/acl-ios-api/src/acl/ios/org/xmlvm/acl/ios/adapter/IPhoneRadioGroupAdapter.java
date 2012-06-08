@@ -21,12 +21,10 @@
 package org.xmlvm.acl.ios.adapter;
 
 import org.xmlvm.acl.common.adapter.RadioGroupAdapter;
-import org.xmlvm.acl.common.objects.CommonView;
 import org.xmlvm.acl.ios.objects.IPhoneView;
-import org.xmlvm.iphone.UIControl;
-import org.xmlvm.iphone.UIControlDelegate;
-import org.xmlvm.iphone.UIControlEvent;
-import org.xmlvm.iphone.UISegmentedControl;
+import org.xmlvm.ios.UIControl;
+import org.xmlvm.ios.UIControlDelegate;
+import org.xmlvm.ios.UISegmentedControl;
 
 import android.widget.RadioGroup;
 
@@ -47,7 +45,7 @@ public class IPhoneRadioGroupAdapter extends IPhoneView implements RadioGroupAda
             public void raiseEvent(UIControl sender, int uiControlEvent) {
                 radioGroup.distributeOnClick();
             }
-        }, UIControlEvent.ValueChanged);
+        }, org.xmlvm.iphone.UIControlEvent.ValueChanged);
         this.setView(control);
     }
 

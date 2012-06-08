@@ -24,8 +24,8 @@ import java.util.Set;
 
 import org.xmlvm.acl.common.adapter.ToggleButtonAdapter;
 import org.xmlvm.ios.custom.UIToggleButton;
-import org.xmlvm.iphone.UIEvent;
-import org.xmlvm.iphone.UITouch;
+import org.xmlvm.ios.UIEvent;
+import org.xmlvm.ios.UITouch;
 
 import android.view.MotionEvent;
 import android.widget.ToggleButton;

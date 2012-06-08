@@ -22,9 +22,9 @@ package org.xmlvm.acl.ios;
 import android.app.Application;
 import android.internal.CommonDeviceAPIFinder;
 
-import org.xmlvm.iphone.CFRunLoop;
-import org.xmlvm.iphone.UIApplication;
-import org.xmlvm.iphone.UIApplicationDelegate;
+import org.xmlvm.ios.CFRunLoop;
+import org.xmlvm.ios.UIApplication;
+import org.xmlvm.ios.adapter.UIApplicationDelegate;
 
 /**
  * Wiring code for launching an Android Activity inside the iPhone simulator
@@ -43,7 +43,8 @@ public class IPhoneAndroidAppLauncher extends UIApplicationDelegate {
      * added for the activity lifecycle) get executed.
      */
     private void clearRunLoopQueue() {
-        while (CFRunLoop.runInMode(CFRunLoop.kCFRunLoopDefaultMode, (double) 0, (byte) 1) == CFRunLoop.kCFRunLoopRunHandledSource) {
+        while (CFRunLoop.runInMode(org.xmlvm.iphone.CFRunLoop.kCFRunLoopDefaultMode, (double) 0,
+                (byte) 1) == org.xmlvm.iphone.CFRunLoop.kCFRunLoopRunHandledSource) {
             // nothing
         }
     }

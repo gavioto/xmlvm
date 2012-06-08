@@ -24,10 +24,7 @@ import org.xmlvm.acl.common.objects.CommonFont;
 import org.xmlvm.acl.common.subsystems.CommonFontFactory;
 import org.xmlvm.acl.ios.objects.IPhoneFont;
 import org.xmlvm.acl.ios.objects.IPhoneView;
-import org.xmlvm.iphone.NSString;
-import org.xmlvm.iphone.UILineBreakMode;
-import org.xmlvm.iphone.UITextAlignment;
-
+import org.xmlvm.ios.NSString;
 import android.graphics.RectF;
 import android.internal.Assert;
 import android.view.Gravity;
@@ -54,14 +51,14 @@ public class IPhoneFontFactory implements CommonFontFactory {
 
     @Override
     public RectF sizeWithFont(String text, CommonFont font) {
-        return IPhoneView.toRectangle(NSString.sizeWithFont(text, ((IPhoneFont)font).getFont()));
+        return IPhoneView.toRectangle(text.sizeWithFont(((IPhoneFont)font).getFont()));
     }
 
     @Override
     public RectF sizeWithFont(String text, CommonFont font, RectF constraints, int lineBreakMode) {
         switch(lineBreakMode) {
         case CommonFontFactory.LINEBREAK_WORD_WRAP:
-            return IPhoneView.toRectangle(NSString.sizeWithFont(text, ((IPhoneFont)font).getFont(), IPhoneView.toCGSize(constraints), UILineBreakMode.WordWrap));
+            return IPhoneView.toRectangle(text.sizeWithFont(((IPhoneFont)font).getFont(), IPhoneView.toCGSize(constraints), org.xmlvm.iphone.UILineBreakMode.WordWrap));
         default:
             Assert.NOT_IMPLEMENTED();
             return null;
@@ -75,12 +72,12 @@ public class IPhoneFontFactory implements CommonFontFactory {
     public int getAlignmentFromGravity(int gravity) {
         switch (gravity & Gravity.HORIZONTAL_GRAVITY_MASK) {
         case Gravity.CENTER_HORIZONTAL:
-            return UITextAlignment.Center;
+            return org.xmlvm.iphone.UITextAlignment.Center;
         case Gravity.RIGHT:
-            return UITextAlignment.Right;
+            return org.xmlvm.iphone.UITextAlignment.Right;
         case Gravity.LEFT:
         default:
-            return UITextAlignment.Left;
+            return org.xmlvm.iphone.UITextAlignment.Left;
         }
     }
 

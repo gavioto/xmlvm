@@ -21,9 +21,9 @@
 package org.xmlvm.acl.ios.subsystems;
 
 import org.xmlvm.acl.common.subsystems.CommonAccelerometer;
-import org.xmlvm.iphone.UIAcceleration;
-import org.xmlvm.iphone.UIAccelerometer;
-import org.xmlvm.iphone.UIAccelerometerDelegate;
+import org.xmlvm.ios.UIAcceleration;
+import org.xmlvm.ios.UIAccelerometer;
+import org.xmlvm.ios.adapter.UIAccelerometerDelegate;
 
 import android.content.pm.ActivityInfo;
 import android.hardware.RegisteredEventListener;
@@ -35,33 +35,34 @@ import android.internal.TopActivity;
 /**
  *
  */
-public class IPhoneAccelerometer implements CommonAccelerometer, UIAccelerometerDelegate {
-    
-    public static final float             GRAVITY_EARTH        = 9.80665f;
-    public static final int               SENSOR_ACCELEROMETER = 0x00000002;
-    public static final int               SENSOR_DELAY_FASTEST = 0x00000000;
+public class IPhoneAccelerometer extends UIAccelerometerDelegate implements CommonAccelerometer {
 
-    private UIAccelerometer accel;
-    private SensorManager sensorManager;
-    
+    public static final float GRAVITY_EARTH        = 9.80665f;
+    public static final int   SENSOR_ACCELEROMETER = 0x00000002;
+    public static final int   SENSOR_DELAY_FASTEST = 0x00000000;
+
+    private UIAccelerometer   accel;
+    private SensorManager     sensorManager;
+
+
     public IPhoneAccelerometer(SensorManager sensorManager) {
         this.sensorManager = sensorManager;
         accel = UIAccelerometer.sharedAccelerometer();
         accel.setUpdateInterval(1.0 / 40);
         accel.setDelegate(this);
     }
-    
+
     public void accelerometerDidAccelerate(UIAccelerometer accelerometer,
             UIAcceleration acceleration) {
         float accelerometerValues[] = new float[3];
-        
+
         // This is to adapt the iPhone value range to the Android one.
         // iPhone/iPod
         // touch scale 1G to a value of 1 whereas the Android phone delivers the
         // actual G-force value.
-        accelerometerValues[0] = (float) (acceleration.x() * GRAVITY_EARTH);
-        accelerometerValues[1] = (float) (acceleration.y() * GRAVITY_EARTH);
-        accelerometerValues[2] = (float) (acceleration.z() * GRAVITY_EARTH);
+        accelerometerValues[0] = (float) (acceleration.getX() * GRAVITY_EARTH);
+        accelerometerValues[1] = (float) (acceleration.getY() * GRAVITY_EARTH);
+        accelerometerValues[2] = (float) (acceleration.getZ() * GRAVITY_EARTH);
 
         for (RegisteredEventListener listener : sensorManager.xmlvmGetEventListeners()) {
             if (listener.getSensor().getType() == Sensor.TYPE_ACCELEROMETER) {
@@ -74,5 +75,5 @@ public class IPhoneAccelerometer implements CommonAccelerometer, UIAccelerometer
             }
         }
     }
-    
+
 }

@@ -24,12 +24,11 @@ import java.util.Set;
 
 import org.xmlvm.acl.common.adapter.CheckBoxAdapter;
 import org.xmlvm.acl.ios.objects.IPhoneView;
-import org.xmlvm.iphone.UIControl;
-import org.xmlvm.iphone.UIControlDelegate;
-import org.xmlvm.iphone.UIControlEvent;
-import org.xmlvm.iphone.UIEvent;
-import org.xmlvm.iphone.UISwitch;
-import org.xmlvm.iphone.UITouch;
+import org.xmlvm.ios.UIControl;
+import org.xmlvm.ios.UIControlDelegate;
+import org.xmlvm.ios.UIEvent;
+import org.xmlvm.ios.UISwitch;
+import org.xmlvm.ios.UITouch;
 
 import android.graphics.RectF;
 import android.view.MotionEvent;
@@ -43,7 +42,8 @@ import android.widget.CompoundButton;
 public class IPhoneCheckBoxAdapter extends IPhoneView implements CheckBoxAdapter {
 
     private CheckBox checkBox;
-    
+
+
     public IPhoneCheckBoxAdapter(final CheckBox checkBox) {
         super(checkBox);
         this.checkBox = checkBox;
@@ -55,28 +55,30 @@ public class IPhoneCheckBoxAdapter extends IPhoneView implements CheckBoxAdapter
             @Override
             public void raiseEvent(UIControl sender, int eventType) {
                 if (checkBox.getOnCheckedChangeListener() != null) {
-                    checkBox.getOnCheckedChangeListener().onCheckedChanged(checkBox, uiSwitch.isOn());
+                    checkBox.getOnCheckedChangeListener().onCheckedChanged(checkBox,
+                            uiSwitch.isOn());
                 }
             }
 
-        }, UIControlEvent.ValueChanged);
+        }, org.xmlvm.iphone.UIControlEvent.ValueChanged);
         this.setView(uiSwitch);
 
     }
-    
+
     @Override
     public void setOn(boolean checked) {
-        ((UISwitch)this.getView()).setOn(checked);
+        ((UISwitch) this.getView()).setOn(checked);
     }
 
     @Override
     public boolean isOn() {
-        return ((UISwitch)this.getView()).isOn();
+        return ((UISwitch) this.getView()).isOn();
     }
-    
+
     @Override
     public RectF getFrame() {
-        return new RectF(0, 0, (int) UISwitch.kSwitchButtonWidth, (int) UISwitch.kSwitchButtonHeight);
+        return new RectF(0, 0, (int) org.xmlvm.iphone.UISwitch.kSwitchButtonWidth,
+                (int) org.xmlvm.iphone.UISwitch.kSwitchButtonHeight);
     }
 
     @Override
@@ -89,5 +91,5 @@ public class IPhoneCheckBoxAdapter extends IPhoneView implements CheckBoxAdapter
 
         return super.xmlvmTouchesEvent(action, touches, event);
     }
-    
+
 }

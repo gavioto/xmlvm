@@ -24,17 +24,16 @@ import java.util.Set;
 
 import org.xmlvm.acl.common.adapter.WebViewAdapter;
 import org.xmlvm.acl.ios.objects.IPhoneView;
-import org.xmlvm.iphone.CGRect;
-import org.xmlvm.iphone.NSError;
-import org.xmlvm.iphone.NSURL;
-import org.xmlvm.iphone.NSURLRequest;
-import org.xmlvm.iphone.UIActivityIndicatorView;
-import org.xmlvm.iphone.UIActivityIndicatorViewStyle;
-import org.xmlvm.iphone.UIColor;
-import org.xmlvm.iphone.UITouch;
-import org.xmlvm.iphone.UIEvent;
-import org.xmlvm.iphone.UIWebView;
-import org.xmlvm.iphone.UIWebViewDelegate;
+import org.xmlvm.ios.CGRect;
+import org.xmlvm.ios.NSError;
+import org.xmlvm.ios.NSURL;
+import org.xmlvm.ios.NSURLRequest;
+import org.xmlvm.ios.UIActivityIndicatorView;
+import org.xmlvm.ios.UIColor;
+import org.xmlvm.ios.UITouch;
+import org.xmlvm.ios.UIEvent;
+import org.xmlvm.ios.UIWebView;
+import org.xmlvm.ios.adapter.UIWebViewDelegate;
 
 import android.view.MotionEvent;
 import android.webkit.WebView;
@@ -75,7 +74,7 @@ public class IPhoneWebViewAdapter extends IPhoneView implements WebViewAdapter {
                 xmlvmTouchesEvent(MotionEvent.ACTION_UP, touches, event);
             }
         };
-        view.setBackgroundColor(UIColor.whiteColor);
+        view.setBackgroundColor(UIColor.whiteColor());
         view.setDelegate(new WebViewDelegate());
         this.setView(view);
     }
@@ -97,7 +96,7 @@ public class IPhoneWebViewAdapter extends IPhoneView implements WebViewAdapter {
         @Override
         public void webViewDidStartLoad(UIWebView webView) {
             spinner = new UIActivityIndicatorView();
-            spinner.setActivityIndicatorViewStyle(UIActivityIndicatorViewStyle.Gray);
+            spinner.setActivityIndicatorViewStyle(org.xmlvm.iphone.UIActivityIndicatorViewStyle.Gray);
             CGRect webViewRectF = webView.getBounds();
             CGRect spinnerRectF = spinner.getBounds();
             spinnerRectF.origin.x = (webViewRectF.size.width - spinnerRectF.size.width) / 2;

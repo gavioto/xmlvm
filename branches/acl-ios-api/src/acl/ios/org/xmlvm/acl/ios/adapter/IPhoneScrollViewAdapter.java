@@ -23,11 +23,10 @@ package org.xmlvm.acl.ios.adapter;
 import java.util.Set;
 
 import org.xmlvm.acl.common.adapter.ScrollViewAdapter;
-import org.xmlvm.acl.common.objects.CommonView;
 import org.xmlvm.acl.ios.objects.IPhoneView;
-import org.xmlvm.iphone.UIScrollView;
-import org.xmlvm.iphone.UITouch;
-import org.xmlvm.iphone.UIEvent;
+import org.xmlvm.ios.UIEvent;
+import org.xmlvm.ios.UIScrollView;
+import org.xmlvm.ios.UITouch;
 
 import android.graphics.RectF;
 import android.view.MotionEvent;

@@ -21,10 +21,10 @@
 package org.xmlvm.acl.ios.subsystems;
 
 import org.xmlvm.acl.common.subsystems.CommonLocationManager;
-import org.xmlvm.iphone.CLLocation;
-import org.xmlvm.iphone.CLLocationCoordinate2D;
-import org.xmlvm.iphone.CLLocationManager;
-import org.xmlvm.iphone.CLLocationManagerDelegate;
+import org.xmlvm.ios.CLLocation;
+import org.xmlvm.ios.CLLocationCoordinate2D;
+import org.xmlvm.ios.CLLocationManager;
+import org.xmlvm.ios.adapter.CLLocationManagerDelegate;
 
 import android.location.Location;
 import android.location.LocationListener;

@@ -23,9 +23,8 @@ package org.xmlvm.acl.ios.adapter;
 import org.xmlvm.acl.common.adapter.EditTextAdapter;
 import org.xmlvm.acl.common.subsystems.CommonTextFieldDelegate;
 import org.xmlvm.acl.ios.subsystems.IPhoneTextFieldDelegate;
-import org.xmlvm.iphone.UILabel;
-import org.xmlvm.iphone.UITextBorderStyle;
-import org.xmlvm.iphone.UITextField;
+import org.xmlvm.ios.UILabel;
+import org.xmlvm.ios.UITextField;
 
 import android.widget.TextView;
 
@@ -40,7 +39,7 @@ public class IPhoneEditTextAdapter extends IPhoneTextViewAdapter implements Edit
     public IPhoneEditTextAdapter(TextView textView) {
         super(textView);
         UITextField field = new UITextField();
-        field.setBorderStyle(UITextBorderStyle.Bezel);
+        field.setBorderStyle(org.xmlvm.iphone.UITextBorderStyle.Bezel);
         field.setUserInteractionEnabled(true);
         this.setView(field);
     }

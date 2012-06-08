@@ -21,10 +21,10 @@
 package org.xmlvm.acl.ios.subsystems;
 
 import org.xmlvm.acl.common.subsystems.CommonDispatcher;
-import org.xmlvm.iphone.NSObject;
-import org.xmlvm.iphone.NSSelector;
-import org.xmlvm.iphone.NSTimer;
-import org.xmlvm.iphone.NSTimerDelegate;
+import org.xmlvm.ios.NSObject;
+import org.xmlvm.ios.NSSelector;
+import org.xmlvm.ios.NSTimer;
+import org.xmlvm.ios.NSTimerDelegate;
 
 /**
  *

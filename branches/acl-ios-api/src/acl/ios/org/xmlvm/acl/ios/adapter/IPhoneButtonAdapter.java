@@ -28,15 +28,12 @@ import org.xmlvm.acl.common.adapter.ButtonAdapter;
 import org.xmlvm.acl.common.objects.CommonFont;
 import org.xmlvm.acl.ios.objects.IPhoneFont;
 import org.xmlvm.acl.ios.objects.IPhoneView;
-import org.xmlvm.iphone.UIButton;
-import org.xmlvm.iphone.UIButtonType;
-import org.xmlvm.iphone.UIControl;
-import org.xmlvm.iphone.UIControlDelegate;
-import org.xmlvm.iphone.UIControlEvent;
-import org.xmlvm.iphone.UIControlState;
-import org.xmlvm.iphone.UIEvent;
-import org.xmlvm.iphone.UIFont;
-import org.xmlvm.iphone.UITouch;
+import org.xmlvm.ios.UIButton;
+import org.xmlvm.ios.UIControl;
+import org.xmlvm.ios.UIControlDelegate;
+import org.xmlvm.ios.UIEvent;
+import org.xmlvm.ios.UIFont;
+import org.xmlvm.ios.UITouch;
 
 import android.view.MotionEvent;
 import android.view.View.OnClickListener;
@@ -52,7 +49,7 @@ public class IPhoneButtonAdapter extends IPhoneTextViewAdapter implements Button
 
     public IPhoneButtonAdapter(final Button button) {
         super(button);
-        this.setView(UIButton.buttonWithType(UIButtonType.RoundedRect));
+        this.setView(UIButton.buttonWithType(org.xmlvm.iphone.UIButtonType.RoundedRect));
         
         if (!(button instanceof CompoundButton)) {
             ((UIButton)this.getView()).addTarget(new UIControlDelegate() {
@@ -64,13 +61,13 @@ public class IPhoneButtonAdapter extends IPhoneTextViewAdapter implements Button
                     }
                 }
 
-            }, UIControlEvent.TouchUpInside);
+            }, org.xmlvm.iphone.UIControlEvent.TouchUpInside);
         }
     }
     
     @Override
     public void setTitle(String text) {
-        ((UIButton)this.getView()).setTitle(text, UIControlState.Normal);
+        ((UIButton)this.getView()).setTitle(text, org.xmlvm.iphone.UIControlState.Normal);
     }
     
     @Override
@@ -92,12 +89,12 @@ public class IPhoneButtonAdapter extends IPhoneTextViewAdapter implements Button
                 listener.onClick(getAndroidView());
             }
 
-        }, UIControlEvent.TouchUpInside);
+        }, org.xmlvm.iphone.UIControlEvent.TouchUpInside);
     }
 
     @Override
     public void setTitleColor(int color) {
-        ((UIButton)this.getView()).setTitleColor(IPhoneView.toUIColor(color), UIControlState.Normal);
+        ((UIButton)this.getView()).setTitleColor(IPhoneView.toUIColor(color), org.xmlvm.iphone.UIControlState.Normal);
     }
 
     /* (non-Javadoc)
@@ -118,7 +115,7 @@ public class IPhoneButtonAdapter extends IPhoneTextViewAdapter implements Button
         if (font == null) {
             return UIFont.labelFontSize();
         } else {
-            return font.pointSize();
+            return font.getPointSize();
         }
     }
 

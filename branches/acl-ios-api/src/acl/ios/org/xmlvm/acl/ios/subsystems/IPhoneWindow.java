@@ -24,8 +24,8 @@ import org.xmlvm.acl.common.adapter.ScrollViewAdapter;
 import org.xmlvm.acl.common.objects.CommonView;
 import org.xmlvm.acl.common.subsystems.CommonWindow;
 import org.xmlvm.acl.ios.objects.IPhoneView;
-import org.xmlvm.iphone.UIApplication;
-import org.xmlvm.iphone.UIWindow;
+import org.xmlvm.ios.UIApplication;
+import org.xmlvm.ios.UIWindow;
 
 import android.graphics.RectF;
 

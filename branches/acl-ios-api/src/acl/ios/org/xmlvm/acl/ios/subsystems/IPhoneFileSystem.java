@@ -23,8 +23,8 @@ package org.xmlvm.acl.ios.subsystems;
 import java.util.List;
 
 import org.xmlvm.acl.common.subsystems.CommonFileSystem;
-import org.xmlvm.iphone.NSBundle;
-import org.xmlvm.iphone.NSFileManager;
+import org.xmlvm.ios.NSBundle;
+import org.xmlvm.ios.NSFileManager;
 
 /**
  *
@@ -43,7 +43,7 @@ public class IPhoneFileSystem implements CommonFileSystem {
     
     @Override
     public String getPathForResource(String resource, String type, String directory) {
-        return NSBundle.mainBundle().pathForResource(resource, type, directory);
+        return NSBundle.mainBundle().pathForResourceInDirectory(resource, type, directory);
     }
     
     public String getPathForResource(String resource, String type) {

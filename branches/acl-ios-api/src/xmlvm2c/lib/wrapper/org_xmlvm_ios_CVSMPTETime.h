@@ -1,0 +1,9 @@
+
+//XMLVM_BEGIN_DECLARATIONS
+#include "xmlvm-ios.h"
+
+CVSMPTETime toCVSMPTETime(void * obj);
+JAVA_OBJECT fromCVSMPTETime(CVSMPTETime obj);
+#define __ADDITIONAL_INSTANCE_FIELDS_org_xmlvm_ios_CVSMPTETime \ 
+
+//XMLVM_END_DECLARATIONS

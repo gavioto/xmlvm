@@ -20,27 +20,26 @@
 
 package org.xmlvm.tutorial.ios.sound;
 
-import org.xmlvm.iphone.AVAudioPlayer;
-import org.xmlvm.iphone.AVAudioPlayerDelegate;
-import org.xmlvm.iphone.CGRect;
-import org.xmlvm.iphone.NSBundle;
-import org.xmlvm.iphone.NSError;
-import org.xmlvm.iphone.NSErrorHolder;
-import org.xmlvm.iphone.NSURL;
-import org.xmlvm.iphone.UIApplication;
-import org.xmlvm.iphone.UIApplicationDelegate;
-import org.xmlvm.iphone.UIButton;
-import org.xmlvm.iphone.UIButtonType;
-import org.xmlvm.iphone.UIColor;
-import org.xmlvm.iphone.UIControl;
-import org.xmlvm.iphone.UIControlDelegate;
-import org.xmlvm.iphone.UIControlEvent;
-import org.xmlvm.iphone.UIControlState;
-import org.xmlvm.iphone.UILabel;
-import org.xmlvm.iphone.UIScreen;
-import org.xmlvm.iphone.UISwitch;
-import org.xmlvm.iphone.UIView;
-import org.xmlvm.iphone.UIWindow;
+import java.util.Map;
+
+import org.xmlvm.ios.AVAudioPlayer;
+import org.xmlvm.ios.adapter.AVAudioPlayerDelegate;
+import org.xmlvm.ios.CGRect;
+import org.xmlvm.ios.NSBundle;
+import org.xmlvm.ios.NSError;
+import org.xmlvm.ios.NSURL;
+import org.xmlvm.ios.UIApplication;
+import org.xmlvm.ios.adapter.UIApplicationDelegate;
+import org.xmlvm.ios.Reference;
+import org.xmlvm.ios.UIButton;
+import org.xmlvm.ios.UIColor;
+import org.xmlvm.ios.UIControl;
+import org.xmlvm.ios.UIControlDelegate;
+import org.xmlvm.ios.UILabel;
+import org.xmlvm.ios.UIScreen;
+import org.xmlvm.ios.UISwitch;
+import org.xmlvm.ios.UIView;
+import org.xmlvm.ios.UIWindow;
 
 /**
  * This application demonstrates the use of the AudioPlayer. A button is provided 
@@ -49,7 +48,7 @@ import org.xmlvm.iphone.UIWindow;
  * AVAudioPlayerDelegate which provides callbacks to respond to audio errors and completion
  * of audio playback.
  */
-public class Sound extends UIApplicationDelegate implements AVAudioPlayerDelegate {
+public class Sound extends UIApplicationDelegate {
 
     private UIButton      button;
     private UISwitch      loopSwitch;
@@ -57,8 +56,9 @@ public class Sound extends UIApplicationDelegate implements AVAudioPlayerDelegat
     private AVAudioPlayer audioPlayer;
 
     @Override
-    public void applicationDidFinishLaunching(UIApplication app) {
+    public boolean didFinishLaunchingWithOptions(UIApplication app, Map<String, Object> launchOptions) {
         setupUI();
+        return true;
     }
 
     /*
@@ -71,7 +71,7 @@ public class Sound extends UIApplicationDelegate implements AVAudioPlayerDelegat
 
         rect.origin.x = rect.origin.y = 0;
         UIView mainView = new UIView(rect);
-        mainView.setBackgroundColor(UIColor.lightGrayColor);
+        mainView.setBackgroundColor(UIColor.lightGrayColor());
         window.addSubview(mainView);
 
         rect.origin.x = 50;
@@ -82,9 +82,9 @@ public class Sound extends UIApplicationDelegate implements AVAudioPlayerDelegat
         /*
          * Create a button which allows the user to start or stop the audio playback
          */
-        button = UIButton.buttonWithType(UIButtonType.RoundedRect);
+        button = UIButton.buttonWithType(1); //UIButtonType.RoundedRect
         button.setFrame(rect);
-        button.setTitle("Start playing ...", UIControlState.Normal);
+        button.setTitle("Start playing ...", 0); //UIControlState.Normal
         
         /*
          * Add a UIControlDelegate to the button and register for necessary events.
@@ -101,7 +101,7 @@ public class Sound extends UIApplicationDelegate implements AVAudioPlayerDelegat
                  * using stop() and set the appropriate text on the button
                  */
                 if (playing) {
-                    button.setTitle("Start playing ...", UIControlState.Normal);
+                    button.setTitle("Start playing ...",0); //UIControlState.Normal
                     playing = false;
                     audioPlayer.stop();
                 } else {
@@ -111,14 +111,14 @@ public class Sound extends UIApplicationDelegate implements AVAudioPlayerDelegat
                      * '0' indicates no looping. Any positive number indicates the number of times the
                      * audio stream should play again. Any negative number indicates indefinite looping.
                      */
-                    button.setTitle("Stop playing ...", UIControlState.Normal);
+                    button.setTitle("Stop playing ...", 0); //UIControlState.Normal
                     playing = true;
                     audioPlayer.play();
                     audioPlayer.setNumberOfLoops(loopSwitch.isOn() ? -1 : 0);
                 }
             }
 
-        }, UIControlEvent.TouchUpInside);
+        }, 1<<6); //UIControlEvent.TouchUpInside
         mainView.addSubview(button);
 
         /*
@@ -129,7 +129,7 @@ public class Sound extends UIApplicationDelegate implements AVAudioPlayerDelegat
         rect.size.height = 20;
 
         UILabel loopLabel = new UILabel(rect);
-        loopLabel.setBackgroundColor(UIColor.clearColor);
+        loopLabel.setBackgroundColor(UIColor.clearColor());
         loopLabel.setText("Loop file:");
         mainView.addSubview(loopLabel);
 
@@ -158,7 +158,7 @@ public class Sound extends UIApplicationDelegate implements AVAudioPlayerDelegat
                 audioPlayer.setNumberOfLoops(loopSwitch.isOn() ? -1 : 0);
             }
 
-        }, UIControlEvent.ValueChanged);
+        }, 1<<12); //UIControlEvent.ValueChanged
         mainView.addSubview(loopSwitch);
 
         initAudioPlayer("rain_thunders");
@@ -177,48 +177,38 @@ public class Sound extends UIApplicationDelegate implements AVAudioPlayerDelegat
          * Here, mainBundle() returns NSBundle object corresponding to the directory where 
          * application executable is residing.
          */
-        NSURL url = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource(audioFile, "mp3"));
-        NSErrorHolder errorHolder = new NSErrorHolder();
+        NSURL url = (NSURL) NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource(audioFile, "mp3"));
+        Reference<NSError> errorHolder = new Reference<NSError>();
+        errorHolder.set(null);
         
         /*
          * Initialize an audio player to play the audio file
          */
-        audioPlayer = AVAudioPlayer.audioPlayerWithContentsOfURL(url, errorHolder);
+        audioPlayer = new AVAudioPlayer(url, errorHolder);
+        
+      //  System.out.println("Error initializing player: " + errorHolder.get().description());
+        
         if (audioPlayer == null) {
-            System.out.println("Error initializing player: " + errorHolder.description());
+            System.out.println("Error initializing player: " + errorHolder.get().description());
         }
 
         /*
          * Set indefinite number of loops
          */
         audioPlayer.setNumberOfLoops(-1);
-        audioPlayer.setDelegate(this);
+        audioPlayer.setDelegate(new Delegate());
     }
 
+    class Delegate extends AVAudioPlayerDelegate{
     /*
      * Callback called when audio playback has finshed playing. Reset the button
      * when the audio playback has finished playing.
      */
     @Override
     public void audioPlayerDidFinishPlaying(AVAudioPlayer player, boolean successfully) {
-        button.setTitle("Start playing ...", UIControlState.Normal);
+        button.setTitle("Start playing ...", 0); //UIControlState.Normal
         playing = false;
     }
-
-    /*
-     * Called when a audio decoding error occurs during the playback. In
-     * this application, this error is not handled.
-     */
-    @Override
-    public void audioPlayerDecodeErrorDidOccur(AVAudioPlayer player, NSError error) {
-    }
-
-    @Override
-    public void audioPlayerBeginInterruption(AVAudioPlayer player) {
-    }
-
-    @Override
-    public void audioPlayerEndInterruption(AVAudioPlayer player) {
     }
 
     public static void main(String[] args) {

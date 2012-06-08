@@ -24,10 +24,8 @@ import org.xmlvm.acl.common.adapter.BitmapDrawableAdapter;
 import org.xmlvm.acl.common.objects.CommonContext;
 import org.xmlvm.acl.ios.adapter.IPhoneBitmapDrawableAdapter;
 import org.xmlvm.ios.CGContext;
-import org.xmlvm.ios.CGLineCap;
 import org.xmlvm.ios.CGRect;
 import org.xmlvm.ios.CGSize;
-import org.xmlvm.ios.UIGraphics;
 import org.xmlvm.ios.UIImage;
 import org.xmlvm.ios.UIKit;
 

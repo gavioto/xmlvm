@@ -23,7 +23,6 @@ package org.xmlvm.acl.ios.adapter;
 import org.xmlvm.acl.common.adapter.EditTextAdapter;
 import org.xmlvm.acl.common.subsystems.CommonTextFieldDelegate;
 import org.xmlvm.acl.ios.subsystems.IPhoneTextFieldDelegate;
-import org.xmlvm.ios.UILabel;
 import org.xmlvm.ios.UITextField;
 
 import android.widget.TextView;

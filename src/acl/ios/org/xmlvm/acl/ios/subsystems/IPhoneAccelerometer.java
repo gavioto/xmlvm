@@ -25,12 +25,10 @@ import org.xmlvm.ios.UIAcceleration;
 import org.xmlvm.ios.UIAccelerometer;
 import org.xmlvm.ios.adapter.UIAccelerometerDelegate;
 
-import android.content.pm.ActivityInfo;
 import android.hardware.RegisteredEventListener;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorManager;
-import android.internal.TopActivity;
 
 /**
  *

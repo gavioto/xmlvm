@@ -20,7 +20,6 @@
 
 package org.xmlvm.acl.ios.subsystems;
 
-import org.xmlvm.acl.common.adapter.ScrollViewAdapter;
 import org.xmlvm.acl.common.objects.CommonView;
 import org.xmlvm.acl.common.subsystems.CommonWindow;
 import org.xmlvm.acl.ios.objects.IPhoneView;

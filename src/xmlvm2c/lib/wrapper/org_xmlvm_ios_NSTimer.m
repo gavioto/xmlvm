@@ -13,11 +13,17 @@
 
 void org_xmlvm_ios_NSTimer_INTERNAL_CONSTRUCTOR(JAVA_OBJECT me,NSObject* wrappedObj){
     org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(me, wrappedObj);
-    }
+    
+	    		
+	org_xmlvm_ios_NSTimer* jthiz = me;
+    jthiz->fields.org_xmlvm_ios_NSTimer.alloced = false;
+
+	    	
+}
 
 static JAVA_OBJECT __WRAPPER_CREATOR(NSObject* obj)
 {
-    if([obj class] == [NSTimer class]) 
+    if([obj class] == [NSTimer class] || ([NSStringFromClass([obj class]) isEqual:@"__NSCFTimer"])) 
     {
         [obj retain];
         JAVA_OBJECT jobj = __NEW_org_xmlvm_ios_NSTimer();
@@ -72,9 +78,21 @@ XMLVM_NOT_IMPLEMENTED();
 XMLVM_NOT_IMPLEMENTED();
 //XMLVM_END_WRAPPER
 
-//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSTimer_scheduledTimerWithTimeInterval___double_java_lang_Object_org_xmlvm_ios_SEL_java_lang_Object_boolean]
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSTimer_scheduledTimerWithTimeInterval___double_org_xmlvm_ios_NSTimerDelegate_java_lang_Object_boolean]
 
-XMLVM_NOT_IMPLEMENTED();
+    			
+	org_xmlvm_ios_NSTimerDelegate_Wrapper* jwrapper = __ALLOC_INIT_DELEGATE_WRAPPER_org_xmlvm_ios_NSTimerDelegate(n2);
+	org_xmlvm_ios_NSTimer* timer = __NEW_org_xmlvm_ios_NSTimer();
+	NSTimer* nsTimer = [NSTimer scheduledTimerWithTimeInterval:n1 target:jwrapper->nativeDelegateWrapper_ selector:@selector(timerEvent:) userInfo:NULL repeats:n4];
+	objc_setAssociatedObject(nsTimer, &key, jwrapper->nativeDelegateWrapper_, OBJC_ASSOCIATION_RETAIN);
+	[jwrapper->nativeDelegateWrapper_ release];
+	org_xmlvm_ios_NSObject_INTERNAL_CONSTRUCTOR(timer, nsTimer);
+	timer->fields.org_xmlvm_ios_NSTimer.alloced = false;
+	XMLVMUtil_ArrayList_add(reference_array, n2); // Store reference to delegate
+	XMLVMUtil_ArrayList_add(reference_array, timer); // Store reference to NSTimer object
+	return timer;
+
+    		
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSTimer_fire__]
@@ -117,6 +135,10 @@ XMLVM_NOT_IMPLEMENTED();
     [thiz invalidate];
 
     
+    			
+	XMLVMUtil_ArrayList_remove(reference_array, jthiz);
+
+    		
 //XMLVM_END_WRAPPER
 
 //XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSTimer_isValid__]
@@ -135,4 +157,16 @@ XMLVM_NOT_IMPLEMENTED();
     NSObject* var0 = [thiz userInfo];
 
     return xmlvm_get_associated_c_object (var0);
+//XMLVM_END_WRAPPER
+
+//XMLVM_BEGIN_WRAPPER[org_xmlvm_ios_NSTimer_finalize_org_xmlvm_ios_NSTimer__]
+
+                
+	XMLVM_VAR_THIZ;
+    if(jthiz->fields.org_xmlvm_ios_NSTimer.alloced) {
+    	[thiz removeExtraMembers];
+        [thiz release];
+    }
+
+            
 //XMLVM_END_WRAPPER

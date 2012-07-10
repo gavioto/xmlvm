@@ -1,0 +1,9 @@
+
+//XMLVM_BEGIN_DECLARATIONS
+#include "xmlvm-ios.h"
+
+MIDIObjectPropertyChangeNotification toMIDIObjectPropertyChangeNotification(void * obj);
+JAVA_OBJECT fromMIDIObjectPropertyChangeNotification(MIDIObjectPropertyChangeNotification obj);
+#define __ADDITIONAL_INSTANCE_FIELDS_org_xmlvm_ios_MIDIObjectPropertyChangeNotification \
+
+//XMLVM_END_DECLARATIONS

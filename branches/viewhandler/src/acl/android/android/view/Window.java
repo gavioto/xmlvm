@@ -84,7 +84,7 @@ public class Window {
         internalView.setLayoutParams(new ViewGroup.LayoutParams(LayoutParams.FILL_PARENT,
                 LayoutParams.FILL_PARENT));
         internalView.setBackgroundColor(0x80000000);
-        iScrollView.addSubview(internalView.xmlvmGetViewHandler().getMetricsView());
+        iScrollView.addSubview(internalView.getCommonView());
 
         FrameLayout rootView = new FrameLayout(activity);
         int layoutWidth = view.layoutParams.width == LayoutParams.FILL_PARENT ? LayoutParams.FILL_PARENT
@@ -152,7 +152,7 @@ public class Window {
 
     public void xmlvmShowToast(View toast) {
         layoutContentView(toast);
-        CommonView itoast = toast.xmlvmGetViewHandler().getMetricsView();
+        CommonView itoast = toast.getCommonView();
         itoast.setUserInteractionEnabled(false);
         iContainerView.addSubview(itoast);
     }

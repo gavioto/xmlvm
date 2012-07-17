@@ -20,23 +20,22 @@
 
 package android.widget;
 
+import org.xmlvm.acl.common.adapter.ListViewAdapter;
+import org.xmlvm.acl.common.objects.CommonView;
+
 import android.content.Context;
 import android.internal.CommonDeviceAPIFinder;
 import android.util.AttributeSet;
-import android.view.View;
-import java.util.HashMap;
-
-import org.xmlvm.acl.common.adapter.ListViewAdapter;
-import org.xmlvm.acl.common.objects.CommonView;
 
 public class ListView extends AbsListView {
 
     private AdapterView.OnItemClickListener listener;
 
+
     public ListView(Context context) {
         super(context);
     }
-    
+
     public AdapterView.OnItemClickListener getOnItemClickListener() {
         return this.listener;
     }
@@ -46,7 +45,7 @@ public class ListView extends AbsListView {
     }
 
     public void setAdapter(ListAdapter adapter) {
-        ListViewAdapter tv = (ListViewAdapter) xmlvmGetViewHandler().getContentView();
+        ListViewAdapter tv = (ListViewAdapter) getCommonView();
         tv.setAdapter(adapter);
     }
 

@@ -30,7 +30,7 @@ public final class InputMethodManager {
 
     public boolean hideSoftInputFromWindow(IBinder windowToken, int flags) {
         if ((flags & HIDE_NOT_ALWAYS) != 0) {
-            ((IBinderImpl) windowToken).getView().xmlvmGetViewHandler().resignFirstResponder();
+            ((IBinderImpl) windowToken).getView().getCommonView().resignFirstResponder();
         }
         return false;
     }

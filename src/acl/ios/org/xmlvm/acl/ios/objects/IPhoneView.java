@@ -37,6 +37,7 @@ import org.xmlvm.iphone.UIViewContentMode;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.graphics.drawable.Drawable;
 import android.internal.Assert;
 import android.view.MotionEvent;
 import android.view.View;
@@ -48,8 +49,6 @@ public class IPhoneView implements CommonView {
 
     private List<CommonView> subViews = new ArrayList<CommonView>();
     private CommonView       superView;
-
-    private Integer          bcolor;
 
 
     public IPhoneView(View view) {
@@ -125,7 +124,6 @@ public class IPhoneView implements CommonView {
 
     @Override
     public void setBackgroundColor(Integer bcolor) {
-        this.bcolor = bcolor;
         this.view.setBackgroundColor(IPhoneView.toUIColor(bcolor));
     }
 
@@ -189,8 +187,8 @@ public class IPhoneView implements CommonView {
         }
 
         UITouch firstTouch = touches.iterator().next();
-        CGPoint point = firstTouch.locationInView(((IPhoneView) androidView.xmlvmGetViewHandler()
-                .getMetricsView()).getView());
+        CGPoint point = firstTouch.locationInView(((IPhoneView) androidView.getCommonView())
+                .getView());
         MotionEvent motionEvent = new MotionEvent(action, (int) point.x, (int) point.y);
         if (androidView.onTouchEvent(motionEvent)) {
             return true;
@@ -200,8 +198,8 @@ public class IPhoneView implements CommonView {
             return true;
         }
         if (androidView.getParent() != null && (androidView.getParent() instanceof View)) {
-            return ((IPhoneView) ((View) androidView.getParent()).xmlvmGetViewHandler()
-                    .getContentView()).xmlvmTouchesEvent(action, touches, event);
+            return ((IPhoneView) ((View) androidView.getParent()).getCommonView())
+                    .xmlvmTouchesEvent(action, touches, event);
         }
         return false;
     }
@@ -267,11 +265,6 @@ public class IPhoneView implements CommonView {
     }
 
     @Override
-    public Integer getBackgroundColor() {
-        return this.bcolor;
-    }
-
-    @Override
     public void bringSubviewToFront(CommonView view) {
         this.view.bringSubviewToFront(((IPhoneView) view).getView());
     }
@@ -305,4 +298,29 @@ public class IPhoneView implements CommonView {
     public boolean isUserInteractionEnabled() {
         return view.isUserInteractionEnabled();
     }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * org.xmlvm.acl.common.objects.CommonView#setBackgroundDrawable(android
+     * .graphics.drawable.Drawable)
+     */
+    @Override
+    public void setBackgroundDrawable(Drawable d) {
+        // TODO Auto-generated method stub
+
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see org.xmlvm.acl.common.objects.CommonView#getBackgroundDrawable()
+     */
+    @Override
+    public Drawable getBackgroundDrawable() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
 }

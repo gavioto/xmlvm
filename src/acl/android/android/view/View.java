@@ -80,7 +80,7 @@ public class View {
     protected int                     paddingTop;
     protected int                     paddingBottom;
     private WeakReference<Context>    c;
-    private CommonView              commonView;
+    private CommonView                commonView;
     private WeakReference<ViewParent> parent;
     private OnTouchListener           listener;
     private int                       id;
@@ -628,15 +628,6 @@ public class View {
     }
 
     public void draw(Canvas canvas) {
-        // NOTE: I don't know if the following statement is correct any more:
-        //
-        // TODO Implement proper background drawing
-        // Currently draw() gets called AFTER the UI widget has drawn itself so
-        // this results in overwriting the aldready drawn UI widget.
-        if (backgroundDrawable != null && !(backgroundDrawable instanceof BitmapDrawable)) {
-            backgroundDrawable.setBounds(0, 0, width, height);
-            backgroundDrawable.draw(canvas);
-        }
         onDraw(canvas);
     }
 
@@ -825,7 +816,6 @@ public class View {
      * @return true if the new size and position are different than the previous
      *         ones {@hide}
      */
-    @SuppressWarnings("unchecked")
     protected boolean setFrame(int left, int top, int right, int bottom) {
         boolean changed = false;
 

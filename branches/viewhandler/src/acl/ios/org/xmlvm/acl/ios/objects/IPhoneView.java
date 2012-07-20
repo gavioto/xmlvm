@@ -37,6 +37,7 @@ import org.xmlvm.iphone.UIViewContentMode;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.internal.Assert;
 import android.view.MotionEvent;
@@ -308,6 +309,13 @@ public class IPhoneView implements CommonView {
      */
     @Override
     public void setBackgroundDrawable(Drawable d) {
+        // TODO: Is checking the exact class name more appropriate?
+        if (d instanceof ColorDrawable) {
+            ColorDrawable cd = (ColorDrawable) d;
+            UIColor color = UIColor.colorWithRGBA(cd.xmlvmGetRed(), cd.xmlvmGetGreen(),
+                    cd.xmlvmGetBlue(), cd.xmlvmGetAlpha());
+            view.setBackgroundColor(color);
+        }
         // TODO Auto-generated method stub
 
     }

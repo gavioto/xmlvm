@@ -98,7 +98,6 @@ public class View {
     private Handler                   handler;
     protected OnClickListener         onClickListener;
     private ViewTreeObserver          viewTreeObserver;
-    private Integer                   savedBackgroundColor       = null;
 
     /**
      * <p>

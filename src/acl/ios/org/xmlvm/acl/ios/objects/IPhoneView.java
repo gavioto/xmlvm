@@ -312,12 +312,13 @@ public class IPhoneView implements CommonView {
         // TODO: Is checking the exact class name more appropriate?
         if (d instanceof ColorDrawable) {
             ColorDrawable cd = (ColorDrawable) d;
-            UIColor color = UIColor.colorWithRGBA(cd.xmlvmGetRed(), cd.xmlvmGetGreen(),
-                    cd.xmlvmGetBlue(), cd.xmlvmGetAlpha());
+            UIColor color = UIColor.colorWithRGBA(cd.xmlvmGetRed() / 255.0f,
+                    cd.xmlvmGetGreen() / 255.0f, cd.xmlvmGetBlue() / 255.0f,
+                    cd.xmlvmGetAlpha() / 255.0f);
             view.setBackgroundColor(color);
         }
-        // TODO Auto-generated method stub
-
+        
+        // TODO: Handle other Drawable types
     }
 
     /*

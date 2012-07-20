@@ -40,6 +40,7 @@ import Compatlib.System.Windows.Media.Color;
 import Compatlib.System.Windows.Media.SolidColorBrush;
 import Compatlib.System.Windows.Media.Stretch;
 import android.graphics.RectF;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.internal.Assert;
 import android.util.Log;
@@ -285,8 +286,16 @@ public class WP7View extends Object implements CommonView {
      */
     @Override
     public void setBackgroundDrawable(Drawable d) {
-        // TODO Auto-generated method stub
+        // TODO: Is checking the exact class name more appropriate?
+        if (d instanceof ColorDrawable) {
+            ColorDrawable cd = (ColorDrawable) d;
+            Color c = Color.FromArgb(cd.xmlvmGetAlpha(), cd.xmlvmGetRed(), cd.xmlvmGetGreen(),
+                    cd.xmlvmGetBlue());
+            SolidColorBrush b = new SolidColorBrush(c);
+            ((Panel) element).setBackground(b);
+        }
 
+        // TODO: Handle other Drawable types
     }
 
     /*

@@ -29,6 +29,7 @@ import android.app.Application;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.graphics.RectF;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.internal.CommonDeviceAPIFinder;
 import android.internal.DecorView;
@@ -75,7 +76,7 @@ public class Window {
         // the content views.
         iContainerView = CommonDeviceAPIFinder.instance().getWidgetFactory()
                 .createView(new View(this.activity));
-        iContainerView.setBackgroundColor(Color.TRANSPARENT);
+        iContainerView.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         iScrollView = CommonDeviceAPIFinder.instance().getWidgetFactory()
                 .createScrollView(new ScrollView(this.activity));
         iScrollView.setScrollEnabled(false);

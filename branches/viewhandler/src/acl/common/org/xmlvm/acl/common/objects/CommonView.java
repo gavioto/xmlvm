@@ -60,7 +60,6 @@ public interface CommonView {
     public void setNeedsDisplay();
     public void setBackgroundDrawable(Drawable d);
     public Drawable getBackgroundDrawable();
-    public void setBackgroundColor(Integer color);
 
     public void addSubview(CommonView metricsView);
     public void insertSubview(CommonView metricsView, int idx);

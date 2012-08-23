@@ -217,14 +217,6 @@ public class WP7View extends Object implements CommonView {
     }
 
     @Override
-    public void setBackgroundColor(Integer bcolor) {
-        Log.w("ACL", "setBackgroundColor is not implemented: " + bcolor);
-        Color c = toColor(bcolor);
-        SolidColorBrush b = new SolidColorBrush(c);
-        ((Panel) element).setBackground(b);
-    }
-
-    @Override
     public boolean isUserInteractionEnabled() {
         Log.w("ACL", "isUserInteractionEnabled is not implemented");
         return true;
@@ -286,8 +278,7 @@ public class WP7View extends Object implements CommonView {
      */
     @Override
     public void setBackgroundDrawable(Drawable d) {
-        // TODO: Is checking the exact class name more appropriate?
-        if (d instanceof ColorDrawable) {
+        if (d.getClass() == ColorDrawable.class) {
             ColorDrawable cd = (ColorDrawable) d;
             Color c = Color.FromArgb(cd.xmlvmGetAlpha(), cd.xmlvmGetRed(), cd.xmlvmGetGreen(),
                     cd.xmlvmGetBlue());

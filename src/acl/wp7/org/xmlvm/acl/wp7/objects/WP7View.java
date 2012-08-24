@@ -278,12 +278,14 @@ public class WP7View extends Object implements CommonView {
      */
     @Override
     public void setBackgroundDrawable(Drawable d) {
-        if (d.getClass() == ColorDrawable.class) {
-            ColorDrawable cd = (ColorDrawable) d;
-            Color c = Color.FromArgb(cd.xmlvmGetAlpha(), cd.xmlvmGetRed(), cd.xmlvmGetGreen(),
-                    cd.xmlvmGetBlue());
-            SolidColorBrush b = new SolidColorBrush(c);
-            ((Panel) element).setBackground(b);
+        if (d != null) {
+            if (d.getClass() == ColorDrawable.class) {
+                ColorDrawable cd = (ColorDrawable) d;
+                Color c = Color.FromArgb(cd.xmlvmGetAlpha(), cd.xmlvmGetRed(), cd.xmlvmGetGreen(),
+                        cd.xmlvmGetBlue());
+                SolidColorBrush b = new SolidColorBrush(c);
+                ((Panel) element).setBackground(b);
+            }
         }
 
         // TODO: Handle other Drawable types

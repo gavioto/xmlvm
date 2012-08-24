@@ -349,12 +349,14 @@ public class IPhoneView implements CommonView {
      */
     @Override
     public void setBackgroundDrawable(Drawable d) {
-        if (d.getClass() == ColorDrawable.class) {
-            ColorDrawable cd = (ColorDrawable) d;
-            UIColor color = UIColor.colorWithRGBA(cd.xmlvmGetRed() / 255.0f,
-                    cd.xmlvmGetGreen() / 255.0f, cd.xmlvmGetBlue() / 255.0f,
-                    cd.xmlvmGetAlpha() / 255.0f);
-            layerFront.setBackgroundColor(color);
+        if (d != null) {
+            if (d.getClass() == ColorDrawable.class) {
+                ColorDrawable cd = (ColorDrawable) d;
+                UIColor color = UIColor.colorWithRGBA(cd.xmlvmGetRed() / 255.0f,
+                        cd.xmlvmGetGreen() / 255.0f, cd.xmlvmGetBlue() / 255.0f,
+                        cd.xmlvmGetAlpha() / 255.0f);
+                layerFront.setBackgroundColor(color);
+            }
         }
 
         // TODO: Handle other Drawable types

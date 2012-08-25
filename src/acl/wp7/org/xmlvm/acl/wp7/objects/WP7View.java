@@ -286,9 +286,9 @@ public class WP7View extends Object implements CommonView {
                 SolidColorBrush b = new SolidColorBrush(c);
                 ((Panel) element).setBackground(b);
             }
+            
+            // TODO: Handle other Drawable types
         }
-
-        // TODO: Handle other Drawable types
     }
 
     /*

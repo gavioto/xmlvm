@@ -479,7 +479,13 @@ public class View {
 
     public void setBackgroundDrawable(Drawable drawable) {
         backgroundDrawable = drawable;
-        commonView.setBackgroundDrawable(drawable);
+
+        if (drawable instanceof StateListDrawable) {
+            refreshBackgroundStateDrawable();
+        } else {
+            commonView.setBackgroundDrawable(drawable);
+        }
+
         // TODO: Is this really required?
         requestLayout();
     }

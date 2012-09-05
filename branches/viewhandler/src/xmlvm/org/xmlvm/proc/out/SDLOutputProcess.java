@@ -37,7 +37,7 @@ import org.xmlvm.proc.out.build.MakeFile;
  */
 public class SDLOutputProcess extends XmlvmProcessImpl {
 
-    private static final String PLATFORM         = "posix";
+    private static final String PLATFORM         = "sdl";
 
     private final static String SRCFILE_LOCATION = File.separator + "src" + File.separator;
 

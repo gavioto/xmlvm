@@ -75,6 +75,7 @@
 		<mkdir dir="${xmlvm.bin}/iphone" />
 		<mkdir dir="${xmlvm.bin}/lib" />
         <mkdir dir="${xmlvm.bin}/wp7" />
+        <mkdir dir="${xmlvm.bin}/sdl" />
         <mkdir dir="${xmlvm.bin}/xmlvm2csharp" />
   		<mkdir dir="${xmlvm.bin}/xmlvm2c" />
 	</target>
@@ -124,30 +125,6 @@
 		</jar>
 	</target>
 
-	<target name="build-sdl-compat-lib" depends="build-xmlvm">
-	    <!-- 
-		<echo message="Generating csharp-compat.jar" />
-		<mkdir dir="${xmlvm.csharp-compat-lib}" />
-		<javac srcdir="src/xmlvm2csharp/compat-lib/java" destdir="${xmlvm.csharp-compat-lib}" debug="${debug}">
-			<classpath refid="classpath.compile" />
-			<classpath>
-				<pathelement location="${xmlvm.bin}" />
-			</classpath>
-			<include name="**/*.java" />
-		</javac>
-		<javac srcdir="src/wp7" destdir="${xmlvm.csharp-compat-lib}" debug="${debug}">
-			<classpath refid="classpath.compile" />
-			<classpath>
-				<pathelement location="${xmlvm.bin}" />
-			</classpath>
-			<include name="**/*.java" />
-		</javac>
-		<jar destfile="${xmlvm.libjars}/csharp-compat.jar">
-			<fileset dir="${xmlvm.csharp-compat-lib}" />
-		</jar>
-		-->
-	</target>
-
 	<target name="build-android-ios-compat-lib" depends="build-objc-compat-lib">
 		<mkdir dir="${xmlvm.android-ios-compat-lib.java}" />
 		<javac destdir="${xmlvm.android-ios-compat-lib.java}" debug="${debug}">
@@ -179,6 +156,21 @@
 		</javac>
 		<jar destfile="${xmlvm.libjars}/android-wp7-compat.jar">
 			<fileset dir="${xmlvm.android-wp7-compat-lib.java}" />
+		</jar>
+	</target>
+
+	<target name="build-sdl-compat-lib" depends="build-xmlvm">
+		<echo message="Generating sdl-compat.jar" />
+		<mkdir dir="${xmlvm.sdl-java}" />
+		<javac srcdir="src/sdl" destdir="${xmlvm.sdl-java}" debug="${debug}">
+			<classpath refid="classpath.compile" />
+			<classpath>
+				<pathelement location="${xmlvm.bin}" />
+			</classpath>
+			<include name="**/*.java" />
+		</javac>
+		<jar destfile="${xmlvm.libjars}/sdl-compat.jar">
+			<fileset dir="${xmlvm.sdl-java}" />
 		</jar>
 	</target>
 
@@ -282,6 +274,12 @@
 			</patternset>
 		</unjar>
 
+		<unjar src="dist/lib/sdl-compat.jar" dest="${xmlvm.build}">
+			<patternset>
+				<include name="**/*.class" />
+			</patternset>
+		</unjar>
+
 		<unjar src="dist/lib/android-sdl-compat.jar" dest="${xmlvm.build}">
 			<patternset>
 				<include name="**/*.class" />
@@ -337,6 +335,22 @@
 			<fileset dir="${xmlvm.silverlight-java}" />
 		</jar>
 
+		<!-- SDL -->
+		<jar destfile="${xmlvm.bin}/sdl/wrapper-lib.jar">
+			<fileset dir="src/xmlvm2c/lib/sdl-wrapper/" />
+		</jar>
+
+		<mkdir dir="${xmlvm.sdl-java}" />
+		<javac srcdir="./src/sdl" destdir="${xmlvm.sdl-java}" debug="${debug}">
+			<classpath>
+				<pathelement location="${xmlvm.bin}" />
+			</classpath>
+			<classpath refid="classpath.compile" />
+			<include name="**/*.java" />
+		</javac>
+		<jar destfile="${xmlvm.bin}/lib/sdl-java.jar">
+			<fileset dir="${xmlvm.sdl-java}" />
+		</jar>
 
 		<!-- xmlvm2objc -->
 		<jar destfile="${xmlvm.bin}/iphone/compat-lib.jar">
@@ -427,7 +441,7 @@
 			<src path="./src/acl/common" />
 			<src path="./src/acl/sdl" />
 			<classpath>
-				<!-- <pathelement location="${xmlvm.libjars}/csharp-compat.jar" /> -->
+				<pathelement location="${xmlvm.libjars}/sdl-compat.jar" />
 				<pathelement location="${xmlvm.bin}" />
 			</classpath>
 			<include name="**/*.java" />
@@ -452,6 +466,10 @@
 
 		<copy todir="${xmlvm.bin}/posix">
 			<fileset file="var/posix/Makefile" />
+		</copy>
+
+		<copy todir="${xmlvm.bin}/sdl">
+			<fileset file="var/sdl/Makefile" />
 		</copy>
 
 		<mkdir dir="${xmlvm.build}/xmlvm2js" />
@@ -580,6 +598,15 @@
 			<arg value="--target=gen-csharp-wrappers" />
 			<arg value="--out=src/xmlvm2csharp/lib/native" />
 			<arg value="--gen-native-skeletons" />
+		</java>
+	</target>
+
+	<target name="gen-sdl-wrappers" depends="jar">
+		<java jar="dist/xmlvm.jar" fork="true" failonerror="true">
+			<jvmarg value="-Xmx512m" />
+			<arg value="--in=build/sdl-java" />
+			<arg value="--target=gen-c-wrappers" />
+			<arg value="--out=src/xmlvm2c/lib/sdl-wrapper" />
 		</java>
 	</target>
 

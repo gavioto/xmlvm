@@ -21,11 +21,9 @@
 package org.xmlvm.proc.out;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
 
-import org.xmlvm.Log;
 import org.xmlvm.main.Arguments;
+import org.xmlvm.plugins.c.AugmentedCOutputProcess;
 import org.xmlvm.proc.BundlePhase1;
 import org.xmlvm.proc.BundlePhase2;
 import org.xmlvm.proc.XmlvmProcessImpl;

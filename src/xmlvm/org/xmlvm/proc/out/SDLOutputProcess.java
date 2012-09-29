@@ -21,6 +21,7 @@
 package org.xmlvm.proc.out;
 
 import java.io.File;
+import java.util.Arrays;
 
 import org.xmlvm.main.Arguments;
 import org.xmlvm.plugins.c.AugmentedCOutputProcess;
@@ -28,6 +29,9 @@ import org.xmlvm.proc.BundlePhase1;
 import org.xmlvm.proc.BundlePhase2;
 import org.xmlvm.proc.XmlvmProcessImpl;
 import org.xmlvm.proc.out.build.MakeFile;
+import org.xmlvm.util.FileMerger;
+import org.xmlvm.util.universalfile.UniversalFile;
+import org.xmlvm.util.universalfile.UniversalFileCreator;
 
 /**
  * A process that takes C files and creates a compilable POSIX project that
@@ -39,6 +43,9 @@ public class SDLOutputProcess extends XmlvmProcessImpl {
 
     private final static String SRCFILE_LOCATION = File.separator + "src" + File.separator;
 
+    private static final UniversalFile SDL_COMPAT_LIB       = UniversalFileCreator.createDirectory(
+            "/sdl/wrapper-lib.jar",
+            "src/xmlvm2c/lib/sdl-wrapper");
 
     /**
      * Initializes the {@link SDLOutputProcess}.
@@ -55,6 +62,8 @@ public class SDLOutputProcess extends XmlvmProcessImpl {
 
     @Override
     public boolean processPhase2(BundlePhase2 bundle) {
+        replaceCompatLib(bundle);
+        
         for (OutputFile file : bundle.getOutputFiles()) {
             file.setLocation(arguments.option_out() + SRCFILE_LOCATION);
         }
@@ -63,4 +72,14 @@ public class SDLOutputProcess extends XmlvmProcessImpl {
         bundle.addOutputFile(makefile.composeBuildFiles(arguments));
         return true;
     }
+    
+    private void replaceCompatLib(BundlePhase2 resources) {
+        UniversalFile[] sdlFiles = SDL_COMPAT_LIB.listFilesRecursively();
+        String skeletonPath = new File(arguments.option_out()).getAbsolutePath();
+        String implementationPath = SDL_COMPAT_LIB.getAbsolutePath();
+        FileMerger merger = new FileMerger(resources.getOutputFiles(), skeletonPath,
+                Arrays.asList(sdlFiles), implementationPath);
+        merger.process();
+    }
+
 }

@@ -35,6 +35,16 @@ import org.xmlvm.acl.common.subsystems.CommonTextFieldDelegate;
 import org.xmlvm.acl.common.subsystems.CommonWebBrowser;
 import org.xmlvm.acl.common.subsystems.CommonWidgetFactory;
 import org.xmlvm.acl.common.subsystems.CommonWindow;
+import org.xmlvm.acl.sdl.subsystems.SDLDispatcher;
+import org.xmlvm.acl.sdl.subsystems.SDLFileSystem;
+import org.xmlvm.acl.sdl.subsystems.SDLFontFactory;
+import org.xmlvm.acl.sdl.subsystems.SDLProperties;
+import org.xmlvm.acl.sdl.subsystems.SDLTextFieldDelegate;
+import org.xmlvm.acl.sdl.subsystems.SDLWidgetFactory;
+import org.xmlvm.acl.sdl.subsystems.SDLWindow;
+
+import sdljava.SDLMain;
+import sdljava.ttf.SDLTTF;
 
 import android.hardware.SensorManager;
 import android.internal.Assert;
@@ -48,10 +58,25 @@ import android.view.Window;
 public class SDLAPI implements CommonDeviceAPI {
 
     private SDLFileSystem fileSystem;
+    private SDLProperties properties;
+    private SDLWidgetFactory widgetFactory;
+    private SDLDispatcher dispatcher;
+    private SDLFontFactory fontFactory;
 
 
     public SDLAPI() {
         fileSystem = new SDLFileSystem();
+        properties = new SDLProperties();
+        widgetFactory = new SDLWidgetFactory();
+        dispatcher = new SDLDispatcher();
+        fontFactory = new SDLFontFactory();
+        
+        // TODO proper intialization. Perhaps this should happen in main()
+        if (SDLMain.wasInit(SDLMain.SDL_INIT_VIDEO) == 0) {
+            SDLMain.init(SDLMain.SDL_INIT_VIDEO);
+        }
+        
+        SDLTTF.init();
     }
 
     @Override
@@ -73,32 +98,27 @@ public class SDLAPI implements CommonDeviceAPI {
 
     @Override
     public CommonProperties getProperties() {
-        Assert.NOT_IMPLEMENTED();
-        return null;
+        return properties;
     }
 
     @Override
     public CommonWidgetFactory getWidgetFactory() {
-        Assert.NOT_IMPLEMENTED();
-        return null;
+        return widgetFactory;
     }
 
     @Override
     public CommonDispatcher getDispatcher() {
-        Assert.NOT_IMPLEMENTED();
-        return null;
+        return dispatcher;
     }
 
     @Override
     public CommonWindow getWindowInstance() {
-        Assert.NOT_IMPLEMENTED();
-        return null;
+        return new SDLWindow();        
     }
 
     @Override
     public CommonFontFactory getFontFactory() {
-        Assert.NOT_IMPLEMENTED();
-        return null;
+        return fontFactory;
     }
 
     @Override
@@ -121,8 +141,7 @@ public class SDLAPI implements CommonDeviceAPI {
 
     @Override
     public CommonTextFieldDelegate getTextFieldDelegate(Window window) {
-        Assert.NOT_IMPLEMENTED();
-        return null;
+        return new SDLTextFieldDelegate(window);
     }
 
     @Override

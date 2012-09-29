@@ -18,34 +18,23 @@
  * USA.
  */
 
-package sdljava;
+package sdljava.ttf;
 
 import org.xmlvm.XMLVMSkeletonOnly;
 
-@XMLVMSkeletonOnly
-public class SDLMain {
-    /*
-     * Bit flags for subsystem initialization
-     */
-    public static final int SDL_INIT_AUDIO       = 16;
-    public static final int SDL_INIT_CDROM       = 256;
-    public static final int SDL_INIT_EVENTTHREAD = 16777216;
-    public static final int SDL_INIT_EVERYTHING  = 65535;
-    public static final int SDL_INIT_JOYSTICK    = 512;
-    public static final int SDL_INIT_NOPARACHUTE = 1048576;
-    public static final int SDL_INIT_TIMER       = 1;
-    public static final int SDL_INIT_VIDEO       = 32;
+import sdljava.video.SDLColor;
+import sdljava.video.SDLSurface;
 
-    
-    public static void init(long flags) {
+/**
+ *
+ */
+@XMLVMSkeletonOnly
+public class SDLTrueTypeFont {
+    public SDLSurface renderTextBlended(String text, SDLColor fg) {
         throw new RuntimeException("Stub");
     }
     
-    public static long wasInit(long flags) {
-        throw new RuntimeException("Stub");
-    }
-    
-    public static void quit() {
+    protected void finalize() {
         throw new RuntimeException("Stub");
     }
 }

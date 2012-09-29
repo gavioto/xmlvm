@@ -17,23 +17,22 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301,
  * USA.
  */
-package org.xmlvm.acl.sdl;
 
-import sdljava.SDLMain;
-import sdljava.SDLTimer;
-import android.app.Application;
-import android.internal.CommonDeviceAPIFinder;
+package org.xmlvm.acl.sdl.subsystems;
 
-public class SDLAndroidAppLauncher {
+import org.xmlvm.acl.common.subsystems.CommonTextFieldDelegate;
 
-    static {
-        CommonDeviceAPIFinder.commonDeviceAPI = new SDLAPI();
+import android.view.Window;
+
+/**
+ *
+ */
+public class SDLTextFieldDelegate implements CommonTextFieldDelegate {
+    private Window window;
+
+    public SDLTextFieldDelegate(Window window) {
+        this.window = window;
     }
-
-
-    public static void main(String[] args) {
-        Application.getApplication().onCreate();
-        SDLTimer.delay(15000);
-        SDLMain.quit();
-    }
+    
+    
 }

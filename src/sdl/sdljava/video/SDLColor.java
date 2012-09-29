@@ -17,23 +17,53 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301,
  * USA.
  */
-package org.xmlvm.acl.sdl;
 
-import sdljava.SDLMain;
-import sdljava.SDLTimer;
-import android.app.Application;
-import android.internal.CommonDeviceAPIFinder;
+package sdljava.video;
 
-public class SDLAndroidAppLauncher {
+/**
+ *
+ */
+public class SDLColor {
+    private int r, g, b, a;
 
-    static {
-        CommonDeviceAPIFinder.commonDeviceAPI = new SDLAPI();
+    public SDLColor(int r, int g, int b) {
+        this.r = r;
+        this.g = g;
+        this.b = b;
+        this.a = 255;
     }
 
-
-    public static void main(String[] args) {
-        Application.getApplication().onCreate();
-        SDLTimer.delay(15000);
-        SDLMain.quit();
+    public int getR() {
+        return r;
     }
+
+    public void setR(int r) {
+        this.r = r;
+    }
+
+    public int getG() {
+        return g;
+    }
+
+    public void setG(int g) {
+        this.g = g;
+    }
+
+    public int getB() {
+        return b;
+    }
+
+    public void setB(int b) {
+        this.b = b;
+    }
+
+    public int getA() {
+        return a;
+    }
+
+    public void setA(int a) {
+        this.a = a;
+    }
+    
+    
 }

@@ -23,6 +23,7 @@ package org.xmlvm.acl.sdl;
 import org.xmlvm.acl.common.objects.CommonView;
 import org.xmlvm.acl.common.subsystems.CommonWindow;
 
+import sdljava.SDLException;
 import sdljava.SDLMain;
 
 import android.graphics.RectF;
@@ -32,7 +33,11 @@ public class SDLWindow implements CommonWindow {
 
     public SDLWindow() {
         // TODO proper intialization. Perhaps this should happen in main()
-        SDLMain.init(0);
+        try {
+            SDLMain.init(0);
+        } catch (SDLException sdle) {
+            //TODO: Log?
+        }
     }
 
     @Override

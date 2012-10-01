@@ -54,8 +54,12 @@ public abstract class AbstractSDLView<V extends View> implements CommonView {
     
     public AbstractSDLView(V view) {
         this.view = view;
-        if (SDLMain.wasInit(SDLMain.SDL_INIT_VIDEO) == 0) {
-            SDLMain.init(SDLMain.SDL_INIT_VIDEO);
+        try {
+            if (SDLMain.wasInit(SDLMain.SDL_INIT_VIDEO) == 0) {
+                SDLMain.init(SDLMain.SDL_INIT_VIDEO);
+            }
+        } catch (SDLException sdle) {
+            //TODO: Log?
         }
     }
     
@@ -65,8 +69,10 @@ public abstract class AbstractSDLView<V extends View> implements CommonView {
     
     public void setSurface(SDLSurface s) {
         surface = s;
-        frame = new RectF(0, 0, s.getWidth(), s.getHeight());
-        setNeedsDisplay();
+        if (s != null) {
+            frame = new RectF(0, 0, s.getWidth(), s.getHeight());
+            setNeedsDisplay();
+        }
     }
     
     public SDLSurface getSurface() {
@@ -131,11 +137,16 @@ public abstract class AbstractSDLView<V extends View> implements CommonView {
             v.setNeedsDisplay();
         }
         if (surface != null) {
-            //surface.updateRect();
+            try {
+                surface.updateRect();
+            } catch (SDLException e) {
+                // TODO: ?
+            }
             SDLSurface target = nearestParentSurface();
-            RectF f = frame != null ? frame : new RectF(0, 0, surface.getWidth(), surface.getHeight());
+            RectF f = frame != null ? frame : new RectF(0, 0, surface.getWidth(), surface.getHeight());            
             if (target != null) {
                 try {
+                    
                     surface.blitSurface(target, 
                         new SDLRect((int)f.left, (int) f.top, 
                                 (int) f.width(), (int) f.height()));

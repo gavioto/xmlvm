@@ -43,6 +43,7 @@ import org.xmlvm.acl.sdl.subsystems.SDLTextFieldDelegate;
 import org.xmlvm.acl.sdl.subsystems.SDLWidgetFactory;
 import org.xmlvm.acl.sdl.subsystems.SDLWindow;
 
+import sdljava.SDLException;
 import sdljava.SDLMain;
 import sdljava.ttf.SDLTTF;
 
@@ -72,11 +73,15 @@ public class SDLAPI implements CommonDeviceAPI {
         fontFactory = new SDLFontFactory();
         
         // TODO proper intialization. Perhaps this should happen in main()
-        if (SDLMain.wasInit(SDLMain.SDL_INIT_VIDEO) == 0) {
-            SDLMain.init(SDLMain.SDL_INIT_VIDEO);
+        try {
+            if (SDLMain.wasInit(SDLMain.SDL_INIT_VIDEO) == 0) {
+                SDLMain.init(SDLMain.SDL_INIT_VIDEO);
+            }
+
+            SDLTTF.init();
+        } catch (SDLException sdle) {
+            //TODO: Log?
         }
-        
-        SDLTTF.init();
     }
 
     @Override

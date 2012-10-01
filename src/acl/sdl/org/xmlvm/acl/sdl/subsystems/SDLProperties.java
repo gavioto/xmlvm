@@ -39,7 +39,7 @@ public class SDLProperties implements CommonProperties {
      */
     @Override
     public int detectDevice() {
-        return CommonProperties.DEVICE_UNKNOWN;
+        return CommonProperties.DEVICE_SDL;
     }
 
     /* (non-Javadoc)

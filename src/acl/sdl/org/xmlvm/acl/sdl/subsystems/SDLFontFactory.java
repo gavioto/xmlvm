@@ -24,6 +24,7 @@ import org.xmlvm.acl.common.objects.CommonFont;
 import org.xmlvm.acl.common.subsystems.CommonFontFactory;
 import org.xmlvm.acl.sdl.objects.SDLFont;
 
+import sdljava.SDLException;
 import sdljava.ttf.SDLTTF;
 import sdljava.video.SDLColor;
 import sdljava.video.SDLSurface;
@@ -75,11 +76,18 @@ public class SDLFontFactory implements CommonFontFactory {
      */
     @Override
     public RectF sizeWithFont(String string, CommonFont font) {
-        SDLSurface surf = (font instanceof SDLFont) ?
-            ((SDLFont) font).renderText(string, new SDLColor(255,255,255)) : 
-            SDLTTF.openFont(SDLTTF.MONOSPACED, (int)font.pointSize())
-                .renderTextBlended(string, new SDLColor(255,255,255));
-        return new RectF(0, 0, surf.getWidth(), surf.getHeight());
+        try {
+            SDLSurface surf = (font instanceof SDLFont) ? ((SDLFont) font).renderText(string,
+                    new SDLColor(255, 255, 255)) : SDLTTF.openFont(SDLFont.MONOSPACED,
+                    (int) font.pointSize()).renderTextBlended(string, new SDLColor(255, 255, 255));
+            if (surf != null) {
+                return new RectF(0, 0, surf.getWidth(), surf.getHeight());
+            }
+        } catch (SDLException sdle) {
+            //TODO: Log?
+            
+        }
+        return new RectF(0,0,0,0);
     }
 
     /* (non-Javadoc)

@@ -34,13 +34,13 @@ import android.widget.TextView;
  *
  */
 public class SDLTextViewAdapter extends AbstractSDLView<TextView> implements TextViewAdapter {
-    private SDLFont    font  = new SDLFont(SDLTTF.MONOSPACED, 12f);
+    private SDLFont    font  = new SDLFont(SDLFont.MONOSPACED, 12f);
     private String     text;
     private SDLColor   color = new SDLColor(255,255,255);
     
     public SDLTextViewAdapter (TextView textView) {
         super(textView);
-        //setSurface( font.renderText("???", color) );
+        setSurface( font.renderText("???", color) );
     }
     
     /* (non-Javadoc)

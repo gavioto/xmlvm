@@ -50,13 +50,21 @@ public class SDLWindow implements CommonWindow {
             topLevel.setNeedsDisplay();
         }
         if (surface != null) {
-            surface.updateRect();
+            try {
+                surface.updateRect();
+            } catch (SDLException sdle) {
+                //TODO: Log?
+            }
         }
     }
 
     @Override
     public void makeKeyAndVisible() {
-        surface = SDLVideo.setVideoMode((int) frame.width(), (int) frame.height(), 0, SDLVideo.SDL_HWSURFACE); 
+        try {
+            surface = SDLVideo.setVideoMode((int) frame.width(), (int) frame.height(), 0, SDLVideo.SDL_HWSURFACE);
+        } catch (SDLException sdle) {
+            //TODO: Log?
+        }
         if (surface != null && topLevel instanceof AbstractSDLView) {
             ((AbstractSDLView) topLevel).setParentSurface(surface);
         }

@@ -33,7 +33,11 @@ public class SDLAndroidAppLauncher {
 
     public static void main(String[] args) {
         Application.getApplication().onCreate();
-        SDLTimer.delay(15000);
+        try {
+            SDLTimer.delay(15000);
+        } catch (InterruptedException ie) {
+            //TODO: Log?
+        }
         SDLMain.quit();
     }
 }

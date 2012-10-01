@@ -22,6 +22,7 @@ package org.xmlvm.acl.sdl.objects;
 
 import org.xmlvm.acl.common.objects.CommonFont;
 
+import sdljava.SDLException;
 import sdljava.ttf.SDLTTF;
 import sdljava.ttf.SDLTrueTypeFont;
 import sdljava.video.SDLColor;
@@ -31,21 +32,34 @@ import sdljava.video.SDLSurface;
  *
  */
 public class SDLFont implements CommonFont {
+    public static final String MONOSPACED = "LiberationMono-Regular.ttf";
+    public static final String SANS = "LiberationSans-Regular.ttf";
+    public static final String SERIF = "LiberationSerif-Regular.ttf";
+    
     private SDLTrueTypeFont ttf;
     private String family;
     private float  size;
     
     public SDLFont(float size) {
-        this(SDLTTF.MONOSPACED, size);
+        this(SDLFont.MONOSPACED, size);
     }
     
     public SDLFont(String family, float size) {
-        ttf = SDLTTF.openFont(family, (int) size);
-        this.size = size;
+        try {
+            ttf = SDLTTF.openFont(family, (int) size);
+            this.size = size;
+        } catch (SDLException sdle) {
+            //TODO: Log?
+        }
     }
     
     public SDLSurface renderText (String text, SDLColor color) {
-        return ttf.renderTextBlended(text, color);
+        if (ttf != null) try {
+            return ttf.renderTextBlended(text, color);
+        } catch (SDLException sdle) {
+            //TODO: Log?
+        }
+        return null;
     }
 
 

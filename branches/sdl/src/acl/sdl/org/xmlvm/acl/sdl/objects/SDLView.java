@@ -20,12 +20,7 @@
 
 package org.xmlvm.acl.sdl.objects;
 
-import org.xmlvm.acl.common.objects.CommonView;
-
-import sdljava.SDLException;
-import sdljava.video.SDLVideo;
 import android.graphics.RectF;
-import android.graphics.drawable.Drawable;
 import android.internal.Assert;
 import android.view.View;
 

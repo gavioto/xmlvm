@@ -21,7 +21,7 @@
 package org.xmlvm.acl.sdl.subsystems;
 
 import java.io.File;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.xmlvm.acl.common.subsystems.CommonFileSystem;
@@ -60,17 +60,16 @@ public class SDLFileSystem implements CommonFileSystem {
 
     @Override
     public List<String> listDirectory(String path) {
-        return new ArrayList<String>();
-//        String fn = path;
-//        File f = new File(fn);
-//        if (!f.exists()) {
-//            return null;
-//        }
-//        try {
-//            return Arrays.asList(new File(path).list()); 
-//        } catch (Exception e) {
-//            return null;
-//        }
+        String fn = path;
+        File f = new File(fn);
+        if (!f.exists()) {
+            return null;
+        }
+        try {
+            return Arrays.asList(new File(path).list()); 
+        } catch (Exception e) {
+            return null;
+        }
     }
 
 }

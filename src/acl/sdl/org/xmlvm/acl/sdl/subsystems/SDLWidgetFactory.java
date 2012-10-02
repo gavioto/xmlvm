@@ -36,8 +36,10 @@ import org.xmlvm.acl.common.adapter.WebViewAdapter;
 import org.xmlvm.acl.common.objects.CommonContext;
 import org.xmlvm.acl.common.objects.CommonView;
 import org.xmlvm.acl.common.subsystems.CommonWidgetFactory;
-import org.xmlvm.acl.sdl.objects.SDLScrollViewAdapter;
-import org.xmlvm.acl.sdl.objects.SDLTextViewAdapter;
+import org.xmlvm.acl.sdl.adapters.SDLBitmapDrawableAdapter;
+import org.xmlvm.acl.sdl.adapters.SDLImageViewAdapter;
+import org.xmlvm.acl.sdl.adapters.SDLScrollViewAdapter;
+import org.xmlvm.acl.sdl.adapters.SDLTextViewAdapter;
 import org.xmlvm.acl.sdl.objects.SDLView;
 
 import android.app.AlertDialog;
@@ -76,8 +78,7 @@ public class SDLWidgetFactory implements CommonWidgetFactory {
      */
     @Override
     public BitmapDrawableAdapter createBitmapDrawable(String path) {
-        Assert.NOT_IMPLEMENTED();
-        return null;
+        return new SDLBitmapDrawableAdapter(path);
     }
 
     /* (non-Javadoc)
@@ -85,8 +86,7 @@ public class SDLWidgetFactory implements CommonWidgetFactory {
      */
     @Override
     public BitmapDrawableAdapter createBitmapDrawable(int width, int height) {
-        Assert.NOT_IMPLEMENTED();
-        return null;
+        return new SDLBitmapDrawableAdapter(width, height);
     }
 
     /* (non-Javadoc)
@@ -130,8 +130,7 @@ public class SDLWidgetFactory implements CommonWidgetFactory {
      */
     @Override
     public ImageViewAdapter createImageView(ImageView imageView) {
-        Assert.NOT_IMPLEMENTED();
-        return null;
+        return new SDLImageViewAdapter(imageView);
     }
 
     /* (non-Javadoc)

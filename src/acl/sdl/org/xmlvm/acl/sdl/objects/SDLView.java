@@ -62,8 +62,8 @@ public class SDLView extends AbstractSDLView<View> {
     /* (non-Javadoc)
      * @see org.xmlvm.acl.common.objects.CommonView#setFrame(android.graphics.RectF)
      */
-    @Override
-    public void setFrame(RectF frame) {
+//    @Override
+//    public void setFrame(RectF frame) {
 //        try {
 //        setSurface( SDLVideo.createRGBSurface(SDLVideo.SDL_SWSURFACE, 
 //                (int) frame.width(), (int) frame.height(), 24, 
@@ -72,7 +72,7 @@ public class SDLView extends AbstractSDLView<View> {
 //        } catch (SDLException sdle) {
 //            throw new RuntimeException("Failed to allocate SDL surface.");
 //        }
-    }
+//    }
 
 
 }

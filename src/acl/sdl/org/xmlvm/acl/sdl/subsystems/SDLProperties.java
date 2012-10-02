@@ -30,7 +30,7 @@ import android.internal.Assert;
  */
 public class SDLProperties implements CommonProperties {
     //TODO: Query resolution from SDL?
-    private static final RectF RECTANGLE = new RectF(0,0,800,600);
+    private static final RectF RECTANGLE = new RectF(0,0,600,800);
     
     private int orientation = CommonProperties.ORIENTATION_UNKNOWN;
 

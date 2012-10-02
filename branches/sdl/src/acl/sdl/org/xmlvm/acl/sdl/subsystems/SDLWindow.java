@@ -35,7 +35,7 @@ import android.internal.Assert;
 public class SDLWindow implements CommonWindow {
 
     private CommonView topLevel;
-    private RectF frame = new RectF(0,0,640,480); //ad hoc default; applications should setFrame
+    private RectF frame = new RectF(0,0,640,640); //ad hoc default; applications should setFrame
     private SDLSurface surface = null;
 
 

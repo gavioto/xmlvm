@@ -1,6 +1,4 @@
 #include "xmlvm.h"
-#include "sdljava_SDLNewTimerCallback.h"
-#include "sdljava_SDLTimerID.h"
 
 #include "sdljava_SDLTimer.h"
 
@@ -73,12 +71,6 @@ static JAVA_OBJECT* __method0_arg_types[] = {
 static JAVA_OBJECT* __method1_arg_types[] = {
 };
 
-static JAVA_OBJECT* __method2_arg_types[] = {
-    &__CLASS_int,
-    &__CLASS_sdljava_SDLNewTimerCallback,
-    &__CLASS_java_lang_Object,
-};
-
 static XMLVM_METHOD_REFLECTION_DATA __method_reflection_data[] = {
     {"delay",
     &__method0_arg_types[0],
@@ -96,15 +88,6 @@ static XMLVM_METHOD_REFLECTION_DATA __method_reflection_data[] = {
     0,
     0,
     "()J",
-    JAVA_NULL,
-    JAVA_NULL},
-    {"addTimer",
-    &__method2_arg_types[0],
-    sizeof(__method2_arg_types) / sizeof(JAVA_OBJECT*),
-    JAVA_NULL,
-    0,
-    0,
-    "(ILsdljava/SDLNewTimerCallback;Ljava/lang/Object;)Lsdljava/SDLTimerID;",
     JAVA_NULL,
     JAVA_NULL},
 };
@@ -125,9 +108,6 @@ static JAVA_OBJECT method_dispatcher(JAVA_OBJECT method, JAVA_OBJECT receiver, J
         conversion.l = (JAVA_LONG) sdljava_SDLTimer_getTicks__();
         result = __NEW_java_lang_Long();
         java_lang_Long___INIT____long(result, conversion.l);
-        break;
-    case 2:
-        result = (JAVA_OBJECT) sdljava_SDLTimer_addTimer___int_sdljava_SDLNewTimerCallback_java_lang_Object(((java_lang_Integer*) argsArray[0])->fields.java_lang_Integer.value_, argsArray[1], argsArray[2]);
         break;
     default:
         XMLVM_INTERNAL_ERROR();
@@ -249,15 +229,7 @@ JAVA_LONG sdljava_SDLTimer_getTicks__()
 {
     if (!__TIB_sdljava_SDLTimer.classInitialized) __INIT_sdljava_SDLTimer();
     //XMLVM_BEGIN_WRAPPER[sdljava_SDLTimer_getTicks__]
-    XMLVM_NOT_IMPLEMENTED();
-    //XMLVM_END_WRAPPER
-}
-
-JAVA_OBJECT sdljava_SDLTimer_addTimer___int_sdljava_SDLNewTimerCallback_java_lang_Object(JAVA_INT n1, JAVA_OBJECT n2, JAVA_OBJECT n3)
-{
-    if (!__TIB_sdljava_SDLTimer.classInitialized) __INIT_sdljava_SDLTimer();
-    //XMLVM_BEGIN_WRAPPER[sdljava_SDLTimer_addTimer___int_sdljava_SDLNewTimerCallback_java_lang_Object]
-    XMLVM_NOT_IMPLEMENTED();
+    return (JAVA_LONG) SDL_GetTicks();
     //XMLVM_END_WRAPPER
 }
 

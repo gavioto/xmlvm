@@ -29,34 +29,10 @@ JAVA_OBJECT __CLASS_sdljava_ttf_SDLTTF_3ARRAY;
 #include <SDL/SDL_ttf.h>
 //XMLVM_END_IMPLEMENTATION
 
-static JAVA_OBJECT _STATIC_sdljava_ttf_SDLTTF_MONOSPACED;
-static JAVA_OBJECT _STATIC_sdljava_ttf_SDLTTF_SANS;
-static JAVA_OBJECT _STATIC_sdljava_ttf_SDLTTF_SERIF;
 
 #include "xmlvm-reflection.h"
 
 static XMLVM_FIELD_REFLECTION_DATA __field_reflection_data[] = {
-    {"MONOSPACED",
-    &__CLASS_java_lang_String,
-    0 | java_lang_reflect_Modifier_PUBLIC | java_lang_reflect_Modifier_STATIC,
-    0,
-    &_STATIC_sdljava_ttf_SDLTTF_MONOSPACED,
-    "",
-    JAVA_NULL},
-    {"SANS",
-    &__CLASS_java_lang_String,
-    0 | java_lang_reflect_Modifier_PUBLIC | java_lang_reflect_Modifier_STATIC,
-    0,
-    &_STATIC_sdljava_ttf_SDLTTF_SANS,
-    "",
-    JAVA_NULL},
-    {"SERIF",
-    &__CLASS_java_lang_String,
-    0 | java_lang_reflect_Modifier_PUBLIC | java_lang_reflect_Modifier_STATIC,
-    0,
-    &_STATIC_sdljava_ttf_SDLTTF_SERIF,
-    "",
-    JAVA_NULL},
 };
 
 static JAVA_OBJECT* __constructor0_arg_types[] = {
@@ -181,9 +157,6 @@ void __INIT_IMPL_sdljava_ttf_SDLTTF()
     __TIB_sdljava_ttf_SDLTTF.implementedInterfaces = (__TIB_DEFINITION_TEMPLATE* (*)[1]) XMLVM_MALLOC(sizeof(__TIB_DEFINITION_TEMPLATE*) * 0);
 
     // Initialize interfaces if necessary and assign tib to implementedInterfaces
-    _STATIC_sdljava_ttf_SDLTTF_MONOSPACED = (java_lang_String*) xmlvm_create_java_string_from_pool(0);
-    _STATIC_sdljava_ttf_SDLTTF_SANS = (java_lang_String*) xmlvm_create_java_string_from_pool(1);
-    _STATIC_sdljava_ttf_SDLTTF_SERIF = (java_lang_String*) xmlvm_create_java_string_from_pool(2);
 
     __TIB_sdljava_ttf_SDLTTF.declaredFields = &__field_reflection_data[0];
     __TIB_sdljava_ttf_SDLTTF.numDeclaredFields = sizeof(__field_reflection_data) / sizeof(XMLVM_FIELD_REFLECTION_DATA);
@@ -235,42 +208,6 @@ JAVA_OBJECT __NEW_INSTANCE_sdljava_ttf_SDLTTF()
     me = __NEW_sdljava_ttf_SDLTTF();
     sdljava_ttf_SDLTTF___INIT___(me);
     return me;
-}
-
-JAVA_OBJECT sdljava_ttf_SDLTTF_GET_MONOSPACED()
-{
-    if (!__TIB_sdljava_ttf_SDLTTF.classInitialized) __INIT_sdljava_ttf_SDLTTF();
-    return _STATIC_sdljava_ttf_SDLTTF_MONOSPACED;
-}
-
-void sdljava_ttf_SDLTTF_PUT_MONOSPACED(JAVA_OBJECT v)
-{
-    if (!__TIB_sdljava_ttf_SDLTTF.classInitialized) __INIT_sdljava_ttf_SDLTTF();
-    _STATIC_sdljava_ttf_SDLTTF_MONOSPACED = v;
-}
-
-JAVA_OBJECT sdljava_ttf_SDLTTF_GET_SANS()
-{
-    if (!__TIB_sdljava_ttf_SDLTTF.classInitialized) __INIT_sdljava_ttf_SDLTTF();
-    return _STATIC_sdljava_ttf_SDLTTF_SANS;
-}
-
-void sdljava_ttf_SDLTTF_PUT_SANS(JAVA_OBJECT v)
-{
-    if (!__TIB_sdljava_ttf_SDLTTF.classInitialized) __INIT_sdljava_ttf_SDLTTF();
-    _STATIC_sdljava_ttf_SDLTTF_SANS = v;
-}
-
-JAVA_OBJECT sdljava_ttf_SDLTTF_GET_SERIF()
-{
-    if (!__TIB_sdljava_ttf_SDLTTF.classInitialized) __INIT_sdljava_ttf_SDLTTF();
-    return _STATIC_sdljava_ttf_SDLTTF_SERIF;
-}
-
-void sdljava_ttf_SDLTTF_PUT_SERIF(JAVA_OBJECT v)
-{
-    if (!__TIB_sdljava_ttf_SDLTTF.classInitialized) __INIT_sdljava_ttf_SDLTTF();
-    _STATIC_sdljava_ttf_SDLTTF_SERIF = v;
 }
 
 void sdljava_ttf_SDLTTF___INIT___(JAVA_OBJECT me)

@@ -18,9 +18,10 @@
  * USA.
  */
 
-package org.xmlvm.acl.sdl.objects;
+package org.xmlvm.acl.sdl.adapters;
 
 import org.xmlvm.acl.common.adapter.ScrollViewAdapter;
+import org.xmlvm.acl.sdl.objects.AbstractSDLView;
 
 import android.graphics.RectF;
 import android.widget.ScrollView;

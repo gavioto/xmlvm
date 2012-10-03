@@ -19,8 +19,9 @@
  */
 package org.xmlvm.acl.sdl;
 
+import org.xmlvm.acl.common.CommonDeviceAPI;
+
 import sdljava.SDLMain;
-import sdljava.SDLTimer;
 import android.app.Application;
 import android.internal.CommonDeviceAPIFinder;
 
@@ -33,11 +34,12 @@ public class SDLAndroidAppLauncher {
 
     public static void main(String[] args) {
         Application.getApplication().onCreate();
-        try {
-            SDLTimer.delay(15000);
-        } catch (InterruptedException ie) {
-            //TODO: Log?
+        
+        CommonDeviceAPI api = CommonDeviceAPIFinder.commonDeviceAPI;
+        if (api instanceof SDLAPI) {
+            SDLMainLoop mainLoop = new SDLMainLoop((SDLAPI) api);
+            mainLoop.execute();
+            SDLMain.quit();
         }
-        SDLMain.quit();
     }
 }

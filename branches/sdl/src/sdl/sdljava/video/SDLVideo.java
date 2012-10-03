@@ -54,7 +54,8 @@ public class SDLVideo {
     public static final long SDL_SRCCOLORKEY       = 4096L;
     public static final long SDL_SWSURFACE         = 0L;
     
-    public static SDLSurface setVideoMode(int width, int height, int bpp, long flags) {
+    public static SDLSurface setVideoMode(int width, int height, int bpp, long flags) 
+            throws SDLException {
         throw new RuntimeException("Stub");
     }
     

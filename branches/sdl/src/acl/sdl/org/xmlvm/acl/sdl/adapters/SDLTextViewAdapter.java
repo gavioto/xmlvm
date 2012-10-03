@@ -18,10 +18,12 @@
  * USA.
  */
 
-package org.xmlvm.acl.sdl.objects;
+package org.xmlvm.acl.sdl.adapters;
 
 import org.xmlvm.acl.common.adapter.TextViewAdapter;
 import org.xmlvm.acl.common.objects.CommonFont;
+import org.xmlvm.acl.sdl.objects.AbstractSDLView;
+import org.xmlvm.acl.sdl.objects.SDLFont;
 
 import sdljava.ttf.SDLTTF;
 import sdljava.video.SDLColor;

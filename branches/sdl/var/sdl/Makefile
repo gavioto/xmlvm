@@ -29,7 +29,7 @@ CFLAGS=-w -std=c99 -D_GNU_SOURCE -DALL_INTERIOR_POINTERS -DGC_THREADS \
 
 LD=$(CC)
 LDFLAGS=-L/usr/local/lib
-LIBS=-lgc -lm -lz -lSDL -lSDL_ttf
+LIBS=-lgc -lm -lz -lSDL -lSDL_ttf -lSDL_image -lSDL_gfx
 
 
 EXECUTABLE_NAME=$(PRODUCT_NAME)

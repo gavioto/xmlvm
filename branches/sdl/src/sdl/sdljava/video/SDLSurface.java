@@ -30,11 +30,11 @@ import sdljava.SDLException;
 @XMLVMSkeletonOnly
 public class SDLSurface {
     
-    public void updateRect() {
+    public void updateRect() throws SDLException  {
         updateRect(0,0,0,0);
     }
     
-    public void updateRect(int x, int y, int w, int h) {
+    public void updateRect(int x, int y, int w, int h) throws SDLException {
         throw new RuntimeException("Stub");
     }
     

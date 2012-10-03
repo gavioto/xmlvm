@@ -52,7 +52,8 @@ public class SDLFileSystem implements CommonFileSystem {
     @Override
     public String getApplicationPath() {
         try {
-            return new File(".").getCanonicalPath();
+            //TODO: Figure out why this is confusing StringBuilder when cross-compiled
+            return "."; //new File(".").getCanonicalPath();
         } catch (Exception e) {
             return null;
         }

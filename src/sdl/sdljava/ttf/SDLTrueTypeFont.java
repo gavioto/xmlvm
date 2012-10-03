@@ -22,6 +22,7 @@ package sdljava.ttf;
 
 import org.xmlvm.XMLVMSkeletonOnly;
 
+import sdljava.SDLException;
 import sdljava.video.SDLColor;
 import sdljava.video.SDLSurface;
 
@@ -30,7 +31,7 @@ import sdljava.video.SDLSurface;
  */
 @XMLVMSkeletonOnly
 public class SDLTrueTypeFont {
-    public SDLSurface renderTextBlended(String text, SDLColor fg) {
+    public SDLSurface renderTextBlended(String text, SDLColor fg) throws SDLException {
         throw new RuntimeException("Stub");
     }
     

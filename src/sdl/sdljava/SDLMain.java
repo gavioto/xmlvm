@@ -37,11 +37,11 @@ public class SDLMain {
     public static final int SDL_INIT_VIDEO       = 32;
 
     
-    public static void init(long flags) {
+    public static void init(long flags) throws SDLException {
         throw new RuntimeException("Stub");
     }
     
-    public static long wasInit(long flags) {
+    public static long wasInit(long flags) throws SDLException  {
         throw new RuntimeException("Stub");
     }
     

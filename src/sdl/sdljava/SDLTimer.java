@@ -27,23 +27,11 @@ import org.xmlvm.XMLVMSkeletonOnly;
  */
 @XMLVMSkeletonOnly
 public class SDLTimer {
-    public static void delay(long ms) {
+    public static void delay(long ms) throws InterruptedException {
         throw new RuntimeException("Stub");
     }
     
     public static long getTicks() {
         throw new RuntimeException("Stub");
-    }
-    
-    public static SDLTimerID addTimer(int interval, SDLNewTimerCallback callback, Object parameter) {
-        throw new RuntimeException("Stub");
-    }
-
-    
-    /*
-     * For convenience when cross-compiled
-     */
-    private int call (SDLNewTimerCallback callback, int interval, Object parameter) {
-        return callback.call(interval, parameter);
     }
 }

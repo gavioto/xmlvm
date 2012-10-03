@@ -20,15 +20,27 @@
 
 package org.xmlvm.acl.sdl.subsystems;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.PriorityQueue;
+import java.util.Queue;
+
 import org.xmlvm.acl.common.subsystems.CommonDispatcher;
 
+import sdljava.SDLTimer;
 import android.internal.Assert;
 
 /**
  *
  */
 public class SDLDispatcher implements CommonDispatcher {
-
+    // A task queue, sorted by scheduling time
+    private Queue<Task> tasks = new PriorityQueue<Task>();
+    
+    // To support removal
+    private Map<Runnable, Task> taskLookup = new HashMap<Runnable, Task>();
+    
+    
     /* (non-Javadoc)
      * @see org.xmlvm.acl.common.subsystems.CommonDispatcher#post(java.lang.Runnable)
      */
@@ -42,8 +54,10 @@ public class SDLDispatcher implements CommonDispatcher {
      */
     @Override
     public boolean postDelayed(Runnable r, long delayMillis) {
-        r.run(); //TODO: Schedule and delay!
-        return false;
+        Task task = new Task(SDLTimer.getTicks() + delayMillis, r);
+        tasks.add(task);
+        taskLookup.put(r, task);
+        return true;
     }
 
     /* (non-Javadoc)
@@ -51,7 +65,37 @@ public class SDLDispatcher implements CommonDispatcher {
      */
     @Override
     public void removeCallbacks(Runnable r) {
-        Assert.NOT_IMPLEMENTED();
+        Task t = taskLookup.get(r);
+        if (t != null) {
+            tasks.remove(t);
+            taskLookup.remove(r);
+        }
     }
 
+
+    public void runDispatchCycle() {
+        long now = SDLTimer.getTicks();
+        while (!tasks.isEmpty() && tasks.peek().time <= now) {
+            tasks.poll().r.run();
+        }
+    }
+    
+    private static class Task implements Comparable<Task> {
+        private long     time;
+        private Runnable r;
+        public Task(long time, Runnable r) {
+            this.time = time;
+            this.r    = r;
+        }
+        /* (non-Javadoc)
+         * @see java.lang.Comparable#compareTo(java.lang.Object)
+         */
+        @Override
+        public int compareTo(Task t) {
+            // The int cast is wrong for very large time differentials (millions of seconds)
+            // ...but we do not expect those.
+            return (int) (time - t.time);
+        }
+    }
+    
 }

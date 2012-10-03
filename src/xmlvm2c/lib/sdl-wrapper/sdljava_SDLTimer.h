@@ -9,14 +9,6 @@
 #include "java_lang_Object.h"
 
 // Circular references:
-#ifndef XMLVM_FORWARD_DECL_sdljava_SDLNewTimerCallback
-#define XMLVM_FORWARD_DECL_sdljava_SDLNewTimerCallback
-XMLVM_FORWARD_DECL(sdljava_SDLNewTimerCallback)
-#endif
-#ifndef XMLVM_FORWARD_DECL_sdljava_SDLTimerID
-#define XMLVM_FORWARD_DECL_sdljava_SDLTimerID
-XMLVM_FORWARD_DECL(sdljava_SDLTimerID)
-#endif
 // Class declarations for sdljava.SDLTimer
 XMLVM_DEFINE_CLASS(sdljava_SDLTimer, 6, XMLVM_ITABLE_SIZE_sdljava_SDLTimer)
 
@@ -56,7 +48,6 @@ JAVA_OBJECT __NEW_INSTANCE_sdljava_SDLTimer();
 void sdljava_SDLTimer___INIT___(JAVA_OBJECT me);
 void sdljava_SDLTimer_delay___long(JAVA_LONG n1);
 JAVA_LONG sdljava_SDLTimer_getTicks__();
-JAVA_OBJECT sdljava_SDLTimer_addTimer___int_sdljava_SDLNewTimerCallback_java_lang_Object(JAVA_INT n1, JAVA_OBJECT n2, JAVA_OBJECT n3);
 
 // Define a Macro for the method declarations of the Obj-C wrapper class so that subclass wrappers may easily include these too
 #define XMLVM_OBJC_OVERRIDE_CLASS_DECLARATIONS_sdljava_SDLTimer \

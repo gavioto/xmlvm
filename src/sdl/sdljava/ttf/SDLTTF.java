@@ -22,20 +22,18 @@ package sdljava.ttf;
 
 import org.xmlvm.XMLVMSkeletonOnly;
 
+import sdljava.SDLException;
+
 /**
  *
  */
 @XMLVMSkeletonOnly
-public class SDLTTF {
-    public static final String MONOSPACED = "LiberationMono-Regular.ttf";
-    public static final String SANS = "LiberationSans-Regular.ttf";
-    public static final String SERIF = "LiberationSerif-Regular.ttf";
-    
-    public static void init() {
+public class SDLTTF { 
+    public static void init() throws SDLException {
         throw new RuntimeException("Stub");
     }
     
-    public static SDLTrueTypeFont openFont(String path, int ptsize) {
+    public static SDLTrueTypeFont openFont(String path, int ptsize) throws SDLException {
         throw new RuntimeException("Stub");
     }
 }

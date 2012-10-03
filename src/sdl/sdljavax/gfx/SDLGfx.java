@@ -18,14 +18,24 @@
  * USA.
  */
 
-package sdljava;
+package sdljavax.gfx;
 
 import org.xmlvm.XMLVMSkeletonOnly;
+
+import sdljava.SDLException;
+import sdljava.video.SDLSurface;
 
 /**
  *
  */
-@XMLVMSkeletonOnly
-public class SDLTimerID {
 
+@XMLVMSkeletonOnly
+public class SDLGfx {
+    public static SDLSurface zoomSurface(SDLSurface src,
+                                         double zoomx,
+                                         double zoomy,
+                                         boolean smooth)
+                                  throws SDLException {
+        throw new RuntimeException("Stub.");
+    }
 }

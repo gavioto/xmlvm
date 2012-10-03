@@ -18,11 +18,19 @@
  * USA.
  */
 
-package sdljava;
+package sdljava.image;
+
+import org.xmlvm.XMLVMSkeletonOnly;
+
+import sdljava.SDLException;
+import sdljava.video.SDLSurface;
 
 /**
  *
  */
-public interface SDLNewTimerCallback {
-    public int call(int interval, Object parameter);
+@XMLVMSkeletonOnly
+public class SDLImage {
+    public static SDLSurface load(String location) throws SDLException {
+        throw new RuntimeException("Stub");
+    }
 }

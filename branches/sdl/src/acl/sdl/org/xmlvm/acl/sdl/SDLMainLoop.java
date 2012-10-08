@@ -22,10 +22,14 @@ package org.xmlvm.acl.sdl;
 
 import org.xmlvm.acl.common.subsystems.CommonDispatcher;
 import org.xmlvm.acl.sdl.subsystems.SDLDispatcher;
+import org.xmlvm.acl.sdl.subsystems.SDLWindow;
 
 import sdljava.SDLException;
 import sdljava.SDLTimer;
 import sdljava.event.SDLEvent;
+import sdljava.event.SDLMouseButtonEvent;
+import sdljava.x.swig.SDLPressedState;
+import android.view.MotionEvent;
 
 /**
  *
@@ -59,12 +63,20 @@ public class SDLMainLoop {
     
     private void pollEvents() {
         SDLEvent event;
+        
         try {
             while ((event = SDLEvent.pollEvent()) != null) {
-                handleEvent(event);
+                if (event.getType() == SDLEvent.SDL_QUIT) {
+                    active = false; // TODO: Fire appropriate lifecycle events
+                } else {
+                    SDLWindow window = api.getKeyWindow();
+                    if (window != null) {
+                        window.handleEvent(event);
+                    }
+                }
             }
         } catch (SDLException e) {
-            
+
         }
     }
     
@@ -74,15 +86,6 @@ public class SDLMainLoop {
             ((SDLDispatcher) d).runDispatchCycle();
         }
     }
-    
-    private void handleEvent(SDLEvent e) {
-        switch (e.getType()) {
-        case SDLEvent.SDL_QUIT: 
-            active = false; 
-            break;
-        }
-    }
-    
 
 
 }

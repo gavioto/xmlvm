@@ -126,6 +126,10 @@ public class SDLImageViewAdapter extends AbstractSDLView<ImageView> implements I
 
                 updateBounds();
                 
+                if (xScale < 0 || yScale < 0) {
+                    return;
+                }
+                
                 SDLBitmapDrawableAdapter sdlImage = (SDLBitmapDrawableAdapter) image;
                 
                 SDLSurface scaled = SDLGfx.zoomSurface(sdlImage.getSurface(), xScale, yScale, false);

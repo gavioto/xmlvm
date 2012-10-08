@@ -22,22 +22,28 @@ package org.xmlvm.acl.sdl.subsystems;
 
 import org.xmlvm.acl.common.objects.CommonView;
 import org.xmlvm.acl.common.subsystems.CommonWindow;
+import org.xmlvm.acl.sdl.SDLAPI;
 import org.xmlvm.acl.sdl.objects.AbstractSDLView;
 
 import sdljava.SDLException;
-import sdljava.SDLMain;
-import sdljava.video.SDLRect;
+import sdljava.event.SDLEvent;
+import sdljava.event.SDLMouseButtonEvent;
 import sdljava.video.SDLSurface;
 import sdljava.video.SDLVideo;
+import sdljava.x.swig.SDLPressedState;
 import android.graphics.RectF;
-import android.internal.Assert;
+import android.view.MotionEvent;
 
 public class SDLWindow implements CommonWindow {
 
+    private SDLAPI api;
     private CommonView topLevel;
     private RectF frame = new RectF(0,0,640,640); //ad hoc default; applications should setFrame
     private SDLSurface surface = null;
 
+    public SDLWindow(SDLAPI api) {
+        this.api = api;
+    }
 
     @Override
     public void setFrame(RectF rect) {
@@ -60,6 +66,7 @@ public class SDLWindow implements CommonWindow {
 
     @Override
     public void makeKeyAndVisible() {
+        api.setKeyWindow(this);
         try {
             surface = SDLVideo.setVideoMode((int) frame.width(), (int) frame.height(), 0, SDLVideo.SDL_HWSURFACE);
         } catch (SDLException sdle) {
@@ -85,4 +92,31 @@ public class SDLWindow implements CommonWindow {
         setNeedsDisplay();
     }
 
+    
+    public void handleEvent(SDLEvent e) {
+
+        MotionEvent motionEvent = null;
+        
+        switch (e.getType()) {
+        case SDLEvent.SDL_MOUSEBUTTONDOWN:
+        case SDLEvent.SDL_MOUSEBUTTONUP:
+            SDLMouseButtonEvent buttonEvent = (SDLMouseButtonEvent) e;
+            if (buttonEvent.getState() == SDLPressedState.PRESSED) {
+                motionEvent = new MotionEvent(MotionEvent.ACTION_DOWN, buttonEvent.getX(), buttonEvent.getY());                
+            } else if (buttonEvent.getState() == SDLPressedState.RELEASED) {
+                motionEvent = new MotionEvent(MotionEvent.ACTION_UP, buttonEvent.getX(), buttonEvent.getY());
+            }
+            break;
+        case SDLEvent.SDL_MOUSEMOTION:
+            break;
+            
+        }
+        
+        if (motionEvent != null && topLevel != null && topLevel instanceof AbstractSDLView) {
+            ((AbstractSDLView) topLevel).handleTouchEvent(motionEvent);
+        }
+    }
+    
+
+    
 }

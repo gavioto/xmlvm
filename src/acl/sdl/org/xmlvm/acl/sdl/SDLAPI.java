@@ -35,9 +35,12 @@ import org.xmlvm.acl.common.subsystems.CommonTextFieldDelegate;
 import org.xmlvm.acl.common.subsystems.CommonWebBrowser;
 import org.xmlvm.acl.common.subsystems.CommonWidgetFactory;
 import org.xmlvm.acl.common.subsystems.CommonWindow;
+import org.xmlvm.acl.sdl.subsystems.SDLAccelerometer;
 import org.xmlvm.acl.sdl.subsystems.SDLDispatcher;
 import org.xmlvm.acl.sdl.subsystems.SDLFileSystem;
 import org.xmlvm.acl.sdl.subsystems.SDLFontFactory;
+import org.xmlvm.acl.sdl.subsystems.SDLPowerManager;
+import org.xmlvm.acl.sdl.subsystems.SDLPreferences;
 import org.xmlvm.acl.sdl.subsystems.SDLProperties;
 import org.xmlvm.acl.sdl.subsystems.SDLTextFieldDelegate;
 import org.xmlvm.acl.sdl.subsystems.SDLWidgetFactory;
@@ -46,7 +49,6 @@ import org.xmlvm.acl.sdl.subsystems.SDLWindow;
 import sdljava.SDLException;
 import sdljava.SDLMain;
 import sdljava.ttf.SDLTTF;
-
 import android.hardware.SensorManager;
 import android.internal.Assert;
 import android.location.LocationManager;
@@ -63,7 +65,11 @@ public class SDLAPI implements CommonDeviceAPI {
     private SDLWidgetFactory widgetFactory;
     private SDLDispatcher dispatcher;
     private SDLFontFactory fontFactory;
-
+    private SDLPreferences preferences;
+    private SDLPowerManager powerManager;
+    private SDLAccelerometer accelerometer;
+    
+    private SDLWindow keyWindow;
 
     public SDLAPI() {
         fileSystem = new SDLFileSystem();
@@ -71,6 +77,9 @@ public class SDLAPI implements CommonDeviceAPI {
         widgetFactory = new SDLWidgetFactory();
         dispatcher = new SDLDispatcher();
         fontFactory = new SDLFontFactory();
+        preferences = new SDLPreferences();
+        powerManager = new SDLPowerManager();
+        accelerometer = new SDLAccelerometer();
         
         // TODO proper intialization. Perhaps this should happen in main()
         try {
@@ -91,14 +100,12 @@ public class SDLAPI implements CommonDeviceAPI {
 
     @Override
     public CommonPreferences getPreferences() {
-        Assert.NOT_IMPLEMENTED();
-        return null;
+        return preferences;
     }
 
     @Override
     public CommonAccelerometer getAccelerometer(SensorManager sensorManager) {
-        Assert.NOT_IMPLEMENTED();
-        return null;
+        return accelerometer;
     }
 
     @Override
@@ -118,7 +125,7 @@ public class SDLAPI implements CommonDeviceAPI {
 
     @Override
     public CommonWindow getWindowInstance() {
-        return new SDLWindow();        
+        return new SDLWindow(this);        
     }
 
     @Override
@@ -128,8 +135,7 @@ public class SDLAPI implements CommonDeviceAPI {
 
     @Override
     public CommonPowerManager getPowerManager() {
-        Assert.NOT_IMPLEMENTED();
-        return null;
+        return powerManager;
     }
 
     @Override
@@ -161,4 +167,11 @@ public class SDLAPI implements CommonDeviceAPI {
         return null;
     }
 
+    public SDLWindow getKeyWindow() {
+        return keyWindow;
+    }
+    
+    public void setKeyWindow(SDLWindow w) {
+        keyWindow = w;
+    }
 }

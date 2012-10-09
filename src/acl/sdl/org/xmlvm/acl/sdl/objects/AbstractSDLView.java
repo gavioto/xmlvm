@@ -73,7 +73,7 @@ public abstract class AbstractSDLView<V extends View> implements CommonView {
     public void setSurface(SDLSurface s) {
         surface = s;
         if (s != null) {
-            frame = new RectF(0, 0, s.getWidth(), s.getHeight());
+            //frame = new RectF(0, 0, s.getWidth(), s.getHeight());
             setNeedsDisplay();
         }
     }
@@ -146,14 +146,14 @@ public abstract class AbstractSDLView<V extends View> implements CommonView {
                 // TODO: ?
             }
             SDLSurface target = nearestParentSurface();
-            RectF f = frame != null ? frame : new RectF(0, 0, surface.getWidth(), surface.getHeight());            
+            RectF f = frame != null ? frame : new RectF(0, 0, surface.getWidth(), surface.getHeight());    
+            RectF ref = getReferenceFrame();
             if (target != null) {
                 try {
                     
                     surface.blitSurface(target, 
-                        new SDLRect((int)f.left, (int) f.top, 
+                        new SDLRect((int)(f.left + ref.left), (int) (f.top + ref.top), 
                                 (int) f.width(), (int) f.height()));
-                    target.updateRect();
                 } catch (SDLException e) {
                     //TODO: How to handle?
                 }
@@ -213,6 +213,7 @@ public abstract class AbstractSDLView<V extends View> implements CommonView {
     @Override
     public void insertSubview(CommonView metricsView, int idx) {
         subViews.add(idx, metricsView);
+        metricsView.setSuperView(this);
     }
 
     /* (non-Javadoc)
@@ -295,5 +296,18 @@ public abstract class AbstractSDLView<V extends View> implements CommonView {
             }
         }
         return false;    
+    }
+    
+    public RectF getReferenceFrame() {
+        if (superView == null) {
+            return getFrame();
+        } else if (superView instanceof AbstractSDLView) {
+            RectF parentReference = ((AbstractSDLView) superView).getReferenceFrame();
+            RectF parentFrame     = ((AbstractSDLView) superView).getFrame();
+            return new RectF(parentReference.left + parentFrame.left, parentReference.top + parentFrame.top, 
+                    parentReference.left + parentFrame.width(), parentReference.top + parentFrame.height());
+        } else {
+            return getFrame();
+        }        
     }
 }

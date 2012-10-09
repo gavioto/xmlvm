@@ -132,18 +132,20 @@ public class SDLImageViewAdapter extends AbstractSDLView<ImageView> implements I
                 
                 SDLBitmapDrawableAdapter sdlImage = (SDLBitmapDrawableAdapter) image;
                 
-                SDLSurface scaled = SDLGfx.zoomSurface(sdlImage.getSurface(), xScale, yScale, false);
+                SDLSurface surface = SDLGfx.zoomSurface(sdlImage.getSurface(), xScale, yScale, false);
                 
-                SDLSurface canvas = SDLVideo.createRGBSurface(SDLVideo.SDL_SWSURFACE, 
+
+                int x = (int) (frame.width() / 2 - surface.getWidth()  / 2);
+                int y = (int) (frame.height() / 2 - surface.getHeight() / 2);
+                if (x != 0 || y != 0) {               
+                    SDLSurface canvas = SDLVideo.createRGBSurface(SDLVideo.SDL_SWSURFACE, 
                         (int) frame.width(), (int) frame.height(), 32, 
                         0x00000FF, 0x00FF0000, 0x0000FF00, 0x00000000);
                 
-                int x = (int) (frame.centerX() - scaled.getWidth()  / 2);
-                int y = (int) (frame.centerY() - scaled.getHeight() / 2);
-                
-                scaled.blitSurface(canvas, new SDLRect(x,y,scaled.getWidth(),scaled.getHeight()));
-                
-                setSurface(canvas);
+                    surface.blitSurface(canvas, new SDLRect(x,y,surface.getWidth(),surface.getHeight()));
+                    surface = canvas;
+                }
+                setSurface(surface);
             } catch (SDLException sdle) {
                 
             }

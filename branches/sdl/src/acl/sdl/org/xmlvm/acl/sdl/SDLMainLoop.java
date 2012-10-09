@@ -50,6 +50,7 @@ public class SDLMainLoop {
             
             pollEvents();
             pollDispatcher();
+            render();
             
             long end   = SDLTimer.getTicks();
             
@@ -84,6 +85,13 @@ public class SDLMainLoop {
         CommonDispatcher d = api.getDispatcher();
         if (d instanceof SDLDispatcher) { // Should always be true
             ((SDLDispatcher) d).runDispatchCycle();
+        }
+    }
+    
+    private void render() {
+        SDLWindow window = api.getKeyWindow();
+        if (window != null) {
+            window.setNeedsDisplay();
         }
     }
 

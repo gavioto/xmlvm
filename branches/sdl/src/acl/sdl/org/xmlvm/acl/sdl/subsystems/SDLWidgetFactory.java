@@ -36,6 +36,7 @@ import org.xmlvm.acl.common.adapter.WebViewAdapter;
 import org.xmlvm.acl.common.objects.CommonContext;
 import org.xmlvm.acl.common.objects.CommonView;
 import org.xmlvm.acl.common.subsystems.CommonWidgetFactory;
+import org.xmlvm.acl.sdl.adapters.SDLAlertDialogAdapter;
 import org.xmlvm.acl.sdl.adapters.SDLBitmapDrawableAdapter;
 import org.xmlvm.acl.sdl.adapters.SDLImageViewAdapter;
 import org.xmlvm.acl.sdl.adapters.SDLScrollViewAdapter;
@@ -69,8 +70,7 @@ public class SDLWidgetFactory implements CommonWidgetFactory {
     @Override
     public AlertDialogAdapter createAlertDialog(String title, String message,
             AlertDialog alertDialog, String cancelButtonTitle) {
-        Assert.NOT_IMPLEMENTED();
-        return null;
+        return new SDLAlertDialogAdapter(title, message, alertDialog, cancelButtonTitle);
     }
 
     /* (non-Javadoc)

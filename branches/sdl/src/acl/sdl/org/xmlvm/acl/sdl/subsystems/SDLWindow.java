@@ -68,7 +68,7 @@ public class SDLWindow implements CommonWindow {
     public void makeKeyAndVisible() {
         api.setKeyWindow(this);
         try {
-            surface = SDLVideo.setVideoMode((int) frame.width(), (int) frame.height(), 0, SDLVideo.SDL_HWSURFACE);
+            surface = SDLVideo.setVideoMode((int) frame.width(), (int) frame.height(), 0, SDLVideo.SDL_HWSURFACE | SDLVideo.SDL_DOUBLEBUF);
         } catch (SDLException sdle) {
             //TODO: Log?
         }

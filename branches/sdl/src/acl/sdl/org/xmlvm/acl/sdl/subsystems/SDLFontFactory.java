@@ -49,8 +49,7 @@ public class SDLFontFactory implements CommonFontFactory {
      */
     @Override
     public CommonFont fontWithNameSize(String string, float pointSize) {
-        Assert.NOT_IMPLEMENTED();
-        return null;
+        return systemFontOfSize(pointSize); //TODO: Allow named fonts!
     }
 
     /* (non-Javadoc)

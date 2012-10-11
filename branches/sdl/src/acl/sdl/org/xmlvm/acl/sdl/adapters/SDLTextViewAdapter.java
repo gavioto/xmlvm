@@ -83,7 +83,7 @@ public class SDLTextViewAdapter extends AbstractSDLView<TextView> implements Tex
      */
     @Override
     public void setText(String string) {
-        setSurface( font.renderText(string, color) );
+        setSurface( font.renderText(string == "" ? " " : string, color) );
     }
 
     /* (non-Javadoc)

@@ -71,8 +71,7 @@ public class SDLProperties implements CommonProperties {
      */
     @Override
     public float getSwitchButtonHeight() {
-        Assert.NOT_IMPLEMENTED();
-        return 0;
+        return 16;
     }
 
     /* (non-Javadoc)
@@ -80,8 +79,7 @@ public class SDLProperties implements CommonProperties {
      */
     @Override
     public float getSwitchButtonWidth() {
-        Assert.NOT_IMPLEMENTED();
-        return 0;
+        return 16;
     }
 
     /* (non-Javadoc)

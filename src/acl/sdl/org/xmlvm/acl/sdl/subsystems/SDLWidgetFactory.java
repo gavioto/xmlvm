@@ -38,6 +38,8 @@ import org.xmlvm.acl.common.objects.CommonView;
 import org.xmlvm.acl.common.subsystems.CommonWidgetFactory;
 import org.xmlvm.acl.sdl.adapters.SDLAlertDialogAdapter;
 import org.xmlvm.acl.sdl.adapters.SDLBitmapDrawableAdapter;
+import org.xmlvm.acl.sdl.adapters.SDLButtonAdapter;
+import org.xmlvm.acl.sdl.adapters.SDLCheckBoxAdapter;
 import org.xmlvm.acl.sdl.adapters.SDLImageViewAdapter;
 import org.xmlvm.acl.sdl.adapters.SDLScrollViewAdapter;
 import org.xmlvm.acl.sdl.adapters.SDLTextViewAdapter;
@@ -94,8 +96,7 @@ public class SDLWidgetFactory implements CommonWidgetFactory {
      */
     @Override
     public ButtonAdapter createButton(Button button) {
-        Assert.NOT_IMPLEMENTED();
-        return null;
+        return new SDLButtonAdapter(button);
     }
 
     /* (non-Javadoc)
@@ -103,8 +104,7 @@ public class SDLWidgetFactory implements CommonWidgetFactory {
      */
     @Override
     public CheckBoxAdapter createCheckBox(CheckBox checkBox) {
-        Assert.NOT_IMPLEMENTED();
-        return null;
+        return new SDLCheckBoxAdapter(checkBox);
     }
 
     /* (non-Javadoc)

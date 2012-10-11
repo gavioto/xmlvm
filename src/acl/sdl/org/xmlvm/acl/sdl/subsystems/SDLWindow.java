@@ -28,6 +28,7 @@ import org.xmlvm.acl.sdl.objects.AbstractSDLView;
 import sdljava.SDLException;
 import sdljava.event.SDLEvent;
 import sdljava.event.SDLMouseButtonEvent;
+import sdljava.event.SDLMouseMotionEvent;
 import sdljava.video.SDLSurface;
 import sdljava.video.SDLVideo;
 import sdljava.x.swig.SDLPressedState;
@@ -92,7 +93,7 @@ public class SDLWindow implements CommonWindow {
         setNeedsDisplay();
     }
 
-    
+    private boolean touching = false;
     public void handleEvent(SDLEvent e) {
 
         MotionEvent motionEvent = null;
@@ -101,13 +102,18 @@ public class SDLWindow implements CommonWindow {
         case SDLEvent.SDL_MOUSEBUTTONDOWN:
         case SDLEvent.SDL_MOUSEBUTTONUP:
             SDLMouseButtonEvent buttonEvent = (SDLMouseButtonEvent) e;
-            if (buttonEvent.getState() == SDLPressedState.PRESSED) {
+            touching = buttonEvent.getState() == SDLPressedState.PRESSED;
+            if (touching) {
                 motionEvent = new MotionEvent(MotionEvent.ACTION_DOWN, buttonEvent.getX(), buttonEvent.getY());                
             } else if (buttonEvent.getState() == SDLPressedState.RELEASED) {
                 motionEvent = new MotionEvent(MotionEvent.ACTION_UP, buttonEvent.getX(), buttonEvent.getY());
             }
             break;
         case SDLEvent.SDL_MOUSEMOTION:
+            if (touching) {
+                SDLMouseMotionEvent sdlMotionEvent = (SDLMouseMotionEvent) e;
+                motionEvent = new MotionEvent(MotionEvent.ACTION_MOVE, sdlMotionEvent.getX(), sdlMotionEvent.getY());
+            }
             break;
             
         }

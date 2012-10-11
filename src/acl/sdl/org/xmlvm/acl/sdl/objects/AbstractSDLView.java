@@ -272,30 +272,43 @@ public abstract class AbstractSDLView<V extends View> implements CommonView {
     
     public boolean handleTouchEvent(MotionEvent event) {
         // TODO: Adjust x/y of event?
+        
+        RectF frame = getFrame();
+        if (frame != null && frame.contains(event.getX(), event.getY())) {
 
-        // Try to let the sub views consume the event first
-        for (CommonView v : subViews) {
-            if (v instanceof AbstractSDLView) {
-                if (((AbstractSDLView) v).handleTouchEvent(event)) {
-                    return true;
+            // Adjust the position to frame coordinates for sub-views
+            MotionEvent nextEvent = event;
+            if (frame.left != 0 || frame.top != 0) {
+                nextEvent = new MotionEvent(event.getAction(),
+                        (int) (event.getX() - frame.left), 
+                        (int) (event.getY() - frame.top));
+            }
+            
+            // Try to let the sub views consume the event first
+            for (CommonView v : subViews) {
+                if (v instanceof AbstractSDLView) {
+                    if (((AbstractSDLView) v).handleTouchEvent(nextEvent)) {
+                        //return true;
+                    }
                 }
             }
-        }
-        
-        // Otherwise, transmit event to the managed view
-        switch (event.getAction()) {
-        case MotionEvent.ACTION_UP:
-            OnClickListener clicker = view.getOnClickListener();
-            if (clicker != null) {       
-                clicker.onClick(view);
+            
+            // Otherwise, transmit event to the managed view
+            switch (event.getAction()) {
+            case MotionEvent.ACTION_UP:
+                OnClickListener clicker = view.getOnClickListener();
+                if (clicker != null) {       
+                    clicker.onClick(view);
+                }
+            default:
+                OnTouchListener listener = view.getOnTouchListener();
+                if (listener != null) {       
+                    return listener.onTouch(view, event);
+                }
+                break;
             }
-        case MotionEvent.ACTION_DOWN:
-            OnTouchListener listener = view.getOnTouchListener();
-            if (listener != null) {       
-                return listener.onTouch(view, event);
-            }
         }
-        return false;    
+        return false;
     }
     
     public RectF getReferenceFrame() {

@@ -41,7 +41,7 @@ public class SDLPreferences implements CommonPreferences {
      */
     @Override
     public void commit() {
-        Assert.NOT_IMPLEMENTED();
+        //TODO: Persist? 
     }
 
     /* (non-Javadoc)

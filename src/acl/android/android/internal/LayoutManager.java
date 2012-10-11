@@ -190,6 +190,7 @@ public class LayoutManager {
             SAXParser xmlParser = factory.newSAXParser();
             xmlParser.parse(new FileInputStream(layoutPath), parser);
         } catch (Exception e) {
+            e.printStackTrace();
             throw new InflateException("Unable to inflate layout: " + id);
         }
 

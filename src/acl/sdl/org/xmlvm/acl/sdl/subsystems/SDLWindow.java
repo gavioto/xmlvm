@@ -31,7 +31,6 @@ import sdljava.event.SDLMouseButtonEvent;
 import sdljava.event.SDLMouseMotionEvent;
 import sdljava.video.SDLSurface;
 import sdljava.video.SDLVideo;
-import sdljava.x.swig.SDLPressedState;
 import android.graphics.RectF;
 import android.view.MotionEvent;
 
@@ -102,10 +101,10 @@ public class SDLWindow implements CommonWindow {
         case SDLEvent.SDL_MOUSEBUTTONDOWN:
         case SDLEvent.SDL_MOUSEBUTTONUP:
             SDLMouseButtonEvent buttonEvent = (SDLMouseButtonEvent) e;
-            touching = buttonEvent.getState() == SDLPressedState.PRESSED;
+            touching = e.getType() == SDLEvent.SDL_MOUSEBUTTONDOWN;
             if (touching) {
                 motionEvent = new MotionEvent(MotionEvent.ACTION_DOWN, buttonEvent.getX(), buttonEvent.getY());                
-            } else if (buttonEvent.getState() == SDLPressedState.RELEASED) {
+            } else {
                 motionEvent = new MotionEvent(MotionEvent.ACTION_UP, buttonEvent.getX(), buttonEvent.getY());
             }
             break;

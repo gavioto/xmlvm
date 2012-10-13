@@ -27,9 +27,6 @@ import org.xmlvm.acl.sdl.subsystems.SDLWindow;
 import sdljava.SDLException;
 import sdljava.SDLTimer;
 import sdljava.event.SDLEvent;
-import sdljava.event.SDLMouseButtonEvent;
-import sdljava.x.swig.SDLPressedState;
-import android.view.MotionEvent;
 
 /**
  *

@@ -133,7 +133,6 @@ public class SDLImageViewAdapter extends AbstractSDLView<ImageView> implements I
                 SDLBitmapDrawableAdapter sdlImage = (SDLBitmapDrawableAdapter) image;
                 
                 SDLSurface surface = SDLGfx.zoomSurface(sdlImage.getSurface(), xScale, yScale, false);
-                
 
                 int x = (int) (frame.width() / 2 - surface.getWidth()  / 2);
                 int y = (int) (frame.height() / 2 - surface.getHeight() / 2);

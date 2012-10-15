@@ -40,11 +40,9 @@ import android.view.View.OnTouchListener;
 /**
  *
  */
-public abstract class AbstractSDLView<V extends View> implements CommonView {
+public abstract class AbstractSDLView<V extends View> extends AbstractSDLLayer implements CommonView {
     private V view;
-    private SDLSurface parentSurface;
     private SDLSurface background;
-    private SDLSurface surface;
     private boolean opaque = false;
     private boolean hidden = false;
     private boolean interactable = true;
@@ -69,26 +67,7 @@ public abstract class AbstractSDLView<V extends View> implements CommonView {
     public V getView() {
         return view;
     }
-    
-    public void setSurface(SDLSurface s) {
-        surface = s;
-        if (s != null) {
-            //frame = new RectF(0, 0, s.getWidth(), s.getHeight());
-            setNeedsDisplay();
-        }
-    }
-    
-    public SDLSurface getSurface() {
-        return surface;
-    }
 
-    public void setParentSurface(SDLSurface s) {
-        parentSurface = s;
-    }
-    
-    public SDLSurface getParentSurface() {
-        return parentSurface;
-    }
 
     /* (non-Javadoc)
      * @see org.xmlvm.acl.common.objects.CommonView#getFrame()
@@ -104,6 +83,14 @@ public abstract class AbstractSDLView<V extends View> implements CommonView {
     @Override
     public void setFrame(RectF frame) {
         this.frame = frame;
+    }
+    
+    @Override
+    public void setSurface(SDLSurface s) {
+        super.setSurface(s);
+        if (s != null) {
+            setNeedsDisplay();
+        }
     }
     
     /* (non-Javadoc)
@@ -139,33 +126,15 @@ public abstract class AbstractSDLView<V extends View> implements CommonView {
         for (CommonView v : subViews) {
             v.setNeedsDisplay();
         }
-        if (surface != null) {
-            try {
-                surface.updateRect();
-            } catch (SDLException e) {
-                // TODO: ?
-            }
-            SDLSurface target = nearestParentSurface();
-            RectF f = frame != null ? frame : new RectF(0, 0, surface.getWidth(), surface.getHeight());    
-            RectF ref = getReferenceFrame();
-            if (target != null) {
-                try {
-                    
-                    surface.blitSurface(target, 
-                        new SDLRect((int)(f.left + ref.left), (int) (f.top + ref.top), 
-                                (int) f.width(), (int) f.height()));
-                } catch (SDLException e) {
-                    //TODO: How to handle?
-                }
-            }
-        }
+        paintSurface();
     }
     
-    public SDLSurface nearestParentSurface() {
-        if (parentSurface != null) {
-            return parentSurface;
+    public SDLSurface getNearestParentSurface() {
+        SDLSurface explicitParent = super.getNearestParentSurface();
+        if (explicitParent != null) {
+            return explicitParent;
         } else if (superView != null && superView instanceof AbstractSDLView) {
-            return ((AbstractSDLView) superView).nearestParentSurface();
+            return ((AbstractSDLView) superView).getNearestParentSurface();
         } else {
             return null;
         }

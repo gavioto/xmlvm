@@ -74,7 +74,7 @@ public class SDLAPI implements CommonDeviceAPI {
     public SDLAPI() {
         fileSystem = new SDLFileSystem();
         properties = new SDLProperties();
-        widgetFactory = new SDLWidgetFactory();
+        widgetFactory = new SDLWidgetFactory(this);
         dispatcher = new SDLDispatcher();
         fontFactory = new SDLFontFactory();
         preferences = new SDLPreferences();

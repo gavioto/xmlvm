@@ -41,7 +41,7 @@ public class SDLFont implements CommonFont {
     private float  size;
     
     public SDLFont(float size) {
-        this(SDLFont.MONOSPACED, size);
+        this(SDLFont.SANS, size);
     }
     
     public SDLFont(String family, float size) {

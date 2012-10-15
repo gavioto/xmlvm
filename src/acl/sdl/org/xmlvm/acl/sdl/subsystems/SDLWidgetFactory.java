@@ -36,6 +36,7 @@ import org.xmlvm.acl.common.adapter.WebViewAdapter;
 import org.xmlvm.acl.common.objects.CommonContext;
 import org.xmlvm.acl.common.objects.CommonView;
 import org.xmlvm.acl.common.subsystems.CommonWidgetFactory;
+import org.xmlvm.acl.sdl.SDLAPI;
 import org.xmlvm.acl.sdl.adapters.SDLAlertDialogAdapter;
 import org.xmlvm.acl.sdl.adapters.SDLBitmapDrawableAdapter;
 import org.xmlvm.acl.sdl.adapters.SDLButtonAdapter;
@@ -65,6 +66,11 @@ import android.widget.ToggleButton;
  *
  */
 public class SDLWidgetFactory implements CommonWidgetFactory {
+    private SDLAPI api;
+    
+    public SDLWidgetFactory(SDLAPI api) {
+        this.api = api;
+    }
 
     /* (non-Javadoc)
      * @see org.xmlvm.acl.common.subsystems.CommonWidgetFactory#createAlertDialog(java.lang.String, java.lang.String, android.app.AlertDialog, java.lang.String)
@@ -72,7 +78,7 @@ public class SDLWidgetFactory implements CommonWidgetFactory {
     @Override
     public AlertDialogAdapter createAlertDialog(String title, String message,
             AlertDialog alertDialog, String cancelButtonTitle) {
-        return new SDLAlertDialogAdapter(title, message, alertDialog, cancelButtonTitle);
+        return new SDLAlertDialogAdapter(title, message, alertDialog, cancelButtonTitle, api);
     }
 
     /* (non-Javadoc)

@@ -24,13 +24,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.xmlvm.acl.common.adapter.AlertDialogAdapter;
+import org.xmlvm.acl.sdl.SDLAPI;
+import org.xmlvm.acl.sdl.objects.AbstractSDLLayer;
+import org.xmlvm.acl.sdl.objects.SDLFont;
+import org.xmlvm.acl.sdl.subsystems.SDLWindow;
 
+import sdljava.SDLException;
+import sdljava.video.SDLColor;
+import sdljava.video.SDLRect;
+import sdljava.video.SDLSurface;
+import sdljava.video.SDLVideo;
 import android.app.AlertDialog;
+import android.graphics.RectF;
+import android.view.MotionEvent;
 
 /**
  *
  */
-public class SDLAlertDialogAdapter implements AlertDialogAdapter {
+public class SDLAlertDialogAdapter extends AbstractSDLLayer implements AlertDialogAdapter {
+    private static final int BUTTON_SPACING = 20; // TODO: Percentage of window width?
+    private static final int PADDING        = 20;
+    
+    private SDLAPI api;
     private String title = "";
     private String message = "";
     private AlertDialog alertDialog;
@@ -43,10 +58,11 @@ public class SDLAlertDialogAdapter implements AlertDialogAdapter {
      * @param cancelButtonTitle
      */
     public SDLAlertDialogAdapter(String title, String message, AlertDialog alertDialog,
-            String cancelButtonTitle) {
+            String cancelButtonTitle, SDLAPI api) {
         this.title = title;
         this.message = message;
         this.alertDialog = alertDialog;
+        this.api = api;
         buttons.add(cancelButtonTitle);
     }
 
@@ -79,12 +95,108 @@ public class SDLAlertDialogAdapter implements AlertDialogAdapter {
      */
     @Override
     public void show() {
-        System.out.println(title);
-        System.out.println(message);
-        for (String b : buttons) {
-            System.out.println(b);
+        SDLWindow window = api.getKeyWindow();
+
+        if (window != null) {
+            try {
+                RectF frame = window.getFrame();
+                SDLSurface canvas = SDLVideo.createRGBSurface(SDLVideo.SDL_SWSURFACE, 
+                        (int) frame.width(), (int) frame.height(), 32, 
+                        0xFF0000000l, 0x00FF0000, 0x0000FF00, 0x000000FF);
+                
+                canvas.fillRect(0x80808080L);
+                
+                SDLFont font = new SDLFont(16.0f);
+                SDLColor textColor = new SDLColor(0xFF,0xFF,0xFF);
+                List<SDLSurface> buttonTexts = new ArrayList<SDLSurface>();
+                int buttonWidth = 0;
+                int buttonHeight = 0;
+                for (String b : buttons) {
+                    if (b != null) {
+                        SDLSurface sdlButton = font.renderText(b.isEmpty() ? " " : b, textColor);
+                        buttonTexts.add(sdlButton);
+                        buttonWidth += sdlButton.getWidth();
+                        buttonHeight = Math.max(buttonHeight, sdlButton.getHeight());
+                    }
+                }
+                if (buttonTexts.size() > 0) buttonWidth += BUTTON_SPACING * (buttonTexts.size() - 1);
+                
+                // TODO! Split message into lines
+                SDLSurface messageText = font.renderText(message.isEmpty() ? " " : message, textColor);              
+                SDLSurface titleText   = font.renderText(title.isEmpty() ? " " : title, textColor);
+                
+                int width = Math.max(Math.max(buttonWidth, messageText.getWidth()), 
+                        titleText.getWidth()) + PADDING * 2;
+                int height = (message.isEmpty() ? 0 : messageText.getHeight() + PADDING) + 
+                    (title.isEmpty() ? 0 : titleText.getHeight() + PADDING) + 
+                    buttonHeight + PADDING * 2;
+                               
+                canvas.fillRect(new SDLRect(canvas.getWidth() / 2 - width / 2, 
+                        canvas.getHeight() / 2 - height / 2, 
+                        width, height), 0x202020F0L);
+                
+                int y = canvas.getHeight() / 2 - height / 2 + PADDING;
+                
+                if (! title.isEmpty()) {
+                    titleText.blitSurface(canvas, new SDLRect(canvas.getWidth() / 2 - titleText.getWidth() / 2, 
+                            y, 
+                            titleText.getWidth(), titleText.getHeight()));
+                    y += titleText.getHeight() + PADDING;
+                }
+
+                if (!message.isEmpty()) {
+                    messageText.blitSurface(canvas, new SDLRect(canvas.getWidth() / 2 - messageText.getWidth() / 2, 
+                            y,
+                            messageText.getWidth(), messageText.getHeight()));
+                    y += messageText.getHeight() + PADDING;
+                }
+                
+                int x = canvas.getWidth() / 2 - buttonWidth / 2;
+                for (SDLSurface buttonText : buttonTexts) {
+                    canvas.fillRect(new SDLRect(x - BUTTON_SPACING / 4,y - BUTTON_SPACING / 4, 
+                            buttonText.getWidth() + BUTTON_SPACING / 2, 
+                            buttonText.getHeight() + BUTTON_SPACING / 2), 0x000000E0L);
+                    buttonText.blitSurface(canvas, new SDLRect(x,y, buttonText.getWidth(), buttonText.getHeight()));
+                    x += buttonText.getWidth() + BUTTON_SPACING;
+                }
+                
+                this.setSurface(canvas);
+                window.addLayer(this);
+                window.setNeedsDisplay();
+            } catch (SDLException sdle) {
+                // TODO: Log
+            }
         }
-        alertDialog.clickedButtonAtIndex(2);
+//        alertDialog.clickedButtonAtIndex(2);
     }
 
+    /* (non-Javadoc)
+     * @see org.xmlvm.acl.sdl.objects.AbstractSDLLayer#getFrame()
+     */
+    @Override
+    public RectF getFrame() {
+        return api.getKeyWindow().getFrame();
+    }
+
+    /* (non-Javadoc)
+     * @see org.xmlvm.acl.sdl.objects.AbstractSDLLayer#getReferenceFrame()
+     */
+    @Override
+    public RectF getReferenceFrame() {
+        return api.getKeyWindow().getFrame();
+    }
+
+    /* (non-Javadoc)
+     * @see org.xmlvm.acl.sdl.objects.AbstractSDLLayer#handleTouchEvent(android.view.MotionEvent)
+     */
+    @Override
+    public boolean handleTouchEvent(MotionEvent event) {
+        // TODO Check the boundaries of on-screen buttons!
+        alertDialog.clickedButtonAtIndex(0);
+        api.getKeyWindow().removeLayer(this);
+        return false;
+    }
+
+    
+    
 }

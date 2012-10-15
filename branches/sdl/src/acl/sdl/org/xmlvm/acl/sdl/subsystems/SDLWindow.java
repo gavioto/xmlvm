@@ -20,9 +20,13 @@
 
 package org.xmlvm.acl.sdl.subsystems;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.xmlvm.acl.common.objects.CommonView;
 import org.xmlvm.acl.common.subsystems.CommonWindow;
 import org.xmlvm.acl.sdl.SDLAPI;
+import org.xmlvm.acl.sdl.objects.AbstractSDLLayer;
 import org.xmlvm.acl.sdl.objects.AbstractSDLView;
 
 import sdljava.SDLException;
@@ -38,6 +42,7 @@ public class SDLWindow implements CommonWindow {
 
     private SDLAPI api;
     private CommonView topLevel;
+    private List<AbstractSDLLayer> layers = new ArrayList<AbstractSDLLayer>();
     private RectF frame = new RectF(0,0,640,640); //ad hoc default; applications should setFrame
     private SDLSurface surface = null;
 
@@ -49,11 +54,18 @@ public class SDLWindow implements CommonWindow {
     public void setFrame(RectF rect) {
        frame = rect;
     }
+    
+    public RectF getFrame() {
+        return frame;
+    }
 
     @Override
     public void setNeedsDisplay() {
         if (topLevel != null) {
             topLevel.setNeedsDisplay();
+        }
+        for (AbstractSDLLayer layer : layers) {
+            layer.paintSurface();
         }
         if (surface != null) {
             try {
@@ -93,6 +105,7 @@ public class SDLWindow implements CommonWindow {
     }
 
     private boolean touching = false;
+    
     public void handleEvent(SDLEvent e) {
 
         MotionEvent motionEvent = null;
@@ -117,11 +130,23 @@ public class SDLWindow implements CommonWindow {
             
         }
         
-        if (motionEvent != null && topLevel != null && topLevel instanceof AbstractSDLView) {
-            ((AbstractSDLView) topLevel).handleTouchEvent(motionEvent);
+        
+        if (motionEvent != null) {
+            if (!layers.isEmpty()) {
+                layers.get(layers.size() - 1).handleTouchEvent(motionEvent);
+            } else if (topLevel != null && topLevel instanceof AbstractSDLView) {
+                ((AbstractSDLView) topLevel).handleTouchEvent(motionEvent);    
+            }            
         }
     }
     
-
+    public void addLayer(AbstractSDLLayer layer) {
+        layers.add(layer);
+        layer.setParentSurface(surface);
+    }
+    
+    public void removeLayer(AbstractSDLLayer layer) {
+        layers.remove(layer);
+    }
     
 }

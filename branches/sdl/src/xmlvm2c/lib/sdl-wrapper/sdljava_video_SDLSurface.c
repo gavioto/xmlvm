@@ -85,6 +85,15 @@ static JAVA_OBJECT* __method4_arg_types[] = {
     &__CLASS_sdljava_video_SDLRect,
 };
 
+static JAVA_OBJECT* __method5_arg_types[] = {
+    &__CLASS_sdljava_video_SDLRect,
+    &__CLASS_long,
+};
+
+static JAVA_OBJECT* __method6_arg_types[] = {
+    &__CLASS_long,
+};
+
 static XMLVM_METHOD_REFLECTION_DATA __method_reflection_data[] = {
     {"updateRect",
     &__method0_arg_types[0],
@@ -131,6 +140,24 @@ static XMLVM_METHOD_REFLECTION_DATA __method_reflection_data[] = {
     "(Lsdljava/video/SDLSurface;Lsdljava/video/SDLRect;)I",
     JAVA_NULL,
     JAVA_NULL},
+    {"fillRect",
+    &__method5_arg_types[0],
+    sizeof(__method5_arg_types) / sizeof(JAVA_OBJECT*),
+    JAVA_NULL,
+    0,
+    0,
+    "(Lsdljava/video/SDLRect;J)V",
+    JAVA_NULL,
+    JAVA_NULL},
+    {"fillRect",
+    &__method6_arg_types[0],
+    sizeof(__method6_arg_types) / sizeof(JAVA_OBJECT*),
+    JAVA_NULL,
+    0,
+    0,
+    "(J)V",
+    JAVA_NULL,
+    JAVA_NULL},
 };
 
 static JAVA_OBJECT method_dispatcher(JAVA_OBJECT method, JAVA_OBJECT receiver, JAVA_OBJECT arguments)
@@ -162,6 +189,12 @@ static JAVA_OBJECT method_dispatcher(JAVA_OBJECT method, JAVA_OBJECT receiver, J
         conversion.i = (JAVA_INT) sdljava_video_SDLSurface_blitSurface___sdljava_video_SDLSurface_sdljava_video_SDLRect(receiver, argsArray[0], argsArray[1]);
         result = __NEW_java_lang_Integer();
         java_lang_Integer___INIT____int(result, conversion.i);
+        break;
+    case 5:
+        sdljava_video_SDLSurface_fillRect___sdljava_video_SDLRect_long(receiver, argsArray[0], ((java_lang_Long*) argsArray[1])->fields.java_lang_Long.value_);
+        break;
+    case 6:
+        sdljava_video_SDLSurface_fillRect___long(receiver, ((java_lang_Long*) argsArray[0])->fields.java_lang_Long.value_);
         break;
     default:
         XMLVM_INTERNAL_ERROR();
@@ -292,7 +325,6 @@ void sdljava_video_SDLSurface_updateRect___int_int_int_int(JAVA_OBJECT me, JAVA_
 	sdljava_video_SDLSurface *surface = (sdljava_video_SDLSurface *) me;
 	SDL_Surface *delegate = surface->fields.sdljava_video_SDLSurface.delegate;
     if (delegate) {
-        XMLVM_ENTER_METHOD("sdljava.video.SDLSurface", "updateRect INNER", "?");
     	SDL_UpdateRect(delegate, 0, 0, 0, 0);
     } else return 0;
     //XMLVM_END_WRAPPER
@@ -331,7 +363,6 @@ JAVA_INT sdljava_video_SDLSurface_blitSurface___sdljava_video_SDLSurface_sdljava
 	SDL_Surface *dstDelegate = dstSurface->fields.sdljava_video_SDLSurface.delegate;
 
     if (delegate && dstDelegate) {
-    	XMLVM_ENTER_METHOD("sdljava.video.SDLSurface", "blitSurface INNER", "?");
     	SDL_Rect rect= {0,0,0,0};
     	SDL_Rect src = {0,0,0,0};
     	src.w  = delegate->w;
@@ -354,6 +385,38 @@ void sdljava_video_SDLSurface_finalize_sdljava_video_SDLSurface__(JAVA_OBJECT me
 	sdljava_video_SDLSurface *surface = (sdljava_video_SDLSurface *) me;
 	SDL_Surface *delegate = surface->fields.sdljava_video_SDLSurface.delegate;
 	if (delegate) SDL_FreeSurface(delegate);
+    //XMLVM_END_WRAPPER
+}
+
+void sdljava_video_SDLSurface_fillRect___sdljava_video_SDLRect_long(JAVA_OBJECT me, JAVA_OBJECT n1, JAVA_LONG n2)
+{
+    //XMLVM_BEGIN_WRAPPER[sdljava_video_SDLSurface_fillRect___sdljava_video_SDLRect_long]
+	sdljava_video_SDLSurface *surface = (sdljava_video_SDLSurface *) me;
+	SDL_Surface *delegate = surface->fields.sdljava_video_SDLSurface.delegate;
+    if (delegate) {
+    	SDL_Rect rect= {0,0,0,0};
+    	sdljava_video_SDLRect *javaRect = (sdljava_video_SDLRect *) n1;
+    	rect.x = (int) (javaRect->fields.sdljava_video_SDLRect.x_);
+    	rect.y = (int) (javaRect->fields.sdljava_video_SDLRect.y_);
+    	rect.w = (int) (javaRect->fields.sdljava_video_SDLRect.width_);
+    	rect.h = (int) (javaRect->fields.sdljava_video_SDLRect.height_);
+    	if (SDL_FillRect(delegate, &rect, (Uint32) n2) != 0) {
+        	//TODO: Throw exception if blitsurface fails?
+    	}
+    }
+    //XMLVM_END_WRAPPER
+}
+
+void sdljava_video_SDLSurface_fillRect___long(JAVA_OBJECT me, JAVA_LONG n1)
+{
+    //XMLVM_BEGIN_WRAPPER[sdljava_video_SDLSurface_fillRect___long]
+	sdljava_video_SDLSurface *surface = (sdljava_video_SDLSurface *) me;
+	SDL_Surface *delegate = surface->fields.sdljava_video_SDLSurface.delegate;
+    if (delegate) {
+    	if (SDL_FillRect(delegate, 0, (Uint32) n1) != 0) {
+        	//TODO: Throw exception if blitsurface fails?
+    	}
+    }
     //XMLVM_END_WRAPPER
 }
 

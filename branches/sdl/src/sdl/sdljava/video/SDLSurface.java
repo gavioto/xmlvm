@@ -54,4 +54,19 @@ public class SDLSurface {
     protected void finalize() {
         throw new RuntimeException("Stub");
     }
+
+    /**
+     * @param sdlRect
+     * @param l
+     */
+    public void fillRect(SDLRect sdlRect, long l) {
+        throw new RuntimeException("Stub");
+    }
+
+    /**
+     * @param l
+     */
+    public void fillRect(long l) {
+        throw new RuntimeException("Stub");  
+    }
 }

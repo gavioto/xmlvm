@@ -213,7 +213,7 @@ JAVA_OBJECT sdljavax_gfx_SDLGfx_zoomSurface___sdljava_video_SDLSurface_double_do
     SDL_Surface *s = 0;
     if (source) {
         SDL_Surface *src = source->fields.sdljava_video_SDLSurface.delegate;
-        if (n2 > 0 && n3 > 0 && src != 0) s = zoomSurface (src, (double) n2, (double) n3, (int) n4);
+        if (n2 > 0 && n3 > 0 && src != 0) s = zoomSurface (src, (double) n2, (double) n3, (n4 == 0) ? SMOOTHING_ON : SMOOTHING_OFF );
     }
     surface->fields.sdljava_video_SDLSurface.delegate = s;
     return (JAVA_OBJECT) surface;

@@ -232,4 +232,3 @@ JAVA_INT sdljava_event_SDLMouseButtonEvent_getY__(JAVA_OBJECT me)
     //XMLVM_END_WRAPPER
 }
 
-

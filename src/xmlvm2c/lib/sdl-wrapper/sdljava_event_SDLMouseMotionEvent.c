@@ -231,3 +231,4 @@ JAVA_INT sdljava_event_SDLMouseMotionEvent_getY__(JAVA_OBJECT me)
     return (JAVA_INT) (self->fields.sdljava_event_SDLEvent.delegate.motion.y);
     //XMLVM_END_WRAPPER
 }
+

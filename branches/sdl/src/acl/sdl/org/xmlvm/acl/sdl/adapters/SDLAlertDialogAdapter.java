@@ -50,6 +50,7 @@ public class SDLAlertDialogAdapter extends AbstractSDLLayer implements AlertDial
     private String message = "";
     private AlertDialog alertDialog;
     private List<String> buttons = new ArrayList<String>();
+    private List<SDLRect>  buttonBounds = new ArrayList<SDLRect>();
 
     /**
      * @param title2
@@ -153,9 +154,11 @@ public class SDLAlertDialogAdapter extends AbstractSDLLayer implements AlertDial
                 
                 int x = canvas.getWidth() / 2 - buttonWidth / 2;
                 for (SDLSurface buttonText : buttonTexts) {
-                    canvas.fillRect(new SDLRect(x - BUTTON_SPACING / 4,y - BUTTON_SPACING / 4, 
+                    SDLRect bounds = new SDLRect(x - BUTTON_SPACING / 4,y - BUTTON_SPACING / 4, 
                             buttonText.getWidth() + BUTTON_SPACING / 2, 
-                            buttonText.getHeight() + BUTTON_SPACING / 2), 0x000000E0L);
+                            buttonText.getHeight() + BUTTON_SPACING / 2);
+                    buttonBounds.add(bounds); // TODO: Link bounds to button more cleanly than by simple index
+                    canvas.fillRect(bounds, 0x000000E0L);
                     buttonText.blitSurface(canvas, new SDLRect(x,y, buttonText.getWidth(), buttonText.getHeight()));
                     x += buttonText.getWidth() + BUTTON_SPACING;
                 }
@@ -191,9 +194,18 @@ public class SDLAlertDialogAdapter extends AbstractSDLLayer implements AlertDial
      */
     @Override
     public boolean handleTouchEvent(MotionEvent event) {
-        // TODO Check the boundaries of on-screen buttons!
-        alertDialog.clickedButtonAtIndex(0);
-        api.getKeyWindow().removeLayer(this);
+        int x = (int) event.getX();
+        int y = (int) event.getY();
+        for (int i = 0; i < buttonBounds.size(); i++) {
+            SDLRect bounds = buttonBounds.get(i);
+            if (x > bounds.x && x < bounds.x + bounds.width &&
+                y > bounds.y && y < bounds.y + bounds.height) {
+                // TODO Check the boundaries of on-screen buttons!
+                alertDialog.clickedButtonAtIndex(i);
+                api.getKeyWindow().removeLayer(this);
+                break;
+            }
+        }
         return false;
     }
 

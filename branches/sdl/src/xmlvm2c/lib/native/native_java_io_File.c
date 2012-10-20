@@ -238,10 +238,8 @@ JAVA_OBJECT java_io_File_listImpl___byte_1ARRAY(JAVA_OBJECT n1)
 	         subarray[i] = (JAVA_OBJECT) array2;
 	     }
 
-	     // TODO: Somehow n1 seems to request the wrong directory? Very unclear why
-	     char* fileName = "res";//XMLVMUtil_convertFromByteArray(n1);
-
-
+	     // Get the
+	     char* fileName = XMLVMUtil_convertFromByteArray(n1);
 
 	     DIR *d;
 	     struct dirent *e;

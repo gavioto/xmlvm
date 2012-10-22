@@ -21,6 +21,7 @@
 package org.xmlvm.acl.sdl.objects;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.xmlvm.acl.common.objects.CommonView;
@@ -253,11 +254,12 @@ public abstract class AbstractSDLView<V extends View> extends AbstractSDLLayer i
                         (int) (event.getY() - frame.top));
             }
             
-            // Try to let the sub views consume the event first
-            for (CommonView v : subViews) {
+            // Try to let the sub views consume the event first (in reverse drawing order)
+            for (int i = subViews.size() - 1; i >= 0; i--) {
+                CommonView v = subViews.get(i);
                 if (v instanceof AbstractSDLView) {
                     if (((AbstractSDLView) v).handleTouchEvent(nextEvent)) {
-                        //return true;
+                        return true;
                     }
                 }
             }
@@ -268,6 +270,7 @@ public abstract class AbstractSDLView<V extends View> extends AbstractSDLLayer i
                 OnClickListener clicker = view.getOnClickListener();
                 if (clicker != null) {       
                     clicker.onClick(view);
+                    return true;
                 }
             default:
                 OnTouchListener listener = view.getOnTouchListener();

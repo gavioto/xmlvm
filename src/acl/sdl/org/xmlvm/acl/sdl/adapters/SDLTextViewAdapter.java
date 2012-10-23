@@ -36,13 +36,12 @@ import android.widget.TextView;
  *
  */
 public class SDLTextViewAdapter extends AbstractSDLView<TextView> implements TextViewAdapter {
-    private SDLFont    font  = new SDLFont(SDLFont.MONOSPACED, 12f);
+    private SDLFont    font  = new SDLFont(SDLFont.SANS, 12f);
     private String     text;
-    private SDLColor   color = new SDLColor(255,255,255);
+    private SDLColor   color = new SDLColor(0,0,0);
     
     public SDLTextViewAdapter (TextView textView) {
         super(textView);
-        setSurface( font.renderText("???", color) );
     }
     
     /* (non-Javadoc)
@@ -67,7 +66,11 @@ public class SDLTextViewAdapter extends AbstractSDLView<TextView> implements Tex
     @Override
     public void setFont(CommonFont systemFontOfSize) {
         //TODO: Map family name to approp. Liberation fonts
-        font = new SDLFont(systemFontOfSize.familyName(), systemFontOfSize.pointSize());
+        font = systemFontOfSize instanceof SDLFont ? (SDLFont) systemFontOfSize : 
+                new SDLFont(systemFontOfSize.familyName(), systemFontOfSize.pointSize());
+        if (text != null) {
+            setText(text);
+        }
     }
 
     /* (non-Javadoc)
@@ -83,7 +86,11 @@ public class SDLTextViewAdapter extends AbstractSDLView<TextView> implements Tex
      */
     @Override
     public void setText(String string) {
-        setSurface( font.renderText(string == "" ? " " : string, color) );
+        text = string;
+        setSurface( font.renderText(text == "" ? " " : text, color) );
+        if (getSuperview() != null) {
+            getSuperview().setNeedsDisplay();
+        }
     }
 
     /* (non-Javadoc)
@@ -92,6 +99,10 @@ public class SDLTextViewAdapter extends AbstractSDLView<TextView> implements Tex
     @Override
     public void setTextColor(int color) {
         this.color = new SDLColor((color & 0xFF0000) >> 16, (color & 0xFF00) >> 8, (color & 0xFF));
+        if (text != null) {
+            setText(text);
+        }
+            
     }
 
     /* (non-Javadoc)
@@ -125,6 +136,12 @@ public class SDLTextViewAdapter extends AbstractSDLView<TextView> implements Tex
     @Override
     public void setContentMode(int mode) {
         Assert.NOT_IMPLEMENTED();
+    }
+
+    @Override
+    public void setNeedsDisplay() {
+        // TODO Auto-generated method stub
+        super.setNeedsDisplay();
     }
 
 

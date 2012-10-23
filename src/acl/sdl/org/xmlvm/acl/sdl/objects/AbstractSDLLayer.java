@@ -53,19 +53,23 @@ public abstract class AbstractSDLLayer {
     }
 
     public void paintSurface() {
-        if (surface != null) {
+        paintSurface(surface);
+    }
+    
+    protected void paintSurface(SDLSurface s) {
+        if (s != null) {
             try {
-                surface.updateRect();
+                s.updateRect();
             } catch (SDLException e) {
                 // TODO: ?
             }
             SDLSurface target = getNearestParentSurface();
             RectF frame = getFrame();
-            RectF f = frame != null ? frame : new RectF(0, 0, surface.getWidth(), surface.getHeight());    
+            RectF f = frame != null ? frame : new RectF(0, 0, s.getWidth(), s.getHeight());    
             RectF ref = getReferenceFrame();
             if (target != null) {
                 try {
-                    surface.blitSurface(target, 
+                    s.blitSurface(target, 
                         new SDLRect((int)(f.left + ref.left), (int) (f.top + ref.top), 
                                 (int) f.width(), (int) f.height()));
                 } catch (SDLException e) {

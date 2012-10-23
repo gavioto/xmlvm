@@ -21,17 +21,19 @@
 package org.xmlvm.acl.sdl.objects;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import org.xmlvm.acl.common.objects.CommonView;
 
 import sdljava.SDLException;
 import sdljava.SDLMain;
+import sdljava.video.SDLColor;
 import sdljava.video.SDLRect;
 import sdljava.video.SDLSurface;
+import sdljava.video.SDLVideo;
 import android.graphics.RectF;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.view.MotionEvent;
 import android.view.View;
@@ -41,19 +43,20 @@ import android.view.View.OnTouchListener;
 /**
  *
  */
-public abstract class AbstractSDLView<V extends View> extends AbstractSDLLayer implements CommonView {
-    private V view;
-    private SDLSurface background;
-    private boolean opaque = false;
-    private boolean hidden = false;
-    private boolean interactable = true;
-    
-    private List<CommonView> subViews = new ArrayList<CommonView>();
-    private CommonView superView = null;
-    
-    private Drawable drawable = null;
-    private RectF    frame;
-    
+public abstract class AbstractSDLView<V extends View> extends AbstractSDLLayer implements
+        CommonView {
+    private V                view;
+    private SDLSurface       background;
+    private boolean          opaque       = false;
+    private boolean          hidden       = false;
+    private boolean          interactable = true;
+
+    private List<CommonView> subViews     = new ArrayList<CommonView>();
+    private CommonView       superView    = null;
+
+    private Drawable         drawable     = null;
+    private RectF            frame;
+
     public AbstractSDLView(V view) {
         this.view = view;
         try {
@@ -61,31 +64,36 @@ public abstract class AbstractSDLView<V extends View> extends AbstractSDLLayer i
                 SDLMain.init(SDLMain.SDL_INIT_VIDEO);
             }
         } catch (SDLException sdle) {
-            //TODO: Log?
+            // TODO: Log?
         }
     }
-    
+
     public V getView() {
         return view;
     }
 
-
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see org.xmlvm.acl.common.objects.CommonView#getFrame()
      */
     @Override
     public RectF getFrame() {
         return frame;
     }
-    
-    /* (non-Javadoc)
-     * @see org.xmlvm.acl.common.objects.CommonView#setFrame(android.graphics.RectF)
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * org.xmlvm.acl.common.objects.CommonView#setFrame(android.graphics.RectF)
      */
     @Override
     public void setFrame(RectF frame) {
         this.frame = frame;
+        prepareBackgroundSurface();
     }
-    
+
     @Override
     public void setSurface(SDLSurface s) {
         super.setSurface(s);
@@ -93,8 +101,33 @@ public abstract class AbstractSDLView<V extends View> extends AbstractSDLLayer i
             setNeedsDisplay();
         }
     }
-    
-    /* (non-Javadoc)
+
+    private void prepareBackgroundSurface() {
+        if (drawable != null && frame != null) {
+            if (drawable instanceof ColorDrawable) {
+                ColorDrawable d = (ColorDrawable) drawable;
+                if (d.xmlvmGetAlpha() > 0) {
+                    long color = (((long) d.xmlvmGetRed()) << 24) | ((long) d.xmlvmGetGreen() << 16)
+                            | ((long) d.xmlvmGetBlue() << 8) | ((long) d.xmlvmGetAlpha() << 0);
+                    try {
+                        background = SDLVideo.createRGBSurface(SDLVideo.SDL_SWSURFACE,
+                                    (int) frame.width(), (int) frame.height(), 32, 0xFF0000000l,
+                                    0x00FF0000, 0x0000FF00, 0x000000FF);
+                        background.fillRect(color);
+                    } catch (SDLException sdle) {
+                        // TODO: Log error. Otherwise, leave surface unchanged.
+                    }
+                }
+            }
+        }
+        setNeedsDisplay();
+
+
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
      * @see org.xmlvm.acl.common.objects.CommonView#getBackgroundDrawable()
      */
     @Override
@@ -102,34 +135,31 @@ public abstract class AbstractSDLView<V extends View> extends AbstractSDLLayer i
         return drawable;
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see org.xmlvm.acl.common.objects.CommonView#getBackgroundDrawable()
      */
     @Override
     public void setBackgroundDrawable(Drawable d) {
         drawable = d;
-        if (d != null) {
-            //TODO:
-            if (d.getClass() == BitmapDrawable.class) {
-                BitmapDrawable bd = (BitmapDrawable) d;
-                
-            }
-            
-        }
+        prepareBackgroundSurface();
     }
 
-    
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see org.xmlvm.acl.common.objects.CommonView#setNeedsDisplay()
      */
     @Override
     public void setNeedsDisplay() {
+        paintSurface(background);
         for (CommonView v : subViews) {
             v.setNeedsDisplay();
         }
-        paintSurface();
+        super.paintSurface();
     }
-    
+
     public SDLSurface getNearestParentSurface() {
         SDLSurface explicitParent = super.getNearestParentSurface();
         if (explicitParent != null) {
@@ -140,9 +170,13 @@ public abstract class AbstractSDLView<V extends View> extends AbstractSDLLayer i
             return null;
         }
     }
-    
-    /* (non-Javadoc)
-     * @see org.xmlvm.acl.common.objects.CommonView#addSubview(org.xmlvm.acl.common.objects.CommonView)
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * org.xmlvm.acl.common.objects.CommonView#addSubview(org.xmlvm.acl.common
+     * .objects.CommonView)
      */
     @Override
     public void addSubview(CommonView metricsView) {
@@ -150,8 +184,12 @@ public abstract class AbstractSDLView<V extends View> extends AbstractSDLLayer i
         metricsView.setSuperView(this);
     }
 
-    /* (non-Javadoc)
-     * @see org.xmlvm.acl.common.objects.CommonView#bringSubviewToFront(org.xmlvm.acl.common.objects.CommonView)
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * org.xmlvm.acl.common.objects.CommonView#bringSubviewToFront(org.xmlvm
+     * .acl.common.objects.CommonView)
      */
     @Override
     public void bringSubviewToFront(CommonView view) {
@@ -159,9 +197,11 @@ public abstract class AbstractSDLView<V extends View> extends AbstractSDLLayer i
             subViews.remove(view);
             subViews.add(view);
         }
-    }    
+    }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see org.xmlvm.acl.common.objects.CommonView#getSubviews()
      */
     @Override
@@ -169,16 +209,22 @@ public abstract class AbstractSDLView<V extends View> extends AbstractSDLLayer i
         return subViews;
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see org.xmlvm.acl.common.objects.CommonView#getSuperview()
      */
     @Override
     public CommonView getSuperview() {
         return superView;
     }
-    
-    /* (non-Javadoc)
-     * @see org.xmlvm.acl.common.objects.CommonView#insertSubview(org.xmlvm.acl.common.objects.CommonView, int)
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * org.xmlvm.acl.common.objects.CommonView#insertSubview(org.xmlvm.acl.common
+     * .objects.CommonView, int)
      */
     @Override
     public void insertSubview(CommonView metricsView, int idx) {
@@ -186,18 +232,24 @@ public abstract class AbstractSDLView<V extends View> extends AbstractSDLLayer i
         metricsView.setSuperView(this);
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see org.xmlvm.acl.common.objects.CommonView#removeFromSuperview()
      */
     @Override
     public void removeFromSuperview() {
         if (superView != null && superView instanceof AbstractSDLView<?>) {
-            ((AbstractSDLView<?>)superView).subViews.remove(this);
+            ((AbstractSDLView<?>) superView).subViews.remove(this);
         }
     }
 
-    /* (non-Javadoc)
-     * @see org.xmlvm.acl.common.objects.CommonView#setSuperView(org.xmlvm.acl.common.objects.CommonView)
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * org.xmlvm.acl.common.objects.CommonView#setSuperView(org.xmlvm.acl.common
+     * .objects.CommonView)
      */
     @Override
     public void setSuperView(CommonView superView) {
@@ -207,7 +259,9 @@ public abstract class AbstractSDLView<V extends View> extends AbstractSDLLayer i
         }
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see org.xmlvm.acl.common.objects.CommonView#setHidden(boolean)
      */
     @Override
@@ -215,7 +269,9 @@ public abstract class AbstractSDLView<V extends View> extends AbstractSDLLayer i
         hidden = b;
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see org.xmlvm.acl.common.objects.CommonView#setOpaque(boolean)
      */
     @Override
@@ -223,38 +279,43 @@ public abstract class AbstractSDLView<V extends View> extends AbstractSDLLayer i
         opaque = b;
     }
 
-    /* (non-Javadoc)
-     * @see org.xmlvm.acl.common.objects.CommonView#setUserInteractionEnabled(boolean)
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * org.xmlvm.acl.common.objects.CommonView#setUserInteractionEnabled(boolean
+     * )
      */
     @Override
     public void setUserInteractionEnabled(boolean status) {
         interactable = status;
     }
 
-
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see org.xmlvm.acl.common.objects.CommonView#isUserInteractionEnabled()
      */
     @Override
     public boolean isUserInteractionEnabled() {
         return interactable;
     }
-    
+
     public boolean handleTouchEvent(MotionEvent event) {
         // TODO: Adjust x/y of event?
-        
+
         RectF frame = getFrame();
         if (frame != null && frame.contains(event.getX(), event.getY())) {
 
             // Adjust the position to frame coordinates for sub-views
             MotionEvent nextEvent = event;
             if (frame.left != 0 || frame.top != 0) {
-                nextEvent = new MotionEvent(event.getAction(),
-                        (int) (event.getX() - frame.left), 
+                nextEvent = new MotionEvent(event.getAction(), (int) (event.getX() - frame.left),
                         (int) (event.getY() - frame.top));
             }
-            
-            // Try to let the sub views consume the event first (in reverse drawing order)
+
+            // Try to let the sub views consume the event first (in reverse
+            // drawing order)
             for (int i = subViews.size() - 1; i >= 0; i--) {
                 CommonView v = subViews.get(i);
                 if (v instanceof AbstractSDLView) {
@@ -263,18 +324,18 @@ public abstract class AbstractSDLView<V extends View> extends AbstractSDLLayer i
                     }
                 }
             }
-            
+
             // Otherwise, transmit event to the managed view
             switch (event.getAction()) {
             case MotionEvent.ACTION_UP:
                 OnClickListener clicker = view.getOnClickListener();
-                if (clicker != null) {       
+                if (clicker != null) {
                     clicker.onClick(view);
                     return true;
                 }
             default:
                 OnTouchListener listener = view.getOnTouchListener();
-                if (listener != null) {       
+                if (listener != null) {
                     return listener.onTouch(view, event);
                 }
                 break;
@@ -282,17 +343,23 @@ public abstract class AbstractSDLView<V extends View> extends AbstractSDLLayer i
         }
         return false;
     }
-    
+
     public RectF getReferenceFrame() {
-        if (superView == null) {
-            return getFrame();
-        } else if (superView instanceof AbstractSDLView) {
+        if (superView != null && superView instanceof AbstractSDLView) {
             RectF parentReference = ((AbstractSDLView) superView).getReferenceFrame();
-            RectF parentFrame     = ((AbstractSDLView) superView).getFrame();
-            return new RectF(parentReference.left + parentFrame.left, parentReference.top + parentFrame.top, 
-                    parentReference.left + parentFrame.width(), parentReference.top + parentFrame.height());
-        } else {
-            return getFrame();
-        }        
+            RectF parentFrame = ((AbstractSDLView) superView).getFrame();
+            if (parentReference != null && parentFrame != null) {
+                return new RectF(parentReference.left + parentFrame.left, parentReference.top
+                        + parentFrame.top, parentReference.left + parentFrame.width(),
+                        parentReference.top + parentFrame.height());
+            }
+        }
+        
+        if (frame != null) {
+            return new RectF(0,0,frame.right,frame.bottom);
+        }
+        
+        return null;
     }
+
 }

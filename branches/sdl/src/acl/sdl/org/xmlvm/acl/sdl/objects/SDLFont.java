@@ -26,7 +26,9 @@ import sdljava.SDLException;
 import sdljava.ttf.SDLTTF;
 import sdljava.ttf.SDLTrueTypeFont;
 import sdljava.video.SDLColor;
+import sdljava.video.SDLRect;
 import sdljava.video.SDLSurface;
+import sdljava.video.SDLVideo;
 
 /**
  *
@@ -46,7 +48,7 @@ public class SDLFont implements CommonFont {
     
     public SDLFont(String family, float size) {
         try {
-            ttf = SDLTTF.openFont(family, (int) size);
+            ttf = SDLTTF.openFont(family, (int) (size * 1.5));
             this.family = family;
             this.size = size;
         } catch (SDLException sdle) {
@@ -56,11 +58,47 @@ public class SDLFont implements CommonFont {
     
     public SDLSurface renderText (String text, SDLColor color) {
         if (ttf != null) try {
+            if (text.contains("\n")) {
+                return renderLines(text, color);
+            }
             return ttf.renderTextBlended(text, color);
         } catch (SDLException sdle) {
             //TODO: Log?
         }
         return null;
+    }
+    
+    private SDLSurface renderLines(String text, SDLColor color) {
+        String[] lines = text.split("\n");
+        SDLSurface[] surfaces = new SDLSurface[lines.length];
+        
+        int w = 0;
+        int h = 0;
+        
+        for (int i = 0; i < lines.length; i++) {
+            surfaces[i] = renderText(lines[i], color);
+            if (surfaces[i] != null) {
+                w  = Math.max(w, surfaces[i].getWidth());
+                h += surfaces[i].getHeight();
+            }
+        }
+        
+        try {
+            SDLSurface canvas = SDLVideo.createRGBSurface(SDLVideo.SDL_SWSURFACE, 
+                    w, h, 32, 
+                    0xFF0000000l, 0x00FF0000, 0x0000FF00, 0x000000FF);
+
+            int y = 0;
+            for (SDLSurface s : surfaces) {
+                s.setAlpha(0, 0xFF);
+                s.blitSurface(canvas, new SDLRect(1,y,s.getWidth(), s.getHeight()));
+                y += s.getHeight();
+            }            
+
+            return canvas.displayFormatAlpha();
+        } catch (SDLException sdle) {
+            return null;
+        }
     }
 
 

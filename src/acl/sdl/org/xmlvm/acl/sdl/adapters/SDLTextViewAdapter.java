@@ -38,7 +38,7 @@ import android.widget.TextView;
 public class SDLTextViewAdapter extends AbstractSDLView<TextView> implements TextViewAdapter {
     private SDLFont    font  = new SDLFont(SDLFont.SANS, 12f);
     private String     text;
-    private SDLColor   color = new SDLColor(0,0,0);
+    private SDLColor   color = new SDLColor(0,0,0,255);
     
     public SDLTextViewAdapter (TextView textView) {
         super(textView);
@@ -98,7 +98,7 @@ public class SDLTextViewAdapter extends AbstractSDLView<TextView> implements Tex
      */
     @Override
     public void setTextColor(int color) {
-        this.color = new SDLColor((color & 0xFF0000) >> 16, (color & 0xFF00) >> 8, (color & 0xFF));
+        this.color = new SDLColor((color & 0xFF0000) >> 16, (color & 0xFF00) >> 8, (color & 0xFF), 0xFF);
         if (text != null) {
             setText(text);
         }

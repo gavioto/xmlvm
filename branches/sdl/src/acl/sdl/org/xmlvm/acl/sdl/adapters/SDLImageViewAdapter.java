@@ -139,8 +139,7 @@ public class SDLImageViewAdapter extends AbstractSDLView<ImageView> implements I
                 if (x != 0 || y != 0) {               
                     SDLSurface canvas = SDLVideo.createRGBSurface(SDLVideo.SDL_SWSURFACE, 
                         (int) frame.width(), (int) frame.height(), 32, 
-                        0x00000FF, 0x00FF0000, 0x0000FF00, 0x00000000);
-                
+                        0xF0000000L, 0x00FF0000, 0x0000FF00, 0);
                     surface.blitSurface(canvas, new SDLRect(x,y,surface.getWidth(),surface.getHeight()));
                     surface = canvas;
                 }

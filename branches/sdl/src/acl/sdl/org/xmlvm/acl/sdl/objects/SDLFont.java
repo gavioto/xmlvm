@@ -47,6 +47,7 @@ public class SDLFont implements CommonFont {
     public SDLFont(String family, float size) {
         try {
             ttf = SDLTTF.openFont(family, (int) size);
+            this.family = family;
             this.size = size;
         } catch (SDLException sdle) {
             //TODO: Log?

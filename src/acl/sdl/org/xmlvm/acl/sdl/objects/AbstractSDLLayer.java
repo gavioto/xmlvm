@@ -69,8 +69,10 @@ public abstract class AbstractSDLLayer {
             RectF ref = getReferenceFrame();
             if (target != null) {
                 try {
+                    int x = ((int) f.width() - s.getWidth()) / 2;
+                    int y = ((int) f.height() - s.getHeight()) / 2;
                     s.blitSurface(target, 
-                        new SDLRect((int)(f.left + ref.left), (int) (f.top + ref.top), 
+                        new SDLRect((int)(f.left + ref.left) + x, (int) (f.top + ref.top) + y, 
                                 (int) f.width(), (int) f.height()));
                 } catch (SDLException e) {
                     //TODO: How to handle?

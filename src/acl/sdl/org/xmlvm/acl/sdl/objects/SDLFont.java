@@ -95,7 +95,7 @@ public class SDLFont implements CommonFont {
                 y += s.getHeight();
             }            
 
-            return canvas.displayFormatAlpha();
+            return canvas;
         } catch (SDLException sdle) {
             return null;
         }

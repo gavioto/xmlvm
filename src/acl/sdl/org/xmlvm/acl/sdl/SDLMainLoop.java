@@ -32,7 +32,7 @@ import sdljava.event.SDLEvent;
  *
  */
 public class SDLMainLoop {
-    private static final long CYCLE_TIME = 20; // 20 ms per cycle
+    private static final long RENDER_TIME = 20; // 20 ms per rendering cycle
     private SDLAPI api;
     private boolean active;
     
@@ -42,20 +42,17 @@ public class SDLMainLoop {
     
     public void execute() {
         active = true;
+        long next = SDLTimer.getTicks() + RENDER_TIME;
         while (active) {
-            long start = SDLTimer.getTicks();
+            long now = SDLTimer.getTicks();
             
             pollEvents();
             pollDispatcher();
-            render();
-            
-            long end   = SDLTimer.getTicks();
-            
-            try {
-                if (end-start < CYCLE_TIME) SDLTimer.delay(CYCLE_TIME - (end-start));
-            } catch (InterruptedException e) {
-                //TODO: Busy wait or just keep running?
-            }
+            if (now > next) {
+                long late = (now - next) / RENDER_TIME;
+                next = now - now % RENDER_TIME + RENDER_TIME + 2 * RENDER_TIME * late;
+                render();
+            }    
         }
     }
     

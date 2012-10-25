@@ -64,6 +64,7 @@ JAVA_INT sdljava_video_SDLSurface_blitSurface___sdljava_video_SDLSurface_sdljava
 void sdljava_video_SDLSurface_finalize_sdljava_video_SDLSurface__(JAVA_OBJECT me);
 void sdljava_video_SDLSurface_fillRect___sdljava_video_SDLRect_long(JAVA_OBJECT me, JAVA_OBJECT n1, JAVA_LONG n2);
 void sdljava_video_SDLSurface_fillRect___long(JAVA_OBJECT me, JAVA_LONG n1);
+void sdljava_video_SDLSurface_setAlpha___long_int(JAVA_OBJECT me, JAVA_LONG n1, JAVA_INT n2);
 
 // Define a Macro for the method declarations of the Obj-C wrapper class so that subclass wrappers may easily include these too
 #define XMLVM_OBJC_OVERRIDE_CLASS_DECLARATIONS_sdljava_video_SDLSurface \

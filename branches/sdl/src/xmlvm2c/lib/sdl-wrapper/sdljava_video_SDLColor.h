@@ -50,6 +50,7 @@ void __INIT_INSTANCE_MEMBERS_sdljava_video_SDLColor(JAVA_OBJECT me, int derivedC
 JAVA_OBJECT __NEW_sdljava_video_SDLColor();
 JAVA_OBJECT __NEW_INSTANCE_sdljava_video_SDLColor();
 void sdljava_video_SDLColor___INIT____int_int_int(JAVA_OBJECT me, JAVA_INT n1, JAVA_INT n2, JAVA_INT n3);
+void sdljava_video_SDLColor___INIT____int_int_int_int(JAVA_OBJECT me, JAVA_INT n1, JAVA_INT n2, JAVA_INT n3, JAVA_INT n4);
 JAVA_INT sdljava_video_SDLColor_getR__(JAVA_OBJECT me);
 void sdljava_video_SDLColor_setR___int(JAVA_OBJECT me, JAVA_INT n1);
 JAVA_INT sdljava_video_SDLColor_getG__(JAVA_OBJECT me);

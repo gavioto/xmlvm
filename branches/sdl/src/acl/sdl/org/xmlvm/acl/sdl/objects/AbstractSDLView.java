@@ -101,6 +101,11 @@ public abstract class AbstractSDLView<V extends View> extends AbstractSDLLayer i
             setNeedsDisplay();
         }
     }
+    
+    protected void setBackgroundSurface(SDLSurface s) {
+        background = s;
+        setNeedsDisplay();
+    }
 
     private void prepareBackgroundSurface() {
         if (drawable != null && frame != null) {
@@ -110,19 +115,17 @@ public abstract class AbstractSDLView<V extends View> extends AbstractSDLLayer i
                     long color = (((long) d.xmlvmGetRed()) << 24) | ((long) d.xmlvmGetGreen() << 16)
                             | ((long) d.xmlvmGetBlue() << 8) | ((long) d.xmlvmGetAlpha() << 0);
                     try {
-                        background = SDLVideo.createRGBSurface(SDLVideo.SDL_SWSURFACE,
+                        SDLSurface background = SDLVideo.createRGBSurface(SDLVideo.SDL_SWSURFACE,
                                     (int) frame.width(), (int) frame.height(), 32, 0xFF0000000l,
                                     0x00FF0000, 0x0000FF00, 0x000000FF);
                         background.fillRect(color);
+                        setBackgroundSurface(background);
                     } catch (SDLException sdle) {
                         // TODO: Log error. Otherwise, leave surface unchanged.
                     }
                 }
             }
         }
-        setNeedsDisplay();
-
-
     }
 
     /*

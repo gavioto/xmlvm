@@ -66,6 +66,13 @@ static JAVA_OBJECT* __constructor0_arg_types[] = {
     &__CLASS_int,
 };
 
+static JAVA_OBJECT* __constructor1_arg_types[] = {
+    &__CLASS_int,
+    &__CLASS_int,
+    &__CLASS_int,
+    &__CLASS_int,
+};
+
 static XMLVM_CONSTRUCTOR_REFLECTION_DATA __constructor_reflection_data[] = {
     {&__constructor0_arg_types[0],
     sizeof(__constructor0_arg_types) / sizeof(JAVA_OBJECT*),
@@ -73,6 +80,14 @@ static XMLVM_CONSTRUCTOR_REFLECTION_DATA __constructor_reflection_data[] = {
     0,
     0,
     "(III)V",
+    JAVA_NULL,
+    JAVA_NULL},
+    {&__constructor1_arg_types[0],
+    sizeof(__constructor1_arg_types) / sizeof(JAVA_OBJECT*),
+    JAVA_NULL,
+    0,
+    0,
+    "(IIII)V",
     JAVA_NULL,
     JAVA_NULL},
 };
@@ -86,6 +101,9 @@ static JAVA_OBJECT constructor_dispatcher(JAVA_OBJECT constructor, JAVA_OBJECT a
     switch (c->fields.java_lang_reflect_Constructor.slot_) {
     case 0:
         sdljava_video_SDLColor___INIT____int_int_int(obj, ((java_lang_Integer*) argsArray[0])->fields.java_lang_Integer.value_, ((java_lang_Integer*) argsArray[1])->fields.java_lang_Integer.value_, ((java_lang_Integer*) argsArray[2])->fields.java_lang_Integer.value_);
+        break;
+    case 1:
+        sdljava_video_SDLColor___INIT____int_int_int_int(obj, ((java_lang_Integer*) argsArray[0])->fields.java_lang_Integer.value_, ((java_lang_Integer*) argsArray[1])->fields.java_lang_Integer.value_, ((java_lang_Integer*) argsArray[2])->fields.java_lang_Integer.value_, ((java_lang_Integer*) argsArray[3])->fields.java_lang_Integer.value_);
         break;
     default:
         XMLVM_INTERNAL_ERROR();
@@ -365,6 +383,41 @@ void sdljava_video_SDLColor___INIT____int_int_int(JAVA_OBJECT me, JAVA_INT n1, J
     XMLVM_CHECK_NPE(0)
     ((sdljava_video_SDLColor*) _r0.o)->fields.sdljava_video_SDLColor.b_ = _r3.i;
     XMLVM_SOURCE_POSITION("SDLColor.java", 33)
+    XMLVM_EXIT_METHOD()
+    return;
+    //XMLVM_END_WRAPPER
+}
+
+void sdljava_video_SDLColor___INIT____int_int_int_int(JAVA_OBJECT me, JAVA_INT n1, JAVA_INT n2, JAVA_INT n3, JAVA_INT n4)
+{
+    //XMLVM_BEGIN_WRAPPER[sdljava_video_SDLColor___INIT____int_int_int_int]
+    XMLVM_ENTER_METHOD("sdljava.video.SDLColor", "<init>", "?")
+    XMLVMElem _r0;
+    XMLVMElem _r1;
+    XMLVMElem _r2;
+    XMLVMElem _r3;
+    XMLVMElem _r4;
+    _r0.o = me;
+    _r1.i = n1;
+    _r2.i = n2;
+    _r3.i = n3;
+    _r4.i = n4;
+    XMLVM_SOURCE_POSITION("SDLColor.java", 36)
+    XMLVM_CHECK_NPE(0)
+    java_lang_Object___INIT___(_r0.o);
+    XMLVM_SOURCE_POSITION("SDLColor.java", 37)
+    XMLVM_CHECK_NPE(0)
+    ((sdljava_video_SDLColor*) _r0.o)->fields.sdljava_video_SDLColor.r_ = _r1.i;
+    XMLVM_SOURCE_POSITION("SDLColor.java", 38)
+    XMLVM_CHECK_NPE(0)
+    ((sdljava_video_SDLColor*) _r0.o)->fields.sdljava_video_SDLColor.g_ = _r2.i;
+    XMLVM_SOURCE_POSITION("SDLColor.java", 39)
+    XMLVM_CHECK_NPE(0)
+    ((sdljava_video_SDLColor*) _r0.o)->fields.sdljava_video_SDLColor.b_ = _r3.i;
+    XMLVM_SOURCE_POSITION("SDLColor.java", 40)
+    XMLVM_CHECK_NPE(0)
+    ((sdljava_video_SDLColor*) _r0.o)->fields.sdljava_video_SDLColor.a_ = _r4.i;
+    XMLVM_SOURCE_POSITION("SDLColor.java", 41)
     XMLVM_EXIT_METHOD()
     return;
     //XMLVM_END_WRAPPER

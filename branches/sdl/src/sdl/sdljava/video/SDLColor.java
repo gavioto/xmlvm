@@ -33,6 +33,13 @@ public class SDLColor {
         this.a = 255;
     }
 
+    public SDLColor(int r, int g, int b, int a) {
+        this.r = r;
+        this.g = g;
+        this.b = b;
+        this.a = a;
+    }
+    
     public int getR() {
         return r;
     }

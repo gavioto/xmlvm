@@ -94,6 +94,11 @@ static JAVA_OBJECT* __method6_arg_types[] = {
     &__CLASS_long,
 };
 
+static JAVA_OBJECT* __method7_arg_types[] = {
+    &__CLASS_long,
+    &__CLASS_int,
+};
+
 static XMLVM_METHOD_REFLECTION_DATA __method_reflection_data[] = {
     {"updateRect",
     &__method0_arg_types[0],
@@ -158,6 +163,15 @@ static XMLVM_METHOD_REFLECTION_DATA __method_reflection_data[] = {
     "(J)V",
     JAVA_NULL,
     JAVA_NULL},
+    {"setAlpha",
+    &__method7_arg_types[0],
+    sizeof(__method7_arg_types) / sizeof(JAVA_OBJECT*),
+    JAVA_NULL,
+    0,
+    0,
+    "(JI)V",
+    JAVA_NULL,
+    JAVA_NULL},
 };
 
 static JAVA_OBJECT method_dispatcher(JAVA_OBJECT method, JAVA_OBJECT receiver, JAVA_OBJECT arguments)
@@ -195,6 +209,9 @@ static JAVA_OBJECT method_dispatcher(JAVA_OBJECT method, JAVA_OBJECT receiver, J
         break;
     case 6:
         sdljava_video_SDLSurface_fillRect___long(receiver, ((java_lang_Long*) argsArray[0])->fields.java_lang_Long.value_);
+        break;
+    case 7:
+        sdljava_video_SDLSurface_setAlpha___long_int(receiver, ((java_lang_Long*) argsArray[0])->fields.java_lang_Long.value_, ((java_lang_Integer*) argsArray[1])->fields.java_lang_Integer.value_);
         break;
     default:
         XMLVM_INTERNAL_ERROR();
@@ -416,6 +433,17 @@ void sdljava_video_SDLSurface_fillRect___long(JAVA_OBJECT me, JAVA_LONG n1)
     	if (SDL_FillRect(delegate, 0, (Uint32) n1) != 0) {
         	//TODO: Throw exception if blitsurface fails?
     	}
+    }
+    //XMLVM_END_WRAPPER
+}
+
+void sdljava_video_SDLSurface_setAlpha___long_int(JAVA_OBJECT me, JAVA_LONG n1, JAVA_INT n2)
+{
+    //XMLVM_BEGIN_WRAPPER[sdljava_video_SDLSurface_setAlpha___long_int]
+	sdljava_video_SDLSurface *surface = (sdljava_video_SDLSurface *) me;
+	SDL_Surface *delegate = surface->fields.sdljava_video_SDLSurface.delegate;
+    if (delegate) {
+    	SDL_SetAlpha(delegate, (Uint32) n1, (Uint8) n2);
     }
     //XMLVM_END_WRAPPER
 }

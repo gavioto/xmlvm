@@ -23,6 +23,10 @@ package org.xmlvm.acl.sdl.adapters;
 import org.xmlvm.acl.common.adapter.BitmapDrawableAdapter;
 import org.xmlvm.acl.common.adapter.ButtonAdapter;
 
+import sdljava.SDLException;
+import sdljava.video.SDLSurface;
+import sdljava.video.SDLVideo;
+import android.graphics.RectF;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
@@ -37,7 +41,6 @@ public class SDLButtonAdapter extends SDLTextViewAdapter
      */
     public SDLButtonAdapter(Button textView) {
         super(textView);
-        // TODO Auto-generated constructor stub
     }
 
     /* (non-Javadoc)
@@ -54,8 +57,7 @@ public class SDLButtonAdapter extends SDLTextViewAdapter
      */
     @Override
     public float getTextSize() {
-        // TODO Auto-generated method stub
-        return 12;
+        return this.getFont().pointSize();
     }
 
     /* (non-Javadoc)
@@ -64,7 +66,6 @@ public class SDLButtonAdapter extends SDLTextViewAdapter
     @Override
     public void setImage(BitmapDrawableAdapter img, int controlState) {
         // TODO Auto-generated method stub
-        
     }
 
     /* (non-Javadoc)
@@ -72,6 +73,7 @@ public class SDLButtonAdapter extends SDLTextViewAdapter
      */
     @Override
     public void setOnClickListener(OnClickListener listener) {
+        // Nothing special needed
     }
 
     /* (non-Javadoc)
@@ -79,8 +81,7 @@ public class SDLButtonAdapter extends SDLTextViewAdapter
      */
     @Override
     public void setTextSize(float size) {
-        // TODO Auto-generated method stub
-        
+        setFont(getFont().fontWithSize(size));
     }
 
     /* (non-Javadoc)
@@ -96,8 +97,30 @@ public class SDLButtonAdapter extends SDLTextViewAdapter
      */
     @Override
     public void setTitleColor(int color) {
-        // TODO Auto-generated method stub
-        
+        this.setTextColor(color);
+    }
+    
+    @Override
+    public void setFrame(RectF frame) {
+        super.setFrame(frame);
+        prepareBackgroundSurface();
+    }
+    
+    private void prepareBackgroundSurface() {
+        RectF f = getFrame();
+        if (f != null) {
+            try {
+                SDLSurface canvas = SDLVideo.createRGBSurface(SDLVideo.SDL_SWSURFACE, 
+                        (int) f.width(), (int) f.height(), 32, 
+                        0xFF0000000l, 0x00FF0000, 0x0000FF00, 0x000000FF);
+                
+                canvas.fillRect(0x80808080l);
+
+                setBackgroundSurface(canvas);
+            } catch (SDLException sdle) {
+                // TODO: Log
+            }
+        }
     }
 
 

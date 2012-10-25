@@ -69,4 +69,12 @@ public class SDLSurface {
     public void fillRect(long l) {
         throw new RuntimeException("Stub");  
     }
+
+    /**
+     * @param i
+     * @param j
+     */
+    public void setAlpha(long flags, int alpha) {
+        throw new RuntimeException("Stub");        
+    }
 }

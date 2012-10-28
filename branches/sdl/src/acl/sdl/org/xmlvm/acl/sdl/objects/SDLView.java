@@ -20,7 +20,6 @@
 
 package org.xmlvm.acl.sdl.objects;
 
-import android.graphics.RectF;
 import android.internal.Assert;
 import android.view.View;
 
@@ -51,28 +50,6 @@ public class SDLView extends AbstractSDLView<View> {
         Assert.NOT_IMPLEMENTED();
     }
 
-    /* (non-Javadoc)
-     * @see org.xmlvm.acl.common.objects.CommonView#setContentMode(int)
-     */
-    @Override
-    public void setContentMode(int mode) {
-        Assert.NOT_IMPLEMENTED();
-    }
-
-    /* (non-Javadoc)
-     * @see org.xmlvm.acl.common.objects.CommonView#setFrame(android.graphics.RectF)
-     */
-//    @Override
-//    public void setFrame(RectF frame) {
-//        try {
-//        setSurface( SDLVideo.createRGBSurface(SDLVideo.SDL_SWSURFACE, 
-//                (int) frame.width(), (int) frame.height(), 24, 
-//                0xFF << 24, 0xFF << 16, 0xFF << 8, 0xFF) );
-//            // TODO: May need to check for endianness!
-//        } catch (SDLException sdle) {
-//            throw new RuntimeException("Failed to allocate SDL surface.");
-//        }
-//    }
 
 
 }

@@ -35,6 +35,7 @@ import android.graphics.RectF;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.internal.Assert;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -97,9 +98,9 @@ public abstract class AbstractSDLView<V extends View> extends AbstractSDLLayer i
     @Override
     public void setSurface(SDLSurface s) {
         super.setSurface(s);
-        if (s != null) {
-            setNeedsDisplay();
-        }
+//        if (s != null) {
+//            setNeedsDisplay();
+//        }
     }
     
     protected void setBackgroundSurface(SDLSurface s) {
@@ -107,6 +108,15 @@ public abstract class AbstractSDLView<V extends View> extends AbstractSDLLayer i
         setNeedsDisplay();
     }
 
+    /* (non-Javadoc)
+     * @see org.xmlvm.acl.common.objects.CommonView#setContentMode(int)
+     */
+    @Override
+    public void setContentMode(int mode) {
+        Assert.NOT_IMPLEMENTED();
+    }
+
+    
     private void prepareBackgroundSurface() {
         if (drawable != null && frame != null) {
             if (drawable instanceof ColorDrawable) {
@@ -305,8 +315,6 @@ public abstract class AbstractSDLView<V extends View> extends AbstractSDLLayer i
     }
 
     public boolean handleTouchEvent(MotionEvent event) {
-        // TODO: Adjust x/y of event?
-
         RectF frame = getFrame();
         if (frame != null && frame.contains(event.getX(), event.getY())) {
 

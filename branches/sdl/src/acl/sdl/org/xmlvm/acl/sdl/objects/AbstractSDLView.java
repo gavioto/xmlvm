@@ -342,8 +342,8 @@ public abstract class AbstractSDLView<V extends View> extends AbstractSDLLayer i
                 OnClickListener clicker = view.getOnClickListener();
                 if (clicker != null) {
                     clicker.onClick(view);
-                    return true;
                 }
+                return true;
             default:
                 OnTouchListener listener = view.getOnTouchListener();
                 if (listener != null) {

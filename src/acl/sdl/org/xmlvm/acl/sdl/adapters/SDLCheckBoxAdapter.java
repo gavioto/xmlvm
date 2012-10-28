@@ -22,7 +22,15 @@ package org.xmlvm.acl.sdl.adapters;
 
 import org.xmlvm.acl.common.adapter.CheckBoxAdapter;
 import org.xmlvm.acl.sdl.objects.AbstractSDLView;
+import org.xmlvm.acl.sdl.objects.SDLFont;
 
+import sdljava.SDLException;
+import sdljava.video.SDLColor;
+import sdljava.video.SDLSurface;
+import sdljava.video.SDLVideo;
+import android.graphics.RectF;
+import android.internal.Assert;
+import android.view.MotionEvent;
 import android.widget.CheckBox;
 
 /**
@@ -30,12 +38,17 @@ import android.widget.CheckBox;
  */
 public class SDLCheckBoxAdapter extends AbstractSDLView<CheckBox>
     implements CheckBoxAdapter {
-
+    
+    private boolean checked = false;
+    
+    private static final SDLFont X_FONT = new SDLFont(12.0f);
+    private static final SDLColor WHITE = new SDLColor(255,255,255);
     /**
      * @param view
      */
     public SDLCheckBoxAdapter(CheckBox view) {
         super(view);
+        updateSurface();
     }
 
     /* (non-Javadoc)
@@ -43,8 +56,7 @@ public class SDLCheckBoxAdapter extends AbstractSDLView<CheckBox>
      */
     @Override
     public boolean isOn() {
-        // TODO Auto-generated method stub
-        return false;
+        return checked;
     }
 
     /* (non-Javadoc)
@@ -52,8 +64,31 @@ public class SDLCheckBoxAdapter extends AbstractSDLView<CheckBox>
      */
     @Override
     public void setOn(boolean checked) {
-        // TODO Auto-generated method stub
-        
+        this.checked = checked;
+        updateSurface();
+    }
+
+    private void updateSurface() {
+        int w = 20;
+        int h = 20;
+        RectF frame = getFrame();
+        if (frame != null) {
+            w = (int) frame.width();
+            h = (int) frame.height();
+        }
+        try {
+            SDLSurface canvas = SDLVideo.createRGBSurface(SDLVideo.SDL_SWSURFACE, 
+                w, h, 32, 
+                0xFF0000000l, 0x00FF0000, 0x0000FF00, 0x000000FF);
+            
+            canvas.fillRect(0x80808080l);
+            setBackgroundSurface(canvas);
+            setSurface(((SDLFont) X_FONT.fontWithSize(Math.max(w,h))).renderText(checked ? "X" : " ", WHITE));
+            
+        } catch (SDLException e) {
+            //TODO: Log exception
+        }
+
     }
 
     /* (non-Javadoc)
@@ -61,18 +96,22 @@ public class SDLCheckBoxAdapter extends AbstractSDLView<CheckBox>
      */
     @Override
     public void resignFirstResponder() {
-        // TODO Auto-generated method stub
-        
+        Assert.NOT_IMPLEMENTED();
     }
-
-    /* (non-Javadoc)
-     * @see org.xmlvm.acl.common.objects.CommonView#setContentMode(int)
-     */
+    
     @Override
-    public void setContentMode(int mode) {
-        // TODO Auto-generated method stub
+    public boolean handleTouchEvent(MotionEvent event) {
+        boolean clicked = false;
         
+        RectF frame = getFrame();
+        if (frame != null && frame.contains(event.getX(), event.getY())) {
+            if (event.getAction() == MotionEvent.ACTION_UP) {
+                setOn(!checked);
+                clicked = true;
+            }
+        }
+        
+        return super.handleTouchEvent(event) | clicked;
     }
-
-
+    
 }

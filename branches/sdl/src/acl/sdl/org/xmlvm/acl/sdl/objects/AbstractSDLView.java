@@ -316,8 +316,14 @@ public abstract class AbstractSDLView<V extends View> extends AbstractSDLLayer i
 
     public boolean handleTouchEvent(MotionEvent event) {
         RectF frame = getFrame();
+        
         if (frame != null && frame.contains(event.getX(), event.getY())) {
-
+            // Transmit touch event to the managed view first
+            OnTouchListener listener = view.getOnTouchListener();
+            if (listener != null) {
+                return listener.onTouch(view, event);
+            }
+            
             // Adjust the position to frame coordinates for sub-views
             MotionEvent nextEvent = event;
             if (frame.left != 0 || frame.top != 0) {
@@ -325,33 +331,28 @@ public abstract class AbstractSDLView<V extends View> extends AbstractSDLLayer i
                         (int) (event.getY() - frame.top));
             }
 
+            
             // Try to let the sub views consume the event first (in reverse
             // drawing order)
             for (int i = subViews.size() - 1; i >= 0; i--) {
                 CommonView v = subViews.get(i);
                 if (v instanceof AbstractSDLView) {
-                    if (((AbstractSDLView) v).handleTouchEvent(nextEvent)) {
+                    if  (((AbstractSDLView) v).handleTouchEvent(nextEvent)) {
                         return true;
                     }
                 }
-            }
-
-            // Otherwise, transmit event to the managed view
-            switch (event.getAction()) {
-            case MotionEvent.ACTION_UP:
+            }           
+            
+            if (event.getAction() == MotionEvent.ACTION_UP) {
                 OnClickListener clicker = view.getOnClickListener();
                 if (clicker != null) {
                     clicker.onClick(view);
                 }
                 return true;
-            default:
-                OnTouchListener listener = view.getOnTouchListener();
-                if (listener != null) {
-                    return listener.onTouch(view, event);
-                }
-                break;
             }
+            
         }
+        
         return false;
     }
 

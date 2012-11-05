@@ -343,7 +343,7 @@ void sdljava_video_SDLSurface_updateRect___int_int_int_int(JAVA_OBJECT me, JAVA_
 	SDL_Surface *delegate = surface->fields.sdljava_video_SDLSurface.delegate;
     if (delegate) {
     	SDL_UpdateRect(delegate, 0, 0, 0, 0);
-    } else return 0;
+    } else return;
     //XMLVM_END_WRAPPER
 }
 

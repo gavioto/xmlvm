@@ -447,6 +447,27 @@ void xmlvmUnwindException(XMLVM_STACK_TRACE_CURRENT* threadStack, int unwindToSt
 #endif
 
 //---------------------------------------------------------------------------------------------
+// Reflection logging
+
+#ifdef XMLVM_ENABLE_CLASS_LOGGING
+
+void xmlvmClassUsed(const char *prefix, const char *className);
+
+#define XMLVM_REFLECTION_USED(className) \
+    xmlvmClassUsed("R", className);
+
+#define XMLVM_CLASS_USED(className) \
+    xmlvmClassUsed("C", className);
+
+#else
+
+#define XMLVM_REFLECTION_USED(className)
+#define XMLVM_CLASS_USED(className)
+
+#endif
+
+
+//---------------------------------------------------------------------------------------------
 
 
 #define XMLVM_TRY_BEGIN(uniqueId) \

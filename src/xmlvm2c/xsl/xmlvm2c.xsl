@@ -703,6 +703,9 @@ int main(int argc, char* argv[])
     <xsl:text>        __TIB_</xsl:text>
     <xsl:value-of select="$clname"/>
     <xsl:text>.initializerThreadId = curThreadId;&nl;</xsl:text>
+    <xsl:text>        XMLVM_CLASS_USED("</xsl:text>
+    <xsl:value-of select="$cclname"/>
+    <xsl:text>")&nl;</xsl:text>
     <xsl:text>        __INIT_IMPL_</xsl:text>
     <xsl:value-of select="$clname"/>
     <xsl:text>();&nl;</xsl:text>
@@ -1311,6 +1314,9 @@ int main(int argc, char* argv[])
     <xsl:text>        __TIB_</xsl:text>
     <xsl:value-of select="$clname"/>
     <xsl:text>.initializerThreadId = curThreadId;&nl;</xsl:text>
+    <xsl:text>        XMLVM_CLASS_USED("</xsl:text>
+    <xsl:value-of select="$cclname"/>
+    <xsl:text>")&nl;</xsl:text>
     <xsl:text>        __INIT_IMPL_</xsl:text>
     <xsl:value-of select="$clname"/>
     <xsl:text>();&nl;</xsl:text>

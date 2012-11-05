@@ -422,6 +422,26 @@ void xmlvmUnwindException(XMLVM_STACK_TRACE_CURRENT* threadStack, int unwindToSt
 #endif
 
 
+#ifdef XMLVM_ENABLE_CLASS_LOGGING
+//---------------------------------------------------------------------------------------------
+// Reflection/Class Usage logging
+
+FILE *logFile    = 0;
+int   useLogging = 1;
+
+void xmlvmClassUsed(const char *prefix, const char *className) {
+	if (useLogging && (logFile == 0)) {
+		logFile = fopen("touched_classes.txt", "w");
+	}
+	if (useLogging && (logFile != 0)) {
+		fprintf(logFile, "%s:%s\n", prefix, className);
+	} else {
+		useLogging = 0; // Failed to open file, so stop
+	}
+}
+
+#endif
+
 //---------------------------------------------------------------------------------------------
 // XMLVMArray
 

@@ -254,6 +254,7 @@ public class DEXmlvmOutputProcess extends XmlvmProcessImpl {
      * excluded from the compilation.
      */
     private static Set<String>         redTypes               = null;
+    private static Set<String>         greenTypes             = null;
 
     private Element                    lastDexInstruction     = null;
 
@@ -315,6 +316,11 @@ public class DEXmlvmOutputProcess extends XmlvmProcessImpl {
             }
             redTypes = initializeRedList(redlist);
         }
+        
+        if (greenTypes == null && arguments.option_greenlist() != null) {
+            greenTypes = initializeRedList(UniversalFileCreator.createFile(new File(arguments.option_greenlist())));
+        }
+        
         this.enableProxyReplacement = enableProxyReplacement;
         this.noGenRedClass = noGenRedClass;
 
@@ -323,7 +329,8 @@ public class DEXmlvmOutputProcess extends XmlvmProcessImpl {
         this.useRedList = (arguments.option_load_dependencies() && !arguments
                 .option_disable_load_dependencies())
                 || arguments.option_target() == Targets.GENCWRAPPERS
-                || arguments.option_target() == Targets.GENCSHARPWRAPPERS;
+                || arguments.option_target() == Targets.GENCSHARPWRAPPERS
+                || arguments.option_target() == Targets.SDLANDROID;
     }
 
     @Override
@@ -395,6 +402,7 @@ public class DEXmlvmOutputProcess extends XmlvmProcessImpl {
         // we expect the class to be a library class. Hence, it must be in the
         // green class list. If it's not, we discard it.
         if (noGenRedClass && isRedType(packagePlusClassName)) {
+            Log.debug("Discarding red class: " + packagePlusClassName);
             return null;
         }
 
@@ -583,6 +591,11 @@ public class DEXmlvmOutputProcess extends XmlvmProcessImpl {
         // on the base type
         int i = packagePlusClassName.indexOf('[');
         String baseType = i == -1 ? packagePlusClassName : packagePlusClassName.substring(0, i);
+        
+        if (greenTypes != null) {
+            return !greenTypes.contains(baseType);
+        }
+        
         return redTypes != null && redTypes.contains(baseType);
     }
 

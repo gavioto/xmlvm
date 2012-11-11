@@ -24,6 +24,13 @@ JAVA_OBJECT __CLASS_sdljava_event_SDLEvent_1ARRAY;
 JAVA_OBJECT __CLASS_sdljava_event_SDLEvent_2ARRAY;
 JAVA_OBJECT __CLASS_sdljava_event_SDLEvent_3ARRAY;
 //XMLVM_BEGIN_IMPLEMENTATION
+void sdljava_event_SDLEvent___INIT___INTERNAL_CONSTRUCTOR(JAVA_OBJECT me, SDL_Event *evt)
+{
+	sdljava_event_SDLEvent___INIT___(me);
+    sdljava_event_SDLEvent *self = (sdljava_event_SDLEvent *) me;
+    self->fields.sdljava_event_SDLEvent.delegate = *evt; // Copy event data
+    // TODO: Copying the event data is not ideal since this is called often
+}
 //XMLVM_END_IMPLEMENTATION
 
 static JAVA_INT _STATIC_sdljava_event_SDLEvent_SDL_ACTIVEEVENT;
@@ -1339,12 +1346,24 @@ JAVA_OBJECT sdljava_event_SDLEvent_pollEvent__()
 {
     if (!__TIB_sdljava_event_SDLEvent.classInitialized) __INIT_sdljava_event_SDLEvent();
     //XMLVM_BEGIN_WRAPPER[sdljava_event_SDLEvent_pollEvent__]
-    sdljava_event_SDLEvent *event   = (sdljava_event_SDLEvent   *) __NEW_sdljava_event_SDLEvent  ();
-    SDL_Event *target = &(event->fields.sdljava_event_SDLEvent.delegate);
-    if (SDL_PollEvent(target)) {
+    SDL_Event target;
+    if (SDL_PollEvent(&target)) {
+    	sdljava_event_SDLEvent *event;
+    	switch (target.type) {
+    	case SDL_MOUSEMOTION:
+    		event = (sdljava_event_SDLEvent   *) __NEW_sdljava_event_SDLMouseMotionEvent  ();
+    	case SDL_MOUSEBUTTONDOWN:
+    	case SDL_MOUSEBUTTONUP:
+    		event = (sdljava_event_SDLEvent   *) __NEW_sdljava_event_SDLMouseButtonEvent  ();
+    	default:
+    		event = (sdljava_event_SDLEvent   *) __NEW_sdljava_event_SDLEvent  ();
+    	}
+    	// Note that event types are only distinguished by class identity (TIBs from above);
+    	// internal construction looks the same for all of them.
+    	sdljava_event_SDLEvent___INIT___INTERNAL_CONSTRUCTOR(event, &target);
         return (JAVA_OBJECT) event;
     } else {
-        return JAVA_NULL;
+    	return JAVA_NULL;
     }
     //XMLVM_END_WRAPPER
 }

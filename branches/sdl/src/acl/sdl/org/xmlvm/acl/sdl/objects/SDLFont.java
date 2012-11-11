@@ -52,7 +52,7 @@ public class SDLFont implements CommonFont {
             this.family = family;
             this.size = size;
         } catch (SDLException sdle) {
-            //TODO: Log?
+            // TODO: Log. Also, ensure object behaves appropriately w/o font
         }
     }
     
@@ -97,7 +97,7 @@ public class SDLFont implements CommonFont {
 
             return canvas;
         } catch (SDLException sdle) {
-            return null;
+            // TODO: Log/handle
         }
     }
 

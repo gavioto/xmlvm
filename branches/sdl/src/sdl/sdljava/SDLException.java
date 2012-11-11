@@ -24,5 +24,11 @@ package sdljava;
  *
  */
 public class SDLException extends Exception {
-
+    public SDLException() {
+        super();
+    }
+    
+    public SDLException(String msg) {
+        super(msg);
+    }
 }

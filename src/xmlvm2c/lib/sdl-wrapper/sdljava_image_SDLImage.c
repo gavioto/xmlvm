@@ -205,10 +205,10 @@ JAVA_OBJECT sdljava_image_SDLImage_load___java_lang_String(JAVA_OBJECT n1)
 {
     if (!__TIB_sdljava_image_SDLImage.classInitialized) __INIT_sdljava_image_SDLImage();
     //XMLVM_BEGIN_WRAPPER[sdljava_image_SDLImage_load___java_lang_String]
-    sdljava_video_SDLSurface *surface = (sdljava_video_SDLSurface *) __NEW_sdljava_video_SDLSurface();
-    SDL_Surface *s = IMG_Load(xmlvm_java_string_to_const_char(n1));
-    surface->fields.sdljava_video_SDLSurface.delegate = s;
-    return (JAVA_OBJECT) surface;
+    JAVA_OBJECT surface = __NEW_sdljava_video_SDLSurface();
+    sdljava_video_SDLSurface___INIT___INTERNAL_CONSTRUCTOR(surface,
+    		IMG_Load(xmlvm_java_string_to_const_char(n1)));
+    return surface;
     //XMLVM_END_WRAPPER
 }
 

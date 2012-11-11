@@ -27,6 +27,12 @@ JAVA_OBJECT __CLASS_sdljava_ttf_SDLTrueTypeFont_1ARRAY;
 JAVA_OBJECT __CLASS_sdljava_ttf_SDLTrueTypeFont_2ARRAY;
 JAVA_OBJECT __CLASS_sdljava_ttf_SDLTrueTypeFont_3ARRAY;
 //XMLVM_BEGIN_IMPLEMENTATION
+void sdljava_ttf_SDLTrueTypeFont___INIT___INTERNAL_CONSTRUCTOR(JAVA_OBJECT me, TTF_Font *font)
+{
+	sdljava_ttf_SDLTrueTypeFont___INIT___(me);
+	sdljava_ttf_SDLTrueTypeFont *surface = (sdljava_ttf_SDLTrueTypeFont *) me;
+	surface->fields.sdljava_ttf_SDLTrueTypeFont.font = font;
+}
 //XMLVM_END_IMPLEMENTATION
 
 
@@ -205,7 +211,7 @@ JAVA_OBJECT __NEW_INSTANCE_sdljava_ttf_SDLTrueTypeFont()
 void sdljava_ttf_SDLTrueTypeFont___INIT___(JAVA_OBJECT me)
 {
     //XMLVM_BEGIN_WRAPPER[sdljava_ttf_SDLTrueTypeFont___INIT___]
-    XMLVM_NOT_IMPLEMENTED();
+	java_lang_Object___INIT___(me);
     //XMLVM_END_WRAPPER
 }
 
@@ -223,20 +229,11 @@ JAVA_OBJECT sdljava_ttf_SDLTrueTypeFont_renderTextBlended___java_lang_String_sdl
 
 	sdljava_ttf_SDLTrueTypeFont *ttf = (sdljava_ttf_SDLTrueTypeFont *) me;
 	TTF_Font *font = ttf->fields.sdljava_ttf_SDLTrueTypeFont.font;
-	//TTF_Font *font = TTF_OpenFont("LiberationMono-Regular.ttf", 48);
 
-  	/*if (font == 0) {
-  		printf ("sdl TTF_OpenFont error\n");
-  	} else {
-  		printf ("sdl TTF_OpenFont non error\n");
-  	}*/
-
-	sdljava_video_SDLSurface *surface = (sdljava_video_SDLSurface *) __NEW_sdljava_video_SDLSurface();
-    if (! (surface->fields.sdljava_video_SDLSurface.delegate =
-    		TTF_RenderText_Blended(font, xmlvm_java_string_to_const_char(n1), color)) ) {
-    	printf ("sdl TTF_RenderText_Shaded error\n");
-    }
-    return (JAVA_OBJECT) surface;
+    JAVA_OBJECT surface = __NEW_sdljava_video_SDLSurface();
+    sdljava_video_SDLSurface___INIT___INTERNAL_CONSTRUCTOR(surface,
+    		TTF_RenderText_Blended(font, xmlvm_java_string_to_const_char(n1), color));
+    return surface;
     //XMLVM_END_WRAPPER
 }
 

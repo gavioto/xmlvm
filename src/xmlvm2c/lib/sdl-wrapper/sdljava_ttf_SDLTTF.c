@@ -231,7 +231,7 @@ JAVA_OBJECT sdljava_ttf_SDLTTF_openFont___java_lang_String_int(JAVA_OBJECT n1, J
     //XMLVM_BEGIN_WRAPPER[sdljava_ttf_SDLTTF_openFont___java_lang_String_int]
     TTF_Font *font = TTF_OpenFont(xmlvm_java_string_to_const_char(n1), (int) n2);
     sdljava_ttf_SDLTrueTypeFont *ttf = (sdljava_ttf_SDLTrueTypeFont *) __NEW_sdljava_ttf_SDLTrueTypeFont();
-    ttf->fields.sdljava_ttf_SDLTrueTypeFont.font = font;
+    sdljava_ttf_SDLTrueTypeFont___INIT___INTERNAL_CONSTRUCTOR(ttf, font);
     return (JAVA_OBJECT) ttf;
     //XMLVM_END_WRAPPER
 }

@@ -26,6 +26,7 @@ extern JAVA_OBJECT __CLASS_sdljava_video_SDLSurface_3ARRAY;
 #define __ADDITIONAL_INSTANCE_FIELDS_sdljava_video_SDLSurface \
 	SDL_Surface *delegate;
 
+void sdljava_video_SDLSurface___INIT___INTERNAL_CONSTRUCTOR(JAVA_OBJECT me, SDL_Surface *delegate);
 //XMLVM_END_DECLARATIONS
 
 #define __INSTANCE_FIELDS_sdljava_video_SDLSurface \

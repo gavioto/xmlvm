@@ -30,8 +30,11 @@ extern JAVA_OBJECT __CLASS_sdljava_ttf_SDLTrueTypeFont_2ARRAY;
 extern JAVA_OBJECT __CLASS_sdljava_ttf_SDLTrueTypeFont_3ARRAY;
 //XMLVM_BEGIN_DECLARATIONS
 #include <SDL/SDL_ttf.h>
+
 #define __ADDITIONAL_INSTANCE_FIELDS_sdljava_ttf_SDLTrueTypeFont \
 	TTF_Font *font;
+
+void sdljava_ttf_SDLTrueTypeFont___INIT___INTERNAL_CONSTRUCTOR(JAVA_OBJECT me, TTF_Font *font);
 //XMLVM_END_DECLARATIONS
 
 #define __INSTANCE_FIELDS_sdljava_ttf_SDLTrueTypeFont \

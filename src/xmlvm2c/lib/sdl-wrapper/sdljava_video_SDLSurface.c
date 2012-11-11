@@ -25,6 +25,12 @@ JAVA_OBJECT __CLASS_sdljava_video_SDLSurface_1ARRAY;
 JAVA_OBJECT __CLASS_sdljava_video_SDLSurface_2ARRAY;
 JAVA_OBJECT __CLASS_sdljava_video_SDLSurface_3ARRAY;
 //XMLVM_BEGIN_IMPLEMENTATION
+void sdljava_video_SDLSurface___INIT___INTERNAL_CONSTRUCTOR(JAVA_OBJECT me, SDL_Surface *delegate)
+{
+	sdljava_video_SDLSurface___INIT___(me);
+	sdljava_video_SDLSurface *surface = (sdljava_video_SDLSurface *) me;
+	surface->fields.sdljava_video_SDLSurface.delegate = delegate;
+}
 //XMLVM_END_IMPLEMENTATION
 
 
@@ -323,7 +329,7 @@ JAVA_OBJECT __NEW_INSTANCE_sdljava_video_SDLSurface()
 void sdljava_video_SDLSurface___INIT___(JAVA_OBJECT me)
 {
     //XMLVM_BEGIN_WRAPPER[sdljava_video_SDLSurface___INIT___]
-    XMLVM_NOT_IMPLEMENTED();
+	java_lang_Object___INIT___(me);
     //XMLVM_END_WRAPPER
 }
 

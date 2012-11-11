@@ -208,15 +208,15 @@ JAVA_OBJECT sdljavax_gfx_SDLGfx_zoomSurface___sdljava_video_SDLSurface_double_do
 {
     if (!__TIB_sdljavax_gfx_SDLGfx.classInitialized) __INIT_sdljavax_gfx_SDLGfx();
     //XMLVM_BEGIN_WRAPPER[sdljavax_gfx_SDLGfx_zoomSurface___sdljava_video_SDLSurface_double_double_boolean]
-    sdljava_video_SDLSurface *surface = (sdljava_video_SDLSurface *) __NEW_sdljava_video_SDLSurface();
     sdljava_video_SDLSurface *source  = (sdljava_video_SDLSurface *) n1;
     SDL_Surface *s = 0;
     if (source) {
         SDL_Surface *src = source->fields.sdljava_video_SDLSurface.delegate;
         if (n2 > 0 && n3 > 0 && src != 0) s = zoomSurface (src, (double) n2, (double) n3, (n4 == 0) ? SMOOTHING_ON : SMOOTHING_OFF );
     }
-    surface->fields.sdljava_video_SDLSurface.delegate = s;
-    return (JAVA_OBJECT) surface;
+    JAVA_OBJECT surface = __NEW_sdljava_video_SDLSurface();
+    sdljava_video_SDLSurface___INIT___INTERNAL_CONSTRUCTOR(surface, s);
+    return surface;
     //XMLVM_END_WRAPPER
 }
 

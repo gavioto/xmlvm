@@ -98,6 +98,7 @@ public class SDLFont implements CommonFont {
             return canvas;
         } catch (SDLException sdle) {
             // TODO: Log/handle
+            return null;
         }
     }
 

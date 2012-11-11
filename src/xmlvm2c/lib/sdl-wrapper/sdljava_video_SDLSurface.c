@@ -27,6 +27,9 @@ JAVA_OBJECT __CLASS_sdljava_video_SDLSurface_3ARRAY;
 //XMLVM_BEGIN_IMPLEMENTATION
 void sdljava_video_SDLSurface___INIT___INTERNAL_CONSTRUCTOR(JAVA_OBJECT me, SDL_Surface *delegate)
 {
+	if (delegate == 0) {
+		XMLVM_THROW_WITH_CSTRING(sdljava_SDLException, SDL_GetError());
+	}
 	sdljava_video_SDLSurface___INIT___(me);
 	sdljava_video_SDLSurface *surface = (sdljava_video_SDLSurface *) me;
 	surface->fields.sdljava_video_SDLSurface.delegate = delegate;

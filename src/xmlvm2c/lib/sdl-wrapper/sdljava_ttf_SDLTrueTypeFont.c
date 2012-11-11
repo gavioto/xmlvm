@@ -29,6 +29,9 @@ JAVA_OBJECT __CLASS_sdljava_ttf_SDLTrueTypeFont_3ARRAY;
 //XMLVM_BEGIN_IMPLEMENTATION
 void sdljava_ttf_SDLTrueTypeFont___INIT___INTERNAL_CONSTRUCTOR(JAVA_OBJECT me, TTF_Font *font)
 {
+	if (font == 0) {
+		XMLVM_THROW_WITH_CSTRING(sdljava_SDLException, SDL_GetError());
+	}
 	sdljava_ttf_SDLTrueTypeFont___INIT___(me);
 	sdljava_ttf_SDLTrueTypeFont *surface = (sdljava_ttf_SDLTrueTypeFont *) me;
 	surface->fields.sdljava_ttf_SDLTrueTypeFont.font = font;

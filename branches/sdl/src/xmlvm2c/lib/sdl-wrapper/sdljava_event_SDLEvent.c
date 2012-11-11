@@ -1323,7 +1323,7 @@ void sdljava_event_SDLEvent_PUT_SDL_VIDEORESIZEMASK(JAVA_INT v)
 void sdljava_event_SDLEvent___INIT___(JAVA_OBJECT me)
 {
     //XMLVM_BEGIN_WRAPPER[sdljava_event_SDLEvent___INIT___]
-    XMLVM_NOT_IMPLEMENTED();
+    java_lang_Object___INIT___(me);
     //XMLVM_END_WRAPPER
 }
 

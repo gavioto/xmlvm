@@ -670,9 +670,10 @@ JAVA_OBJECT sdljava_video_SDLVideo_setVideoMode___int_int_int_long(JAVA_INT n1, 
 {
     if (!__TIB_sdljava_video_SDLVideo.classInitialized) __INIT_sdljava_video_SDLVideo();
     //XMLVM_BEGIN_WRAPPER[sdljava_video_SDLVideo_setVideoMode___int_int_int_long]
-    sdljava_video_SDLSurface *surface = (sdljava_video_SDLSurface *) __NEW_sdljava_video_SDLSurface();
-    surface->fields.sdljava_video_SDLSurface.delegate = SDL_SetVideoMode((int) n1, (int) n2, (int) n3, (Uint32) n4);
-    return (JAVA_OBJECT) surface;
+    JAVA_OBJECT surface = __NEW_sdljava_video_SDLSurface();
+    sdljava_video_SDLSurface___INIT___INTERNAL_CONSTRUCTOR(surface,
+        SDL_SetVideoMode((int) n1, (int) n2, (int) n3, (Uint32) n4));
+    return surface;
     //XMLVM_END_WRAPPER
 }
 
@@ -680,11 +681,11 @@ JAVA_OBJECT sdljava_video_SDLVideo_createRGBSurface___long_int_int_int_long_long
 {
     if (!__TIB_sdljava_video_SDLVideo.classInitialized) __INIT_sdljava_video_SDLVideo();
     //XMLVM_BEGIN_WRAPPER[sdljava_video_SDLVideo_createRGBSurface___long_int_int_int_long_long_long_long]
-    sdljava_video_SDLSurface *surface = (sdljava_video_SDLSurface *) __NEW_sdljava_video_SDLSurface();
-    SDL_Surface *s = SDL_CreateRGBSurface((Uint32) n1, (int) n2, (int) n3, (int) n4,
-			(Uint32) n5, (Uint32) n6, (Uint32) n7, (Uint32) n8 );
-    surface->fields.sdljava_video_SDLSurface.delegate = s;
-    return (JAVA_OBJECT) surface;
+    JAVA_OBJECT surface = __NEW_sdljava_video_SDLSurface();
+    sdljava_video_SDLSurface___INIT___INTERNAL_CONSTRUCTOR(surface,
+    		SDL_CreateRGBSurface((Uint32) n1, (int) n2, (int) n3, (int) n4,
+    					(Uint32) n5, (Uint32) n6, (Uint32) n7, (Uint32) n8 ));
+    return surface;
     //XMLVM_END_WRAPPER
 }
 

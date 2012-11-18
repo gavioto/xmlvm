@@ -22,6 +22,25 @@
 #ifndef __XMLVM_H__
 #define __XMLVM_H__
 
+#ifdef EMSCRIPTEN
+// Workaround definitions for Emscripten
+// TODO: Determine if different solution is needed
+    typedef void GC_finalization_proc;
+
+#define POLLPRI 0
+#define IP_MULTICAST_IF                 32
+#define IP_MULTICAST_TTL                33
+#define IP_MULTICAST_LOOP               34
+#define IP_ADD_MEMBERSHIP               35
+#define IP_DROP_MEMBERSHIP              36
+#define SO_OOBINLINE                 0
+
+#ifndef __linux__
+#define __linux__
+#endif
+
+#endif
+
 #ifdef __linux__
 #define LINUX
 #endif

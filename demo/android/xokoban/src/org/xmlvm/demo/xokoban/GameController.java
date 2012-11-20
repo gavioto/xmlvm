@@ -28,6 +28,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Handler;
 
+import org.xmlvm.demo.xokoban.GamePiece.Position;
+
 /**
  * The controller class for the Xokoban game.
  */
@@ -84,6 +86,8 @@ public class GameController implements MoveFinishedHandler, Runnable {
 
     private Handler         timerHandler            = new Handler();
 
+    /** The destination for the game piece */
+    private Position        targetPosition          = null;
 
     /**
      * Instantiates a new GameController and connects it to the given
@@ -147,6 +151,33 @@ public class GameController implements MoveFinishedHandler, Runnable {
         }
     }
 
+    /**
+     * Schedule the man to move to the tile at the specified pixel coordinates.
+     * 
+     * @param px the x coordinate, in pixels
+     * @param py the y coordinate, in pixels
+     */
+    public void scheduleMoveManTo(int px, int py) {
+        
+        // Convert from pixel to tile coordinates 
+        px -= gameView.getOffsetLeft();
+        py -= gameView.getOffsetTop();
+        int tileX = board.getWidth()  * px / gameView.getWidth();
+        int tileY = board.getHeight() * py / gameView.getHeight();
+        
+        int dx = (int) Math.signum(tileX - man.getX());
+        int dy = (int) Math.signum(tileY - man.getY()); 
+                
+        // Disallow moves not along a horizontal or vertical
+        if (dx != 0 && dy != 0) {
+            return;
+        }
+        
+        targetPosition = new Position(tileX, tileY);
+        
+        scheduleMoveMan(dx, dy);
+    }
+    
     /**
      * Schedule to stop the man. The timer can't be stopped right away because
      * the current move first needs to complete (i.e., the man needs to reach
@@ -408,6 +439,10 @@ public class GameController implements MoveFinishedHandler, Runnable {
                 }
             }, 500);
             return;
+        }
+        if (targetPosition != null) {
+            stopMovement |= (targetPosition.getX() == man.getX() && 
+                             targetPosition.getY() == man.getY()); 
         }
         if (!stopMovement) {
             stopMovement = !moveMan();

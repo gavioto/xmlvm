@@ -27,6 +27,7 @@ import android.view.Display;
 import android.view.MotionEvent;
 import android.view.Surface;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 
 /**
@@ -75,6 +76,8 @@ public class InputController implements SensorEventListener, OnTouchListener {
     /** Whether the finger is currently down on the touch screen. */
     private boolean             isFingerDown            = false;
 
+    /** Whether a move is currently in progress (used to distinguish taps) */
+    private boolean             isMoveStarted           = false;
 
     public InputController(GameController controller, Display display) {
         this.controller = controller;
@@ -140,9 +143,15 @@ public class InputController implements SensorEventListener, OnTouchListener {
             lastStartX = event.getX();
             lastStartY = event.getY();
         } else if (event.getAction() == MotionEvent.ACTION_UP) {
-            controller.scheduleStopMan();
+            if (isMoveStarted) {
+                controller.scheduleStopMan();
+            } else {
+                controller.scheduleMoveManTo((int) event.getX(), (int) event.getY());
+            }
             isFingerDown = false;
+            isMoveStarted = false;
         } else if (event.getAction() == MotionEvent.ACTION_MOVE) {
+            isMoveStarted = true;
             lastMoveX = event.getX();
             lastMoveY = event.getY();
             if (moveWithInput(lastMoveX - lastStartX, lastMoveY - lastStartY, SWIPE_THRESHOLD)) {
@@ -177,4 +186,5 @@ public class InputController implements SensorEventListener, OnTouchListener {
             return new SensorData(data.x, data.y);
         }
     }
+
 }

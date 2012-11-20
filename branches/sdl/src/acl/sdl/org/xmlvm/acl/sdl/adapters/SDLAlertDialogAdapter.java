@@ -51,6 +51,7 @@ public class SDLAlertDialogAdapter extends AbstractSDLLayer implements AlertDial
     private AlertDialog alertDialog;
     private List<String> buttons = new ArrayList<String>();
     private List<SDLRect>  buttonBounds = new ArrayList<SDLRect>();
+    private int clickedIndex = -1;
 
     /**
      * @param title2
@@ -200,12 +201,28 @@ public class SDLAlertDialogAdapter extends AbstractSDLLayer implements AlertDial
             SDLRect bounds = buttonBounds.get(i);
             if (x > bounds.x && x < bounds.x + bounds.width &&
                 y > bounds.y && y < bounds.y + bounds.height) {
-                // TODO Check the boundaries of on-screen buttons!
-                alertDialog.clickedButtonAtIndex(i);
-                api.getKeyWindow().removeLayer(this);
-                break;
+                
+                switch (event.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+                    clickedIndex = i;
+                    break;
+                case MotionEvent.ACTION_UP:
+                    if (clickedIndex == i) {
+                        alertDialog.clickedButtonAtIndex(i);
+                        api.getKeyWindow().removeLayer(this);
+                        return true;                    
+                    }                
+                    clickedIndex = -1;
+                    break;
+                }
+                
+                return true;
             }
         }
+        
+        // If mouse leaves button area, etc, clear clicked index
+        clickedIndex = -1;
+
         return false;
     }
 

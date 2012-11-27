@@ -1338,7 +1338,26 @@ JAVA_INT sdljava_event_SDLEvent_getType__(JAVA_OBJECT me)
 {
     //XMLVM_BEGIN_WRAPPER[sdljava_event_SDLEvent_getType__]
     sdljava_event_SDLEvent *self = (sdljava_event_SDLEvent *) me;
-    return (JAVA_INT) (self->fields.sdljava_event_SDLEvent.delegate.type);
+    int type = self->fields.sdljava_event_SDLEvent.delegate.type;
+    switch (type) {
+    case SDL_ACTIVEEVENT: return (JAVA_INT) _STATIC_sdljava_event_SDLEvent_SDL_ACTIVEEVENT;
+    case SDL_JOYAXISMOTION: return (JAVA_INT) _STATIC_sdljava_event_SDLEvent_SDL_JOYAXISMOTION;
+    case SDL_JOYBALLMOTION: return (JAVA_INT) _STATIC_sdljava_event_SDLEvent_SDL_JOYBALLMOTION;
+    case SDL_JOYBUTTONDOWN: return (JAVA_INT) _STATIC_sdljava_event_SDLEvent_SDL_JOYBUTTONDOWN;
+    case SDL_JOYBUTTONUP: return (JAVA_INT) _STATIC_sdljava_event_SDLEvent_SDL_JOYBUTTONUP;
+    case SDL_JOYHATMOTION: return (JAVA_INT) _STATIC_sdljava_event_SDLEvent_SDL_JOYHATMOTION;
+    case SDL_KEYDOWN: return (JAVA_INT) _STATIC_sdljava_event_SDLEvent_SDL_KEYDOWN;
+    case SDL_KEYUP: return (JAVA_INT) _STATIC_sdljava_event_SDLEvent_SDL_KEYUP;
+    case SDL_MOUSEBUTTONDOWN: return (JAVA_INT) _STATIC_sdljava_event_SDLEvent_SDL_MOUSEBUTTONDOWN;
+    case SDL_MOUSEBUTTONUP: return (JAVA_INT) _STATIC_sdljava_event_SDLEvent_SDL_MOUSEBUTTONUP;
+    case SDL_MOUSEMOTION: return (JAVA_INT) _STATIC_sdljava_event_SDLEvent_SDL_MOUSEMOTION;
+    case SDL_QUIT: return (JAVA_INT) _STATIC_sdljava_event_SDLEvent_SDL_QUIT;
+    case SDL_SYSWMEVENT: return (JAVA_INT) _STATIC_sdljava_event_SDLEvent_SDL_SYSWMEVENT;
+    case SDL_USEREVENT: return (JAVA_INT) _STATIC_sdljava_event_SDLEvent_SDL_USEREVENT;
+    case SDL_VIDEOEXPOSE: return (JAVA_INT) _STATIC_sdljava_event_SDLEvent_SDL_VIDEOEXPOSE;
+    case SDL_VIDEORESIZE: return (JAVA_INT) _STATIC_sdljava_event_SDLEvent_SDL_VIDEORESIZE;
+    }
+    return (JAVA_INT) type;
     //XMLVM_END_WRAPPER
 }
 

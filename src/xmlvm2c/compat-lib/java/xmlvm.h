@@ -25,7 +25,6 @@
 #ifdef EMSCRIPTEN
 // Workaround definitions for Emscripten
 // TODO: Determine if different solution is needed
-    typedef void GC_finalization_proc;
 
 #define POLLPRI 0
 #define IP_MULTICAST_IF                 32

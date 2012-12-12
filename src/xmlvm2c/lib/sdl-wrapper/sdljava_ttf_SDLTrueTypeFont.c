@@ -245,7 +245,9 @@ void sdljava_ttf_SDLTrueTypeFont_finalize_sdljava_ttf_SDLTrueTypeFont__(JAVA_OBJ
     //XMLVM_BEGIN_WRAPPER[sdljava_ttf_SDLTrueTypeFont_finalize_sdljava_ttf_SDLTrueTypeFont__]
 	sdljava_ttf_SDLTrueTypeFont *ttf = (sdljava_ttf_SDLTrueTypeFont *) me;
 	TTF_Font *font = ttf->fields.sdljava_ttf_SDLTrueTypeFont.font;
+#ifndef EMSCRIPTEN
 	if (font) TTF_CloseFont(font);
+#endif
     //XMLVM_END_WRAPPER
 }
 

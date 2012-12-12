@@ -368,10 +368,34 @@ public abstract class AbstractSDLView<V extends View> extends AbstractSDLLayer i
         }
         
         if (frame != null) {
-            return new RectF(0,0,frame.right,frame.bottom);
+            return frame; //new RectF(0,0,frame.right,frame.bottom);
         }
         
         return null;
     }
+    
+    public int getXOffset() {
+        if (superView != null && superView instanceof AbstractSDLView) {
+            int ref = ((AbstractSDLView) superView).getXOffset();
+            RectF parentFrame = ((AbstractSDLView) superView).getFrame();
+            if (parentFrame != null) {
+                return ref + (int) parentFrame.left;
+            }
+        }
+        
+        return 0;       
+    }
 
+    public int getYOffset() {
+        if (superView != null && superView instanceof AbstractSDLView) {
+            int ref = ((AbstractSDLView) superView).getYOffset();
+            RectF parentFrame = ((AbstractSDLView) superView).getFrame();
+            if (parentFrame != null) {
+                return ref + (int) parentFrame.top;
+            }
+        }
+        
+        return 0;       
+    }
+    
 }

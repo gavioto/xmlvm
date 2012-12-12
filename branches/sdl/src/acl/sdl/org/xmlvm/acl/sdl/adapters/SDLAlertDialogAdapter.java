@@ -27,6 +27,7 @@ import org.xmlvm.acl.common.adapter.AlertDialogAdapter;
 import org.xmlvm.acl.sdl.SDLAPI;
 import org.xmlvm.acl.sdl.objects.AbstractSDLLayer;
 import org.xmlvm.acl.sdl.objects.SDLFont;
+import org.xmlvm.acl.sdl.objects.SDLUtil;
 import org.xmlvm.acl.sdl.subsystems.SDLWindow;
 
 import sdljava.SDLException;
@@ -133,21 +134,21 @@ public class SDLAlertDialogAdapter extends AbstractSDLLayer implements AlertDial
                     (title.isEmpty() ? 0 : titleText.getHeight() + PADDING) + 
                     buttonHeight + PADDING * 2;
                                
-                canvas.fillRect(new SDLRect(canvas.getWidth() / 2 - width / 2, 
+                canvas.fillRect(SDLUtil.getDrawingRect(canvas.getWidth() / 2 - width / 2, 
                         canvas.getHeight() / 2 - height / 2, 
                         width, height), 0x202020F0L);
                 
                 int y = canvas.getHeight() / 2 - height / 2 + PADDING;
                 
                 if (! title.isEmpty()) {
-                    titleText.blitSurface(canvas, new SDLRect(canvas.getWidth() / 2 - titleText.getWidth() / 2, 
+                    titleText.blitSurface(canvas, SDLUtil.getDrawingRect(canvas.getWidth() / 2 - titleText.getWidth() / 2, 
                             y, 
                             titleText.getWidth(), titleText.getHeight()));
                     y += titleText.getHeight() + PADDING;
                 }
 
                 if (!message.isEmpty()) {
-                    messageText.blitSurface(canvas, new SDLRect(canvas.getWidth() / 2 - messageText.getWidth() / 2, 
+                    messageText.blitSurface(canvas, SDLUtil.getDrawingRect(canvas.getWidth() / 2 - messageText.getWidth() / 2, 
                             y,
                             messageText.getWidth(), messageText.getHeight()));
                     y += messageText.getHeight() + PADDING;
@@ -160,7 +161,7 @@ public class SDLAlertDialogAdapter extends AbstractSDLLayer implements AlertDial
                             buttonText.getHeight() + BUTTON_SPACING / 2);
                     buttonBounds.add(bounds); // TODO: Link bounds to button more cleanly than by simple index
                     canvas.fillRect(bounds, 0x000000E0L);
-                    buttonText.blitSurface(canvas, new SDLRect(x,y, buttonText.getWidth(), buttonText.getHeight()));
+                    buttonText.blitSurface(canvas,  SDLUtil.getDrawingRect(x,y, buttonText.getWidth(), buttonText.getHeight()));
                     x += buttonText.getWidth() + BUTTON_SPACING;
                 }
                 
@@ -181,15 +182,17 @@ public class SDLAlertDialogAdapter extends AbstractSDLLayer implements AlertDial
     public RectF getFrame() {
         return api.getKeyWindow().getFrame();
     }
-
-    /* (non-Javadoc)
-     * @see org.xmlvm.acl.sdl.objects.AbstractSDLLayer#getReferenceFrame()
-     */
-    @Override
-    public RectF getReferenceFrame() {
-        return api.getKeyWindow().getFrame();
+    
+    public int getXOffset() {
+        RectF frame = api.getKeyWindow().getFrame();
+        return frame != null ? (int) frame.left : 0;
     }
 
+    public int getYOffset() {
+        RectF frame = api.getKeyWindow().getFrame();
+        return frame != null ? (int) frame.top : 0;
+    }
+    
     /* (non-Javadoc)
      * @see org.xmlvm.acl.sdl.objects.AbstractSDLLayer#handleTouchEvent(android.view.MotionEvent)
      */

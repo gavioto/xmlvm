@@ -30,7 +30,6 @@ import sdljava.video.SDLSurface;
  *
  */
 public abstract class AbstractSDLLayer {
-
     private SDLSurface surface;
     private SDLSurface parentSurface;
     
@@ -65,15 +64,16 @@ public abstract class AbstractSDLLayer {
             }
             SDLSurface target = getNearestParentSurface();
             RectF frame = getFrame();
-            RectF f = frame != null ? frame : new RectF(0, 0, s.getWidth(), s.getHeight());    
-            RectF ref = getReferenceFrame();
+            int left = (int) (frame != null ? frame.left : 0);
+            int top  = (int) (frame != null ? frame.top  : 0);
+            int w    = (int) (frame != null ? frame.width()  : s.getWidth());
+            int h    = (int) (frame != null ? frame.height() : s.getHeight());
             if (target != null) {
                 try {
-                    int x = ((int) f.width() - s.getWidth()) / 2;
-                    int y = ((int) f.height() - s.getHeight()) / 2;
+                    int x = ((int) w - s.getWidth()) / 2;
+                    int y = ((int) h - s.getHeight()) / 2;
                     s.blitSurface(target, 
-                        new SDLRect((int)(f.left + ref.left) + x, (int) (f.top + ref.top) + y, 
-                                (int) f.width(), (int) f.height()));
+                            SDLUtil.getDrawingRect(left + getXOffset() + x, top + getYOffset() + y, w, h));
                 } catch (SDLException e) {
                     //TODO: How to handle?
                 }
@@ -83,6 +83,7 @@ public abstract class AbstractSDLLayer {
     
     public abstract boolean handleTouchEvent(MotionEvent event);
     public abstract RectF getFrame();
-    public abstract RectF getReferenceFrame();
+    public abstract int   getXOffset(); 
+    public abstract int   getYOffset(); //RectF getReferenceFrame();
     
 }

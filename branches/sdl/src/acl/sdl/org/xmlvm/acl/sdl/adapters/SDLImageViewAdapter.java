@@ -24,6 +24,7 @@ import org.xmlvm.acl.common.adapter.BitmapDrawableAdapter;
 import org.xmlvm.acl.common.adapter.ImageViewAdapter;
 import org.xmlvm.acl.common.objects.CommonView;
 import org.xmlvm.acl.sdl.objects.AbstractSDLView;
+import org.xmlvm.acl.sdl.objects.SDLUtil;
 
 import sdljava.SDLException;
 import sdljava.video.SDLRect;
@@ -141,7 +142,8 @@ public class SDLImageViewAdapter extends AbstractSDLView<ImageView> implements I
                         (int) frame.width(), (int) frame.height(), 32, 
                         0xFF0000000l, 0x00FF0000, 0x0000FF00, 0x000000FF);
                     surface.setAlpha(0, 0xFF);
-                    surface.blitSurface(canvas, new SDLRect(x,y,surface.getWidth(),surface.getHeight()));
+                    surface.blitSurface(canvas, 
+                            SDLUtil.getDrawingRect(x, y, surface.getWidth(), surface.getHeight()));
                     surface = canvas;
                 }
                 setSurface(surface);

@@ -91,7 +91,7 @@ public class SDLFont implements CommonFont {
             int y = 0;
             for (SDLSurface s : surfaces) {
                 s.setAlpha(0, 0xFF);
-                s.blitSurface(canvas, new SDLRect(1,y,s.getWidth(), s.getHeight()));
+                s.blitSurface(canvas, SDLUtil.getDrawingRect(1,y,s.getWidth(), s.getHeight()));
                 y += s.getHeight();
             }            
 

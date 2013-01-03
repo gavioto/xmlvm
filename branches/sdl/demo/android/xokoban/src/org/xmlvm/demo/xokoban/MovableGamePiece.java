@@ -53,7 +53,7 @@ public class MovableGamePiece extends GamePiece {
         this.dy = dy;
         px = 0;
         py = 0;
-        animationFactor = 2; // getTileSize() / 10;
+        animationFactor = getTileSize() / 8;
         counter = getTileSize() / animationFactor;
     }
 

@@ -27,7 +27,7 @@ https://play.google.com/store/apps/details?id=org.xmlvm.demo.xokoban</a></p>
 <li>Total classes: 438</li>
 </ul>
 <p>This work was funded by a grant from the Mozilla Foundation.</p>
-<script type="text/javascript" src="xoEmscF2xpnML.js"/></script>
+<script type="text/javascript" src="xokoG2.js"/></script>
 <?php
   include("../footer.html");
 ?>

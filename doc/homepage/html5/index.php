@@ -7,7 +7,11 @@
 ?>
 <h1>Android to HTML5 - Xokoban Web Demo</h1>
 <p>
-<canvas id="canvas" oncontextmenu="event.preventDefault()" style="padding-right: 0; margin-left: auto; margin-right: auto; display: block; border: 1px black solid; z-index: 10;"></canvas>
+<div id="status" style="text-align: center;">Downloading...</div>
+<div style="text-align: center;">
+  <progress value="0" max="100" id="progress" hidden=1/>
+</div>
+<canvas id="canvas" oncontextmenu="event.preventDefault()" style="padding-right: 0; margin-left: auto; margin-right: auto; display: block; border: 1px black solid;"></canvas>
 </p>
 <p>This pages features an Android application that was cross-compiled to
 HTML5 using XMLVM and <a href = "https://github.com/kripken/emscripten">emscripten</a>. XMLVM was used to cross-compile the

@@ -1,5 +1,5 @@
 <?php
-  $site_title = "Web Demo";
+  $site_title = "Android to HTML5 Web Demo";
 ?>
 <?php
   include("../header.html");

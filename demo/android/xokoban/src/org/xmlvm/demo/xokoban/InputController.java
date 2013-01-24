@@ -24,10 +24,10 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.view.Display;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.Surface;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 
 /**
@@ -78,6 +78,7 @@ public class InputController implements SensorEventListener, OnTouchListener {
 
     /** Whether a move is currently in progress (used to distinguish taps) */
     private boolean             isMoveStarted           = false;
+
 
     public InputController(GameController controller, Display display) {
         this.controller = controller;
@@ -187,4 +188,39 @@ public class InputController implements SensorEventListener, OnTouchListener {
         }
     }
 
+    /**
+     * Called from the activity when a key down event is received.
+     */
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_DPAD_DOWN) {
+            controller.scheduleMoveMan(0, 1);
+            controller.scheduleStopMan();
+            return true;
+        } else if (keyCode == KeyEvent.KEYCODE_DPAD_UP) {
+            controller.scheduleMoveMan(0, -1);
+            controller.scheduleStopMan();
+            return true;
+        } else if (keyCode == KeyEvent.KEYCODE_DPAD_LEFT) {
+            controller.scheduleMoveMan(-1, 0);
+            controller.scheduleStopMan();
+            return true;
+        } else if (keyCode == KeyEvent.KEYCODE_DPAD_RIGHT) {
+            controller.scheduleMoveMan(1, 0);
+            controller.scheduleStopMan();
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Called from the activity when a key up event is received.
+     */
+    public boolean onKeyUp(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_DPAD_DOWN || keyCode == KeyEvent.KEYCODE_DPAD_LEFT
+                || keyCode == KeyEvent.KEYCODE_DPAD_UP || keyCode == KeyEvent.KEYCODE_DPAD_RIGHT) {
+            controller.scheduleStopMan();
+            return true;
+        }
+        return false;
+    }
 }

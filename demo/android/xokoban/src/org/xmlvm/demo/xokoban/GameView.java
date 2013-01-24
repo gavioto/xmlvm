@@ -43,11 +43,6 @@ public class GameView {
     /** The boards X offset from the display's top left corner. */
     private int                offsetLeft;
 
-    private int                width;
-    
-    private int                height;
-    
-
     /**
      * Constructor to create a GameActivity and associate it with the
      * application's activity.

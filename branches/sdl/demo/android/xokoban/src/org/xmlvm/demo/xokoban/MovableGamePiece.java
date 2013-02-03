@@ -71,6 +71,7 @@ public class MovableGamePiece extends GamePiece {
         if (counter == 0) {
             x += dx;
             y += dy;
+            updatePosition();
             return true;
         }
         return false;

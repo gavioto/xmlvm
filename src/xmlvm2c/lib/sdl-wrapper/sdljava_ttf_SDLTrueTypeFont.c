@@ -134,6 +134,7 @@ void __INIT_sdljava_ttf_SDLTrueTypeFont()
         }
     } else {
         __TIB_sdljava_ttf_SDLTrueTypeFont.initializerThreadId = curThreadId;
+        XMLVM_CLASS_USED("sdljava.ttf.SDLTrueTypeFont")
         __INIT_IMPL_sdljava_ttf_SDLTrueTypeFont();
     }
 }

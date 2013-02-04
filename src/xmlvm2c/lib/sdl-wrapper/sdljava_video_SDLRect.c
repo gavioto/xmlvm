@@ -137,6 +137,7 @@ void __INIT_sdljava_video_SDLRect()
         }
     } else {
         __TIB_sdljava_video_SDLRect.initializerThreadId = curThreadId;
+        XMLVM_CLASS_USED("sdljava.video.SDLRect")
         __INIT_IMPL_sdljava_video_SDLRect();
     }
 }

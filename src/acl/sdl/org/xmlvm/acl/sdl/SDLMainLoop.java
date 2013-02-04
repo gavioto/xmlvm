@@ -23,6 +23,7 @@ package org.xmlvm.acl.sdl;
 import org.xmlvm.acl.common.subsystems.CommonDispatcher;
 import org.xmlvm.acl.sdl.subsystems.SDLDispatcher;
 import org.xmlvm.acl.sdl.subsystems.SDLWindow;
+import org.xmlvm.runtime.emscripten.EmscriptenUtil;
 
 import sdljava.SDLException;
 import sdljava.SDLTimer;
@@ -31,10 +32,11 @@ import sdljava.event.SDLEvent;
 /**
  *
  */
-public class SDLMainLoop {
+public class SDLMainLoop implements Runnable {
     private static final long RENDER_TIME = 20; // 20 ms per rendering cycle
     private SDLAPI api;
     private boolean active;
+    private long next;
     
     public SDLMainLoop (SDLAPI api) {
         this.api = api;
@@ -42,18 +44,26 @@ public class SDLMainLoop {
     
     public void execute() {
         active = true;
-        long next = SDLTimer.getTicks() + RENDER_TIME;
-        while (active) {
-            long now = SDLTimer.getTicks();
-            
-            pollEvents();
-            pollDispatcher();
-            if (now > next) {
-                long late = (now - next) / RENDER_TIME;
-                next = now - now % RENDER_TIME + RENDER_TIME + 2 * RENDER_TIME * late;
-                render();
-            }    
+        next = SDLTimer.getTicks() + RENDER_TIME;
+        if (EmscriptenUtil.isEmscripten()) {
+            EmscriptenUtil.setMainLoop(this);
+        } else {
+            while (active) {
+                run();   
+            }
         }
+    }
+    
+    public void run() {
+        long now = SDLTimer.getTicks();
+        
+        pollEvents();
+        pollDispatcher();
+        if (now > next) {
+            long late = (now - next) / RENDER_TIME;
+            next = now - now % RENDER_TIME + RENDER_TIME + 2 * RENDER_TIME * late;
+            render();
+        }        
     }
     
     private void pollEvents() {

@@ -219,6 +219,7 @@ void __INIT_sdljava_SDLMain()
         }
     } else {
         __TIB_sdljava_SDLMain.initializerThreadId = curThreadId;
+        XMLVM_CLASS_USED("sdljava.SDLMain")
         __INIT_IMPL_sdljava_SDLMain();
     }
 }

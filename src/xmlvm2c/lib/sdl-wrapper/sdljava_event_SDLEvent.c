@@ -568,6 +568,7 @@ void __INIT_sdljava_event_SDLEvent()
         }
     } else {
         __TIB_sdljava_event_SDLEvent.initializerThreadId = curThreadId;
+        XMLVM_CLASS_USED("sdljava.event.SDLEvent")
         __INIT_IMPL_sdljava_event_SDLEvent();
     }
 }

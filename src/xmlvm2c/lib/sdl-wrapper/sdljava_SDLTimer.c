@@ -139,6 +139,7 @@ void __INIT_sdljava_SDLTimer()
         }
     } else {
         __TIB_sdljava_SDLTimer.initializerThreadId = curThreadId;
+        XMLVM_CLASS_USED("sdljava.SDLTimer")
         __INIT_IMPL_sdljava_SDLTimer();
     }
 }

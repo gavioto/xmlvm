@@ -286,6 +286,7 @@ void __INIT_sdljava_video_SDLColor()
         }
     } else {
         __TIB_sdljava_video_SDLColor.initializerThreadId = curThreadId;
+        XMLVM_CLASS_USED("sdljava.video.SDLColor")
         __INIT_IMPL_sdljava_video_SDLColor();
     }
 }

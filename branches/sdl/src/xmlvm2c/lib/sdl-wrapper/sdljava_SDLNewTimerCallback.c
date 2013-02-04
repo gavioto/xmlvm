@@ -64,6 +64,7 @@ void __INIT_sdljava_SDLNewTimerCallback()
         }
     } else {
         __TIB_sdljava_SDLNewTimerCallback.initializerThreadId = curThreadId;
+        XMLVM_CLASS_USED("sdljava.SDLNewTimerCallback")
         __INIT_IMPL_sdljava_SDLNewTimerCallback();
     }
 }

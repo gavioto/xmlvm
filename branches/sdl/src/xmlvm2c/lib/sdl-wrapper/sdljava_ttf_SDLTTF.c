@@ -140,6 +140,7 @@ void __INIT_sdljava_ttf_SDLTTF()
         }
     } else {
         __TIB_sdljava_ttf_SDLTTF.initializerThreadId = curThreadId;
+        XMLVM_CLASS_USED("sdljava.ttf.SDLTTF")
         __INIT_IMPL_sdljava_ttf_SDLTTF();
     }
 }

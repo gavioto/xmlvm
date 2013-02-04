@@ -139,6 +139,7 @@ void __INIT_sdljava_event_SDLMouseMotionEvent()
         }
     } else {
         __TIB_sdljava_event_SDLMouseMotionEvent.initializerThreadId = curThreadId;
+        XMLVM_CLASS_USED("sdljava.event.SDLMouseMotionEvent")
         __INIT_IMPL_sdljava_event_SDLMouseMotionEvent();
     }
 }

@@ -124,6 +124,7 @@ void __INIT_sdljava_image_SDLImage()
         }
     } else {
         __TIB_sdljava_image_SDLImage.initializerThreadId = curThreadId;
+        XMLVM_CLASS_USED("sdljava.image.SDLImage")
         __INIT_IMPL_sdljava_image_SDLImage();
     }
 }

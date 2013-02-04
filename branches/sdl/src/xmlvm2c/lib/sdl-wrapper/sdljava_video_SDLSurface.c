@@ -252,6 +252,7 @@ void __INIT_sdljava_video_SDLSurface()
         }
     } else {
         __TIB_sdljava_video_SDLSurface.initializerThreadId = curThreadId;
+        XMLVM_CLASS_USED("sdljava.video.SDLSurface")
         __INIT_IMPL_sdljava_video_SDLSurface();
     }
 }

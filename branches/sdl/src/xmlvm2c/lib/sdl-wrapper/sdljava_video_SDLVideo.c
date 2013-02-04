@@ -316,6 +316,7 @@ void __INIT_sdljava_video_SDLVideo()
         }
     } else {
         __TIB_sdljava_video_SDLVideo.initializerThreadId = curThreadId;
+        XMLVM_CLASS_USED("sdljava.video.SDLVideo")
         __INIT_IMPL_sdljava_video_SDLVideo();
     }
 }

@@ -115,6 +115,10 @@ void xmlvm_init()
 
 void xmlvm_destroy(java_lang_Thread* mainThread)
 {
+#ifdef EMSCRIPTEN
+	return; // Let the JS engine handle clean up
+#endif
+
     java_lang_Thread_threadTerminating__(mainThread);
 
 #ifdef XMLVM_ENABLE_STACK_TRACES

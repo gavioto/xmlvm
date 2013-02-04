@@ -1,4 +1,5 @@
 #include "xmlvm.h"
+#include "java_lang_String.h"
 
 #include "sdljava_SDLException.h"
 
@@ -35,6 +36,10 @@ static XMLVM_FIELD_REFLECTION_DATA __field_reflection_data[] = {
 static JAVA_OBJECT* __constructor0_arg_types[] = {
 };
 
+static JAVA_OBJECT* __constructor1_arg_types[] = {
+    &__CLASS_java_lang_String,
+};
+
 static XMLVM_CONSTRUCTOR_REFLECTION_DATA __constructor_reflection_data[] = {
     {&__constructor0_arg_types[0],
     sizeof(__constructor0_arg_types) / sizeof(JAVA_OBJECT*),
@@ -42,6 +47,14 @@ static XMLVM_CONSTRUCTOR_REFLECTION_DATA __constructor_reflection_data[] = {
     0,
     0,
     "()V",
+    JAVA_NULL,
+    JAVA_NULL},
+    {&__constructor1_arg_types[0],
+    sizeof(__constructor1_arg_types) / sizeof(JAVA_OBJECT*),
+    JAVA_NULL,
+    0,
+    0,
+    "(Ljava/lang/String;)V",
     JAVA_NULL,
     JAVA_NULL},
 };
@@ -55,6 +68,9 @@ static JAVA_OBJECT constructor_dispatcher(JAVA_OBJECT constructor, JAVA_OBJECT a
     switch (c->fields.java_lang_reflect_Constructor.slot_) {
     case 0:
         sdljava_SDLException___INIT___(obj);
+        break;
+    case 1:
+        sdljava_SDLException___INIT____java_lang_String(obj, argsArray[0]);
         break;
     default:
         XMLVM_INTERNAL_ERROR();
@@ -105,6 +121,7 @@ void __INIT_sdljava_SDLException()
         }
     } else {
         __TIB_sdljava_SDLException.initializerThreadId = curThreadId;
+        XMLVM_CLASS_USED("sdljava.SDLException")
         __INIT_IMPL_sdljava_SDLException();
     }
 }
@@ -190,6 +207,23 @@ void sdljava_SDLException___INIT___(JAVA_OBJECT me)
     XMLVM_SOURCE_POSITION("SDLException.java", 26)
     XMLVM_CHECK_NPE(0)
     java_lang_Exception___INIT___(_r0.o);
+    XMLVM_EXIT_METHOD()
+    return;
+    //XMLVM_END_WRAPPER
+}
+
+void sdljava_SDLException___INIT____java_lang_String(JAVA_OBJECT me, JAVA_OBJECT n1)
+{
+    //XMLVM_BEGIN_WRAPPER[sdljava_SDLException___INIT____java_lang_String]
+    XMLVM_ENTER_METHOD("sdljava.SDLException", "<init>", "?")
+    XMLVMElem _r0;
+    XMLVMElem _r1;
+    _r0.o = me;
+    _r1.o = n1;
+    XMLVM_SOURCE_POSITION("SDLException.java", 32)
+    XMLVM_CHECK_NPE(0)
+    java_lang_Exception___INIT____java_lang_String(_r0.o, _r1.o);
+    XMLVM_SOURCE_POSITION("SDLException.java", 33)
     XMLVM_EXIT_METHOD()
     return;
     //XMLVM_END_WRAPPER

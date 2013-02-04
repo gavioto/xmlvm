@@ -127,6 +127,7 @@ void __INIT_sdljavax_gfx_SDLGfx()
         }
     } else {
         __TIB_sdljavax_gfx_SDLGfx.initializerThreadId = curThreadId;
+        XMLVM_CLASS_USED("sdljavax.gfx.SDLGfx")
         __INIT_IMPL_sdljavax_gfx_SDLGfx();
     }
 }

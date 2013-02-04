@@ -9,6 +9,10 @@
 #include "java_lang_Exception.h"
 
 // Circular references:
+#ifndef XMLVM_FORWARD_DECL_java_lang_String
+#define XMLVM_FORWARD_DECL_java_lang_String
+XMLVM_FORWARD_DECL(java_lang_String)
+#endif
 // Class declarations for sdljava.SDLException
 XMLVM_DEFINE_CLASS(sdljava_SDLException, 6, XMLVM_ITABLE_SIZE_sdljava_SDLException)
 
@@ -46,5 +50,6 @@ void __INIT_INSTANCE_MEMBERS_sdljava_SDLException(JAVA_OBJECT me, int derivedCla
 JAVA_OBJECT __NEW_sdljava_SDLException();
 JAVA_OBJECT __NEW_INSTANCE_sdljava_SDLException();
 void sdljava_SDLException___INIT___(JAVA_OBJECT me);
+void sdljava_SDLException___INIT____java_lang_String(JAVA_OBJECT me, JAVA_OBJECT n1);
 
 #endif

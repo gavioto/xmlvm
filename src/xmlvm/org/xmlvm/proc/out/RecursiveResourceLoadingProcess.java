@@ -85,19 +85,22 @@ public class RecursiveResourceLoadingProcess extends XmlvmProcessImpl {
     private void preloadGreenlistFiles(String greenlistFile, Map<String, XmlvmResource> resources) {
         UniversalFile greenList = UniversalFileCreator.createFile(new File(greenlistFile));
         LibraryLoader libraryLoader = new LibraryLoader(arguments);
+        UniversalFile defaultGreenList = UniversalFileCreator.createFile("/lib/greenlist.txt", "lib/greenlist.txt");
         try {
-            BufferedReader reader;
-            reader = new BufferedReader(new StringReader(greenList.getFileAsString()));
-            String line;
-            while ((line = reader.readLine()) != null) {
-                String className = line.trim();
-                if (!resources.containsKey(className)) {
-                    XmlvmResource resource = libraryLoader.load(className);
-                    if (resource != null) {
-                        resources.put(resource.getFullName(), resource);
+            for (UniversalFile file : new UniversalFile[] {greenList, defaultGreenList} ) {
+                BufferedReader reader;
+                reader = new BufferedReader(new StringReader(file.getFileAsString()));
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    String className = line.trim();
+                    if (!resources.containsKey(className)) {
+                        XmlvmResource resource = libraryLoader.load(className);
+                        if (resource != null) {
+                            resources.put(resource.getFullName(), resource);
+                        }
                     }
                 }
-            }            
+            }
         } catch (IOException e) {
             Log.error(
                     "Problem reading green list file: " + greenList.getAbsolutePath() + ": "

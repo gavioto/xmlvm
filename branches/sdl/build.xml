@@ -240,6 +240,7 @@
 		<copy todir="${xmlvm.build.lib}">
 			<fileset dir="lib">
 				<include name="**/*.jar/" />
+				<include name="**/*.txt/" />
 				<exclude name="one-jar-boot.jar" />
 				<exclude name="lwjgl.jar" />
 				<exclude name="harmony6-build.jar" />

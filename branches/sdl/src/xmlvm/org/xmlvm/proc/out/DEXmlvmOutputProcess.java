@@ -314,11 +314,15 @@ public class DEXmlvmOutputProcess extends XmlvmProcessImpl {
             if (arguments.option_redlist() != null) {
                 redlist = UniversalFileCreator.createFile(new File(arguments.option_redlist()));
             }
-            redTypes = initializeRedList(redlist);
+            redTypes = initializeClassList(redlist);
         }
         
         if (greenTypes == null && arguments.option_greenlist() != null) {
-            greenTypes = initializeRedList(UniversalFileCreator.createFile(new File(arguments.option_greenlist())));
+            greenTypes = initializeClassList(UniversalFileCreator.createFile(new File(arguments.option_greenlist())));
+            UniversalFile defaultGreenList = UniversalFileCreator.createFile("/lib/greenlist.txt", "lib/greenlist.txt");
+            if (defaultGreenList != null) { // Add defaults, if they have been packaged
+                greenTypes.addAll(initializeClassList(defaultGreenList));
+            } 
         }
         
         this.enableProxyReplacement = enableProxyReplacement;
@@ -599,7 +603,7 @@ public class DEXmlvmOutputProcess extends XmlvmProcessImpl {
         return redTypes != null && redTypes.contains(baseType);
     }
 
-    private static Set<String> initializeRedList(UniversalFile redListFile) {
+    private static Set<String> initializeClassList(UniversalFile redListFile) {
         try {
             Set<String> result = new HashSet<String>();
             BufferedReader reader;

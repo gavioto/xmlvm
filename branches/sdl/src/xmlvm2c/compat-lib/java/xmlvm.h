@@ -394,15 +394,8 @@ XMLVM_DEFINE_CLASS(double_ARRAYTYPE, XMLVM_SIZE_OF_OBJECT_VTABLE, 0)
 
 #define XMLVM_JMP_BUF jmp_buf
 
-#ifndef EMSCRIPTEN
 #define XMLVM_SETJMP(env) setjmp(env)
 #define XMLVM_LONGJMP(env) longjmp(env, 0)
-#else
-// https://github.com/kripken/emscripten/issues/810
-#define XMLVM_SETJMP(env) (0)
-#define XMLVM_LONGJMP(env)
-
-#endif
 
 // This exception value is only used for the main thread.
 // Since a call to Thread.currentThread() contains try-catch blocks, this must
@@ -495,8 +488,8 @@ void xmlvmClassUsed(const char *prefix, const char *className);
 
 //---------------------------------------------------------------------------------------------
 #define XMLVM_TRY_BEGIN(uniqueId) \
-    XMLVM_JMP_BUF local_env_##uniqueId; \
-    java_lang_Thread* curThread_##uniqueId = (java_lang_Thread*)java_lang_Thread_currentThread__(); \
+    volatile XMLVM_JMP_BUF local_env_##uniqueId; \
+    volatile java_lang_Thread* curThread_##uniqueId = (java_lang_Thread*)java_lang_Thread_currentThread__(); \
     XMLVM_MEMCPY(local_env_##uniqueId, curThread_##uniqueId->fields.java_lang_Thread.xmlvmExceptionEnv_, sizeof(XMLVM_JMP_BUF)); \
     if (!XMLVM_SETJMP(curThread_##uniqueId->fields.java_lang_Thread.xmlvmExceptionEnv_)) {
 #define XMLVM_TRY_END }

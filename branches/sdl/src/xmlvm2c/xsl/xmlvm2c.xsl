@@ -2392,7 +2392,7 @@ int main(int argc, char* argv[])
   <xsl:text>")&nl;</xsl:text>
   <xsl:variable name="numRegs" select="dex:code/@register-size" as="xs:integer"/>
   <xsl:for-each select="1 to $numRegs">
-    <xsl:text>    XMLVMElem _r</xsl:text>
+    <xsl:text>    volatile XMLVMElem _r</xsl:text>
     <xsl:value-of select="position() - 1"/>
     <xsl:text>;&nl;</xsl:text>
   </xsl:for-each>

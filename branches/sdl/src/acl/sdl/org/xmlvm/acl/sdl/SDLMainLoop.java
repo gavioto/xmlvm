@@ -35,8 +35,14 @@ import sdljava.event.SDLEvent;
 public class SDLMainLoop implements Runnable {
     private static final long RENDER_TIME = 20; // 20 ms per rendering cycle
     private SDLAPI api;
-    private boolean active;
+    private boolean active;    
     private long next;
+    
+    // Render-throttling will only invoke render() when sufficient 
+    // time has passed since the last render call (since rendering 
+    // is potentially expensive). This is not needed under Emscripten, 
+    // where the main loop is run on a timer anyway.
+    private boolean throttle = !EmscriptenUtil.isEmscripten();
     
     public SDLMainLoop (SDLAPI api) {
         this.api = api;
@@ -54,16 +60,19 @@ public class SDLMainLoop implements Runnable {
         }
     }
     
-    public void run() {
-        long now = SDLTimer.getTicks();
-        
+    public void run() {        
         pollEvents();
         pollDispatcher();
-        if (now > next) {
-            long late = (now - next) / RENDER_TIME;
-            next = now - now % RENDER_TIME + RENDER_TIME + 2 * RENDER_TIME * late;
+        if (throttle) {
+            long now = SDLTimer.getTicks();
+            if (now > next) {         
+                long late = (now - next) / RENDER_TIME;
+                next = now - now % RENDER_TIME + RENDER_TIME + 2 * RENDER_TIME * late;
+                render();
+            }        
+        } else {
             render();
-        }        
+        }
     }
     
     private void pollEvents() {

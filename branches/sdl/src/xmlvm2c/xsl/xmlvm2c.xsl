@@ -96,9 +96,7 @@ int main(int argc, char* argv[])
     <xsl:text>_main___java_lang_String_1ARRAY(JAVA_NULL);
     }
 
-#ifndef EMSCRIPTEN
     xmlvm_destroy(mainThread);
-#endif
 
     return 0;
 }

@@ -29,6 +29,7 @@ import org.xmlvm.proc.BundlePhase1;
 import org.xmlvm.proc.BundlePhase2;
 import org.xmlvm.proc.XmlvmProcessImpl;
 import org.xmlvm.proc.out.build.MakeFile;
+import org.xmlvm.proc.out.build.DataResources;
 import org.xmlvm.util.FileMerger;
 import org.xmlvm.util.universalfile.UniversalFile;
 import org.xmlvm.util.universalfile.UniversalFileCreator;
@@ -47,6 +48,8 @@ public class SDLOutputProcess extends XmlvmProcessImpl {
             "/sdl/wrapper-lib.jar",
             "src/xmlvm2c/lib/sdl-wrapper");
 
+    private static final String[] DATA_RESOURCES = { "LiberationSans-Regular.ttf" };
+    
     /**
      * Initializes the {@link SDLOutputProcess}.
      */
@@ -64,8 +67,14 @@ public class SDLOutputProcess extends XmlvmProcessImpl {
     public boolean processPhase2(BundlePhase2 bundle) {
         replaceCompatLib(bundle);
         
+        // Locate generated sources in source directory
         for (OutputFile file : bundle.getOutputFiles()) {
             file.setLocation(arguments.option_out() + SRCFILE_LOCATION);
+        }
+        
+        // Copy over any necessary resources
+        for (OutputFile file : new DataResources(PLATFORM, DATA_RESOURCES).composeResourceFiles(arguments)) {
+            bundle.addOutputFile(file);
         }
 
         MakeFile makefile = new MakeFile(PLATFORM);

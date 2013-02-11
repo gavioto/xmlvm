@@ -486,6 +486,7 @@
 
 		<copy todir="${xmlvm.bin}/sdl">
 			<fileset file="var/sdl/Makefile" />
+			<fileset dir="var/sdl" includes="data/**/*" />
 		</copy>
 
 		<mkdir dir="${xmlvm.build}/xmlvm2js" />

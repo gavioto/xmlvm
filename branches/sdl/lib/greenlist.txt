@@ -126,3 +126,6 @@ void
 java.lang.Long$valueOfCache
 java.nio.charset.Charset$2
 sdljava.SDLException
+org.apache.harmony.luni.platform.IFileSystem
+org.apache.harmony.luni.platform.IMemorySystem
+org.apache.harmony.luni.platform.INetworkSystem

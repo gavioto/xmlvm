@@ -2391,8 +2391,20 @@ int main(int argc, char* argv[])
   <xsl:value-of select="$filename"/>
   <xsl:text>")&nl;</xsl:text>
   <xsl:variable name="numRegs" select="dex:code/@register-size" as="xs:integer"/>
+  <xsl:variable name="regVolatility">
+  	<xsl:choose>
+  	  <xsl:when test="count(dex:code/dex:try-catch) != 0">
+  		<xsl:text>volatile </xsl:text>
+  	  </xsl:when>
+  	  <xsl:otherwise>
+  		<xsl:text></xsl:text>
+  	  </xsl:otherwise>
+  	</xsl:choose>
+  </xsl:variable>
   <xsl:for-each select="1 to $numRegs">
-    <xsl:text>    volatile XMLVMElem _r</xsl:text>
+    <xsl:text>    </xsl:text>
+    <xsl:value-of select="$regVolatility"/>
+    <xsl:text>XMLVMElem _r</xsl:text>
     <xsl:value-of select="position() - 1"/>
     <xsl:text>;&nl;</xsl:text>
   </xsl:for-each>

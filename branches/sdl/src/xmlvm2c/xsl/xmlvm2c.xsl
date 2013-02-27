@@ -130,11 +130,9 @@ int main(int argc, char* argv[])
       </xsl:call-template>
       <xsl:text>&nl;{&nl;</xsl:text>
       <xsl:if test="@isStatic = 'true' and not(@name = '&lt;clinit&gt;')">
-        <xsl:text>    if (!__TIB_</xsl:text>
+        <xsl:text>    XMLVM_CLASS_INIT(</xsl:text>
         <xsl:value-of select="$clname"/>
-        <xsl:text>.classInitialized) __INIT_</xsl:text>
-        <xsl:value-of select="$clname"/>
-        <xsl:text>();&nl;</xsl:text>
+        <xsl:text>)</xsl:text>
       </xsl:if>
       <xsl:text>    //XMLVM_BEGIN_NATIVE[</xsl:text>
       <xsl:value-of select="$mangledMethodName"/>
@@ -720,11 +718,9 @@ int main(int argc, char* argv[])
 
     <xsl:if test="@extends ne ''">
       <xsl:text>    // Initialize base class if necessary&nl;</xsl:text>
-      <xsl:text>    if (!__TIB_</xsl:text>
+      <xsl:text>    XMLVM_CLASS_INIT(</xsl:text>
       <xsl:value-of select="vm:fixname(@extends)"/>
-      <xsl:text>.classInitialized) __INIT_</xsl:text>
-      <xsl:value-of select="vm:fixname(@extends)"/>
-      <xsl:text>();&nl;</xsl:text>
+      <xsl:text>)&nl;</xsl:text>
       <xsl:text>    __TIB_</xsl:text>
       <xsl:value-of select="$clname"/>
       <xsl:text>.newInstanceFunc = __NEW_INSTANCE_</xsl:text>
@@ -784,11 +780,10 @@ int main(int argc, char* argv[])
     <xsl:text>&nl;    // Initialize interfaces if necessary and assign tib to implementedInterfaces&nl;</xsl:text>
 	<xsl:for-each select="vm:implementsInterface">
 	  <xsl:variable name="idx" select="position() - 1"/>
-	  <xsl:text>&nl;    if (!__TIB_</xsl:text>
+	  <xsl:text>&nl;</xsl:text>
+	  <xsl:text>    XMLVM_CLASS_INIT(</xsl:text>
       <xsl:value-of select="vm:fixname(@name)"/>
-      <xsl:text>.classInitialized) __INIT_</xsl:text>
-      <xsl:value-of select="vm:fixname(@name)"/>
-      <xsl:text>();</xsl:text>
+      <xsl:text>)&nl;</xsl:text>
   	  <xsl:text>&nl;    __TIB_</xsl:text>
 	  <xsl:value-of select="$clname" />
 	  <xsl:text>.implementedInterfaces[0][</xsl:text>
@@ -1032,13 +1027,10 @@ int main(int argc, char* argv[])
     <!-- Emit 'new' method -->
     <xsl:text>JAVA_OBJECT __NEW_</xsl:text>
     <xsl:value-of select="$clname"/>
-    <xsl:text>()&nl;{
-    if (!__TIB_</xsl:text>
+    <xsl:text>()&nl;{</xsl:text>
+    <xsl:text>    XMLVM_CLASS_INIT(</xsl:text>
     <xsl:value-of select="$clname"/>
-    <xsl:text>.classInitialized) __INIT_</xsl:text>
-    <xsl:value-of select="$clname"/>
-    <xsl:text>();
-    </xsl:text>
+    <xsl:text>)&nl;</xsl:text>
     <xsl:value-of select="$clname"/>
     <xsl:text>* me = (</xsl:text>
     <xsl:value-of select="$clname"/>
@@ -1095,11 +1087,11 @@ int main(int argc, char* argv[])
         <xsl:value-of select="$clname"/>
         <xsl:text>_GET_</xsl:text>
         <xsl:value-of select="vm:fixname(@name)"/>
-        <xsl:text>()&nl;{&nl;    if (!__TIB_</xsl:text>
+        <xsl:text>()&nl;{&nl;</xsl:text>
+        <xsl:text>    XMLVM_CLASS_INIT(</xsl:text>
         <xsl:value-of select="$clname"/>
-        <xsl:text>.classInitialized) __INIT_</xsl:text>
-        <xsl:value-of select="$clname"/>
-        <xsl:text>();&nl;    return </xsl:text>
+        <xsl:text>)&nl;</xsl:text>
+        <xsl:text>    return </xsl:text>
         <xsl:text>_STATIC_</xsl:text>
         <xsl:value-of select="$field"/>
         <xsl:text>;&nl;}&nl;&nl;</xsl:text>
@@ -1113,11 +1105,10 @@ int main(int argc, char* argv[])
         <xsl:call-template name="emitType">
           <xsl:with-param name="type" select="@type"/>
         </xsl:call-template>
-        <xsl:text> v)&nl;{&nl;    if (!__TIB_</xsl:text>
+        <xsl:text> v)&nl;{&nl;</xsl:text>
+        <xsl:text>    XMLVM_CLASS_INIT(</xsl:text>
         <xsl:value-of select="$clname"/>
-        <xsl:text>.classInitialized) __INIT_</xsl:text>
-        <xsl:value-of select="$clname"/>
-        <xsl:text>();&nl;    </xsl:text>
+        <xsl:text>)&nl;</xsl:text>
         <xsl:text>_STATIC_</xsl:text>
         <xsl:value-of select="$field"/>
         <xsl:text> = v;&nl;}&nl;&nl;</xsl:text>
@@ -1137,11 +1128,9 @@ int main(int argc, char* argv[])
         <xsl:if test="not(@isNative = 'true') and dex:code">
           <xsl:text>&nl;{&nl;</xsl:text>
           <xsl:if test="@isStatic = 'true' and not(@name = '&lt;clinit&gt;')">
-            <xsl:text>    if (!__TIB_</xsl:text>
+            <xsl:text>    XMLVM_CLASS_INIT(</xsl:text>
             <xsl:value-of select="$clname"/>
-            <xsl:text>.classInitialized) __INIT_</xsl:text>
-            <xsl:value-of select="$clname"/>
-            <xsl:text>();&nl;</xsl:text>
+            <xsl:text>)&nl;</xsl:text>
           </xsl:if>
           <xsl:text>    //XMLVM_BEGIN_WRAPPER[</xsl:text>
           <xsl:call-template name="emitMethodName">
@@ -1464,11 +1453,11 @@ int main(int argc, char* argv[])
       <xsl:value-of select="$clname"/>
       <xsl:text>_GET_</xsl:text>
       <xsl:value-of select="vm:fixname(@name)"/>
-      <xsl:text>()&nl;{&nl;    if (!__TIB_</xsl:text>
+      <xsl:text>()&nl;{&nl;</xsl:text>
+      <xsl:text>    XMLVM_CLASS_INIT(</xsl:text>
       <xsl:value-of select="$clname"/>
-      <xsl:text>.classInitialized) __INIT_</xsl:text>
-      <xsl:value-of select="$clname"/>
-      <xsl:text>();&nl;    return </xsl:text>
+      <xsl:text>)&nl;</xsl:text>
+      <xsl:text>    return </xsl:text>
       <xsl:text>_STATIC_</xsl:text>
       <xsl:value-of select="$field"/>
       <xsl:text>;&nl;}&nl;&nl;</xsl:text>
@@ -3384,11 +3373,9 @@ int main(int argc, char* argv[])
 <xsl:template match="dex:const-class">
   <xsl:variable name="zero-base-type" select="vm:fixname(replace(@value, '\[\]', ''))"/>
   <xsl:if test="vm:isObjectRef($zero-base-type)">
-    <xsl:text>    if (!__TIB_</xsl:text>
+    <xsl:text>    XMLVM_CLASS_INIT(</xsl:text>
     <xsl:value-of select="$zero-base-type"/>
-    <xsl:text>.classInitialized) __INIT_</xsl:text>
-    <xsl:value-of select="$zero-base-type"/>
-    <xsl:text>();&nl;</xsl:text>
+    <xsl:text>)&nl;</xsl:text>
   </xsl:if>
   <xsl:text>    _r</xsl:text>
   <xsl:value-of select="@vx"/>
@@ -3976,11 +3963,9 @@ int main(int argc, char* argv[])
   <xsl:variable name="base-type" select="substring(@value, 1, string-length(@value) - 2)"/>
   <!-- Make sure the underlying class has been initialized -->
   <xsl:variable name="zero-base-type" select="vm:fixname(replace(@value, '\[\]', ''))"/>
-  <xsl:text>    if (!__TIB_</xsl:text>
+  <xsl:text>    XMLVM_CLASS_INIT(</xsl:text>
   <xsl:value-of select="$zero-base-type"/>
-  <xsl:text>.classInitialized) __INIT_</xsl:text>
-  <xsl:value-of select="$zero-base-type"/>
-  <xsl:text>();&nl;</xsl:text>
+  <xsl:text>)&nl;</xsl:text>
   
   <xsl:text>    _r</xsl:text>
   <xsl:value-of select="dex:move-result/@vx"/>
@@ -4036,12 +4021,10 @@ int main(int argc, char* argv[])
 <xsl:template match="dex:new-array">
   <!-- Make sure the underlying class has been initialized -->
   <xsl:variable name="zero-base-type" select="vm:fixname(replace(@value, '\[\]', ''))"/>
-  <xsl:text>    if (!__TIB_</xsl:text>
+  <xsl:text>    XMLVM_CLASS_INIT(</xsl:text>
   <xsl:value-of select="$zero-base-type"/>
-  <xsl:text>.classInitialized) __INIT_</xsl:text>
-  <xsl:value-of select="$zero-base-type"/>
-  <xsl:text>();&nl;</xsl:text>
-
+  <xsl:text>)&nl;</xsl:text>
+  
   <xsl:variable name="base-type" select="substring(@value, 1, string-length(@value) - 2)"/>
   <xsl:text>    _r</xsl:text>
   <xsl:value-of select="@vx"/>
@@ -4140,11 +4123,9 @@ int main(int argc, char* argv[])
 <xsl:template match="dex:instance-of">
   <xsl:variable name="zero-base-type" select="vm:fixname(replace(@value, '\[\]', ''))"/>
   <xsl:if test="vm:isObjectRef($zero-base-type)">
-    <xsl:text>    if (!__TIB_</xsl:text>
+    <xsl:text>    XMLVM_CLASS_INIT(</xsl:text>
     <xsl:value-of select="$zero-base-type"/>
-    <xsl:text>.classInitialized) __INIT_</xsl:text>
-    <xsl:value-of select="$zero-base-type"/>
-    <xsl:text>();&nl;</xsl:text>
+    <xsl:text>)&nl;</xsl:text>
   </xsl:if>
   <xsl:text>    _r</xsl:text>
   <xsl:value-of select="@vx"/>

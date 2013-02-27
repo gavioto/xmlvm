@@ -101,6 +101,9 @@
 #define XMLVM_OFFSETOF(type, field) ((unsigned long) &(((type *) 0)->field))
 
 
+#define XMLVM_CLASS_INIT(class) \
+    if (!__TIB_ ##class.classInitialized) __INIT_ ##class();
+
 #define XMLVM_FORWARD_DECL(class) \
     JAVA_OBJECT __NEW_ ##class(); \
     struct class; \

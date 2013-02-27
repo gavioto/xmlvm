@@ -60,6 +60,7 @@ import org.xmlvm.proc.lib.LibraryLoader;
 import org.xmlvm.refcount.InstructionProcessor;
 import org.xmlvm.refcount.ReferenceCounting;
 import org.xmlvm.refcount.ReferenceCountingException;
+import org.xmlvm.util.ClassListLoader;
 import org.xmlvm.util.universalfile.UniversalFile;
 import org.xmlvm.util.universalfile.UniversalFileCreator;
 
@@ -314,14 +315,14 @@ public class DEXmlvmOutputProcess extends XmlvmProcessImpl {
             if (arguments.option_redlist() != null) {
                 redlist = UniversalFileCreator.createFile(new File(arguments.option_redlist()));
             }
-            redTypes = initializeClassList(redlist);
+            redTypes = ClassListLoader.loadRedlist(redlist);//initializeClassList(redlist);
         }
         
         if (greenTypes == null && arguments.option_greenlist() != null) {
-            greenTypes = initializeClassList(UniversalFileCreator.createFile(new File(arguments.option_greenlist())));
+            greenTypes = ClassListLoader.loadGreenlist(UniversalFileCreator.createFile(new File(arguments.option_greenlist())));
             UniversalFile defaultGreenList = UniversalFileCreator.createFile("/lib/greenlist.txt", "lib/greenlist.txt");
             if (defaultGreenList != null) { // Add defaults, if they have been packaged
-                greenTypes.addAll(initializeClassList(defaultGreenList));
+                greenTypes.addAll(ClassListLoader.loadGreenlist(defaultGreenList));
             } 
         }
         
@@ -601,25 +602,6 @@ public class DEXmlvmOutputProcess extends XmlvmProcessImpl {
         }
         
         return redTypes != null && redTypes.contains(baseType);
-    }
-
-    private static Set<String> initializeClassList(UniversalFile redListFile) {
-        try {
-            Set<String> result = new HashSet<String>();
-            BufferedReader reader;
-            reader = new BufferedReader(new StringReader(redListFile.getFileAsString()));
-            String line;
-            while ((line = reader.readLine()) != null) {
-                result.add(line);
-            }
-            return result;
-        } catch (IOException e) {
-            Log.error(
-                    TAG,
-                    "Problem reading red file: " + redListFile.getAbsolutePath() + ": "
-                            + e.getMessage());
-        }
-        return null;
     }
 
     /**

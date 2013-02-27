@@ -36,6 +36,7 @@ import org.xmlvm.proc.BundlePhase2;
 import org.xmlvm.proc.XmlvmProcessImpl;
 import org.xmlvm.proc.XmlvmResource;
 import org.xmlvm.proc.lib.LibraryLoader;
+import org.xmlvm.util.ClassListLoader;
 import org.xmlvm.util.universalfile.UniversalFile;
 import org.xmlvm.util.universalfile.UniversalFileCreator;
 
@@ -86,13 +87,10 @@ public class RecursiveResourceLoadingProcess extends XmlvmProcessImpl {
         UniversalFile greenList = UniversalFileCreator.createFile(new File(greenlistFile));
         LibraryLoader libraryLoader = new LibraryLoader(arguments);
         UniversalFile defaultGreenList = UniversalFileCreator.createFile("/lib/greenlist.txt", "lib/greenlist.txt");
-        try {
-            for (UniversalFile file : new UniversalFile[] {greenList, defaultGreenList} ) {
-                BufferedReader reader;
-                reader = new BufferedReader(new StringReader(file.getFileAsString()));
-                String line;
-                while ((line = reader.readLine()) != null) {
-                    String className = line.trim();
+        for (UniversalFile file : new UniversalFile[] {greenList, defaultGreenList} ) {
+            Set<String> classes = ClassListLoader.loadGreenlist(file);
+            if (classes != null) { // If any green list exists, force inclusion of its contents
+                for (String className : classes) {
                     if (!resources.containsKey(className)) {
                         XmlvmResource resource = libraryLoader.load(className);
                         if (resource != null) {
@@ -101,11 +99,6 @@ public class RecursiveResourceLoadingProcess extends XmlvmProcessImpl {
                     }
                 }
             }
-        } catch (IOException e) {
-            Log.error(
-                    "Problem reading green list file: " + greenList.getAbsolutePath() + ": "
-                            + e.getMessage());
         }
     }
-
 }

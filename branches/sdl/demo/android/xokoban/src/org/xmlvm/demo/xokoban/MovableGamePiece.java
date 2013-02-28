@@ -26,6 +26,9 @@ package org.xmlvm.demo.xokoban;
  * on the screen.
  */
 public class MovableGamePiece extends GamePiece {
+    // Number of animation frames it should take to move one tile
+    private static final int STEPS_PER_TILE = 10;
+    
     private int counter;
     private int dx;
     private int dy;
@@ -53,8 +56,8 @@ public class MovableGamePiece extends GamePiece {
         this.dy = dy;
         px = 0;
         py = 0;
-        animationFactor = 4;
-        counter = getTileSize() / animationFactor;
+        counter = STEPS_PER_TILE;
+        animationFactor = getTileSize() / counter;        
     }
 
     /**

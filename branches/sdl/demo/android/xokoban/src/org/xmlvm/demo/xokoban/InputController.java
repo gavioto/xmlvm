@@ -51,9 +51,18 @@ public class InputController implements SensorEventListener, OnTouchListener {
 
     /** Accelerometer threshold to start moving the man. */
     private static final float  ACCELEROMETER_THRESHOLD = 2.0f;
+    
+    /** Speed at which to move when triggered by accelerometer. */
+    private static final float  ACCELEROMETER_SPEED = 0.5f;
 
     /** Swiping threshold to start moving the man. */
     private static final float  SWIPE_THRESHOLD         = 30f;
+    
+    /** Speed at which to move when triggered by swipe. */
+    private static final float  SWIPE_SPEED         = 1.0f;
+    
+    /** Speed at which to move when triggered by tap. */
+    private static final float  TAP_SPEED           = 2f;
 
     /** The GameController associated with this InputController. */
     private GameController      controller              = null;
@@ -96,7 +105,7 @@ public class InputController implements SensorEventListener, OnTouchListener {
             SensorData data = new SensorData(-event.values[0], event.values[1]);
             data = mapToScreenCoordinates(data);
             controller.setMovingSpeed(data.x, data.y);
-            if (!moveWithInput(data.x, data.y, ACCELEROMETER_THRESHOLD)) {
+            if (!moveWithInput(data.x, data.y, ACCELEROMETER_THRESHOLD, ACCELEROMETER_SPEED)) {
                 controller.scheduleStopMan();
             }
         }
@@ -113,7 +122,7 @@ public class InputController implements SensorEventListener, OnTouchListener {
      *            The threshold that has to be exceeded in order for a move to
      *            trigger.
      */
-    public boolean moveWithInput(float x, float y, float threshold) {
+    public boolean moveWithInput(float x, float y, float threshold, float speed) {
         if (controller.isGamePaused()) {
             return false;
         }
@@ -131,7 +140,7 @@ public class InputController implements SensorEventListener, OnTouchListener {
                 dy = -1;
         }
         if (Math.abs(dx) > 0 || Math.abs(dy) > 0) {
-            controller.scheduleMoveMan(dx, dy);
+            controller.scheduleMoveMan(dx, dy, speed);
             return true;
         }
         return false;
@@ -147,15 +156,16 @@ public class InputController implements SensorEventListener, OnTouchListener {
             if (isMoveStarted) {
                 controller.scheduleStopMan();
             } else {
-                controller.scheduleMoveManTo((int) event.getX(), (int) event.getY());
+                controller.scheduleMoveManTo((int) event.getX(), (int) event.getY(), TAP_SPEED);
             }
             isFingerDown = false;
             isMoveStarted = false;
         } else if (event.getAction() == MotionEvent.ACTION_MOVE) {
-            isMoveStarted = true;
             lastMoveX = event.getX();
             lastMoveY = event.getY();
-            if (moveWithInput(lastMoveX - lastStartX, lastMoveY - lastStartY, SWIPE_THRESHOLD)) {
+            if (moveWithInput(lastMoveX - lastStartX, lastMoveY - lastStartY, 
+                    SWIPE_THRESHOLD, SWIPE_SPEED)) {
+                isMoveStarted = true;
                 lastStartX = lastMoveX;
                 lastStartY = lastMoveY;
             }

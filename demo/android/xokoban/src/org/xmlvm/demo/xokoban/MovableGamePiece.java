@@ -27,16 +27,16 @@ package org.xmlvm.demo.xokoban;
  */
 public class MovableGamePiece extends GamePiece {
     // Number of animation frames it should take to move one tile
-    private static final int STEPS_PER_TILE = 10;
+    private static final int STEPS_PER_TILE = 12;
     
-    private int counter;
+    private float counter;
     private int dx;
     private int dy;
     
-    private int animationFactor;
+    private float animationFactor;
 
-    private int px;
-    private int py;
+    private float px;
+    private float py;
 
     protected MovableGamePiece(GameView view, int resourceID, int tileSize, int x, int y) {
         super(view, resourceID, tileSize ,x, y, true);
@@ -49,14 +49,17 @@ public class MovableGamePiece extends GamePiece {
      *            How many pixels to move horizontally.
      * @param dy
      *            How many pixels to move vertically.
+     * @param speed
+     *            The speed factor at which to move the 
+     *            piece. 1.0 is normal speed; 2.0 is double speed; etc.
      */
-    public void startMoving(int dx, int dy) {
+    public void startMoving(int dx, int dy, float speed) {
         view.getMover().moveGamePiece(this);
         this.dx = dx;
         this.dy = dy;
         px = 0;
         py = 0;
-        counter = STEPS_PER_TILE;
+        counter =  STEPS_PER_TILE / speed;
         animationFactor = getTileSize() / counter;        
     }
 
@@ -69,9 +72,10 @@ public class MovableGamePiece extends GamePiece {
     public boolean moveOneStep() {
         px += dx * animationFactor;
         py += dy * animationFactor;
-        updatePosition(px, py);
+        updatePosition((int)px, (int)py);
         counter--;
-        if (counter == 0) {
+        if (counter < 1) {
+            counter = 0;
             x += dx;
             y += dy;
             updatePosition();

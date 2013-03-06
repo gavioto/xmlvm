@@ -72,6 +72,9 @@ public class GameController implements MoveFinishedHandler, Runnable {
 
     /** Indicated the next Y-direction the man should move to. */
     private int             nextDY;
+    
+    /** Speed of the current movement */
+    private float           speedFactor = 1f;
 
     /** Stop man when current move is finished. */
     private boolean         stopMovement            = true;
@@ -140,6 +143,25 @@ public class GameController implements MoveFinishedHandler, Runnable {
      *            New Y-direction (either -1, 0, or 1)
      */
     public void scheduleMoveMan(int dx, int dy) {
+        scheduleMoveMan(dx,dy,1f);
+    }
+    
+    /**
+     * Schedule the man to move in a certain direction designated by the input
+     * parameters. If the man is currently stop, he will start moving
+     * immediately. Otherwise the new direction will be considered after the
+     * current move is finished (i.e., the man has reached the new tile).
+     * 
+     * @param dx
+     *            New X-direction (either -1, 0, or 1)
+     * @param dy
+     *            New Y-direction (either -1, 0, or 1)
+     * @param speed
+     *            The speed factor at which to move (1 is normal; 2 is twice 
+     *            as fast as normal)
+     */
+    public void scheduleMoveMan(int dx, int dy, float speed) {
+        speedFactor = speed;
         nextDX = dx;
         nextDY = dy;
         if (moveMan() && !timerIsRunning) {
@@ -158,6 +180,17 @@ public class GameController implements MoveFinishedHandler, Runnable {
      * @param py the y coordinate, in pixels
      */
     public void scheduleMoveManTo(int px, int py) {
+        scheduleMoveManTo(px,py,1f);
+    }
+    
+    /**
+     * Schedule the man to move to the tile at the specified pixel coordinates.
+     * 
+     * @param px the x coordinate, in pixels
+     * @param py the y coordinate, in pixels
+     * @param speed the speed factor at which to move; 1 is normal, 2 is twice normal
+     */
+    public void scheduleMoveManTo(int px, int py, float speed) {
         
         // Convert from pixel to tile coordinates 
         px -= gameView.getOffsetLeft();
@@ -175,7 +208,7 @@ public class GameController implements MoveFinishedHandler, Runnable {
         
         targetPosition = new Position(tileX, tileY);
         
-        scheduleMoveMan(dx, dy);
+        scheduleMoveMan(dx, dy, speed);
     }
     
     /**
@@ -221,12 +254,12 @@ public class GameController implements MoveFinishedHandler, Runnable {
         levelStarted = true;
         moveCount++;
         if (adjacentBall == null) {
-            man.startMoving(nextDX, nextDY);
+            man.startMoving(nextDX, nextDY, speedFactor);
         }
         // Move man and ball
         else {
-            adjacentBall.startMoving(nextDX, nextDY);
-            man.startMoving(nextDX, nextDY);
+            adjacentBall.startMoving(nextDX, nextDY, speedFactor);
+            man.startMoving(nextDX, nextDY, speedFactor);
         }
         return true;
     }

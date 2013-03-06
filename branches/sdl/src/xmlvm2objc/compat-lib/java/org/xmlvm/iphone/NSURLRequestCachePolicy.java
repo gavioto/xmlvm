@@ -18,20 +18,21 @@
  * USA.
  */
 
-#import "xmlvm.h"
-#import "java_lang_Object.h"
-// CGPoint
-//----------------------------------------------------------------------------
-@interface org_xmlvm_iphone_CGPoint : java_lang_Object {
-@public float x_float;
-@public float y_float;
+package org.xmlvm.iphone;
+
+import org.xmlvm.XMLVMSkeletonOnly;
+
+@XMLVMSkeletonOnly
+public final class NSURLRequestCachePolicy {
+
+    public static final int UseProtocolCachePolicy                = 0;
+    public static final int ReloadIgnoringLocalCacheData          = 1;
+    public static final int ReloadIgnoringLocalAndRemoteCacheData = 4;
+    public static final int ReloadIgnoringCacheData               = ReloadIgnoringLocalCacheData;
+    public static final int ReturnCacheDataElseLoad               = 2;
+    public static final int ReturnCacheDataDontLoad               = 3;
+    public static final int ReloadRevalidatingCacheData           = 5;
+
+    private NSURLRequestCachePolicy() {
+    }
 }
-
-- (org_xmlvm_iphone_CGPoint*) initWithCGPoint:(CGPoint) point;
-
-- (void) __init_org_xmlvm_iphone_CGPoint___float_float:(float) x_ :(float) y_;
-- (void) __init_org_xmlvm_iphone_CGPoint___org_xmlvm_iphone_CGPoint:(org_xmlvm_iphone_CGPoint *) other;
-- (CGPoint) getCGPoint;
-- (NSString*) toString__;
-
-@end

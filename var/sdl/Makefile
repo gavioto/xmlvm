@@ -24,17 +24,23 @@ CONFIGURATION_TEMP_DIR=$(BUILT_PRODUCTS_DIR)/obj
 
 
 CC=gcc
+#CC=emcc
 CFLAGS=-w -std=c99 -D_GNU_SOURCE -DALL_INTERIOR_POINTERS -DGC_THREADS \
        -DTHREAD_LOCAL_ALLOC -DPARALLEL_MARK -DUSE_MMAP \
        -DUSE_MUNMAP -DNO_DYLD_BIND_FULLY_IMAGE -I$(SRCROOT) \
        $(ADDITIONAL_CFLAGS)
+#CFLAGS=$(CFLAGS) -DLINUX
 
 LD=$(CC)
 LDFLAGS=-L/usr/local/lib
+#LDFLAGS=-O2 -s ALLOW_MEMORY_GROWTH=1 --embed-file AndroidManifest.xml \
+#        --embed-file LiberationSans-Regular.ttf \
+#        --preload-file res
 LIBS=-lgc -lm -lz -lSDL -lSDL_ttf -lSDL_image -lSDL_gfx
 
 
 EXECUTABLE_NAME=$(PRODUCT_NAME)
+#EXECUTABLE_NAME=$(PRODUCT_NAME).html
 
 SOURCES_ABS=$(addprefix ./,$(ALL_SOURCES))
 

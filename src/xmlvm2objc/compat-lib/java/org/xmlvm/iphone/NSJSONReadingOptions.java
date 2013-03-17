@@ -18,22 +18,17 @@
  * USA.
  */
 
-#import "xmlvm.h"
-#import "java_lang_Object.h"
-#import "java_lang_String.h"
+package org.xmlvm.iphone;
 
+import org.xmlvm.XMLVMSkeletonOnly;
 
-// java.lang.Character
-//----------------------------------------------------------------------------
-@interface java_lang_Character : java_lang_Object {
-	unichar c;
+@XMLVMSkeletonOnly
+public class NSJSONReadingOptions {
+
+    public static final int MutableContainers = 1;
+    public static final int MutableLeaves = 2;
+    public static final int AllowFragments = 4;
+
+    private NSJSONReadingOptions() {
+    }
 }
-
-- (void) __init_java_lang_Character___char :(unichar) c;
-- (unichar) charValue__;
-+ (void) initialize;
-+ (java_lang_Class*) _GET_TYPE;
-+ (java_lang_String*) toString___char: (unichar) c;
-+ (java_lang_Character*) valueOf___char: (unichar) c;
-
-@end

@@ -18,22 +18,18 @@
  * USA.
  */
 
-#import "xmlvm.h"
-#import "java_lang_Object.h"
-#import "java_lang_String.h"
+#import "org_xmlvm_iphone_NSJSONSerialization.h"
 
+@implementation NSJSONSerialization (cat_org_xmlvm_iphone_NSJSONSerialization)
 
-// java.lang.Character
-//----------------------------------------------------------------------------
-@interface java_lang_Character : java_lang_Object {
-	unichar c;
++ (java_lang_Object*) JSONObjectWithData___org_xmlvm_iphone_NSData_int_org_xmlvm_iphone_NSErrorHolder :(org_xmlvm_iphone_NSData*)data :(int)options :(org_xmlvm_iphone_NSErrorHolder*)errorholder {
+    
+    org_xmlvm_iphone_NSError** error = errorholder == JAVA_NULL ? nil : &(errorholder->error_org_xmlvm_iphone_NSError);
+    id json = [[NSJSONSerialization JSONObjectWithData:data options:options error:error] retain];
+    errorholder->error_org_xmlvm_iphone_NSError = XMLVM_NIL2NULL(errorholder->error_org_xmlvm_iphone_NSError);
+    return json;
 }
 
-- (void) __init_java_lang_Character___char :(unichar) c;
-- (unichar) charValue__;
-+ (void) initialize;
-+ (java_lang_Class*) _GET_TYPE;
-+ (java_lang_String*) toString___char: (unichar) c;
-+ (java_lang_Character*) valueOf___char: (unichar) c;
 
 @end
+

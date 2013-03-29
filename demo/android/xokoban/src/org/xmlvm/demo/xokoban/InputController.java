@@ -53,7 +53,7 @@ public class InputController implements SensorEventListener, OnTouchListener {
     private static final float  ACCELEROMETER_THRESHOLD = 2.0f;
     
     /** Speed at which to move when triggered by accelerometer. */
-    private static final float  ACCELEROMETER_SPEED = 0.5f;
+    private static final float  ACCELEROMETER_SPEED = 0.75f;
 
     /** Swiping threshold to start moving the man. */
     private static final float  SWIPE_THRESHOLD         = 30f;
@@ -62,7 +62,7 @@ public class InputController implements SensorEventListener, OnTouchListener {
     private static final float  SWIPE_SPEED         = 1.0f;
     
     /** Speed at which to move when triggered by tap. */
-    private static final float  TAP_SPEED           = 2f;
+    private static final float  TAP_SPEED           = 3f;
 
     /** The GameController associated with this InputController. */
     private GameController      controller              = null;

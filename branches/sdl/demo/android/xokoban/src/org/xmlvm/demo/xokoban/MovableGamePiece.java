@@ -26,9 +26,14 @@ package org.xmlvm.demo.xokoban;
  * on the screen.
  */
 public class MovableGamePiece extends GamePiece {
-    // Number of animation frames it should take to move one tile
-    private static final int STEPS_PER_TILE = 12;
+    /**
+     * How long it should normally take, in seconds, to move one tile
+     */
+    private static final float DURATION_PER_TILE = 0.24f;
     
+    /**
+     * Counts down time, in seconds, to continue moving
+     */
     private float counter;
     private int dx;
     private int dy;
@@ -59,22 +64,23 @@ public class MovableGamePiece extends GamePiece {
         this.dy = dy;
         px = 0;
         py = 0;
-        counter =  STEPS_PER_TILE / speed;
-        animationFactor = getTileSize() / counter;        
+        counter =  DURATION_PER_TILE / speed;
+        animationFactor = (float) getTileSize() / counter;        
     }
 
     /**
      * Moves the game piece on step in the direction given to
      * {@link #startMoving(int, int)}.
      * 
+     * @param duration the time, in seconds, since the last animation
      * @return TODO
      */
-    public boolean moveOneStep() {
-        px += dx * animationFactor;
-        py += dy * animationFactor;
+    public boolean moveOneStep(float duration) {
+        px += dx * animationFactor * duration;
+        py += dy * animationFactor * duration;
         updatePosition((int)px, (int)py);
-        counter--;
-        if (counter < 1) {
+        counter -= duration;
+        if (counter <= 0) {
             counter = 0;
             x += dx;
             y += dy;

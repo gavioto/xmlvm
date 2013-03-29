@@ -23,12 +23,12 @@ package org.xmlvm.demo.xokoban;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.xmlvm.demo.xokoban.GamePiece.Position;
+
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Handler;
-
-import org.xmlvm.demo.xokoban.GamePiece.Position;
 
 /**
  * The controller class for the Xokoban game.
@@ -84,6 +84,9 @@ public class GameController implements MoveFinishedHandler, Runnable {
 
     /** Delay between two timer ticks. */
     private long            animationDelay;
+    
+    /** Time when the last frame was animated */
+    private long            lastAnimationTimestamp;
 
     private static int      DEFAULT_DELAY_IN_MILLIS = 60;
 
@@ -169,6 +172,7 @@ public class GameController implements MoveFinishedHandler, Runnable {
             stopMovement = false;
             timerHandler.removeCallbacks(this);
             animationDelay = getDelayInMillis();
+            lastAnimationTimestamp = System.currentTimeMillis();
             timerHandler.postDelayed(this, animationDelay);
         }
     }
@@ -507,7 +511,10 @@ public class GameController implements MoveFinishedHandler, Runnable {
     public void run() {
         if (timerIsRunning) {
             timerHandler.postDelayed(this, animationDelay);
-            gameView.getMover().doNextAnimationStep();
+            long currentTime = System.currentTimeMillis();
+            float delta = (float) (currentTime - lastAnimationTimestamp) / 1000f; // ms to sec
+            gameView.getMover().doNextAnimationStep(delta);
+            lastAnimationTimestamp = currentTime;
         }
     }
 }

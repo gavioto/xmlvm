@@ -29,7 +29,7 @@ public class MovableGamePiece extends GamePiece {
     /**
      * How long it should normally take, in seconds, to move one tile
      */
-    private static final float DURATION_PER_TILE = 0.24f;
+    private static final float DURATION_PER_TILE = 0.4f;
     
     /**
      * Counts down time, in seconds, to continue moving

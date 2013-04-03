@@ -228,6 +228,17 @@ JAVA_OBJECT xmlvm_create_java_string(const char* s)
     return XMLVMUtil_getFromStringPool(str);
 }
 
+JAVA_OBJECT xmlvm_create_java_string_array(int count, const char **s) 
+{
+    JAVA_OBJECT javaStrings[count];
+    for (int i = 0; i < count; i++) {
+        javaStrings[i] = xmlvm_create_java_string(s[i]);
+    }
+    JAVA_OBJECT javaStringArray = XMLVMArray_createSingleDimension(__CLASS_java_lang_String, count);
+    XMLVMArray_fillArray(javaStringArray, javaStrings);
+    return javaStringArray;
+}
+
 static JAVA_OBJECT* stringConstants = JAVA_NULL;
 
 JAVA_OBJECT xmlvm_create_java_string_from_pool(int pool_id)

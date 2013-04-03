@@ -296,6 +296,7 @@ int XMLVM_ISA(JAVA_OBJECT obj, JAVA_OBJECT clazz);
 int xmlvm_java_string_cmp(JAVA_OBJECT s1, const char* s2);
 const char* xmlvm_java_string_to_const_char(JAVA_OBJECT s);
 JAVA_OBJECT xmlvm_create_java_string(const char* s);
+JAVA_OBJECT xmlvm_create_java_string_array(int count, const char **s);
 JAVA_OBJECT xmlvm_create_java_string_from_pool(int pool_id);
 void xmlvm_clear_constant_pool_cache();
 

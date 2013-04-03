@@ -88,12 +88,14 @@ int main(int argc, char* argv[])
 
         xmlvm_unhandled_exception();
     } else {
+        // Convert command-line args to String[]. First C-arg is omitted.
+        JAVA_OBJECT args = xmlvm_create_java_string_array(argc-1, argv+1);
         </xsl:text>
     <xsl:variable name="cl" as="node()" select="vm:class/vm:method[@name = 'main']/.."/>
     <xsl:value-of select="vm:fixname($cl/@package)"/>
     <xsl:text>_</xsl:text>
     <xsl:value-of select="$cl/@name"/>
-    <xsl:text>_main___java_lang_String_1ARRAY(JAVA_NULL);
+    <xsl:text>_main___java_lang_String_1ARRAY(args);
     }
 
     xmlvm_destroy(mainThread);

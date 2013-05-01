@@ -18,13 +18,6 @@
  * USA.
  */
 
-#import "xmlvm.h"
-#import "java_lang_Object.h"
-#import "java_util_Iterator.h"
+#import "java_util_TreeSet.h"
 
-
-// java.util.SortedSet
-//----------------------------------------------------------------------------
-@interface java_util_SortedSet
-
-@end
+typedef java_util_TreeSet java_util_SortedSet;

@@ -18,18 +18,34 @@
  * USA.
  */
 
-#import "org_xmlvm_iphone_NSJSONSerialization.h"
+package org.xmlvm.iphone;
 
-@implementation NSJSONSerialization (cat_org_xmlvm_iphone_NSJSONSerialization)
+import org.xmlvm.XMLVMSkeletonOnly;
 
-+ (java_lang_Object*) JSONObjectWithData___org_xmlvm_iphone_NSData_int_org_xmlvm_iphone_NSErrorHolder :(org_xmlvm_iphone_NSData*)data :(int)options :(org_xmlvm_iphone_NSErrorHolder*)errorholder {
-    
-    org_xmlvm_iphone_NSError** error = errorholder == JAVA_NULL ? nil : &(errorholder->error_org_xmlvm_iphone_NSError);
-    id json = [[NSJSONSerialization JSONObjectWithData:data options:options error:error] retain];
-    errorholder->error_org_xmlvm_iphone_NSError = XMLVM_NIL2NULL(errorholder->error_org_xmlvm_iphone_NSError);
-    return XMLVM_NIL2NULL(json);
+@XMLVMSkeletonOnly
+public class CGPath {
+
+    public CGPath() {
+    }
+
+    public void moveToPoint(CGAffineTransform transf, float x, float y) {
+    }
+
+    public void addLineToPoint(CGAffineTransform transf, float x, float y) {
+    }
+
+    public void addArch(CGAffineTransform transf, float x, float y, float radius,
+            float startAngle, float endAngle, boolean clockwise) {
+    }
+
+    public void addCurveToPoint(CGAffineTransform transf, float cp1x, float cp1y, 
+            float cp2x, float cp2y, float x, float y) {
+    }
+
+    public void addQuadCurveToPoint(CGAffineTransform transf, float cpx, float cpy,
+            float x, float y) {
+    }
+
+    public void closeSubpath() {
+    }
 }
-
-
-@end
-

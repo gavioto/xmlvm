@@ -18,18 +18,6 @@
  * USA.
  */
 
-#import "org_xmlvm_iphone_NSJSONSerialization.h"
+#import "java_util_TreeMap.h"
 
-@implementation NSJSONSerialization (cat_org_xmlvm_iphone_NSJSONSerialization)
-
-+ (java_lang_Object*) JSONObjectWithData___org_xmlvm_iphone_NSData_int_org_xmlvm_iphone_NSErrorHolder :(org_xmlvm_iphone_NSData*)data :(int)options :(org_xmlvm_iphone_NSErrorHolder*)errorholder {
-    
-    org_xmlvm_iphone_NSError** error = errorholder == JAVA_NULL ? nil : &(errorholder->error_org_xmlvm_iphone_NSError);
-    id json = [[NSJSONSerialization JSONObjectWithData:data options:options error:error] retain];
-    errorholder->error_org_xmlvm_iphone_NSError = XMLVM_NIL2NULL(errorholder->error_org_xmlvm_iphone_NSError);
-    return XMLVM_NIL2NULL(json);
-}
-
-
-@end
-
+typedef java_util_TreeMap java_util_SortedMap;

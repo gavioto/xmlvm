@@ -18,18 +18,31 @@
  * USA.
  */
 
-#import "org_xmlvm_iphone_NSJSONSerialization.h"
+#import "xmlvm.h"
+#import "java_lang_Object.h"
+#import "java_util_IteratorImpl.h"
+#import "java_util_Collection.h"
 
-@implementation NSJSONSerialization (cat_org_xmlvm_iphone_NSJSONSerialization)
 
-+ (java_lang_Object*) JSONObjectWithData___org_xmlvm_iphone_NSData_int_org_xmlvm_iphone_NSErrorHolder :(org_xmlvm_iphone_NSData*)data :(int)options :(org_xmlvm_iphone_NSErrorHolder*)errorholder {
-    
-    org_xmlvm_iphone_NSError** error = errorholder == JAVA_NULL ? nil : &(errorholder->error_org_xmlvm_iphone_NSError);
-    id json = [[NSJSONSerialization JSONObjectWithData:data options:options error:error] retain];
-    errorholder->error_org_xmlvm_iphone_NSError = XMLVM_NIL2NULL(errorholder->error_org_xmlvm_iphone_NSError);
-    return XMLVM_NIL2NULL(json);
+@interface java_util_TreeSet : java_lang_Object {
+@private
+    NSMutableOrderedSet * set;
+    BOOL isDirty;
 }
 
+- (id) init;
+
+- (void) __init_java_util_TreeSet__;
+- (void) __init_java_util_TreeSet___java_util_Collection:(java_util_Collection*)c;
+
+- (BOOL) add___java_lang_Object:(java_lang_Object*)e;
+- (BOOL) addAll___java_util_Collection: (java_util_Collection*) c;
+- (int) size__;
+- (void) clear__;
+- (java_util_Iterator*) iterator__;
+- (BOOL) contains___java_lang_Object: (java_lang_Object*) o;
+
+- (java_lang_Object * ) first__;
+- (java_lang_Object * ) last__;
 
 @end
-

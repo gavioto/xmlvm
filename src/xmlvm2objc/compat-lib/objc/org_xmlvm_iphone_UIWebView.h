@@ -22,8 +22,7 @@
 #import "org_xmlvm_iphone_NSURLRequest.h"
 #import "org_xmlvm_iphone_CGRect.h"
 #import "org_xmlvm_iphone_NSURL.h"
-#import "java_lang_String.h"
-#import "org_xmlvm_iphone_NSData.h"
+#import "org_xmlvm_iphone_UIScrollView.h"
 @class org_xmlvm_iphone_UIWebViewDelegate;
 
 // UIWebView
@@ -35,10 +34,10 @@ typedef UIWebView org_xmlvm_iphone_UIWebView;
 - (void) __init_org_xmlvm_iphone_UIWebView___org_xmlvm_iphone_CGRect: (org_xmlvm_iphone_CGRect*) rect;
 - (void) loadHTMLString___java_lang_String_org_xmlvm_iphone_NSURL: (NSString*)string :(org_xmlvm_iphone_NSURL*)baseURL;
 - (void) loadRequest___org_xmlvm_iphone_NSURLRequest: (org_xmlvm_iphone_NSURLRequest*) request;
-- (void) loadData___org_xmlvm_iphone_NSData_java_lang_String_java_lang_String_org_xmlvm_iphone_NSURL: (org_xmlvm_iphone_NSData*) data :(java_lang_String*) mime :(java_lang_String*) enc:(org_xmlvm_iphone_NSURL*) baseURL;
 - (java_lang_String*) stringByEvaluatingJavaScriptFromString___java_lang_String: (java_lang_String*)script;
 - (void) setDelegate___org_xmlvm_iphone_UIWebViewDelegate:(org_xmlvm_iphone_UIWebViewDelegate*)newdelegate;
 - (org_xmlvm_iphone_UIWebViewDelegate*) getWebViewDelegate__;
+- (org_xmlvm_iphone_UIScrollView*) getScrollView__;
 - (void) reload__;
 - (void) setDataDetectorTypes___int:(int) types;
 - (int) getDataDetectorTypes__;

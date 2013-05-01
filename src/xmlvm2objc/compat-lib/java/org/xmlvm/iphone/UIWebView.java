@@ -94,4 +94,8 @@ public class UIWebView extends UIView {
     public void setScalesPageToFit(boolean scalesPageToFit) {
         this.scalesPageToFit = scalesPageToFit;
     }    
+
+    public UIScrollView getScrollView() {
+        return null;
+    }
 }

@@ -19,6 +19,9 @@
  */
 package org.xmlvm.iphone;
 
+import org.xmlvm.XMLVMSkeletonOnly;
+
+@XMLVMSkeletonOnly
 public interface UIGestureRecognizerDelegate {
 
     /*

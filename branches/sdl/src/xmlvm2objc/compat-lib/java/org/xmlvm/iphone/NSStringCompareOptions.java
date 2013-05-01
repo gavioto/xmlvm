@@ -18,18 +18,23 @@
  * USA.
  */
 
-#import "xmlvm.h"
-#import "org_xmlvm_iphone_UIViewController.h"
-#import "org_xmlvm_iphone_NSURL.h"
-#import "org_xmlvm_iphone_MPMoviePlayerController.h"
-	
+package org.xmlvm.iphone;
 
-typedef MPMoviePlayerViewController org_xmlvm_iphone_MPMoviePlayerViewControllerImpl;
+import org.xmlvm.XMLVMSkeletonOnly;
 
-@interface MPMoviePlayerViewController (cat_org_xmlvm_iphone_MPMoviePlayerViewControllerImpl)
-- (void) __init_org_xmlvm_iphone_MPMoviePlayerViewController___org_xmlvm_iphone_NSURL :(org_xmlvm_iphone_NSURL*)n1;
-- (org_xmlvm_iphone_MPMoviePlayerController*) getMoviePlayer__;
-@end
+@XMLVMSkeletonOnly
+public final class NSStringCompareOptions {
 
-@interface org_xmlvm_iphone_MPMoviePlayerViewController : org_xmlvm_iphone_MPMoviePlayerViewControllerImpl
-@end
+    public static final int NSCaseInsensitiveSearch      = 1;
+    public static final int NSLiteralSearch              = 2;
+    public static final int NSBackwardsSearch            = 4;
+    public static final int NSAnchoredSearch             = 8;
+    public static final int NSNumericSearch              = 64;
+    public static final int NSDiacriticInsensitiveSearch = 128;
+    public static final int NSWidthInsensitiveSearch     = 256;
+    public static final int NSForcedOrderingSearch       = 512;
+    public static final int NSRegularExpressionSearch    = 1024;
+
+    private NSStringCompareOptions() {
+    }
+}
